@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.5.7 | 포켓몬 루틴 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.6.0 | 포켓몬 루틴 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -141,7 +141,7 @@ html{height:100%}body{min-width:300px;min-height:100%}
 .capture-action-continue{background:linear-gradient(135deg,#ffd775,#ffbb53);border:2px solid #ffeaaa;color:#17243d}
 @media(max-width:350px){.capture-result-actions{gap:7px}.capture-result-actions button{font-size:12px;padding:9px 4px;min-height:52px}}
 
-/* v1.5.7: time challenge and standard completion are explicitly different actions */
+/* v1.6.0: time challenge and standard completion are explicitly different actions */
 .quest-mode-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;min-width:242px}
 .quest-mode-actions .quest-action{width:100%;min-width:0;min-height:54px;padding:9px 8px;font-size:calc(12px * var(--app-scale,1.15));line-height:1.35;border-radius:13px;font-weight:900}
 .quest-action.quest-time{background:linear-gradient(135deg,#ffd76b,#ffb446);color:#2d2742;box-shadow:0 3px 0 #9a621c}
@@ -249,10 +249,10 @@ html[data-theme="light"] .verify-speed{color:#fff}
 @media(prefers-reduced-motion:reduce){.quest-timer-mult,.quest-timer-spark,.reward-mult,.reward-total,.reward-confetti{animation:none!important}}
 
 
-/* PokéRoutine v1.5.7 — responsive, selectable Pokédex gallery */
+/* PokéRoutine v1.6.0 — responsive, selectable Pokédex gallery */
 .dex-view-tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:12px 0}.dex-view-tools .view-buttons{display:flex;gap:7px;flex-wrap:wrap}.dex-view-tools .view-buttons button{border:1px solid #607ea2;border-radius:13px;background:var(--card,#14294a);color:var(--cream);padding:11px 14px;font-size:13px;font-weight:850;min-height:43px}.dex-view-tools .view-buttons button.selected{background:#2868b8;color:white;border-color:#83b9ff;box-shadow:0 0 0 2px #83b9ff33}.dex-gallery{display:grid;gap:12px}.dex-gallery.mode-cards{grid-template-columns:repeat(auto-fill,minmax(min(100%,145px),1fr))}.dex-gallery.mode-large{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}.dex-gallery.mode-list{grid-template-columns:1fr;gap:9px}.dex-gallery .mon{min-width:0;min-height:158px;padding:13px;gap:3px;transition:transform .16s,box-shadow .16s}.dex-gallery .mon-art{width:94px;height:94px}.dex-gallery .mon-art img{width:92px;height:92px}.dex-gallery.mode-large .mon{min-height:245px}.dex-gallery.mode-large .mon-art{width:172px;height:172px}.dex-gallery.mode-large .mon-art img{width:166px;height:166px}.dex-gallery.mode-large .mon-name{font-size:19px}.dex-gallery .mon-name{font-size:15px}.dex-gallery .mon-id{font-size:12px}.dex-gallery.mode-list .mon{display:grid;grid-template-columns:75px minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:12px;min-height:91px;text-align:left;justify-items:start;align-content:center;align-items:center}.dex-gallery.mode-list .mon-art{width:72px;height:72px;grid-row:1/span 2;grid-column:1}.dex-gallery.mode-list .mon-art img{width:70px;height:70px}.dex-gallery.mode-list .mon-name{grid-row:1;grid-column:2;font-size:17px;margin-top:0}.dex-gallery.mode-list .mon-id{grid-row:2;grid-column:2}.dex-gallery.mode-list .rarity{grid-row:1/span 2;grid-column:3}.dex-gallery .mon.locked{filter:none;opacity:.65}.dex-gallery .mon.locked .mon-art{filter:grayscale(1)}.quest-reward-editor{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;border:1px solid #5e83a6;background:#0d1c3433;border-radius:13px;padding:12px;margin:7px 0}.quest-reward-editor[hidden]{display:none}.quest-reward-editor label{min-width:0}.quest-reward-editor .qform-note{grid-column:1/-1}.quest-reward-editor .qentry{min-width:0;width:100%;box-sizing:border-box}@media(max-width:360px){.dex-gallery.mode-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.dex-view-tools .view-buttons button{padding:10px}}
 
-/* v1.5.7 FINAL: visibility, accessibility, and scroll-independent navigation */
+/* v1.6.0 FINAL: visibility, accessibility, and scroll-independent navigation */
 .hero-title{word-break:keep-all}
 :root{--nav-safe:env(safe-area-inset-bottom,0px)}
 #app{padding-bottom:calc(112px + var(--nav-safe))}
@@ -303,6 +303,155 @@ html[data-theme="light"] .tabnav{box-shadow:0 -8px 26px #345b8b25}
  .nav-toggle{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.tabnav,.nav-toggle{transition:none}}
+
+/* v1.6.0: quest layout remains readable at very large text settings and across tablet widths */
+.quest-list{min-width:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:10px}
+.quest-list .quest{
+ display:grid;grid-template-columns:48px minmax(0,1fr);grid-template-rows:auto auto;
+ align-items:start;gap:8px 12px;min-width:0;width:100%;margin-bottom:0;
+}
+.quest-list .quest-ico{grid-column:1;grid-row:1;align-self:start;justify-self:center;max-width:100%}
+.quest-list .quest-details{grid-column:2;grid-row:1;min-width:0!important;width:100%;flex:auto;overflow:visible}
+.quest-list .quest-title{white-space:normal;text-overflow:clip;overflow:visible;word-break:keep-all;overflow-wrap:anywhere;line-height:1.4}
+.quest-list .quest-caption,.quest-list .quest-reward-caption{white-space:normal;word-break:keep-all;overflow-wrap:anywhere;line-height:1.5}
+.quest-list .quest-controls{grid-column:1/-1;grid-row:2;display:flex;flex-direction:row!important;width:100%!important;min-width:0;gap:8px;align-items:stretch}
+.quest-list .quest-mode-actions{flex:1 1 auto;width:auto;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.quest-list .quest-mode-actions .quest-action{min-width:0!important;white-space:normal;overflow-wrap:anywhere;padding:8px 5px}
+.quest-list .quest-controls>.quest-edit{align-self:stretch;min-width:66px!important;flex:0 0 auto;max-width:100px}
+@media(max-width:360px){
+ .quest-list .quest{grid-template-columns:38px minmax(0,1fr);gap:7px 8px;padding:9px}
+ .quest-list .quest-mode-actions{gap:5px}
+ .quest-list .quest-controls{gap:5px}
+ .quest-list .quest-mode-actions .quest-action{font-size:calc(10px * var(--app-scale,1.15));padding:7px 3px}
+ .quest-list .quest-controls>.quest-edit{min-width:52px!important;padding:6px 5px}
+}
+/* v1.6.0: PHONE LANDSCAPE — avoid tablet 700px breakpoint, prevent zero-width quest text */
+@media (orientation:landscape) and (max-height:560px) and (max-width:1050px){
+ html,body{width:100%;max-width:100%;overflow-x:clip}
+ body{margin:0;padding:0}
+ #app,#app.nav-collapsed{
+  width:100%;max-width:100%;min-height:100dvh;min-height:100svh;
+  padding:0 0 calc(95px + var(--nav-safe));
+  border:0;border-radius:0;overflow:visible;box-shadow:none;
+ }
+ #app.nav-collapsed{padding-bottom:calc(60px + var(--nav-safe))}
+ .main{width:100%;max-width:none;min-width:0;padding:14px clamp(12px,3vw,28px) 20px}
+ .quest-list{min-width:0}
+ .quest{
+  display:grid;grid-template-columns:clamp(40px,5.5vw,50px) minmax(0,1fr);
+  grid-template-rows:auto auto;align-items:start;
+  gap:8px 12px;min-width:0;width:100%;padding:12px 14px;
+ }
+ .quest-ico{grid-column:1;grid-row:1;width:44px;height:44px;max-width:100%;align-self:start;justify-self:center}
+ .quest-details{
+  grid-column:2;grid-row:1;min-width:0!important;width:100%;
+  overflow:visible;flex:auto;
+ }
+ .quest-title{
+  display:block;white-space:normal;text-overflow:clip;overflow:visible;
+  word-break:keep-all;overflow-wrap:anywhere;
+  font-size:calc(16px * var(--app-scale,1.15));line-height:1.35;
+ }
+ .quest-caption,.quest-reward-caption{
+  white-space:normal;word-break:keep-all;overflow-wrap:anywhere;
+  line-height:1.45;margin-top:5px;
+ }
+ .quest-controls{
+  grid-column:1 / -1;grid-row:2;display:flex;flex-direction:row!important;
+  width:100%!important;min-width:0;gap:8px;align-items:center;justify-content:stretch;
+ }
+ .quest-mode-actions{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  flex:1 1 auto;width:auto;min-width:0;gap:8px;
+ }
+ .quest-mode-actions .quest-action{
+  min-width:0!important;min-height:45px;white-space:normal;
+  padding:7px 8px;line-height:1.25;
+  font-size:calc(12px * var(--app-scale,1.15));overflow-wrap:anywhere;
+ }
+ .quest-controls>.quest-edit{align-self:stretch;flex:0 0 auto;min-width:72px;max-width:100px;min-height:45px;margin:0}
+ /* Phone navigation remains anchored to the viewport rather than switching to a tablet sidebar. */
+ .tabnav,.tabnav.is-collapsed{
+  position:fixed;top:auto;bottom:0;left:50%;right:auto;
+  width:100%;max-width:100%;height:calc(66px + var(--nav-safe));
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:1fr;
+  gap:0;padding:1px 8px var(--nav-safe);border:0;border-top:1px solid #294665;
+  border-radius:0;overflow:visible;box-shadow:0 -8px 26px #020b1b36;
+ }
+ .tabnav{transform:translateX(-50%);opacity:1;visibility:visible;pointer-events:auto}
+ .tabnav.is-collapsed{transform:translate(-50%,115%);opacity:0;visibility:hidden;pointer-events:none}
+ .tabnav .tab{min-width:0;min-height:42px;width:100%;padding:3px 2px;gap:1px;font-size:calc(10px * var(--app-scale,1.15))}
+ .tabnav .tab .symbol{font-size:20px;line-height:1.1}
+ .nav-toggle{display:flex!important;bottom:calc(66px + var(--nav-safe) + 3px)}
+ .nav-toggle.is-collapsed{bottom:calc(9px + var(--nav-safe))}
+ .hero{min-height:145px;padding:15px 19px}
+ .hero-title{font-size:clamp(19px,calc(20px * var(--app-scale,1.15)),26px);max-width:73%}
+ .hero-sub{font-size:calc(11px * var(--app-scale,1.15))}
+ .hero .pokeball{transform:rotate(-17deg) scale(.7);right:9px;bottom:-3px}
+ .meta-row{gap:8px;margin-top:10px}.metric{padding:10px 8px}
+ .metric strong{font-size:calc(16px * var(--app-scale,1.15))}
+ .section{margin-top:16px}
+ .header-actions{flex-wrap:wrap;justify-content:flex-end;gap:5px}
+ .header-badge{max-width:100%}
+ .trainer-welcome{overflow-wrap:anywhere}
+ /* Wider dialogs must scroll within the short landscape viewport. */
+ .overlay{align-items:center;overflow-y:auto;overscroll-behavior:contain}
+ .modal,.capture-modal{max-height:calc(100dvh - 20px);overflow-y:auto;overscroll-behavior:contain}
+ .quest-timer-modal{max-height:calc(100dvh - 14px)}
+}
+@media (orientation:landscape) and (max-height:560px) and (max-width:700px){
+ .quest{gap:7px 9px;padding:10px}
+ .quest-controls{gap:6px}
+ .quest-mode-actions{gap:6px}
+ .quest-controls>.quest-edit{min-width:59px;max-width:70px}
+ .quest-mode-actions .quest-action{font-size:calc(11px * var(--app-scale,1.15));padding:7px 4px}
+}
+
+/* v1.6.0 — per-user quest sorting control, including phone landscape */
+.quest-sort-panel{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:11px 13px;background:#102747;border:1px solid #375879;border-radius:14px}
+.quest-sort-panel label{font-size:calc(13px * var(--app-scale,1.15));font-weight:900;white-space:nowrap;color:#dbeaff}
+.quest-sort-panel select{flex:1 1 160px;min-width:0;max-width:300px;min-height:46px;padding:9px 12px;border-radius:11px;border:1px solid #759bc4;background:#203e64;color:#fff;font-weight:900;font-size:calc(12px * var(--app-scale,1.15));text-overflow:ellipsis}
+.quest-sort-panel select:focus-visible{outline:3px solid #ffca64;outline-offset:2px}
+html[data-theme="light"] .quest-sort-panel{background:#f5faff;border-color:#b5d3ee}
+html[data-theme="light"] .quest-sort-panel label{color:#1d4970}
+html[data-theme="light"] .quest-sort-panel select{background:#fff;color:#213f64;border-color:#86b0d7}
+@media(max-width:365px){.quest-sort-panel{padding:9px;gap:7px}.quest-sort-panel select{flex-basis:155px;max-width:none}}
+@media(orientation:landscape) and (max-height:560px) and (max-width:1050px){.quest-sort-panel{margin:0 0 10px}.quest-sort-panel select{flex:0 1 240px}}
+
+/* v1.6.0: visually distinct, tap-friendly reward center */
+.rewards-hub{padding:15px;border:1px solid #516a93;border-radius:20px;background:linear-gradient(135deg,#18335c,#1a2e57);margin-bottom:18px}
+.reward-gift,.reward-level-row{display:flex;align-items:center;justify-content:space-between;gap:14px;min-width:0;padding:12px;border:1px solid #516b93;border-radius:15px;background:#17345e;margin-top:8px}
+.reward-gift>div,.reward-level-row>div{min-width:0;display:flex;flex-direction:column;gap:4px}.reward-gift strong,.reward-level-row b{font-size:15px;font-weight:900;overflow-wrap:anywhere}.reward-gift small,.reward-level-row small{font-size:13px;color:#ffdc7e;font-weight:900}
+.reward-claim-btn{flex:0 0 auto;min-height:46px;padding:10px 15px;border:0;border-radius:12px;background:#ffcc59;color:#1c3250;font-size:14px;font-weight:1000;cursor:pointer;white-space:nowrap}.reward-claim-btn:disabled{background:#4f6685;color:#d4e0eb;opacity:.8}
+.reward-level-title{margin-top:18px;font-size:17px;font-weight:1000;color:#fce391}.reward-explain{font-size:12px;line-height:1.6;color:#d9e7fa;margin:8px 2px}.reward-level-list{max-height:430px;overflow:auto;overscroll-behavior:contain}.reward-all-done{padding:16px 8px;text-align:center;color:#96e9ca;font-weight:900}.reward-history{font-size:12px;line-height:1.55;color:#c9d6ec;margin-top:12px;overflow-wrap:anywhere}
+.home-backup-section{margin-top:28px;padding:14px 0 5px;border-top:2px dashed #597599}
+.levelup-celebration{margin:14px 0;padding:17px 10px;text-align:center;border:2px solid #ffe27d;border-radius:20px;background:linear-gradient(135deg,#24346c,#7641a3,#1d3974);color:white;box-shadow:0 0 22px #ffb73c55;animation:levelAppear .6s ease-out both;overflow:hidden}
+.levelup-celebration.milestone{border:3px solid #ffcf47;background:radial-gradient(circle at 50% 30%,#9956b8,#344f9e 48%,#142757);box-shadow:0 0 28px #ffca43a8}
+.levelup-sparkles{font-size:27px;animation:levelFloat 1.4s ease-in-out infinite alternate}
+.levelup-headline{font-size:20px;font-weight:1000;color:#ffe87f;letter-spacing:1px;text-shadow:0 2px 8px #fcbb4588}
+.levelup-number{font-size:clamp(42px,13vw,72px);font-weight:1000;line-height:1.25;color:#fff3ad;text-shadow:0 0 18px #ffcb39,0 4px 0 #6b3d16;animation:levelPulse .6s ease-in-out 2}
+.levelup-caption{font-size:13px;font-weight:900;color:white}.levelup-await{margin-top:10px;font-size:12px;font-weight:800;color:#ffe69c}
+.level-reward-modal .reward-total{font-size:40px}
+@keyframes levelAppear{0%{opacity:0;transform:translateY(20px) scale(.85)}65%{transform:translateY(-5px) scale(1.04)}100%{opacity:1;transform:none}}
+@keyframes levelPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+@keyframes levelFloat{from{transform:translateY(-4px)}to{transform:translateY(4px)}}
+html[data-theme="light"] .rewards-hub{background:linear-gradient(135deg,#fffaf0,#e9f5ff);border-color:#afceeb;color:#234467}
+html[data-theme="light"] .reward-gift,html[data-theme="light"] .reward-level-row{background:#fff;border-color:#b5d0e9}
+html[data-theme="light"] .reward-gift small,html[data-theme="light"] .reward-level-row small{color:#9d5d04}
+html[data-theme="light"] .reward-level-title{color:#80500b}html[data-theme="light"] .reward-explain,html[data-theme="light"] .reward-history{color:#345878}
+@media(max-width:370px){.rewards-hub{padding:10px}.reward-gift,.reward-level-row{padding:9px;gap:6px}.reward-claim-btn{font-size:12px;padding:8px 9px}.reward-gift strong,.reward-level-row b{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.levelup-celebration,.levelup-sparkles,.levelup-number{animation:none!important}}
+
+/* v1.6.0 — rare five-level milestone Pokemon gift */
+.level-gift-celebration{margin:15px 0;padding:18px 12px;border:3px solid #ffcf55;border-radius:22px;text-align:center;color:#fff;background:radial-gradient(circle at 50% 20%,#9551ac,#344a8d 48%,#142248);box-shadow:0 0 25px #ffca47aa;animation:level-up-splash .6s ease both;overflow:hidden}
+.level-gift-rays{font-size:26px;animation:giftGlow 1.3s ease-in-out infinite alternate}
+.level-gift-heading{font-size:clamp(20px,5vw,28px);font-weight:1000;color:#ffe58b}
+.level-gift-art{height:156px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 18px #fff089);animation:giftGlow 1.2s ease-in-out infinite alternate}
+.level-gift-art img{width:146px;height:146px;object-fit:contain}
+.level-gift-name{font-size:25px;font-weight:1000}
+.level-gift-sub{font-size:12px;line-height:1.7;color:#fff3d4}
+@keyframes giftGlow{from{transform:scale(.95)}to{transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.level-gift-celebration,.level-gift-rays,.level-gift-art{animation:none!important}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -317,7 +466,7 @@ const DEFAULT_RULES=()=>({pointMin:20,pointMax:40,pointStep:5,allDoneBonus:50,ti
 const DEFAULT_TASKS=[]; // 퀘스트는 이용자가 직접 등록: 추천/랜덤 자동 생성 없음
 const KEY='poke_routine_v1_20261030'; // v0.9 보존 (마이그레이션 전용)
 const MULTI_KEY='pokeroutine_multi_v10',UNDO_KEY='pokeroutine_merge_undo_v10';
-const DEFAULT=()=>({points:0,allEarned:0,totalXp:0,quests:[],completions:[],owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
+const DEFAULT=()=>({points:0,allEarned:0,totalXp:0,quests:[],completions:[],owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',questSort:'incomplete',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
 let settings={autoSave:true,theme:'light',fontSize:'large'};
 try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark'].includes(p?.theme))settings.theme=p.theme;if(['normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize}catch(e){}
@@ -385,10 +534,14 @@ function cleanBackup(v){
  safe.categories=Array.isArray(v.categories)?v.categories.filter(c=>c&&typeof c.name==='string'&&typeof c.emoji==='string').slice(0,100).map(c=>({name:c.name.trim().slice(0,25),emoji:c.emoji.slice(0,12)})).filter(c=>c.name):DEFAULT_CATEGORIES.map(c=>({...c}));
  safe.quests=v.quests.map(q=>({id:String(q.id||''),title:String(q.title||'').trim().slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((Number(q.mins)||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride)})).filter(q=>q.title&&/^[A-Za-z0-9_-]{1,90}$/.test(q.id)&&!seen.has(q.id)&&seen.add(q.id));
  safe.dexView=['cards','large','list'].includes(v.dexView)?v.dexView:'cards';
+ safe.questSort=['incomplete','complete','category','created'].includes(v.questSort)?v.questSort:'incomplete';
+ safe.rewardClaims=Array.isArray(v.rewardClaims)?v.rewardClaims.filter(c=>c&&Number.isInteger(Number(c.level))&&Number(c.level)>=2&&Number(c.level)<=100000&&Number(c.points)===Number(c.level)*50).slice(0,100000).map(c=>({level:Number(c.level),points:Number(c.points),at:String(c.at||'').slice(0,45),claimId:String(c.claimId||('level_'+c.level)).slice(0,100)})).filter((c,i,all)=>all.findIndex(other=>other.level===c.level)===i):[];
  safe.points=boundedNumber(v.points);safe.allEarned=boundedNumber(v.allEarned);safe.totalXp=boundedNumber(v.totalXp);
+ safe.rewardStartLevel=Number.isInteger(Number(v.rewardStartLevel))&&Number(v.rewardStartLevel)>=1?Math.min(1000000,Number(v.rewardStartLevel)):Math.max(1,1+Math.floor(safe.totalXp/120));
+ safe.levelGifts=Array.isArray(v.levelGifts)?v.levelGifts.filter(g=>g&&Number.isInteger(Number(g.level))&&Number(g.level)%5===0&&Number(g.level)>=5&&Number(g.id)>=1&&Number(g.id)<=151).slice(0,20000).map(g=>({level:Number(g.level),id:Number(g.id),rarity:RARITIES.includes(g.rarity)?g.rarity:pokeClass(Number(g.id)),at:String(g.at||'').slice(0,45),giftId:String(g.giftId||'').slice(0,100),new:!!g.new})).filter((g,i,a)=>a.findIndex(x=>x.level===g.level)===i):[];
  safe.completions=v.completions.filter(c=>c&&/^\d{4}-\d{2}-\d{2}$/.test(String(c.day))).map(c=>({day:String(c.day),id:String(c.id||'').slice(0,90),title:String(c.title||'').slice(0,45),category:String(c.category||'').slice(0,25),goal:String(c.goal||'').slice(0,90),mode:c.mode==='normal'?'normal':c.mode==='time'?'time':(Number(c.limitSeconds)>0?'time':'legacy'),points:boundedNumber(c.points,30000),basePoints:boundedNumber(c.basePoints??c.points,10000),multiplier:Math.min(3,Math.max(1,Number(c.multiplier)||1)),limitSeconds:boundedNumber(c.limitSeconds,14400),elapsedSeconds:boundedNumber(c.elapsedSeconds,86400),holdSeconds:boundedNumber(c.holdSeconds,864000),holdCount:boundedNumber(c.holdCount,10000),rewardRule:cleanQuestReward(c.rewardRule)||null,at:String(c.at||'').slice(0,40)}));
  safe.owned={};for(const [id,item] of Object.entries(v.owned||{})){const n=Number(id);if(Number.isInteger(n)&&n>=1&&n<=151&&item&&typeof item==='object')safe.owned[n]={count:Math.max(1,boundedNumber(item.count,100000)),firstDate:String(item.firstDate||'').slice(0,25)};}
- safe.draws=v.draws.filter(x=>x&&Number.isInteger(Number(x.id))&&Number(x.id)>=1&&Number(x.id)<=151).map(x=>({date:String(x.date||'').slice(0,45),timestamp:String(x.timestamp||'').slice(0,45),id:Number(x.id),rarity:RARITIES.includes(x.rarity)?x.rarity:pokeClass(Number(x.id)),tier:String(x.tier||'').slice(0,30),price:boundedNumber(x.price,100000),new:!!x.new,caught:x.caught!==false,catchPct:boundedNumber(x.catchPct,100),drawId:String(x.drawId||'').slice(0,100),rarityRoll:Number(x.rarityRoll)||0,poolIndex:boundedNumber(x.poolIndex,1000),catchRoll:Number(x.catchRoll)||0}));
+ safe.draws=v.draws.filter(x=>x&&Number.isInteger(Number(x.id))&&Number(x.id)>=1&&Number(x.id)<=151).map(x=>({date:String(x.date||'').slice(0,45),timestamp:String(x.timestamp||'').slice(0,45),id:Number(x.id),rarity:RARITIES.includes(x.rarity)?x.rarity:pokeClass(Number(x.id)),tier:String(x.tier||'').slice(0,30),price:boundedNumber(x.price,100000),new:!!x.new,caught:x.caught!==false,catchPct:boundedNumber(x.catchPct,100),drawId:String(x.drawId||'').slice(0,100),source:x.source==='levelGift'?'levelGift':'draw',rewardLevel:boundedNumber(x.rewardLevel,1000000),rarityRoll:Number(x.rarityRoll)||0,poolIndex:boundedNumber(x.poolIndex,1000),catchRoll:Number(x.catchRoll)||0}));
  safe.demoGranted=!!v.demoGranted;safe.bonusAt=typeof v.bonusAt==='string'?v.bonusAt.slice(0,40):null;
  safe.activeQuest=null;
  if(v.activeQuest&&typeof v.activeQuest==='object'){
@@ -426,6 +579,10 @@ function ensureExtensions(){const dc=DEFAULT_CATEGORIES.map(c=>({...c}));if(!Arr
  data.categories=data.categories.filter(c=>c&&typeof c.name==='string'&&typeof c.emoji==='string').map(c=>({name:c.name.slice(0,25),emoji:c.emoji.slice(0,12)}));
  if(!data.categories.some(c=>c.name==='기타'))data.categories.push({name:'기타',emoji:'✨'});
  if(!['cards','large','list'].includes(data.dexView))data.dexView='cards';
+ if(!['incomplete','complete','category','created'].includes(data.questSort))data.questSort='incomplete';
+ if(!Array.isArray(data.rewardClaims))data.rewardClaims=[];
+ if(!Number.isInteger(Number(data.rewardStartLevel))||Number(data.rewardStartLevel)<1)data.rewardStartLevel=Math.max(1,1+Math.floor(data.totalXp/120));
+ if(!Array.isArray(data.levelGifts))data.levelGifts=[];
  for(const q of data.quests){q.rewardOverride=cleanQuestReward(q.rewardOverride);q.limitMinutes=Math.min(240,Math.max(1,Number(q.limitMinutes)||10));if(typeof q.goal!=='string')q.goal=(Number(q.mins)||10)+'분';if(!data.categories.some(c=>c.name===q.category))data.categories.push({name:String(q.category||'기타').slice(0,25),emoji:icons[q.category]||'✨'});}
  if(!Array.isArray(data.categoryEvents))data.categoryEvents=[];
  if(!Array.isArray(data.dailyBonuses))data.dailyBonuses=[];if(!data.activeQuest||typeof data.activeQuest!=='object')data.activeQuest=null;
@@ -459,7 +616,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.5.7</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.6.0</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -555,6 +712,7 @@ function verifyQuest(e){
   if(!a||a.id!==id||!a.finishedAt){modal=null;render();return;}
   if(a.startedDay!==day()){alert('다른 날짜의 퀘스트는 완료할 수 없습니다.');data.activeQuest=null;save();modal=null;render();return;}
  }
+ const previousLevel=lvl();
  const base=questRewardChoices(q),basePts=base[ri(0,base.length-1)];
  const timeState=normal?null:questTimeState(a,a.finishedAt);
  const mult=normal?1:Number(timeState.multiplier.toFixed(4));
@@ -567,13 +725,18 @@ function verifyQuest(e){
   limitSeconds:normal?0:a.limitSeconds,elapsedSeconds,holdSeconds,holdCount:normal?0:(a.holdCount||0),
   rewardRule:questReward(q),at:now});
  data.points+=pts;data.allEarned+=pts;data.totalXp+=25;
+ const reachedLevel=lvl(),levelUps=[],newLevelGifts=[];
+ for(let reached=previousLevel+1;reached<=reachedLevel;reached++){
+  levelUps.push(reached);
+  if(reached%5===0){const gift=grantMilestonePokemon(reached);if(gift)newLevelGifts.push(gift)}
+ }
  if(!normal)data.activeQuest=null;
  let bonus=0;const today=day();
  if(data.quests.length>0&&data.quests.every(x=>completedToday(x.id))&&!data.dailyBonuses.some(x=>x.day===today)){
   bonus=data.rules.allDoneBonus;data.dailyBonuses.push({day:today,at:now,points:bonus,questCount:data.quests.length});data.points+=bonus;data.allEarned+=bonus;
  }
  save();modal={type:'quest',mode:normal?'normal':'time',pts,basePts,multiplier:mult,elapsedSeconds,holdSeconds,
-  bonus,title:q.title,rewardLabel:questRewardText(q)};render();
+  bonus,title:q.title,rewardLabel:questRewardText(q),levelUps,newLevelGifts};render();
 }
 function changeMainQuestPassword(e){
   e.preventDefault();
@@ -593,7 +756,34 @@ function changeMainQuestPassword(e){
   else if(!saved){alert('변경 내용을 기기에 저장하지 못했습니다. JSON Save로 즉시 백업하세요.');}
   else{alert('main 계정의 퀘스트 완료 비밀번호만 변경되었습니다. 다른 계정은 변경되지 않습니다.');}
   render();
- }function bonus(){if(data.demoGranted){alert('체험용 포인트는 한 번만 받을 수 있습니다.');return}data.points+=600;data.demoGranted=true;data.bonusAt=new Date().toISOString();save();modal={type:'bonus'};render()}
+ }function unclaimedLevels(){
+ const ownedLevels=new Set((data.rewardClaims||[]).map(x=>Number(x.level)));
+ const result=[];for(let level=Math.max(2,Number(data.rewardStartLevel)+1||2);level<=lvl();level++)if(!ownedLevels.has(level))result.push(level);
+ return result;
+}
+function grantMilestonePokemon(level){
+ if(!Number.isInteger(level)||level<5||level%5!==0||data.levelGifts.some(x=>x.level===level))return null;
+ const tier=TIERS[0],rarity=randomRarity(probFor(tier));
+ const pool=pools[rarity];if(!pool?.length)return null;
+ const id=pool[ri(0,pool.length-1)],already=!!data.owned[id];
+ const at=new Date().toISOString(),giftId=`milestone_${level}`;
+ data.owned[id]={count:(data.owned[id]?.count||0)+1,firstDate:data.owned[id]?.firstDate||day()};
+ const gift={level,id,rarity,at,giftId,new:!already};
+ data.levelGifts.push(gift);
+ data.draws.unshift({drawId:giftId,date:new Date().toLocaleString('ko-KR'),timestamp:at,id,rarity,tier:`Lv.${level} 무료 선물`,source:'levelGift',rewardLevel:level,price:0,new:!already,caught:true,catchPct:100,rarityRoll:null,poolIndex:null,catchRoll:null});
+ return gift;
+}
+function claimLevelReward(level){
+ if(!startUnlocked||!currentUserId||!Number.isInteger(level)||level<=Number(data.rewardStartLevel)||level>lvl())return;
+ if((data.rewardClaims||[]).some(c=>c.level===level)){alert('이미 수령한 레벨 보상입니다.');return;}
+ const points=level*50,record={level,points,at:new Date().toISOString(),claimId:'level_'+level};
+ data.rewardClaims.push(record);data.points+=points;data.allEarned+=points;
+ save();modal={type:'levelClaim',level,pts:points};render();
+}
+function bonus(){
+ if(data.demoGranted){alert('첫 선물은 계정당 한 번만 받을 수 있습니다.');return}
+ data.points+=600;data.allEarned+=600;data.demoGranted=true;data.bonusAt=new Date().toISOString();save();modal={type:'bonus'};render();
+}
 function addTask(){modal={type:'questEditAuth',id:null};render()}
 function editTask(id){if(!data.quests.find(q=>q.id===id))return;modal={type:'questEditAuth',id};render()}
 function authorizeQuestEditor(e){
@@ -716,15 +906,20 @@ function updateManualRarity(value){manualRarity=value;const wrap=document.getEle
 function renderManualRows(){const filtered=Array.from({length:151},(_,i)=>i+1).filter(id=>(manualRarity==='all'||pokeClass(id)===manualRarity)&&(name(id).toLowerCase().includes(manualSearch.toLowerCase())||String(id).includes(manualSearch)));
 return `<div class="admin-note">등장률은 해당 1종의 확률, 포획률은 등장 후 성공 확률, 최종 획득률은 <b>1회 뽑기에서 그 포켓몬을 포획할 확률</b>입니다. 표는 좌우로 스크롤됩니다.</div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>No.</th><th>포켓몬</th><th>등급</th><th>일반 등장</th><th>고급 등장</th><th>프리미엄 등장</th><th>일반 포획</th><th>고급 포획</th><th>프리미엄 포획</th><th>일반 최종 획득</th><th>고급 최종 획득</th><th>프리미엄 최종 획득</th></tr></thead><tbody>${filtered.map(id=>{const r=pokeClass(id),idx=RARITIES.indexOf(r),num=pools[r].length;return `<tr><td>${String(id).padStart(3,'0')}</td><td>${esc(name(id))}</td><td><span class="rarity ${r}">${RN[idx]}</span></td>${TIERS.map(t=>`<td class="mono">${(probFor(t)[idx]/num).toFixed(4)}%</td>`).join('')}${TIERS.map(t=>`<td class="mono">${catchFor(t)[idx]}%</td>`).join('')}${TIERS.map(t=>`<td class="mono">${(probFor(t)[idx]/num*catchFor(t)[idx]/100).toFixed(4)}%</td>`).join('')}</tr>`}).join('')}</tbody></table></div><p class="admin-note">검색 결과 ${filtered.length}종 · 전체 151종. 예: 뮤츠(전설) 프리미엄 등장 확률 = ${probFor(TIERS[2])[3]}% ÷ ${pools.legendary.length}종 = ${(probFor(TIERS[2])[3]/pools.legendary.length).toFixed(4)}%, 포획까지 성공할 확률 = ${(probFor(TIERS[2])[3]/pools.legendary.length*catchFor(TIERS[2])[3]/100).toFixed(4)}%.</p>`}
 function renderManual(){if(!adminUnlocked||!startUnlocked)return '';return `${pageHeader('관리자 <em>매뉴얼</em>','이 앱의 전체 운영 방법 · 확률 · 성장 공식 · 151종 도감')}
-<section class="manual-section"><h3>📱 휴대폰 하단 메뉴 사용법 (최종판)</h3><p>휴대폰의 <b>오늘·뽑기·도감·달력·기록</b> 메뉴는 스크롤을 내려도 화면 맨 아래에 고정됩니다. 메뉴 위의 <b>⌄ 메뉴 접기</b>를 누르면 작은 <b>☰ 메뉴 펼치기</b> 손잡이만 남습니다. 다시 누르면 5개 메뉴를 바로 사용할 수 있습니다. 접기 상태는 해당 기기에 저장됩니다. 갤럭시탭에서는 화면 왼쪽 고정 메뉴로 보입니다. 로그인 화면에서는 이 메뉴가 숨겨집니다.</p></section><section class="manual-section"><h3>📚 v1.5.7 퀘스트 보상 및 도감 보기</h3><p>퀘스트 등록·수정·삭제는 관리자 비밀번호 인증 후 가능합니다. 각 퀘스트의 기본 랜덤 포인트는 <b>관리자 기본 범위 상속</b> 또는 <b>개별 최소·최대·간격</b> 중 선택합니다. 각 값은 균등 확률로 추첨하며, 타임챌린지를 선택한 경우에만 제한시간에 따른 ×1~×3 배수를 곱합니다. 일반 완료는 기본 포인트 그대로 ×1.00입니다. 기존 퀘스트는 관리자 기본값을 그대로 사용합니다.</p><p>도감은 <b>카드형 / 큰 그림형 / 목록형</b>을 선택할 수 있습니다. 기기 크기에 맞춰 자동으로 재배치되며, 선택한 형태는 해당 트레이너의 JSON에도 보관됩니다.</p></section><section class="manual-section" id="m-users"><h3>👥 사용자 계정 관리 (v1.0)</h3>${renderAdminUsers()}<p class="admin-note">계정마다 퀘스트·도감·포인트·레벨·<b>퀘스트 완료 비밀번호</b>가 독립적입니다. 로그인 비밀번호도 ID별로 설정합니다. 다른 계정의 퀘스트 완료 비밀번호는 위 <b>사용자 계정 관리 → 해당 ID → 관리</b>에서 관리자만 변경할 수 있습니다. 뽑기와 포획 확률·기본 보상 규칙은 공통입니다.</p></section><div class="admin-summary"><span>🔐 관리자 모드 로그인 중</span><span>📚 전체 151종</span><span>🗂 완료 이력 ${data.completions.length}건</span></div>
+<section class="manual-section"><h3>↕ 퀘스트 보기 정렬</h3><p>오늘 화면의 <b>보기 정렬</b>에서 미완료 먼저(기본), 완료 먼저, 카테고리 순, 등록 순서를 선택할 수 있습니다. 정렬은 <b>표시 순서만 바꾸며</b> 퀘스트 등록 순서·보상·완료 기록을 수정하지 않습니다. 각 사용자별 보기 설정은 자동 저장 및 JSON 백업에 포함됩니다. 다음 날에는 새로운 날짜의 완료 여부를 기준으로 다시 정렬됩니다.</p></section><section class="manual-section"><h3>📱 휴대폰 하단 메뉴 사용법 (최종판)</h3><p>휴대폰의 <b>오늘·뽑기·도감·달력·기록</b> 메뉴는 스크롤을 내려도 화면 맨 아래에 고정됩니다. 메뉴 위의 <b>⌄ 메뉴 접기</b>를 누르면 작은 <b>☰ 메뉴 펼치기</b> 손잡이만 남습니다. 다시 누르면 5개 메뉴를 바로 사용할 수 있습니다. 접기 상태는 해당 기기에 저장됩니다. 갤럭시탭에서는 화면 왼쪽 고정 메뉴로 보입니다. 로그인 화면에서는 이 메뉴가 숨겨집니다.</p></section><section class="manual-section"><h3>📚 v1.6.0 퀘스트 보상 및 도감 보기</h3><p>퀘스트 등록·수정·삭제는 관리자 비밀번호 인증 후 가능합니다. 각 퀘스트의 기본 랜덤 포인트는 <b>관리자 기본 범위 상속</b> 또는 <b>개별 최소·최대·간격</b> 중 선택합니다. 각 값은 균등 확률로 추첨하며, 타임챌린지를 선택한 경우에만 제한시간에 따른 ×1~×3 배수를 곱합니다. 일반 완료는 기본 포인트 그대로 ×1.00입니다. 기존 퀘스트는 관리자 기본값을 그대로 사용합니다.</p><p>도감은 <b>카드형 / 큰 그림형 / 목록형</b>을 선택할 수 있습니다. 기기 크기에 맞춰 자동으로 재배치되며, 선택한 형태는 해당 트레이너의 JSON에도 보관됩니다.</p></section><section class="manual-section" id="m-users"><h3>👥 사용자 계정 관리 (v1.0)</h3>${renderAdminUsers()}<p class="admin-note">계정마다 퀘스트·도감·포인트·레벨·<b>퀘스트 완료 비밀번호</b>가 독립적입니다. 로그인 비밀번호도 ID별로 설정합니다. 다른 계정의 퀘스트 완료 비밀번호는 위 <b>사용자 계정 관리 → 해당 ID → 관리</b>에서 관리자만 변경할 수 있습니다. 뽑기와 포획 확률·기본 보상 규칙은 공통입니다.</p></section><div class="admin-summary"><span>🔐 관리자 모드 로그인 중</span><span>📚 전체 151종</span><span>🗂 완료 이력 ${data.completions.length}건</span></div>
 <div class="backup-actions"><button class="btn-outline" onclick="logoutAdmin()">🔒 관리자 로그아웃</button><button class="btn-outline" onclick="setScreen('home')">게임으로 돌아가기</button></div>
 <div class="manual-section"><h3>⏱ v1.5 시간 챌린지 · 홀드 · 스킨 · 글자 크기</h3><p>퀘스트에는 <b>⏱ 타임챌린지</b>와 <b>✅ 일반 완료</b> 두 버튼이 있습니다. 타임챌린지는 제한 시간(기본 10분, 1~240분)을 적용하며 버튼을 눌러 시작합니다. 팝업의 카운트다운과 현재 보상 배수(×3.00→×1.00)가 실시간 표시됩니다. 시간이 끝난 뒤에도 완료할 수 있지만 보상은 ×1.00입니다. <b>⏸ 잠깐 홀드</b>를 누르면 남은 시간·배수가 멈추고 <b>▶ 다시 시작하기</b>를 누르면 이어서 진행합니다. 홀드 중에는 완료할 수 없으며 먼저 재개해야 합니다. 홀드 횟수와 누적 쉬는 시간은 완료 이력 및 JSON 백업에 기록됩니다. 새로고침해도 홀드 상태는 유지됩니다(자동 저장 ON 기준).</p><p>완료 버튼을 누른 시점의 배수가 확정되고, 퀘스트 완료 비밀번호를 올바르게 입력해야 기본 랜덤 포인트 × 배수(반올림)가 지급됩니다. 경험치는 기존과 같은 25XP, 전체 달성 보너스는 관리자 설정 그대로입니다. 완료 이력·진행 중 타이머는 JSON에 포함됩니다. 자동 저장을 끄면 앱 종료 시 진행 중인 타이머가 복구되지 않을 수 있습니다.</p><p>설정 → 화면 스킨(밝음/밤하늘), 글자 크기(보통/크게/아주 크게)를 선택할 수 있습니다. 스킨 설정은 현재 기기의 브라우저에 저장됩니다.</p></div>
 <div class="manual-section" id="m-rewards"><h3>🎁 관리자: 포인트 보상 및 전체 달성 보너스</h3><p>모든 퀘스트는 종류/목표/카테고리에 관계없이 동일한 포인트 난수 규칙을 사용합니다. 최소~최대 범위에서 설정한 간격의 모든 정수가 균등하게 나옵니다. 하루 전체 퀘스트를 완료하면 보너스를 1회만 지급합니다. 오늘의 퀘스트 구성을 수정해도 이미 받은 보너스는 반환·재지급되지 않습니다. 퀘스트당 25XP는 그대로 유지됩니다.</p>
 <form class="qform" onsubmit="saveRewards(event)"><div class="admin-form-number"><label>최소 포인트<input class="qentry" name="pointMin" type="number" min="0" max="10000" required value="${data.rules.pointMin}"></label><label>최대 포인트<input class="qentry" name="pointMax" type="number" min="0" max="10000" required value="${data.rules.pointMax}"></label><label>지급 간격<select class="qentry" name="pointStep">${[1,5,10,20,50,100].map(v=>`<option value="${v}" ${v===data.rules.pointStep?'selected':''}>${v}P</option>`).join('')}</select></label><label>전체 달성 보너스 (P)<input class="qentry" name="allDoneBonus" type="number" min="0" max="100000" required value="${data.rules.allDoneBonus}"></label></div><p class="admin-note">현재: ${rewardText()} · 전체 달성 보너스 ${data.rules.allDoneBonus}P. 보너스는 해당 날짜에 한 번 지급되면 퀘스트 구성을 바꾸어도 중복 지급되지 않습니다. 설정 변경은 향후 달성부터 적용됩니다.</p><button type="submit" class="modal-btn">포인트 규칙 저장</button></form></div>
 <div class="manual-section" id="m-config"><h3>🎲 관리자: 뽑기 상세 확률 설정</h3><p>뽑기별 일반·레어·에픽·전설 <b>등장 확률 합계 100%</b>를 입력하세요. 포획 성공률은 각각 0~100%로 설정할 수 있습니다. 같은 등급에 속한 포켓몬은 무조건 동일 확률로 선정합니다. 변경 전 뽑기 결과/달력 이력은 유지됩니다.</p>
 <form class="qform" onsubmit="saveOdds(event)"><div class="admin-table-wrap"><table class="admin-table admin-input-table"><thead><tr><th>등장 등급 확률 (%)</th>${RN.map(r=>`<th>${r}</th>`).join('')}</tr></thead><tbody>${TIERS.map(t=>`<tr><th>${t.name}</th>${probFor(t).map((v,i)=>`<td><input type="number" name="${t.id}_prob_${i}" aria-label="${t.name} ${RN[i]} 등장" min="0" max="100" step="0.01" required value="${v}"></td>`).join('')}</tr>`).join('')}</tbody></table></div><div class="admin-table-wrap"><table class="admin-table admin-input-table"><thead><tr><th>포획 성공률 (%)</th>${RN.map(r=>`<th>${r}</th>`).join('')}</tr></thead><tbody>${TIERS.map(t=>`<tr><th>${t.name}</th>${catchFor(t).map((v,i)=>`<td><input type="number" name="${t.id}_catch_${i}" aria-label="${t.name} ${RN[i]} 포획" min="0" max="100" step="0.01" required value="${v}"></td>`).join('')}</tr>`).join('')}</tbody></table></div><button type="submit" class="modal-btn">확률 설정 저장 (합계 검사)</button></form></div>
-<div class="manual-toc">${[['m-users','사용자 관리'],['m-merge','다중 파일 병합'],['m-rewards','포인트'],['m-config','확률 설정'],['m-security','비밀번호'],['m-howto','시작·퀘스트'],['m-level','레벨·XP'],['m-odds','등장 확률'],['m-catch','포획 확률'],['m-dex','151종 전체 도감'],['m-history','캘린더·이력'],['m-save','Save / Load'],['m-reset','초기화'],['m-faq','FAQ']].map(([id,label])=>`<a href="#${id}">${label}</a>`).join('')}</div>
-<div class="manual-section" id="m-security"><h3>1. 관리자 비밀번호 / 퀘스트 완료 비밀번호 / 로그인 유지</h3>
+<div class="manual-toc">${[['m-users','사용자 관리'],['m-merge','다중 파일 병합'],['m-rewards','포인트'],['m-level-rewards','레벨 선물'],['m-config','확률 설정'],['m-security','비밀번호'],['m-howto','시작·퀘스트'],['m-level','레벨·XP'],['m-odds','등장 확률'],['m-catch','포획 확률'],['m-dex','151종 전체 도감'],['m-history','캘린더·이력'],['m-save','Save / Load'],['m-reset','초기화'],['m-faq','FAQ']].map(([id,label])=>`<a href="#${id}">${label}</a>`).join('')}</div>
+<div class="manual-section"><h3>🏆 5의 배수 레벨 포켓몬 보상 (v1.6.0)</h3><p>Lv.5, 10, 15, 20…을 새로 달성하면 <b>포켓몬 한 마리를 즉시 무료로 선물</b>하고, 특별한 축하 화면과 큰 포켓몬 사진을 보여줍니다. <b>등급별 출현 확률은 관리자가 설정한 일반 100P 뽑기와 동일</b>하며, 해당 등급 내 1종을 동일 확률로 추첨합니다. <b>포획 실패가 없으며</b> 바로 도감에 추가됩니다. 중복도 가능합니다. 레벨별 선물은 동일 레벨에 중복 지급되지 않으며 레벨 도달 시 기록됩니다. 기존 계정의 이미 지나간 레벨은 소급 선물하지 않습니다. 선물 기록은 JSON 및 도감·포획 이력에 포함됩니다.</p></div><div class="manual-section" id="m-level-rewards"><h3>🎁 v1.6.0 레벨별 포인트 수령 · 5레벨 포켓몬 선물</h3>
+<p><b>첫 시작 선물</b>은 계정당 한 번 <b>600P</b>를 직접 받습니다. 이전 버전에서 이 선물을 이미 받았다면 중복 지급되지 않습니다. 기존 <b>시스템 체험</b> 버튼은 <b>보상 받기</b> 메뉴로 이름이 변경되었습니다.</p>
+<p><b>레벨별 포인트</b>는 신규 계정은 Lv.2부터, 기존 계정은 업데이트 당시 레벨 다음부터 1레벨 오를 때마다 <b>도달한 레벨 × 50P</b>가 열립니다. 예: Lv.2=100P, Lv.3=150P, Lv.5=250P, Lv.10=500P. 경험치와 레벨만 올라가도 포인트가 자동으로 지급되지는 않습니다. <b>홈 → 보상 받기</b>에서 수령 버튼을 누른 레벨만 포인트가 추가됩니다. 업데이트 이후 달성한 레벨에서 아직 받지 않은 포인트는 나중에도 수령할 수 있습니다. 업데이트 전 달성한 기존 레벨에는 소급 지급하지 않습니다. 수령한 레벨과 시각은 ID별로 저장되고 JSON 파일에도 들어가 중복 지급을 방지합니다. 레벨업 자체는 일반·고급·프리미엄 뽑기의 등장·포획 확률을 바꾸지 않습니다. 단 Lv.5 단위 선물은 일반 뽑기와 같은 등장 확률로 별도 무료 지급합니다.</p>
+<p><b>레벨업 연출:</b> 퀘스트 완료로 120XP의 레벨 경계를 넘으면 매 레벨 축하 효과가 표시됩니다. <b>Lv.5, 10, 15, 20…</b>처럼 5의 배수 레벨에서는 더욱 큰 특별 연출을 보여줍니다. 이 연출은 확률·포인트 지급을 변경하지 않습니다.</p>
+<p><b>퀘스트 목록 정렬:</b> 오늘 화면에서 미완료 먼저(기본), 완료 먼저, 카테고리 순, 등록 순서 중 하나를 선택할 수 있습니다. 정렬은 화면의 순서만 바꾸며 사용자별 JSON에 저장됩니다. 휴대폰 가로모드에서는 퀘스트 카드가 화면 크기에 맞춰 자동 줄바꿈됩니다.</p>
+<p><b>데이터 저장/불러오기:</b> 홈 화면에서 가장 아래로 이동했습니다. 계정별 첫 선물·레벨 보상 수령 이력도 전체 JSON에 포함되어 여러 파일을 병합할 때 해당 계정 데이터와 함께 비교합니다. 같은 ID를 별개로 변경한 JSON 사이에는 충돌이 발생할 수 있으므로 병합 전 내용을 확인하세요.</p></div><div class="manual-section" id="m-security"><h3>1. 관리자 비밀번호 / 퀘스트 완료 비밀번호 / 로그인 유지</h3>
 <p><b>관리자 비밀번호는 변경 가능</b>하며, 관리자 메뉴에서 현재 비밀번호를 확인한 후 새 비밀번호를 설정할 수 있습니다. 마스터 비밀번호는 고정된 복구 수단이며 화면에 번호를 표시하지 않습니다. 로그인한 뒤에는 같은 탭에서 새로고침해도 로그인 상태가 유지됩니다. 로그인 화면의 30일 유지 옵션을 선택하면 이 기기의 앱 재실행 시에도 자동 복원됩니다. 로그아웃하거나 30일이 지나면 다시 인증합니다. 이 최초 시작 인증은 관리자 매뉴얼 로그인을 자동으로 열어주지 않습니다. 매뉴얼을 보려면 게임 화면 우측 상단 🔒에서 다시 관리자 인증을 하세요.</p>
 <p>🔐 <b>로그인 유지 관련:</b> 사용자 ID만 이 기기의 브라우저에 임시 저장되며, 비밀번호를 별도로 다시 저장하지 않습니다. 30일 유지 옵션을 사용한 개인 기기는 누구나 앱을 열어 해당 사용자의 기록을 볼 수 있습니다. 관리자 메뉴와 퀘스트 완료는 별도 비밀번호로 보호됩니다. 공용 기기에서는 로그인 유지 옵션을 끄고 사용 후 전환 버튼으로 로그아웃하세요. JSON Save/Load 파일에는 기기별 자동 로그인 상태가 포함되지 않습니다.</p><p><b>퀘스트 완료 비밀번호</b>는 각 사용자 ID마다 따로 저장됩니다. 완료 버튼을 누른 뒤 <b>현재 로그인한 ID의 퀘스트 완료 비밀번호</b>를 입력해야 완료 기록, 포인트, 25XP가 부여됩니다. 아래의 단독 변경 메뉴는 <b>main 계정 전용</b>이며, 다른 계정은 <b>관리자 → 사용자 계정 관리 → 해당 ID → 관리</b>에서 변경합니다. 모든 신규 계정의 퀘스트 완료 비밀번호는 계정 생성 시 관리자가 지정할 수 있습니다.</p>
 <div class="pin-status">관리자 비밀번호: <b>변경 가능</b> · 마스터 비밀번호: <b>고정(복구 전용)</b> · 퀘스트 완료 비밀번호: <b>ID별 독립 관리</b></div>
@@ -740,14 +935,14 @@ function renderManual(){if(!adminUnlocked||!startUnlocked)return '';return `${pa
 <div class="manual-section" id="m-level"><h3>3. 레벨·경험치(XP) 상세 규칙</h3>
 <p><b>레벨 상한은 현재 없으며</b>, 누적 XP에 따라 계속 올라갑니다. 레벨 N에 도달하려면 <b>120 × (N−1) XP</b>가 필요합니다. 레벨이 1단계 올라갈 때마다 <b>120XP</b>가 필요하며, 매 레벨 동일합니다. 퀘스트 하나를 완료하면 25XP가 주어집니다.</p>
 <div class="admin-table-wrap"><table class="admin-table" style="min-width:570px"><thead><tr><th>목표 레벨</th><th>누적 필요 XP</th><th>직전 레벨에서 추가 XP</th><th>총 완료 횟수 (25XP 기준)</th></tr></thead><tbody>${[2,3,4,5,10,20,30,50,100].map(n=>`<tr><td>Lv.${n}</td><td>${format(120*(n-1))}</td><td>${format(120)}</td><td>${format(Math.ceil(120*(n-1)/25))}회</td></tr>`).join('')}</tbody></table></div>
-<p><b>현재 레벨이 높아져도 포켓몬 등장률, 포획 성공률, 포인트 지급 확률은 올라가지 않습니다.</b> 레벨은 누적 습관 성장을 보여주는 지표이며 확률은 관리자 설정값과 선택한 뽑기 단계로 결정됩니다. 레벨별 추가 보상/권한은 현재 없습니다.</p></div>
-<div class="manual-section" id="m-odds"><h3>4. 몬스터볼 뽑기 비용 및 등급 등장 확률</h3><div class="admin-table-wrap"><table class="admin-table" style="min-width:540px"><thead><tr><th>뽑기 단계</th><th>소모 포인트</th><th>일반</th><th>레어</th><th>에픽</th><th>전설</th></tr></thead><tbody>${TIERS.map(t=>`<tr><td>${t.name}</td><td>${t.price}P</td>${probFor(t).map(v=>`<td>${v}%</td>`).join('')}</tr>`).join('')}</tbody></table></div><p>① 등급을 각 단계의 확률로 결정 → ② 그 등급에 포함된 포켓몬 1종을 동일 확률로 추첨 → ③ 독립 포획 판정. 모든 뽑기는 독립적이며 중복 등장/포획 실패가 가능합니다. 확정 보상·천장·레벨 또는 퀘스트별 가중치가 없습니다. 보안 난수를 우선 사용하고 시간 시드로 고정하지 않습니다.</p><p>각 등급에 포함된 포켓몬 수: ${RARITIES.map((r,i)=>`${RN[i]} ${pools[r].length}종`).join(' · ')}.</p></div>
+<p><b>레벨에 따라 등장률·포획률은 바뀌지 않습니다.</b> 대신 레벨업 축하 연출과 <b>레벨별 직접 수령하는 포인트 보상(해당 레벨 × 50P)과 5의 배수 레벨 무료 포켓몬 증정</b>이 있습니다. 보상은 홈의 🎁 보상 받기에서 확인하세요. 확률은 관리자 설정과 뽑기 단계로만 결정됩니다.</p></div>
+<div class="manual-section" id="m-odds"><h3>4. 몬스터볼 뽑기 비용 및 등급 등장 확률</h3><div class="admin-table-wrap"><table class="admin-table" style="min-width:540px"><thead><tr><th>뽑기 단계</th><th>소모 포인트</th><th>일반</th><th>레어</th><th>에픽</th><th>전설</th></tr></thead><tbody>${TIERS.map(t=>`<tr><td>${t.name}</td><td>${t.price}P</td>${probFor(t).map(v=>`<td>${v}%</td>`).join('')}</tr>`).join('')}</tbody></table></div><p>① 등급을 각 단계의 확률로 결정 → ② 그 등급에 포함된 포켓몬 1종을 동일 확률로 추첨 → ③ 독립 포획 판정. 모든 뽑기는 독립적이며 중복 등장/포획 실패가 가능합니다. 유료 뽑기는 확정 지급·천장·레벨 가중치가 없습니다. 별도로 5의 배수 레벨에 일반 뽑기와 동일한 출현 확률로 포켓몬을 무료 증정하며, 포획 실패는 없습니다. 레벨별 포인트는 수령 버튼을 눌러 받습니다. 보안 난수를 우선 사용하고 시간 시드로 고정하지 않습니다.</p><p>각 등급에 포함된 포켓몬 수: ${RARITIES.map((r,i)=>`${RN[i]} ${pools[r].length}종`).join(' · ')}.</p></div>
 <div class="manual-section" id="m-catch"><h3>5. 포획 성공·실패 확률 / 계산 예시</h3><div class="admin-table-wrap"><table class="admin-table" style="min-width:520px"><thead><tr><th>단계</th><th>일반 포획</th><th>레어 포획</th><th>에픽 포획</th><th>전설 포획</th></tr></thead><tbody>${TIERS.map(t=>`<tr><td>${t.name}</td>${catchFor(t).map(v=>`<td>${v}%</td>`).join('')}</tr>`).join('')}</tbody></table></div><p><b>실패율 = 100 − 성공률.</b> 소모한 포인트는 포획 성공 여부와 상관없이 돌아오지 않습니다. 포획 성공 시에만 도감에 등록되며 중복 포획은 횟수가 누적됩니다. 실패는 달력/기록에 남습니다.</p><p><b>개별 포켓몬 등장률 = 등급 등장률 ÷ 같은 등급 포켓몬 수.</b><br><b>개별 포켓몬 최종 포획률 = 개별 등장률 × 포획 성공률 ÷ 100.</b><br>예: 프리미엄에서 뮤츠 등장률 = ${(probFor(TIERS[2])[3]/pools.legendary.length).toFixed(4)}%, 최종 포획률 = ${(probFor(TIERS[2])[3]/pools.legendary.length*catchFor(TIERS[2])[3]/100).toFixed(4)}%입니다. 애니메이션은 미리 확정된 결과를 보여줄 뿐, 확률을 바꾸지 않습니다.</p></div>
 <div class="manual-section" id="m-dex"><h3>6. 관동 지방 포켓몬 151종 전체 도감 / 개별 확률표</h3><p>아래 표에는 각 포켓몬의 도감 번호·이름·등급·일반/고급/프리미엄 개별 등장률·등장 후 포획률·최종 획득률이 모두 있습니다. 옆으로 스크롤해 확인하세요.</p><div class="manual-lookup"><input aria-label="포켓몬 검색" placeholder="이름 또는 도감 번호" type="search" oninput="updateManualSearch(this.value)" value="${esc(manualSearch)}"><select aria-label="등급 선택" onchange="updateManualRarity(this.value)">${[['all','모든 등급'],...RARITIES.map((r,i)=>[r,RN[i]])].map(([id,label])=>`<option value="${id}" ${manualRarity===id?'selected':''}>${label}</option>`).join('')}</select></div><div id="manualPokeList">${renderManualRows()}</div></div>
 <div class="manual-section" id="m-history"><h3>7. 달력 / 모든 활동 기록</h3><p><b>달력</b> 탭에서 월간 전체 달력 히트맵과 연간 요약을 볼 수 있습니다. 날짜의 색은 그날 완료한 퀘스트 수(0·1·2·3·4회 이상)를 뜻합니다. 날짜를 누르면 완료 항목, 획득 포인트, XP, 포켓몬 성공·실패, 카테고리 변경 및 전체 달성 보너스, 퀘스트 생성·수정·삭제 이력을 확인할 수 있습니다. <b>기록</b> 탭에는 누적 성과, 최근 포획 및 최근 7일 완료 횟수가 있습니다.</p><p>삭제한 퀘스트의 과거 완료 이력은 그대로 유지되며, 관리자 모드 변경 내용은 향후 보안 감사 기록이 아닌 일반 게임 설정 변경으로 취급합니다.</p></div>
-<div class="manual-section" id="m-merge"><h3>다중 JSON 안전 병합</h3><p>여러 JSON을 동시에 선택하면 각 계정의 리비전 계보를 비교합니다. 같은 ID의 기록이 한쪽에서만 이어서 수정되었다면 최신 후손을 선택합니다. 여러 기기에서 따로 수정되어 갈라진 경우 자동으로 덮어쓰지 않고 충돌로 표시합니다. 복원 이전 상태는 1회 되돌릴 수 있습니다. 타 기기의 JSON과 자동 동기화되지는 않습니다. <b>병합 이력:</b> ${ (registry.restoreLog||[]).slice(-10).reverse().map(x=>`${esc(x.at)} · ${esc((x.files||[]).join(', '))}`).join('<br>') || '아직 없음' }</p>${backupButtons()}<button class="tinybtn" onclick="undoLastMerge()">↩ 마지막 병합 되돌리기</button></div><div class="manual-section" id="m-save"><h3>8. 자동 저장 / JSON Save·Load / 기기간 이동</h3><ol><li>자동 저장은 <b>기본 ON</b>입니다. 완료 승인, 뽑기, 도감, 편집, 퀘스트 완료 비밀번호 변경 등을 진행하면 즉시 브라우저 저장소에 기록합니다.</li><li><b>설정 → 자동 저장</b>에서 ON/OFF를 바꿀 수 있습니다. OFF에서는 실행 중 데이터만 바뀌므로 수동 JSON Save를 사용하세요.</li><li><b>Save</b>는 퀘스트와 자유 목표, 카테고리/아이콘과 변경 이력, 날짜별 달성/전체 보너스 지급 이력, 포켓몬 도감/뽑기 기록, 포인트·XP, 관리자 포인트/확률 설정, 퀘스트 완료 비밀번호 및 미확인 결과까지 단일 JSON에 넣습니다.</li><li><b>Load</b>는 JSON 내용을 현재 기록에 <b>ID별 안전 병합</b>합니다. 두 기기에서 같은 ID를 독립적으로 편집했으면 충돌로 남기고 자동 덮어쓰지 않습니다.</li><li>휴대폰 Save → JSON을 태블릿으로 전송 → 태블릿에서 관리자 시작 비밀번호와 사용자 로그인 후 다중 Load를 실행하면 계정별 최신 본을 병합할 수 있습니다. 복원된 퀘스트 완료 비밀번호도 적용됩니다.</li><li>기존 v0.5 이전 JSON에는 퀘스트 완료 비밀번호 항목이 없으므로 초기 퀘스트 완료 비밀번호가 자동 적용됩니다.</li></ol><p>⚠️ JSON에 퀘스트 완료 비밀번호가 포함되므로 공개 GitHub 저장소에는 업로드하지 마세요. 앱 파일은 공개되지만 개인 데이터는 각 기기의 브라우저 저장소에만 있습니다(별도 백업 파일 제외).</p></div>
+<div class="manual-section" id="m-merge"><h3>다중 JSON 안전 병합</h3><p>여러 JSON을 동시에 선택하면 각 계정의 리비전 계보를 비교합니다. 같은 ID의 기록이 한쪽에서만 이어서 수정되었다면 최신 후손을 선택합니다. 여러 기기에서 따로 수정되어 갈라진 경우 자동으로 덮어쓰지 않고 충돌로 표시합니다. 복원 이전 상태는 1회 되돌릴 수 있습니다. 타 기기의 JSON과 자동 동기화되지는 않습니다. <b>병합 이력:</b> ${ (registry.restoreLog||[]).slice(-10).reverse().map(x=>`${esc(x.at)} · ${esc((x.files||[]).join(', '))}`).join('<br>') || '아직 없음' }</p>${backupButtons()}<button class="tinybtn" onclick="undoLastMerge()">↩ 마지막 병합 되돌리기</button></div><div class="manual-section" id="m-save"><h3>8. 자동 저장 / JSON Save·Load / 기기간 이동</h3><ol><li>자동 저장은 <b>기본 ON</b>입니다. 완료 승인, 뽑기, 도감, 편집, 퀘스트 완료 비밀번호 변경 등을 진행하면 즉시 브라우저 저장소에 기록합니다.</li><li><b>설정 → 자동 저장</b>에서 ON/OFF를 바꿀 수 있습니다. OFF에서는 실행 중 데이터만 바뀌므로 수동 JSON Save를 사용하세요.</li><li><b>Save</b>는 퀘스트와 자유 목표, 카테고리/아이콘과 변경 이력, 날짜별 달성/전체 보너스 지급 이력, 포켓몬 도감/뽑기 기록, 포인트·XP, 첫 선물 및 레벨 보상 수령·5레벨 포켓몬 선물 이력, 관리자 포인트/확률 설정, 퀘스트 완료 비밀번호 및 미확인 결과까지 단일 JSON에 넣습니다.</li><li><b>Load</b>는 JSON 내용을 현재 기록에 <b>ID별 안전 병합</b>합니다. 두 기기에서 같은 ID를 독립적으로 편집했으면 충돌로 남기고 자동 덮어쓰지 않습니다.</li><li>휴대폰 Save → JSON을 태블릿으로 전송 → 태블릿에서 관리자 시작 비밀번호와 사용자 로그인 후 다중 Load를 실행하면 계정별 최신 본을 병합할 수 있습니다. 복원된 퀘스트 완료 비밀번호도 적용됩니다.</li><li>기존 v0.5 이전 JSON에는 퀘스트 완료 비밀번호 항목이 없으므로 초기 퀘스트 완료 비밀번호가 자동 적용됩니다.</li></ol><p>⚠️ JSON에 퀘스트 완료 비밀번호가 포함되므로 공개 GitHub 저장소에는 업로드하지 마세요. 앱 파일은 공개되지만 개인 데이터는 각 기기의 브라우저 저장소에만 있습니다(별도 백업 파일 제외).</p></div>
 <div class="manual-section" id="m-reset"><h3>9. 처음부터 다시 시작 (관리자 전용)</h3><p><b>관리자 모드에서만</b> 전체 초기화를 실행할 수 있습니다. 퀘스트 목록·전체 달력 및 변경 이력·포인트·누적 XP·도감·포획/실패 기록·미확인 결과·퀘스트 완료 비밀번호까지 새 게임 상태로 돌아갑니다. 자동 저장 ON/OFF 설정은 유지합니다.</p><p><b>실행 순서:</b> ① 아래 Save로 전체 JSON 백업 → ② 관리자 전용 초기화 버튼 → ③ 현재 관리자 비밀번호 재입력 → ④ 확인 문구 <b>초기화</b> 입력 → ⑤ 마지막 확인. 성공하면 앱 시작 잠금 화면으로 돌아갑니다. 백업이 없다면 복구할 수 없습니다.</p><div class="backup-actions"><button class="tinybtn" onclick="exportData()">💾 초기화 전 JSON Save</button><button class="btn-outline" onclick="openAdminReset()">⚠️ 전체 초기화 진행</button></div><p class="admin-note">관리자 모드가 아닌 화면(설정/기록 등)에는 초기화 버튼이 표시되지 않습니다. 관리자 모드 안에 있어도 실행 시 비밀번호를 다시 확인합니다.</p></div>
-<div class="manual-section" id="m-faq"><h3>10. 문제 해결 / 자주 묻는 질문</h3><ol><li><b>새로고침 후에도 로그인 유지:</b> v1.1에서는 같은 탭의 새로고침은 로그인 상태를 유지하고, 로그인할 때 30일 유지 옵션을 켰다면 앱 재실행 후에도 자동 로그인합니다. 공용 기기라면 30일 유지를 해제하고 사용 후 계정 전환/로그아웃하세요.</li><li><b>퀘스트 완료에 암호가 필요함:</b> 현재 로그인한 ID의 <b>퀘스트 완료 비밀번호</b>를 입력해야 합니다. 로그인 비밀번호 및 관리자 비밀번호와 별도입니다.</li><li><b>퀘스트 완료 비밀번호를 잊음:</b> 관리자 인증 → main 계정은 <b>관리자 → main 계정 전용 · 퀘스트 완료 비밀번호 변경</b>, 다른 계정은 <b>관리자 → 사용자 계정 관리 → 해당 ID → 관리</b>에서 재설정하세요.</li><li><b>레벨이 올랐는데 확률이 그대로임:</b> 정상입니다. 레벨은 성장 기록, 확률은 뽑기 단계에만 연결됩니다.</li><li><b>데이터가 사라짐:</b> 브라우저 저장 데이터 삭제·접속 주소 변경 등의 원인일 수 있습니다. JSON 백업에서 Load하세요.</li><li><b>포켓몬 그림이 보이지 않음:</b> 그림은 외부 서버에서 받아와서 인터넷 연결이 필요할 수 있습니다.</li><li><b>전부 다시 시작:</b> 관리자 메뉴 → 「처음부터 다시 시작」에서 JSON Save 후 현재 관리자 비밀번호를 재입력해 초기화하세요. 퀘스트 완료 비밀번호도 초기 설정으로 돌아갑니다.</li></ol><p>관리자 비밀번호와 퀘스트 완료 비밀번호은 보안 서버에서 검사하는 계정 인증이 아닙니다. 공개 사이트에서는 진정한 접근 제어가 불가능하므로 개인적인 사용 통제로만 활용하세요.</p></div>`}
+<div class="manual-section" id="m-faq"><h3>10. 문제 해결 / 자주 묻는 질문</h3><ol><li><b>새로고침 후에도 로그인 유지:</b> v1.1에서는 같은 탭의 새로고침은 로그인 상태를 유지하고, 로그인할 때 30일 유지 옵션을 켰다면 앱 재실행 후에도 자동 로그인합니다. 공용 기기라면 30일 유지를 해제하고 사용 후 계정 전환/로그아웃하세요.</li><li><b>퀘스트 완료에 암호가 필요함:</b> 현재 로그인한 ID의 <b>퀘스트 완료 비밀번호</b>를 입력해야 합니다. 로그인 비밀번호 및 관리자 비밀번호와 별도입니다.</li><li><b>퀘스트 완료 비밀번호를 잊음:</b> 관리자 인증 → main 계정은 <b>관리자 → main 계정 전용 · 퀘스트 완료 비밀번호 변경</b>, 다른 계정은 <b>관리자 → 사용자 계정 관리 → 해당 ID → 관리</b>에서 재설정하세요.</li><li><b>레벨이 올랐는데 확률이 그대로임:</b> 정상입니다. 레벨은 유료 뽑기의 등장·포획 확률을 바꾸지 않습니다. 5단위 레벨 달성 시 일반 뽑기 확률로 포켓몬 1종을 확정 증정하고, 홈의 🎁 보상 받기에서 레벨별 포인트를 수령하세요.</li><li><b>데이터가 사라짐:</b> 브라우저 저장 데이터 삭제·접속 주소 변경 등의 원인일 수 있습니다. JSON 백업에서 Load하세요.</li><li><b>포켓몬 그림이 보이지 않음:</b> 그림은 외부 서버에서 받아와서 인터넷 연결이 필요할 수 있습니다.</li><li><b>전부 다시 시작:</b> 관리자 메뉴 → 「처음부터 다시 시작」에서 JSON Save 후 현재 관리자 비밀번호를 재입력해 초기화하세요. 퀘스트 완료 비밀번호도 초기 설정으로 돌아갑니다.</li></ol><p>관리자 비밀번호와 퀘스트 완료 비밀번호은 보안 서버에서 검사하는 계정 인증이 아닙니다. 공개 사이트에서는 진정한 접근 제어가 불가능하므로 개인적인 사용 통제로만 활용하세요.</p></div>`}
 
 // v0.5 — All-history calendar, daily journal, annual overview
 function dateKeyFromTime(ts){
@@ -809,16 +1004,44 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
  <section class="settings-card"><h2>🔒 데이터 초기화</h2><p>처음부터 다시 시작하는 기능은 위험한 작업이므로 <b>관리자 모드</b> 안에서만 이용할 수 있습니다. 설정 메뉴에서는 초기화할 수 없습니다.</p></section>`}
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();updateNavigationVisibility();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','⌂','오늘'],['draw','◉','뽑기'],['dex','▦','도감'],['calendar','▦','달력'],['stats','▥','기록']].map(([id,ico,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${ico}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub){return `<header><div><div class="eyebrow">POKÉROUTINE · v1.5.7</div><div class="brand">${title}</div>${sub?`<div class="kicker">${sub}</div>`:''}</div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장">👥</button><button class="top-home" onclick="logoutUser()" title="계정 전환">전환</button><div class="header-badge">🪙 ${format(data.points)} P</div><button class="top-home" onclick="setScreen('home')" title="홈으로" aria-label="홈으로">⌂ 홈</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
-function renderHome(){const done=todayCount(),n=data.quests.length;const level=lvl();const start=120*(level-1),next=120*level;return `${pageHeader('오늘의 <em>퀘스트</em>')}
+function pageHeader(title,sub){return `<header><div><div class="eyebrow">POKÉROUTINE · v1.6.0</div><div class="brand">${title}</div>${sub?`<div class="kicker">${sub}</div>`:''}</div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장">👥</button><button class="top-home" onclick="logoutUser()" title="계정 전환">전환</button><div class="header-badge">🪙 ${format(data.points)} P</div><button class="top-home" onclick="setScreen('home')" title="홈으로" aria-label="홈으로">⌂ 홈</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
+function setQuestSort(mode){
+ if(!['incomplete','complete','category','created'].includes(mode))return;
+ if(data.questSort===mode)return;
+ data.questSort=mode;save();render();
+}
+function orderedHomeQuests(){
+ const mode=data.questSort||'incomplete';
+ const ordered=data.quests.map((q,index)=>({q,index,done:completedToday(q.id)}));
+ ordered.sort((a,b)=>{
+  if(mode==='incomplete'&&a.done!==b.done)return Number(a.done)-Number(b.done);
+  if(mode==='complete'&&a.done!==b.done)return Number(b.done)-Number(a.done);
+  if(mode==='category'){
+   const diff=String(a.q.category||'기타').localeCompare(String(b.q.category||'기타'),'ko-KR');
+   if(diff)return diff;
+   if(a.done!==b.done)return Number(a.done)-Number(b.done);
+  }
+  return a.index-b.index;
+ });
+ return ordered.map(item=>item.q);
+}
+function renderHome(){const done=todayCount(),n=data.quests.length;const level=lvl();const start=120*(level-1),next=120*level;const sortedQuests=orderedHomeQuests();return `${pageHeader('오늘의 <em>퀘스트</em>')}
 <div class="trainer-welcome">🎒 <b>${esc(currentTrainer().name)}</b> 님, 오늘도 좋은 모험 되세요! <span class="chip">@${esc(currentUserId)}</span></div>
 <section class="hero"><div class="hero-eyebrow">✨ DAILY CHALLENGE</div><div class="hero-title">오늘의 작은 실천,<br>내일의 포켓몬 도감!</div><div class="hero-sub">성취로 포인트를 모으고<br>원하는 단계의 몬스터볼을 선택하세요.</div><div class="pokeball"></div></section>
 <div class="meta-row"><div class="metric"><strong>Lv.${level}</strong><small>나의 성장 레벨</small></div><div class="metric"><strong>${streak()}일</strong><small>연속 도전 일수</small></div><div class="metric"><strong>${Object.keys(data.owned).length}<span style="font-size:12px;color:#94adce">/151</span></strong><small>포켓몬 도감</small></div></div>
 <div class="grow"><div class="grow-top"><span>🌱 레벨 성장</span><span>${format(data.totalXp-start)} / ${format(next-start)} XP</span></div><div class="bar"><div class="fill" style="width:${Math.min(100,100*(data.totalXp-start)/(next-start))}%"></div></div></div>
-${backupButtons()}${storageStatus()}
 ${data.activeQuest?`<div class="active-quest-banner"><strong>${data.activeQuest.pausedAt?'⏸ 홀드 중':'⏱ 진행 중'}: ${esc(data.quests.find(q=>q.id===data.activeQuest.id)?.title||'퀘스트')}</strong><button onclick="startQuest('${data.activeQuest.id}')">타이머 이어서 보기</button></div>`:''}
-<section class="section"><div class="section-title"><h2>⚡ 직접 설정한 매일 퀘스트</h2><span class="hint">${done} / ${n} 완료</span></div><div class="quest-list">${data.quests.length?data.quests.map(q=>`<div class="quest ${completedToday(q.id)?'completed':''}"><div class="quest-ico">${categoryEmoji(q.category)}</div><div class="quest-details"><div class="quest-title">${esc(q.title)}</div><div class="quest-caption">🎯 ${esc(q.goal||((q.mins||10)+'분'))} · ⏱ 챌린지 ${q.limitMinutes||10}분</div><div class="quest-reward-caption">🎁 기본 ${questReward(q).min}~${questReward(q).max}P · ✅ ×1 / ⏱ 최대 <b>×3</b></div></div><div class="quest-controls"><div class="quest-mode-actions"><button type="button" class="quest-action quest-time" ${completedToday(q.id)?'disabled':''} onclick="startQuest('${q.id}')" aria-label="${esc(q.title)} 타임챌린지">${completedToday(q.id)?'✓ 완료':data.activeQuest?.id===q.id?(data.activeQuest.pausedAt?'⏸ 챌린지 이어서':'⏱ 챌린지 계속'):'⏱ 타임챌린지'}</button><button type="button" class="quest-action quest-normal" ${completedToday(q.id)?'disabled':''} onclick="requestNormalCompletion('${q.id}')" aria-label="${esc(q.title)} 일반 완료">${completedToday(q.id)?'✓ 완료':'✅ 일반 완료'}</button></div><button type="button" class="quest-edit" onclick="editTask('${q.id}')">✎ 수정</button></div></div>`).join(''):'<div class="empty">아직 등록한 퀘스트가 없습니다.<br>아래 버튼으로 매일 하고 싶은 일을 직접 입력하세요.</div>'}</div>
-<button class="btn-add" onclick="addTask()">＋ 매일 할 퀘스트 직접 등록</button><div class="inline-tools"><button class="btn-outline" onclick="openCategories()">🎨 카테고리 관리 · 아이콘 선택</button></div>${data.dailyBonuses.some(b=>b.day===day())?`<div class="complete-bonus">🏆 오늘 전체 달성 보너스 +${format(data.dailyBonuses.find(b=>b.day===day()).points)}P 지급 완료!</div>`:''}<div class="info-line">🔧 자동·랜덤 퀘스트 생성 없음 · 등록한 항목은 매일 반복 · 퀘스트별 포인트 범위 지정 가능 · 매일 각 1회 완료 · 일반 완료(×1)·타임챌린지(최대 ×3) 선택 · 수정/삭제 가능</div></section><section class="section"><div class="section-title"><h2>🎁 시스템 체험</h2></div><button class="tier-btn" onclick="bonus()" ${data.demoGranted?'disabled':''}>${data.demoGranted?'체험용 포인트 지급 완료':'개발 데모용 600P 한 번 받기'}</button></section><p class="notice">비공식 개인 팬메이드 데모 · 포켓몬은 각 권리자의 자산입니다.<br>이미지는 인터넷 연결 시 PokéAPI 커뮤니티 리소스에서 표시됩니다.</p>`}
+<section class="section"><div class="section-title"><h2>⚡ 직접 설정한 매일 퀘스트</h2><span class="hint">${done} / ${n} 완료</span></div>
+<div class="quest-sort-panel"><label for="questSortSelect">↕ 보기 정렬</label><select id="questSortSelect" aria-label="퀘스트 정렬 선택" onchange="setQuestSort(this.value)">${[['incomplete','⭕ 미완료 먼저'],['complete','✅ 완료 먼저'],['category','🎨 카테고리 순'],['created','📋 등록 순서']].map(([value,label])=>`<option value="${value}" ${data.questSort===value?'selected':''}>${label}</option>`).join('')}</select></div><div class="quest-list">${data.quests.length?sortedQuests.map(q=>`<div class="quest ${completedToday(q.id)?'completed':''}"><div class="quest-ico">${categoryEmoji(q.category)}</div><div class="quest-details"><div class="quest-title">${esc(q.title)}</div><div class="quest-caption">🎯 ${esc(q.goal||((q.mins||10)+'분'))} · ⏱ 챌린지 ${q.limitMinutes||10}분</div><div class="quest-reward-caption">🎁 기본 ${questReward(q).min}~${questReward(q).max}P · ✅ ×1 / ⏱ 최대 <b>×3</b></div></div><div class="quest-controls"><div class="quest-mode-actions"><button type="button" class="quest-action quest-time" ${completedToday(q.id)?'disabled':''} onclick="startQuest('${q.id}')" aria-label="${esc(q.title)} 타임챌린지">${completedToday(q.id)?'✓ 완료':data.activeQuest?.id===q.id?(data.activeQuest.pausedAt?'⏸ 챌린지 이어서':'⏱ 챌린지 계속'):'⏱ 타임챌린지'}</button><button type="button" class="quest-action quest-normal" ${completedToday(q.id)?'disabled':''} onclick="requestNormalCompletion('${q.id}')" aria-label="${esc(q.title)} 일반 완료">${completedToday(q.id)?'✓ 완료':'✅ 일반 완료'}</button></div><button type="button" class="quest-edit" onclick="editTask('${q.id}')">✎ 수정</button></div></div>`).join(''):'<div class="empty">아직 등록한 퀘스트가 없습니다.<br>아래 버튼으로 매일 하고 싶은 일을 직접 입력하세요.</div>'}</div>
+<button class="btn-add" onclick="addTask()">＋ 매일 할 퀘스트 직접 등록</button><div class="inline-tools"><button class="btn-outline" onclick="openCategories()">🎨 카테고리 관리 · 아이콘 선택</button></div>${data.dailyBonuses.some(b=>b.day===day())?`<div class="complete-bonus">🏆 오늘 전체 달성 보너스 +${format(data.dailyBonuses.find(b=>b.day===day()).points)}P 지급 완료!</div>`:''}<div class="info-line">🔧 자동·랜덤 퀘스트 생성 없음 · 등록한 항목은 매일 반복 · 퀘스트별 포인트 범위 지정 가능 · 매일 각 1회 완료 · 일반 완료(×1)·타임챌린지(최대 ×3) 선택 · 수정/삭제 가능</div></section>
+<section class="section rewards-hub" id="rewardCenter"><div class="section-title"><h2>🎁 보상 받기</h2><span class="hint">직접 눌러서 수령해요</span></div>
+<div class="reward-gift"><div><strong>🎉 첫 시작 선물 · 600P</strong><small>${data.demoGranted?'이미 수령했습니다.':'처음 한 번만 받을 수 있어요.'}</small></div><button class="reward-claim-btn" onclick="bonus()" ${data.demoGranted?'disabled':''}>${data.demoGranted?'✓ 수령 완료':'🎁 600P 받기'}</button></div>
+<div class="reward-level-title">🌟 레벨 보상 · Lv.N 달성 시 N × 50P</div><p class="reward-explain">레벨 2부터 1레벨 오를 때마다 보상이 열립니다. 미수령 보상은 사라지지 않으며 버튼으로 받을 수 있어요. 레벨업만으로는 포인트가 자동 지급되지 않습니다.</p>
+${unclaimedLevels().length?`<div class="reward-level-list">${unclaimedLevels().slice(-24).reverse().map(level=>`<div class="reward-level-row"><div><b>Lv.${level} 달성 선물</b><small>+${format(level*50)}P</small></div><button class="reward-claim-btn" onclick="claimLevelReward(${level})">보상 받기</button></div>`).join('')}</div>${unclaimedLevels().length>24?`<div class="info-line">미수령 ${unclaimedLevels().length}개 · 최근 24개를 먼저 표시합니다. 이 보상을 수령하면 이전 레벨 보상도 나타납니다.</div>`:''}`:'<div class="reward-all-done">✅ 현재 레벨까지 모든 보상을 수령했습니다!</div>'}
+${data.rewardClaims?.length?`<div class="reward-history">최근 수령: ${[...data.rewardClaims].sort((a,b)=>b.level-a.level).slice(0,4).map(c=>`Lv.${c.level} +${format(c.points)}P`).join(' · ')}</div>`:''}
+</section>
+<p class="notice">비공식 개인 팬메이드 데모 · 포켓몬은 각 권리자의 자산입니다.<br>이미지는 인터넷 연결 시 PokéAPI 커뮤니티 리소스에서 표시됩니다.</p>
+<section class="section home-backup-section"><div class="section-title"><h2>💾 데이터 저장 / 불러오기</h2></div><p class="info-line">퀘스트와 보상을 확인한 뒤 이 화면의 가장 아래에서 전체 JSON 백업 및 여러 파일 병합을 할 수 있습니다.</p>${backupButtons()}${storageStatus()}</section>`}
 function renderDraw(){const owned=Object.keys(data.owned).length;return `${pageHeader('포켓몬 <em>뽑기</em>','같은 단계의 매 뽑기는 독립 확률 · 확정 보상 없음')}
 <div class="info-line" style="margin-top:0;margin-bottom:16px">🪙 보유 <b class="highlight">${format(data.points)}P</b> · 포획 <b>${data.draws.filter(x=>x.caught!==false).length}회</b> · 실패 <b>${data.draws.filter(x=>x.caught===false).length}회</b> · 도감 <b>${owned}/151</b></div>
 <div class="tiers">${TIERS.map(t=>`<div class="tier ${t.id==='premium'?'gold':''}"><div class="tier-head"><div class="tier-title">${t.icon} ${t.name}</div><div class="tier-price">${format(t.price)}P</div></div><div class="tier-desc">${t.desc}</div><div class="tier-odds">${probFor(t).map((p,i)=>`<span style="width:${p}%;background:${RC[i]}"></span>`).join('')}</div><div class="tier-caption">${probFor(t).map((p,i)=>`<span><b style="color:${RC[i]}">${RN[i]}</b> ${p}%</span>`).join('')}</div><div class="catch-row">포획 성공률(일반 / 레어 / 에픽 / 전설)<br><b>${catchFor(t).join('% / ')}%</b> · 전체 포획 성공 기댓값 <b>${expectedCatch(t)}%</b></div><button class="tier-btn" onclick="draw('${t.id}')" ${data.points<t.price?'disabled':''}>몬스터볼 열기 · ${t.price}P 사용</button></div>`).join('')}</div>
@@ -830,7 +1053,7 @@ function renderDex(){let owned=Object.keys(data.owned).length;let ids=Array.from
 function renderStats(){const total=data.completions.length,distinct=Object.keys(data.owned).length;let recent=data.draws.slice(0,10);let days=Array.from({length:7},(_,i)=>{let d=new Date();d.setDate(d.getDate()-(6-i));let k=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;return {date:k,count:data.completions.filter(x=>x.day===k).length}});const mx=Math.max(1,...days.map(x=>x.count));return `${pageHeader('성장 <em>기록</em>')}<div class="backup-actions"><button class="tinybtn" onclick="setScreen('calendar')">📅 전체 캘린더 보기</button><button class="tinybtn" onclick="setScreen('settings')">⚙️ 자동 저장 설정</button></div>
 <div class="meta-row"><div class="metric"><strong>${total}</strong><small>누적 퀘스트</small></div><div class="metric"><strong>${format(data.allEarned)}P</strong><small>누적 획득</small></div><div class="metric"><strong>${distinct}</strong><small>발견한 포켓몬</small></div></div>
 <section class="section"><div class="section-title"><h2>📈 최근 7일 달성</h2></div><div style="height:160px;border:1px solid #2b4262;background:#112749;border-radius:17px;padding:15px;display:flex;align-items:end;justify-content:space-around;gap:8px">${days.map(v=>`<div style="width:33px;text-align:center"><div style="font-size:10px;color:#bdd1ea">${v.count}</div><div style="height:${Math.max(6,94*v.count/mx)}px;border-radius:7px 7px 1px 1px;background:linear-gradient(#67e4c7,#3e91e9);margin-top:4px"></div><div style="font-size:10px;color:#acbdd7;margin-top:6px">${v.date.slice(-2)}</div></div>`).join('')}</div></section>
-<section class="section"><div class="section-title"><h2>🎴 최근 뽑기</h2></div>${recent.length?recent.map(x=>`<div class="history"><div class="hleft"><strong>${esc(name(x.id))} <span class="rarity ${x.rarity}">${RN[RARITIES.indexOf(x.rarity)]}</span></strong><small>${esc(x.date)} · ${esc(x.tier)} ${x.caught===false?'· 포획 실패':x.new?'· 첫 발견':'· 중복'}</small></div><div class="hval ${x.caught===false?'outcome-bad':''}">${x.caught===false?'도주 · ':'포획 · '}-${x.price}P</div></div>`).join(''):'<div class="empty">아직 뽑기 기록이 없습니다.<br>포인트를 모아 첫 번째 포켓몬을 만나보세요.</div>'}</section>
+<section class="section"><div class="section-title"><h2>🎴 최근 뽑기</h2></div>${recent.length?recent.map(x=>`<div class="history"><div class="hleft"><strong>${esc(name(x.id))} <span class="rarity ${x.rarity}">${RN[RARITIES.indexOf(x.rarity)]}</span></strong><small>${esc(x.date)} · ${esc(x.tier)} ${x.caught===false?'· 포획 실패':x.new?'· 첫 발견':'· 중복'}</small></div><div class="hval ${x.caught===false?'outcome-bad':''}">${x.source==='levelGift'?'🎁 무료 증정 · 0P':`${x.caught===false?'도주 · ':'포획 · '}-${x.price}P`}</div></div>`).join(''):'<div class="empty">아직 뽑기 기록이 없습니다.<br>포인트를 모아 첫 번째 포켓몬을 만나보세요.</div>'}</section>
 <section class="section"><div class="section-title"><h2>📜 퀘스트 수정·삭제 이력</h2></div><div class="info-line">생성·수정·삭제 ${data.questEvents.length}건, 과거 기록은 퀘스트를 삭제해도 보관됩니다.</div>${data.questEvents.slice(-8).reverse().map(e=>`<div class="history"><div class="hleft"><strong>${e.action==='create'?'추가':e.action==='edit'?'수정':'삭제'} · ${esc(e.after?.title||e.before?.title||'퀘스트')}</strong><small>${esc(e.at)} ${e.action==='edit'?` · 이전: ${esc(e.before?.title||'')}`:''}</small></div></div>`).join('')}</section>
 <section class="section"><div class="section-title"><h2>💾 데이터 저장 / 불러오기</h2></div>${storageStatus()}${backupButtons()}<p class="backup-hint">Save: 모든 ID의 퀘스트·포인트·도감·모든 완료 이력을 JSON 한 개로 저장합니다.<br>Load: 여러 JSON 파일을 동시에 선택해 사용자 ID별로 안전 병합합니다. 계보가 갈라진 ID는 확인 후 선택합니다. 이전 v0.2/v0.3 백업도 불러올 수 있습니다.<br>휴대폰↔태블릿: 한쪽에서 Save한 JSON을 다른 쪽에서 Load하면 기록을 옮길 수 있습니다. 자동 동기화는 아닙니다.</p></section>`}
 
@@ -871,8 +1094,10 @@ if(modal.type==='categoryEditor'){const oldName=modal.original||'',cat=data.cate
 if(modal.type==='questEditAuth')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="퀘스트 편집 관리자 인증"><div class="spark">🔐</div><h2>관리자 확인</h2><p class="modal-sub">퀘스트 ${modal.id?'수정·삭제':'등록'}는 관리자 비밀번호 인증 후 가능합니다.</p><form class="qform" onsubmit="authorizeQuestEditor(event)"><label>관리자 비밀번호</label><input class="qentry" name="questAdminPin" type="password" inputmode="numeric" autocomplete="off" required placeholder="관리자 비밀번호 입력"><button class="modal-btn" type="submit">🔓 편집하기</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;
 if(modal.type==='questEditor'){const old=modal.id?data.quests.find(q=>q.id===modal.id):null;return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><h2>${old?'퀘스트 수정':'매일 퀘스트 추가'}</h2><p class="modal-sub">직접 만든 퀘스트를 매일 반복합니다. 목표는 숫자+문자를 자유롭게 적으세요.</p><form class="qform" onsubmit="saveTask(event)"><label for="questName">퀘스트 이름</label><input class="qentry" id="questName" name="title" type="text" required maxlength="45" placeholder="예: 피아노 연습" value="${old?esc(old.title):''}"><label for="qCat">카테고리</label><select class="qentry" id="qCat" name="category">${data.categories.map(c=>`<option value="${esc(c.name)}" ${old?.category===c.name?'selected':''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select><label for="qGoal">목표 (자유 입력)</label><input class="qentry" id="qGoal" name="goal" type="text" maxlength="90" required placeholder="예: 30분, 20문제, 한자 5자 암기" value="${esc(old?.goal||((old?.mins||'')?old.mins+'분':''))}"><label for="limitMinutes">⏳ 시간 제한 (분, 기본 10분)</label><input class="qentry" id="limitMinutes" name="limitMinutes" type="number" inputmode="numeric" min="1" max="240" step="1" required value="${old?.limitMinutes||10}"><label for="rewardMode">🎁 랜덤 기본 포인트</label><select class="qentry" id="rewardMode" name="rewardMode" onchange="document.getElementById('customRewardInputs').hidden=this.value!=='custom'"><option value="default" ${!old?.rewardOverride?'selected':''}>관리자 기본값 적용 (${data.rules.pointMin}~${data.rules.pointMax}P)</option><option value="custom" ${old?.rewardOverride?'selected':''}>이 퀘스트만 별도 범위 지정</option></select><div id="customRewardInputs" class="quest-reward-editor" ${old?.rewardOverride?'':'hidden'}><label>최소 포인트<input class="qentry" name="rewardMin" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.min??data.rules.pointMin}"></label><label>최대 포인트<input class="qentry" name="rewardMax" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.max??data.rules.pointMax}"></label><label>지급 간격<select class="qentry" name="rewardStep">${REWARD_STEPS.map(step=>`<option value="${step}" ${step===(old?.rewardOverride?.step??data.rules.pointStep)?'selected':''}>${step}P</option>`).join('')}</select></label><p class="qform-note">범위의 각 포인트는 동일한 확률로 뽑힙니다. 시간 배수는 뽑힌 기본 포인트에 최대 ×3 적용됩니다.</p></div><p class="qform-note">🔒 등록·수정·삭제는 관리자 인증 필요 · 완료는 퀘스트 완료 비밀번호 필요</p><button class="modal-btn" type="submit">${old?'변경사항 저장':'퀘스트 등록'}</button></form>${old?`<button class="modal-btn secondary" onclick="removeTask('${old.id}')">퀘스트 삭제</button>`:''}<button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`}
 
-if(modal.type==='quest')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><div class="spark">✦ ✧ ✦</div><h2>퀘스트 완료!</h2><p class="modal-sub">${esc(modal.title)} · 오늘도 성장 성공</p><div class="modal-art"><div class="pokeball"></div></div><div class="reward-storm"><div class="reward-mult">${modal.mode==='normal'?'✅ 일반 완료':'⚡ 타임챌린지'} · ×${Number(modal.multiplier||1).toFixed(2)}</div><div class="reward-equation">기본 ${format(modal.basePts??modal.pts)}P × ${modal.mode==='normal'?'기본 배수':'속도 보너스'}</div><div class="reward-total">+${format(modal.pts)} P</div><p>${modal.mode==='normal'?'✅ 타이머 없이 완료':`⏱ 실제 활동 ${questTimeFmt(modal.elapsedSeconds||0)} ${modal.holdSeconds?` · ⏸ 쉬는 시간 ${questTimeFmt(modal.holdSeconds)}`:''}`}</p><div class="reward-confetti">🌟 ✨ 🎉 ⭐ ✨</div></div>${modal.bonus!==0?`<div class="complete-bonus">🏆 오늘의 전체 퀘스트 달성! +${format(modal.bonus)}P 보너스</div>`: (data.dailyBonuses.some(x=>x.day===day())?`<p class="admin-note">하루 전체 달성 보너스는 오늘 이미 지급되었습니다.</p>`:'')}<p class="modal-sub">이번 퀘스트 기본 포인트: ${esc(modal.rewardLabel||rewardText())}</p><button class="modal-btn" onclick="modal=null;setScreen('draw')">뽑기하러 가기 →</button><button class="modal-btn secondary" onclick="modal=null;render()">퀘스트 계속하기</button></div></div>`;
-if(modal.type==='bonus')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><h2>🎁 체험 보너스!</h2><p class="modal-sub">개발 데모 전용 · 최초 1회</p><div class="modal-art"><div class="pokeball"></div></div><h2 style="color:#ffd46b">+600 P</h2><button class="modal-btn" onclick="modal=null;setScreen('draw')">뽑기 확률 테스트하기 →</button></div></div>`;
+if(modal.type==='quest')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><div class="spark">✦ ✧ ✦</div><h2>퀘스트 완료!</h2><p class="modal-sub">${esc(modal.title)} · 오늘도 성장 성공</p><div class="modal-art"><div class="pokeball"></div></div><div class="reward-storm"><div class="reward-mult">${modal.mode==='normal'?'✅ 일반 완료':'⚡ 타임챌린지'} · ×${Number(modal.multiplier||1).toFixed(2)}</div><div class="reward-equation">기본 ${format(modal.basePts??modal.pts)}P × ${modal.mode==='normal'?'기본 배수':'속도 보너스'}</div><div class="reward-total">+${format(modal.pts)} P</div><p>${modal.mode==='normal'?'✅ 타이머 없이 완료':`⏱ 실제 활동 ${questTimeFmt(modal.elapsedSeconds||0)} ${modal.holdSeconds?` · ⏸ 쉬는 시간 ${questTimeFmt(modal.holdSeconds)}`:''}`}</p><div class="reward-confetti">🌟 ✨ 🎉 ⭐ ✨</div></div>
+${(modal.levelUps||[]).map(level=>`<div class="levelup-celebration ${level%5===0?'milestone':''}" role="status"><div class="levelup-sparkles">✦ ✨ ⭐ ✨ ✦</div><div class="levelup-headline">${level%5===0?'🏆 특별한 성장!':'🎉 LEVEL UP!'}</div><div class="levelup-number">Lv.${level}</div><div class="levelup-caption">${level%5===0?'🌟 주요 레벨 달성! 특별 축하 효과!':'축하해요! 한 단계 성장했어요!'}</div><div class="levelup-await">🎁 Lv.${level} 보상 ${format(level*50)}P는 홈의 ‘보상 받기’에서 수령하세요.</div></div>`).join('')}${(modal.newLevelGifts||[]).map(g=>`<div class="level-gift-celebration" role="status" aria-live="polite"><div class="level-gift-rays">🌟 ✨ 🎁 ✨ 🌟</div><div class="level-gift-heading">🏆 LV.${g.level} 포켓몬 선물!</div><div class="level-gift-art">${art(g.id)}</div><div class="level-gift-name">${esc(name(g.id))}</div><div class="level-gift-sub">${RN[RARITIES.indexOf(g.rarity)]} · ${g.new?'도감 첫 등록':'중복 획득 +1'}<br>일반 뽑기 등장 확률 동일 · 포획 확정 · 0P</div></div>`).join('')}${modal.bonus!==0?`<div class="complete-bonus">🏆 오늘의 전체 퀘스트 달성! +${format(modal.bonus)}P 보너스</div>`: (data.dailyBonuses.some(x=>x.day===day())?`<p class="admin-note">하루 전체 달성 보너스는 오늘 이미 지급되었습니다.</p>`:'')}<p class="modal-sub">이번 퀘스트 기본 포인트: ${esc(modal.rewardLabel||rewardText())}</p><button class="modal-btn" onclick="modal=null;setScreen('draw')">뽑기하러 가기 →</button><button class="modal-btn secondary" onclick="modal=null;render()">퀘스트 계속하기</button></div></div>`;
+if(modal.type==='bonus')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><h2>🎉 첫 시작 선물!</h2><p class="modal-sub">계정당 한 번만 수령할 수 있어요!</p><div class="modal-art"><div class="pokeball"></div></div><h2 style="color:#ffd46b">+600 P</h2><button class="modal-btn" onclick="modal=null;setScreen('draw')">뽑기로 이동하기 →</button><button class="modal-btn secondary" onclick="modal=null;render()">홈에서 계속하기</button></div></div>`;
+if(modal.type==='levelClaim')return `<div class="overlay" onclick="modal=null;render()"><div class="modal level-reward-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><div class="levelup-sparkles">✦ 🌟 ✨ 🌟 ✦</div><h2>🏆 Lv.${modal.level} 성장 보상!</h2><p class="modal-sub">직접 수령했어요 · 다시 받을 수 없어요</p><div class="reward-total">+${format(modal.pts)} P</div><div class="levelup-sparkles">🎊 ✨ 🎉 ✨ 🎊</div><button class="modal-btn" onclick="modal=null;render()">보상 확인</button></div></div>`;
 const r=modal.rarity;return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><div class="spark">✧ ✦ ✧</div><p class="modal-sub">${esc(modal.tier)} · ${modal.caught?modal.new?'새 포켓몬 발견!':'또 만난 포켓몬!':'몬스터볼에서 빠져나갔습니다'}</p><h2 class="rarity ${r}" style="font-size:25px">${RN[RARITIES.indexOf(r)]} · ${esc(name(modal.id))}</h2><div class="modal-art">${art(modal.id)}</div><h2 class="${modal.caught?'highlight':'outcome-bad'}">${modal.caught?'🎉 포획 성공!':'💨 포획 실패!'}</h2><p class="modal-sub">${modal.caught?`No.${String(modal.id).padStart(3,'0')} · ${modal.new?'도감에 처음 등록!':'중복 포획 +1'}`:'이번 도전에서는 도감에 등록되지 않습니다.'}</p><p class="catch-desc">해당 포켓몬 포획 성공률 <b>${modal.catchPct}%</b> · 실패 확률 <b>${100-modal.catchPct}%</b><br>포인트는 성공·실패에 관계없이 지불됩니다.</p><button class="modal-btn" onclick="modal=null;setScreen('${modal.caught?'dex':'stats'}')">${modal.caught?'도감 확인하기':'실패 기록 확인하기'} →</button><button class="modal-btn secondary" onclick="modal=null;render()">확인</button></div></div>`}
 
 // v1.0 — local multi-trainer profiles and conservative ancestry-aware multi-JSON merges.
@@ -1033,9 +1258,9 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.5.7</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.6.0</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
-// v1.5.7 navigation: fixed, five equal touch targets on phones, optional collapsed handle.
+// v1.6.0 navigation: fixed, five equal touch targets on phones, optional collapsed handle.
 // A local, device-only preference; never changes account data or JSON revision history.
 const NAV_COLLAPSED_KEY='pokeroutine_nav_collapsed_20261030';
 let navCollapsed=false;
@@ -1044,7 +1269,8 @@ function updateNavigationVisibility(){
  const nav=document.getElementById('nav'),toggle=document.getElementById('navToggle'),app=document.getElementById('app');
  if(!nav||!toggle||!app)return;
  const loggedIn=!!(startUnlocked&&currentUserId);
- const collapsedOnThisScreen=navCollapsed&&window.innerWidth<700;
+ const phoneLandscape=window.matchMedia?.("(orientation:landscape) and (max-height:560px) and (max-width:1050px)").matches;
+ const collapsedOnThisScreen=navCollapsed&&(window.innerWidth<700||phoneLandscape);
  toggle.hidden=!loggedIn;
  nav.classList.toggle('is-collapsed',collapsedOnThisScreen&&loggedIn);
  toggle.classList.toggle('is-collapsed',collapsedOnThisScreen);
