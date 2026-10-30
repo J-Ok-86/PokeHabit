@@ -376,7 +376,17 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.5</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><p class="pin-help">관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.5.1</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><p class="pin-help">관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+// Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
+// Registered quests, completion history, points, XP and Pokédex are never cleared here.
+function closePreviousDayTimer(){
+ const a=data?.activeQuest;
+ if(!a || a.startedDay===day()) return false;
+ data.activeQuest=null;
+ if(modal?.type==='questTimer'||modal?.type==='questVerify') modal=null;
+ save();
+ return true;
+}
 function completedToday(id){return data.completions.some(x=>x.day===day()&&x.id===id)}
 function todayCount(){return data.quests.filter(q=>completedToday(q.id)).length}
 function streak(){let days=new Set(data.completions.map(x=>x.day));let d=new Date();let count=0;if(!days.has(day()))d.setDate(d.getDate()-1);for(;;){let k=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;if(!days.has(k))return count;count++;d.setDate(d.getDate()-1)}}
@@ -394,7 +404,9 @@ function questMultiplier(active){return questTimeState(active,active.finishedAt|
 function questTimeFmt(seconds){const total=Math.ceil(Math.max(0,seconds));return String(Math.floor(total/60)).padStart(2,'0')+':'+String(total%60).padStart(2,'0')}
 function complete(id){startQuest(id)}
 function startQuest(id){
- if(!startUnlocked||!currentUserId||completedToday(id))return;
+ if(!startUnlocked||!currentUserId)return;
+ closePreviousDayTimer();
+ if(completedToday(id))return;
  const q=data.quests.find(x=>x.id===id);if(!q)return;
  if(data.activeQuest&&data.activeQuest.id!==id){modal={type:'questTimer'};render();return;}
  if(!data.activeQuest){data.activeQuest={id,startedAt:Date.now(),finishedAt:null,limitSeconds:(q.limitMinutes||10)*60,startedDay:day(),pausedAt:null,pausedMs:0,holdCount:0};save()}
@@ -653,7 +665,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
  <section class="settings-card"><h2>🔒 데이터 초기화</h2><p>처음부터 다시 시작하는 기능은 위험한 작업이므로 <b>관리자 모드</b> 안에서만 이용할 수 있습니다. 설정 메뉴에서는 초기화할 수 없습니다.</p></section>`}
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML='';document.getElementById('view').innerHTML=renderStartScreen();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','⌂','오늘'],['draw','◉','뽑기'],['dex','▦','도감'],['calendar','▦','달력'],['stats','▥','기록']].map(([id,ico,txt])=>`<button class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')"><span class="symbol">${ico}</span>${txt}</button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub){return `<header><div><div class="eyebrow">POKÉROUTINE · v1.5</div><div class="brand">${title}</div>${sub?`<div class="kicker">${sub}</div>`:''}</div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장">👥</button><button class="top-home" onclick="logoutUser()" title="계정 전환">전환</button><div class="header-badge">🪙 ${format(data.points)} P</div><button class="top-home" onclick="setScreen('home')" title="홈으로" aria-label="홈으로">⌂ 홈</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
+function pageHeader(title,sub){return `<header><div><div class="eyebrow">POKÉROUTINE · v1.5.1</div><div class="brand">${title}</div>${sub?`<div class="kicker">${sub}</div>`:''}</div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장">👥</button><button class="top-home" onclick="logoutUser()" title="계정 전환">전환</button><div class="header-badge">🪙 ${format(data.points)} P</div><button class="top-home" onclick="setScreen('home')" title="홈으로" aria-label="홈으로">⌂ 홈</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
 function renderHome(){const done=todayCount(),n=data.quests.length;const level=lvl();const start=120*(level-1),next=120*level;return `${pageHeader('오늘의 <em>퀘스트</em>')}
 <div class="trainer-welcome">🎒 <b>${esc(currentTrainer().name)}</b> 님, 오늘도 좋은 모험 되세요! <span class="chip">@${esc(currentUserId)}</span></div>
 <section class="hero"><div class="hero-eyebrow">✨ DAILY CHALLENGE</div><div class="hero-title">오늘의 작은 실천,<br>내일의 포켓몬 도감!</div><div class="hero-sub">성취로 포인트를 모으고<br>원하는 단계의 몬스터볼을 선택하세요.</div><div class="pokeball"></div></section>
@@ -818,6 +830,7 @@ function restoreRememberedLogin(){
 function bindTrainer(id){
  const u=registry.users[id];if(!u||u.enabled===false)return false;
  currentUserId=id;data=u.data;data.rules=registry.rules;ensureExtensions();u.data=data;
+ closePreviousDayTimer();
  filter='all';calendarMonth=day().slice(0,7);selectedDate=day();calendarMode='month';
  screen='home';modal=null;adminUnlocked=false;compareUserId=null;clearCaptureTimers();return true;
 }
@@ -832,7 +845,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.5</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.5.1</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 function render(){
  if(!startUnlocked||!currentUserId){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML='';document.getElementById('view').innerHTML=renderStartScreen();return}
@@ -973,6 +986,21 @@ renderModal=function(){
 
 restoreRememberedLogin();
 render();
+// When the app stays open across midnight, refresh the home screen automatically.
+// Background tabs may suspend intervals; login and Start also run the same cleanup.
+let lastLocalQuestDay=day();
+setInterval(()=>{
+ const today=day();
+ if(today===lastLocalQuestDay)return;
+ lastLocalQuestDay=today;
+ if(!currentUserId)return;
+ closePreviousDayTimer();
+ render();
+},1000);
+window.addEventListener('pageshow',()=>{
+ if(!currentUserId)return;
+ if(day()!==lastLocalQuestDay){lastLocalQuestDay=day();closePreviousDayTimer();render();}
+});
 if(currentUserId&&data.pendingEncounter)openPendingCapture();
 else if(currentUserId&&data.activeQuest){modal={type:data.activeQuest.finishedAt?'questVerify':'questTimer',id:data.activeQuest.id};render()}
 // 기존 결과가 있다면 자동 로그인 직후 연출을 이어갑니다.
