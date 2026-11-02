@@ -1,6 +1,6 @@
 /* PokéRoutine personal, offline app shell. External Pokémon artwork may need internet. */
-const CACHE = 'pokeroutine-shell-v1720';
-const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+const CACHE = 'pokeroutine-shell-v1721';
+const APP_SHELL = ['./', './index.html', './moves.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
 });
@@ -13,7 +13,7 @@ self.addEventListener('fetch', event => {
   if (url.origin !== self.location.origin) return;
   if (event.request.mode === 'navigate') {
     event.respondWith(fetch(event.request).then(response => {
-      if (response.ok) { const clone=response.clone(); caches.open(CACHE).then(cache=>cache.put('./index.html',clone)); }
+      if (response.ok) { const clone=response.clone(); caches.open(CACHE).then(cache=>cache.put('./index.html', './moves.html',clone)); }
       return response;
     }).catch(() => caches.match('./index.html')));
     return;
