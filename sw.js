@@ -1,5 +1,5 @@
 /* PokéRoutine personal, offline app shell. External Pokémon artwork may need internet. */
-const CACHE = 'pokeroutine-shell-v1722';
+const CACHE = 'pokeroutine-shell-v1723';
 const APP_SHELL = ['./', './index.html', './moves.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
@@ -15,7 +15,14 @@ self.addEventListener('fetch', event => {
     event.respondWith(fetch(event.request).then(response => {
       if (response.ok) { const clone=response.clone(); caches.open(CACHE).then(cache=>cache.put(event.request,clone)); }
       return response;
-    }).catch(() => caches.match('./index.html')));
+    }).catch(async () => (await caches.match(event.request)) || (await caches.match(url.pathname.endsWith('/moves.html') ? './moves.html' : './index.html'))));
+    return;
+  }
+  if (url.pathname.endsWith('/moves.html')) {
+    event.respondWith(fetch(event.request).then(response => {
+      if (response.ok) { const clone=response.clone(); caches.open(CACHE).then(c => c.put(event.request, clone)); }
+      return response;
+    }).catch(async () => (await caches.match(event.request)) || (await caches.match('./moves.html'))));
     return;
   }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request)));
