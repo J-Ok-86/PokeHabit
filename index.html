@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.39 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.40 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -2351,6 +2351,115 @@ html[data-theme="light"] .quest-mini-status.is-done{color:#187c52}
 .quest-list.mode-list .quest-finished-state{padding:7px 11px}
 @media(max-width:360px){.quest-list.mode-cards .quest-done-reward{font-size:10px}}
 
+
+/* v1.7.40 — Repair Today's Adventure structure and unify all five quest layouts.
+   Honor user font-size setting without huge, view-specific type inflation. */
+.common-id-panel.with-adventure .home-id-heading{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;min-width:0;min-height:28px;height:auto;gap:6px;margin:0 0 4px}
+.common-id-panel.with-adventure .adventure-heading-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.common-id-panel.with-adventure .adventure-heading-actions{min-width:0;max-width:70%;flex:0 0 auto;gap:3px}
+.common-id-panel.with-adventure .home-greeting{display:block;width:100%;min-width:0;margin:0;padding:5px 0 9px;text-align:center;overflow:hidden}
+.common-id-panel.with-adventure .home-greeting .honor-nameplate{max-width:100%;min-width:0}
+.common-id-panel.with-adventure .home-greeting .honor-name-main{max-width:100%;min-width:0}
+.common-id-panel.with-adventure .home-greeting .honor-greeting-line{max-width:100%;min-width:0}
+.common-id-panel.with-adventure .home-daily-quote{max-width:100%;min-width:0}
+/* Main card: a deliberately short, balanced title + goal + one payout line + actions. */
+.home-quest-section .quest-list{min-width:0}
+.home-quest-section .quest-list .quest{box-sizing:border-box;min-width:0}
+.home-quest-section .quest-list .quest-title{font-size:clamp(13px,calc(14px * var(--app-scale,1)),17px)!important;line-height:1.3;font-weight:850;letter-spacing:-.02em}
+.home-quest-section .quest-list .quest-caption{font-size:clamp(11px,calc(11.5px * var(--app-scale,1)),14px);font-weight:650;line-height:1.35}
+.home-quest-section .quest-list .quest-reward-pill b{font-size:clamp(11px,calc(12px * var(--app-scale,1)),15px);line-height:1.25}
+.home-quest-section .quest-list .quest-streak-badge{font-size:clamp(10px,calc(10px * var(--app-scale,1)),13px);padding:3px 6px}
+.home-quest-section .quest-list .quest-recommend-pill{font-size:clamp(10px,calc(10px * var(--app-scale,1)),12px)!important;line-height:1.25;padding:3px 6px}
+/* All quest actions have same button rhythm: 40–44px tall, not oversized padded rectangles. */
+.home-quest-section .quest-list .quest-controls{gap:5px;min-width:0;align-items:stretch}
+.home-quest-section .quest-list .quest-mode-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;min-width:0;width:100%;flex:1 1 auto}
+.home-quest-section .quest-list .quest-action{min-height:42px!important;height:auto;min-width:0!important;padding:7px 5px!important;border-radius:11px;font-size:clamp(11px,calc(12px * var(--app-scale,1)),15px)!important;font-weight:850;line-height:1.15;box-shadow:inset 0 -2px rgba(35,55,65,.15)}
+.home-quest-section .quest-list .quest-action:active{transform:translateY(1px)}
+.home-quest-section .quest-list .quest-edit{font-size:clamp(11px,calc(11px * var(--app-scale,1)),13px)!important;border-style:solid!important;border-radius:9px;padding:6px 9px;min-height:34px!important;align-self:stretch}
+.home-quest-section .quest-list .quest-edit-glyph{margin-right:3px}
+/* Two-column grid: one short compact reward line instead of stacked pill blocks. */
+.home-quest-section .quest-list.mode-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;align-items:stretch}
+.home-quest-section .quest-list.mode-cards .quest{display:flex!important;position:relative;flex-direction:column!important;justify-content:flex-start!important;gap:5px!important;padding:10px 8px 9px!important;min-height:0!important;align-items:stretch;border-radius:14px}
+.home-quest-section .quest-list.mode-cards .quest-ico{width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;font-size:21px!important;margin:0 auto!important;border-radius:10px!important}
+.home-quest-section .quest-list.mode-cards .quest-details{display:flex!important;flex-direction:column;gap:3px;flex:1 1 auto!important;min-width:0;width:100%;margin:0!important;text-align:center}
+.home-quest-section .quest-list.mode-cards .quest-name-line{display:flex;flex-direction:column;align-items:center;gap:3px!important;min-height:0!important;max-width:100%}
+.home-quest-section .quest-list.mode-cards .quest-title{font-size:clamp(12px,calc(13px * var(--app-scale,1)),16px)!important;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden!important;min-height:0!important;max-height:2.5em!important;flex:0 0 auto!important;word-break:keep-all;overflow-wrap:anywhere}
+.home-quest-section .quest-list.mode-cards .quest-caption-brief{display:block!important;min-width:0;max-width:100%;font-size:clamp(10px,calc(10.5px * var(--app-scale,1)),13px)!important;line-height:1.25;margin:0!important;overflow:hidden!important;white-space:nowrap;text-overflow:ellipsis}
+.home-quest-section .quest-list.mode-cards .quest-card-reward{display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;width:100%;padding:2px 0 1px;margin:0;color:#d8eaff;font-size:clamp(9px,calc(10.5px * var(--app-scale,1)),12px);line-height:1.25;font-weight:850;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.025em}
+.home-quest-section .quest-list.mode-cards .quest-card-reward span{display:inline-block;min-width:0}
+.home-quest-section .quest-list.mode-cards .quest-controls{margin-top:auto!important;min-width:0;width:100%!important;gap:0!important}
+.home-quest-section .quest-list.mode-cards .quest-mode-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important;min-width:0!important;width:100%!important}
+.home-quest-section .quest-list.mode-cards .quest-action{min-height:40px!important;padding:5px 2px!important;font-size:clamp(10px,calc(10.8px * var(--app-scale,1)),13px)!important;line-height:1.12;border-radius:9px}
+.home-quest-section .quest-list.mode-cards .quest-action-full{display:none!important}
+.home-quest-section .quest-list.mode-cards .quest-action-short{display:inline!important}
+.home-quest-section.tools-on .quest-list.mode-cards .quest .quest-controls>.quest-edit{display:inline-flex!important;position:absolute;z-index:5;top:7px;right:7px;width:29px!important;height:29px!important;min-height:29px!important;min-width:29px!important;padding:0!important;align-items:center;justify-content:center;opacity:1;background:#e9f1fa;border:1px solid #9aafc9;border-radius:9px}
+.home-quest-section .quest-list.mode-cards .quest-edit-glyph{margin:0;font-size:15px}
+.home-quest-section .quest-list.mode-cards .quest-edit-word{display:none}
+.home-quest-section .quest-list.mode-cards .quest-reward-badges{display:none!important}
+.home-quest-section .quest-list.mode-cards .quest-finished-state{padding:6px 5px;gap:1px}
+.home-quest-section .quest-list.mode-cards .quest-finished-state strong{font-size:clamp(11px,calc(12px * var(--app-scale,1)),14px)}
+.home-quest-section .quest-list.mode-cards .quest-done-reward{font-size:clamp(9px,calc(10px * var(--app-scale,1)),12px)}
+html[data-theme="light"] .home-quest-section .quest-list.mode-cards .quest-card-reward{color:#37536e}
+@media(min-width:580px){.home-quest-section .quest-list.mode-cards{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:11px!important}}
+@media(min-width:900px){.home-quest-section .quest-list.mode-cards{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(min-width:1280px){.home-quest-section .quest-list.mode-cards{grid-template-columns:repeat(5,minmax(0,1fr))!important}}
+@media(max-width:350px){.home-quest-section .quest-list.mode-cards .quest-mode-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}.home-quest-section .quest-list.mode-cards .quest-action{font-size:10px!important}.home-quest-section .quest-list.mode-cards .quest-card-reward{gap:3px;font-size:9px}}
+/* Large cards retain detail but use a compact two-column P/XP strip. */
+.home-quest-section .quest-list.mode-large{grid-template-columns:1fr!important;gap:10px}
+.home-quest-section .quest-list.mode-large .quest{display:grid!important;position:relative;grid-template-columns:46px minmax(0,1fr)!important;gap:7px 11px!important;padding:12px 12px 10px!important;border-radius:16px}
+.home-quest-section .quest-list.mode-large .quest-ico{width:42px;height:42px;font-size:24px;grid-row:1!important;grid-column:1!important;align-self:start}
+.home-quest-section .quest-list.mode-large .quest-details{grid-column:2!important;grid-row:1!important;min-width:0;width:100%}
+.home-quest-section .quest-list.mode-large .quest-title{font-size:clamp(15px,calc(16px * var(--app-scale,1)),19px)!important;line-height:1.25}
+.home-quest-section .quest-list.mode-large .quest-caption{margin:3px 0 0!important}
+.home-quest-section .quest-list.mode-large .quest-reward-badges{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;margin:7px 0 0!important}
+.home-quest-section .quest-list.mode-large .quest-reward-pill{min-width:0!important;max-width:none!important;padding:5px!important;gap:5px!important;border-radius:9px;justify-content:center}
+.home-quest-section .quest-list.mode-large .quest-reward-pill .reward-icon{font-size:15px!important}
+.home-quest-section .quest-list.mode-large .quest-reward-pill b{font-size:clamp(11px,calc(12px * var(--app-scale,1)),14px)!important}
+.home-quest-section .quest-list.mode-large .quest-reward-pill small{display:none}
+.home-quest-section .quest-list.mode-large .quest-controls{grid-column:1 / -1!important;grid-row:2!important;display:flex!important;flex-direction:row!important;width:100%!important;gap:7px!important;margin:0!important}
+/* Detailed list: one compact header + meta + a coherent action row. */
+.home-quest-section .quest-list.mode-list{gap:8px}
+.home-quest-section .quest-list.mode-list .quest{display:grid!important;position:relative;grid-template-columns:34px minmax(0,1fr)!important;gap:5px 9px!important;padding:10px 11px!important;border-radius:14px}
+.home-quest-section .quest-list.mode-list .quest-ico{width:32px!important;height:32px!important;font-size:20px!important;grid-column:1!important;grid-row:1!important}
+.home-quest-section .quest-list.mode-list .quest-details{grid-column:2!important;grid-row:1!important;min-width:0}
+.home-quest-section .quest-list.mode-list .quest-title{font-size:clamp(13px,calc(14px * var(--app-scale,1)),17px)!important;line-height:1.28}
+.home-quest-section .quest-list.mode-list .quest-caption{margin:3px 0!important}
+.home-quest-section .quest-list.mode-list .quest-reward-badges{display:flex;gap:5px;margin:4px 0 0}
+.home-quest-section .quest-list.mode-list .quest-reward-pill{padding:3px 6px!important;gap:4px;min-height:0}
+.home-quest-section .quest-list.mode-list .quest-reward-pill .reward-icon{font-size:15px}
+.home-quest-section .quest-list.mode-list .quest-reward-pill small{display:none}
+.home-quest-section .quest-list.mode-list .quest-controls{grid-column:1 / -1!important;grid-row:2!important;width:100%!important;display:flex!important;flex-direction:row!important;margin:0!important;gap:6px!important}
+/* Keep controls aligned, no 100%-width Edit row on small screens. */
+.home-quest-section .quest-list.mode-large .quest-mode-actions,.home-quest-section .quest-list.mode-list .quest-mode-actions{width:100%;min-width:0;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.home-quest-section.tools-on .quest-list.mode-large .quest-controls>.quest-edit,.home-quest-section.tools-on .quest-list.mode-list .quest-controls>.quest-edit{display:inline-flex!important;position:absolute;z-index:5;top:8px;right:8px;width:36px!important;min-width:36px!important;height:34px!important;min-height:34px!important;padding:0!important;align-items:center;justify-content:center;border-radius:9px}
+.home-quest-section .quest-list.mode-large .quest-edit-word,.home-quest-section .quest-list.mode-list .quest-edit-word{display:none}
+.home-quest-section .quest-list.mode-large .quest-edit-glyph,.home-quest-section .quest-list.mode-list .quest-edit-glyph{margin:0;font-size:16px}
+/* Compact and mini: no hidden 54px-tall empty action blocks inside expanded rows. */
+.home-quest-section .quest-list.mode-compact .quest-controls,.home-quest-section .quest-list.mode-mini .quest-controls{display:flex!important;flex-direction:row!important;width:100%!important;align-items:center;gap:6px!important;margin:6px 0 0!important}
+.home-quest-section .quest-list.mode-compact .quest-mode-actions,.home-quest-section .quest-list.mode-mini .quest-mode-actions{flex:1 1 auto;min-width:0!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important}
+.home-quest-section .quest-list.mode-compact .quest-compact-body{padding:4px 10px 10px 48px}
+.home-quest-section .quest-list.mode-compact .quest-compact-body .quest-caption{padding:2px 0 0;margin:0!important}
+.home-quest-section .quest-list.mode-compact .quest-compact-summary{min-height:54px;padding:8px 9px}
+.home-quest-section .quest-list.mode-compact .quest-title{font-size:clamp(13px,calc(14px * var(--app-scale,1)),17px)!important}
+.home-quest-section .quest-list.mode-mini .quest-mini-summary{min-height:40px;padding:5px 9px}
+.home-quest-section .quest-list.mode-mini .quest-mini-title{font-size:clamp(12px,calc(13px * var(--app-scale,1)),16px)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;word-break:normal}
+.home-quest-section .quest-list.mode-mini .quest-mini-expanded{padding:8px 9px 10px 34px;gap:5px}
+.home-quest-section .quest-list.mode-mini .quest-mini-expanded .quest-caption{margin:0!important}
+.home-quest-section.tools-on .quest-list.mode-compact .quest-controls>.quest-edit,.home-quest-section.tools-on .quest-list.mode-mini .quest-controls>.quest-edit{display:inline-flex!important;flex:0 0 39px;width:39px!important;min-width:39px!important;padding:5px 2px!important;align-items:center;justify-content:center}
+.home-quest-section .quest-list.mode-compact .quest-edit-word,.home-quest-section .quest-list.mode-mini .quest-edit-word{display:none}
+.home-quest-section .quest-list.mode-compact .quest-edit-glyph,.home-quest-section .quest-list.mode-mini .quest-edit-glyph{margin:0;font-size:15px}
+/* Avoid overgrown controls even on extra-large typography, with good touch targets. */
+@media(max-width:360px){.home-quest-section .quest-list.mode-large .quest-reward-badges{grid-template-columns:1fr 1fr!important}.home-quest-section .quest-list.mode-list .quest-action,.home-quest-section .quest-list.mode-compact .quest-action,.home-quest-section .quest-list.mode-mini .quest-action{font-size:11px!important}}
+
+
+/* v1.7.40: one-line mini details, no duplicated oversized payout tiles. */
+.home-quest-section .quest-list.mode-mini .quest-mini-expanded{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:5px!important}
+.home-quest-section .quest-list.mode-mini .quest-mini-expanded .quest-caption{order:1;min-height:0}
+.home-quest-section .quest-list.mode-mini .quest-mini-expanded .quest-recommend-pill{order:2;align-self:flex-start}
+.home-quest-section .quest-list.mode-mini .quest-mini-expanded .quest-card-reward{order:3;display:flex;align-items:center;gap:8px;font-size:clamp(10px,calc(11px * var(--app-scale,1)),13px);font-weight:800;line-height:1.3;white-space:nowrap;padding:2px 0;color:#bcd6f6}
+html[data-theme="light"] .home-quest-section .quest-list.mode-mini .quest-card-reward{color:#435d78}
+.home-quest-section .quest-list.mode-mini .quest-mini-expanded .quest-controls{order:4;margin-top:2px!important}
+
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -2874,7 +2983,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.39</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.40</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -3926,7 +4035,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
  <section class="settings-card"><h2>🔒 데이터 초기화</h2><p>처음부터 다시 시작하는 기능은 위험한 작업이므로 <b>관리자 모드</b> 안에서만 이용할 수 있습니다. 설정 메뉴에서는 초기화할 수 없습니다.</p></section>`}
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.39</div><div class="brand">${title}</div><div class="kicker">${sub||'&nbsp;'}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.40</div><div class="brand">${title}</div><div class="kicker">${sub||'&nbsp;'}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -3960,7 +4069,7 @@ function questActionButtons(q){
  const actions=done
   ?`<div class="quest-mode-actions quest-mode-finished"><div class="quest-finished-state" role="status"><strong>${data.questView==='cards'?'✓ 완료':'✅ 오늘 수행 완료'}</strong>${gained}</div></div>`
   :`<div class="quest-mode-actions"><button type="button" class="quest-action quest-time" onclick="startQuest('${q.id}')" aria-label="${esc(q.title)} 타임챌린지, 제한시간 ${q.limitMinutes||10}분"><span class="quest-action-full">${data.activeQuest?.id===q.id?(data.activeQuest.pausedAt?'⏸ 챌린지 이어서':'⏱ 챌린지 계속'):'⏱ 타임챌린지'}</span><span class="quest-action-short">${data.activeQuest?.id===q.id?'⏸ 계속':'⏱ 도전'}</span></button><button type="button" class="quest-action quest-normal" onclick="requestNormalCompletion('${q.id}')" aria-label="${esc(q.title)} 일반 완료"><span class="quest-action-full">✅ 일반 완료</span><span class="quest-action-short">✅ 완료</span></button></div>`;
- return `<div class="quest-controls">${actions}<button type="button" class="quest-edit" onclick="editTask('${q.id}')" aria-label="${esc(q.title)} 수정">✎ 수정</button></div>`;
+ return `<div class="quest-controls">${actions}<button type="button" class="quest-edit" onclick="editTask('${q.id}')" aria-label="${esc(q.title)} 수정" title="퀘스트 수정"><span class="quest-edit-glyph" aria-hidden="true">✎</span><span class="quest-edit-word">수정</span></button></div>`;
 }
 function questRewardBadges(q){
  const reward=questReward(q);
@@ -4022,7 +4131,7 @@ function renderHomeQuest(q,runs){
  const done=completedToday(q.id),goal=esc(q.goal||((q.mins||10)+'분'));
  const recommended=data.recommendedQuest?.day===day()&&data.recommendedQuest?.id===q.id;
  const extraClass=recommended&&!done?' quest-recommended':'';
- const recommendedPill=recommended&&!done?'<span class="quest-recommend-pill">🌟 오늘의 추천 · P·XP +10%</span>':'';
+ const recommendedPill=recommended&&!done?`<span class="quest-recommend-pill">${data.questView==='cards'||data.questView==='mini'?'🌟 추천 +10%':'🌟 오늘의 추천 · P·XP +10%'}</span>`:'';
  const reward=questReward(q),type=questType(q),ev=type==='event'?liveEvent():null;
  const eventClass=type==='event'?' event-quest':'';
  // Daily is the default, so reserve the extra schedule label for exceptions.
@@ -4035,14 +4144,15 @@ function renderHomeQuest(q,runs){
  const lastShort=history.last?history.last.slice(5).replace('-','/'):'';
  const smallHistory=history.days?`<span class="quest-streak-short" title="연속 수행 ${history.days}일">🔥${history.days}일</span>`:history.last?`<span class="quest-streak-short muted" title="마지막 수행 ${esc(history.last)}">↺ ${lastShort}</span>`:'';
  const minReward=`🪙 ${format(reward.min)}~${format(reward.max)}P <span class="quest-meta-separator">·</span> 🌟 ${format(questXp(q))}XP`;
+ const gridReward=`<div class="quest-card-reward" title="기본 포인트 ${format(reward.min)}~${format(reward.max)}P · 경험치 ${format(questXp(q))}XP"><span>🪙 ${format(reward.min)}~${format(reward.max)}P</span><span>✦ ${format(questXp(q))}XP</span></div>`;
  // Ultra-compact summary stays one line even for long names: icon / title / short streak / status.
  // Details are shown only once on expansion, preserving full accessible labels.
- if(data.questView==='mini')return `<details data-quest-card="${esc(q.id)}" class="quest quest-mini ${done?'completed':''}${extraClass}${eventClass}"><summary class="quest-mini-summary" title="${esc(q.title)}" aria-label="${esc(q.title)} 상세 퀘스트 열기"><span class="quest-mini-icon" aria-hidden="true">${questIcon}</span><span class="quest-mini-title">${esc(q.title)}</span>${smallHistory?smallHistory.replace('quest-streak-short','quest-mini-streak'):''}<span class="quest-mini-status ${done?'is-done':''}" aria-label="${done?'오늘 완료':'미완료'}" title="${done?'오늘 완료':'미완료'}">${done?'✓':'○'}</span></summary><div class="quest-mini-expanded"><p class="quest-caption">${type==='daily'?'':esc(questTypeLabel(q))+' · '}🎯 ${goal} · ⏱ ${q.limitMinutes||10}분</p>${type==='event'?host:''}${recommendedPill}${done?'':questRewardBadges(q)}${questActionButtons(q)}</div></details>`;
+ if(data.questView==='mini')return `<details data-quest-card="${esc(q.id)}" class="quest quest-mini ${done?'completed':''}${extraClass}${eventClass}"><summary class="quest-mini-summary" title="${esc(q.title)}" aria-label="${esc(q.title)} 상세 퀘스트 열기"><span class="quest-mini-icon" aria-hidden="true">${questIcon}</span><span class="quest-mini-title">${esc(q.title)}</span>${smallHistory?smallHistory.replace('quest-streak-short','quest-mini-streak'):''}<span class="quest-mini-status ${done?'is-done':''}" aria-label="${done?'오늘 완료':'미완료'}" title="${done?'오늘 완료':'미완료'}">${done?'✓':'○'}</span></summary><div class="quest-mini-expanded"><p class="quest-caption">${type==='daily'?'':esc(questTypeLabel(q))+' · '}🎯 ${goal} · ⏱ ${q.limitMinutes||10}분</p>${type==='event'?host:''}${recommendedPill}${done?'':gridReward}${questActionButtons(q)}</div></details>`;
  // Compact has a readable two-line summary. Reward shown in summary is never duplicated in opened body.
  if(data.questView==='compact')return `<details data-quest-card="${esc(q.id)}" class="quest quest-compact ${done?'completed':''}${extraClass}${eventClass}">${eventBackdrop}<summary class="quest-compact-summary" aria-label="${esc(q.title)} 퀘스트 상세 펼치기"><span class="quest-ico${questIconClass}" aria-hidden="true">${questIcon}</span><span class="quest-compact-main"><span class="quest-title">${esc(q.title)}</span><span class="quest-compact-meta-row">${scheduleChip}${type==='event'?host:smallHistory}${recommendedPill}${done?'':`<span class="quest-compact-meta">${minReward}</span>`}</span></span><span class="quest-compact-status">${done?'✓ 완료':'<span class="quest-collapse-label">자세히</span><span class="quest-expanded-label">접기</span>'}<span aria-hidden="true">⌄</span></span></summary><div class="quest-compact-body"><div class="quest-caption">🎯 ${goal} · ⏱ 챌린지 ${q.limitMinutes||10}분</div>${questActionButtons(q)}</div></details>`;
  // Grid emphasizes selecting/starting quests; detailed list and large cards keep richer metadata.
  const historyLabel=data.questView==='cards'?(history.days?smallHistory:''):data.questView==='list'?smallHistory:questStreakBadge(q,runs);
- return `<div data-quest-card="${esc(q.id)}" class="quest ${done?'completed':''}${extraClass}${eventClass}">${eventBackdrop}<div class="quest-ico${questIconClass}" aria-hidden="true">${questIcon}</div><div class="quest-details"><div class="quest-name-line"><div class="quest-title">${esc(q.title)}</div>${type==='event'?host:historyLabel}${scheduleChip}${recommendedPill}</div><div class="quest-caption">🎯 ${goal} · ⏱ 챌린지 ${q.limitMinutes||10}분</div><div class="quest-caption-brief" title="목표: ${goal}">🎯 ${goal}</div>${done?'':questRewardBadges(q)}</div>${questActionButtons(q)}</div>`;
+ return `<div data-quest-card="${esc(q.id)}" class="quest ${done?'completed':''}${extraClass}${eventClass}">${eventBackdrop}<div class="quest-ico${questIconClass}" aria-hidden="true">${questIcon}</div><div class="quest-details"><div class="quest-name-line"><div class="quest-title">${esc(q.title)}</div>${type==='event'?host:historyLabel}${scheduleChip}${recommendedPill}</div><div class="quest-caption">🎯 ${goal} · ⏱ 챌린지 ${q.limitMinutes||10}분</div><div class="quest-caption-brief" title="목표: ${goal}">🎯 ${goal}</div>${done?'':data.questView==='cards'?gridReward:questRewardBadges(q)}</div>${questActionButtons(q)}</div>`;
 }
 function orderedHomeQuests(){
  const mode=data.questSort||'incomplete';
@@ -4309,7 +4419,7 @@ function sharedProgressSummary(mode='home'){
  const completed=todayCount(),total=todaysBaseQuests().length;
  const isToday=mode==='home';
  return `<section class="home-id-panel common-id-panel focus-${mode} ${isToday?'with-adventure':'without-adventure'}" aria-label="${esc(currentTrainer().name)}님의 트레이너 성장 현황">
- ${isToday?`<div class="home-id-heading"><span class="adventure-heading-title">🌟 TODAY'S ADVENTURE</span><div class="adventure-heading-actions"><button type="button" class="briefing-icon-btn" onclick="openBuddyBriefing('morning')" aria-label="오늘의 계획 브리핑 다시보기" title="🧭 오늘의 계획 브리핑">🧭</button><button type="button" class="briefing-icon-btn" onclick="openBuddyBriefing('evening')" aria-label="하루 마무리 브리핑 다시보기" title="🏁 하루 마무리 브리핑">🏁</button><button type="button" class="honor-vault-launch" onclick="openHonorVault()" aria-label="전체 훈장함 보기">🏆 전체 훈장함 <span aria-hidden="true">❯</span></button></div><div class="home-greeting">${honorNameplate()}<p class="home-daily-quote">${esc(greetingQuote())}</p></div>`:`<div class="compact-trainer-label"><strong>👤 ${esc(currentTrainer().name)}님</strong><span class="home-id-handle">@${esc(currentUserId)}</span></div>`}
+ ${isToday?`<div class="home-id-heading"><span class="adventure-heading-title">🌟 TODAY'S ADVENTURE</span><div class="adventure-heading-actions"><button type="button" class="briefing-icon-btn" onclick="openBuddyBriefing('morning')" aria-label="오늘의 계획 브리핑 다시보기" title="🧭 오늘의 계획 브리핑">🧭</button><button type="button" class="briefing-icon-btn" onclick="openBuddyBriefing('evening')" aria-label="하루 마무리 브리핑 다시보기" title="🏁 하루 마무리 브리핑">🏁</button><button type="button" class="honor-vault-launch" onclick="openHonorVault()" aria-label="전체 훈장함 보기">🏆 전체 훈장함 <span aria-hidden="true">❯</span></button></div></div><div class="home-greeting">${honorNameplate()}<p class="home-daily-quote">${esc(greetingQuote())}</p></div>`:`<div class="compact-trainer-label"><strong>👤 ${esc(currentTrainer().name)}님</strong><span class="home-id-handle">@${esc(currentUserId)}</span></div>`}
  <div class="home-id-identity"><div class="home-id-avatar" aria-hidden="true">${stage.icon}</div><div class="home-id-owner"><strong>Lv.${level} · ${esc(stage.name)}</strong><span class="home-id-rank">${stage.remaining?`다음 직급 ${esc(stage.nextName)}까지 ${stage.remaining}레벨`:'최고 직급 달성'}</span></div><button type="button" class="home-id-rank-button" onclick="showRankGuide()" aria-label="트레이너 직급 전체 보기">직급 보기</button></div>
  <div class="home-id-exp"><div class="home-id-exp-header"><b>🌟 현재 경험치</b><span>${format(progress)} / ${format(target)} XP</span></div><div class="home-id-bar" role="progressbar" aria-label="레벨 경험치" aria-valuemin="0" aria-valuemax="${target}" aria-valuenow="${progress}"><span style="width:${Math.min(100,100*progress/target)}%"></span></div></div>
  <div class="home-id-metrics"><div class="home-id-metric id-points" title="뽑기에서 사용할 수 있는 포인트"><span>🪙 현재 포인트</span><strong class="${format(data.points).length>7?'value-long':''}">${format(data.points)}<small>P</small></strong><small class="id-metric-foot">몬스터볼 뽑기에 사용</small></div>
@@ -5099,7 +5209,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.39</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.40</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
