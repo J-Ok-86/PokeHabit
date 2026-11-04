@@ -1,17 +1,8 @@
-PokéRoutine v1.7.49 — GitHub Pages 업데이트
+PokéRoutine v1.7.50 GitHub Update
 
-v1.7.48 대비 변경 사항
-1. 훈련 탭의 독립된 「성장 업적」 패널을 제거했습니다.
-2. 기존 「성장·진화 앨범」 상단에 다섯 개의 「성장 이정표」를 작게 통합했습니다.
-   - 첫 트레이닝 / 첫 Lv.10 / 첫 진화 / 첫 최종 진화 / 첫 Lv.100
-   - 달성 개수(n/5), 달성 여부 및 날짜 표시
-   - 이정표를 누르면 달성 날짜, 포켓몬(기존 이력으로 확인 가능한 경우), 관련 레벨과 진화 정보가 나타납니다.
-3. 기존 업적 획득 기록(trainingBadges)과 개체 ID를 그대로 보존합니다. 새 이정표는 달성 당시 포켓몬 종류와 레벨도 저장합니다. 과거에 저장되지 않은 정보는 임의로 만들어 내지 않습니다.
-4. 성장 앨범의 기존 트레이닝/진화 이력과 훈장·부스트·보상 계산은 모두 유지됩니다.
-5. 관련 관리자 매뉴얼을 업데이트하고 캐시를 pokeroutine-shell-v1749로 갱신했습니다.
+- 훈장 한정 보너스 숫자 터치 → 산정 근거 상세, 48시간 시작/종료, 최근 갱신 훈장 및 현재 등급별 비율.
+- 전체 훈장함에서도 산정 근거 열기 가능.
+- 상단 고정 FEVER 배너를 제거하고 상단바 바로 아래에 작게 접힌 FEVER 안내줄 추가. 탭마다 +10%와 시간대 확인; 터치 시 포인트/XP·종료까지 남은 시간 펼침. 헤더 테두리/빛 효과 유지.
+- 피버타임 포인트/XP 보상 계산 및 나머지 앱 기능은 그대로 유지.
 
-설치
-- 업데이트 전 앱에서 JSON 전체 백업을 내보내세요.
-- index.html / moves.html / sw.js 파일을 GitHub 저장소 루트에 덮어쓰세요.
-- GitHub Pages 배포 후 앱을 완전히 종료했다가 다시 열어 주세요.
-- ZIP에는 index.html, moves.html, sw.js, README.txt가 포함됩니다.
+Deployment: backup JSON first; replace index.html, moves.html, sw.js on GitHub Pages. Test on actual phone after deployment.
