@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.50 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.51 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -1778,7 +1778,7 @@ html[data-theme="light"] .training-view-settings button.active{background:#fff0c
 .training-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.training-actions button{flex:1 1 160px}
 .training-spend-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.training-spend-grid button{background:linear-gradient(155deg,#326f9f,#29577d);color:white;border:1px solid #8eb7db;min-height:75px;border-radius:13px;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center}.training-spend-grid button b{font-size:clamp(13px,3vw,17px)}.training-spend-grid button small{font-size:12px;color:#e6f6ff}
 .training-spend-grid button:disabled,.training-custom button:disabled{opacity:.45}.training-custom{display:flex;gap:10px;align-items:end;margin-top:10px;flex-wrap:wrap}.training-custom label{font-size:12px;flex:1;min-width:130px}.training-custom input{display:block;width:100%;min-height:43px;border-radius:9px;border:1px solid #638caf;background:#102744;color:white;padding:8px;font-size:15px}.training-helper{font-size:12px;line-height:1.6;color:#b8cfe8;margin:12px 0 4px}
-.training-evolution-box{background:linear-gradient(120deg,#543d74,#213f68);border:1px solid #cba0ef;padding:12px;border-radius:14px;margin:14px 0}.training-evolution-box strong{font-size:17px}.training-evolution-box p{font-size:12px}/* v1.7.50 - Five saved growth milestones live inside the existing album (not a second panel). */
+.training-evolution-box{background:linear-gradient(120deg,#543d74,#213f68);border:1px solid #cba0ef;padding:12px;border-radius:14px;margin:14px 0}.training-evolution-box strong{font-size:17px}.training-evolution-box p{font-size:12px}/* v1.7.51 - Five saved growth milestones live inside the existing album (not a second panel). */
 .training-milestone-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 9px}
 .training-milestone-head strong{font-size:13px}.training-milestone-head small{font-size:11px;color:#b7cde6}
 .training-milestone-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;min-width:0}
@@ -2486,7 +2486,7 @@ html[data-theme="light"] .home-quest-section .quest-list.mode-mini .quest-card-r
 .home-quest-section .quest-list.mode-mini .quest-mini-expanded .quest-controls{order:4;margin-top:2px!important}
 
 
-/* v1.7.50 · four quest views, consistent compact typography and no reversed collapse labels */
+/* v1.7.51 · four quest views, consistent compact typography and no reversed collapse labels */
 .home-quest-section .quest-list.mode-compact .quest-compact-status{
   display:inline-flex;align-items:center;gap:3px;white-space:nowrap;
   font-size:clamp(11px,calc(11.5px * var(--app-scale,1)),14px)!important;
@@ -2522,7 +2522,7 @@ html[data-theme="light"] .home-quest-section .quest-list.mode-mini .quest-card-r
 @media(max-width:350px){.home-quest-section .quest-list.mode-cards .quest{padding:6px 4px!important}}
 
 
-/* v1.7.50: Notes list never scrolls horizontally; long English/Korean text wraps. */
+/* v1.7.51: Notes list never scrolls horizontally; long English/Korean text wraps. */
 .overlay:has(.notes-list-modal){padding:10px!important;box-sizing:border-box;overflow:hidden}
 .notes-list-modal{box-sizing:border-box!important;width:min(100%,510px)!important;max-width:calc(100vw - 20px)!important;min-width:0!important;max-height:min(90dvh,900px);overflow-x:hidden!important;padding:clamp(12px,3.8vw,20px)!important}
 .notes-list-modal h2{font-size:clamp(18px,5vw,23px)!important;line-height:1.3;overflow-wrap:anywhere}
@@ -2556,7 +2556,7 @@ html[data-theme='light'] .buddy-briefing-quest>span:last-child{color:#60718b}
 html[data-theme='light'] .buddy-briefing-quest.is-done>span:last-child{color:#1a835b}
 .buddy-briefing-quest{grid-template-columns:24px minmax(0,1fr) minmax(35px,max-content)!important}
 
-/* v1.7.50 · three compact, accurate growth bars shown after final reward. */
+/* v1.7.51 · three compact, accurate growth bars shown after final reward. */
 .reward-growth-panel[hidden]{display:none!important}
 .reward-growth-panel{margin:11px 0 12px;padding:12px 10px;border:1px solid #6087ac;border-radius:14px;background:var(--card,#142a4b);color:var(--cream,#eff6ff);text-align:left;min-width:0}
 .reward-growth-panel h3{font-size:14px;margin:0 0 10px;font-weight:900}
@@ -2579,7 +2579,7 @@ html[data-theme="light"] .reward-growth-row small,html[data-theme="light"] .rewa
 @media(max-width:360px){.reward-growth-panel{padding:9px 7px}.reward-growth-head{font-size:11px}.reward-growth-row{padding:7px}.reward-growth-row small{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.reward-growth-track span{transition:none!important}}
 
-/* v1.7.50: overlay the right-aligned clock in the EXISTING top padding.
+/* v1.7.51: overlay the right-aligned clock in the EXISTING top padding.
    Never add a header margin or reserve vertical layout space. */
 .main>header.app-page-header{position:relative!important;margin-top:0!important}
 .app-page-header .pr-header-clock{
@@ -2606,7 +2606,7 @@ html[data-theme="light"] .app-page-header .pr-clock-time{color:#47647e}
  .app-page-header .pr-clock-time{font-size:10px}
 }
 
-/* v1.7.50 — title and version at left, date & seconds right on the SAME TOP ROW.
+/* v1.7.51 — title and version at left, date & seconds right on the SAME TOP ROW.
    The clock is a persistent sibling of #view: tabs cannot recreate/flicker it. */
 #view.main{padding-top:8px!important}
 .main>header.app-page-header{
@@ -2662,7 +2662,7 @@ html[data-theme="light"] .common-id-panel.focus-training .id-dex{background:line
 }
 
 
-/* v1.7.50 — a small breathing gap between the persistent clock and the
+/* v1.7.51 — a small breathing gap between the persistent clock and the
    unchanged title/action row; no extra clock strip or other UI changes. */
 .main>header.app-page-header{
  height:53px!important;min-height:53px!important;max-height:53px!important;
@@ -2710,7 +2710,7 @@ html[data-theme="light"] .honor-remaining-pulse{
 }
 
 
-/* v1.7.50 — readable medal bonus details & no-obstruction FEVER header. */
+/* v1.7.51 — readable medal bonus details & no-obstruction FEVER header. */
 .honor-boost-breakdown-trigger{display:inline-flex;align-items:center;gap:2px;max-width:100%;border:0;padding:0 2px;margin:0;background:transparent;color:inherit;font:inherit;line-height:inherit;white-space:nowrap;cursor:pointer;vertical-align:baseline}
 .honor-boost-breakdown-trigger:focus-visible,.honor-boost-vault-link:focus-visible{outline:2px solid #e5b95c;outline-offset:2px;border-radius:5px}
 .honor-breakdown-chevron{font-size:1.35em;line-height:.6;opacity:.85}
@@ -2753,7 +2753,7 @@ body.fever-active .app-page-header::after{content:"";position:absolute;bottom:-1
 @media(max-width:360px){.honor-boost-facts>div{grid-template-columns:1fr;gap:1px}.honor-boost-facts b{text-align:left}.honor-boost-detail{padding:13px 10px}.honor-boost-rates>div{padding:6px 1px;font-size:9px}}
 @media(prefers-reduced-motion:reduce){body.fever-active .app-page-header,body.fever-active .app-page-header::after{animation:none!important}}
 
-/* v1.7.50 — Collapsible, in-flow FEVER notice. Always visible when active, never covers controls. */
+/* v1.7.51 — Collapsible, in-flow FEVER notice. Always visible when active, never covers controls. */
 .fever-fold[hidden],.fever-fold-details[hidden]{display:none!important}
 .fever-fold{width:100%;max-width:100%;min-width:0;box-sizing:border-box;margin:1px 0 7px;border:1px solid #e6b55d;border-radius:10px;overflow:hidden;background:linear-gradient(115deg,#572e65,#81405e 55%,#75511c);box-shadow:0 2px 9px #b4787d2e}
 .fever-fold-toggle{display:flex;align-items:center;gap:7px;width:100%;min-width:0;min-height:30px;max-height:36px;box-sizing:border-box;padding:4px 9px;border:0;background:transparent;color:#fff7df;font:800 11px/1.3 'Nunito','Gowun Dodum',sans-serif;text-align:left;cursor:pointer;touch-action:manipulation}
@@ -2775,6 +2775,29 @@ html[data-theme="light"] .fever-fold-details strong{color:#825421}
 @media(max-width:360px){.fever-fold-toggle{gap:4px;padding:4px 7px;min-height:28px}.fever-fold-label{font-size:10px}.fever-fold-brief{font-size:10px}}
 @media(orientation:landscape) and (max-height:500px){.fever-fold{margin-bottom:4px}.fever-fold-toggle{min-height:27px;max-height:30px}}
 @media(prefers-reduced-motion:reduce){.fever-fold-arrow{transition:none!important}}
+
+/* v1.7.51 — FEVER is visible ONLY one hour before its start and during its
+   own one-hour window; the fold itself carries the old celebration effect. */
+body.fever-active #app{box-shadow:none!important}
+body.fever-active #app::before,body.fever-active #app::after{content:none!important;display:none!important;animation:none!important}
+body.fever-active .app-page-header{background:transparent!important;box-shadow:none!important;animation:none!important}
+body.fever-active .app-page-header::after{content:none!important;display:none!important;animation:none!important}
+.fever-fold[hidden]{display:none!important}
+.fever-fold{transition:border-color .2s ease;}
+.fever-fold.is-upcoming{background:linear-gradient(110deg,#56472b,#64523b,#5a4763);border-color:#e7c57e;box-shadow:0 1px 5px #b89e5a3a}
+.fever-fold.is-upcoming .fever-fold-label{color:#ffe2a0}
+.fever-fold.is-active{background:linear-gradient(113deg,#7525aa,#a33393 53%,#a34b27);background-size:210% 210%;border:2px solid #ffcf73;box-shadow:0 0 0 1px #ffe8a04d inset,0 3px 16px #b442c464;animation:feverFoldCelebration 3.6s ease-in-out infinite}
+.fever-fold.is-active .fever-fold-label{color:#fff1a4}
+.fever-fold.is-active .fever-fold-toggle,.fever-fold.is-active .fever-fold-details{color:#fffaf0}
+.fever-fold.is-active .fever-fold-details strong{color:#fff0b3}
+html[data-theme="light"] .fever-fold.is-upcoming{background:linear-gradient(110deg,#fff4d0,#ffe8c1 64%,#f4e4d7);border-color:#d6a758;box-shadow:0 1px 5px #b88a4924}
+html[data-theme="light"] .fever-fold.is-upcoming .fever-fold-label{color:#93591a}
+html[data-theme="light"] .fever-fold.is-active{background:linear-gradient(113deg,#ffe1fd,#f6ccf3 53%,#ffd7b9);background-size:210% 210%;border-color:#b231a4;box-shadow:0 0 0 1px #fff inset,0 3px 15px #b442c464}
+html[data-theme="light"] .fever-fold.is-active .fever-fold-toggle,html[data-theme="light"] .fever-fold.is-active .fever-fold-details{color:#5c1462}
+html[data-theme="light"] .fever-fold.is-active .fever-fold-label{color:#751d78}
+html[data-theme="light"] .fever-fold.is-active .fever-fold-details strong{color:#8a3d78}
+@keyframes feverFoldCelebration{0%,100%{background-position:0 0;filter:saturate(1);box-shadow:0 1px 7px #a34b9555}50%{background-position:100% 80%;filter:saturate(1.22);box-shadow:0 3px 18px #c45acc85}}
+@media(prefers-reduced-motion:reduce){.fever-fold.is-active{animation:none!important}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -2817,7 +2840,11 @@ function feverState(profile=data,now=new Date()){
  const endMinute=(startMinute+60)%1440;
  const end=String(Math.floor(endMinute/60)).padStart(2,'0')+':'+String(endMinute%60).padStart(2,'0');
  const secondsLeft=active?(60-elapsed)*60-now.getSeconds():0;
- return {active,enabled:config.enabled,start:config.start,end,secondsLeft};
+ // Show the advance notice only during the 60 minutes before the next start.
+ // Modulo arithmetic also handles schedules that cross midnight.
+ const secondsUntilStart=((startMinute-currentMinute+1440)%1440)*60-now.getSeconds();
+ const upcoming=config.enabled&&!active&&secondsUntilStart>0&&secondsUntilStart<=3600;
+ return {active,upcoming,enabled:config.enabled,start:config.start,end,secondsLeft,secondsUntilStart:upcoming?secondsUntilStart:0};
 }
 function feverTimeLabel(profile=data){const f=feverState(profile);return f.enabled?`${f.start}~${f.end}`:'꺼짐'}
 let feverFoldExpanded=false; // UI-only preference; never affects reward calculation or saved trainer data.
@@ -2828,24 +2855,29 @@ function toggleFeverFold(){
 }
 function syncFeverFold(state){
  const fold=document.getElementById('feverFold');if(!fold)return;
- const active=!!state?.active;fold.hidden=!active;
- if(!active){feverFoldExpanded=false;return;}
+ const active=!!state?.active,upcoming=!!state?.upcoming,visible=active||upcoming;
+ fold.hidden=!visible;
+ fold.classList.toggle('is-active',active);
+ fold.classList.toggle('is-upcoming',upcoming);
+ if(!visible){feverFoldExpanded=false;return;}
+ const label=document.getElementById('feverFoldLabel');
+ if(label)label.textContent=active?'✨ FEVER TIME 진행 중!':'⏳ FEVER TIME 예정';
  const brief=document.getElementById('feverFoldBrief');
- if(brief)brief.textContent=`P·XP +10% · ${state.start}~${state.end}`;
+ if(brief)brief.textContent=active?`P·XP +10% · ${state.start}~${state.end}`:`${state.start} 시작 · P·XP +10%`;
  const toggle=document.getElementById('feverFoldToggle');if(toggle)toggle.setAttribute('aria-expanded',String(feverFoldExpanded));
  fold.classList.toggle('is-open',feverFoldExpanded);
  const details=document.getElementById('feverFoldDetails');if(details)details.hidden=!feverFoldExpanded;
  const schedule=document.getElementById('feverFoldSchedule');
- if(schedule)schedule.textContent=`매일 ${state.start}~${state.end} · 퀘스트 완료 보상`;
+ if(schedule)schedule.textContent=`매일 ${state.start}~${state.end} · 퀘스트 완료 시 P·XP 각 +10%`;
  const remain=document.getElementById('feverFoldRemaining');
- if(remain)remain.textContent=`종료까지 ${Math.floor(state.secondsLeft/60)}분 ${state.secondsLeft%60}초 남음`;
+ const seconds=Math.max(0,Math.floor(active?state.secondsLeft:state.secondsUntilStart));
+ if(remain)remain.textContent=`${active?'종료':'시작'}까지 ${Math.floor(seconds/60)}분 ${seconds%60}초 남음`;
 }
 function updateFeverVisual(){
- const ready=!!(startUnlocked&&currentUserId),state=ready?feverState():{active:false,enabled:false};
+ const ready=!!(startUnlocked&&currentUserId),state=ready?feverState():{active:false,upcoming:false,enabled:false};
  document.body.classList.toggle('fever-active',!!state.active);
- const bar=document.getElementById('feverStatus');if(bar){bar.hidden=true;bar.textContent='';} // No fixed ribbon across the header.
+ const bar=document.getElementById('feverStatus');if(bar){bar.hidden=true;bar.textContent='';}
  syncFeverFold(state);
- const home=document.getElementById('feverHomeMessage');if(home){home.textContent=state.active?`✨ FEVER TIME 진행 중! 퀘스트 완료 보상 P·XP 각각 10% 추가 · ${state.end}까지`:state.enabled?`⏰ 나의 FEVER TIME: ${state.start}~${state.end} · 완료 보상 P·XP +10%`:'✨ 관리자에서 나만의 FEVER TIME을 설정할 수 있어요.';home.classList.toggle('active',!!state.active);}
 }
 const DEFAULT_TASKS=[]; // 퀘스트는 이용자가 직접 등록: 추천/랜덤 자동 생성 없음
 const KEY='poke_routine_v1_20261030'; // v0.9 보존 (마이그레이션 전용)
@@ -3353,7 +3385,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.50</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.51</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -3614,7 +3646,7 @@ function rewardStages(){
  return stages;
 }
 
-// v1.7.50: truthful balances/XP growth, only after the existing final reward.
+// v1.7.51: truthful balances/XP growth, only after the existing final reward.
 function rewardGrowthPercent(value,max){return Math.max(0,Math.min(100,max>0?Number(value)/max*100:0));}
 function rewardGrowthMarkup(g){
  if(!g)return '';
@@ -4467,7 +4499,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.50</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label">✨ FEVER</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong>🪙 포인트 +10%</strong><strong>🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.51</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong>🪙 포인트 +10%</strong><strong>🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -5038,7 +5070,6 @@ function renderHome(){
 ${sharedProgressSummary('home')}
 ${trainingBuddyWidget()}
  
- <div id="feverHomeMessage" class="fever-home-banner ${feverState().active?'active':''}">${feverState().active?`✨ FEVER TIME 진행 중! 완료 보상 P·XP 각각 +10% · ${feverState().end}까지`:feverState().enabled?`⏰ 나의 FEVER TIME: ${feverTimeLabel()} · 완료 보상 P·XP +10%`:'✨ 관리자에서 나만의 FEVER TIME을 설정할 수 있어요.'}</div>
 <section class="home-quest-section ${homeQuestToolsOpen?'tools-on':''}" id="homeQuestSection" aria-label="오늘의 퀘스트 수행">
  <div class="home-quest-heading"><span class="home-quest-eyebrow">⚡ 오늘의 도전</span><h2>오늘 할 퀘스트</h2><p>요일별·일회성 목표를 진행하고, 보유 포켓몬의 깜짝 이벤트를 만나봐요!</p></div>
  <div class="home-quest-day-status"><div class="home-day-streak" title="하루에 퀘스트를 1개 이상 완료하면 연속 도전 1일로 인정됩니다."><span aria-hidden="true">🔥</span><span><small>연속 도전</small><b>${streak()}일</b></span></div><div class="home-day-count"><span aria-hidden="true">✅</span><span><small>오늘 완료</small><b>${done}<i>/</i>${n}</b></span></div></div>
@@ -5666,7 +5697,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.50</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.51</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -6233,7 +6264,7 @@ const TRAINING_MANUAL=`<section class="manual-section"><h3>🏋️ v1.7.21 · �
 
 restoreRememberedLogin();
 render();
-setInterval(updateFeverVisual,12000);
+setInterval(updateFeverVisual,1000);
 setInterval(()=>{if(!document.hidden&&startUnlocked&&currentUserId&&screen==='home'&&!modal&&maybeOpenDailyBriefing())render()},30000);
 // v1.7.39: update just the saying at each local hour while the app is open.
 let lastGreetingHour=greetingHourIndex();
