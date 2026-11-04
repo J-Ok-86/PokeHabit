@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.45 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.46 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -2462,7 +2462,7 @@ html[data-theme="light"] .home-quest-section .quest-list.mode-mini .quest-card-r
 .home-quest-section .quest-list.mode-mini .quest-mini-expanded .quest-controls{order:4;margin-top:2px!important}
 
 
-/* v1.7.45 · four quest views, consistent compact typography and no reversed collapse labels */
+/* v1.7.46 · four quest views, consistent compact typography and no reversed collapse labels */
 .home-quest-section .quest-list.mode-compact .quest-compact-status{
   display:inline-flex;align-items:center;gap:3px;white-space:nowrap;
   font-size:clamp(11px,calc(11.5px * var(--app-scale,1)),14px)!important;
@@ -2498,7 +2498,7 @@ html[data-theme="light"] .home-quest-section .quest-list.mode-mini .quest-card-r
 @media(max-width:350px){.home-quest-section .quest-list.mode-cards .quest{padding:6px 4px!important}}
 
 
-/* v1.7.45: Notes list never scrolls horizontally; long English/Korean text wraps. */
+/* v1.7.46: Notes list never scrolls horizontally; long English/Korean text wraps. */
 .overlay:has(.notes-list-modal){padding:10px!important;box-sizing:border-box;overflow:hidden}
 .notes-list-modal{box-sizing:border-box!important;width:min(100%,510px)!important;max-width:calc(100vw - 20px)!important;min-width:0!important;max-height:min(90dvh,900px);overflow-x:hidden!important;padding:clamp(12px,3.8vw,20px)!important}
 .notes-list-modal h2{font-size:clamp(18px,5vw,23px)!important;line-height:1.3;overflow-wrap:anywhere}
@@ -2532,7 +2532,7 @@ html[data-theme='light'] .buddy-briefing-quest>span:last-child{color:#60718b}
 html[data-theme='light'] .buddy-briefing-quest.is-done>span:last-child{color:#1a835b}
 .buddy-briefing-quest{grid-template-columns:24px minmax(0,1fr) minmax(35px,max-content)!important}
 
-/* v1.7.45 · three compact, accurate growth bars shown after final reward. */
+/* v1.7.46 · three compact, accurate growth bars shown after final reward. */
 .reward-growth-panel[hidden]{display:none!important}
 .reward-growth-panel{margin:11px 0 12px;padding:12px 10px;border:1px solid #6087ac;border-radius:14px;background:var(--card,#142a4b);color:var(--cream,#eff6ff);text-align:left;min-width:0}
 .reward-growth-panel h3{font-size:14px;margin:0 0 10px;font-weight:900}
@@ -2555,34 +2555,31 @@ html[data-theme="light"] .reward-growth-row small,html[data-theme="light"] .rewa
 @media(max-width:360px){.reward-growth-panel{padding:9px 7px}.reward-growth-head{font-size:11px}.reward-growth-row{padding:7px}.reward-growth-row small{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.reward-growth-track span{transition:none!important}}
 
-/* v1.7.45: date/time INSIDE the original header width; no clock bar/card. */
-.main>header.app-page-header{
- position:relative!important;
- margin-top:22px!important; /* small shift down to make space for one clock text line */
-}
+/* v1.7.46: overlay the right-aligned clock in the EXISTING top padding.
+   Never add a header margin or reserve vertical layout space. */
+.main>header.app-page-header{position:relative!important;margin-top:0!important}
 .app-page-header .pr-header-clock{
- position:absolute;top:-21px;left:0;right:0;
- width:100%;height:17px;display:flex;align-items:center;justify-content:space-between;
- gap:8px;box-sizing:border-box;pointer-events:none;
- margin:0;padding:0;background:none;border:0;box-shadow:none;
- font-family:inherit;font-size:11px;line-height:17px;
- color:#9fbad9;z-index:1;
+ position:absolute;top:-19px;right:0;left:auto;
+ width:max-content;max-width:100%;height:16px;
+ display:flex;align-items:center;justify-content:flex-end;gap:9px;
+ margin:0;padding:0;box-sizing:border-box;
+ background:none;border:0;box-shadow:none;pointer-events:none;
+ font-family:inherit;font-size:11px;line-height:16px;
+ white-space:nowrap;color:#9fbad9;z-index:1;
 }
 .app-page-header .pr-clock-date{
- min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
- letter-spacing:-.1px;font-weight:700;
+ white-space:nowrap;min-width:0;letter-spacing:-.1px;font-weight:700;
 }
 .app-page-header .pr-clock-time{
  white-space:nowrap;flex-shrink:0;letter-spacing:.2px;
- font-size:12px;font-weight:800;line-height:17px;
+ font-size:11px;font-weight:800;line-height:16px;
  font-variant-numeric:tabular-nums;color:#d4e9ff;
 }
 html[data-theme="light"] .app-page-header .pr-header-clock{color:#72849a}
 html[data-theme="light"] .app-page-header .pr-clock-time{color:#47647e}
 @media(max-width:355px){
- .main>header.app-page-header{margin-top:20px!important}
- .app-page-header .pr-header-clock{top:-19px;font-size:10px;height:15px;line-height:15px}
- .app-page-header .pr-clock-time{font-size:11px;line-height:15px}
+ .app-page-header .pr-header-clock{top:-19px;font-size:10px;gap:6px}
+ .app-page-header .pr-clock-time{font-size:10px}
 }
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
@@ -2954,7 +2951,7 @@ function updateAppHeaderClock(){
  if(!dateEl||!timeEl)return;
  const now=new Date(),two=n=>String(n).padStart(2,'0');
  const weekday=['일','월','화','수','목','금','토'][now.getDay()];
- dateEl.textContent=`📅 ${now.getFullYear()}.${two(now.getMonth()+1)}.${two(now.getDate())} (${weekday})`;
+ dateEl.textContent=`${now.getFullYear()}.${two(now.getMonth()+1)}.${two(now.getDate())} (${weekday})`;
  timeEl.textContent=`${two(now.getHours())}:${two(now.getMinutes())}:${two(now.getSeconds())}`;
  timeEl.setAttribute('datetime',now.toISOString());
 }
@@ -3127,7 +3124,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.45</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.46</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -3388,7 +3385,7 @@ function rewardStages(){
  return stages;
 }
 
-// v1.7.45: truthful balances/XP growth, only after the existing final reward.
+// v1.7.46: truthful balances/XP growth, only after the existing final reward.
 function rewardGrowthPercent(value,max){return Math.max(0,Math.min(100,max>0?Number(value)/max*100:0));}
 function rewardGrowthMarkup(g){
  if(!g)return '';
@@ -4241,7 +4238,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="pr-header-clock" role="group" aria-label="현재 날짜와 시간"><span class="pr-clock-date" id="prClockDate">📅 날짜</span><time class="pr-clock-time" id="prClockTime" aria-live="off">00:00:00</time></div><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.45</div><div class="brand">${title}</div><div class="kicker">${sub||'&nbsp;'}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="pr-header-clock" role="group" aria-label="현재 날짜와 시간"><span class="pr-clock-date" id="prClockDate">날짜</span><time class="pr-clock-time" id="prClockTime" aria-live="off">00:00:00</time></div><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.46</div><div class="brand">${title}</div><div class="kicker">${sub||'&nbsp;'}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -5424,7 +5421,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.45</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.46</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
