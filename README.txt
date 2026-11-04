@@ -24,3 +24,9 @@ PokéRoutine v1.7.56 FINAL · GitHub 업데이트
 - 기존 계정·퀘스트·포켓몬·훈장·보상·JSON 저장키 및 구조를 수정하지 않았습니다.
 - README.txt는 배포 불필요. 저장소에 이미 있던 manifest.webmanifest/icons는 유지하세요.
 - 공개 GitHub 저장소에는 개인 JSON 백업 파일이나 로그인 비밀번호를 업로드하지 마세요.
+
+[HOTFIX: 완료 이력 보존]
+- 완료 이력 백업 복원 / 로딩 중 eveningBonus, eveningStagePoints, eveningStageXp 필드가 소실되지 않도록 수정했습니다.
+- 달력에서 실제 마무리 추천 +20%로 완료한 퀘스트에 해당 배지가 유지됩니다.
+- 포인트/XP 지급 산식과 스토리지 키는 변경하지 않았습니다.
+- 기존 파일로 백업 복원하면서 이미 없어졌던 보너스 여부를 자동 복구할 수는 없습니다.
