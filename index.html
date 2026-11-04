@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.42 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.43 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -2462,7 +2462,7 @@ html[data-theme="light"] .home-quest-section .quest-list.mode-mini .quest-card-r
 .home-quest-section .quest-list.mode-mini .quest-mini-expanded .quest-controls{order:4;margin-top:2px!important}
 
 
-/* v1.7.42 · four quest views, consistent compact typography and no reversed collapse labels */
+/* v1.7.43 · four quest views, consistent compact typography and no reversed collapse labels */
 .home-quest-section .quest-list.mode-compact .quest-compact-status{
   display:inline-flex;align-items:center;gap:3px;white-space:nowrap;
   font-size:clamp(11px,calc(11.5px * var(--app-scale,1)),14px)!important;
@@ -2498,7 +2498,7 @@ html[data-theme="light"] .home-quest-section .quest-list.mode-mini .quest-card-r
 @media(max-width:350px){.home-quest-section .quest-list.mode-cards .quest{padding:6px 4px!important}}
 
 
-/* v1.7.42: Notes list never scrolls horizontally; long English/Korean text wraps. */
+/* v1.7.43: Notes list never scrolls horizontally; long English/Korean text wraps. */
 .overlay:has(.notes-list-modal){padding:10px!important;box-sizing:border-box;overflow:hidden}
 .notes-list-modal{box-sizing:border-box!important;width:min(100%,510px)!important;max-width:calc(100vw - 20px)!important;min-width:0!important;max-height:min(90dvh,900px);overflow-x:hidden!important;padding:clamp(12px,3.8vw,20px)!important}
 .notes-list-modal h2{font-size:clamp(18px,5vw,23px)!important;line-height:1.3;overflow-wrap:anywhere}
@@ -2532,6 +2532,28 @@ html[data-theme='light'] .buddy-briefing-quest>span:last-child{color:#60718b}
 html[data-theme='light'] .buddy-briefing-quest.is-done>span:last-child{color:#1a835b}
 .buddy-briefing-quest{grid-template-columns:24px minmax(0,1fr) minmax(35px,max-content)!important}
 
+/* v1.7.43 · three compact, accurate growth bars shown after final reward. */
+.reward-growth-panel[hidden]{display:none!important}
+.reward-growth-panel{margin:11px 0 12px;padding:12px 10px;border:1px solid #6087ac;border-radius:14px;background:var(--card,#142a4b);color:var(--cream,#eff6ff);text-align:left;min-width:0}
+.reward-growth-panel h3{font-size:14px;margin:0 0 10px;font-weight:900}
+.reward-growth-row{min-width:0;margin:0 0 11px;padding:8px 9px;border-radius:10px;background:var(--card2,#1b3456);border:1px solid var(--line,#41648b)}
+.reward-growth-row:last-of-type{margin-bottom:4px}
+.reward-growth-head{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:12px;line-height:1.4}
+.reward-growth-head b{min-width:0;overflow-wrap:anywhere}
+.reward-growth-head strong{white-space:nowrap;color:var(--green,#43cfa2);font-size:11px}
+.reward-growth-track{height:9px;border-radius:99px;background:#768ba555;overflow:hidden;margin:7px 0 5px}
+.reward-growth-track span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#48a8ed,#7de6cb);transition:width .6s ease}
+.reward-growth-row[data-growth-row="points"] .reward-growth-track span{background:linear-gradient(90deg,#dca75c,#ffe084)}
+.reward-growth-row[data-growth-row="buddy"] .reward-growth-track span{background:linear-gradient(90deg,#a079e8,#e9a3ee)}
+.reward-growth-row small{display:block;color:var(--sub,#aac0d8);font-size:10px;line-height:1.4;overflow-wrap:anywhere}
+.reward-growth-row.is-disabled{opacity:.6}
+.reward-growth-hint{margin:5px 1px 0;color:var(--sub,#aac0d8);font-size:10px;line-height:1.45}
+html[data-theme="light"] .reward-growth-panel{background:#f7faff;border-color:#bad0e4;color:#21384e}
+html[data-theme="light"] .reward-growth-row{background:#fff;border-color:#d1dce8}
+html[data-theme="light"] .reward-growth-head strong{color:#12644c}
+html[data-theme="light"] .reward-growth-row small,html[data-theme="light"] .reward-growth-hint{color:#5a6b7c}
+@media(max-width:360px){.reward-growth-panel{padding:9px 7px}.reward-growth-head{font-size:11px}.reward-growth-row{padding:7px}.reward-growth-row small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.reward-growth-track span{transition:none!important}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -3062,7 +3084,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.42</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.43</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -3243,6 +3265,10 @@ function verifyQuest(e){
   if(!a||a.id!==id||!a.finishedAt){modal=null;render();return;}
   if(a.startedDay!==day()){alert('다른 날짜의 퀘스트는 완료할 수 없습니다.');data.activeQuest=null;save();modal=null;render();return;}
  }
+ const growthBeforePoints=data.points;
+ const growthBeforeTrainer={level:lvl(),xp:currentLevelXp(),target:levelTarget(lvl())};
+ const growthBeforeMon=currentBuddy();
+ const growthBeforeBuddy=growthBeforeMon?{uid:growthBeforeMon.uid,species:growthBeforeMon.species,level:growthBeforeMon.level,xp:growthBeforeMon.xp,target:trainingRules().xpPerLevel}:null;
  const base=questRewardChoices(q),basePts=base[ri(0,base.length-1)];
  const timeState=normal?null:questTimeState(a,a.finishedAt);
  const mult=normal?1:Number(timeState.multiplier.toFixed(4));
@@ -3291,12 +3317,20 @@ function verifyQuest(e){
   const e=data.activeEvent;if(e&&e.questId===q.id){const h=data.eventHistory.find(x=>x.day===e.day&&x.questId===e.questId);if(h){h.status='completed';h.closedAt=now}data.activeEvent=null;}
  }else{rollSpecialEvent(q)}
  const newlyEarnedHonor=syncHonorMedals(true);
+ const growthAfterMon=growthBeforeBuddy?data.pokemonRoster.find(m=>m.uid===growthBeforeBuddy.uid):null;
+ const growth={
+  points:{before:growthBeforePoints,after:data.points,delta:data.points-growthBeforePoints},
+  trainer:{...growthBeforeTrainer,afterLevel:lvl(),afterXp:currentLevelXp(),afterTarget:levelTarget(lvl()),delta:earnedXp},
+  buddy:growthBeforeBuddy?{...growthBeforeBuddy,afterLevel:growthAfterMon?.level??growthBeforeBuddy.level,afterXp:growthAfterMon?.xp??growthBeforeBuddy.xp,afterTarget:trainingRules().xpPerLevel,delta:lastTrainingQuestBonus?.xp||0}:null
+ };
  save();modal={type:'quest',mode:normal?'normal':'time',pts,basePts,multiplier:mult,elapsedSeconds,holdSeconds,
   bonus,title:q.title,eventPokemonId:questType(q)==='event'?(data.completions.at(-1)?.pokemonId||0):0,rewardLabel:questRewardText(q),xpEarned:earnedXp,xpBase:baseXp,pointBoost,xpBoost,pointCombinedMultiplier:combined,questStreak:todayQuestRun,overallStreak:todayOverallRun,
-  feverActive:fever.active,feverRate:fever.active?FEVER_RATE:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,newlyEarnedHonor,levelUps,newLevelGifts};render();
+  feverActive:fever.active,feverRate:fever.active?FEVER_RATE:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,newlyEarnedHonor,levelUps,newLevelGifts,growth};render();
 }
 let rewardAnimationToken=0,rewardAnimationTimeout=null,rewardAnimationFrame=0;
-function cancelRewardAnimation(){rewardAnimationToken++;clearTimeout(rewardAnimationTimeout);cancelAnimationFrame(rewardAnimationFrame)}
+let growthSequenceToken=0,growthSequenceTimer=null;
+function cancelRewardGrowth(){growthSequenceToken++;clearTimeout(growthSequenceTimer);growthSequenceTimer=null;}
+function cancelRewardAnimation(){rewardAnimationToken++;clearTimeout(rewardAnimationTimeout);cancelAnimationFrame(rewardAnimationFrame);cancelRewardGrowth()}
 function rewardStages(){
  if(modal?.type!=='quest')return [];
  const m=modal,p=Number(m.basePts??m.pts),xp=Number(m.xpBase??m.xpEarned??25);
@@ -3310,6 +3344,55 @@ function rewardStages(){
  stages.push({p:m.pts,x:m.xpEarned,reason:'🏆 보상이 확정되었어요!',title:'🏆 최종 보상',desc:'모든 부스트 계산 완료'});
  return stages;
 }
+
+// v1.7.43: truthful balances/XP growth, only after the existing final reward.
+function rewardGrowthPercent(value,max){return Math.max(0,Math.min(100,max>0?Number(value)/max*100:0));}
+function rewardGrowthMarkup(g){
+ if(!g)return '';
+ const p=g.points,t=g.trainer,b=g.buddy;
+ // Points have no natural ceiling. Use the next 500P milestone only as a visual scale, not a cap.
+ const pointScale=Math.max(500,Math.ceil((Math.max(0,p.after,p.before)+1)/500)*500);
+ const pointBefore=rewardGrowthPercent(p.before,pointScale),pointAfter=rewardGrowthPercent(p.after,pointScale);
+ const trainerBefore=rewardGrowthPercent(t.xp,t.target),trainerAfter=rewardGrowthPercent(t.afterXp,t.afterTarget);
+ const buddyBefore=b?rewardGrowthPercent(b.xp,b.target):0,buddyAfter=b?rewardGrowthPercent(b.afterXp,b.afterTarget):0;
+ const row=(key,title,summary,change,from,to,leveled=false,disabled=false)=>`<div class="reward-growth-row ${disabled?'is-disabled':''}" data-growth-row="${key}" data-from="${from.toFixed(4)}" data-to="${to.toFixed(4)}" data-levelup="${leveled?'1':'0'}"><div class="reward-growth-head"><b>${title}</b><strong>${change}</strong></div><div class="reward-growth-track"><span data-growth-fill="${key}" style="width:${from.toFixed(4)}%"></span></div><small>${summary}</small></div>`;
+ return `<section id="rewardGrowth" class="reward-growth-panel" hidden aria-label="퀘스트 완료 후 성장 변화"><h3>📈 이번 퀘스트의 성장</h3>
+ ${row('points','🪙 포인트',`${format(p.before)}P → ${format(p.after)}P · 다음 기준 ${format(pointScale)}P`,`+${format(p.delta)}P`,pointBefore,pointAfter)}
+ ${row('trainer','🌟 트레이너 경험치',`Lv.${t.level} ${format(t.xp)}/${format(t.target)}XP → Lv.${t.afterLevel} ${format(t.afterXp)}/${format(t.afterTarget)}XP`,`+${format(t.delta)}XP${t.afterLevel>t.level?' · LEVEL UP!':''}`,trainerBefore,trainerAfter,t.afterLevel>t.level)}
+ ${b?row('buddy',`💗 ${esc(name(b.species))} 경험치`,`Lv.${b.level} ${format(b.xp)}/${format(b.target)}XP → Lv.${b.afterLevel} ${format(b.afterXp)}/${format(b.afterTarget)}XP`,b.delta>0?`+${format(b.delta)}XP${b.afterLevel>b.level?' · LEVEL UP!':''}`:'변화 없음',buddyBefore,buddyAfter,b.afterLevel>b.level,b.delta<=0):row('buddy','💗 대표 포켓몬 경험치','대표 포켓몬을 지정하면 성장 기록을 볼 수 있어요.','미지정',0,0,false,true)}
+ <p class="reward-growth-hint">XP 막대가 끝까지 차면 다음 레벨로 넘어가고 초과 경험치는 이월됩니다.${b&&b.delta===0?' 대표 포켓몬 퀘스트 XP는 관리자 설정에서 켤 수 있어요.':''}</p></section>`;
+}
+function beginRewardGrowthSequence(animate){
+ const panel=document.getElementById('rewardGrowth');if(!panel)return;
+ cancelRewardGrowth();const token=growthSequenceToken;
+ panel.hidden=false;
+ const rows=[...panel.querySelectorAll('[data-growth-row]')];
+ const apply=(row,duration)=>{
+  const fill=row.querySelector('[data-growth-fill]');if(!fill)return;
+  const to=Number(row.dataset.to)||0,leveled=row.dataset.levelup==='1';
+  row.classList.add('is-grown');
+  if(duration<=0){fill.style.transition='none';fill.style.width=to+'%';return;}
+  // A level-up first completes the old XP bar, then starts the next level at its remainder.
+  fill.style.transition=`width ${duration}ms cubic-bezier(.17,.72,.3,1)`;
+  fill.style.width=(leveled?100:to)+'%';
+  if(leveled){growthSequenceTimer=setTimeout(()=>{if(token!==growthSequenceToken||modal?.type!=='quest')return;fill.style.transition='none';fill.style.width=to+'%';},duration+90);}
+ };
+ const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+ if(!animate||reduced){rows.forEach(row=>apply(row,0));return;}
+ growthSequenceTimer=setTimeout(()=>{
+  if(token!==growthSequenceToken||modal?.type!=='quest')return;
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+  let i=0;
+  function next(){
+   if(token!==growthSequenceToken||modal?.type!=='quest'||!panel.isConnected)return;
+   if(i>=rows.length)return;
+   apply(rows[i++],600);
+   growthSequenceTimer=setTimeout(next,900);
+  }
+  next();
+ },850);
+}
+
 function rewardDeltas(stages,i){return i>0?{p:stages[i].p-stages[i-1].p,x:stages[i].x-stages[i-1].x}:{p:0,x:0}}
 function rewardParticleBurst(element,isFever){
  if(!element||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
@@ -3361,7 +3444,7 @@ function setRewardStage(index,animate=false){
   if(i===stageIndex&&animate&&changed){void el.offsetWidth;el.classList.add('stage-hit');if(stageIndex===stages.length-1&&modal.feverActive)el.classList.add('stage-fever');rewardParticleBurst(el,stageIndex===stages.length-1&&modal.feverActive)}
  });
  const announce=document.getElementById('rewardWinAnnounce');if(announce){announce.classList.toggle('visible',stageIndex===stages.length-1&&modal.feverActive);announce.textContent=modal.feverActive?'🌈 FEVER BONUS! ×1.10':''}
- const last=stageIndex===stages.length-1,final=document.getElementById('rewardFinalNote'),skip=document.getElementById('rewardSkipButton');if(final)final.hidden=!last;if(skip)skip.hidden=last;
+ const last=stageIndex===stages.length-1,final=document.getElementById('rewardFinalNote'),skip=document.getElementById('rewardSkipButton');if(final)final.hidden=!last;if(skip)skip.hidden=last;if(last)beginRewardGrowthSequence(animate);else{cancelRewardGrowth();const growth=document.getElementById('rewardGrowth');if(growth)growth.hidden=true;}
 }
 function finishRewardAnimation(){cancelRewardAnimation();if(modal?.type==='quest')setRewardStage(rewardStages().length-1,false)}
 function runRewardAnimation(){
@@ -4114,7 +4197,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
  <section class="settings-card"><h2>🔒 데이터 초기화</h2><p>처음부터 다시 시작하는 기능은 위험한 작업이므로 <b>관리자 모드</b> 안에서만 이용할 수 있습니다. 설정 메뉴에서는 초기화할 수 없습니다.</p></section>`}
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.42</div><div class="brand">${title}</div><div class="kicker">${sub||'&nbsp;'}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.43</div><div class="brand">${title}</div><div class="kicker">${sub||'&nbsp;'}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -5093,7 +5176,7 @@ if(modal.type==='quest'){
  const fever=modal.feverActive===true;
  const stages=rewardStages();
  const labels=stages.map((st,i)=>{const prev=stages[Math.max(0,i-1)],dp=i?st.p-prev.p:0,dx=i?st.x-prev.x:0;return `<div class="reward-stage ${i===0?'is-active':''}" data-reward-stage="${i}"><div class="reward-stage-title">${st.title}</div><div class="reward-stage-desc">${st.desc}</div><div class="reward-stage-value"><span>${i===0?'기본':i===stages.length-1?'최종':st.title.includes('야간 추천')?'야간':st.title.includes('추천')?'추천':st.title.includes('훈장')?'훈장':st.title.includes('FEVER')?'Fever':i===1?'시간':'연속'} · <b>${format(st.p)}P</b> / <b>${format(st.x)}XP</b></span><span class="reward-delta" data-active="${dp>0||dx>0}">${dp>0?`🪙 +${format(dp)}P`:''}${dp>0&&dx>0?' · ':''}${dx>0?`🌟 +${format(dx)}XP`:''}</span></div></div>`}).join('');
- return `<div class="overlay" onclick="eventCloseReward()"><div class="modal reward-reveal-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="퀘스트 단계별 보상"><h2>${modal.eventPokemonId?'🌟 스페셜 이벤트 성공!':'🎉 퀘스트 완료!'}</h2>${modal.eventPokemonId?`<div class="event-victory"><span>✨ ✨ ✨</span>${art(modal.eventPokemonId)}<strong>${esc(name(modal.eventPokemonId))}가 축하해요!</strong></div>`:''}<p class="modal-sub">${esc(modal.title)} · ${esc(currentTrainer().name)}님의 노력 보상</p>${trainingQuestRewardMarkup()}<div class="reward-live-score" aria-live="off"><div class="reward-score-piece"><small>🪙 포인트</small><strong id="rewardPointsCount">${format(baseP)}</strong><span>P</span></div><div class="reward-score-piece"><small>🌟 경험치</small><strong id="rewardXpCount">${format(baseX)}</strong><span>XP</span></div></div><div class="reward-win-announce" id="rewardWinAnnounce" aria-live="off"></div><div class="reward-current-explain" id="rewardCurrentReason">🎯 기본 보상부터 출발!</div><div class="reward-stage-list">${labels}</div><div class="reward-final-note" id="rewardFinalNote" hidden>🏆 실제 지급 완료! 포인트 ${format(modal.pts)}P · 경험치 ${format(modal.xpEarned)}XP</div><p class="reward-small-note">${modal.mode==='normal'?'✅ 일반 완료':`⏱ 실제 활동 ${questTimeFmt(modal.elapsedSeconds||0)}`} · 지급은 이미 한 번만 확정되어 저장됐어요.</p><button type="button" class="modal-btn secondary" id="rewardSkipButton" onclick="finishRewardAnimation()">⏭ 연출 건너뛰기</button>
+ return `<div class="overlay" onclick="eventCloseReward()"><div class="modal reward-reveal-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="퀘스트 단계별 보상"><h2>${modal.eventPokemonId?'🌟 스페셜 이벤트 성공!':'🎉 퀘스트 완료!'}</h2>${modal.eventPokemonId?`<div class="event-victory"><span>✨ ✨ ✨</span>${art(modal.eventPokemonId)}<strong>${esc(name(modal.eventPokemonId))}가 축하해요!</strong></div>`:''}<p class="modal-sub">${esc(modal.title)} · ${esc(currentTrainer().name)}님의 노력 보상</p>${trainingQuestRewardMarkup()}<div class="reward-live-score" aria-live="off"><div class="reward-score-piece"><small>🪙 포인트</small><strong id="rewardPointsCount">${format(baseP)}</strong><span>P</span></div><div class="reward-score-piece"><small>🌟 경험치</small><strong id="rewardXpCount">${format(baseX)}</strong><span>XP</span></div></div><div class="reward-win-announce" id="rewardWinAnnounce" aria-live="off"></div><div class="reward-current-explain" id="rewardCurrentReason">🎯 기본 보상부터 출발!</div><div class="reward-stage-list">${labels}</div><div class="reward-final-note" id="rewardFinalNote" hidden>🏆 실제 지급 완료! 포인트 ${format(modal.pts)}P · 경험치 ${format(modal.xpEarned)}XP</div>${rewardGrowthMarkup(modal.growth)}<p class="reward-small-note">${modal.mode==='normal'?'✅ 일반 완료':`⏱ 실제 활동 ${questTimeFmt(modal.elapsedSeconds||0)}`} · 지급은 이미 한 번만 확정되어 저장됐어요.</p><button type="button" class="modal-btn secondary" id="rewardSkipButton" onclick="finishRewardAnimation()">⏭ 연출 건너뛰기</button>
 
  ${(modal.newlyEarnedHonor||[]).length?`<div class="complete-bonus">🏅 새 훈장 획득! ${modal.newlyEarnedHonor.map(esc).join(' · ')}<br>한정 부스트는 다음 퀘스트부터 적용됩니다.</div>`:''}
  ${modal.bonus!==0?`<div class="complete-bonus">🏆 오늘의 전체 퀘스트 달성! +${format(modal.bonus)}P (FEVER 미적용)</div>`:''}
@@ -5297,7 +5380,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.42</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.43</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
