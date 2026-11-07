@@ -1,8 +1,9 @@
 /* PokéRoutine personal, offline app shell. External Pokémon artwork may need internet. */
-const CACHE = 'pokeroutine-shell-v1757-achievements-final2';
-const APP_SHELL = ['./', './index.html', './moves.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+const CACHE = 'pokeroutine-shell-v17581-region-target-100-config';
+const APP_SHELL = ['./', './index.html', './moves.html'];
+const OPTIONAL_SHELL = ['./manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting()));
+  event.waitUntil(caches.open(CACHE).then(async cache => {await cache.addAll(APP_SHELL);await Promise.allSettled(OPTIONAL_SHELL.map(url => cache.add(url)));}).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', event => {
   event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('pokeroutine-shell-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
