@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.56 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.57 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -2847,7 +2847,7 @@ html[data-theme="light"] .admin-center .admin-search-wrap input{color:var(--ac-i
 @media(max-width:340px){.admin-center .admin-nav,.admin-center .admin-side{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-center .admin-overview-grid{grid-template-columns:1fr}}
 
 
-/* v1.7.56 · Unified information order in all four quest views. */
+/* v1.7.57 · Unified information order in all four quest views. */
 .quest-meta-order{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:3px 5px;min-width:0;margin-top:3px}
 .quest-meta-order .quest-streak-short,.quest-meta-order .quest-recommend-pill,.quest-meta-order .quest-evening-pill,.quest-meta-order .quest-combined-pill,.quest-meta-order .quest-schedule-chip{flex:0 0 auto;max-width:100%;margin:0;font-size:clamp(9px,calc(10px * var(--app-scale,1)),12px)!important;line-height:1.22!important;padding:3px 5px!important;font-weight:850;white-space:nowrap;letter-spacing:-.018em}
 .quest-evening-pill,.quest-combined-pill{display:inline-flex;align-items:center;border-radius:999px;border:1px solid #e3ab80;background:#6b453a;color:#ffe6c2}
@@ -2894,7 +2894,7 @@ html[data-theme="light"] .home-quest-section .quest-list.mode-mini .quest-mini-p
 .briefing-recommend .briefing-recommend-name{display:block!important;font-size:clamp(15px,calc(16px * var(--app-scale,1)),20px)!important;line-height:1.3;margin:3px 0;overflow-wrap:anywhere}
 @media(max-width:355px){.home-quest-section .quest-list.mode-mini .quest-mini-meta{gap:2px}.home-quest-section .quest-list.mode-mini .quest-mini-meta .quest-reco-mini{font-size:8px!important;padding:2px!important}}
 
-/* v1.7.56: Unified two-line recommendation panel. The other quest badges retain their original colors. */
+/* v1.7.57: Unified two-line recommendation panel. The other quest badges retain their original colors. */
 .home-quest-section .quest-reco-panel{margin:8px 0 10px;padding:9px;border:1px solid var(--line,#7b749c);border-radius:14px;background:var(--panel,#2c304c);box-shadow:0 2px 12px #7775ae20}
 .home-quest-section .quest-reco-panel-head{font-weight:900;font-size:clamp(11px,calc(12px * var(--app-scale,1)),14px);margin:0 0 6px;color:var(--text,#e9eefb)}
 .home-quest-section .quest-reco-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
@@ -2915,7 +2915,7 @@ html[data-theme="light"] .home-quest-section .quest-reco-card.evening{background
 .calendar-boost-list{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}.calendar-boost-list span{font-size:11px!important;padding:2px 6px!important;white-space:nowrap}
 @media(max-width:355px){.home-quest-section .quest-reco-card{padding:6px}.home-quest-section .quest-reco-line{font-size:9px}}
 
-/* v1.7.56 · aligned management list regardless of title, emoji or reservation length */
+/* v1.7.57 · aligned management list regardless of title, emoji or reservation length */
 .event-manager-list .event-manager-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;text-align:left}
 .event-manager-list .quest-manager-info{display:grid;grid-template-columns:25px minmax(0,1fr);gap:8px;align-items:start;min-width:0;text-align:left}
 .event-manager-list .quest-manager-icon{display:block;font-size:20px;line-height:1.3;text-align:center;min-width:0}
@@ -2924,6 +2924,92 @@ html[data-theme="light"] .home-quest-section .quest-reco-card.evening{background
 .event-manager-list .quest-manager-copy small{display:block;overflow-wrap:anywhere;line-height:1.45;margin:2px 0 0;text-align:left}
 .event-manager-list .event-manager-item>.quest-edit{justify-self:end;white-space:nowrap;flex-shrink:0}
 @media(max-width:350px){.event-manager-list .event-manager-item{gap:6px;padding:8px}.event-manager-list .quest-manager-info{grid-template-columns:22px minmax(0,1fr);gap:6px}}
+
+/* v1.7.57 — optional achievement logging; no new primary navigation. */
+.achievement-entry{margin:10px 0;padding:10px;border:1px solid var(--border,#6a84a4);border-radius:12px;background:rgba(117,157,204,.09);max-width:100%;box-sizing:border-box}
+.achievement-entry>summary{font-size:13px;font-weight:850;cursor:pointer;line-height:1.5;color:inherit}
+.achievement-bonus-hint{font-weight:700;font-size:11px;color:#36a778;margin-left:4px}
+.achievement-entry-body{display:grid;gap:10px;padding-top:12px;font-size:12px}
+.achievement-entry-body label{display:grid;gap:5px;font-size:12px;font-weight:750}
+.achievement-number-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:8px}
+.achievement-note{min-height:68px;resize:vertical;width:100%;box-sizing:border-box}
+.achievement-entry-body small{font-size:11px;line-height:1.5;opacity:.85}
+.achievement-quest-config{display:grid;gap:8px;padding:10px;border:1px solid #8ca9c455;border-radius:12px;margin:4px 0 12px}
+.achievement-quest-config>div{display:grid;gap:6px}
+.achievement-cal-note{margin:5px 0;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.achievement-cal-note b{font-size:11px;display:block;color:#269c72}
+.achievement-cal-note p{margin:2px 0 0;white-space:pre-wrap;color:inherit;opacity:.85}
+.achievement-edit-button{border:1px solid #829fb5;color:inherit;background:transparent;border-radius:7px;font-size:11px;cursor:pointer;padding:5px 8px;margin-top:5px;align-self:flex-start}
+.achievement-edit-button:focus-visible{outline:2px solid #4aa9ea;outline-offset:2px}
+.achievement-edit-modal{max-height:90dvh;overflow-y:auto}
+.achievement-edit-modal .achievement-entry{display:block}
+.achievement-reward-summary{display:grid;gap:4px;padding:9px;margin:10px 0;border-radius:9px;background:rgba(91,173,149,.12);border:1px solid rgba(50,150,112,.3);font-size:12px;overflow-wrap:anywhere}
+.achievement-reward-summary small{white-space:pre-wrap}
+.achievement-reward-summary strong{color:#35a97c}
+.achievement-analytics{padding:12px;margin:12px 0;border:1px solid #8aa4b05c;border-radius:12px;overflow:hidden}
+.achievement-analytics h3{font-size:14px;margin:0 0 6px}
+.achievement-stat-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px;margin:12px 0}
+.achievement-stat-list>div{display:grid;gap:3px;border:1px solid #8ca8bc55;border-radius:9px;padding:9px;font-size:12px}
+.achievement-stat-list small{font-size:10px;opacity:.75}.achievement-stat-list strong{font-size:15px;color:#36a777}
+.achievement-stat-list span{font-size:11px;opacity:.85}
+@media(max-width:350px){.achievement-number-row{grid-template-columns:1fr}.achievement-bonus-hint{display:block;margin-left:0}}
+
+/* v1.7.57 FINAL · measured achievement analytics visualization */
+.achievement-moods{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.achievement-moods span{font-size:11px;padding:5px 7px;border:1px solid #829caa77;border-radius:16px;background:rgba(101,148,168,.09);white-space:nowrap}
+.achievement-moods b{font-variant-numeric:tabular-nums}
+
+.achievement-target{border-radius:10px;background:rgba(94,150,159,.13);padding:10px;margin-top:12px;display:grid;gap:8px}
+.achievement-target-title{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px;font-size:12px}
+.achievement-target-title strong{font-size:12px}.achievement-target-title span{font-variant-numeric:tabular-nums;font-weight:800}
+.achievement-target-track{width:100%;height:8px;background:rgba(129,163,189,.24);border-radius:6px;overflow:hidden}
+.achievement-target-track>div{height:100%;background:#43bfa0;border-radius:6px}
+.achievement-target small{font-size:10px;opacity:.76;line-height:1.5}
+
+.achievement-topline{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.achievement-topline h3{font-size:15px;margin:0;color:inherit}
+.achievement-topline>span{font-size:11px;color:#aac6df;white-space:nowrap}
+.achievement-empty{padding:14px 12px;margin-top:10px;border-radius:10px;background:rgba(115,152,186,.10);display:grid;gap:7px;line-height:1.6}
+.achievement-empty strong{font-size:13px}.achievement-empty small{font-size:12px;opacity:.85}
+.achievement-unit-switch{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.achievement-unit-switch button{border:1px solid #6b8caa;border-radius:20px;background:rgba(100,137,182,.12);color:inherit;font-size:12px;font-weight:800;padding:7px 11px;cursor:pointer}
+.achievement-unit-switch button small{font-size:10px;font-weight:500;opacity:.8;margin-left:3px}
+.achievement-unit-switch button.active{background:#236b6a;border-color:#4fc7b0;color:#fff}
+.achievement-unit-switch button:focus-visible{outline:3px solid #58b7e9;outline-offset:2px}
+.achievement-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.achievement-kpis>div{min-width:0;border:1px solid #64859b88;border-radius:11px;padding:10px 11px;background:rgba(92,141,179,.1);display:flex;flex-direction:column;gap:4px}
+.achievement-kpis small{font-size:11px;opacity:.82}
+.achievement-kpis strong{font-size:clamp(18px,5vw,23px);line-height:1.1;font-weight:850;font-variant-numeric:tabular-nums;color:#6ae0b9;overflow-wrap:anywhere}
+.achievement-kpis span{font-size:11px;opacity:.78;overflow-wrap:anywhere}
+.achievement-chart-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:5px;margin:18px 0 8px}
+.achievement-chart-heading strong{font-size:13px}.achievement-chart-heading span{font-size:11px;opacity:.75}
+.achievement-chart{border:1px solid #486680;border-radius:12px;padding:11px 8px 9px;background:rgba(20,44,70,.56);width:100%;box-sizing:border-box;overflow:hidden}
+.achievement-chart-cols{display:flex;gap:5px;justify-content:space-between;min-width:0;height:186px;align-items:flex-end}
+.ach-col{display:flex;flex:1 1 0;min-width:0;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:5px}
+.ach-col-value{font-size:10px;line-height:15px;color:#daecff;font-weight:800;font-variant-numeric:tabular-nums;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ach-col-track{width:100%;max-width:42px;height:138px;flex:none;position:relative;border-radius:5px 5px 2px 2px;background:rgba(169,197,221,.11);display:flex;align-items:flex-end}
+.ach-col-bar{width:100%;border-radius:5px 5px 2px 2px;min-height:0;background:linear-gradient(180deg,#7ce5c6,#329e96);transition:height .25s ease}
+.ach-col-bar.ach-zero{background:#8bb7d2}
+.ach-col-date{font-size:9px;color:#bed6ee;line-height:16px;overflow:hidden;text-overflow:clip;white-space:nowrap;max-width:100%}
+.achievement-chart-foot{display:flex;gap:16px;flex-wrap:wrap;margin:8px 0 0;font-size:11px;opacity:.83}
+.achievement-chart-foot span{display:flex;align-items:center;gap:5px}
+.ach-key{width:9px;height:9px;border-radius:2px;background:#47bb9d;display:inline-block}
+.ach-key-empty{background:#637d91;opacity:.4}
+.achievement-last{font-size:12px;line-height:1.7;margin:10px 0 0;overflow-wrap:anywhere}
+.achievement-change{border-radius:10px;padding:10px;margin-top:11px;background:rgba(70,154,149,.11);display:flex;flex-direction:column;gap:4px}
+.achievement-change span{font-size:11px;opacity:.85}.achievement-change strong{font-size:14px}.achievement-change small{font-size:11px;opacity:.8}
+.achievement-stat-note{font-size:11px;line-height:1.6;margin:12px 0 0;opacity:.8}
+html[data-theme="light"] .achievement-chart{background:#edf5ff;border-color:#bad5e7}
+html[data-theme="light"] .achievement-topline>span{color:#486b89}
+html[data-theme="light"] .ach-col-value{color:#285b77}
+html[data-theme="light"] .ach-col-track{background:#d9e9f3}
+html[data-theme="light"] .ach-col-date{color:#55718d}
+html[data-theme="light"] .achievement-kpis>div{background:#f0f7ff;border-color:#c5dbef}
+html[data-theme="light"] .achievement-kpis strong{color:#0b785d}
+html[data-theme="light"] .achievement-unit-switch button{border-color:#b6cbe1;background:#f2f7fe;color:#375773}
+html[data-theme="light"] .achievement-unit-switch button.active{background:#176e63;border-color:#176e63;color:#fff}
+@media(min-width:700px){.achievement-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:350px){.achievement-chart{padding-left:4px;padding-right:4px}.achievement-chart-cols{gap:2px}.ach-col-value{font-size:9px}.ach-col-date{font-size:8px}.achievement-kpis>div{padding:9px}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -2952,7 +3038,7 @@ function cleanHonorTargets(raw){
  }
  return result;
 }
-const DEFAULT_RULES=()=>({training:TRAINING_DEFAULT_RULES(),pointMin:20,pointMax:40,pointStep:5,defaultXp:25,allDoneBonus:50,honorTargets:cleanHonorTargets(null),boost:DEFAULT_BOOST(),giftCurve:DEFAULT_GIFT_CURVE(),tiers:Object.fromEntries(TIERS.map(t=>[t.id,{prob:[...t.prob],catch:[...CATCH_RATES_BASE[t.id]]}]))});
+const DEFAULT_RULES=()=>({training:TRAINING_DEFAULT_RULES(),pointMin:20,pointMax:40,pointStep:5,defaultXp:25,allDoneBonus:50,honorTargets:cleanHonorTargets(null),boost:DEFAULT_BOOST(),giftCurve:DEFAULT_GIFT_CURVE(),recordBonusEnabled:false,tiers:Object.fromEntries(TIERS.map(t=>[t.id,{prob:[...t.prob],catch:[...CATCH_RATES_BASE[t.id]]}]))});
 // Per-trainer daily one-hour boost. Enabled by default from 20:00 to 21:00 (local time).
 const FEVER_DEFAULT=()=>({enabled:true,start:'20:00'});
 function validFeverTime(value){return typeof value==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(value)}
@@ -3346,7 +3432,73 @@ setInterval(updateAppHeaderClock,1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)updateAppHeaderClock()});
 
 
-function cleanQuestSnapshot(q){return {id:String(q.id||'').slice(0,100),title:String(q.title||'').slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((q.mins||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:''}}
+// v1.7.57 · Structured achievement logging and optional one-time writing bonus.
+const ACHIEVEMENT_MODES=['none','memo','number'];
+function achievementMode(q){return ACHIEVEMENT_MODES.includes(q?.recordMode)?q.recordMode:'number'}
+function achievementUnit(q){return String(q?.recordUnit||'').trim().slice(0,12)}
+function achievementAmount(value){
+ if(value===null||value===undefined||String(value).trim()==='')return null;
+ const n=Number(value);return Number.isFinite(n)&&n>=0&&n<=999999?Math.round(n*100)/100:null;
+}
+function cleanAchievement(raw){
+ const amount=achievementAmount(raw?.amount);
+ return {amount,unit:String(raw?.unit||'').trim().slice(0,12),note:String(raw?.note||'').trim().slice(0,500),mood:['good','normal','hard'].includes(raw?.mood)?raw.mood:''};
+}
+function achievementTextLength(note){return [...String(note||'').replace(/\s/g,'')].length}
+function achievementHasDetailedNote(a){return achievementTextLength(a?.note)>=10}
+function achievementNumberText(n){return Number(n).toLocaleString('ko-KR',{maximumFractionDigits:2})}
+function achievementSummary(c){
+ const a=cleanAchievement(c?.achievement),parts=[];
+ if(a.amount!==null)parts.push('📏 '+achievementNumberText(a.amount)+(a.unit?' '+a.unit:''));
+ if(a.mood)parts.push(({good:'😊 좋음',normal:'🙂 보통',hard:'😮‍💨 힘듦'})[a.mood]);
+ return parts.join(' · ');
+}
+function achievementFields(q,record=null){
+ const mode=achievementMode(q);if(mode==='none')return '';
+ const a=cleanAchievement(record?.achievement),isEditing=!!record;
+ const bonusEnabled=!!data.rules?.recordBonusEnabled;
+ return `<details class="achievement-entry" ${isEditing||bonusEnabled?'open':''}><summary>📝 달성 기록 (선택) ${bonusEnabled&&!isEditing?'<span class="achievement-bonus-hint">상세 메모 10자 이상 → P·XP +20%</span>':''}</summary><div class="achievement-entry-body">
+ ${mode==='number'?`<div class="achievement-number-row"><label>실제 달성량<input class="qentry" name="achievementAmount" type="number" inputmode="decimal" min="0" max="999999" step="any" value="${a.amount===null?'':a.amount}" placeholder="예: 25"></label><label>단위<input class="qentry" name="achievementUnit" maxlength="12" value="${esc(a.unit||achievementUnit(q))}" placeholder="회 / 분 / 쪽 / km"></label></div>`:''}
+ <label>체감 난이도 / 컨디션<select name="achievementMood" class="qentry"><option value="" ${!a.mood?'selected':''}>기록하지 않음</option>${[['good','😊 좋음'],['normal','🙂 보통'],['hard','😮‍💨 힘듦']].map(([v,label])=>`<option value="${v}" ${a.mood===v?'selected':''}>${label}</option>`).join('')}</select></label>
+ <label>실제 달성 내용 · 상세 메모<textarea class="qentry achievement-note" name="achievementNote" maxlength="500" rows="3" placeholder="무엇을 했고 무엇이 달라졌나요? (최대 500자)">${esc(a.note)}</textarea></label>
+ <small>${isEditing?'언제든 수정할 수 있지만 보상은 소급 지급하거나 회수하지 않습니다.':bonusEnabled?'완료 승인 시 상세 메모 10자 이상이면 기존 최종 P·XP에 각 +20%가 한 번만 적용됩니다. 기록 없이 완료해도 됩니다.':'기록 없이 완료해도 됩니다. 완료 후 달력에서 수정 가능 · 기록 보너스 OFF'}</small>
+ </div></details>`;
+}
+function achievementFromForm(form,q){
+ const mode=achievementMode(q);
+ if(mode==='none')return cleanAchievement(null);
+ const value=String(form.elements.achievementAmount?.value||'').trim();
+ const amount=achievementAmount(value);
+ if(mode==='number'&&value!==''&&amount===null)throw Error('달성량은 0~999999 사이 숫자로 입력하세요.');
+ return cleanAchievement({amount:mode==='number'?amount:null,unit:mode==='number'?form.elements.achievementUnit?.value||achievementUnit(q):'',note:form.elements.achievementNote?.value||'',mood:form.elements.achievementMood?.value||''});
+}
+function openAchievementEditor(key,id){
+ if(!startUnlocked||!currentUserId)return;
+ const record=data.completions.find(c=>c.day===key&&c.id===id);if(!record)return;
+ const q=data.quests.find(q=>q.id===id)||{recordMode:record.achievement?.amount!==null?'number':'memo',recordUnit:record.achievement?.unit||''};
+ const mode=ACHIEVEMENT_MODES.includes(record.recordMode)?record.recordMode:achievementMode(q);
+ modal={type:'achievementEdit',key,id,mode:mode==='none'?'memo':mode,unit:String(record.recordUnit||achievementUnit(q))};render();
+}
+function saveAchievementEdit(event){
+ event.preventDefault();if(modal?.type!=='achievementEdit'||!startUnlocked||!currentUserId)return;
+ const record=data.completions.find(c=>c.day===modal.key&&c.id===modal.id);if(!record)return;
+ let next;try{next=achievementFromForm(event.currentTarget,{recordMode:modal.mode,recordUnit:modal.unit});}catch(err){alert(err.message);return;}
+ record.achievement=next;record.achievementUpdatedAt=new Date().toISOString();
+ const ok=save();modal=null;render();
+ if(!settings.autoSave||!ok)alert('달성 기록은 앱에 반영됐지만 자동 저장되지 않았습니다. JSON Save를 이용해 백업하세요.');
+}
+function requestAchievementBonusToggle(enabled){
+ if(!startUnlocked||!currentUserId)return;
+ modal={type:'achievementBonusAuth',wanted:!!enabled};render();
+}
+function saveAchievementBonusToggle(event){
+ event.preventDefault();if(modal?.type!=='achievementBonusAuth'||!startUnlocked||!currentUserId)return;
+ const pin=String(event.currentTarget.elements.adminPin?.value||'');
+ if(!checkAdminPin(pin)){alert('관리자 비밀번호가 올바르지 않습니다.');return;}
+ data.rules.recordBonusEnabled=!!modal.wanted;bumpRulesVersion();saveRegistry();save();modal=null;render();
+ if(!settings.autoSave)alert('기록 보너스 설정은 현재 실행에 반영됐습니다. JSON Save로 백업하세요.');
+}
+function cleanQuestSnapshot(q){return {id:String(q.id||'').slice(0,100),title:String(q.title||'').slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((q.mins||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:'',recordMode:achievementMode(q),recordUnit:achievementUnit(q)}}
 function auditQuest(action,id,before,after){data.questEvents.push({at:new Date().toISOString(),action,id,before:before?cleanQuestSnapshot(before):null,after:after?cleanQuestSnapshot(after):null})}
 function cleanBackup(v){
  if(v&&v.app==='PokeRoutine'&&v.data)v=v.data;
@@ -3354,7 +3506,7 @@ function cleanBackup(v){
  const safe=DEFAULT(),seen=new Set();
  if(v.quests.length>30)throw new Error('퀘스트는 최대 30개까지 등록할 수 있습니다.');
  safe.categories=Array.isArray(v.categories)?v.categories.filter(c=>c&&typeof c.name==='string'&&typeof c.emoji==='string').slice(0,100).map(c=>({name:c.name.trim().slice(0,25),emoji:c.emoji.slice(0,12)})).filter(c=>c.name):DEFAULT_CATEGORIES.map(c=>({...c}));
- safe.quests=v.quests.map(q=>({id:String(q.id||''),title:String(q.title||'').trim().slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((Number(q.mins)||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:''})).filter(q=>q.title&&/^[A-Za-z0-9_-]{1,90}$/.test(q.id)&&!seen.has(q.id)&&seen.add(q.id));
+ safe.quests=v.quests.map(q=>({id:String(q.id||''),title:String(q.title||'').trim().slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((Number(q.mins)||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:'',recordMode:achievementMode(q),recordUnit:achievementUnit(q)})).filter(q=>q.title&&/^[A-Za-z0-9_-]{1,90}$/.test(q.id)&&!seen.has(q.id)&&seen.add(q.id));
  safe.dexView=['cards','large','list'].includes(v.dexView)?v.dexView:'cards';
  safe.dexColumnsPhone=Number.isInteger(Number(v.dexColumnsPhone))?Math.min(8,Math.max(2,Number(v.dexColumnsPhone))):3;
  safe.dexColumnsTablet=Number.isInteger(Number(v.dexColumnsTablet))?Math.min(12,Math.max(3,Number(v.dexColumnsTablet))):6;
@@ -3386,7 +3538,7 @@ function cleanBackup(v){
   streakStagePoints:boundedNumber(c.streakStagePoints??c.points,150000),
   feverStagePoints:boundedNumber(c.feverStagePoints??c.eveningStagePoints??c.recommendedStagePoints??c.points,150000),feverStageXp:boundedNumber(c.feverStageXp??c.eveningStageXp??c.recommendedXpPoints??c.xpEarned,15000),
   medalPermanent:Math.max(0,Math.min(15,Number(c.medalPermanent)||0)),medalTemporary:Math.max(0,Math.min(20,Number(c.medalTemporary)||0)),medalBoostRate:Math.max(0,Math.min(35,Number(c.medalBoostRate)||0)),
-  xpStreakPoints:boundedNumber(c.xpStreakPoints??c.xpEarned,15000),at:String(c.at||'').slice(0,40)}));
+  xpStreakPoints:boundedNumber(c.xpStreakPoints??c.xpEarned,15000),achievement:cleanAchievement(c.achievement),achievementUpdatedAt:String(c.achievementUpdatedAt||'').slice(0,40),recordBonus:c.recordBonus===true,recordBonusPoints:boundedNumber(c.recordBonusPoints,150000),recordBonusXp:boundedNumber(c.recordBonusXp,15000),preRecordPoints:boundedNumber(c.preRecordPoints??c.points,150000),preRecordXp:boundedNumber(c.preRecordXp??c.xpEarned,15000),recordMode:ACHIEVEMENT_MODES.includes(c.recordMode)?c.recordMode:'',recordUnit:achievementUnit(c),at:String(c.at||'').slice(0,40)}));
  safe.owned={};for(const [id,item] of Object.entries(v.owned||{})){const n=Number(id);if(Number.isInteger(n)&&n>=1&&n<=151&&item&&typeof item==='object')safe.owned[n]={count:Math.max(1,boundedNumber(item.count,100000)),firstDate:String(item.firstDate||'').slice(0,25)};}
  safe.draws=v.draws.filter(x=>x&&Number.isInteger(Number(x.id))&&Number(x.id)>=1&&Number(x.id)<=151).map(x=>({date:String(x.date||'').slice(0,45),timestamp:String(x.timestamp||'').slice(0,45),id:Number(x.id),rarity:RARITIES.includes(x.rarity)?x.rarity:pokeClass(Number(x.id)),tier:String(x.tier||'').slice(0,30),price:boundedNumber(x.price,100000),new:!!x.new,caught:x.caught!==false,catchPct:boundedNumber(x.catchPct,100),drawId:String(x.drawId||'').slice(0,100),source:x.source==='levelGift'?'levelGift':'draw',rewardLevel:boundedNumber(x.rewardLevel,1000000),rarityRoll:Number(x.rarityRoll)||0,poolIndex:boundedNumber(x.poolIndex,1000),giftWeights:Array.isArray(x.giftWeights)?x.giftWeights.map(Number).slice(0,3):null,giftProb:Array.isArray(x.giftProb)?x.giftProb.map(Number).slice(0,4):null,catchRoll:Number(x.catchRoll)||0}));
  safe.demoGranted=!!v.demoGranted;safe.bonusAt=typeof v.bonusAt==='string'?v.bonusAt.slice(0,40):null;
@@ -3406,7 +3558,7 @@ function cleanBackup(v){
  safe.questEvents=Array.isArray(v.questEvents)?v.questEvents.filter(x=>x&&typeof x==='object').map(x=>({at:String(x.at||'').slice(0,40),action:String(x.action||'').slice(0,20),id:String(x.id||'').slice(0,100),before:x.before&&typeof x.before==='object'?cleanQuestSnapshot(x.before):null,after:x.after&&typeof x.after==='object'?cleanQuestSnapshot(x.after):null})):[];
  safe.categoryEvents=Array.isArray(v.categoryEvents)?v.categoryEvents.filter(x=>x&&typeof x==='object').map(x=>({at:String(x.at||'').slice(0,40),action:String(x.action||'').slice(0,20),before:String(x.before||'').slice(0,25),after:String(x.after||'').slice(0,25),emoji:String(x.emoji||'').slice(0,12)})):[];
  safe.dailyBonuses=Array.isArray(v.dailyBonuses)?v.dailyBonuses.filter(x=>x&&/^\d{4}-\d{2}-\d{2}$/.test(String(x.day))).map(x=>({day:x.day,at:String(x.at||'').slice(0,45),points:boundedNumber(x.points,100000),questCount:boundedNumber(x.questCount,30)})):[];
- safe.rules=v.rules||DEFAULT_RULES();
+ safe.rules=v.rules&&typeof v.rules==='object'?{...DEFAULT_RULES(),...v.rules,recordBonusEnabled:v.rules.recordBonusEnabled===true}:DEFAULT_RULES();
  safe.pokemonRoster=Array.isArray(v.pokemonRoster)?cleanPokemonRoster(v.pokemonRoster):null;
  safe.trainingHistory=cleanTrainingHistory(v.trainingHistory);
  safe.trainingBadges=cleanTrainingBadges(v.trainingBadges);
@@ -3512,7 +3664,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.56</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.57</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -3694,6 +3846,8 @@ function verifyQuest(e){
   if(!a||a.id!==id||!a.finishedAt){modal=null;render();return;}
   if(a.startedDay!==day()){alert('다른 날짜의 퀘스트는 완료할 수 없습니다.');data.activeQuest=null;save();modal=null;render();return;}
  }
+ let achievement;try{achievement=achievementFromForm(e.currentTarget,q)}catch(err){alert(err.message);return;}
+ const recordBonus=data.rules?.recordBonusEnabled===true&&achievementMode(q)!=='none'&&achievementHasDetailedNote(achievement);
  const growthBeforePoints=data.points;
  const growthBeforeTrainer={level:lvl(),xp:currentLevelXp(),target:levelTarget(lvl())};
  const growthBeforeMon=currentBuddy();
@@ -3724,8 +3878,12 @@ function verifyQuest(e){
   const eveningStageXp=eveningBonus?Math.round(recommendedXpPoints*1.20):recommendedXpPoints;
   const feverStagePoints=fever.active?Math.round(eveningStagePoints*(1+FEVER_RATE)):eveningStagePoints;
  const feverStageXp=fever.active?Math.round(eveningStageXp*(1+FEVER_RATE)):eveningStageXp;
- const pts=Math.round(feverStagePoints*(1+medalSnapshot.total/100));
- const earnedXp=Math.round(feverStageXp*(1+medalSnapshot.total/100));
+ const preRecordPoints=Math.round(feverStagePoints*(1+medalSnapshot.total/100));
+ const preRecordXp=Math.round(feverStageXp*(1+medalSnapshot.total/100));
+ const recordBonusPoints=recordBonus?Math.round(preRecordPoints*.20):0;
+ const recordBonusXp=recordBonus?Math.round(preRecordXp*.20):0;
+ const pts=preRecordPoints+recordBonusPoints;
+ const earnedXp=preRecordXp+recordBonusXp;
  const now=nowDate.toISOString();
  const holdSeconds=normal?0:questHoldSeconds(a,a.finishedAt);
  const elapsedSeconds=normal?0:Math.floor(timeState.elapsedSeconds);
@@ -3733,7 +3891,7 @@ function verifyQuest(e){
   mode:normal?'normal':'time',points:pts,basePoints:basePts,multiplier:mult,pointBoost,xpBoost,pointCombinedMultiplier:combined,questStreak:todayQuestRun,overallStreak:todayOverallRun,xpBase:baseXp,
   feverActive:fever.active,feverRate:fever.active?FEVER_RATE:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,
   limitSeconds:normal?0:a.limitSeconds,elapsedSeconds,holdSeconds,holdCount:normal?0:(a.holdCount||0),
-  rewardRule:questReward(q),xpEarned:earnedXp,at:now});
+  rewardRule:questReward(q),xpEarned:earnedXp,achievement,recordMode:achievementMode(q),recordUnit:achievementUnit(q),achievementUpdatedAt:now,recordBonus,recordBonusPoints,recordBonusXp,preRecordPoints,preRecordXp,at:now});
  data.points+=pts;data.allEarned+=pts;
  const levelUps=awardQuestXp(earnedXp),newLevelGifts=[];
  for(const reached of levelUps){
@@ -3756,7 +3914,7 @@ function verifyQuest(e){
  };
  save();modal={type:'quest',mode:normal?'normal':'time',pts,basePts,multiplier:mult,elapsedSeconds,holdSeconds,
   bonus,title:q.title,eventPokemonId:questType(q)==='event'?(data.completions.at(-1)?.pokemonId||0):0,rewardLabel:questRewardText(q),xpEarned:earnedXp,xpBase:baseXp,pointBoost,xpBoost,pointCombinedMultiplier:combined,questStreak:todayQuestRun,overallStreak:todayOverallRun,
-  feverActive:fever.active,feverRate:fever.active?FEVER_RATE:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,newlyEarnedHonor,levelUps,newLevelGifts,growth};render();
+  feverActive:fever.active,feverRate:fever.active?FEVER_RATE:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,achievement,recordBonus,recordBonusPoints,recordBonusXp,preRecordPoints,preRecordXp,newlyEarnedHonor,levelUps,newLevelGifts,growth};render();
 }
 let rewardAnimationToken=0,rewardAnimationTimeout=null,rewardAnimationFrame=0;
 let growthSequenceToken=0,growthSequenceTimer=null;
@@ -3771,7 +3929,8 @@ function rewardStages(){
  if(m.recommendedBonus)stages.push({p:m.recommendedStagePoints??m.pts,x:m.recommendedXpPoints??m.xpEarned,reason:'🌟 오늘의 추천 퀘스트! P와 XP 각각 +10%',title:'🌟 추천 퀘스트 +10%',desc:'오래 쉬었던 퀘스트에 다시 도전한 보상'});
  if(m.eveningBonus)stages.push({p:m.eveningStagePoints??m.pts,x:m.eveningStageXp??m.xpEarned,reason:'🌙 대표 포켓몬의 저녁 추천! P와 XP +20%',title:'🌙 야간 추천 +20%',desc:'오늘 가장 오래 쉬었던 퀘스트에 도전한 보상'});
  if(m.feverActive)stages.push({p:m.feverStagePoints??m.pts,x:m.feverStageXp??m.xpEarned,reason:'✨ FEVER TIME +10%! 포인트와 XP 추가!',title:'✨ FEVER TIME +10%',desc:'계정별 FEVER 시간 보너스'});
- if((m.medalBoostRate||0)>0)stages.push({p:m.pts,x:m.xpEarned,reason:`🏅 훈장의 축복 발동! 영구 +${m.medalPermanent||0}% · 48시간 +${m.medalTemporary||0}%`,title:`🏅 훈장 부스트 +${m.medalBoostRate}%`,desc:`특별 영구 +${m.medalPermanent||0}% · 일반 48시간 +${m.medalTemporary||0}%`});
+ if((m.medalBoostRate||0)>0)stages.push({p:m.preRecordPoints??m.pts,x:m.preRecordXp??m.xpEarned,reason:`🏅 훈장의 축복 발동! 영구 +${m.medalPermanent||0}% · 48시간 +${m.medalTemporary||0}%`,title:`🏅 훈장 부스트 +${m.medalBoostRate}%`,desc:`특별 영구 +${m.medalPermanent||0}% · 일반 48시간 +${m.medalTemporary||0}%`});
+ if(m.recordBonus)stages.push({p:m.pts,x:m.xpEarned,reason:'📝 달성 상세 기록 완료! 포인트와 경험치 각각 +20%',title:'📝 기록 보너스 +20%',desc:'완료 승인 때 10자 이상 상세 메모 작성'});
  stages.push({p:m.pts,x:m.xpEarned,reason:'🏆 보상이 확정되었어요!',title:'🏆 최종 보상',desc:'모든 부스트 계산 완료'});
  return stages;
 }
@@ -4040,7 +4199,7 @@ function importQuests(scope){
  }
  for(const q of unique){
   let id;do{id='copy_'+randomId().replace(/-/g,'')}while(usedIds.has(id));usedIds.add(id);
-  const copy={id,title:String(q.title).slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal||'').slice(0,90),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q)};
+  const copy={id,title:String(q.title).slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal||'').slice(0,90),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),recordMode:achievementMode(q),recordUnit:achievementUnit(q)};
   data.quests.push(copy);auditQuest('import',id,null,copy);
  }
  const persisted=save();modal=null;render();
@@ -4057,7 +4216,7 @@ function renderQuestImportModal(){
 }
 
 function saveTask(event){
- event.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='questEditor'||modal.authorized!==true){alert('관리자 비밀번호 인증이 필요합니다.');return}const f=event.currentTarget,title=f.elements['title'].value.trim().slice(0,45),category=f.elements['questType'].value==='reserved'?'예약':f.elements['category'].value,goal=f.elements['goal'].value.trim().slice(0,90),limitMinutes=Number(f.elements['limitMinutes'].value),questKind=f.elements['questType'].value,weekdays=[...f.querySelectorAll('input[name=weekdays]:checked')].map(x=>Number(x.value)),eventChance=Number(f.elements['eventChance'].value),mode=f.elements['rewardMode'].value,xpMode=f.elements['xpMode'].value;
+ event.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='questEditor'||modal.authorized!==true){alert('관리자 비밀번호 인증이 필요합니다.');return}const f=event.currentTarget,title=f.elements['title'].value.trim().slice(0,45),category=f.elements['questType'].value==='reserved'?'예약':f.elements['category'].value,goal=f.elements['goal'].value.trim().slice(0,90),limitMinutes=Number(f.elements['limitMinutes'].value),questKind=f.elements['questType'].value,weekdays=[...f.querySelectorAll('input[name=weekdays]:checked')].map(x=>Number(x.value)),eventChance=Number(f.elements['eventChance'].value),mode=f.elements['rewardMode'].value,xpMode=f.elements['xpMode'].value,recordMode=f.elements['recordMode'].value,recordUnit=String(f.elements['recordUnit'].value||'').trim().slice(0,12);
  let rewardOverride=null;
  if(mode==='custom'){
   if(['rewardMin','rewardMax','rewardStep'].some(n=>f.elements[n].value.trim()==='')){alert('개별 포인트 값은 모두 입력하세요.');return}
@@ -4066,14 +4225,15 @@ function saveTask(event){
  }
  const xpOverride=xpMode==='custom'&&f.elements['questXp'].value.trim()!==''?Number(f.elements['questXp'].value):null;
   if(!['default','custom'].includes(xpMode)||(xpMode==='custom'&&cleanQuestXp(xpOverride)===null)){alert('개별 경험치는 0~1000XP 사이의 정수로 설정하세요.');return}
+  if(!ACHIEVEMENT_MODES.includes(recordMode)){alert('달성 기록 유형을 확인하세요.');return}
   if(!title||!goal){alert('퀘스트 이름과 목표를 입력하세요. 예: 30분, 20쪽 읽기, 단어 15개');return}
  if(!QUEST_TYPES.includes(questKind)||(questKind==='weekly'&&!weekdays.length)||(questKind==='event'&&(!Number.isFinite(eventChance)||eventChance<0||eventChance>100))){alert('요일별 퀘스트는 요일을 선택하고 이벤트 발생률은 0~100%로 입력하세요.');return}
  if(!Number.isInteger(limitMinutes)||limitMinutes<1||limitMinutes>240){alert('시간 제한은 1~240분으로 설정하세요.');return}
  if(questKind==='reserved'&&(!validNoteDay(f.elements.startDate.value)||!validNoteDay(f.elements.endDate.value)||f.elements.endDate.value<f.elements.startDate.value)){alert('예약 시작일과 종료일을 확인해 주세요.');return}
  if(data.activeQuest&&data.activeQuest.id===modal.id){alert('진행 중인 퀘스트는 종료 또는 포기한 뒤 수정하세요.');return}
  if(!data.categories.some(c=>c.name===category)){alert('카테고리를 먼저 등록하세요.');return}
- if(modal.id){const q=data.quests.find(q=>q.id===modal.id);if(q){const old={...q};q.title=title;q.category=category;q.goal=goal;q.limitMinutes=limitMinutes;q.rewardOverride=rewardOverride;q.xpOverride=xpOverride;q.questType=questKind;q.weekdays=weekdays;q.eventChance=eventChance;q.startDate=questKind==='reserved'?f.elements.startDate.value:'';q.endDate=questKind==='reserved'?f.elements.endDate.value:'';delete q.mins;auditQuest('edit',q.id,old,q)}}
- else{if(data.quests.length>=30){alert('최대 30개까지 등록할 수 있습니다.');return}const newQ={id:'custom_'+Date.now()+'_'+ri(100,999),title,category,goal,limitMinutes,rewardOverride,xpOverride,questType:questKind,weekdays,eventChance,startDate:questKind==='reserved'?f.elements.startDate.value:'',endDate:questKind==='reserved'?f.elements.endDate.value:''};data.quests.push(newQ);auditQuest('create',newQ.id,null,newQ)}
+ if(modal.id){const q=data.quests.find(q=>q.id===modal.id);if(q){const old={...q};q.title=title;q.category=category;q.goal=goal;q.limitMinutes=limitMinutes;q.rewardOverride=rewardOverride;q.xpOverride=xpOverride;q.questType=questKind;q.weekdays=weekdays;q.eventChance=eventChance;q.recordMode=recordMode;q.recordUnit=recordMode==='number'?recordUnit:'';q.startDate=questKind==='reserved'?f.elements.startDate.value:'';q.endDate=questKind==='reserved'?f.elements.endDate.value:'';delete q.mins;auditQuest('edit',q.id,old,q)}}
+ else{if(data.quests.length>=30){alert('최대 30개까지 등록할 수 있습니다.');return}const newQ={id:'custom_'+Date.now()+'_'+ri(100,999),title,category,goal,limitMinutes,rewardOverride,xpOverride,questType:questKind,weekdays,eventChance,recordMode,recordUnit:recordMode==='number'?recordUnit:'',startDate:questKind==='reserved'?f.elements.startDate.value:'',endDate:questKind==='reserved'?f.elements.endDate.value:''};data.quests.push(newQ);auditQuest('create',newQ.id,null,newQ)}
  save();modal=null;render();
 }
 function openCategories(){modal={type:'categoryManager'};render()}
@@ -4594,7 +4754,7 @@ function renderDayDetails(key){const d=getDailyEvents(key),selected=analyticsSel
  </section><div class="day-metrics"><span>✅ 퀘스트 <b>${qs}</b></span><span>${CAL_PIKA_ICON} 포획 <b>${d.draws.filter(x=>x.caught!==false).length}</b> / 도주 ${d.draws.filter(x=>x.caught===false).length}</span><span>🪙 +${format(d.earned)} / −${format(d.spent)}P</span><span>⭐ +${format(d.completions.reduce((sum,c)=>sum+Number(c.xpEarned??25),0))}XP</span><span>🏆 전체 달성 +${format(data.dailyBonuses.filter(b=>b.day===key).reduce((a,b)=>a+b.points,0))}P</span></div>
  ${!total&&!pending.length&&!data.dailyBonuses.some(b=>b.day===key)?`<div class="empty">${dailyNote(key)?'데일리 노트가 저장되어 있습니다. 퀘스트·포획 이력은 아직 없어요.':'아직 저장된 퀘스트·포획 이력이 없습니다. 노트는 자유롭게 작성할 수 있어요.'}</div>`:''}
  ${pending.length?`<section class="calendar-pending"><h3>${key>day()?'📅 예정 퀘스트':'⏳ 미수행 퀘스트'} <small>${pending.length}개</small></h3>${pending.map(q=>`<div class="history calendar-pending-row"><div class="hleft"><strong>${categoryEmoji(q.category)} ${esc(q.title)}</strong><small>🎯 ${esc(q.goal||((q.mins||10)+'분'))}${questType(q)==='reserved'?' · 📅 예약':questType(q)==='once'?' · 일회성':''}</small></div><span class="calendar-pending-state">${key>day()?'예정':'미수행'}</span></div>`).join('')}${key<day()?'<p class="calendar-pending-note">과거 일정은 저장된 변경 이력과 현재 설정으로 복원한 내용입니다.</p>':''}</section>`:''}
- ${qs?`<h3>✅ 퀘스트 완료</h3>${d.completions.map(c=>`<div class="history"><div class="hleft"><strong>${esc(c.title||'퀘스트')}</strong><small>${c.goal?`목표 ${esc(c.goal)} · `: ''}${c.multiplier?`${c.mode==='normal'?'✅ 일반 완료':'⏱ 타임챌린지'} ×${Number(c.multiplier).toFixed(2)} · 기본 ${format(c.basePoints??c.points)}P${c.mode==='normal'?'':' · '+questTimeFmt(c.elapsedSeconds||0)}${c.holdSeconds?' · ⏸ 홀드 '+questTimeFmt(c.holdSeconds):''} · `:''}${esc(c.at?new Date(c.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'완료 기록')} · 🌟 +${format(c.xpEarned??0)}XP</small>${c.recommendedBonus||c.eveningBonus?`<div class="calendar-boost-list">${c.recommendedBonus?'<span class="quest-recommend-pill">🌟 오늘 추천 +10%</span>':''}${c.eveningBonus?'<span class="quest-evening-pill">🌙 마무리 추천 +20%</span>':''}</div>`:''}</div><div class="hval" style="color:#82e1ad">+${Number(c.points||0)}P</div></div>`).join('')}`:''}
+ ${qs?`<h3>✅ 퀘스트 완료</h3>${d.completions.map(c=>`<div class="history"><div class="hleft"><strong>${esc(c.title||'퀘스트')}</strong><small>${c.goal?`목표 ${esc(c.goal)} · `: ''}${c.multiplier?`${c.mode==='normal'?'✅ 일반 완료':'⏱ 타임챌린지'} ×${Number(c.multiplier).toFixed(2)} · 기본 ${format(c.basePoints??c.points)}P${c.mode==='normal'?'':' · '+questTimeFmt(c.elapsedSeconds||0)}${c.holdSeconds?' · ⏸ 홀드 '+questTimeFmt(c.holdSeconds):''} · `:''}${esc(c.at?new Date(c.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'완료 기록')} · 🌟 +${format(c.xpEarned??0)}XP</small>${c.achievement?.note||achievementSummary(c)?`<div class="achievement-cal-note">${achievementSummary(c)?`<b>${esc(achievementSummary(c))}</b>`:''}${c.achievement?.note?`<p>${esc(c.achievement.note)}</p>`:''}</div>`:''}${c.recommendedBonus||c.eveningBonus||c.recordBonus?`<div class="calendar-boost-list">${c.recommendedBonus?'<span class="quest-recommend-pill">🌟 오늘 추천 +10%</span>':''}${c.eveningBonus?'<span class="quest-evening-pill">🌙 마무리 추천 +20%</span>':''}${c.recordBonus?'<span class="quest-recommend-pill">📝 상세 기록 +20%</span>':''}</div>`:''}<button class="achievement-edit-button" type="button" onclick="openAchievementEditor('${c.day}',decodeURIComponent('${encodeURIComponent(c.id)}'))">✎ 기록 확인·수정</button></div><div class="hval" style="color:#82e1ad">+${Number(c.points||0)}P</div></div>`).join('')}`:''}
  ${tries?`<h3>${CAL_PIKA_ICON} 포켓몬 뽑기 / 포획</h3>${d.draws.map(x=>`<div class="history"><div class="hleft"><strong>${x.caught===false?'💨 도주':'🎉 포획'} · ${esc(name(x.id))}</strong><small>${esc(x.tier)} · <span class="rarity ${pokeClass(x.id)}">${RN[RARITIES.indexOf(pokeClass(x.id))]}</span> · 성공률 ${Number(x.catchPct)||0}%</small></div><div class="hval ${x.caught===false?'outcome-bad':''}">−${Number(x.price)||0}P</div></div>`).join('')}`:''}
  ${d.events.length?`<h3>✨ 이벤트 퀘스트</h3>${d.events.map(e=>{const template=data.quests.find(q=>q.id===e.questId);return `<div class="history"><div class="hleft"><strong>${esc(template?.title||'이벤트')} · ${esc(name(e.pokemonId))}</strong><small>${e.status==='completed'?'✅ 완료':e.status==='expired'?'⌛ 22:00 만료':'✨ 활성화'} · ${esc(friendlyEventTime(e.createdAt))}</small></div></div>`}).join('')}`:''}
  ${data.categoryEvents.some(e=>dateKeyFromTime(e.at)===key)?`<h3>🎨 카테고리 변경</h3>${data.categoryEvents.filter(e=>dateKeyFromTime(e.at)===key).map(e=>`<div class="history"><div class="hleft"><strong>${esc(e.action)} · ${esc(e.before||e.after)}</strong><small>${esc(e.after)} ${esc(e.emoji)}</small></div></div>`).join('')}`:''}${d.changes.length?`<h3>✎ 퀘스트 등록·수정·삭제</h3>${d.changes.map(e=>`<div class="history"><div class="hleft"><strong>${e.action==='create'?'등록':e.action==='edit'?'수정':'삭제'} · ${esc(e.after?.title||e.before?.title||'퀘스트')}</strong><small>${esc(e.action==='edit'?`이전 이름: ${e.before?.title||''}`:'변경 이력 보존')} · ${esc(friendlyEventTime(e.at))}</small></div></div>`).join('')}`:''}
@@ -4724,6 +4884,77 @@ function analyticsStreakGraph(id,rows){
   <svg viewBox="0 0 320 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="85" x2="320" y2="85" stroke="currentColor" opacity=".2"/><polygon points="0,85 ${p} 320,85" fill="rgba(67,189,158,.14)"/><polyline points="${p}" stroke="#3fb99e" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2" vector-effect="non-scaling-stroke"/></svg>
   <div class="qa-streak-dates"><small>${rows[0].day.slice(5)}</small><small>${rows[rows.length-1].day.slice(5)}</small></div></div>`;
 }
+// Per-quest selection is presentational only: it does not change any stored data.
+let achievementChartQuest='', achievementChartUnitIndex=0;
+function setAchievementChartUnit(index){achievementChartUnitIndex=Math.max(0,Math.floor(Number(index)||0));render()}
+function renderAchievementAnalytics(id,rows){
+ if(achievementChartQuest!==id){achievementChartQuest=id;achievementChartUnitIndex=0}
+ const events=rows.flatMap(r=>r.events||[]), allNumerics=events.filter(c=>achievementAmount(c.achievement?.amount)!==null),
+  notes=events.filter(c=>String(c.achievement?.note||'').trim()).length;
+ if(!allNumerics.length&&!notes)return `<section class="achievement-analytics"><div class="achievement-topline"><h3>📝 실제 달성량</h3><span>기록 분석</span></div><div class="achievement-empty"><strong>아직 기록된 달성량이 없습니다.</strong><small>퀘스트를 완료할 때 숫자나 메모를 남겨 보세요. 입력한 날부터 이곳에 성장 추이가 쌓입니다.</small></div></section>`;
+ const moodCount={good:0,normal:0,hard:0};
+ for(const c of events)if(Object.hasOwn(moodCount,String(c.achievement?.mood||'')))moodCount[c.achievement.mood]++;
+ const moodTotal=Object.values(moodCount).reduce((a,b)=>a+b,0);
+ const moodDisplay=moodTotal?`<div class="achievement-moods" aria-label="기록된 컨디션 ${moodTotal}건">${[['good','😊 좋음'],['normal','🙂 보통'],['hard','😮‍💨 힘듦']].map(([k,label])=>`<span>${label} <b>${moodCount[k]}</b></span>`).join('')}</div>`:'';
+ const groups=new Map();
+ for(const c of allNumerics){const unit=String(c.achievement?.unit||'단위 미지정').trim()||'단위 미지정';
+  if(!groups.has(unit))groups.set(unit,[]);groups.get(unit).push(c)}
+ const summaries=[...groups].map(([unit,items])=>({unit,items,values:items.map(c=>Number(c.achievement.amount)),total:items.reduce((s,c)=>s+Number(c.achievement.amount),0)})).sort((a,b)=>b.items.length-a.items.length||a.unit.localeCompare(b.unit,'ko'));
+ if(achievementChartUnitIndex>=summaries.length)achievementChartUnitIndex=0;
+ const selected=summaries[achievementChartUnitIndex];
+ let detail='';
+ if(selected){
+  const {unit,items,values,total}=selected;const maximum=Math.max(...values),average=total/items.length;
+  const last=items.reduce((best,c)=>!best||String(c.day)>String(best.day)?c:best,null);
+  const unitLabel=unit==='단위 미지정'?'':unit;
+  const fmt=n=>achievementNumberText(n),valText=n=>`${fmt(n)}${unitLabel?' '+unitLabel:''}`;
+  const count=items.length;
+  // Match an explicit numeric goal only when its written unit matches the selected recording unit.
+  // Historical records are not retroactively judged against a later-edited goal.
+  const quest=data.quests.find(q=>q.id===id),rawGoal=String(quest?.goal||'');
+  const goalParts=[...rawGoal.matchAll(/(\d+(?:\.\d+)?)\s*([^\s\d,;~+\-]+)/g)];
+  const goalMatch=goalParts.find(m=>m[2]===unit),target=goalMatch?Number(goalMatch[1]):null;
+  const lastValue=Number(last?.achievement?.amount)||0;
+  const targetPercent=target>0?Math.round(lastValue/target*100):null;
+  const goalView=targetPercent!==null?`<div class="achievement-target"><div class="achievement-target-title"><strong>🎯 최근 기록 / 현재 설정 목표</strong><span>${fmt(lastValue)} / ${fmt(target)} ${esc(unit)} · ${targetPercent}%</span></div><div class="achievement-target-track"><div style="width:${Math.max(0,Math.min(100,targetPercent))}%"></div></div><small>목표를 변경한 경우 과거 기록의 당시 목표 달성률을 뜻하지 않습니다.</small></div>`:'';
+  const bins=analyticsTrend(rows,'completions').map(b=>{
+   const matched=items.filter(c=>c.day>=b.first&&c.day<=b.last);
+   return {...b,value:matched.reduce((s,c)=>s+Number(c.achievement.amount),0),records:matched.length};
+  });
+  const highest=Math.max(1,...bins.map(b=>b.value));
+  const bars=bins.map((b,i)=>{
+   const hasRecord=b.records>0,recordedZero=hasRecord&&b.value===0;
+   const pct=hasRecord?(b.value>0?Math.max(3,Math.round(b.value/highest*100)):3):0;
+   const dateLabel=(b.first===b.last?b.first.slice(5):`${b.first.slice(5)}~${b.last.slice(5)}`).replace(/-/g,'.');
+   const a11y=`${dateLabel}, ${hasRecord?valText(b.value):'기록 없음'}, 수치 기록 ${b.records}회`;
+   return `<div class="ach-col" title="${esc(a11y)}" aria-label="${esc(a11y)}"><span class="ach-col-value">${hasRecord?fmt(b.value):'—'}</span><div class="ach-col-track"><div class="ach-col-bar ${recordedZero?'ach-zero':''}" style="height:${pct}%"></div></div><span class="ach-col-date">${b.first.slice(5).replace('-','.')}${i===bins.length-1?'':''}</span></div>`;
+  }).join('');
+  const chronological=[...items].sort((a,b)=>String(a.day).localeCompare(String(b.day)));
+  let change='';
+  if(chronological.length>=4){
+   const half=Math.floor(chronological.length/2);
+   const early=chronological.slice(0,half),late=chronological.slice(-half);
+   const mean=g=>g.reduce((s,c)=>s+Number(c.achievement.amount),0)/g.length;
+   const before=mean(early),after=mean(late),diff=after-before;
+   change=`<div class="achievement-change"><span>📊 기록 초반 ↔ 최근 평균</span><strong>${valText(before)} → ${valText(after)}</strong><small>${diff>0?'+':''}${valText(diff)} 차이 · 기록 ${half}회씩 비교</small></div>`;
+  }
+  detail=`<div class="achievement-kpis">
+    <div><small>Σ 누적 달성량</small><strong>${fmt(total)}</strong><span>${esc(unit)}</span></div>
+    <div><small>🏆 최고 기록</small><strong>${fmt(maximum)}</strong><span>${esc(unit)}</span></div>
+    <div><small>📊 회당 평균</small><strong>${fmt(average)}</strong><span>${esc(unit)} / 기록</span></div>
+    <div><small>✍️ 수치 기록</small><strong>${count}</strong><span>회 입력</span></div>
+  </div>
+  <div class="achievement-chart-heading"><strong>달성량 추이</strong><span>${rows.length<=7?'일별 기록':'기간별 합계'} · ${esc(unit)}</span></div>
+  <div class="achievement-chart" role="img" aria-label="${esc(`${unit} 달성량 변화, ${bins.map(b=>b.records?achievementNumberText(b.value):'미기록').join(', ')}`)}"><div class="achievement-chart-cols">${bars}</div></div>
+  <div class="achievement-chart-foot"><span><i class="ach-key" aria-hidden="true"></i> 입력한 달성량</span><span><i class="ach-key ach-key-empty" aria-hidden="true"></i> 미기록</span></div>
+  <div class="achievement-last">🕒 최근 기록 <strong>${esc(last?.day||'—')}</strong> · ${esc(valText(lastValue))}</div>${goalView}${change}`;
+ }
+ const unitSwitch=summaries.length>1?`<div class="achievement-unit-switch" aria-label="달성량 표시 단위">${summaries.map((g,i)=>`<button type="button" class="${achievementChartUnitIndex===i?'active':''}" aria-pressed="${achievementChartUnitIndex===i}" onclick="setAchievementChartUnit(${i})">${esc(g.unit)} <small>${g.items.length}건</small></button>`).join('')}</div>`:'';
+ return `<section class="achievement-analytics"><div class="achievement-topline"><h3>📝 실제 달성량</h3><span>최근 ${rows.length}일</span></div>
+  <p class="qa-subtext">완료 ${events.length}건 중 수치 기록 ${allNumerics.length}건 · 상세 메모 ${notes}건</p>
+  ${moodDisplay}${unitSwitch}${selected?detail:'<div class="achievement-empty">숫자 기록은 아직 없습니다. 아래 수행 이력에서 메모를 확인할 수 있습니다.</div>'}
+  <p class="achievement-stat-note">※ 기록하지 않은 날은 통계 평균에서 제외하며, 실제 0을 입력한 기록은 포함합니다. 서로 다른 단위는 합산하지 않습니다. 조회 기간은 위의 7일·30일·90일·1년 설정을 따릅니다.</p></section>`;
+}
 function renderQuestGrowthReport(){const cat=analyticsCatalog(),selected=analyticsSelected('stats'),av=analyticsPrefs();
  const controls=`<section class="section quest-analytics"><div class="section-title"><h2>📊 퀘스트 성장 리포트</h2></div><p class="qa-subtext">퀘스트별 수행 날짜, 달성률, 획득 포인트·XP와 연속 기록을 확인해요.</p>${analyticsQuestSelect('stats')}`;
  if(selected==='all')return `${controls}<div class="analytics-empty">위에서 퀘스트를 선택하면 성장 그래프와 날짜별 이력이 표시됩니다. 삭제한 퀘스트도 과거 기록이 남아 있다면 선택할 수 있어요.</div></section>`;
@@ -4738,9 +4969,9 @@ function renderQuestGrowthReport(){const cat=analyticsCatalog(),selected=analyti
  <div class="qa-metrics qa-secondary"><div><small>🔥 현재 연속</small><b>${isRegular?streak.latest+'일':'—'}</b></div><div><small>🏆 최장 연속</small><b>${isRegular?streak.max+'일':'—'}</b></div><div><small>🗓️ 예정일</small><b>${isRegular?scheduled+'일':'—'}</b></div><div><small>📚 전체 누적</small><b>${allDone}회</b></div></div>
  <div class="qa-chart-heading"><strong>📈 ${analyticsMetricName(av.metric)} 추이</strong><span>최근 ${av.range}일</span></div><div class="qa-range" aria-label="그래프 항목">${metricSwitch}</div>
  <div class="qa-bar-chart" role="img" aria-label="${analyticsMetricName(av.metric)} 기간별 그래프">${bins.map((b,i)=>`<div class="qa-col" title="${b.first}~${b.last}: ${b.value}${unit}"><span>${b.value?format(b.value):'&nbsp;'}</span><div class="qa-bar-bg"><div class="qa-bar" style="height:${b.value?Math.max(5,Math.round(b.value/max*100)):0}%"></div></div><small>${i%2===0||i===bins.length-1?b.last.slice(5).replace('-','/'):'&nbsp;'}</small></div>`).join('')}</div>
- ${isRegular?analyticsStreakGraph(selected,rows):''}
+ ${isRegular?analyticsStreakGraph(selected,rows):''}${renderAchievementAnalytics(selected,rows)}
  <p class="qa-subtext">${rate===null?'일회성·이벤트는 예정일 대비 달성률 대신 완료 횟수로 집계합니다.':`완료한 예정일 ${achieved}일 ÷ 예정일 ${scheduled}일 = ${rate===null?'—':rate+'%'}. 요일별 퀘스트는 지정 요일만 계산합니다.`} 과거 일정 변경 이력이 없으면 첫 수행일부터 계산하여 미확인 과거 날짜는 누락된 것으로 판단하지 않습니다.</p>
- <details class="qa-history"><summary>📜 날짜별 수행 이력 · 총 ${allDone}회 (최근 20건 표시)</summary>${recent.length?recent.map(c=>`<div class="qa-history-row"><strong>${esc(c.day)} ${esc(c.at?new Date(c.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'')}</strong><span>🪙 +${format(c.points||0)}P · ⭐ +${format(c.xpEarned||0)}XP</span><small>${c.mode==='normal'?'일반 완료':c.mode==='time'?'타임챌린지':'기록 완료'}${c.elapsedSeconds?' · '+questTimeFmt(c.elapsedSeconds):''}</small></div>`).join(''):'<div class="analytics-empty">아직 이 퀘스트의 수행 기록이 없어요.</div>'}</details>
+ <details class="qa-history"><summary>📜 날짜별 수행 이력 · 총 ${allDone}회 (최근 20건 표시)</summary>${recent.length?recent.map(c=>`<div class="qa-history-row"><strong>${esc(c.day)} ${esc(c.at?new Date(c.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'')}</strong><span>🪙 +${format(c.points||0)}P · ⭐ +${format(c.xpEarned||0)}XP</span><small>${c.mode==='normal'?'일반 완료':c.mode==='time'?'타임챌린지':'기록 완료'}${c.elapsedSeconds?' · '+questTimeFmt(c.elapsedSeconds):''}${c.recordBonus?' · 📝 기록 보너스 +20%':''}</small>${achievementSummary(c)?`<small>${esc(achievementSummary(c))}</small>`:''}${c.achievement?.note?`<small>${esc(c.achievement.note)}</small>`:''}<button class="achievement-edit-button" onclick="openAchievementEditor('${c.day}',decodeURIComponent('${encodeURIComponent(c.id)}'))">✎ 기록 수정</button></div>`).join(''):'<div class="analytics-empty">아직 이 퀘스트의 수행 기록이 없어요.</div>'}</details>
  <button class="tinybtn qa-open-cal" onclick="setAnalyticsQuest('calendar',decodeURIComponent('${encodeURIComponent(selected)}'));calendarMonth=day().slice(0,7);setScreen('calendar')">📅 이 퀘스트의 활동 달력 보기</button></section>`;
 }
 
@@ -4763,13 +4994,14 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
  <section class="settings-card"><h2>🎨 화면 스킨</h2><p>밝고 화사한 스킨과 기존의 진한 밤하늘 스킨을 선택하세요.</p><div class="appearance-options"><button type="button" class="appearance-btn ${settings.theme==='light'?'chosen':''}" onclick="setTheme('light')">☀️ 밝은 스킨</button><button type="button" class="appearance-btn ${settings.theme==='dark'?'chosen':''}" onclick="setTheme('dark')">🌙 밤하늘 스킨</button></div></section>
  <section class="settings-card"><h2>🔠 글자 크기</h2><p>아이들이 보기 편하게 전체 글자와 버튼 크기를 조절합니다.</p><div class="appearance-options"><button type="button" class="appearance-btn ${settings.fontSize==='small'?'chosen':''}" onclick="setFontSize('small')">작게</button><button type="button" class="appearance-btn ${settings.fontSize==='normal'?'chosen':''}" onclick="setFontSize('normal')">보통</button><button type="button" class="appearance-btn ${settings.fontSize==='large'?'chosen':''}" onclick="setFontSize('large')">크게</button><button type="button" class="appearance-btn ${settings.fontSize==='xlarge'?'chosen':''}" onclick="setFontSize('xlarge')">아주 크게</button></div></section>
  <section class="settings-card"><div class="setting-header"><div><h2>👆 좌우 스와이프로 탭 이동</h2><p>오늘 ↔ 뽑기 ↔ 도감 ↔ 훈련 ↔ 달력 ↔ 기록. 화면을 한 손가락으로 좌우로 밀면 옆 탭으로 이동합니다. 세로 스크롤, 카드 조작, 두 손가락 도감 확대는 그대로 이용할 수 있어요.</p></div><label class="toggle"><input type="checkbox" id="swipeTabsToggle" ${settings.swipeTabs?'checked':''} onchange="toggleSwipeTabs(this.checked)" aria-label="좌우 스와이프 탭 이동 켜기 끄기"><span class="toggle-track"></span></label></div><div class="setting-state">현재: <b>${settings.swipeTabs?'스와이프 ON':'스와이프 OFF'}</b> · 이 기기에 저장 · 기본값 ON</div></section>
+ <section class="settings-card"><div class="setting-header"><div><h2>📝 달성 기록 상세 작성 보너스</h2><p>퀘스트 완료 승인 시 상세 메모 10자 이상을 작성하면 계산된 최종 포인트·XP를 각각 +20% 추가 지급합니다. 숫자만 입력해도 기록은 되지만 보너스는 없습니다. 사후 수정은 보너스에 영향이 없습니다.</p></div><label class="toggle"><input type="checkbox" ${data.rules?.recordBonusEnabled?'checked':''} onchange="requestAchievementBonusToggle(this.checked)" aria-label="달성 기록 작성 보너스 ON OFF"><span class="toggle-track"></span></label></div><div class="setting-state">현재: <b>${data.rules?.recordBonusEnabled?'보너스 ON':'보너스 OFF'}</b> · 기본 OFF · 모든 트레이너 공통 관리자 설정 · 변경 시 관리자 PIN 필요</div></section>
  <section class="settings-card"><h2>🌙 대표 포켓몬 마무리 브리핑 시간</h2><p>지정한 시각 이후 오늘 탭에서 하루 한 번 자동 표시됩니다. 다시보기는 언제든 가능합니다.</p><form class="qform" onsubmit="saveEveningBriefingTime(event)"><label>저녁 브리핑 시각</label><input class="qentry" type="time" name="eveningBriefTime" required value="${esc(data.eveningTime||'21:00')}"><button class="tinybtn" type="submit">브리핑 시간 저장</button></form></section>
  <section class="settings-card"><h2>📂 전체 데이터 Save / Load</h2><p>JSON 하나에 모든 ID의 퀘스트·전체 달력 이력·포인트·레벨·도감·비밀번호와 관리자 공통 규칙을 포함합니다. 여러 JSON을 한꺼번에 선택해 병합할 수 있습니다.</p>${backupButtons()}<p class="backup-hint">자동 저장이 꺼져도 수동 Save / Load는 사용할 수 있습니다. 기기를 바꿀 때는 최신 JSON을 불러오세요.</p></section>
  <section class="settings-card"><h2>🔒 데이터 초기화</h2><p>처음부터 다시 시작하는 기능은 위험한 작업이므로 <b>관리자 모드</b> 안에서만 이용할 수 있습니다. 설정 메뉴에서는 초기화할 수 없습니다.</p></section>`}
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.56</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong>🪙 포인트 +10%</strong><strong>🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.57</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong>🪙 포인트 +10%</strong><strong>🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -5347,7 +5579,7 @@ function renderBuddyBriefing(){
  <button class="modal-btn secondary" type="button" onclick="closeBuddyBriefing()">${kind==='morning'?'오늘 모험 시작하기':'오늘의 마무리 확인'}</button><small class="briefing-once-note">자동 브리핑은 하루에 한 번 · 오늘 탭의 다시보기 버튼으로 언제든 열 수 있어요.</small></div></div>`;
 }
 
-// v1.7.56: One concise panel, two independent time-gated recommendations.
+// v1.7.57: One concise panel, two independent time-gated recommendations.
 function renderQuestRecommendationPanel(){
  const todayPick=dailyRecommendedQuest();
  const todayValid=!!todayPick&&!completedToday(todayPick.id);
@@ -5780,21 +6012,23 @@ if(modal.type==='questTimer'){
 }
 if(modal.type==='questVerifyNormal'){
  const q=data.quests.find(x=>x.id===modal.id);if(!q)return '';
- return `<div class="overlay"><div class="modal" role="dialog" aria-modal="true" aria-label="일반 퀘스트 완료 승인"><div class="spark">✅</div><h2>일반 완료 승인</h2><p class="modal-sub">${esc(q.title)} · 타이머 없이 기본 포인트를 받아요.</p><div class="verify-speed">✅ 일반 완료 <strong>×1.00</strong><small>시간 배수 없이 기본 랜덤 포인트 + ${format(questXp(q))}XP가 지급됩니다.</small></div><form class="qform" onsubmit="verifyQuest(event)"><label for="questUserCode">${esc(currentTrainer().name)} (@${esc(currentUserId)})의 퀘스트 완료 비밀번호</label><input id="questUserCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="8" required placeholder="퀘스트 완료 비밀번호 입력"><button class="modal-btn" type="submit">✅ 일반 완료 확정</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소 · 기록 유지</button></div></div>`;
+ return `<div class="overlay"><div class="modal" role="dialog" aria-modal="true" aria-label="일반 퀘스트 완료 승인"><div class="spark">✅</div><h2>일반 완료 승인</h2><p class="modal-sub">${esc(q.title)} · 타이머 없이 기본 포인트를 받아요.</p><div class="verify-speed">✅ 일반 완료 <strong>×1.00</strong><small>시간 배수 없이 기본 랜덤 포인트 + ${format(questXp(q))}XP가 지급됩니다.</small></div><form class="qform" onsubmit="verifyQuest(event)"><label for="questUserCode">${esc(currentTrainer().name)} (@${esc(currentUserId)})의 퀘스트 완료 비밀번호</label><input id="questUserCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="8" required placeholder="퀘스트 완료 비밀번호 입력">${achievementFields(q)}<button class="modal-btn" type="submit">✅ 일반 완료 확정</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소 · 기록 유지</button></div></div>`;
 }
-if(modal.type==='questVerify'){const q=data.quests.find(x=>x.id===modal.id),a=data.activeQuest;if(!q||!a)return '';const multiplier=questMultiplier(a);return `<div class="overlay"><div class="modal" role="dialog" aria-modal="true"><div class="spark">🔐</div><h2>퀘스트 완료 승인</h2><p class="modal-sub">${esc(q.title)} · 완료 시점의 보상을 확정했습니다.</p><div class="verify-speed">⚡ 확정 시간 보너스 <strong>×${multiplier.toFixed(2)}</strong><small>비밀번호 입력 시간은 보너스에 영향을 주지 않습니다.</small></div><form class="qform" onsubmit="verifyQuest(event)"><label for="questUserCode">${esc(currentTrainer().name)} (@${esc(currentUserId)})의 퀘스트 완료 비밀번호</label><input id="questUserCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="8" required placeholder="퀘스트 완료 비밀번호 입력"><button class="modal-btn" type="submit">✅ 완료 승인하고 보상 받기</button></form><button class="modal-btn secondary" onclick="backToTimer()">↩ 돌아가기 (타이머 재개)</button></div></div>`;}
+if(modal.type==='questVerify'){const q=data.quests.find(x=>x.id===modal.id),a=data.activeQuest;if(!q||!a)return '';const multiplier=questMultiplier(a);return `<div class="overlay"><div class="modal" role="dialog" aria-modal="true"><div class="spark">🔐</div><h2>퀘스트 완료 승인</h2><p class="modal-sub">${esc(q.title)} · 완료 시점의 보상을 확정했습니다.</p><div class="verify-speed">⚡ 확정 시간 보너스 <strong>×${multiplier.toFixed(2)}</strong><small>비밀번호 입력 시간은 보너스에 영향을 주지 않습니다.</small></div><form class="qform" onsubmit="verifyQuest(event)"><label for="questUserCode">${esc(currentTrainer().name)} (@${esc(currentUserId)})의 퀘스트 완료 비밀번호</label><input id="questUserCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="8" required placeholder="퀘스트 완료 비밀번호 입력">${achievementFields(q)}<button class="modal-btn" type="submit">✅ 완료 승인하고 보상 받기</button></form><button class="modal-btn secondary" onclick="backToTimer()">↩ 돌아가기 (타이머 재개)</button></div></div>`;}
+if(modal.type==='achievementBonusAuth')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" role="dialog" aria-modal="true" onclick="event.stopPropagation()"><h2>🔒 기록 보너스 설정</h2><p class="modal-sub">📝 상세 기록 +20% 보너스를 <b>${modal.wanted?'ON':'OFF'}</b>으로 바꿉니다. 이 설정은 전체 트레이너에 적용되며 과거 보상은 바뀌지 않습니다.</p><form class="qform" onsubmit="saveAchievementBonusToggle(event)"><label>관리자 비밀번호</label><input class="qentry" type="password" name="adminPin" required autocomplete="off" inputmode="numeric" maxlength="12"><button class="modal-btn" type="submit">설정 확정</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;
+if(modal.type==='achievementEdit'){const c=data.completions.find(c=>c.day===modal.key&&c.id===modal.id);if(!c)return '';return `<div class="overlay" onclick="modal=null;render()"><div class="modal achievement-edit-modal" role="dialog" aria-modal="true" onclick="event.stopPropagation()"><h2>📝 달성 기록 수정</h2><p class="modal-sub">${esc(c.day)} · ${esc(c.title)}</p><form class="qform" onsubmit="saveAchievementEdit(event)">${achievementFields({recordMode:modal.mode,recordUnit:modal.unit},c)}<p class="qform-note">포인트·XP는 완료 승인 시 한 번만 지급됩니다. 기록 수정으로 보너스가 재지급되지 않습니다.</p><button class="modal-btn" type="submit">💾 기록 저장</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;}
 if(modal.type==='categoryManager')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><h2>🎨 카테고리 관리</h2><p class="modal-sub">나만의 카테고리·이모지를 추가, 수정 또는 삭제할 수 있습니다.</p><div class="category-list">${data.categories.map(c=>`<div class="category-item"><span class="category-icon">${esc(c.emoji)}</span><span class="category-name">${esc(c.name)}</span><button class="quest-edit" onclick="categoryEditor(decodeURIComponent('${encodeURIComponent(c.name)}'))">✎ 수정</button><button class="tiny-danger" onclick="deleteCategory(decodeURIComponent('${encodeURIComponent(c.name)}'))" ${c.name==='기타'?'disabled':''}>삭제</button></div>`).join('')}</div><button class="modal-btn" onclick="categoryEditor()">＋ 카테고리 만들기</button><button class="modal-btn secondary" onclick="modal=null;render()">닫기</button></div></div>`;
 if(modal.type==='categoryEditor'){const oldName=modal.original||'',cat=data.categories.find(c=>c.name===oldName),value=cat?.emoji||'✨';return `<div class="overlay" onclick="modal={type:'categoryManager'};render()"><div class="modal" onclick="event.stopPropagation()"><h2>${cat?'카테고리 수정':'카테고리 추가'}</h2><form class="qform" onsubmit="saveCategory(event)"><label>카테고리 이름</label><input class="qentry" name="categoryName" type="text" maxlength="25" required value="${esc(oldName)}" placeholder="예: 과학, 피아노, 영어"><label>아이콘 선택</label><input id="categoryEmojiValue" type="hidden" name="categoryEmoji" value="${esc(value)}"><div class="emoji-grid">${EMOJI_CHOICES.map(em=>`<button class="emoji-pick ${em===value?'selected':''}" type="button" data-emoji="${esc(em)}" onclick="selectEmoji(this.dataset.emoji)" title="${esc(em)}">${esc(em)}</button>`).join('')}</div><button class="modal-btn" type="submit">카테고리 저장</button></form><button class="modal-btn secondary" onclick="modal={type:'categoryManager'};render()">취소</button></div></div>`;}
 if(modal.type==='rankGuide'){const current=lvl(),rank=growthStage(current);return `<div class="overlay" onclick="modal=null;render()"><div class="modal rank-guide-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="트레이너 직급 안내"><h2>🏅 트레이너 성장 도감</h2><p class="modal-sub">5레벨마다 새로운 칭호를 만나 보세요! 현재 <b>Lv.${current} ${rank.name}</b></p><div class="rank-guide-grid">${TRAINER_RANKS.map(([threshold,icon,title],idx)=>`<div class="rank-entry ${current>=threshold?'unlocked':''} ${rank.min===threshold?'current':''}"><span class="rank-entry-icon" aria-hidden="true">${icon}</span><span class="rank-entry-label"><strong>${esc(title)}</strong><small>Lv.${threshold} ${current>=threshold?'· 획득':'· 미달성'}</small></span>${rank.min===threshold?'<b class="rank-current-label">현재</b>':''}</div>`).join('')}</div><p class="rank-guide-note">Lv.200 이후에도 50레벨마다 명예 등급이 오릅니다. 직급은 성장 표시용이며 포인트·XP·등장 확률·포획 확률을 바꾸지 않습니다.</p><button class="modal-btn" onclick="modal=null;render()">닫기</button></div></div>`;}
 if(modal.type==='questEditAuth')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="퀘스트 편집 관리자 인증"><div class="spark">🔐</div><h2>관리자 확인</h2><p class="modal-sub">퀘스트 ${modal.id?'수정·삭제':'등록'}는 관리자 비밀번호 인증 후 가능합니다.</p><form class="qform" onsubmit="authorizeQuestEditor(event)"><label>관리자 비밀번호</label><input class="qentry" name="questAdminPin" type="password" inputmode="numeric" autocomplete="off" required placeholder="관리자 비밀번호 입력"><button class="modal-btn" type="submit">🔓 편집하기</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;
-if(modal.type==='questEditor'){const old=modal.id?data.quests.find(q=>q.id===modal.id):null;return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" style="max-height:92dvh;overflow-y:auto"><h2>${old?'퀘스트 수정':'퀘스트 추가'}</h2><p class="modal-sub">매일·요일별·일회성·이벤트 중 선택하세요. 기본값은 매일이며 이벤트는 발생 전 숨깁니다.</p><form class="qform" onsubmit="saveTask(event)"><label for="questName">퀘스트 이름</label><input class="qentry" id="questName" name="title" type="text" required maxlength="45" placeholder="예: 피아노 연습" value="${old?esc(old.title):''}"><label for="qCat">카테고리</label><select class="qentry" id="qCat" name="category">${data.categories.map(c=>`<option value="${esc(c.name)}" ${old?.category===c.name?'selected':''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select><div class="quest-calendar-editor"><label for="questTypeSelect">🗓️ 퀘스트 유형</label><select class="qentry" id="questTypeSelect" name="questType" onchange="updateQuestTypeFields(this)">${[['daily','🔁 매일 (기본)'],['weekly','📅 요일별 반복'],['once','🎯 일회성'],['event','✨ 이벤트 · 발생 전 숨김'],['reserved','📅 예약 · 시작일~종료일']].map(([v,t])=>`<option value="${v}" ${questType(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="questWeeklyEditor" ${questType(old)==='weekly'?'':'hidden'}><p class="qform-note">반복할 요일을 하나 이상 선택하세요.</p><div class="quest-weekday-picks">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" name="weekdays" value="${d}" ${questWeekdays(old).includes(d)?'checked':''}>${WEEKDAY_LABELS[d]}</label>`).join('')}</div></div><div id="questEventEditor" ${questType(old)==='event'?'':'hidden'}><label for="eventChanceInput">✨ 일반 퀘스트 완료 시 이벤트 발생 확률 (%)</label><input class="qentry" id="eventChanceInput" name="eventChance" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="${questChance(old)}"><p class="qform-note">각 등록 이벤트를 독립 판정하고, 동시에 당첨되면 하나만 랜덤 선택합니다. 보유 도감이 있어야 발생합니다. 하루 한 건만 활성화하며 22:00에 만료합니다.</p></div><div id="questReservedEditor" ${questType(old)==='reserved'?'':'hidden'}><p class="qform-note">📅 지정한 기간에만 매일 표시되며 예약 카테고리가 자동 적용됩니다.</p><div class="qform-row"><div><label>시작일</label><input class="qentry" name="startDate" type="date" value="${esc(old?.startDate||day())}"></div><div><label>종료일</label><input class="qentry" name="endDate" type="date" value="${esc(old?.endDate||day())}"></div></div></div></div><label for="qGoal">목표 (자유 입력)</label><input class="qentry" id="qGoal" name="goal" type="text" maxlength="90" required placeholder="예: 30분, 20문제, 한자 5자 암기" value="${esc(old?.goal||((old?.mins||'')?old.mins+'분':''))}"><label for="limitMinutes">⏳ 시간 제한 (분, 기본 10분)</label><input class="qentry" id="limitMinutes" name="limitMinutes" type="number" inputmode="numeric" min="1" max="240" step="1" required value="${old?.limitMinutes||10}"><label for="rewardMode">🎁 랜덤 기본 포인트</label><select class="qentry" id="rewardMode" name="rewardMode" onchange="document.getElementById('customRewardInputs').hidden=this.value!=='custom'"><option value="default" ${!old?.rewardOverride?'selected':''}>관리자 기본값 적용 (${data.rules.pointMin}~${data.rules.pointMax}P)</option><option value="custom" ${old?.rewardOverride?'selected':''}>이 퀘스트만 별도 범위 지정</option></select><div id="customRewardInputs" class="quest-reward-editor" ${old?.rewardOverride?'':'hidden'}><label>최소 포인트<input class="qentry" name="rewardMin" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.min??data.rules.pointMin}"></label><label>최대 포인트<input class="qentry" name="rewardMax" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.max??data.rules.pointMax}"></label><label>지급 간격<select class="qentry" name="rewardStep">${REWARD_STEPS.map(step=>`<option value="${step}" ${step===(old?.rewardOverride?.step??data.rules.pointStep)?'selected':''}>${step}P</option>`).join('')}</select></label><p class="qform-note">범위의 각 포인트는 동일한 확률로 뽑힙니다. 시간 배수는 뽑힌 기본 포인트에 최대 ×3 적용됩니다.</p></div><label for="xpMode">🌟 퀘스트 완료 경험치 (XP)</label><select class="qentry" id="xpMode" name="xpMode" onchange="document.getElementById('customXpInputs').hidden=this.value!=='custom'"><option value="default" ${old?.xpOverride==null?'selected':''}>관리자 기본값 상속 (${format(data.rules.defaultXp)}XP)</option><option value="custom" ${old?.xpOverride!=null?'selected':''}>이 퀘스트만 별도 XP 지정</option></select><div class="quest-xp-editor" id="customXpInputs" ${old?.xpOverride!=null?'':'hidden'}><label>획득 경험치<input class="qentry" type="number" name="questXp" inputmode="numeric" min="0" max="1000" step="1" value="${old?.xpOverride??data.rules.defaultXp}"></label><p class="qform-note">일반 완료와 타임챌린지에서 동일하게 지급됩니다. 시간 ×3 보너스는 포인트에만 적용됩니다.</p></div><p class="qform-note">🔒 등록·수정·삭제는 관리자 인증 필요 · 완료는 퀘스트 완료 비밀번호 필요</p><button class="modal-btn" type="submit">${old?'변경사항 저장':'퀘스트 등록'}</button></form>${old?`<button class="modal-btn secondary" onclick="removeTask('${old.id}')">퀘스트 삭제</button>`:''}<button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`}
+if(modal.type==='questEditor'){const old=modal.id?data.quests.find(q=>q.id===modal.id):null;return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" style="max-height:92dvh;overflow-y:auto"><h2>${old?'퀘스트 수정':'퀘스트 추가'}</h2><p class="modal-sub">매일·요일별·일회성·이벤트 중 선택하세요. 기본값은 매일이며 이벤트는 발생 전 숨깁니다.</p><form class="qform" onsubmit="saveTask(event)"><label for="questName">퀘스트 이름</label><input class="qentry" id="questName" name="title" type="text" required maxlength="45" placeholder="예: 피아노 연습" value="${old?esc(old.title):''}"><label for="qCat">카테고리</label><select class="qentry" id="qCat" name="category">${data.categories.map(c=>`<option value="${esc(c.name)}" ${old?.category===c.name?'selected':''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select><div class="quest-calendar-editor"><label for="questTypeSelect">🗓️ 퀘스트 유형</label><select class="qentry" id="questTypeSelect" name="questType" onchange="updateQuestTypeFields(this)">${[['daily','🔁 매일 (기본)'],['weekly','📅 요일별 반복'],['once','🎯 일회성'],['event','✨ 이벤트 · 발생 전 숨김'],['reserved','📅 예약 · 시작일~종료일']].map(([v,t])=>`<option value="${v}" ${questType(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="questWeeklyEditor" ${questType(old)==='weekly'?'':'hidden'}><p class="qform-note">반복할 요일을 하나 이상 선택하세요.</p><div class="quest-weekday-picks">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" name="weekdays" value="${d}" ${questWeekdays(old).includes(d)?'checked':''}>${WEEKDAY_LABELS[d]}</label>`).join('')}</div></div><div id="questEventEditor" ${questType(old)==='event'?'':'hidden'}><label for="eventChanceInput">✨ 일반 퀘스트 완료 시 이벤트 발생 확률 (%)</label><input class="qentry" id="eventChanceInput" name="eventChance" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="${questChance(old)}"><p class="qform-note">각 등록 이벤트를 독립 판정하고, 동시에 당첨되면 하나만 랜덤 선택합니다. 보유 도감이 있어야 발생합니다. 하루 한 건만 활성화하며 22:00에 만료합니다.</p></div><div id="questReservedEditor" ${questType(old)==='reserved'?'':'hidden'}><p class="qform-note">📅 지정한 기간에만 매일 표시되며 예약 카테고리가 자동 적용됩니다.</p><div class="qform-row"><div><label>시작일</label><input class="qentry" name="startDate" type="date" value="${esc(old?.startDate||day())}"></div><div><label>종료일</label><input class="qentry" name="endDate" type="date" value="${esc(old?.endDate||day())}"></div></div></div></div><label for="qGoal">목표 (자유 입력)</label><input class="qentry" id="qGoal" name="goal" type="text" maxlength="90" required placeholder="예: 30분, 20문제, 한자 5자 암기" value="${esc(old?.goal||((old?.mins||'')?old.mins+'분':''))}"><div class="achievement-quest-config"><label for="recordModeSelect">📝 완료 시 달성 기록 유형</label><select class="qentry" id="recordModeSelect" name="recordMode" onchange="document.getElementById('recordUnitSetup').hidden=this.value!=='number'">${[['none','사용 안 함'],['memo','상세 메모만'],['number','달성량(숫자·단위) + 메모 (추천)']].map(([v,t])=>`<option value="${v}" ${achievementMode(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="recordUnitSetup" ${achievementMode(old)==='number'?'':'hidden'}><label>기본 측정 단위<input class="qentry" name="recordUnit" maxlength="12" placeholder="예: 회, 분, 페이지, km" value="${esc(achievementUnit(old))}"></label></div><p class="qform-note">기록은 언제나 선택 사항이며, 상세 내용을 적지 않아도 퀘스트를 완료할 수 있습니다.</p></div><label for="limitMinutes">⏳ 시간 제한 (분, 기본 10분)</label><input class="qentry" id="limitMinutes" name="limitMinutes" type="number" inputmode="numeric" min="1" max="240" step="1" required value="${old?.limitMinutes||10}"><label for="rewardMode">🎁 랜덤 기본 포인트</label><select class="qentry" id="rewardMode" name="rewardMode" onchange="document.getElementById('customRewardInputs').hidden=this.value!=='custom'"><option value="default" ${!old?.rewardOverride?'selected':''}>관리자 기본값 적용 (${data.rules.pointMin}~${data.rules.pointMax}P)</option><option value="custom" ${old?.rewardOverride?'selected':''}>이 퀘스트만 별도 범위 지정</option></select><div id="customRewardInputs" class="quest-reward-editor" ${old?.rewardOverride?'':'hidden'}><label>최소 포인트<input class="qentry" name="rewardMin" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.min??data.rules.pointMin}"></label><label>최대 포인트<input class="qentry" name="rewardMax" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.max??data.rules.pointMax}"></label><label>지급 간격<select class="qentry" name="rewardStep">${REWARD_STEPS.map(step=>`<option value="${step}" ${step===(old?.rewardOverride?.step??data.rules.pointStep)?'selected':''}>${step}P</option>`).join('')}</select></label><p class="qform-note">범위의 각 포인트는 동일한 확률로 뽑힙니다. 시간 배수는 뽑힌 기본 포인트에 최대 ×3 적용됩니다.</p></div><label for="xpMode">🌟 퀘스트 완료 경험치 (XP)</label><select class="qentry" id="xpMode" name="xpMode" onchange="document.getElementById('customXpInputs').hidden=this.value!=='custom'"><option value="default" ${old?.xpOverride==null?'selected':''}>관리자 기본값 상속 (${format(data.rules.defaultXp)}XP)</option><option value="custom" ${old?.xpOverride!=null?'selected':''}>이 퀘스트만 별도 XP 지정</option></select><div class="quest-xp-editor" id="customXpInputs" ${old?.xpOverride!=null?'':'hidden'}><label>획득 경험치<input class="qentry" type="number" name="questXp" inputmode="numeric" min="0" max="1000" step="1" value="${old?.xpOverride??data.rules.defaultXp}"></label><p class="qform-note">일반 완료와 타임챌린지에서 동일하게 지급됩니다. 시간 ×3 보너스는 포인트에만 적용됩니다.</p></div><p class="qform-note">🔒 등록·수정·삭제는 관리자 인증 필요 · 완료는 퀘스트 완료 비밀번호 필요</p><button class="modal-btn" type="submit">${old?'변경사항 저장':'퀘스트 등록'}</button></form>${old?`<button class="modal-btn secondary" onclick="removeTask('${old.id}')">퀘스트 삭제</button>`:''}<button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`}
 
 if(modal.type==='quest'){
  const baseP=Number(modal.basePts??modal.pts),baseX=Number(modal.xpBase??modal.xpEarned??25);
  const fever=modal.feverActive===true;
  const stages=rewardStages();
  const labels=stages.map((st,i)=>{const prev=stages[Math.max(0,i-1)],dp=i?st.p-prev.p:0,dx=i?st.x-prev.x:0;return `<div class="reward-stage ${i===0?'is-active':''}" data-reward-stage="${i}"><div class="reward-stage-title">${st.title}</div><div class="reward-stage-desc">${st.desc}</div><div class="reward-stage-value"><span>${i===0?'기본':i===stages.length-1?'최종':st.title.includes('야간 추천')?'야간':st.title.includes('추천')?'추천':st.title.includes('훈장')?'훈장':st.title.includes('FEVER')?'Fever':i===1?'시간':'연속'} · <b>${format(st.p)}P</b> / <b>${format(st.x)}XP</b></span><span class="reward-delta" data-active="${dp>0||dx>0}">${dp>0?`🪙 +${format(dp)}P`:''}${dp>0&&dx>0?' · ':''}${dx>0?`🌟 +${format(dx)}XP`:''}</span></div></div>`}).join('');
- return `<div class="overlay" onclick="eventCloseReward()"><div class="modal reward-reveal-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="퀘스트 단계별 보상"><h2>${modal.eventPokemonId?'🌟 스페셜 이벤트 성공!':'🎉 퀘스트 완료!'}</h2>${modal.eventPokemonId?`<div class="event-victory"><span>✨ ✨ ✨</span>${art(modal.eventPokemonId)}<strong>${esc(name(modal.eventPokemonId))}가 축하해요!</strong></div>`:''}<p class="modal-sub">${esc(modal.title)} · ${esc(currentTrainer().name)}님의 노력 보상</p>${trainingQuestRewardMarkup()}<div class="reward-live-score" aria-live="off"><div class="reward-score-piece"><small>🪙 포인트</small><strong id="rewardPointsCount">${format(baseP)}</strong><span>P</span></div><div class="reward-score-piece"><small>🌟 경험치</small><strong id="rewardXpCount">${format(baseX)}</strong><span>XP</span></div></div><div class="reward-win-announce" id="rewardWinAnnounce" aria-live="off"></div><div class="reward-current-explain" id="rewardCurrentReason">🎯 기본 보상부터 출발!</div><div class="reward-stage-list">${labels}</div><div class="reward-final-note" id="rewardFinalNote" hidden>🏆 실제 지급 완료! 포인트 ${format(modal.pts)}P · 경험치 ${format(modal.xpEarned)}XP</div>${rewardGrowthMarkup(modal.growth)}<p class="reward-small-note">${modal.mode==='normal'?'✅ 일반 완료':`⏱ 실제 활동 ${questTimeFmt(modal.elapsedSeconds||0)}`} · 지급은 이미 한 번만 확정되어 저장됐어요.</p><button type="button" class="modal-btn secondary" id="rewardSkipButton" onclick="finishRewardAnimation()">⏭ 연출 건너뛰기</button>
+ return `<div class="overlay" onclick="eventCloseReward()"><div class="modal reward-reveal-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="퀘스트 단계별 보상"><h2>${modal.eventPokemonId?'🌟 스페셜 이벤트 성공!':'🎉 퀘스트 완료!'}</h2>${modal.eventPokemonId?`<div class="event-victory"><span>✨ ✨ ✨</span>${art(modal.eventPokemonId)}<strong>${esc(name(modal.eventPokemonId))}가 축하해요!</strong></div>`:''}<p class="modal-sub">${esc(modal.title)} · ${esc(currentTrainer().name)}님의 노력 보상</p>${trainingQuestRewardMarkup()}<div class="reward-live-score" aria-live="off"><div class="reward-score-piece"><small>🪙 포인트</small><strong id="rewardPointsCount">${format(baseP)}</strong><span>P</span></div><div class="reward-score-piece"><small>🌟 경험치</small><strong id="rewardXpCount">${format(baseX)}</strong><span>XP</span></div></div><div class="reward-win-announce" id="rewardWinAnnounce" aria-live="off"></div><div class="reward-current-explain" id="rewardCurrentReason">🎯 기본 보상부터 출발!</div><div class="reward-stage-list">${labels}</div><div class="reward-final-note" id="rewardFinalNote" hidden>🏆 실제 지급 완료! 포인트 ${format(modal.pts)}P · 경험치 ${format(modal.xpEarned)}XP</div>${rewardGrowthMarkup(modal.growth)}${achievementSummary({achievement:modal.achievement})||modal.achievement?.note?`<div class="achievement-reward-summary"><b>📝 오늘의 달성 기록</b><span>${esc(achievementSummary({achievement:modal.achievement}))}</span>${modal.achievement?.note?`<small>${esc(modal.achievement.note)}</small>`:''}${modal.recordBonus?`<strong>🎁 기록 보너스 +${format(modal.recordBonusPoints)}P · +${format(modal.recordBonusXp)}XP</strong>`:''}</div>`:''}<p class="reward-small-note">${modal.mode==='normal'?'✅ 일반 완료':`⏱ 실제 활동 ${questTimeFmt(modal.elapsedSeconds||0)}`} · 지급은 이미 한 번만 확정되어 저장됐어요.</p><button type="button" class="modal-btn secondary" id="rewardSkipButton" onclick="finishRewardAnimation()">⏭ 연출 건너뛰기</button>
 
  ${(modal.newlyEarnedHonor||[]).length?`<div class="complete-bonus">🏅 새 훈장 획득! ${modal.newlyEarnedHonor.map(esc).join(' · ')}<br>한정 부스트는 다음 퀘스트부터 적용됩니다.</div>`:''}
  ${modal.bonus!==0?`<div class="complete-bonus">🏆 오늘의 전체 퀘스트 달성! +${format(modal.bonus)}P (FEVER 미적용)</div>`:''}
@@ -5998,7 +6232,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.56</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.57</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
