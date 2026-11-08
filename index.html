@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.58.2 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.59 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -3058,6 +3058,52 @@ html[data-theme="light"] .dex-trivia-region,html[data-theme="light"] .dex-trivia
 html[data-theme="light"] .dex-trivia-foot{border-top-color:#cadee8}
 html[data-theme="light"] .dex-trivia-foot a{color:#1764a1}
 @media(max-width:350px){.dex-trivia{padding:10px}.dex-trivia-foot{align-items:flex-start}.dex-trivia-region{font-size:9px}}
+
+/* v1.7.59 — unified, touch-friendly charts in the Records tab. */
+.pr-chart{--pr-axis:#c4d8ed;--pr-chart-line:#486584;--pr-chart-bg:#122c4b;--pr-series:#57d5ba;--pr-missing:#7c95ab;max-width:100%;min-width:0;margin:12px 0 16px;padding:12px 10px 10px;border:1px solid #496789;border-radius:14px;background:var(--pr-chart-bg);box-sizing:border-box;overflow:hidden;color:#edf6ff}
+.pr-chart *{box-sizing:border-box}
+.pr-chart-heading{display:flex;gap:8px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:8px}
+.pr-chart-heading strong{font-size:13px;line-height:1.45}
+.pr-chart-heading small{font-size:11px;color:var(--pr-axis);line-height:1.5;display:block;margin-top:2px}
+.pr-chart-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:7px 0 9px;min-width:0}
+.pr-chart-toolbar label{display:flex;gap:5px;align-items:center;color:var(--pr-axis);font-size:11px;min-width:0}
+.pr-chart button,.pr-chart select{background:#284766;color:#f4f9ff;border:1px solid #7994af;border-radius:9px;min-height:37px;font-size:12px;font-weight:750;cursor:pointer;padding:6px 9px}
+.pr-chart button:disabled{opacity:.36;cursor:default}
+.pr-chart button:focus-visible,.pr-chart select:focus-visible,.pr-chart svg [tabindex]:focus-visible{outline:3px solid #ffd66a;outline-offset:2px}
+.pr-chart-select{max-width:110px;min-width:90px;width:100%;flex:1}
+.pr-chart-tool-group{display:flex;align-items:center;gap:4px;min-width:0}
+.pr-chart-tool-group button{min-width:36px;min-height:37px;padding:6px 8px}
+.pr-chart-tool-label{font-size:11px;color:var(--pr-axis);white-space:nowrap;min-width:53px;text-align:center;font-variant-numeric:tabular-nums}
+.pr-chart-advanced{border-top:1px solid #496789;margin:6px 0 8px;padding:6px 0 0}
+.pr-chart-advanced summary{font-size:11px;color:var(--pr-axis);cursor:pointer;min-height:30px;padding:6px 0;user-select:none}
+.pr-chart-advanced .pr-chart-toolbar{margin:2px 0 5px}
+.pr-chart-plot{width:100%;min-width:0;max-width:720px;margin:0 auto}
+.pr-chart-svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.pr-chart-axis{fill:var(--pr-axis);font-size:12px;font-weight:650;font-variant-numeric:tabular-nums}
+.pr-chart-tick{fill:var(--pr-axis);font-size:11.5px;font-weight:600}
+.pr-chart-grid{stroke:var(--pr-chart-line);stroke-width:.75;opacity:.52}
+.pr-chart-zero{stroke:var(--pr-axis);stroke-width:1.3;opacity:.82}
+.pr-chart-bar{fill:var(--pr-series)}
+.pr-chart-line{fill:none;stroke:var(--pr-series);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.pr-chart-area{fill:var(--pr-series);opacity:.16}
+.pr-chart-dot{fill:var(--pr-series);stroke:var(--pr-chart-bg);stroke-width:1.4}
+.pr-chart-null{fill:var(--pr-missing);opacity:.8}
+.pr-chart-hit{fill:transparent;cursor:pointer;outline:none;stroke:none}
+.pr-chart-hit:focus{fill:rgba(102,175,214,.10)}
+.pr-chart-hit.is-selected{fill:rgba(102,175,214,.14)}
+.pr-chart-detail{min-height:40px;display:flex;align-items:center;padding:8px 10px;background:rgba(119,162,197,.12);border-radius:8px;margin-top:6px;font-size:12px;font-variant-numeric:tabular-nums;line-height:1.5;overflow-wrap:anywhere;color:#eef9ff}
+.pr-chart-legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:10.5px;color:var(--pr-axis);margin-top:6px;line-height:1.5}
+.pr-chart-legend i{display:inline-block;width:9px;height:9px;margin-right:3px;border-radius:2px;vertical-align:middle;background:var(--pr-series)}
+.pr-chart-legend .pr-legend-null{background:var(--pr-missing);opacity:.6}
+.pr-chart-legend .pr-legend-zero{background:transparent;border:2px solid var(--pr-series);border-radius:50%}
+.pr-chart-caption{font-size:10.5px;color:var(--pr-axis);line-height:1.5;margin-top:5px;overflow-wrap:anywhere}
+html[data-theme="light"] .pr-chart{--pr-axis:#385c78;--pr-chart-line:#a6bfd4;--pr-chart-bg:#f0f7fd;--pr-series:#16836e;--pr-missing:#8b9eae;background:#f0f7fd;border-color:#bbd5e8;color:#1b3e5b}
+html[data-theme="light"] .pr-chart button,html[data-theme="light"] .pr-chart select{background:#fff;color:#244966;border-color:#aec9dd}
+html[data-theme="light"] .pr-chart-detail{background:#dcebf8;color:#244966}
+html[data-theme="light"] .pr-chart-advanced{border-color:#c7dceb}
+@media(max-width:360px){.pr-chart{padding:9px 6px 8px}.pr-chart-toolbar{gap:4px}.pr-chart button,.pr-chart select{font-size:11px;padding:5px 7px}.pr-chart-tool-group button{min-width:33px}.pr-chart-select{min-width:82px;max-width:96px}.pr-chart-tool-label{font-size:10px;min-width:47px}.pr-chart-axis{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.pr-chart *{transition:none!important}}
+
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -3189,7 +3235,7 @@ function updateFeverVisual(){
 const DEFAULT_TASKS=[]; // 퀘스트는 이용자가 직접 등록: 추천/랜덤 자동 생성 없음
 const KEY='poke_routine_v1_20261030'; // v0.9 보존 (마이그레이션 전용)
 const MULTI_KEY='pokeroutine_multi_v10',UNDO_KEY='pokeroutine_merge_undo_v10';
-const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),recommendedQuest:null,statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false},activeEvent:null,eventHistory:[],quests:[],completions:[],owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
+const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),recommendedQuest:null,statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{}},activeEvent:null,eventHistory:[],quests:[],completions:[],owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
 let settings={autoSave:true,theme:'light',fontSize:'large',swipeTabs:true};
 try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark'].includes(p?.theme))settings.theme=p.theme;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
@@ -3643,7 +3689,7 @@ function cleanBackup(v){
  safe.activeEvent=cleanActiveEvent(v.activeEvent);safe.eventHistory=cleanEventHistory(v.eventHistory);
  safe.statsOpen={draws:v.statsOpen?.draws===true,questEvents:v.statsOpen?.questEvents===true};
  const av=v.analyticsView||{};
- safe.analyticsView={calendarQuest:typeof av.calendarQuest==='string'?av.calendarQuest.slice(0,100):'all',statsQuest:typeof av.statsQuest==='string'?av.statsQuest.slice(0,100):'all',range:[7,30,90,365].includes(Number(av.range))?Number(av.range):30,metric:['completions','points','xp'].includes(av.metric)?av.metric:'completions',showArchived:av.showArchived===true,showArchivedStats:av.showArchivedStats===true};
+ safe.analyticsView={calendarQuest:typeof av.calendarQuest==='string'?av.calendarQuest.slice(0,100):'all',statsQuest:typeof av.statsQuest==='string'?av.statsQuest.slice(0,100):'all',range:[7,30,90,365].includes(Number(av.range))?Number(av.range):30,metric:['completions','points','xp'].includes(av.metric)?av.metric:'completions',showArchived:av.showArchived===true,showArchivedStats:av.showArchivedStats===true,chartOptions:sanitizePrChartOptions(av.chartOptions)};
  // v1.7.4 migration: old profiles only had totalXp, which encoded 120 XP per level.
  // Keep the existing level, unspent displayed XP and already received gifts; do not replay any level-up.
  const legacyLevel=1+Math.floor(safe.totalXp/120);
@@ -3794,7 +3840,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.58.2</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.59</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -4665,7 +4711,8 @@ const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
 const ADMIN_VERSION_NOTES=[
- ['1.7.58.2','밝은 테마 지역 지도 안내문 글자색 대비 수정(성도지방을 만나려면·진행도·수집 안내).'],
+ ['1.7.59','기록 탭 그래프 공통 개선: X/Y축 숫자·날짜, 값 터치, 확대·축소·기간 이동, 막대/선/영역, 그리드/집계 설정. 미기록(—)과 실제 0 구분 및 반응형 화면 개선.'],
+ ['1.7.59','밝은 테마 지역 지도 안내문 글자색 대비 수정(성도지방을 만나려면·진행도·수집 안내).'],
  ['1.7.58.1','성도지방 열림 기준 관리자 설정(기본 100종 · 1~151종), 트레이너별 열림 영구 유지, 기존 1.7.58에서 이미 열린 지역 보존, JSON 백업·복원 연동.'],
  ['1.7.58','관동 76종 수집 시 성도지방 열림, 2세대 100종 확장, 지역 지도·도감·지역별 통계·기념 훈장 4종, 251종 도감 상식. 기존 포획/선물/훈련/백업 연동.'],
  ['1.7.56','퀘스트 추천 통합 박스, 달력 미수행/추천 부스트 이력, 기록 탭 과거 퀘스트 체크, 전체 퀘스트 관리 정렬 개선.'],
@@ -4930,7 +4977,7 @@ function setAnalyticsQuest(which,id){if(!['calendar','stats'].includes(which))re
  if(which==='calendar'&&id!=='all'&&!data.quests.some(q=>q.id===id))analyticsPrefs().showArchived=true;
  analyticsPrefs()[which==='calendar'?'calendarQuest':'statsQuest']=id;save();render();
 }
-function setAnalyticsRange(value){const n=Number(value);if(![7,30,90,365].includes(n))return;analyticsPrefs().range=n;save();render()}
+function setAnalyticsRange(value){const n=Number(value);if(![7,30,90,365].includes(n))return;analyticsPrefs().range=n;for(const k of ['quest-completions','quest-points','quest-xp','streak','amount']){const c=prChartOptions()[k];if(c){c.span=n;c.offset=0}}save();render()}
 function setAnalyticsMetric(metric){if(!['completions','points','xp'].includes(metric))return;analyticsPrefs().metric=metric;save();render()}
 function analyticsDateShift(key,delta){const d=questDateObj(key);d.setDate(d.getDate()+delta);
  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
@@ -4990,6 +5037,79 @@ function questStreakHistory(id){
  }
  return {max,latest};
 }
+
+// V1.7.59: common records-chart rendering and data contract.
+// value:null = no observable record / no scheduled activity; value:0 = a known zero.
+const PR_CHART_KEYS=['weekly','quest-completions','quest-points','quest-xp','streak','amount'];
+const PR_CHART_SPANS=[7,14,30,90,365];
+let prChartDetails={};
+function sanitizePrChartOptions(raw){
+ const out={};if(!raw||typeof raw!=='object'||Array.isArray(raw))return out;
+ for(const id of PR_CHART_KEYS){const a=raw[id];if(!a||typeof a!=='object'||Array.isArray(a))continue;
+  out[id]={kind:['bar','line','area'].includes(a.kind)?a.kind:'bar',grid:['off','horizontal','both'].includes(a.grid)?a.grid:'horizontal',group:['auto','day','week','month'].includes(a.group)?a.group:'auto',span:PR_CHART_SPANS.includes(Number(a.span))?Number(a.span):null,offset:Math.max(0,Math.min(365,Math.floor(Number(a.offset)||0)))};
+ }return out;
+}
+function prChartOptions(){const av=analyticsPrefs();if(!av.chartOptions||typeof av.chartOptions!=='object')av.chartOptions={};return av.chartOptions}
+function prChartState(id,defaultSpan){const all=prChartOptions();if(!all[id])all[id]={kind:id==='streak'?'line':id==='amount'?'bar':'bar',grid:'horizontal',group:'auto',span:defaultSpan,offset:0};return all[id]}
+function prChartSet(id,key,value){if(!PR_CHART_KEYS.includes(id))return;const a=prChartState(id,id==='weekly'?7:analyticsPrefs().range);
+ if(key==='kind'&&['bar','line','area'].includes(value))a.kind=value;
+ else if(key==='grid'&&['off','horizontal','both'].includes(value))a.grid=value;
+ else if(key==='group'&&['auto','day','week','month'].includes(value))a.group=value;
+ else return;save();render();
+}
+function prChartMove(id,direction){if(!PR_CHART_KEYS.includes(id))return;const a=prChartState(id,id==='weekly'?7:analyticsPrefs().range);
+ const span=PR_CHART_SPANS.includes(Number(a.span))?Number(a.span):30;
+ a.offset=Math.max(0,Math.min(365-span,Number(a.offset||0)+(direction<0?Math.max(1,Math.floor(span/2)):-Math.max(1,Math.floor(span/2)))));save();render();
+}
+function prChartZoom(id,dir){if(!PR_CHART_KEYS.includes(id))return;const a=prChartState(id,id==='weekly'?7:analyticsPrefs().range);
+ const n=PR_CHART_SPANS.indexOf(Number(a.span));const i=Math.max(0,Math.min(PR_CHART_SPANS.length-1,(n<0?2:n)+(dir>0?-1:1)));
+ a.span=PR_CHART_SPANS[i];a.offset=Math.min(Number(a.offset)||0,365-a.span);save();render();
+}
+function prChartReset(id){if(!PR_CHART_KEYS.includes(id))return;delete prChartOptions()[id];save();render()}
+function prChartSelect(id,idx){const d=prChartDetails[id]?.[idx],el=document.getElementById('pr-chart-detail-'+id);if(!d||!el)return;
+ el.textContent=d;const svg=el.closest('.pr-chart')?.querySelector('.pr-chart-svg');
+ svg?.querySelectorAll('.pr-chart-hit').forEach((n,i)=>n.classList.toggle('is-selected',i===idx));
+}
+function prDateLabel(day,monthly){if(!day)return '—';return monthly?`${Number(day.slice(0,4))}년 ${Number(day.slice(5,7))}월`:`${Number(day.slice(5,7))}/${Number(day.slice(8,10))}`}
+function prChartBucketKey(day,mode){if(mode==='month')return day.slice(0,7);if(mode==='week'){const d=questDateObj(day);const delta=(d.getDay()+6)%7;d.setDate(d.getDate()-delta);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}return day;}
+function prChartGroup(values,group,aggregate){const out=[];for(const r of values){const key=prChartBucketKey(r.day,group);let b=out[out.length-1];
+ if(!b||b.key!==key){b={key,first:r.day,last:r.day,known:0,missing:0,notScheduled:0,value:null,count:0};out.push(b)}b.last=r.day;
+ if(r.value===null||r.value===undefined||!Number.isFinite(Number(r.value))){if(r.reason==='not-scheduled')b.notScheduled++;else b.missing++;continue}
+ const x=Number(r.value);b.known++;b.count++;if(aggregate==='last')b.value=x;else b.value=(b.value===null?0:b.value)+x;
+ }return out;}
+function prChartNum(n){return Number(n).toLocaleString('ko-KR',{maximumFractionDigits:2})}
+function prChartNice(max,integer){if(max<=0)return {step:1,top:4};if(integer){const step=Math.max(1,Math.ceil(max/4));return {step,top:step*4}}
+ const raw=max/4,pow=Math.pow(10,Math.floor(Math.log10(raw)));const step=[1,2,2.5,5,10].map(x=>x*pow).find(x=>x>=raw)||10*pow;
+ return {step,top:step*4};
+}
+function prChartPanel(id,title,rows,unit,defaultSpan,aggregate='sum',extra=''){
+ const state=prChartState(id,defaultSpan),span=PR_CHART_SPANS.includes(Number(state.span))?state.span:defaultSpan;
+ const off=Math.min(Math.max(0,Number(state.offset)||0),Math.max(0,rows.length-span));
+ const end=rows.length-off,start=Math.max(0,end-span),view=rows.slice(start,end);
+ const group=state.group==='auto'?(span>150?'month':span>35?'week':'day'):state.group;
+ const bins=prChartGroup(view,group,aggregate),largest=Math.max(0,...bins.map(b=>b.value??0));
+ const y=prChartNice(largest,unit==='회'||unit==='일'),left=56,right=376,top=27,bottom=190,width=right-left,height=bottom-top;
+ const xFor=i=>left+(i+.5)*width/Math.max(1,bins.length),yFor=v=>bottom-Math.max(0,v)/y.top*height;
+ const details=bins.map(b=>`${b.first===b.last?b.first:b.first+' ~ '+b.last} · ${b.value===null?(b.notScheduled&&!b.missing?'예정 없음':'기록 없음'):prChartNum(b.value)+unit}${b.value===0?' (실제 0)':''}${b.missing&&b.value!==null?' · 수치 미기록 '+b.missing+'일':''}`);prChartDetails[id]=details;
+ const tickEvery=Math.max(1,Math.ceil(bins.length/5));
+ const grid=Array.from({length:5},(_,i)=>{const val=i*y.step,yy=yFor(val);return `<g>${state.grid!=='off'?`<line class="pr-chart-grid" x1="${left}" x2="${right}" y1="${yy}" y2="${yy}"/>`:''}<text class="pr-chart-axis" x="${left-8}" y="${yy+4}" text-anchor="end">${prChartNum(val)}</text></g>`}).join('');
+ const xt=bins.map((b,i)=>((i%tickEvery===0&&i<bins.length-1-Math.max(1,Math.ceil(tickEvery/2)))||i===bins.length-1)?`<g>${state.grid==='both'?`<line class="pr-chart-grid" x1="${xFor(i)}" y1="${top}" x2="${xFor(i)}" y2="${bottom}"/>`:''}<text class="pr-chart-tick" x="${xFor(i)}" y="${bottom+19}" text-anchor="middle">${prDateLabel(b.last,group==='month')}</text></g>`:'').join('');
+ const bw=Math.max(2,Math.min(27,width/Math.max(1,bins.length)*.67));
+ const bars=bins.map((b,i)=>b.value===null?`<rect class="pr-chart-null" x="${xFor(i)-bw/2}" y="${bottom-3}" width="${Math.max(3,Math.min(10,bw))}" height="3" rx="1"/>`:b.value===0?`<circle cx="${xFor(i)}" cy="${bottom}" r="3.1" fill="none" stroke="var(--pr-series)" stroke-width="2"/>`:`<rect class="pr-chart-bar" x="${xFor(i)-bw/2}" y="${yFor(b.value)}" width="${bw}" height="${Math.max(1,bottom-yFor(b.value))}" rx="2"/>`).join('');
+ let lines='';let segment=[];const segments=[];for(let i=0;i<bins.length;i++){const b=bins[i];if(b.value===null){if(segment.length)segments.push(segment);segment=[]}else segment.push({x:xFor(i),y:yFor(b.value)})}if(segment.length)segments.push(segment);
+ for(const a of segments){const coords=a.map(t=>`${t.x},${t.y}`).join(' ');if(state.kind==='area'&&a.length>1)lines+=`<polygon class="pr-chart-area" points="${a[0].x},${bottom} ${coords} ${a[a.length-1].x},${bottom}"/>`;if(a.length>1)lines+=`<polyline class="pr-chart-line" points="${coords}"/>`}
+ lines+=bins.map((b,i)=>b.value===null?`<rect class="pr-chart-null" x="${xFor(i)-3}" y="${bottom-2}" width="6" height="3" rx="1"/>`:`<circle class="pr-chart-dot" cx="${xFor(i)}" cy="${yFor(b.value)}" r="${b.value===0?4:3.3}"/>`).join('');
+ const hitW=width/Math.max(1,bins.length),hit=bins.map((b,i)=>`<rect class="pr-chart-hit" x="${left+i*hitW}" y="${top}" width="${hitW}" height="${bottom-top+4}" role="button" tabindex="0" aria-label="${esc(details[i])}" onclick="prChartSelect('${id}',${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();prChartSelect('${id}',${i})}"/>`).join('');
+ const spanIndex=PR_CHART_SPANS.indexOf(span),atLatest=off===0,atOldest=off>=Math.max(0,rows.length-span);
+ const yLabel=id==='amount'?'실제 달성량':id==='streak'?'연속 수행일':id==='quest-points'?'획득 포인트':id==='quest-xp'?'획득 경험치':'완료 횟수';
+ const titleDate=view.length?`${view[0].day.slice(5).replace('-','/')}–${view[view.length-1].day.slice(5).replace('-','/')}`:'—';
+ return `<section class="pr-chart" aria-label="${esc(title)} 상세 그래프"><div class="pr-chart-heading"><div><strong>${esc(title)}</strong><small>Y축 · ${esc(yLabel)} (${esc(unit)}) · X축 · 날짜</small></div><small>${esc(titleDate)} · ${group==='day'?'일별':group==='week'?'주별':'월별'} ${aggregate==='last'?'마지막 값':'합계'}</small></div>
+ <div class="pr-chart-toolbar"><label>유형 <select class="pr-chart-select" aria-label="${esc(title)} 그래프 유형" onchange="prChartSet('${id}','kind',this.value)">${[['bar','막대'],['line','선'],['area','영역']].map(([v,n])=>`<option value="${v}" ${state.kind===v?'selected':''}>${n}</option>`).join('')}</select></label><div class="pr-chart-tool-group" aria-label="X축 확대 축소"><button type="button" onclick="prChartZoom('${id}',1)" ${spanIndex<=0?'disabled':''} title="X축 확대">＋</button><button type="button" onclick="prChartZoom('${id}',-1)" ${spanIndex===PR_CHART_SPANS.length-1?'disabled':''} title="X축 축소">－</button><span class="pr-chart-tool-label">${span===365?'1년':span+'일'}</span></div><div class="pr-chart-tool-group" aria-label="기간 이동"><button type="button" onclick="prChartMove('${id}',-1)" ${atOldest?'disabled':''} title="이전 기간">‹</button><button type="button" onclick="prChartMove('${id}',1)" ${atLatest?'disabled':''} title="다음 기간">›</button></div></div>
+ <details class="pr-chart-advanced"><summary>⚙️ 그리드 · 집계 · 초기화</summary><div class="pr-chart-toolbar"><label>그리드 <select aria-label="눈금선 표시" onchange="prChartSet('${id}','grid',this.value)">${[['off','끔'],['horizontal','가로'],['both','가로 + 세로']].map(([v,n])=>`<option value="${v}" ${state.grid===v?'selected':''}>${n}</option>`).join('')}</select></label><label>집계 <select aria-label="날짜 집계 방식" onchange="prChartSet('${id}','group',this.value)">${[['auto','자동'],['day','일별'],['week','주별'],['month','월별']].map(([v,n])=>`<option value="${v}" ${state.group===v?'selected':''}>${n}</option>`).join('')}</select></label><button type="button" onclick="prChartReset('${id}')">기본 보기</button></div></details>
+ <div class="pr-chart-plot"><svg class="pr-chart-svg" viewBox="0 0 390 225" role="img" aria-label="${esc(title)} 그래프, ${esc(unit)} 단위, 기록 없음은 회색 짧은 표시, 실제 0은 빈 원. 각 구간을 선택하면 수치를 확인할 수 있습니다."><text class="pr-chart-axis" x="${left}" y="16">${esc(unit)} ↑</text>${grid}<line class="pr-chart-zero" x1="${left}" y1="${bottom}" x2="${right}" y2="${bottom}"/>${xt}${state.kind==='bar'?bars:lines}${hit}<text class="pr-chart-axis" x="216" y="221" text-anchor="middle">날짜 →</text></svg></div>
+ <output id="pr-chart-detail-${id}" class="pr-chart-detail" aria-live="polite">구간을 터치하면 날짜와 정확한 값을 확인할 수 있습니다.</output><div class="pr-chart-legend"><span><i></i> 입력·수행 값</span><span><i class="pr-legend-zero"></i> 실제 0</span><span><i class="pr-legend-null"></i> 미기록·예정 없음</span></div><p class="pr-chart-caption">${esc(extra||'＋/－로 확대·축소, ‹/›로 이전·다음 기간을 이동합니다. 기록 없음은 합계에 0으로 합산하지 않습니다.')}</p></section>`;
+}
+
 function analyticsMetricName(m){return ({completions:'수행 횟수',points:'획득 포인트',xp:'획득 경험치'})[m]||'수행 횟수'}
 function analyticsMetricUnit(m){return m==='points'?'P':m==='xp'?'XP':'회'}
 function analyticsTrend(rows,metric){
@@ -5000,7 +5120,6 @@ function analyticsTrend(rows,metric){
  return bins;
 }
 function analyticsStreakGraph(id,rows){
- if(!rows.length)return '';
  const done=new Set((data.completions||[]).filter(c=>c.id===id).map(c=>c.day));
  const start=questHistoryStart(id),startScan=start<analyticsDateShift(day(),-3650)?analyticsDateShift(day(),-3650):start;
  const vals=new Map();let streak=0;
@@ -5008,19 +5127,13 @@ function analyticsStreakGraph(id,rows){
   if(questHistoryDue(id,d))streak=done.has(d)?streak+1:0;
   vals.set(d,streak);
  }
- const values=rows.map(r=>vals.get(r.day)||0),step=Math.max(1,Math.ceil(values.length/25));
- const sample=[];for(let i=0;i<values.length;i+=step){sample.push(Math.max(...values.slice(i,i+step)))}
- const max=Math.max(1,...sample),dx=sample.length>1?320/(sample.length-1):0;
- const coords=sample.map((n,i)=>`${(i*dx).toFixed(1)},${(85-70*n/max).toFixed(1)}`),p=coords.join(' ');
- return `<div class="qa-chart-heading"><strong>🔥 연속 수행일 변화</strong><span>최대 ${max}일</span></div>
-  <div class="qa-streak-graph" role="img" aria-label="연속 수행일 변화: ${sample.join(', ')}일">
-  <svg viewBox="0 0 320 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="85" x2="320" y2="85" stroke="currentColor" opacity=".2"/><polygon points="0,85 ${p} 320,85" fill="rgba(67,189,158,.14)"/><polyline points="${p}" stroke="#3fb99e" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2" vector-effect="non-scaling-stroke"/></svg>
-  <div class="qa-streak-dates"><small>${rows[0].day.slice(5)}</small><small>${rows[rows.length-1].day.slice(5)}</small></div></div>`;
+ const points=rows.map(r=>({day:r.day,value:r.day<start?null:(vals.get(r.day)??null)}));
+ return prChartPanel('streak','🔥 연속 수행일 변화',points,'일',analyticsPrefs().range,'last','과거 생성일 이전은 기록 없음으로 표시합니다. 주간·월간 집계는 해당 구간 마지막 날의 연속 수행일입니다.');
 }
 // Per-quest selection is presentational only: it does not change any stored data.
 let achievementChartQuest='', achievementChartUnitIndex=0;
 function setAchievementChartUnit(index){achievementChartUnitIndex=Math.max(0,Math.floor(Number(index)||0));render()}
-function renderAchievementAnalytics(id,rows){
+function renderAchievementAnalytics(id,rows,allChartRows){
  if(achievementChartQuest!==id){achievementChartQuest=id;achievementChartUnitIndex=0}
  const events=rows.flatMap(r=>r.events||[]), allNumerics=events.filter(c=>achievementAmount(c.achievement?.amount)!==null),
   notes=events.filter(c=>String(c.achievement?.note||'').trim()).length;
@@ -5050,18 +5163,10 @@ function renderAchievementAnalytics(id,rows){
   const lastValue=Number(last?.achievement?.amount)||0;
   const targetPercent=target>0?Math.round(lastValue/target*100):null;
   const goalView=targetPercent!==null?`<div class="achievement-target"><div class="achievement-target-title"><strong>🎯 최근 기록 / 현재 설정 목표</strong><span>${fmt(lastValue)} / ${fmt(target)} ${esc(unit)} · ${targetPercent}%</span></div><div class="achievement-target-track"><div style="width:${Math.max(0,Math.min(100,targetPercent))}%"></div></div><small>목표를 변경한 경우 과거 기록의 당시 목표 달성률을 뜻하지 않습니다.</small></div>`:'';
-  const bins=analyticsTrend(rows,'completions').map(b=>{
-   const matched=items.filter(c=>c.day>=b.first&&c.day<=b.last);
-   return {...b,value:matched.reduce((s,c)=>s+Number(c.achievement.amount),0),records:matched.length};
-  });
-  const highest=Math.max(1,...bins.map(b=>b.value));
-  const bars=bins.map((b,i)=>{
-   const hasRecord=b.records>0,recordedZero=hasRecord&&b.value===0;
-   const pct=hasRecord?(b.value>0?Math.max(3,Math.round(b.value/highest*100)):3):0;
-   const dateLabel=(b.first===b.last?b.first.slice(5):`${b.first.slice(5)}~${b.last.slice(5)}`).replace(/-/g,'.');
-   const a11y=`${dateLabel}, ${hasRecord?valText(b.value):'기록 없음'}, 수치 기록 ${b.records}회`;
-   return `<div class="ach-col" title="${esc(a11y)}" aria-label="${esc(a11y)}"><span class="ach-col-value">${hasRecord?fmt(b.value):'—'}</span><div class="ach-col-track"><div class="ach-col-bar ${recordedZero?'ach-zero':''}" style="height:${pct}%"></div></div><span class="ach-col-date">${b.first.slice(5).replace('-','.')}${i===bins.length-1?'':''}</span></div>`;
-  }).join('');
+  const chartItems=(allChartRows||rows).flatMap(r=>r.events||[]).filter(c=>achievementAmount(c.achievement?.amount)!==null&&String(c.achievement?.unit||'단위 미지정').trim()===unit);
+  const amountByDate=new Map();for(const c of chartItems)amountByDate.set(c.day,(amountByDate.get(c.day)||0)+Number(c.achievement.amount));
+  const chartPoints=(allChartRows||rows).map(r=>({day:r.day,value:amountByDate.has(r.day)?amountByDate.get(r.day):null}));
+  const chart=prChartPanel('amount','📝 실제 달성량 추이',chartPoints,unit,analyticsPrefs().range,'sum','기록 없는 날은 —, 0을 입력한 날은 ○로 구분합니다. 주별·월별 집계는 입력한 수치만 더합니다.');
   const chronological=[...items].sort((a,b)=>String(a.day).localeCompare(String(b.day)));
   let change='';
   if(chronological.length>=4){
@@ -5077,9 +5182,7 @@ function renderAchievementAnalytics(id,rows){
     <div><small>📊 회당 평균</small><strong>${fmt(average)}</strong><span>${esc(unit)} / 기록</span></div>
     <div><small>✍️ 수치 기록</small><strong>${count}</strong><span>회 입력</span></div>
   </div>
-  <div class="achievement-chart-heading"><strong>달성량 추이</strong><span>${rows.length<=7?'일별 기록':'기간별 합계'} · ${esc(unit)}</span></div>
-  <div class="achievement-chart" role="img" aria-label="${esc(`${unit} 달성량 변화, ${bins.map(b=>b.records?achievementNumberText(b.value):'미기록').join(', ')}`)}"><div class="achievement-chart-cols">${bars}</div></div>
-  <div class="achievement-chart-foot"><span><i class="ach-key" aria-hidden="true"></i> 입력한 달성량</span><span><i class="ach-key ach-key-empty" aria-hidden="true"></i> 미기록</span></div>
+  ${chart}
   <div class="achievement-last">🕒 최근 기록 <strong>${esc(last?.day||'—')}</strong> · ${esc(valText(lastValue))}</div>${goalView}${change}`;
  }
  const unitSwitch=summaries.length>1?`<div class="achievement-unit-switch" aria-label="달성량 표시 단위">${summaries.map((g,i)=>`<button type="button" class="${achievementChartUnitIndex===i?'active':''}" aria-pressed="${achievementChartUnitIndex===i}" onclick="setAchievementChartUnit(${i})">${esc(g.unit)} <small>${g.items.length}건</small></button>`).join('')}</div>`:'';
@@ -5091,18 +5194,18 @@ function renderAchievementAnalytics(id,rows){
 function renderQuestGrowthReport(){const cat=analyticsCatalog(),selected=analyticsSelected('stats'),av=analyticsPrefs();
  const controls=`<section class="section quest-analytics"><div class="section-title"><h2>📊 퀘스트 성장 리포트</h2></div><p class="qa-subtext">퀘스트별 수행 날짜, 달성률, 획득 포인트·XP와 연속 기록을 확인해요.</p>${analyticsQuestSelect('stats')}`;
  if(selected==='all')return `${controls}<div class="analytics-empty">위에서 퀘스트를 선택하면 성장 그래프와 날짜별 이력이 표시됩니다. 삭제한 퀘스트도 과거 기록이 남아 있다면 선택할 수 있어요.</div></section>`;
- const item=cat.find(q=>q.id===selected),rows=questHistorySeries(selected,av.range),completed=rows.reduce((n,r)=>n+r.count,0),scheduled=rows.filter(r=>r.due).length,achieved=rows.filter(r=>r.due&&r.count>0).length,
+ const item=cat.find(q=>q.id===selected),historyStart=questHistoryStart(selected),chartRows=questHistorySeries(selected,365),rows=chartRows.slice(-av.range),completed=rows.reduce((n,r)=>n+r.count,0),scheduled=rows.filter(r=>r.due).length,achieved=rows.filter(r=>r.due&&r.count>0).length,
  points=rows.reduce((n,r)=>n+r.points,0),xp=rows.reduce((n,r)=>n+r.xp,0),isRegular=rows.some(r=>r.due)||['daily','weekly'].includes(questType(item?.quest)),rate=isRegular&&scheduled?Math.round(achieved/scheduled*1000)/10:null,
  firstCompletion=data.completions.filter(c=>c.id===selected).sort((a,b)=>String(a.day).localeCompare(String(b.day))),allDone=firstCompletion.length,
- streak=isRegular?questStreakHistory(selected):{max:0,latest:0},bins=analyticsTrend(rows,av.metric),max=Math.max(1,...bins.map(b=>b.value)),unit=analyticsMetricUnit(av.metric);
+ streak=isRegular?questStreakHistory(selected):{max:0,latest:0},unit=analyticsMetricUnit(av.metric);
  const periods=[7,30,90,365].map(n=>`<button class="qa-toggle ${av.range===n?'active':''}" onclick="setAnalyticsRange(${n})">${n===365?'1년':n+'일'}</button>`).join('');
  const metricSwitch=[['completions','✅ 횟수'],['points','🪙 포인트'],['xp','⭐ XP']].map(([m,n])=>`<button class="qa-toggle ${av.metric===m?'active':''}" onclick="setAnalyticsMetric('${m}')">${n}</button>`).join('');
  const recent=firstCompletion.slice(-20).reverse();
  return `${controls}<div class="qa-range" aria-label="조회 기간">${periods}</div><div class="qa-metrics"><div><small>📅 수행 달성률</small><b>${rate===null?'별도 집계':rate+'%'}</b></div><div><small>✅ 수행 횟수</small><b>${completed}회</b></div><div><small>🪙 획득 포인트</small><b>${format(points)}P</b></div><div><small>⭐ 경험치</small><b>${format(xp)}XP</b></div></div>
  <div class="qa-metrics qa-secondary"><div><small>🔥 현재 연속</small><b>${isRegular?streak.latest+'일':'—'}</b></div><div><small>🏆 최장 연속</small><b>${isRegular?streak.max+'일':'—'}</b></div><div><small>🗓️ 예정일</small><b>${isRegular?scheduled+'일':'—'}</b></div><div><small>📚 전체 누적</small><b>${allDone}회</b></div></div>
- <div class="qa-chart-heading"><strong>📈 ${analyticsMetricName(av.metric)} 추이</strong><span>최근 ${av.range}일</span></div><div class="qa-range" aria-label="그래프 항목">${metricSwitch}</div>
- <div class="qa-bar-chart" role="img" aria-label="${analyticsMetricName(av.metric)} 기간별 그래프">${bins.map((b,i)=>`<div class="qa-col" title="${b.first}~${b.last}: ${b.value}${unit}"><span>${b.value?format(b.value):'&nbsp;'}</span><div class="qa-bar-bg"><div class="qa-bar" style="height:${b.value?Math.max(5,Math.round(b.value/max*100)):0}%"></div></div><small>${i%2===0||i===bins.length-1?b.last.slice(5).replace('-','/'):'&nbsp;'}</small></div>`).join('')}</div>
- ${isRegular?analyticsStreakGraph(selected,rows):''}${renderAchievementAnalytics(selected,rows)}
+ <div class="qa-chart-heading"><strong>📈 ${analyticsMetricName(av.metric)} 추이</strong><span>위 통계는 최근 ${av.range}일 기준</span></div><div class="qa-range" aria-label="그래프 항목">${metricSwitch}</div>
+ ${prChartPanel('quest-'+av.metric,analyticsMetricName(av.metric)+' 추이',chartRows.map(r=>({day:r.day,value:r.due||r.count>0?(av.metric==='completions'?r.count:r[av.metric]):null,reason:r.due||r.count>0?'':r.day<historyStart?'unknown':'not-scheduled'})),unit,av.range,'sum','예정된 날에 미완료한 경우 0, 예정되지 않거나 생성 이전인 날은 기록 없음으로 표시합니다. 차트 확대 기간과 위 성과 요약 기간은 별개입니다.')}
+ ${isRegular?analyticsStreakGraph(selected,chartRows):''}${renderAchievementAnalytics(selected,rows,chartRows)}
  <p class="qa-subtext">${rate===null?'일회성·이벤트는 예정일 대비 달성률 대신 완료 횟수로 집계합니다.':`완료한 예정일 ${achieved}일 ÷ 예정일 ${scheduled}일 = ${rate===null?'—':rate+'%'}. 요일별 퀘스트는 지정 요일만 계산합니다.`} 과거 일정 변경 이력이 없으면 첫 수행일부터 계산하여 미확인 과거 날짜는 누락된 것으로 판단하지 않습니다.</p>
  <details class="qa-history"><summary>📜 날짜별 수행 이력 · 총 ${allDone}회 (최근 20건 표시)</summary>${recent.length?recent.map(c=>`<div class="qa-history-row"><strong>${esc(c.day)} ${esc(c.at?new Date(c.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'')}</strong><span>🪙 +${format(c.points||0)}P · ⭐ +${format(c.xpEarned||0)}XP</span><small>${c.mode==='normal'?'일반 완료':c.mode==='time'?'타임챌린지':'기록 완료'}${c.elapsedSeconds?' · '+questTimeFmt(c.elapsedSeconds):''}${c.recordBonus?' · 📝 기록 보너스 +20%':''}</small>${achievementSummary(c)?`<small>${esc(achievementSummary(c))}</small>`:''}${c.achievement?.note?`<small>${esc(c.achievement.note)}</small>`:''}<button class="achievement-edit-button" onclick="openAchievementEditor('${c.day}',decodeURIComponent('${encodeURIComponent(c.id)}'))">✎ 기록 수정</button></div>`).join(''):'<div class="analytics-empty">아직 이 퀘스트의 수행 기록이 없어요.</div>'}</details>
  <button class="tinybtn qa-open-cal" onclick="setAnalyticsQuest('calendar',decodeURIComponent('${encodeURIComponent(selected)}'));calendarMonth=day().slice(0,7);setScreen('calendar')">📅 이 퀘스트의 활동 달력 보기</button></section>`;
@@ -5135,7 +5238,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.58.2</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong>🪙 포인트 +10%</strong><strong>🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.59</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong>🪙 포인트 +10%</strong><strong>🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -6160,9 +6263,9 @@ function renderDex(){
  ${celebration}${renderRegionMap()}${tabs}
  ${locked?lockedPanel:`${summary}<div class="filterbar">${[['all','전체'],['owned','보유'],['missing','미보유'],['rare','레어'],['epic','에픽'],['legendary','전설']].map(([f,t])=>`<button class="filterbtn ${filter===f?'active':''}" onclick="filter='${f}';render()">${t}</button>`).join('')}</div>${dexViewToolbar()}<div class="dex-gallery mode-${data.dexView}" ${dexGalleryStyle()}>${ids.map(id=>renderDexEntry(id,currentTrainer())).join('')}</div>${!ids.length?'<div class="empty">해당 조건의 포켓몬이 없습니다.</div>':''}`}`;
 }
-function renderStats(){const total=data.completions.length,distinct=Object.keys(data.owned).length;let recent=data.draws.slice(0,10);let days=Array.from({length:7},(_,i)=>{let d=new Date();d.setDate(d.getDate()-(6-i));let k=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;return {date:k,count:data.completions.filter(x=>x.day===k).length}});const mx=Math.max(1,...days.map(x=>x.count));return `${pageHeader('성장 <em>기록</em>','나의 퀘스트 도전과 포켓몬 수집 기록을 한눈에 확인해요')}${sharedProgressSummary('stats')}<div class="backup-actions"><button class="tinybtn" onclick="setScreen('calendar')">📅 전체 캘린더 보기</button><button class="tinybtn" onclick="setScreen('settings')">⚙️ 자동 저장 설정</button></div>
+function renderStats(){const total=data.completions.length,distinct=Object.keys(data.owned).length;let recent=data.draws.slice(0,10);const weeklyCounts=new Map();for(const c of data.completions)weeklyCounts.set(c.day,(weeklyCounts.get(c.day)||0)+1);return `${pageHeader('성장 <em>기록</em>','나의 퀘스트 도전과 포켓몬 수집 기록을 한눈에 확인해요')}${sharedProgressSummary('stats')}<div class="backup-actions"><button class="tinybtn" onclick="setScreen('calendar')">📅 전체 캘린더 보기</button><button class="tinybtn" onclick="setScreen('settings')">⚙️ 자동 저장 설정</button></div>
 <div class="meta-row"><div class="metric"><strong>${total}</strong><small>누적 퀘스트</small></div><div class="metric"><strong>${format(data.allEarned)}P</strong><small>누적 획득</small></div><div class="metric"><strong>${distinct}</strong><small>발견한 포켓몬</small></div></div>
-<section class="section"><div class="section-title"><h2>📈 최근 7일 달성</h2></div><div class="stats-weekly-chart" style="height:160px;border:1px solid #2b4262;background:#112749;border-radius:17px;padding:15px;display:flex;align-items:end;justify-content:space-around;gap:8px">${days.map(v=>`<div style="width:33px;text-align:center"><div class="stats-weekly-count" style="font-size:10px;color:#bdd1ea">${v.count}</div><div style="height:${Math.max(6,94*v.count/mx)}px;border-radius:7px 7px 1px 1px;background:linear-gradient(#67e4c7,#3e91e9);margin-top:4px"></div><div class="stats-weekly-date" style="font-size:10px;color:#acbdd7;margin-top:6px">${v.date.slice(-2)}</div></div>`).join('')}</div></section>
+<section class="section"><div class="section-title"><h2>📈 최근 7일 달성</h2></div>${prChartPanel('weekly','전체 퀘스트 완료',Array.from({length:365},(_,i)=>{const k=analyticsDateShift(day(),i-364);return {day:k,value:weeklyCounts.get(k)||0}}),'회',7,'sum','모든 날짜의 완료 횟수입니다. 완료 기록이 없는 날은 실제 0회로 표시합니다.')}</section>
 ${renderQuestGrowthReport()}
 <details class="section history-fold" ontoggle="setStatsSectionOpen('draws',this.open)" ${data.statsOpen.draws?'open':''}><summary class="history-fold-summary"><strong>${CAL_PIKA_ICON} 최근 뽑기 내역</strong><span>최근 ${recent.length}건 · 접기/펼치기</span></summary>${recent.length?recent.map(x=>`<div class="history"><div class="hleft"><strong>${esc(name(x.id))} <span class="rarity ${x.rarity}">${RN[RARITIES.indexOf(x.rarity)]}</span></strong><small>${esc(x.date)} · ${esc(x.tier)} ${x.caught===false?'· 포획 실패':x.new?'· 첫 발견':'· 중복'}</small></div><div class="hval ${x.caught===false?'outcome-bad':''}">${x.source==='levelGift'?'🎁 무료 증정 · 0P':`${x.caught===false?'도주 · ':'포획 · '}-${x.price}P`}</div></div>`).join(''):'<div class="empty">아직 뽑기 기록이 없습니다.<br>포인트를 모아 첫 번째 포켓몬을 만나보세요.</div>'}</details>
 <details class="section history-fold" ontoggle="setStatsSectionOpen('questEvents',this.open)" ${data.statsOpen.questEvents?'open':''}><summary class="history-fold-summary"><strong>📜 퀘스트 수정·삭제 내역</strong><span>${data.questEvents.length}건 · 접기/펼치기</span></summary><div class="info-line">생성·수정·삭제 ${data.questEvents.length}건, 과거 기록은 퀘스트를 삭제해도 보관됩니다.</div>${data.questEvents.slice(-8).reverse().map(e=>`<div class="history"><div class="hleft"><strong>${e.action==='create'?'추가':e.action==='edit'?'수정':'삭제'} · ${esc(e.after?.title||e.before?.title||'퀘스트')}</strong><small>${esc(friendlyEventTime(e.at))} ${e.action==='edit'?` · 이전: ${esc(e.before?.title||'')}`:''}</small></div></div>`).join('')}</details>
@@ -6437,7 +6540,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.58.2</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.59</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
