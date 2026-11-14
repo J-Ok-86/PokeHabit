@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.71 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.72 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -3511,6 +3511,31 @@ html[data-theme="light"] .dex-gallery .dex-entry .dex-dup-badge{
 .dex-gallery.mode-list .dex-entry .mon-info{padding-right:18px;box-sizing:border-box}
 @media(max-width:360px){.dex-gallery .dex-entry .dex-dup-badge{top:4px;right:4px;min-width:21px;min-height:18px;padding:2px 4px;font-size:9px}}
 
+/* v1.7.72 — first-time gift and daily login rewards (one compact home row) */
+.daily-login-hub{border:1px solid #7590b0;border-radius:16px;padding:12px;margin:10px 0 14px;background:linear-gradient(120deg,#243755,#302d54);color:#f5f8ff;min-width:0;box-shadow:0 3px 12px #0b203e14}
+.daily-login-main{display:flex;align-items:center;gap:11px;min-width:0}
+.daily-login-icon{flex:none;font-size:28px;line-height:1}
+.daily-login-copy{min-width:0;flex:1;display:grid;gap:4px}
+.daily-login-copy strong{font-size:16px;font-weight:900;overflow-wrap:anywhere}
+.daily-login-copy small{font-size:12px;line-height:1.45;overflow-wrap:anywhere;color:#e9dff8}
+.daily-login-main .reward-claim-btn{padding:9px 12px;white-space:normal;flex:0 0 auto;max-width:155px;min-height:44px;font-size:13px}
+.daily-login-note{font-size:11px;max-width:130px;line-height:1.35;color:#efdf9e}
+.daily-login-done{font-size:12px;white-space:nowrap;color:#9ce1b2;font-weight:850}
+.daily-login-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px;padding-top:7px;border-top:1px solid #ffffff26;font-size:11px;color:#cddaea}
+.daily-login-footer>small{font-size:11px}
+.daily-login-footer details{position:relative;min-width:0}
+.daily-login-footer summary{cursor:pointer;white-space:nowrap;font-weight:800}
+.daily-login-history{position:absolute;right:0;top:calc(100% + 6px);width:min(270px,78vw);display:grid;gap:6px;padding:9px;border:1px solid #8094ac;border-radius:10px;background:#172940;color:#f8fbff;z-index:20;box-shadow:0 6px 18px #0005}
+.daily-login-history div{display:grid;gap:2px;border-bottom:1px solid #ffffff24;padding-bottom:5px}.daily-login-history div:last-child{border:0}
+.daily-login-history span{font-size:10px;color:#cddaea}.daily-login-history strong{font-size:12px;overflow-wrap:anywhere}
+.daily-gift-modal{max-width:430px;text-align:center}.daily-gift-celebration{font-size:34px;margin:6px 0 10px}.daily-gift-prize{padding:16px 10px;border:1px solid #f0c477;border-radius:15px;background:#ffcf7522;font-weight:900;font-size:18px;margin:14px 0}
+html[data-theme="light"] .daily-login-hub{background:linear-gradient(120deg,#fff5df,#e8edff);border-color:#c5c8d5;color:#273d5a}
+html[data-theme="light"] .daily-login-copy small{color:#576884}
+html[data-theme="light"] .daily-login-note{color:#986321}
+html[data-theme="light"] .daily-login-done{color:#257845}
+html[data-theme="light"] .daily-login-footer{border-color:#b5c2d2;color:#64758b}
+@media(max-width:390px){.daily-login-hub{padding:9px 10px}.daily-login-main{gap:7px}.daily-login-icon{font-size:23px}.daily-login-copy strong{font-size:14px}.daily-login-copy small{font-size:11px}.daily-login-main .reward-claim-btn{font-size:11px;max-width:105px;min-height:40px;padding:7px}.daily-login-done{font-size:10px}.daily-login-note{max-width:100px;font-size:10px}}
+@media(max-width:335px){.daily-login-footer{flex-wrap:wrap}.daily-login-main .reward-claim-btn{max-width:90px}.daily-login-icon{font-size:20px}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -3592,19 +3617,66 @@ const FEVER_DEFAULT=()=>({enabled:true,start:'20:00'});
 function validFeverTime(value){return typeof value==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(value)}
 function cleanFever(value){return {enabled:value?.enabled!==false,start:validFeverTime(value?.start)?value.start:'20:00'}}
 const FEVER_RATE=.10;
+const DAILY_TICKET_RATE=.20;
+const DAILY_GIFT_KINDS=['points','trainerXp','buddyXp','feverTicket','jackpot'];
+function localDayAt(now){return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;}
+function cleanDailyVisitRewards(raw){
+ const validDay=x=>typeof x==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&!Number.isNaN(Date.parse(x+'T12:00:00'));
+ const seen=new Set(),out=[];
+ // Keep a long history. One saved claim per local date, preserved across JSON migration.
+ for(const x of (Array.isArray(raw)?raw:[]).slice(-15000)){
+  if(!x||!validDay(x.day)||!DAILY_GIFT_KINDS.includes(x.type)||seen.has(x.day))continue;
+  const dateString=y=>typeof y==='string'&&!Number.isNaN(Date.parse(y))?y.slice(0,40):'';
+  const kind=x.type,activatedAt=dateString(x.activatedAt),endsAt=dateString(x.endsAt);
+  out.push({day:x.day,type:kind,points:boundedNumber(x.points,200),xp:boundedNumber(x.xp,100),buddyXp:boundedNumber(x.buddyXp,60),buddyUid:String(x.buddyUid||'').slice(0,90),at:dateString(x.at),activatedAt:kind==='feverTicket'?activatedAt:'',endsAt:kind==='feverTicket'?endsAt:'',fallback:!!x.fallback});
+  seen.add(x.day);
+ }
+ return out;
+}
+function todayDailyGift(profile=data,now=new Date()){
+ return (profile?.dailyVisitRewards||[]).find(x=>x.day===localDayAt(now))||null;
+}
+function dailyGiftAvailable(profile=data,now=new Date()){
+ if(profile?.demoGranted!==true||todayDailyGift(profile,now))return false;
+ // Existing installations without an old bonus timestamp can claim today.
+ const first=String(profile.bonusAt||'');
+ return !first||!Number.isFinite(Date.parse(first))||localDayAt(new Date(first))<localDayAt(now);
+}
+function dailyGiftPick(roll=rng()*100){
+ if(roll<45)return {type:'points',points:ri(5,10)*10,xp:0,buddyXp:0};
+ if(roll<75)return {type:'trainerXp',points:0,xp:ri(4,8)*10,buddyXp:0};
+ if(roll<90)return {type:'buddyXp',points:0,xp:0,buddyXp:ri(3,6)*10};
+ if(roll<98)return {type:'feverTicket',points:0,xp:0,buddyXp:0};
+ return {type:'jackpot',points:200,xp:100,buddyXp:0};
+}
+function dailyGiftLabel(r){
+ if(!r)return '';
+ if(r.type==='points')return `🪙 포인트 +${r.points}P`;
+ if(r.type==='trainerXp')return r.fallback?`🌟 대표 포켓몬 없음 · 트레이너 +${r.xp}XP`:`🌟 트레이너 +${r.xp}XP`;
+ if(r.type==='buddyXp')return `🐾 대표 포켓몬 +${r.buddyXp}XP`;
+ if(r.type==='feverTicket')return '🔥 FEVER 티켓 · 60분 P·XP +20%';
+ return `💎 대박! +${r.points}P · +${r.xp}XP`;
+}
+function activeDailyFever(profile=data,now=new Date()){
+ const today=todayDailyGift(profile,now),start=today?.type==='feverTicket'&&today.activatedAt?Date.parse(today.activatedAt):NaN;
+ const end=today?.type==='feverTicket'&&today.endsAt?Date.parse(today.endsAt):NaN;
+ return Number.isFinite(start)&&Number.isFinite(end)&&now.getTime()>=start&&now.getTime()<end?{start,end,secondsLeft:Math.max(0,Math.ceil((end-now.getTime())/1000))}:null;
+}
+
 function feverState(profile=data,now=new Date()){
  const config=cleanFever(profile?.feverTime),startMinute=Number(config.start.slice(0,2))*60+Number(config.start.slice(3));
- const currentMinute=now.getHours()*60+now.getMinutes();
- const elapsed=(currentMinute-startMinute+1440)%1440;
- const active=config.enabled&&elapsed<60;
+ const currentMinute=now.getHours()*60+now.getMinutes(),elapsed=(currentMinute-startMinute+1440)%1440;
+ const scheduledActive=config.enabled&&elapsed<60;
  const endMinute=(startMinute+60)%1440;
- const end=String(Math.floor(endMinute/60)).padStart(2,'0')+':'+String(endMinute%60).padStart(2,'0');
- const secondsLeft=active?(60-elapsed)*60-now.getSeconds():0;
- // Show the advance notice only during the 60 minutes before the next start.
- // Modulo arithmetic also handles schedules that cross midnight.
+ const scheduleEnd=String(Math.floor(endMinute/60)).padStart(2,'0')+':'+String(endMinute%60).padStart(2,'0');
  const secondsUntilStart=((startMinute-currentMinute+1440)%1440)*60-now.getSeconds();
- const upcoming=config.enabled&&!active&&secondsUntilStart>0&&secondsUntilStart<=3600;
- return {active,upcoming,enabled:config.enabled,start:config.start,end,secondsLeft,secondsUntilStart:upcoming?secondsUntilStart:0};
+ const ticket=activeDailyFever(profile,now);
+ if(ticket){
+  const started=new Date(ticket.start),finished=new Date(ticket.end),timeLabel=d=>String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+  return {active:true,upcoming:false,enabled:true,source:'ticket',rate:DAILY_TICKET_RATE,start:timeLabel(started),end:timeLabel(finished),secondsLeft:ticket.secondsLeft,secondsUntilStart:0};
+ }
+ const active=scheduledActive,upcoming=config.enabled&&!active&&secondsUntilStart>0&&secondsUntilStart<=3600;
+ return {active,upcoming,enabled:config.enabled,source:'scheduled',rate:active?FEVER_RATE:0,start:config.start,end:scheduleEnd,secondsLeft:active?Math.max(0,(60-elapsed)*60-now.getSeconds()):0,secondsUntilStart:upcoming?secondsUntilStart:0};
 }
 function feverTimeLabel(profile=data){const f=feverState(profile);return f.enabled?`${f.start}~${f.end}`:'꺼짐'}
 let feverFoldExpanded=false; // UI-only preference; never affects reward calculation or saved trainer data.
@@ -3621,14 +3693,17 @@ function syncFeverFold(state){
  fold.classList.toggle('is-upcoming',upcoming);
  if(!visible){feverFoldExpanded=false;return;}
  const label=document.getElementById('feverFoldLabel');
- if(label)label.textContent=active?'✨ FEVER TIME 진행 중!':'⏳ FEVER TIME 예정';
+ if(label)label.textContent=active?(state.source==='ticket'?'🔥 행운 FEVER 티켓 진행 중!':'✨ FEVER TIME 진행 중!'):'⏳ FEVER TIME 예정';
  const brief=document.getElementById('feverFoldBrief');
- if(brief)brief.textContent=active?`P·XP +10% · ${state.start}~${state.end}`:`${state.start} 시작 · P·XP +10%`;
+ if(brief)brief.textContent=active?`P·XP +${Math.round((state.rate||FEVER_RATE)*100)}% · ${state.start}~${state.end}`:`${state.start} 시작 · P·XP +10%`;
  const toggle=document.getElementById('feverFoldToggle');if(toggle)toggle.setAttribute('aria-expanded',String(feverFoldExpanded));
  fold.classList.toggle('is-open',feverFoldExpanded);
  const details=document.getElementById('feverFoldDetails');if(details)details.hidden=!feverFoldExpanded;
+ const effectivePct=Math.round((state.rate||FEVER_RATE)*100);
+ const pointBonus=document.getElementById('feverFoldPointBonus');if(pointBonus)pointBonus.textContent=`🪙 포인트 +${active?effectivePct:10}%`;
+ const xpBonus=document.getElementById('feverFoldXpBonus');if(xpBonus)xpBonus.textContent=`🌟 경험치 +${active?effectivePct:10}%`;
  const schedule=document.getElementById('feverFoldSchedule');
- if(schedule)schedule.textContent=`매일 ${state.start}~${state.end} · 퀘스트 완료 시 P·XP 각 +10%`;
+ if(schedule)schedule.textContent=state.source==='ticket'?`오늘의 FEVER 티켓 · ${state.start}~${state.end} · 퀘스트 완료 P·XP +20% (정규 FEVER와 합산하지 않음)`:`매일 ${state.start}~${state.end} · 퀘스트 완료 시 P·XP 각 +10%`;
  const remain=document.getElementById('feverFoldRemaining');
  const seconds=Math.max(0,Math.floor(active?state.secondsLeft:state.secondsUntilStart));
  if(remain)remain.textContent=`${active?'종료':'시작'}까지 ${Math.floor(seconds/60)}분 ${seconds%60}초 남음`;
@@ -3642,7 +3717,7 @@ function updateFeverVisual(){
 const DEFAULT_TASKS=[]; // 퀘스트는 이용자가 직접 등록: 추천/랜덤 자동 생성 없음
 const KEY='poke_routine_v1_20261030'; // v0.9 보존 (마이그레이션 전용)
 const MULTI_KEY='pokeroutine_multi_v10',UNDO_KEY='pokeroutine_merge_undo_v10';
-const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),recommendedQuest:null,statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{}},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
+const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{}},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
 let settings={autoSave:true,theme:'light',fontSize:'large',swipeTabs:true};
 try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark'].includes(p?.theme))settings.theme=p.theme;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
@@ -4196,6 +4271,7 @@ function cleanBackup(v){
  safe.achievementDrafts=cleanAchievementDrafts(v.achievementDrafts,safe.quests);
  safe.learnedMoves=cleanLearnedMoves(v.learnedMoves);
  safe.feverTime=cleanFever(v.feverTime);
+ safe.dailyVisitRewards=cleanDailyVisitRewards(v.dailyVisitRewards);
  safe.recommendedQuest=cleanRecommendedQuest(v.recommendedQuest);safe.eveningRecommended=cleanRecommendedQuest(v.eveningRecommended);safe.briefingSeen=cleanBriefingSeen(v.briefingSeen);safe.eveningTime=validBriefingClock(v.eveningTime)?v.eveningTime:'21:00';
  safe.activeEvent=cleanActiveEvent(v.activeEvent);safe.eventHistory=cleanEventHistory(v.eventHistory);
  safe.statsOpen={draws:v.statsOpen?.draws===true,questEvents:v.statsOpen?.questEvents===true};
@@ -4210,7 +4286,7 @@ function cleanBackup(v){
  safe.rewardStartLevel=Number.isInteger(Number(v.rewardStartLevel))&&Number(v.rewardStartLevel)>=1?Math.min(1000000,Number(v.rewardStartLevel)):safe.level;
  safe.levelGifts=Array.isArray(v.levelGifts)?v.levelGifts.filter(g=>g&&Number.isInteger(Number(g.level))&&Number(g.level)%5===0&&Number(g.level)>=5&&Number(g.id)>=1&&Number(g.id)<=POKE_MAX_ID).slice(0,20000).map(g=>({level:Number(g.level),id:Number(g.id),rarity:RARITIES.includes(g.rarity)?g.rarity:pokeClass(Number(g.id)),at:String(g.at||'').slice(0,45),giftId:String(g.giftId||'').slice(0,100),new:!!g.new,giftWeights:Array.isArray(g.giftWeights)?g.giftWeights.map(Number).slice(0,3):null,giftProb:Array.isArray(g.giftProb)?g.giftProb.map(Number).slice(0,4):null,revealed:g.revealed!==false,revealedAt:String(g.revealedAt||'').slice(0,45)})).filter((g,i,a)=>a.findIndex(x=>x.level===g.level)===i):[];
  safe.completions=v.completions.filter(c=>c&&/^\d{4}-\d{2}-\d{2}$/.test(String(c.day))).map(c=>({day:String(c.day),id:String(c.id||'').slice(0,90),title:String(c.title||'').slice(0,45),questType:questType(c),pokemonId:Math.max(0,Math.min(POKE_MAX_ID,Number(c.pokemonId)||0)),category:String(c.category||'').slice(0,25),goal:String(c.goal||'').slice(0,90),mode:c.mode==='normal'?'normal':c.mode==='time'?'time':(Number(c.limitSeconds)>0?'time':'legacy'),points:boundedNumber(c.points,150000),basePoints:boundedNumber(c.basePoints??c.points,10000),multiplier:Math.min(3,Math.max(1,Number(c.multiplier)||1)),limitSeconds:boundedNumber(c.limitSeconds,14400),elapsedSeconds:boundedNumber(c.elapsedSeconds,86400),holdSeconds:boundedNumber(c.holdSeconds,864000),holdCount:boundedNumber(c.holdCount,10000),rewardRule:cleanQuestReward(c.rewardRule)||null,xpEarned:boundedNumber(c.xpEarned??25,15000),xpBase:boundedNumber(c.xpBase??c.xpEarned??25,1000),questStreak:boundedNumber(c.questStreak??1,100000),overallStreak:boundedNumber(c.overallStreak??1,100000),pointBoost:Math.min(5,Math.max(1,Number(c.pointBoost)||1)),xpBoost:Math.min(5,Math.max(1,Number(c.xpBoost)||1)),pointCombinedMultiplier:Math.min(10,Math.max(1,Number(c.pointCombinedMultiplier)||Number(c.multiplier)||1)),
-  feverActive:c.feverActive===true,feverStart:validFeverTime(c.feverStart)?c.feverStart:'',feverRate:c.feverActive===true?FEVER_RATE:0,
+  feverActive:c.feverActive===true,feverStart:validFeverTime(c.feverStart)?c.feverStart:'',feverRate:c.feverActive===true?(Math.abs(Number(c.feverRate)-DAILY_TICKET_RATE)<0.0001?DAILY_TICKET_RATE:FEVER_RATE):0,
    recommendedBonus:c.recommendedBonus===true,recommendedStagePoints:boundedNumber(c.recommendedStagePoints??c.streakStagePoints??c.points,150000),recommendedXpPoints:boundedNumber(c.recommendedXpPoints??c.xpStreakPoints??c.xpEarned,15000),
    eveningBonus:c.eveningBonus===true,eveningStagePoints:boundedNumber(c.eveningStagePoints??c.recommendedStagePoints??c.streakStagePoints??c.points,150000),eveningStageXp:boundedNumber(c.eveningStageXp??c.recommendedXpPoints??c.xpStreakPoints??c.xpEarned,15000),
   timeStagePoints:boundedNumber(c.timeStagePoints??c.basePoints??c.points,150000),
@@ -4282,6 +4358,7 @@ function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.a
  data.dailyNotes=cleanDailyNotes(data.dailyNotes);
  data.learnedMoves=cleanLearnedMoves(data.learnedMoves);
  data.feverTime=cleanFever(data.feverTime);
+ data.dailyVisitRewards=cleanDailyVisitRewards(data.dailyVisitRewards);
  data.recommendedQuest=cleanRecommendedQuest(data.recommendedQuest);data.eveningRecommended=cleanRecommendedQuest(data.eveningRecommended);data.briefingSeen=cleanBriefingSeen(data.briefingSeen);data.eveningTime=validBriefingClock(data.eveningTime)?data.eveningTime:'21:00';data.activeEvent=cleanActiveEvent(data.activeEvent);data.eventHistory=cleanEventHistory(data.eventHistory);
  data.statsOpen={draws:data.statsOpen?.draws===true,questEvents:data.statsOpen?.questEvents===true};
  data.analyticsView=data.analyticsView||{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false};if(typeof data.analyticsView.showArchived!=='boolean')data.analyticsView.showArchived=false;if(typeof data.analyticsView.showArchivedStats!=='boolean')data.analyticsView.showArchivedStats=false;
@@ -4356,7 +4433,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.71</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.72</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -4568,8 +4645,8 @@ function verifyQuest(e){
  const recommendedXpPoints=recommendedBonus?Math.round(xpStreakPoints*1.10):xpStreakPoints;
  const eveningStagePoints=eveningBonus?Math.round(recommendedStagePoints*1.20):recommendedStagePoints;
   const eveningStageXp=eveningBonus?Math.round(recommendedXpPoints*1.20):recommendedXpPoints;
-  const feverStagePoints=fever.active?Math.round(eveningStagePoints*(1+FEVER_RATE)):eveningStagePoints;
- const feverStageXp=fever.active?Math.round(eveningStageXp*(1+FEVER_RATE)):eveningStageXp;
+  const feverStagePoints=fever.active?Math.round(eveningStagePoints*(1+fever.rate)):eveningStagePoints;
+ const feverStageXp=fever.active?Math.round(eveningStageXp*(1+fever.rate)):eveningStageXp;
  const preRecordPoints=Math.round(feverStagePoints*(1+medalSnapshot.total/100));
  const preRecordXp=Math.round(feverStageXp*(1+medalSnapshot.total/100));
  const recordBonusPoints=recordBonus?Math.round(preRecordPoints*.20):0;
@@ -4581,7 +4658,7 @@ function verifyQuest(e){
  const elapsedSeconds=normal?0:Math.floor(timeState.elapsedSeconds);
  data.completions.push({day:day(),id,title:q.title,questType:questType(q),pokemonId:questType(q)==='event'?data.activeEvent?.pokemonId||0:0,category:q.category,goal:q.goal,
   mode:normal?'normal':'time',points:pts,basePoints:basePts,multiplier:mult,pointBoost,xpBoost,pointCombinedMultiplier:combined,questStreak:todayQuestRun,overallStreak:todayOverallRun,xpBase:baseXp,
-  feverActive:fever.active,feverRate:fever.active?FEVER_RATE:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,
+  feverActive:fever.active,feverRate:fever.active?fever.rate:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,
   limitSeconds:normal?0:a.limitSeconds,elapsedSeconds,holdSeconds,holdCount:normal?0:(a.holdCount||0),
   rewardRule:questReward(q),xpEarned:earnedXp,achievement,recordMode:achievementMode(q),recordUnit:achievementUnit(q),achievementUpdatedAt:now,recordBonus,recordBonusPoints,recordBonusXp,preRecordPoints,preRecordXp,at:now});
  if(data.achievementDrafts?.[day()]?.[id]){delete data.achievementDrafts[day()][id];if(!Object.keys(data.achievementDrafts[day()]).length)delete data.achievementDrafts[day()];}
@@ -4607,7 +4684,7 @@ function verifyQuest(e){
  };
  save();modal={type:'quest',mode:normal?'normal':'time',pts,basePts,multiplier:mult,elapsedSeconds,holdSeconds,
   bonus,title:q.title,eventPokemonId:questType(q)==='event'?(data.completions.at(-1)?.pokemonId||0):0,rewardLabel:questRewardText(q),xpEarned:earnedXp,xpBase:baseXp,pointBoost,xpBoost,pointCombinedMultiplier:combined,questStreak:todayQuestRun,overallStreak:todayOverallRun,
-  feverActive:fever.active,feverRate:fever.active?FEVER_RATE:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,achievement,recordBonus,recordBonusPoints,recordBonusXp,preRecordPoints,preRecordXp,newlyEarnedHonor,levelUps,newLevelGifts,growth};render();
+  feverActive:fever.active,feverRate:fever.active?fever.rate:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,achievement,recordBonus,recordBonusPoints,recordBonusXp,preRecordPoints,preRecordXp,newlyEarnedHonor,levelUps,newLevelGifts,growth};render();
 }
 let rewardAnimationToken=0,rewardAnimationTimeout=null,rewardAnimationFrame=0;
 let growthSequenceToken=0,growthSequenceTimer=null;
@@ -4621,7 +4698,7 @@ function rewardStages(){
  {p:m.streakStagePoints??m.pts,x:m.xpStreakPoints??m.xpEarned,reason:`🔥 퀘스트 ${m.questStreak||1}일 · 전체 ${m.overallStreak||1}일!`,title:'🔥 연속 수행 보너스',desc:`퀘스트 P ×${Number(m.pointBoost||1).toFixed(2)} · 전체 XP ×${Number(m.xpBoost||1).toFixed(2)}`}];
  if(m.recommendedBonus)stages.push({p:m.recommendedStagePoints??m.pts,x:m.recommendedXpPoints??m.xpEarned,reason:'🌟 오늘의 추천 퀘스트! P와 XP 각각 +10%',title:'🌟 추천 퀘스트 +10%',desc:'오래 쉬었던 퀘스트에 다시 도전한 보상'});
  if(m.eveningBonus)stages.push({p:m.eveningStagePoints??m.pts,x:m.eveningStageXp??m.xpEarned,reason:'🌙 대표 포켓몬의 저녁 추천! P와 XP +20%',title:'🌙 야간 추천 +20%',desc:'오늘 가장 오래 쉬었던 퀘스트에 도전한 보상'});
- if(m.feverActive)stages.push({p:m.feverStagePoints??m.pts,x:m.feverStageXp??m.xpEarned,reason:'✨ FEVER TIME +10%! 포인트와 XP 추가!',title:'✨ FEVER TIME +10%',desc:'계정별 FEVER 시간 보너스'});
+ if(m.feverActive){const rate=Math.round((m.feverRate||FEVER_RATE)*100);stages.push({p:m.feverStagePoints??m.pts,x:m.feverStageXp??m.xpEarned,reason:`✨ FEVER TIME +${rate}%! 포인트와 XP 추가!`,title:`✨ FEVER TIME +${rate}%`,desc:rate===20?'오늘의 행운 티켓 · 정규 FEVER와 중복 없음':'계정별 정규 FEVER 시간 보너스'});}
  if((m.medalBoostRate||0)>0)stages.push({p:m.preRecordPoints??m.pts,x:m.preRecordXp??m.xpEarned,reason:`🏅 훈장의 축복 발동! 영구 +${m.medalPermanent||0}% · 48시간 +${m.medalTemporary||0}%`,title:`🏅 훈장 부스트 +${m.medalBoostRate}%`,desc:`특별 영구 +${m.medalPermanent||0}% · 일반 48시간 +${m.medalTemporary||0}%`});
  if(m.recordBonus)stages.push({p:m.pts,x:m.xpEarned,reason:'📝 달성 상세 기록 완료! 포인트와 경험치 각각 +20%',title:'📝 기록 보너스 +20%',desc:'완료 승인 때 달성량 숫자 입력 또는 상세 메모 작성'});
  stages.push({p:m.pts,x:m.xpEarned,reason:'🏆 보상이 확정되었어요!',title:'🏆 최종 보상',desc:'모든 부스트 계산 완료'});
@@ -4726,7 +4803,7 @@ function setRewardStage(index,animate=false){
   const i=Number(el.dataset.rewardStage);el.classList.toggle('is-active',i===stageIndex);el.classList.toggle('is-done',i<stageIndex);el.classList.remove('stage-hit','stage-fever');
   if(i===stageIndex&&animate&&changed){void el.offsetWidth;el.classList.add('stage-hit');if(stageIndex===stages.length-1&&modal.feverActive)el.classList.add('stage-fever');rewardParticleBurst(el,stageIndex===stages.length-1&&modal.feverActive)}
  });
- const announce=document.getElementById('rewardWinAnnounce');if(announce){announce.classList.toggle('visible',stageIndex===stages.length-1&&modal.feverActive);announce.textContent=modal.feverActive?'🌈 FEVER BONUS! ×1.10':''}
+ const announce=document.getElementById('rewardWinAnnounce');if(announce){announce.classList.toggle('visible',stageIndex===stages.length-1&&modal.feverActive);announce.textContent=modal.feverActive?`🌈 FEVER BONUS! ×${(1+(modal.feverRate||FEVER_RATE)).toFixed(2)}`:''}
  const last=stageIndex===stages.length-1,final=document.getElementById('rewardFinalNote'),skip=document.getElementById('rewardSkipButton');if(final)final.hidden=!last;if(skip)skip.hidden=last;if(last)beginRewardGrowthSequence(animate);else{cancelRewardGrowth();const growth=document.getElementById('rewardGrowth');if(growth)growth.hidden=true;}
 }
 function finishRewardAnimation(){cancelRewardAnimation();if(modal?.type==='quest')setRewardStage(rewardStages().length-1,false)}
@@ -4801,6 +4878,84 @@ function claimLevelReward(level){
 function bonus(){
  if(data.demoGranted){alert('첫 선물은 계정당 한 번만 받을 수 있습니다.');return}
  data.points+=600;data.allEarned+=600;data.demoGranted=true;data.bonusAt=new Date().toISOString();save();modal={type:'bonus'};render();
+}
+
+// v1.7.72 — Daily login gift: once per local calendar day, claimed manually.
+// Uses existing trainer/individual XP rules; only one prize is paid per saved claim.
+function dailyGiftCommittedElsewhere(){
+ try{
+  const latest=JSON.parse(localStorage.getItem(MULTI_KEY));
+  return (latest?.users?.[currentUserId]?.data?.dailyVisitRewards||[]).some(x=>x.day===day());
+ }catch(e){return false}
+}
+function applyDailyBuddyXp(mon,amount){
+ const rules=trainingRules(),before=mon.level;
+ const room=Math.max(0,(rules.maxLevel-mon.level)*rules.xpPerLevel-mon.xp);
+ const given=Math.min(amount,room),progress=mon.xp+given;
+ mon.level=Math.min(rules.maxLevel,mon.level+Math.floor(progress/rules.xpPerLevel));
+ mon.xp=mon.level>=rules.maxLevel?0:progress%rules.xpPerLevel;
+ if(given>0){
+  recordTraining({type:'train',uid:mon.uid,species:mon.species,points:0,xp:given,level:mon.level});
+  if(!data.trainingBadges.some(x=>x.id==='firstTrain'))earnTrainingBadge('firstTrain',mon.uid);
+  if(before<10&&mon.level>=10)earnTrainingBadge('lv10',mon.uid);
+  if(before<100&&mon.level>=100)earnTrainingBadge('lv100',mon.uid);
+  if(rules.autoEvolve){const choices=trainEvolutionOptions(mon);if(choices.length===1&&choices[0].kind==='level')trainingPerformEvolution(mon,choices[0].to)}
+ }
+ return given;
+}
+function claimDailyVisitGift(){
+ if(!startUnlocked||!currentUserId||!data.demoGranted||!dailyGiftAvailable())return;
+ if(!settings.autoSave){alert('일일 선물 중복 수령을 방지하려면 자동 저장을 켜주세요.');return}
+ if(dailyGiftCommittedElsewhere()){alert('다른 창에서 오늘의 선물을 이미 받았습니다. 해당 창에서 JSON 백업 후 이 화면을 새로고침해 주세요.');return}
+ const snapshot=JSON.stringify(data),now=new Date(),prize=dailyGiftPick(),record={day:localDayAt(now),type:prize.type,points:prize.points,xp:prize.xp,buddyXp:prize.buddyXp,buddyUid:'',at:now.toISOString(),activatedAt:'',endsAt:'',fallback:false};
+ if(record.type==='buddyXp'){
+  const mon=currentBuddy();
+  if(!mon){record.type='trainerXp';record.xp=prize.buddyXp;record.buddyXp=0;record.fallback=true;}
+  else{
+   record.buddyUid=mon.uid;
+   record.buddyXp=applyDailyBuddyXp(mon,prize.buddyXp);
+   // At maximum level, do not draw a zero-value prize.
+   if(record.buddyXp<=0){record.type='trainerXp';record.xp=prize.buddyXp;record.buddyXp=0;record.fallback=true;}
+  }
+ }
+ if(record.points){data.points+=record.points;data.allEarned+=record.points}
+ if(record.xp){const levels=awardQuestXp(record.xp);for(const lev of levels)if(lev%5===0)grantMilestonePokemon(lev)}
+ data.dailyVisitRewards.push(record);
+ if(!save()){
+  data=JSON.parse(snapshot);registry.users[currentUserId].data=data;
+  alert('일일 선물을 저장하지 못해 지급을 취소했습니다. 저장 공간을 확인한 후 다시 시도하세요.');render();return;
+ }
+ modal={type:'dailyVisitReward',record};render();
+}
+function activateDailyFeverTicket(){
+ if(!startUnlocked||!currentUserId)return;
+ const ticket=todayDailyGift();
+ if(!ticket||ticket.type!=='feverTicket'||ticket.activatedAt)return;
+ if(!settings.autoSave){alert('FEVER 활성화에는 자동 저장이 필요합니다.');return}
+ if(!confirm('지금부터 60분간 퀘스트 완료 P·XP +20%를 적용할까요? 오늘 자정이 지나면 종료됩니다.'))return;
+ const snapshot=JSON.stringify(data),now=new Date(),midnight=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1).getTime();
+ ticket.activatedAt=now.toISOString();ticket.endsAt=new Date(Math.min(now.getTime()+3600000,midnight)).toISOString();
+ if(!save()){
+  data=JSON.parse(snapshot);registry.users[currentUserId].data=data;
+  alert('FEVER 시작 기록을 저장하지 못했습니다. 다시 시도하세요.');render();return;
+ }
+ modal=null;render();
+}
+function renderDailyVisitHub(){
+ const gift=todayDailyGift(),firstGift=data.demoGranted===true;
+ const history=(data.dailyVisitRewards||[]).slice(-4).reverse();
+ if(!firstGift)return `<section class="daily-login-hub" aria-label="첫 시작 선물"><div class="daily-login-main"><span class="daily-login-icon">🎉</span><div class="daily-login-copy"><strong>첫 시작 선물 · 600P</strong><small>기존 첫 선물 그대로! 첫 선물 다음 날부터 매일 행운 상자가 열립니다.</small></div><button class="reward-claim-btn" type="button" onclick="bonus()">🎁 600P 받기</button></div></section>`;
+ const firstDate=data.bonusAt&&Number.isFinite(Date.parse(data.bonusAt))?localDayAt(new Date(data.bonusAt)):'';
+ const waiting=!gift&&!dailyGiftAvailable();
+ let status='';
+ if(waiting)status=`<span class="daily-login-note">첫 선물을 받은 날이에요. 내일부터 행운 상자를 열 수 있어요.</span>`;
+ else if(!gift)status='<button type="button" class="reward-claim-btn" onclick="claimDailyVisitGift()">🎁 오늘의 상자 열기</button>';
+ else if(gift.type==='feverTicket'&&!gift.activatedAt)status='<button type="button" class="reward-claim-btn" onclick="activateDailyFeverTicket()">🔥 FEVER 시작</button>';
+ else status='<span class="daily-login-done">✓ 오늘 수령 완료</span>';
+ const ticket=gift?.type==='feverTicket'?activeDailyFever(data):null;
+ const remaining=gift?.type==='feverTicket'?gift.activatedAt?(ticket?`진행 중 · ${Math.ceil(ticket.secondsLeft/60)}분 남음`:'오늘의 티켓 사용 완료'):'받은 날에만 사용 가능 · 원하는 때 시작':'';
+ const copy=!gift?(waiting?'첫 선물 다음 날부터 하루 한 번 받을 수 있어요.':'포인트·트레이너 XP·대표 포켓몬 XP·FEVER·대박 보상 중 하나!'):`${dailyGiftLabel(gift)}${remaining?' · '+remaining:''}`;
+ return `<section class="daily-login-hub ${gift?'claimed':''}" aria-label="오늘의 행운 상자"><div class="daily-login-main"><span class="daily-login-icon">${gift?'🎁':'🎁'}</span><div class="daily-login-copy"><strong>오늘의 행운 상자</strong><small>${esc(copy)}</small></div>${status}</div><div class="daily-login-footer"><small>🎉 첫 시작 선물 600P · 수령 완료${firstDate?' · '+esc(firstDate):''}</small><details><summary>최근 보상</summary><div class="daily-login-history">${history.length?history.map(x=>`<div><span>${esc(x.day)}</span><strong>${esc(dailyGiftLabel(x))}</strong></div>`).join(''):'<p>일일 보상 수령 기록이 없습니다.</p>'}</div></details></div></section>`;
 }
 
 function openQuestManager(){if(!startUnlocked||!currentUserId)return;modal={type:'questManagerAuth'};render()}
@@ -5296,7 +5451,7 @@ ${TRAINING_MANUAL}${HONOR_MANUAL}${MOVE_CINEMA_MANUAL}${MOVE_MINIMAL_MANUAL}
 const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'],['ops','🎛 운영 설정','보상 · 확률 · 훈련 · 훈장'],['account','👥 계정·보안','트레이너 · 비밀번호'],['data','💾 데이터·시스템','백업 · 병합 · 초기화'],['guide','📖 사용 매뉴얼','최신 기능 · 공식 · FAQ'],['history','📜 개발 버전 이력','최신순 업데이트 기록']];
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
-const ADMIN_VERSION_NOTES=[['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
+const ADMIN_VERSION_NOTES=[['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
  ['1.7.68','한줄 리스트의 완료 상태를 퀘스트명 앞 네모박스(미완료)/체크된 네모박스(완료)로 표현. 기존 왼쪽 상태선 및 다른 배치 유지.'],
  ['1.7.67','간단 리스트의 자세히/접기를 수행률 아래로 이동. 한줄 리스트 추천 배지를 연속 표시 앞으로 이동.'],
  ['1.7.62','기록 탭 실제 달성량의 단위 미지정 포함 전체 단위 기본 선택, 다중 선택 비교 그래프, 단위별 실측 합계와 기록 없음/0 구분, 계정별 보기 설정 저장.'],
@@ -5327,7 +5482,7 @@ const ADMIN_VERSION_NOTES=[['1.7.71','특별 대결에서 성공·실패 결과 
 function adminChangeLog(){return `<h2 class="admin-section-heading">📜 버전별 변경 사항</h2><p class="admin-section-description">업데이트 내용을 최신순으로 모았습니다. 과거 버전의 기능 설명은 아래 「과거 기능 기록」에 보관합니다.</p>${ADMIN_VERSION_NOTES.map(([v,t],i)=>`<div class="admin-history-entry"><strong>v${v}</strong>${i===0?'<span style="float:right;font-size:10px;font-weight:800">현재 버전</span>':''}<p>${esc(t)}</p></div>`).join('')}`}
 function adminSubLabel(group,sub){return (ADMIN_SUB[group]||[]).find(x=>x[0]===sub)?.[1]||'관리자';}
 function renderAdminHome(){return `<div class="admin-home-heading">필요한 설정에 바로 접근하세요</div><div class="admin-intro">설정은 한 곳에서 관리하고, 최신 설명과 과거 개발 이력은 분리했습니다.</div><label class="admin-search-wrap"><span aria-hidden="true">🔎</span><input id="adminHubSearch" type="search" placeholder="예: FEVER, 포인트, 훈장, PIN, 백업" autocomplete="off" oninput="adminSearch(this.value)" aria-label="관리자 설정 검색"></label><div id="adminSearchResults" class="admin-search-results" aria-live="polite"></div><div class="admin-summary-pills"><span>👥 ${Object.keys(registry.users||{}).length}개 트레이너</span><span>🪙 기본 ${format(data.rules.pointMin)}~${format(data.rules.pointMax)}P</span><span>🌟 기본 ${format(data.rules.defaultXp)}XP</span><span>🎛 전체 공통 · 계정별 구분</span></div><div class="admin-overview-grid">${ADMIN_GROUPS.filter(x=>x[0]!=='home').map(([g,name,desc])=>`<button class="admin-home-card" type="button" onclick="adminRoute('${g}')"><strong>${name}</strong><small>${desc}</small></button>`).join('')}<button class="admin-home-card" type="button" onclick="adminRoute('ops','rewards','m-rewards')"><strong>⚡ 빠른 설정</strong><small>포인트·경험치 바로 수정</small></button></div><div class="admin-home-heading">현재 설정 바로가기</div><div class="admin-overview-grid"><button class="admin-home-card" type="button" onclick="adminRoute('ops','fever','m-fever')"><strong>✨ FEVER TIME</strong><small>계정별 시간 설정</small></button><button class="admin-home-card" type="button" onclick="adminRoute('ops','honor','m-honor-criteria')"><strong>🏅 훈장 기준</strong><small>전체 계정 공통 기준</small></button><button class="admin-home-card" type="button" onclick="adminRoute('data','backup','m-save')"><strong>💾 전체 백업</strong><small>JSON 저장·복원</small></button><button class="admin-home-card" type="button" onclick="adminRoute('account','users','m-users')"><strong>👥 트레이너 관리</strong><small>사용자·완료 PIN</small></button></div>`}
-function renderAdminGuideTop(){return `<section class="manual-section"><h3>📘 최신 이용 가이드</h3><p>이곳은 현재 사용 중인 기능을 설명합니다. 지난 버전의 화면 설명은 「개발 버전 이력 → 과거 기능 기록」에 보관했습니다.</p><p><b>퀘스트 보기 4종:</b> 격자 카드 / 리스트 / 간단 리스트 / 한줄 리스트. 미완료 예약 퀘스트를 우선 표시하고, 미완료와 완료 상태를 글자·체크로 구분합니다.</p><p><b>퀘스트 완료:</b> 일반 완료 또는 타임챌린지 후 해당 계정의 완료 PIN 승인 시 보상이 확정됩니다. 단계별 보상 연출 뒤 포인트·트레이너 XP·대표 포켓몬 XP 변화 막대가 표시됩니다.</p><p><b>FEVER TIME:</b> 시작 1시간 전부터 예정, 진행 중 +10% P·XP, 종료 후 박스 숨김. 계정별 ON/OFF 및 시작 시간을 관리자 운영 설정에서 변경할 수 있습니다.</p></section>`}
+function renderAdminGuideTop(){return `<section class="manual-section"><h3>📘 최신 이용 가이드</h3><p>이곳은 현재 사용 중인 기능을 설명합니다. 지난 버전의 화면 설명은 「개발 버전 이력 → 과거 기능 기록」에 보관했습니다.</p><p><b>퀘스트 보기 4종:</b> 격자 카드 / 리스트 / 간단 리스트 / 한줄 리스트. 미완료 예약 퀘스트를 우선 표시하고, 미완료와 완료 상태를 글자·체크로 구분합니다.</p><p><b>퀘스트 완료:</b> 일반 완료 또는 타임챌린지 후 해당 계정의 완료 PIN 승인 시 보상이 확정됩니다. 단계별 보상 연출 뒤 포인트·트레이너 XP·대표 포켓몬 XP 변화 막대가 표시됩니다.</p><p><b>FEVER TIME:</b> 정규 시간대에는 +10% P·XP를 적용합니다. 매일 행운 상자에서 받은 티켓을 직접 사용하면 당일 60분간 +20%가 적용되며 정규 +10%와 합산하지 않습니다.</p></section>`}
 function renderManual(){if(!adminUnlocked||!startUnlocked)return '';return `${pageHeader('관리자 <em>센터</em>','')}
  <div class="admin-center" id="adminCenter">
  <div class="admin-nav" role="navigation" aria-label="관리자 센터 주요 목차">${ADMIN_GROUPS.map(([id,label])=>`<button type="button" data-admin-group="${id}" onclick="adminRoute('${id}')">${label}</button>`).join('')}</div>
@@ -6024,7 +6179,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.71</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong>🪙 포인트 +10%</strong><strong>🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.72</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -6679,7 +6834,7 @@ function renderHome(){
  return `${pageHeader('오늘의 <em>퀘스트</em>','나의 도전과 보상을 한눈에 확인해요','home-page-header')}
 ${sharedProgressSummary('home')}
 ${trainingBuddyWidget()}
- 
+${renderDailyVisitHub()}
 <section class="home-quest-section ${homeQuestToolsOpen?'tools-on':''}" id="homeQuestSection" aria-label="오늘의 퀘스트 수행">
  <div class="home-quest-heading"><span class="home-quest-eyebrow">⚡ 오늘의 도전</span><h2>오늘 할 퀘스트</h2><p>요일별·일회성 목표를 진행하고, 보유 포켓몬의 깜짝 이벤트를 만나봐요!</p></div>
  <div class="home-quest-day-status"><div class="home-day-streak" title="하루에 퀘스트를 1개 이상 완료하면 연속 도전 1일로 인정됩니다."><span aria-hidden="true">🔥</span><span><small>연속 도전</small><b>${streak()}일</b></span></div><div class="home-day-count"><span aria-hidden="true">✅</span><span><small>오늘 완료</small><b>${done}<i>/</i>${n}</b></span></div></div>
@@ -6697,7 +6852,7 @@ ${trainingBuddyWidget()}
  <p class="home-manage-note">퀘스트 수정은 위 각 카드의 '수정' 버튼을 이용하세요. 등록·수정·삭제에는 관리자 인증이 필요합니다.</p></div></details>
 </section>
 <section class="section rewards-hub" id="rewardCenter"><div class="section-title"><h2>🎁 보상 받기</h2><span class="hint">직접 눌러서 수령해요</span></div>
-<div class="reward-gift"><div><strong>🎉 첫 시작 선물 · 600P</strong><small>${data.demoGranted?'이미 수령했습니다.':'처음 한 번만 받을 수 있어요.'}</small></div><button class="reward-claim-btn" onclick="bonus()" ${data.demoGranted?'disabled':''}>${data.demoGranted?'✓ 수령 완료':'🎁 600P 받기'}</button></div>
+<p class="reward-explain">첫 시작 선물과 매일 행운 상자는 오늘 탭 상단에서 확인할 수 있어요.</p>
 <div class="reward-level-title">🌟 레벨 보상 · Lv.N 달성 시 N × 50P</div><p class="reward-explain">레벨 2부터 1레벨 오를 때마다 보상이 열립니다. 미수령 보상은 사라지지 않으며 버튼으로 받을 수 있어요. 레벨업만으로는 포인트가 자동 지급되지 않습니다.</p>
 ${unclaimedLevels().length?`<div class="reward-level-list">${unclaimedLevels().slice(-24).reverse().map(level=>`<div class="reward-level-row"><div><b>Lv.${level} 달성 선물</b><small>+${format(level*50)}P</small></div><button class="reward-claim-btn" onclick="claimLevelReward(${level})">보상 받기</button></div>`).join('')}</div>${unclaimedLevels().length>24?`<div class="info-line">미수령 ${unclaimedLevels().length}개 · 최근 24개를 먼저 표시합니다. 이 보상을 수령하면 이전 레벨 보상도 나타납니다.</div>`:''}`:'<div class="reward-all-done">✅ 현재 레벨까지 모든 보상을 수령했습니다!</div>'}
 ${data.rewardClaims?.length?`<div class="reward-history">최근 수령: ${[...data.rewardClaims].sort((a,b)=>b.level-a.level).slice(0,4).map(c=>`Lv.${c.level} +${format(c.points)}P`).join(' · ')}</div>`:''}
@@ -7241,6 +7396,10 @@ if(modal.type==='quest'){
  ${modal.bonus!==0?`<div class="complete-bonus">🏆 오늘의 전체 퀘스트 달성! +${format(modal.bonus)}P (FEVER 미적용)</div>`:''}
  <button class="modal-btn" onclick="eventCloseReward('draw')">🎮 뽑기하러 가기 →</button><button class="modal-btn secondary" onclick="eventCloseReward()">퀘스트 계속하기</button></div></div>`;
 }
+if(modal.type==='dailyVisitReward'){
+ const r=modal.record,prize=dailyGiftLabel(r);
+ return `<div class="overlay" onclick="modal=null;render()"><div class="modal daily-gift-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="오늘의 행운 상자 결과"><div class="daily-gift-celebration">${r.type==='jackpot'?'💎 ✨ 🎉':'🎁 ✨'}</div><h2>${r.type==='jackpot'?'💎 대박 보상!':'🎁 오늘의 행운 보상'}</h2><div class="daily-gift-prize">${esc(prize)}</div><p class="modal-sub">계정별 오늘 한 번만 받을 수 있어요.${r.type==='feverTicket'?' 원할 때 FEVER를 직접 시작해 보세요.':''}</p>${r.type==='feverTicket'&&!r.activatedAt?'<button class="modal-btn" onclick="activateDailyFeverTicket()">🔥 지금 FEVER 시작</button>':''}<button class="modal-btn secondary" onclick="modal=null;render()">확인</button></div></div>`;
+}
 if(modal.type==='bonus')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><h2>🎉 첫 시작 선물!</h2><p class="modal-sub">계정당 한 번만 수령할 수 있어요!</p><div class="modal-art"><div class="pokeball"></div></div><h2 style="color:#ffd46b">+600 P</h2><button class="modal-btn" onclick="modal=null;setScreen('draw')">뽑기로 이동하기 →</button><button class="modal-btn secondary" onclick="modal=null;render()">홈에서 계속하기</button></div></div>`;
 if(modal.type==='levelUpNotice'){
  const levels=(modal.levels||[]).map(Number).filter(n=>Number.isInteger(n)&&n>=2);
@@ -7440,7 +7599,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.71</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.72</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
