@@ -4634,7 +4634,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.79</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.80</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -4939,7 +4939,7 @@ function beginRewardGrowthSequence(animate){
   if(leveled){growthSequenceTimer=setTimeout(()=>{if(token!==growthSequenceToken||modal?.type!=='quest')return;fill.style.transition='none';fill.style.width=to+'%';},duration+90);}
  };
  const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
- if(!animate||reduced){rows.forEach(row=>apply(row,0));return;}
+ if(!animate||reduced){rows.forEach(row=>apply(row,0));requestAnimationFrame(()=>{if(token===growthSequenceToken&&modal?.type==='quest'&&panel.isConnected)panel.scrollIntoView({behavior:reduced?'instant':'smooth',block:'nearest'});});return;}
  growthSequenceTimer=setTimeout(()=>{
   if(token!==growthSequenceToken||modal?.type!=='quest')return;
   panel.scrollIntoView({behavior:'smooth',block:'nearest'});
@@ -6553,7 +6553,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.79</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.80</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -7349,7 +7349,7 @@ function dexCheckNewMoveDiscoveries(id,userId){
  modal.newMoveDiscoveries=candidates.map(m=>({slug:m.slug,level:Math.max(1,m.level),version}));
  refreshDexDetailModal();loadDexMoveNames(id,userId);
 }
-function dexConfirmMoveDiscoveries(){
+function dexConfirmMoveDiscoveries(showDemo=true){
  if(modal?.type!=='dexDetail'||!Array.isArray(modal.newMoveDiscoveries)||!modal.newMoveDiscoveries.length)return;
  const id=Number(modal.id),userId=modal.userId,version=modal.version,trainer=registry.users[userId];
  if(userId!==currentUserId||!trainer?.data.owned?.[id])return;
@@ -7364,14 +7364,14 @@ function dexConfirmMoveDiscoveries(){
  }
  modal.newMoveDiscoveries=null;modal.tab='moves';
  if(count)save(); // Rewards and training points are never repeated by animations.
- if(first&&POKEROUTINE_DEMO_MOVES.has(first)){modal.moveDemo=first;modal.demoFromDiscovery=true;}
+ if(showDemo&&first&&POKEROUTINE_DEMO_MOVES.has(first)){modal.moveDemo=first;modal.demoFromDiscovery=true;}
  refreshDexDetailModal();loadDexMoveNames(id,userId);
 }
 function dexDiscoveryOverlayMarkup(id){
  const items=modal?.newMoveDiscoveries;
  if(!Array.isArray(items)||!items.length)return '';
  const details=dexEncyclopedia[id]?.moveDetails||{},mon=dexSelectedPokemon(registry.users[modal.userId],id);
- return `<div class="dex-new-moves-overlay" role="dialog" aria-modal="true" aria-label="새로운 기술 획득 알림"><div class="dex-new-moves-card"><div class="dex-new-moves-rays" aria-hidden="true">✨ ✦ 🌟 ✦ ✨</div><img class="dex-new-moves-pokemon" src="${pic(id)}" alt="${esc(name(id))}"><h2>🎉 새로운 기술 획득!</h2><p class="dex-new-moves-sub">${esc(name(id))} · 포켓몬 Lv.${mon?.level||1}<br>새로운 기술 ${items.length}개를 발견했어요!</p><div class="dex-new-moves-list">${items.map((m,i)=>`<div class="dex-new-move" style="--new-move-i:${i}"><span>✨ ${esc(details[m.slug]?.name||dexResourceLabel(m.slug))}</span><small>Lv.${m.level} 획득</small></div>`).join('')}</div><button class="modal-btn dex-confirm-moves" type="button" onclick="dexConfirmMoveDiscoveries()">${items.some(m=>POKEROUTINE_DEMO_MOVES.has(m.slug))?'🎁 기술 획득하고 시연 보기':'🎁 기술 획득하기'}</button><p class="dex-new-moves-note">확인 후 이 포켓몬의 기술로 저장돼요. 시연은 언제든 다시 볼 수 있어요.</p></div></div>`;
+ return `<div class="dex-new-moves-overlay" role="dialog" aria-modal="true" aria-label="새로운 기술 획득 알림"><div class="dex-new-moves-card"><div class="dex-new-moves-rays" aria-hidden="true">✨ ✦ 🌟 ✦ ✨</div><img class="dex-new-moves-pokemon" src="${pic(id)}" alt="${esc(name(id))}"><h2>🎉 새로운 기술 획득!</h2><p class="dex-new-moves-sub">${esc(name(id))} · 포켓몬 Lv.${mon?.level||1}<br>새로운 기술 ${items.length}개를 발견했어요!</p><div class="dex-new-moves-list">${items.map((m,i)=>`<div class="dex-new-move" style="--new-move-i:${i}"><span>✨ ${esc(details[m.slug]?.name||dexResourceLabel(m.slug))}</span><small>Lv.${m.level} 획득</small></div>`).join('')}</div><button class="modal-btn dex-confirm-moves" type="button" onclick="dexConfirmMoveDiscoveries()">${items.some(m=>POKEROUTINE_DEMO_MOVES.has(m.slug))?'🎁 기술 획득하고 시연 보기':'🎁 기술 획득하기'}</button>${items.some(m=>POKEROUTINE_DEMO_MOVES.has(m.slug))?'<button class="modal-btn secondary dex-new-moves-skip" type="button" onclick="dexConfirmMoveDiscoveries(false)">✅ 기술만 획득 · 시연 건너뛰기</button>':''}<p class="dex-new-moves-note">확인 후 이 포켓몬의 기술로 저장돼요. 시연은 언제든 다시 볼 수 있어요.</p></div></div>`;
 }
 // Original animation: type-colored energy, projectile and impact; no copyrighted footage.
 const DEX_DEMO_GLYPHS={normal:'✦',fire:'🔥',water:'💧',electric:'⚡',grass:'🍃',ice:'❄️',fighting:'💥',poison:'☣️',ground:'🪨',flying:'🌪️',psychic:'🔮',bug:'🐞',rock:'🪨',ghost:'👻',dragon:'🐉',dark:'🌑',steel:'⚙️',fairy:'✨'};
@@ -7977,7 +7977,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.79</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.80</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -8660,8 +8660,57 @@ if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 }
 
+// v1.7.80 · Android/PWA physical Back: dismiss topmost dialog, return to Today, then confirm exit.
+// An in-document history guard consumes a Back press without leaving the page.
+// It does not change URLs, saved quest state, or navigation tabs.
+const PR_BACK_STATE_KEY='__prBackGuard';
+let prBackGuardReady=false;
+function prBackConsumeModal(){
+ if(!modal)return false;
+ // A new-move notice is layered above the Pokédex details: close the top layer only.
+ if(modal.type==='dexDetail'&&modal.newMoveDiscoveries?.length){
+  modal.newMoveDiscoveries=null;refreshDexDetailModal();return true;
+ }
+ if(modal.type==='dexDetail'&&modal.moveDemo){closeDexMoveDemo();return true;}
+ if(modal.type==='questRateCalendar'){closeQuestRateCalendar();return true;}
+ if(modal.type==='quest'){eventCloseReward();return true;}
+ if(modal.type==='levelUpNotice'){closeLevelUpNotice(false);return true;}
+ if(modal.type==='eventReveal'){closeEventReveal();return true;}
+ if(modal.type==='questVerify'){backToTimer();return true;}
+ if(modal.type==='buddyBriefing'){closeBuddyBriefing();return true;}
+ if(modal.type==='levelGiftRoulette'){
+  // The gift is already determined; don't lose it when leaving its animation.
+  clearLevelGiftWheel();modal=null;document.getElementById('popup').innerHTML='';return true;
+ }
+ cancelRewardAnimation();modal=null;render();return true;
+}
+function prBackAction(){
+ if(prBackConsumeModal())return false;
+ if(startUnlocked&&currentUserId&&screen!=='home'){
+  setScreen('home');return false;
+ }
+ return window.confirm('포켓루틴을 종료하시겠습니까?');
+}
+function prArmBackGuard(){
+ if(prBackGuardReady||!/^https?:$/.test(location.protocol))return;
+ prBackGuardReady=true;
+ try{history.pushState({...(history.state||{}),[PR_BACK_STATE_KEY]:true},'',location.href)}catch(_){prBackGuardReady=false;}
+}
+window.addEventListener('popstate',()=>{
+ if(!prBackGuardReady)return;
+ const exitApproved=prBackAction();
+ if(exitApproved){
+  // Leave the guard unarmed: let the platform/browser handle normal Back/exit.
+  prBackGuardReady=false;
+  history.back();
+ }else{
+  try{history.pushState({...(history.state||{}),[PR_BACK_STATE_KEY]:true},'',location.href)}catch(_){}
+ }
+});
+prArmBackGuard();
+
 document.addEventListener('keydown',function(event){
- if(event.key==='Escape'&&modal?.type==='questRateCalendar'){event.preventDefault();closeQuestRateCalendar();return}
+ if(event.key==='Escape'&&modal){event.preventDefault();prBackConsumeModal();return}
  if((event.key==='Enter'||event.key===' ')&&event.target?.classList?.contains('mon')&&event.target.getAttribute('role')==='button'){
   event.preventDefault();event.target.click();
  }
