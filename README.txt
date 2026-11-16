@@ -1,11 +1,22 @@
-PokeRoutine v1.7.86 — Calendar compact records & combined daily archive
+PokéRoutine V1.7.87 · 성장 기록 탭 개편 (GitHub Pages 업데이트)
 
-Changes:
-- Quest completed list: one-line summary (time, emoji, title, points), details collapsed by default
-- Moment record list: one-line summary, details collapsed by default
-- Timeline group markers jump to corresponding rows; no duplicate cluster popup
-- Moment record input: collapsed by default; expanded when editing or using Today shortcut
-- Daily notes collection: show notes and moments together by date (including days with moments only), searchable by both, sorted by time
-- Existing point/XP, quest completion, moment record and JSON storage unchanged
+파일: index.html, moves.html, sw.js, README.txt
 
-To update GitHub Pages: replace index.html, moves.html and sw.js. Backup JSON first, then close and reopen PWA.
+주요 변경
+- 기록 탭: 주간 성장 브리핑(직전 7일 비교), 퀘스트별 성장 분석, 수행 리듬 타일, 실제 달성량 추세와 7회 이동평균 및 목표선, 기록 기반 메시지
+- 중복 제거: 기존 수행 횟수 그래프/연속 수행 그래프/포인트·XP 그래프, 달력에 이미 있는 포획·이벤트·변경 내역, 전체 캘린더 보기/자동 저장 버튼, 데이터 Save·Load 상자 삭제
+- 달력: 날짜별 완료/순간 기록/뽑기·이벤트·변경 상세 전용; 노트·순간 기록 모아보기는 기록 탭에 하나만 유지
+- 설정: 자동 저장·JSON Save/Load 인접 배치. 기존 데이터·보상 로직 변경 없음
+- 성장 분석의 단위 선택은 계정별 JSON 백업/복원에 포함
+
+적용 방법
+1. 먼저 앱 설정 탭에서 JSON 백업을 저장합니다.
+2. ZIP의 index.html, moves.html, sw.js 파일을 GitHub 저장소 루트에 덮어씁니다.
+3. GitHub Pages 반영 후 PWA를 완전히 종료하고 다시 열어 새 버전 표기를 확인합니다.
+
+참고
+- 과거 일정 이력이 없는 날짜는 임의로 실패 처리하지 않습니다.
+- 기록이 없는 날의 달성량은 0으로 채우지 않습니다.
+- 실제 달성량 그래프는 단위별로 한 번에 하나만 표시하고, 이동평균은 최근 7개의 실측값 기준입니다.
+- PWA의 종료 버튼 동작은 V1.7.86의 코드 그대로 유지합니다(이번 업데이트에서 변경하지 않음).
+- GitHub 배포 및 안드로이드 기기 실물 테스트는 포함하지 않습니다.
