@@ -1,11 +1,13 @@
-PokéRoutine V1.7.81 · Android Back/Exit confirmation fix
+PokéRoutine V1.7.82 · 단일 종료 확인 단계
 
-Changes:
-- Android Back: dismiss dialog first, navigate to Today from other tabs, open in-app exit confirmation on Today.
-- Modern Android Chrome: CloseWatcher handles hardware Back without depending on synthetic history entries.
-- Fallback for browser/older engines: arm synthetic history only after genuine user interaction.
-- Replaces window.confirm in popstate with a compact app-owned modal.
-- When exit is approved, release Back interception. Due to PWA platform limitations, one more physical Back may be required to close.
-- Existing reward, move skip, time log, account/JSON storage unchanged.
+개선 내용:
+- 오늘 탭 뒤로 가기: 계속 사용 / 종료 중 하나만 선택.
+- 기존 ‘종료 확인 완료’ 팝업 및 ‘계속 사용하기’ 버튼을 완전히 제거.
+- ‘종료’ 선택 시 창 닫기를 시도하고, 브라우저 방문 기록 보호 항목을 건너뛰어 한 번의 선택으로 종료를 시도.
+- 팝업 우선 닫기 및 다른 탭에서 오늘 탭으로 이동하는 기존 동작 유지.
+- 기존 퀘스트, 보상, 기록, 데이터 저장 기능은 변경하지 않음.
 
-Update GitHub Pages: back up user JSON, upload index.html, moves.html, sw.js, then reload/PWA restart. Deployment is not performed by this archive.
+주의: 설치형 PWA를 자바스크립트에서 강제 종료하는 것은 브라우저/Android 환경에 따라 제한될 수 있습니다.
+그 경우에도 ‘종료 확인 완료’ 팝업은 다시 나타나지 않습니다.
+
+적용: 기존 데이터를 JSON으로 백업한 뒤 index.html, moves.html, sw.js를 GitHub Pages 저장소에 업로드하고 새로고침 또는 PWA 재실행.
