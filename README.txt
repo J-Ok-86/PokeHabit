@@ -1,13 +1,11 @@
-PokéRoutine v1.7.80 · 뒤로가기 / 기술 시연 선택 / 보상 자동 스크롤 보완
+PokéRoutine V1.7.81 · Android Back/Exit confirmation fix
 
-V1.7.79 기준으로 수정했습니다.
-1. 뒤로가기: 팝업 닫기 → 다른 탭이면 오늘로 이동 → 오늘 탭이면 종료 확인.
-   브라우저/PWA의 실제 종료는 Android/브라우저 정책에 따라 달라집니다.
-2. 새로운 기술 획득 팝업: 기술 획득하고 시연 보기 / 기술만 획득·시연 건너뛰기 선택.
-   어느 쪽이든 기술은 한 번 저장되고, 나중에 도감에서 다시 시연할 수 있습니다.
-3. 모든 퀘스트(이벤트 포함)의 보상 마지막 단계에서 성장 그래프 자동 스크롤.
-   연출 건너뛰기·움직임 줄이기 경로도 그래프를 표시하고 그 위치로 이동합니다.
-   포인트·XP 지급 계산·중복 지급 방지 등은 변경하지 않았습니다.
+Changes:
+- Android Back: dismiss dialog first, navigate to Today from other tabs, open in-app exit confirmation on Today.
+- Modern Android Chrome: CloseWatcher handles hardware Back without depending on synthetic history entries.
+- Fallback for browser/older engines: arm synthetic history only after genuine user interaction.
+- Replaces window.confirm in popstate with a compact app-owned modal.
+- When exit is approved, release Back interception. Due to PWA platform limitations, one more physical Back may be required to close.
+- Existing reward, move skip, time log, account/JSON storage unchanged.
 
-배포: GitHub Pages의 같은 폴더에 index.html, moves.html, sw.js를 덮어씁니다.
-적용 전 앱의 JSON 백업을 저장하세요. 기존 온라인 서비스는 자동으로 수정되지 않습니다.
+Update GitHub Pages: back up user JSON, upload index.html, moves.html, sw.js, then reload/PWA restart. Deployment is not performed by this archive.
