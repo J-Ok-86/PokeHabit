@@ -1,12 +1,11 @@
-PokéRoutine V1.7.85 · 달력 시간축 아래 목록 통합
+PokeRoutine v1.7.86 — Calendar compact records & combined daily archive
 
-변경 사항
-- 24시간 시간축 아래에 기존 퀘스트 완료 내역 전체 카드(보상·달성량·메모·수정)를 이동하여 한 번만 표시
-- 같은 위치에 순간 기록 전용 리스트 박스 추가(작성 시각, 종류, 기분, 내용, 수정·삭제)
-- 중복되어 있던 시간별 완료·기록 혼합 리스트 삭제
-- 시간축의 개별 아이콘이나 겹친 항목에서 아래 해당 상세 목록으로 이동 가능
-- 기존 데일리 노트, 미수행 목록, 다른 이력, 백업·보상 로직 유지
-- V1.7.84의 뒤로 가기/종료 확인 동작 변경 없음
+Changes:
+- Quest completed list: one-line summary (time, emoji, title, points), details collapsed by default
+- Moment record list: one-line summary, details collapsed by default
+- Timeline group markers jump to corresponding rows; no duplicate cluster popup
+- Moment record input: collapsed by default; expanded when editing or using Today shortcut
+- Daily notes collection: show notes and moments together by date (including days with moments only), searchable by both, sorted by time
+- Existing point/XP, quest completion, moment record and JSON storage unchanged
 
-사용 전 기존 계정 데이터를 JSON으로 백업하세요.
-GitHub 저장소에 index.html, moves.html, sw.js를 덮어쓰기 후 브라우저/PWA를 완전히 종료하고 재실행하세요.
+To update GitHub Pages: replace index.html, moves.html and sw.js. Backup JSON first, then close and reopen PWA.

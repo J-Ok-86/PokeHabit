@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.85 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.86 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -3728,7 +3728,7 @@ html[data-theme="light"] .time-log-section .time-log-chart .time-log-lane.time-l
 .pr-exit-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
 .pr-exit-actions .modal-btn{margin-top:0;min-height:43px;font-size:14px;padding:10px 7px}
 
-/* v1.7.85: one completion list + one moment list directly below the axis; no duplicated chronology. */
+/* v1.7.86: one completion list + one moment list directly below the axis; no duplicated chronology. */
 .time-log-list-panel{margin-top:11px;padding:11px 10px 7px;border:1px solid #3e6180;border-radius:11px;background:#142f4d;min-width:0}
 .time-log-list-panel h4{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:13px;font-weight:800;color:#e6f3ff}
 .time-log-list-panel h4 span{font-size:10px;font-weight:750;color:#9ebbd4}
@@ -3742,6 +3742,55 @@ html[data-theme="light"] .time-log-list-panel{background:#f5f9fd;border-color:#d
 html[data-theme="light"] .time-log-list-panel h4{color:#244966}
 html[data-theme="light"] .time-log-list-panel h4 span{color:#5d7690}
 @media(max-width:375px){.time-log-list-panel{padding:10px 8px 6px}}
+
+/* v1.7.86 — compact collapsible timeline lists and combined daily-note archive */
+.time-log-list-panel{padding:10px 9px;margin-top:9px}
+.time-log-list-panel h4{margin:0 2px 8px;font-size:13px;gap:6px;flex-wrap:wrap}
+.time-log-list-panel .time-log-list{display:grid;gap:5px}
+.time-log-fold-card{display:block;margin:0 0 5px;border:1px solid #4b6b87;border-radius:9px;background:#18334e;overflow:hidden;scroll-margin-block:132px;min-width:0}
+.time-log-fold-card>summary{display:flex;align-items:center;gap:8px;min-height:38px;padding:7px 10px;cursor:pointer;list-style:none;min-width:0;box-sizing:border-box}
+.time-log-fold-card>summary::-webkit-details-marker{display:none}
+.time-log-fold-clock{flex:0 0 42px;font-size:12px;font-weight:800;color:#b9d4ef;font-variant-numeric:tabular-nums}
+.time-log-fold-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:750;color:#eaf4ff}
+.time-log-fold-reward{flex:none;color:#74e1ae;font-size:12px;font-variant-numeric:tabular-nums}
+.time-log-fold-arrow{flex:none;color:#a9c4dc;font-size:14px;transition:transform .16s}
+.time-log-fold-card[open] .time-log-fold-arrow{transform:rotate(180deg)}
+.time-log-fold-body{padding:8px 10px 10px;border-top:1px solid #56718b55;font-size:12px;color:#c4d8e9;line-height:1.6}
+.time-log-quest-meta{overflow-wrap:anywhere}
+.time-log-fold-body .achievement-edit-button{margin-top:8px}
+.time-log-fold-body .achievement-cal-note{margin:7px 0}
+.time-log-fold-text{white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 6px}
+.time-log-compose{margin:0 0 11px;border:1px solid #547293;border-radius:10px;background:#1a3555;overflow:hidden}
+.time-log-compose>summary{cursor:pointer;padding:9px 11px;font-size:12px;font-weight:800;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;color:#e1f1ff}
+.time-log-compose>summary::-webkit-details-marker{display:none}
+.time-log-compose>summary span{font-size:10px;color:#a6c5e4;font-weight:500}
+.time-log-compose[open]>summary{border-bottom:1px solid #54729366}
+.time-log-compose .time-log-form{border:0;margin:0;background:transparent;padding:10px}
+html[data-theme="light"] .time-log-fold-card{background:#fff;border-color:#cddce8}
+html[data-theme="light"] .time-log-fold-clock{color:#37607c}
+html[data-theme="light"] .time-log-fold-name{color:#243c51}
+html[data-theme="light"] .time-log-fold-reward{color:#229f67}
+html[data-theme="light"] .time-log-fold-arrow{color:#607d98}
+html[data-theme="light"] .time-log-fold-body{color:#526b80;border-top-color:#cad8e5}
+html[data-theme="light"] .time-log-compose{background:#f4f9ff;border-color:#ccdbeb}
+html[data-theme="light"] .time-log-compose>summary{color:#2e4a67}
+html[data-theme="light"] .time-log-compose>summary span{color:#627c91}
+.notes-day-counts{font-size:10px;font-weight:600;color:#76bdd8}
+.notes-day-label{font-size:12px;font-weight:800;margin:11px 0 0;color:#e4f0ff}
+.notes-day-label span{font-size:10px;font-weight:500;opacity:.7;margin-left:4px}
+.notes-day-combined form{margin-bottom:9px}
+.notes-moment-label{border-top:1px solid #8aa7bc40;padding-top:11px}
+.notes-moment-list{display:grid;gap:6px;margin-top:7px}
+.notes-moment-item{display:flex;gap:9px;align-items:flex-start;padding:9px;border-radius:8px;border:1px solid #8da7b840;background:#7295af12;min-width:0}
+.notes-moment-time{font-variant-numeric:tabular-nums;font-weight:800;flex:0 0 42px;font-size:11px;color:#a9cee9}
+.notes-moment-content{flex:1;min-width:0}
+.notes-moment-content strong{font-size:12px}
+.notes-moment-content p{font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;margin:3px 0 6px;line-height:1.5}
+.notes-moment-content button{font-size:11px;padding:5px 8px}
+.notes-no-moments{font-size:11px;opacity:.75;margin:6px 0}
+html[data-theme="light"] .notes-day-label{color:#385872}
+html[data-theme="light"] .notes-moment-time{color:#4d6c83}
+@media(max-width:375px){.time-log-fold-card>summary{gap:6px;padding:7px 8px}.time-log-fold-clock{flex-basis:39px;font-size:11px}.time-log-fold-name{font-size:11px}.time-log-fold-reward{font-size:11px}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -4657,7 +4706,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.85</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.86</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -5827,14 +5876,14 @@ function bookingCalendarClass(k,list){
  const begins=list.some(q=>q.startDate===k),ends=list.some(q=>q.endDate===k);
  return 'has-reservation '+(begins?'reservation-start ':'')+(ends?'reservation-end ':'')+(!begins&&!ends?'reservation-middle':'');
 }
-function noteListSearch(value){const needle=String(value||'').trim().toLocaleLowerCase('ko-KR');document.querySelectorAll('[data-note-list-entry]').forEach(el=>{el.hidden=!!needle&&!el.dataset.noteListEntry.includes(needle)})}
+function noteListSearch(value){const needle=String(value||'').trim().toLocaleLowerCase('ko-KR');if(modal?.type==='notesList')modal.query=String(value||'');document.querySelectorAll('[data-note-list-entry]').forEach(el=>{el.hidden=!!needle&&!el.dataset.noteListEntry.includes(needle)})}
 function openDailyNotes(){modal={type:'notesList'};render()}
 function showCalendarNote(k){modal=null;screen='calendar';selectedDate=k;calendarMonth=k.slice(0,7);calendarMode='month';render();setTimeout(()=>document.querySelector('.daily-note-section')?.scrollIntoView({behavior:'smooth',block:'start'}),30)}
 function saveNoteFromList(e,k){
  e.preventDefault();if(!validNoteDay(k))return;
  const content=String(e.currentTarget.elements.noteText.value||'').trim().slice(0,2000);
  if(!content){alert('내용을 입력하세요.');return}
- data.dailyNotes[k]={text:content,updatedAt:new Date().toISOString()};save();render();
+ data.dailyNotes[k]={text:content,updatedAt:new Date().toISOString()};if(modal?.type==='notesList')modal.openDay=k;save();render();
 }
 function scheduledCountForDate(k,filterId='all'){
  const defs=data.quests.filter(q=>{if((filterId!=='all'&&q.id!==filterId)||questType(q)==='event')return false;const created=data.questEvents.find(e=>e.id===q.id&&e.action==='create');if(created&&dateKeyFromTime(created.at)>k)return false;if(questType(q)==='once')return !data.completions.some(c=>c.id===q.id&&c.day<k);return scheduledOnDate(q,k)});
@@ -5911,13 +5960,16 @@ function openTodayTimeLog(){
  if(data.pendingEncounter){openPendingCapture();return;}
  editingMomentLogId=null;selectedDate=day();calendarMonth=selectedDate.slice(0,7);calendarMode='month';screen='calendar';modal=null;render();
  document.getElementById('dailyTimeLog')?.scrollIntoView({behavior:'instant',block:'start'});
+ document.getElementById('momentCompose')?.setAttribute('open','');
  document.querySelector('#dailyTimeLog textarea[name="momentText"]')?.focus({preventScroll:true});
 }
 function editMomentLog(id){
  const log=(data.momentLogs||[]).find(x=>x.id===id);
  if(!log||!startUnlocked||!currentUserId)return;
+ if(modal?.type==='notesList'){modal=null;screen='calendar';}
  editingMomentLogId=id;selectedDate=log.day;calendarMonth=log.day.slice(0,7);calendarMode='month';render();
  document.getElementById('dailyTimeLog')?.scrollIntoView({behavior:'instant',block:'start'});
+ document.getElementById('momentCompose')?.setAttribute('open','');
  document.querySelector('#dailyTimeLog textarea[name="momentText"]')?.focus({preventScroll:true});
 }
 function cancelMomentLogEdit(){editingMomentLogId=null;render();document.getElementById('dailyTimeLog')?.scrollIntoView({behavior:'instant',block:'start'})}
@@ -6002,15 +6054,12 @@ function layoutTimeLogMarkers(){
    const half=grouped?17:13.5;
    btn.style.left=(Math.max(half,Math.min(width-half,group.x))/width*100).toFixed(3)+'%';
    appendTimeLogMarkerVisual(btn,kind,group.items);
-   if(grouped){const amount=document.createElement('span');amount.className='time-log-dot-number';amount.textContent=String(group.items.length);btn.appendChild(amount);btn.setAttribute('aria-controls','timeLogClusterDetail');btn.setAttribute('aria-expanded','false')}
-   btn.title=grouped?`${range} · ${typeName} ${group.items.length}건 (대표 이모지 · 눌러서 펼치기)`:`${range} · ${group.items[0].label}`;
+   if(grouped){const amount=document.createElement('span');amount.className='time-log-dot-number';amount.textContent=String(group.items.length);btn.appendChild(amount)}
+   btn.title=grouped?`${range} · ${typeName} ${group.items.length}건 (아래 목록에서 확인)`:`${range} · ${group.items[0].label}`;
    btn.setAttribute('aria-label',btn.title);
    btn.addEventListener('click',()=>{
-    if(!grouped){jumpToTimeLogEntry(group.items[0].index);return}
-    const wasOpen=btn.getAttribute('aria-expanded')==='true';
-    chart.querySelectorAll('.time-log-dot[aria-expanded]').forEach(x=>x.setAttribute('aria-expanded','false'));
-    if(wasOpen){detail.hidden=true;detail.replaceChildren();return}
-    btn.setAttribute('aria-expanded','true');showTimeLogGroup(detail,group.items,kind,range);
+    if(grouped){jumpToTimeLogGroup(group.items);return}
+    jumpToTimeLogEntry(group.items[0].index);
    });
    layer.appendChild(btn);
   });
@@ -6020,6 +6069,13 @@ function jumpToTimeLogEntry(i){
  const row=document.getElementById('timeLogEntry'+i);if(!row)return;
  row.classList.add('time-log-row-selected');row.scrollIntoView({behavior:'smooth',block:'center'});
  window.setTimeout(()=>row.classList.remove('time-log-row-selected'),2300);
+}
+function jumpToTimeLogGroup(items){
+ const rows=(items||[]).map(item=>document.getElementById('timeLogEntry'+item.index)).filter(Boolean);
+ if(!rows.length)return;
+ rows.forEach(row=>row.classList.add('time-log-row-selected'));
+ rows[0].scrollIntoView({behavior:'smooth',block:'center'});
+ window.setTimeout(()=>rows.forEach(row=>row.classList.remove('time-log-row-selected')),2300);
 }
 function showTimeLogGroup(panel,items,kind,range){
  if(!panel)return;
@@ -6039,12 +6095,23 @@ function showTimeLogGroup(panel,items,kind,range){
  });
  panel.appendChild(list);panel.hidden=false;
 }
-// v1.7.85: A single quest completion card list, shared with the timeline's event navigation.
+// v1.7.86: A single quest completion card list, shared with the timeline's event navigation.
 // Preserve reward, achievement and edit controls from the previous calendar list.
 function renderCalendarTimeLogQuestPanel(quests,entryIndex){
  return `<section class="time-log-list-panel time-log-quests-panel" aria-label="퀘스트 완료 목록">
-  <h4>✅ 퀘스트 완료 <span>${quests.length}건</span></h4>
-  ${quests.length?`${quests.map((c,i)=>`<div class="history time-log-entry-target" id="timeLogEntry${entryIndex.get('q'+i)}"><div class="hleft"><strong>${esc(categoryEmoji(c.category))} ${esc(c.title||'퀘스트')}</strong><small>${c.goal?`목표 ${esc(c.goal)} · `: ''}${c.multiplier?`${c.mode==='normal'?'✅ 일반 완료':'⏱ 타임챌린지'} ×${Number(c.multiplier).toFixed(2)} · 기본 ${format(c.basePoints??c.points)}P${c.mode==='normal'?'':' · '+questTimeFmt(c.elapsedSeconds||0)}${c.holdSeconds?' · ⏸ 홀드 '+questTimeFmt(c.holdSeconds):''} · `:''}${esc(c.at?new Date(c.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'완료 기록')} · 🌟 +${format(c.xpEarned??0)}XP</small>${c.achievement?.note||achievementSummary(c)?`<div class="achievement-cal-note">${achievementSummary(c)?`<b>${esc(achievementSummary(c))}</b>`:''}${c.achievement?.note?`<p>${esc(c.achievement.note)}</p>`:''}</div>`:''}${c.recommendedBonus||c.eveningBonus||c.recordBonus?`<div class="calendar-boost-list">${c.recommendedBonus?'<span class="quest-recommend-pill">🌟 오늘 추천 +10%</span>':''}${c.eveningBonus?'<span class="quest-evening-pill">🌙 마무리 추천 +20%</span>':''}${c.recordBonus?'<span class="quest-recommend-pill">📝 달성 기록 +20%</span>':''}</div>`:''}<button class="achievement-edit-button" type="button" onclick="openAchievementEditor('${c.day}',decodeURIComponent('${encodeURIComponent(c.id)}'))">✎ 기록 확인·수정</button></div><div class="hval" style="color:#82e1ad">+${Number(c.points||0)}P</div></div>`).join('')}`:'<p class="time-log-empty">완료한 퀘스트가 없습니다.</p>'}
+  <h4>✅ 퀘스트 완료 <span>${quests.length}건 · 항목을 누르면 상세보기</span></h4>
+  ${quests.length?quests.map((c,i)=>{
+   const clock=timeLogClock(c.at)||'--:--';
+   const emoji=categoryEmoji(c.category)||'✅';
+   const title=esc(c.title||'퀘스트');
+   return `<details class="time-log-fold-card time-log-entry-target" id="timeLogEntry${entryIndex.get('q'+i)}">
+    <summary><time class="time-log-fold-clock">${esc(clock)}</time><span class="time-log-fold-name">${esc(emoji)} ${title}</span><b class="time-log-fold-reward">+${format(c.points||0)}P</b><span class="time-log-fold-arrow" aria-hidden="true">⌄</span></summary>
+    <div class="time-log-fold-body"><div class="time-log-quest-meta">${c.goal?`🎯 목표 ${esc(c.goal)} · `:''}${c.multiplier?`${c.mode==='normal'?'✅ 일반 완료':'⏱ 타임챌린지'} ×${Number(c.multiplier).toFixed(2)} · 기본 ${format(c.basePoints??c.points)}P${c.mode==='normal'?'':' · '+questTimeFmt(c.elapsedSeconds||0)}${c.holdSeconds?' · ⏸ 홀드 '+questTimeFmt(c.holdSeconds):''} · `:''}🌟 +${format(c.xpEarned??0)}XP</div>
+    ${c.achievement?.note||achievementSummary(c)?`<div class="achievement-cal-note">${achievementSummary(c)?`<b>${esc(achievementSummary(c))}</b>`:''}${c.achievement?.note?`<p>${esc(c.achievement.note)}</p>`:''}</div>`:''}
+    ${c.recommendedBonus||c.eveningBonus||c.recordBonus?`<div class="calendar-boost-list">${c.recommendedBonus?'<span class="quest-recommend-pill">🌟 오늘 추천 +10%</span>':''}${c.eveningBonus?'<span class="quest-evening-pill">🌙 마무리 추천 +20%</span>':''}${c.recordBonus?'<span class="quest-recommend-pill">📝 달성 기록 +20%</span>':''}</div>`:''}
+    <button class="achievement-edit-button" type="button" onclick="openAchievementEditor('${c.day}',decodeURIComponent('${encodeURIComponent(c.id)}'))">✎ 기록 확인·수정</button></div>
+   </details>`;
+  }).join(''):'<p class="time-log-empty">완료한 퀘스트가 없습니다.</p>'}
  </section>`;
 }
 function renderDailyTimeLog(key,selected,quests){
@@ -6059,24 +6126,24 @@ function renderDailyTimeLog(key,selected,quests){
  return `<section class="time-log-section" id="dailyTimeLog" aria-label="${fmtKey(key)} 하루 타임로그">
   <div class="time-log-title"><h3>🕒 하루 타임로그</h3></div>
   <p class="time-log-summary">시간축 아이콘을 누르면 아래 해당 목록으로 이동합니다.</p>
-  ${(key===day()||editing)?`<form class="time-log-form" onsubmit="saveMomentLog(event,'${key}')">
+  ${(key===day()||editing)?`<details class="time-log-compose" id="momentCompose" ${editing?'open':''}><summary>✍️ ${editing?'순간 기록 수정':'순간 기록 작성'} <span>눌러서 ${editing?'내용 확인':'펼치기'}</span></summary><form class="time-log-form" onsubmit="saveMomentLog(event,'${key}')">
    <div class="time-log-form-row"><select name="momentKind" aria-label="순간 기록 종류">${[['thought','💭 생각'],['event','📍 일상 사건'],['idea','⭐ 아이디어']].map(([id,name])=>`<option value="${id}" ${editing?.kind===id?'selected':''}>${name}</option>`).join('')}</select>
     <select name="momentMood" aria-label="순간 기록 기분">${[['😄','😄 좋음'],['🙂','🙂 괜찮음'],['😐','😐 보통'],['😟','😟 답답함'],['😡','😡 화남']].map(([id,name])=>`<option value="${id}" ${(editing?.mood||'🙂')===id?'selected':''}>${name}</option>`).join('')}</select></div>
    <textarea name="momentText" rows="2" maxlength="500" placeholder="지금 떠오르는 생각을 한 줄로 남겨보세요." aria-label="순간 기록 내용" required>${esc(editing?.text||'')}</textarea>
    <div class="time-log-form-actions"><small>${editing?'원래 기록 시각 유지 · 내용만 수정':'작성 시각 자동 저장 · 입력은 선택 사항'}</small><div><button type="submit">${editing?'수정 저장':'💾 순간 기록 저장'}</button>${editing?'<button type="button" onclick="cancelMomentLogEdit()">취소</button>':''}</div></div>
-   </form>`:`<p class="time-log-empty">과거 날짜는 기록을 확인할 수 있어요. 새 기록은 오늘 날짜에서 작성하세요. <button class="tinybtn" onclick="openTodayTimeLog()">오늘 기록하기</button></p>`}
+   </form></details>`:`<p class="time-log-empty">과거 날짜는 기록을 확인할 수 있어요. 새 기록은 오늘 날짜에서 작성하세요. <button class="tinybtn" onclick="openTodayTimeLog()">오늘 기록하기</button></p>`}
   <div class="time-log-legend" aria-label="시간축 기호 안내"><span>완료 ${qTimed}건 · 퀘스트 이모지</span><span>${timeLogMarkerSvg('moment')} 순간 기록 ${mTimed}건</span><span class="time-log-legend-hint">숫자 = 겹친 기록 수</span></div>
   <div class="time-log-chart-scroll" role="region" aria-label="전체 가로폭을 사용하는 24시간 완료·기록 시간축"><div class="time-log-chart" id="dailyTimeLogChart">
    <div class="time-log-hour-labels" role="img" aria-label="하루 00시부터 24시까지의 시간 눈금">${[2,3].map(n=>Array.from({length:24/n+1},(_,i)=>i*n).map(h=>`<span class="time-log-label-${n}" style="left:${axisPos(h)}">${String(h).padStart(2,'0')}</span>`).join('')).join('')}${Array.from({length:25},(_,h)=>`<i class="time-log-tick ${h%2===0?'time-log-major-2':''} ${h%3===0?'time-log-major-3':''} ${h===0||h===24?'is-edge':''}" aria-hidden="true" style="left:${axisPos(h)}"></i>`).join('')}</div>
    <div class="time-log-ruler-grid" aria-hidden="true">${Array.from({length:25},(_,h)=>`<i class="time-log-gridline ${h%2===0?'time-log-grid-major-2':''} ${h%3===0?'time-log-grid-major-3':''} ${h===0||h===24?'is-edge':''}" style="left:${axisPos(h)}"></i>`).join('')}</div>
    ${dotLane('quest','퀘스트 완료')}${dotLane('moment','순간 기록')}
-  </div><div class="time-log-cluster-detail" id="timeLogClusterDetail" aria-live="polite" hidden></div></div>
+  </div></div>
 
   ${qTimed===0&&mTimed===0?'<p class="time-log-empty">표시할 시각이 아직 없습니다. 퀘스트 완료 또는 순간 기록을 저장하면 표시돼요.</p>':''}
   ${renderCalendarTimeLogQuestPanel(quests,entryIndex)}
   <section class="time-log-list-panel time-log-moments-panel" aria-label="순간 기록 목록">
    <h4>💭 순간 기록 <span>${moments.length}건</span></h4>
-   <div class="time-log-list">${moments.slice().sort((a,b)=>String(a.clock||timeLogClock(a.at)||'99:99').localeCompare(String(b.clock||timeLogClock(b.at)||'99:99'))).map(m=>`<div class="time-log-row" id="timeLogEntry${entryIndex.get(m.id)}"><div class="time-log-clock">${esc(m.clock||timeLogClock(m.at)||'시각 없음')}</div><div class="time-log-detail"><strong>${momentKindLabel(m.kind)} ${esc(m.mood)}</strong><small>${esc(m.text)}</small><div class="time-log-row-actions"><button type="button" onclick="editMomentLog('${m.id}')">수정</button><button type="button" onclick="deleteMomentLog('${m.id}')">삭제</button></div></div></div>`).join('')||'<p class="time-log-empty">작성한 순간 기록이 없습니다.</p>'}</div>
+   <div class="time-log-list">${moments.slice().sort((a,b)=>String(a.clock||timeLogClock(a.at)||'99:99').localeCompare(String(b.clock||timeLogClock(b.at)||'99:99'))).map(m=>`<details class="time-log-fold-card time-log-moment-card time-log-entry-target" id="timeLogEntry${entryIndex.get(m.id)}"><summary><time class="time-log-fold-clock">${esc(m.clock||timeLogClock(m.at)||'--:--')}</time><span class="time-log-fold-name">${momentKindLabel(m.kind)} ${esc(m.mood)} · ${esc(m.text)}</span><span class="time-log-fold-arrow" aria-hidden="true">⌄</span></summary><div class="time-log-fold-body"><p class="time-log-fold-text">${esc(m.text)}</p><div class="time-log-row-actions"><button type="button" onclick="editMomentLog('${m.id}')">✎ 수정</button><button type="button" onclick="deleteMomentLog('${m.id}')">삭제</button></div></div></details>`).join('')||'<p class="time-log-empty">작성한 순간 기록이 없습니다.</p>'}</div>
   </section>
   ${entries.some(x=>!x.clock)?'<p class="time-log-empty">시각이 없는 예전 완료 이력은 시간축에 표시하지 않고 목록에서만 보여줍니다.</p>':''}
  </section>`;
@@ -6567,7 +6634,7 @@ function renderCalendar(){const summaries=dailySummaryMap(analyticsSelected("cal
  const legend=['≤20','≤40','≤60','≤80','100'];
  return `${pageHeader('습관 <em>캘린더</em>','전체 날짜의 퀘스트·포인트·포획 기록을 한눈에')}
  ${sharedProgressSummary('calendar')}
- ${analyticsQuestSelect('calendar')}<div class="planner-toolbar"><button type="button" class="btn-outline" onclick="openDailyNotes()">📝 노트 모아보기·수정</button><button type="button" class="btn-outline" onclick="openReservation()">📅 퀘스트 예약</button></div><p class="qa-calendar-hint">${analyticsSelected('calendar')==='all'?'전체 퀘스트 완료 횟수를 표시합니다.':'선택한 퀘스트의 수행 날짜만 색상으로 표시합니다. 뽑기와 노트 기록은 계속 볼 수 있어요.'}</p>
+ ${analyticsQuestSelect('calendar')}<div class="planner-toolbar"><button type="button" class="btn-outline" onclick="openDailyNotes()">📝 노트·순간 기록 모아보기</button><button type="button" class="btn-outline" onclick="openReservation()">📅 퀘스트 예약</button></div><p class="qa-calendar-hint">${analyticsSelected('calendar')==='all'?'전체 퀘스트 완료 횟수를 표시합니다.':'선택한 퀘스트의 수행 날짜만 색상으로 표시합니다. 뽑기와 노트 기록은 계속 볼 수 있어요.'}</p>
  <div class="calendar-toolbar"><div class="view-switch"><button class="${calendarMode==='month'?'active':''}" onclick="setCalendarMode('month')">월간 달력</button><button class="${calendarMode==='year'?'active':''}" onclick="setCalendarMode('year')">연간 요약</button></div><button class="cal-today" onclick="jumpToday()">오늘로</button></div>
  <div class="calendar-shell"><div class="cal-titlebar"><button aria-label="이전 ${calendarMode==='year'?'연도':'달'}" onclick="${calendarMode==='year'?'yearShift':'monthShift'}(-1)">‹</button><h2>${calendarMode==='year'?`${year}년`:`${y}년 ${m}월`}</h2><button aria-label="다음 ${calendarMode==='year'?'연도':'달'}" onclick="${calendarMode==='year'?'yearShift':'monthShift'}(1)">›</button></div>
  ${calendarMode==='month'?`<div class="calendar-stats"><span>✅ 퀘스트 ${monthTasks}회</span><span>🔥 달성일 ${active}일</span><span>${CAL_PIKA_ICON} 뽑기 ${monthEntries.reduce((a,[,v])=>a+v.draws,0)}회</span><span>📝 노트 ${Object.keys(data.dailyNotes||{}).filter(k=>k.startsWith(calendarMonth)).length}일</span><span>💭 순간 기록 ${(data.momentLogs||[]).filter(x=>x.day.startsWith(calendarMonth)).length}건</span></div><div class="calendar-weekdays">${['일','월','화','수','목','금','토'].map(t=>`<span>${t}</span>`).join('')}</div><div class="calendar-grid">${dates.map(k=>{const v=summaries.get(k)||{quests:0,draws:0,changes:0};const rate=scheduledCountForDate(k,analyticsSelected('calendar')),intensity=rate.level,booking=reservedForDate(k),outside=!k.startsWith(calendarMonth);return `<button aria-label="${fmtKey(k)} 퀘스트 ${v.quests}회, 달성률 ${rate.rate}%, 예약 ${booking.length}개, 뽑기 ${v.draws}회" class="cal-day heat-${intensity} ${bookingCalendarClass(k,booking)} ${outside?'other-month':''} ${k===today?'today':''} ${k===selectedDate?'selected':''}" onclick="selectCalendarDate('${k}')"><span class="cal-number">${Number(k.slice(-2))}</span>${rate.completed?`<b class="cal-quests">✓${rate.completed}/${rate.planned}</b>`:'<span class="cal-empty-dot"></span>'}<span class="cal-icons">${booking.length?`<span class="calendar-booking-marker" title="예약 ${booking.length}건">📅${booking.length>1?booking.length:''}</span>`:''}${v.draws?CAL_PIKA_ICON:''}${dailyNote(k)?'📝':''}${(data.momentLogs||[]).some(x=>x.day===k)?'<span class="time-log-month-icon" title="순간 기록 있음">💭</span>':''}${v.changes?'✎':''}</span></button>`}).join('')}</div><div class="heat-legend" aria-label="퀘스트 달성률 1부터 100퍼센트까지 5단계"><span>달성률</span>${legend.map((v,i)=>`<span class="leg-item" title="${i===0?'1~20':(i*20+1)+'~'+((i+1)*20)}%"><i class="heat-${i+1}"></i>${v}${i===4?'%':''}</span>`).join('')}</div><div class="calendar-explainer">초록색 5단계는 예정 퀘스트 대비 당일 완료율입니다. 📅 마크는 예약된 날짜이며 시작~종료일에 표시합니다. ${CAL_PIKA_ICON} 포켓몬 뽑기 · 📝 데일리 노트 · 💭 순간 기록 · ✎ 퀘스트 변경. 날짜를 누르면 노트를 작성하고 활동 이력을 볼 수 있습니다.</div>`:
@@ -6588,7 +6655,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.85</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.86</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -7751,8 +7818,27 @@ function renderPlannerModal(){
   return `<div class="overlay" onclick="modal=null;render()"><div class="modal planner-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>📅 ${old?'예약 퀘스트 수정':'새 퀘스트 예약'}</h2><p class="modal-sub">이름과 기간만 입력하면 돼요. 📅 예약 카테고리 · 기본 포인트/XP · 10분 챌린지가 자동 적용됩니다.</p><form class="qform" onsubmit="saveReservation(event)"><label>퀘스트 이름</label><input class="qentry" name="reservedTitle" maxlength="45" required placeholder="예: 수학 문제집 20문제" value="${esc(old?.title||'')}"><label>목표 (선택)</label><input class="qentry" name="reservedGoal" maxlength="90" placeholder="비우면 10분" value="${esc(old?.goal||'')}"><div class="qform-row"><div><label>시작일</label><input class="qentry" type="date" name="reservedStart" required value="${esc(st)}"></div><div><label>종료일</label><input class="qentry" type="date" name="reservedEnd" required value="${esc(ed)}"></div></div><p class="qform-note">📅 예약 기간 동안 매일 오늘 탭에 나타납니다. 종료일 이후에는 자동으로 사라지고 완료 이력은 유지됩니다.</p><button class="modal-btn" type="submit">${old?'예약 변경 저장':'📅 이 기간으로 예약'}</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;
  }
  if(modal?.type==='notesList'){
-  const entries=Object.entries(data.dailyNotes||{}).filter(([k,v])=>validNoteDay(k)&&v?.text).sort((a,b)=>b[0].localeCompare(a[0]));
-  return `<div class="overlay" onclick="modal=null;render()"><div class="modal notes-list-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>📝 데일리 노트 모아보기</h2><p class="modal-sub">${entries.length}개 기록 · 펼쳐서 바로 수정할 수 있어요.</p><input class="qentry" type="search" oninput="noteListSearch(this.value)" placeholder="날짜 또는 내용 검색" aria-label="데일리 노트 검색"><div class="notes-list-scroll">${entries.length?entries.map(([k,v])=>`<details data-note-list-entry="${esc((k+' '+v.text).toLocaleLowerCase('ko-KR'))}" class="notes-list-card"><summary><strong>📆 ${fmtKey(k)}</strong><small>${esc(v.text).slice(0,90)}</small></summary><form class="qform" onsubmit="saveNoteFromList(event,'${k}')"><textarea class="daily-note-text" name="noteText" maxlength="2000" rows="5">${esc(v.text)}</textarea><div class="planner-actions"><button type="button" class="tinybtn" onclick="showCalendarNote('${k}')">📅 날짜로 이동</button><button class="tinybtn" type="submit">💾 수정 저장</button></div></form></details>`).join(''):'<div class="empty">아직 작성한 노트가 없습니다. 달력 날짜를 눌러 첫 노트를 적어보세요.</div>'}</div><button class="modal-btn secondary" onclick="modal=null;render()">닫기</button></div></div>`;
+  const allDays=new Set(Object.entries(data.dailyNotes||{}).filter(([k,v])=>validNoteDay(k)&&v?.text).map(([k])=>k));
+  const byDay=new Map();
+  (data.momentLogs||[]).forEach(m=>{if(!validNoteDay(m.day))return;allDays.add(m.day);if(!byDay.has(m.day))byDay.set(m.day,[]);byDay.get(m.day).push(m)});
+  const days=[...allDays].sort((a,b)=>b.localeCompare(a));
+  const countMoments=[...byDay.values()].reduce((n,a)=>n+a.length,0);
+  const currentQuery=String(modal.query||'');
+  const needle=currentQuery.trim().toLocaleLowerCase('ko-KR');
+  const cards=days.map(k=>{
+   const note=String(data.dailyNotes?.[k]?.text||'');
+   const moments=(byDay.get(k)||[]).slice().sort((a,b)=>String(a.clock||timeLogClock(a.at)||'99:99').localeCompare(String(b.clock||timeLogClock(b.at)||'99:99')));
+   const searchable=[k,note,...moments.map(m=>(m.clock||timeLogClock(m.at)||'')+' '+momentKindLabel(m.kind)+' '+m.mood+' '+m.text)].join(' ').toLocaleLowerCase('ko-KR');
+   const teaser=note?`📝 ${note.slice(0,62)}`:moments.length?`💭 ${moments[0].text.slice(0,62)}`:'기록 없음';
+   return `<details data-note-list-entry="${esc(searchable)}" class="notes-list-card notes-day-combined" ${modal.openDay===k?'open':''} ${needle&&!searchable.includes(needle)?'hidden':''}>
+    <summary><strong>📆 ${fmtKey(k)} <span class="notes-day-counts">${note?'📝 노트':''}${moments.length?` 💭 ${moments.length}건`:''}</span></strong><small>${esc(teaser)}</small></summary>
+    ${note?`<div class="notes-day-label">📝 데일리 노트</div>`:`<div class="notes-day-label">📝 데일리 노트 <span>아직 작성하지 않음</span></div>`}
+    <form class="qform" onsubmit="saveNoteFromList(event,'${k}')"><textarea class="daily-note-text" name="noteText" maxlength="2000" rows="${note?'4':'2'}" placeholder="해당 날짜의 데일리 노트 작성">${esc(note)}</textarea><div class="planner-actions"><button type="button" class="tinybtn" onclick="showCalendarNote('${k}')">📅 날짜로 이동</button><button class="tinybtn" type="submit">💾 노트 저장</button></div></form>
+    <div class="notes-day-label notes-moment-label">💭 순간 기록 <span>${moments.length}건 · 시간순</span></div>
+    ${moments.length?`<div class="notes-moment-list">${moments.map(m=>`<div class="notes-moment-item"><span class="notes-moment-time">${esc(m.clock||timeLogClock(m.at)||'--:--')}</span><div class="notes-moment-content"><strong>${momentKindLabel(m.kind)} ${esc(m.mood)}</strong><p>${esc(m.text)}</p><button type="button" class="tinybtn" onclick="editMomentLog('${m.id}')">✎ 기록 수정</button></div></div>`).join('')}</div>`:'<p class="notes-no-moments">작성된 순간 기록이 없습니다.</p>'}
+   </details>`;
+  }).join('');
+  return `<div class="overlay" onclick="modal=null;render()"><div class="modal notes-list-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>📝 데일리 노트·순간 기록 모아보기</h2><p class="modal-sub">${days.length}일 · 데일리 노트 ${Object.keys(data.dailyNotes||{}).filter(k=>allDays.has(k)&&dailyNote(k)).length}일 · 순간 기록 ${countMoments}건</p><input class="qentry" type="search" value="${esc(currentQuery)}" oninput="noteListSearch(this.value)" placeholder="날짜·노트·순간 기록 내용 검색" aria-label="노트와 순간 기록 검색"><div class="notes-list-scroll">${days.length?cards:'<div class="empty">아직 작성한 노트나 순간 기록이 없습니다.</div>'}</div><button class="modal-btn secondary" onclick="modal=null;render()">닫기</button></div></div>`;
  }
  return '';
 }
@@ -8014,7 +8100,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.85</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.86</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
