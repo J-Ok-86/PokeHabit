@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.89 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.90 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -3886,6 +3886,24 @@ html[data-theme="light"] .calendar-other-activity>summary b{color:#12785d}
 html[data-theme="light"] .calendar-other-activity>summary span{color:#6e8598}
 html[data-theme="light"] .year-month-progress{background:#dce8f1}
 @media(max-width:365px){.analytics-selector-compact{gap:6px}.analytics-inline-select{flex:1 1 100%}.calendar-stats-compact span{font-size:9px}.calendar-stats-compact b{font-size:12px}.calendar-other-activity>summary span{font-size:9px}}
+
+/* v1.7.90 – aligned date/measurement axes, legible markers and tap-to-inspect */
+.growth-svg{width:100%;height:auto;overflow:visible;display:block}
+.growth-svg-grid{stroke-width:.9;opacity:.37}
+.growth-svg-guide{stroke:#83a1b9;stroke-width:1;stroke-dasharray:2.5 4;opacity:.45}
+.growth-svg-tick{stroke:#93adbd;stroke-width:1.25}
+.growth-svg-date{font-size:11.5px;font-weight:650}
+.growth-amount-mark{cursor:pointer;outline:none}
+.growth-svg-dot{stroke-width:1.7;pointer-events:none}
+.growth-svg-focus{fill:none;stroke:#f9ba69;stroke-width:2.8;opacity:0;pointer-events:none}
+.growth-amount-mark.selected .growth-svg-focus,.growth-amount-mark:focus-visible .growth-svg-focus{opacity:1}
+.growth-svg-hit{fill:transparent;stroke:none;pointer-events:all}
+.growth-amount-point-detail{display:block;min-height:40px;padding:8px 10px;border:1px solid #3d6682;border-radius:9px;background:#193953;color:#e9f9fa;font-size:12px;line-height:1.65;white-space:pre-wrap;margin:4px 5px 7px;font-variant-numeric:tabular-nums}
+html[data-theme="light"] .growth-svg-guide{stroke:#9aaebd}
+html[data-theme="light"] .growth-svg-tick{stroke:#94a8ba}
+html[data-theme="light"] .growth-svg-focus{stroke:#d99631}
+html[data-theme="light"] .growth-amount-point-detail{background:#edf8f5;border-color:#b9d9cd;color:#245b53}
+@media(max-width:360px){.growth-amount-point-detail{font-size:11px;padding:7px 8px}.growth-svg-date{font-size:11px}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -4801,7 +4819,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.89</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.90</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -6643,23 +6661,81 @@ function setGrowthUnit(unit){
  const prefs=analyticsPrefs();if(!prefs.growthUnits||typeof prefs.growthUnits!=='object')prefs.growthUnits={};
  prefs.growthUnits[id]=String(unit||'').slice(0,60);save();render();
 }
+// v1.7.90: one marker per actual DATE; multiple measurements on a date are summarized without hiding data.
+let growthAmountPointDetails=[];
+function growthAmountTap(event){
+ const rect=event.currentTarget.getBoundingClientRect();
+ if(!rect.width||!rect.height||!growthAmountPointDetails.length)return;
+ const tx=(event.clientX-rect.left)/rect.width*420,ty=(event.clientY-rect.top)/rect.height*239;
+ let chosen=-1,near=Infinity;
+ growthAmountPointDetails.forEach((p,i)=>{const d=(p.x-tx)**2+(p.y-ty)**2;if(d<near){chosen=i;near=d}});
+ if(chosen>=0&&near<=30*30)growthAmountSelect(chosen);
+}
+function growthAmountSelect(index){
+ const meta=growthAmountPointDetails[index],out=document.getElementById('growth-amount-point-detail');
+ if(!meta||!out)return;
+ out.textContent=`${meta.date} · 달성량 ${prChartNum(meta.total)} ${meta.unit} · 기록 ${meta.count}건${meta.avg===null?'':`\n최근 기록일 7개 이동평균 ${prChartNum(meta.avg)} ${meta.unit}`}${meta.count>1?'\n개별 수치: '+meta.values.map(v=>prChartNum(v)).join(' + '):''}`;
+ const plot=out.closest('.growth-chart');
+ if(plot)plot.querySelectorAll('.growth-amount-mark').forEach(el=>el.classList.toggle('selected',Number(el.getAttribute('data-growth-index'))===index));
+}
 function growthAmountGraph(events,unit,target){
- const n=events.length,vals=events.map(c=>Number(c.achievement.amount));
- const ma=vals.map((_,i)=>i<6?null:vals.slice(i-6,i+1).reduce((a,b)=>a+b,0)/7);
- const topValue=Math.max(1,...vals,...ma.filter(x=>x!==null),target||0),ceiling=topValue*1.12;
- const X0=48,X1=681,Y0=22,Y1=195;
- const epoch=k=>{const [yy,mm,dd]=String(k).slice(0,10).split('-').map(Number);return Date.UTC(yy,mm-1,dd)};
- const dates=events.map(e=>epoch(e.day)),first=Math.min(...dates),last=Math.max(...dates),elapsed=Math.max(1,last-first);
- const x=i=>first===last?(X0+X1)/2:X0+(X1-X0)*(dates[i]-first)/elapsed,y=v=>Y1-(v/ceiling)*(Y1-Y0);
- const hGrid=[0,.25,.5,.75,1].map(f=>`<g><line class="growth-svg-grid" x1="${X0}" y1="${y(ceiling*f)}" x2="${X1}" y2="${y(ceiling*f)}"/><text class="growth-svg-label" x="${X0-7}" y="${y(ceiling*f)+4}" text-anchor="end">${prChartNum(ceiling*f)}</text></g>`).join('');
- const rawLine=vals.length>1?`<polyline class="growth-svg-actual" points="${vals.map((v,i)=>`${x(i)},${y(v)}`).join(' ')}"/>`:'';
- const avgSegments=ma.map((v,i)=>v===null?null:`${x(i)},${y(v)}`).filter(Boolean);
- const avgLine=avgSegments.length>1?`<polyline class="growth-svg-avg" points="${avgSegments.join(' ')}"/>`:'';
- const goalLine=target>0?`<line class="growth-svg-goal" x1="${X0}" x2="${X1}" y1="${y(target)}" y2="${y(target)}"/><text class="growth-svg-target-label" x="${X1-3}" y="${Math.max(14,y(target)-5)}" text-anchor="end">목표 ${prChartNum(target)}</text>`:'';
- const tick=first===last?`<text class="growth-svg-label" x="${x(0)}" y="217" text-anchor="middle">${esc(events[0].day.slice(5).replace('-','/'))}</text>`:
- Array.from({length:5},(_,i)=>{const t=first+elapsed*i/4,key=new Date(t).toISOString().slice(5,10).replace('-','/');return `<text class="growth-svg-label" x="${X0+(X1-X0)*i/4}" y="217" text-anchor="${i===0?'start':i===4?'end':'middle'}">${esc(key)}</text>`}).join('');
- const dots=events.map((c,i)=>`<circle class="growth-svg-dot" cx="${x(i)}" cy="${y(vals[i])}" r="${n>70?2.6:3.8}"><title>${esc(c.day)} · ${prChartNum(vals[i])} ${esc(unit)}${ma[i]!==null?' · 7회 평균 '+prChartNum(ma[i]):''}</title></circle>`).join('');
- return `<div class="growth-chart"><div class="growth-chart-legend"><span class="actual">● 실측값</span><span class="avg">━ 7회 이동평균</span>${target>0?'<span class="goal">┄ 현재 목표</span>':''}</div><svg class="growth-svg" viewBox="0 0 720 237" role="img" aria-label="${esc(unit)} 실제 날짜 간격의 달성량, 7회 이동평균${target>0?', 현재 목표선':''}">${hGrid}${goalLine}${rawLine}${avgLine}${dots}${tick}</svg><p class="growth-help">가로축은 실제 날짜 간격입니다. 기록이 없는 날짜는 억지로 0으로 채우지 않습니다. 달성량이 없는 완료는 그래프에서 제외하고, 기록된 0은 포함합니다.</p></div>`;
+ // A single calendar day occupies exactly one X-coordinate. Multiple completions on
+ // that date are added together and the selection reveals both the sum and count.
+ const byDay=new Map();
+ for(const entry of events){
+  const date=String(entry.day||'').slice(0,10),value=Number(entry.achievement?.amount);
+  if(!/^\d{4}-\d\d-\d\d$/.test(date)||!Number.isFinite(value))continue;
+  if(!byDay.has(date))byDay.set(date,{day:date,values:[],total:0});
+  const item=byDay.get(date);item.values.push(value);item.total+=value;
+ }
+ const days=[...byDay.values()].sort((a,b)=>a.day.localeCompare(b.day));
+ if(!days.length)return '<div class="growth-empty">선택한 기간에 수치 기록이 없습니다.</div>';
+ const values=days.map(d=>d.total);
+ // 7 recorded days, not 7 completions. Days without a measurement do not become zero.
+ const moving=values.map((_,i)=>i<6?null:values.slice(i-6,i+1).reduce((a,b)=>a+b,0)/7);
+ const maxValue=Math.max(1,...values,...moving.filter(x=>x!==null),target||0);
+ const plot={left:43,right:403,top:19,bottom:196};
+ const epoch=k=>{const a=k.split('-').map(Number);return Date.UTC(a[0],a[1]-1,a[2])};
+ const epochs=days.map(d=>epoch(d.day)),first=epochs[0],last=epochs[epochs.length-1],elapsed=Math.max(1,last-first);
+ const x=i=>first===last?(plot.left+plot.right)/2:plot.left+(plot.right-plot.left)*(epochs[i]-first)/elapsed;
+ // Favor 4 to 6 genuinely readable horizontal levels, rather than arbitrary fractions.
+ const rough=maxValue/4,order=Math.pow(10,Math.floor(Math.log10(rough)));
+ const step=[1,2,2.5,5,10].map(v=>v*order).find(v=>v>=rough)||10*order;
+ const yMax=Math.max(step,Math.ceil(maxValue/step)*step),y=v=>plot.bottom-v/yMax*(plot.bottom-plot.top);
+ const horizontal=Array.from({length:Math.round(yMax/step)+1},(_,i)=>{const val=i*step,yy=y(val);return `<g><line class="growth-svg-grid" x1="${plot.left}" x2="${plot.right}" y1="${yy}" y2="${yy}"/><text class="growth-svg-label" x="${plot.left-7}" y="${yy+3.6}" text-anchor="end">${prChartNum(val)}</text></g>`}).join('');
+ // Every printed date label is taken from a REAL recorded day, and the vertical
+ // guide runs through its exact point (same x function as the mark and line).
+ let tickIndices=[];
+ const tickMax=Math.min(5,days.length);
+ for(let i=0;i<tickMax;i++){
+  const desired=first+(last-first)*(tickMax===1?.5:i/(tickMax-1));
+  const candidate=epochs.reduce((best,epoch,j)=>Math.abs(epoch-desired)<Math.abs(epochs[best]-desired)?j:best,0);
+  if(!tickIndices.includes(candidate))tickIndices.push(candidate);
+ }
+ if(!tickIndices.includes(0))tickIndices.unshift(0);
+ if(!tickIndices.includes(days.length-1))tickIndices.push(days.length-1);
+ tickIndices.sort((a,b)=>a-b);
+ // Keep 55 SVG units between labels, while always keeping first and last.
+ // This is independent of how close consecutive measurements are.
+ const cleanTicks=[0];
+ for(const idx of tickIndices.slice(1,-1)){if(x(idx)-x(cleanTicks[cleanTicks.length-1])>=55 && x(days.length-1)-x(idx)>=55)cleanTicks.push(idx)}
+ if(days.length>1)cleanTicks.push(days.length-1);
+ tickIndices=cleanTicks;
+ const tickLabels=tickIndices.map((idx,k)=>{
+  const xx=x(idx),label=days[idx].day.slice(5).replace('-','/'),anchor=k===0&&days.length>1?'start':k===tickIndices.length-1&&days.length>1?'end':'middle';
+  return `<g><line class="growth-svg-guide" x1="${xx}" x2="${xx}" y1="${plot.top}" y2="${plot.bottom+4}"/><line class="growth-svg-tick" x1="${xx}" x2="${xx}" y1="${plot.bottom}" y2="${plot.bottom+5}"/><text class="growth-svg-label growth-svg-date" x="${xx}" y="218" text-anchor="${anchor}">${label}</text></g>`;
+ }).join('');
+ const linePoints=days.map((d,i)=>`${x(i)},${y(d.total)}`).join(' ');
+ const rawLine=days.length>1?`<polyline class="growth-svg-actual" points="${linePoints}"/>`:'';
+ const avgPoints=moving.map((v,i)=>v===null?null:`${x(i)},${y(v)}`).filter(Boolean);
+ const avgLine=avgPoints.length>1?`<polyline class="growth-svg-avg" points="${avgPoints.join(' ')}"/>`:'';
+ const goalLine=target>0?`<line class="growth-svg-goal" x1="${plot.left}" x2="${plot.right}" y1="${y(target)}" y2="${y(target)}"/><text class="growth-svg-target-label" x="${plot.right-2}" y="${Math.max(13,y(target)-6)}" text-anchor="end">목표 ${prChartNum(target)}</text>`:'';
+ growthAmountPointDetails=days.map((d,i)=>({date:d.day,total:d.total,count:d.values.length,values:d.values,unit:unit==='단위 미지정'?'':unit,avg:moving[i],x:x(i),y:y(d.total)}));
+ const marks=days.map((d,i)=>{
+  const xx=x(i),yy=y(d.total),label=`${d.day} · ${prChartNum(d.total)} ${unit} · ${d.values.length}건`;
+  return `<g class="growth-amount-mark" data-growth-index="${i}" role="button" tabindex="0" aria-label="${esc(label)}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();growthAmountSelect(${i})}"><circle class="growth-svg-focus" cx="${xx}" cy="${yy}" r="9"/><circle class="growth-svg-dot" cx="${xx}" cy="${yy}" r="5.4"/><circle class="growth-svg-hit" cx="${xx}" cy="${yy}" r="12"/><title>${esc(label)}</title></g>`;
+ }).join('');
+ return `<div class="growth-chart"><div class="growth-chart-legend"><span class="actual">● 날짜별 실측 합계</span><span class="avg">━ 기록일 7개 이동평균</span>${target>0?'<span class="goal">┄ 현재 목표</span>':''}</div><svg class="growth-svg" viewBox="0 0 420 239" role="img" aria-label="${esc(unit)} 날짜별 실제 달성량 그래프. 점을 선택하면 날짜와 합계 및 완료 건수를 볼 수 있습니다." onclick="growthAmountTap(event)">${horizontal}${tickLabels}${goalLine}${rawLine}${avgLine}${marks}</svg><output id="growth-amount-point-detail" class="growth-amount-point-detail" aria-live="polite">● 그래프의 점을 누르면 해당 날짜의 달성량과 완료 건수를 보여줍니다.</output><p class="growth-help">날짜 사이 간격은 실제 경과 일수입니다. 같은 날짜의 여러 실측은 합산하고, 점을 누르면 건수와 개별 수치를 볼 수 있습니다. 수치 미기록은 0으로 처리하지 않습니다.</p></div>`;
 }
 function renderAchievementAnalytics(id,rows,allChartRows){
  const current=rows.flatMap(r=>r.events||[]),history=(allChartRows||rows).flatMap(r=>r.events||[]),numeric=history.filter(c=>achievementAmount(c.achievement?.amount)!==null),notes=current.filter(c=>String(c.achievement?.note||'').trim()).length;
@@ -6832,7 +6908,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.89</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.90</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -8276,7 +8352,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.89</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.90</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
