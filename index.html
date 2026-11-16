@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.91 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.92 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -3907,16 +3907,19 @@ html[data-theme="light"] .growth-amount-point-detail{background:#edf8f5;border-c
 
 /* V1.7.91 — weather beside the persistent clock, without a new header row */
 #app>.pr-persistent-clock{pointer-events:none;gap:5px;max-width:calc(100% - 82px)}
+/* V1.7.92: weather must be only icon + temperature; no surrounding chip/ring. */
 #app>.pr-persistent-clock .pr-weather-chip{
- display:inline-flex;align-items:center;justify-content:center;gap:2px;min-width:43px;
- padding:1px 5px;margin:0;height:21px;border-radius:9px;
- border:1px solid #5e85b8;background:#19375b;color:#fff0d7;
- font-size:11px;line-height:16px;font-weight:900;white-space:nowrap;
- box-shadow:none;pointer-events:auto;flex:none;touch-action:manipulation;
+ display:inline-flex;align-items:center;justify-content:center;gap:2px;min-width:42px;
+ padding:0 2px;margin:0;height:23px;border-radius:0!important;
+ border:0!important;outline:0;appearance:none;-webkit-appearance:none;
+ background:transparent!important;color:#fff0d7;
+ font-size:11px;line-height:17px;font-weight:800;white-space:nowrap;
+ box-shadow:none!important;filter:none;pointer-events:auto;flex:none;touch-action:manipulation;
 }
 #app>.pr-persistent-clock .pr-weather-chip[hidden]{display:none!important}
-#app>.pr-persistent-clock .pr-weather-chip.is-stale{border-style:dashed;opacity:.76}
-html[data-theme="light"] #app>.pr-persistent-clock .pr-weather-chip{background:#eef6ff;border-color:#bad1e9;color:#294664}
+#app>.pr-persistent-clock .pr-weather-chip.is-stale{opacity:.76}
+#app>.pr-persistent-clock .pr-weather-chip:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+html[data-theme="light"] #app>.pr-persistent-clock .pr-weather-chip{color:#294664}
 @media(max-width:374px){
  #app>.pr-persistent-clock{gap:3px;max-width:calc(100% - 75px)}
  #app>.pr-persistent-clock .pr-clock-date{font-size:8.5px}
@@ -4477,7 +4480,7 @@ setInterval(updateEventCountdown,1000);
 // V1.7.91 — device-local weather. GPS coordinates are never saved in quest backups.
 const PR_WEATHER_CACHE='pr-weather-cache-v191';
 const PR_WEATHER_PLACE='pr-weather-manual-place-v191';
-const weatherView={forecast:null,location:null,updated:0,loading:false,error:'',searchOpen:false,searching:false,query:'',places:[],requestId:0};
+const weatherView={forecast:null,location:null,updated:0,loading:false,phase:'',error:'',searchOpen:false,searching:false,query:'',places:[],requestId:0};
 function weatherReadCache(){
  try{const o=JSON.parse(localStorage.getItem(PR_WEATHER_CACHE)||'null');
   if(o&&o.forecast?.current&&Number.isFinite(Number(o.forecast.current.temperature_2m))&&o.updated&&Date.now()-o.updated<86400000){
@@ -4499,8 +4502,8 @@ function weatherLabel(code){
  if(c===45||c===48)return '안개';if(c>=51&&c<=57)return '이슬비';if(c>=61&&c<=67)return '비';
  if(c>=71&&c<=77)return '눈';if(c>=80&&c<=82)return '소나기';if(c===85||c===86)return '눈 소나기';if(c>=95)return '뇌우';return '날씨 정보';
 }
-function weatherTemp(v){return Number.isFinite(Number(v))?Math.round(Number(v))+'°':'--°'}
-function weatherStale(){return !weatherView.updated||Date.now()-weatherView.updated>20*60000}
+function weatherTemp(v){return v!==null&&v!==undefined&&v!==''&&Number.isFinite(Number(v))?Math.round(Number(v))+'°':'--°'}
+function weatherStale(){const wait=weatherView.forecast?.source==='met-no'?180:20;return !weatherView.updated||Date.now()-weatherView.updated>wait*60000}
 function weatherHeaderSync(){
  const chip=document.getElementById('prWeatherChip');if(!chip)return;
  const show=!!(startUnlocked&&currentUserId&&screen==='home');chip.hidden=!show;
@@ -4517,32 +4520,94 @@ function weatherFromStorage(){
   return p&&p.mode==='manual'&&Number.isFinite(Number(p.latitude))&&Number.isFinite(Number(p.longitude))&&Math.abs(p.latitude)<=90&&Math.abs(p.longitude)<=180?p:null;
  }catch(_){return null;}
 }
+// Both sources are CORS-enabled. Requests have independent deadlines; one failure
+// must not erase a previously successful forecast. MET Norway is used only as backup.
+async function weatherFetchJson(url,deadline){
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),deadline);
+ try{
+  const response=await fetch(url,{signal:controller.signal,cache:'default'});
+  if(!response.ok)throw Error('서버 HTTP '+response.status);
+  return await response.json();
+ }catch(e){if(e?.name==='AbortError')throw Error('요청 시간 초과');if(e?.name==='TypeError')throw Error('서버 연결 실패');throw e;}
+ finally{clearTimeout(timeout);}
+}
+function weatherMetCode(symbol){
+ const code=String(symbol||'').toLowerCase();
+ if(code.includes('thunder'))return 95;
+ if(code.includes('snow')||code.includes('sleet'))return 71;
+ if(code.includes('rainshowers'))return 80;
+ if(code.includes('rain'))return 61;
+ if(code.includes('fog'))return 45;
+ if(code.includes('cloudy'))return code.includes('partly')?2:3;
+ if(code.includes('fair'))return 1;
+ if(code.includes('clear'))return 0;
+ return 3;
+}
+function weatherNormalizeMet(raw){
+ const rows=raw?.properties?.timeseries;
+ if(!Array.isArray(rows)||!rows.length)throw Error('대체 기상 데이터가 비어 있습니다.');
+ const tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'Asia/Seoul';
+ const localTime=iso=>{
+  const date=new Date(iso);
+  // ISO-style local date, with no ambiguous UTC conversion in the hourly view.
+  const parts=new Intl.DateTimeFormat('en-CA',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(date);
+  const find=k=>parts.find(x=>x.type===k)?.value||'00';
+  return `${find('year')}-${find('month')}-${find('day')}T${find('hour')}:${find('minute')}`;
+ };
+ const now=Date.now();
+ const currentRow=rows.filter(x=>Date.parse(x.time)<=now+3600000).at(-1)||rows[0];
+ const readCode=row=>weatherMetCode(row.data?.next_1_hours?.summary?.symbol_code||row.data?.next_6_hours?.summary?.symbol_code||row.data?.next_12_hours?.summary?.symbol_code);
+ const readProbability=row=>row.data?.next_1_hours?.details?.probability_of_precipitation??row.data?.next_6_hours?.details?.probability_of_precipitation??null;
+ const currentDetails=currentRow.data?.instant?.details||{};
+ const hourRows=rows.filter(x=>Date.parse(x.time)>=now-3600000).slice(0,36);
+ if(!hourRows.length)throw Error('시간별 대체 예보가 없습니다.');
+ const hourData={time:[],temperature_2m:[],weather_code:[],precipitation_probability:[],is_day:[]};
+ for(const row of hourRows){
+  const t=localTime(row.time), hour=Number(t.slice(11,13));
+  hourData.time.push(t);hourData.temperature_2m.push(row.data?.instant?.details?.air_temperature??null);
+  hourData.weather_code.push(readCode(row));hourData.precipitation_probability.push(readProbability(row));hourData.is_day.push(hour>=6&&hour<18?1:0);
+ }
+ const currentTime=localTime(currentRow.time),ch=Number(currentTime.slice(11,13));
+ return {source:'met-no',current:{time:currentTime,temperature_2m:currentDetails.air_temperature??null,weather_code:readCode(currentRow),apparent_temperature:null,relative_humidity_2m:currentDetails.relative_humidity??null,wind_speed_10m:currentDetails.wind_speed??null,is_day:ch>=6&&ch<18?1:0},hourly:hourData,timezone:tz};
+}
 async function weatherLoadForecast(place,force=false){
  if(weatherView.loading&&!force)return;
  const token=++weatherView.requestId;
- weatherView.loading=true;weatherView.error='';weatherPopupUpdate();
+ weatherView.loading=true;weatherView.phase='날씨 서버 연결 중';weatherView.error='';weatherPopupUpdate();
+ const params=new URLSearchParams({latitude:String(place.latitude),longitude:String(place.longitude),current:'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m',hourly:'temperature_2m,precipitation_probability,weather_code,is_day',forecast_days:'2',timezone:'auto',wind_speed_unit:'ms'});
+ let forecast=null,mainError='';
  try{
-  const params=new URLSearchParams({latitude:String(place.latitude),longitude:String(place.longitude),current:'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m',hourly:'temperature_2m,precipitation_probability,weather_code,is_day',forecast_days:'2',timezone:'auto',wind_speed_unit:'ms'});
-  const ctl=new AbortController(),timeout=setTimeout(()=>ctl.abort(),14000);
-  let response;
-  try{response=await fetch('https://api.open-meteo.com/v1/forecast?'+params.toString(),{signal:ctl.signal,cache:'no-store'});}
-  finally{clearTimeout(timeout);}
-  if(!response.ok)throw Error('날씨 제공 서버 응답 '+response.status);
-  const forecast=await response.json();
-  if(!forecast?.current||!Number.isFinite(Number(forecast.current.temperature_2m))||!Array.isArray(forecast.hourly?.time))throw Error('날씨 응답 형식이 올바르지 않습니다.');
+  try{
+   const result=await weatherFetchJson('https://api.open-meteo.com/v1/forecast?'+params,6500);
+   if(!result?.current||!Number.isFinite(Number(result.current.temperature_2m))||!Array.isArray(result.hourly?.time))throw Error('날씨 응답 형식 오류');
+   forecast={current:result.current,hourly:result.hourly,timezone:result.timezone||'',source:'open-meteo'};
+  }catch(e){
+   mainError=String(e?.message||'연결 오류');
+   if(token!==weatherView.requestId)return;
+   // MET Norway asks that locations outside Nordic areas be cached for >=3 hours.
+   if(weatherView.forecast?.source==='met-no'&&weatherView.location?.name===place.name&&Date.now()-weatherView.updated<180*60000){
+    weatherView.error='실시간 서버 연결 실패 ('+mainError+'). 최근 대체 예보를 유지합니다.';return;
+   }
+   weatherView.phase='대체 기상 예보 확인 중';weatherPopupUpdate();
+   try{
+    const lat=Number(place.latitude).toFixed(4),lon=Number(place.longitude).toFixed(4);
+    const alt=await weatherFetchJson('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat='+lat+'&lon='+lon,8000);
+    forecast=weatherNormalizeMet(alt);
+   }catch(e2){throw Error('기본 예보: '+mainError+' / 대체 예보: '+String(e2?.message||'연결 오류'));}
+  }
   if(token!==weatherView.requestId)return;
-  weatherView.forecast={current:forecast.current,hourly:forecast.hourly,timezone:forecast.timezone||''};
+  weatherView.forecast=forecast;
   weatherView.location={name:place.name||'현재 위치',mode:place.mode||'gps'};weatherView.updated=Date.now();
-  if(weatherView.location.mode==='gps')try{localStorage.removeItem(PR_WEATHER_PLACE);}catch(_){}
-  try{localStorage.setItem(PR_WEATHER_CACHE,JSON.stringify({forecast:weatherView.forecast,name:weatherView.location.name,mode:weatherView.location.mode,updated:weatherView.updated}));}catch(_){}
- }catch(err){if(token===weatherView.requestId)weatherView.error=(navigator.onLine===false?'오프라인입니다. 저장된 예보를 표시합니다.':String(err?.name==='AbortError'?'요청 시간이 초과됐습니다.':err?.message||'날씨를 불러오지 못했습니다.'));}
- finally{if(token===weatherView.requestId){weatherView.loading=false;weatherPopupUpdate();}}
+  if(weatherView.location.mode==='gps')try{localStorage.removeItem(PR_WEATHER_PLACE);}catch(_){ }
+  try{localStorage.setItem(PR_WEATHER_CACHE,JSON.stringify({forecast,name:weatherView.location.name,mode:weatherView.location.mode,updated:weatherView.updated}));}catch(_){ }
+ }catch(e){if(token===weatherView.requestId)weatherView.error=(navigator.onLine===false?'인터넷이 연결되지 않았습니다. 마지막 예보를 표시합니다.':String(e?.message||'날씨를 불러오지 못했습니다.')+' · 네트워크 확인 또는 지역 검색을 이용해 주세요.');}
+ finally{if(token===weatherView.requestId){weatherView.loading=false;weatherView.phase='';weatherPopupUpdate();}}
 }
 function weatherUseCurrentLocation(){
  if(!navigator.geolocation){weatherView.error='이 기기는 위치 기능을 지원하지 않습니다. 지역 검색을 사용하세요.';weatherPopupUpdate();return;}
  if(!window.isSecureContext){weatherView.error='위치 기능은 HTTPS에서 사용할 수 있습니다. 지역을 검색해 주세요.';weatherPopupUpdate();return;}
  const token=++weatherView.requestId;
- weatherView.loading=true;weatherView.error='';weatherPopupUpdate();
+ weatherView.loading=true;weatherView.phase='GPS 위치 확인 중';weatherView.error='';weatherPopupUpdate();
  navigator.geolocation.getCurrentPosition(pos=>{
   if(token!==weatherView.requestId)return;
   // Do not persist a GPS fix: get location again for a later refresh.
@@ -4553,7 +4618,7 @@ function weatherUseCurrentLocation(){
   weatherView.loading=false;
   weatherView.error=(err.code===1?'위치 권한이 허용되지 않았어요. 휴대폰 위치 권한을 확인하거나 지역을 검색해 주세요.':err.code===3?'위치를 찾는 데 시간이 오래 걸립니다. 지역 검색을 이용해 주세요.':'위치를 확인하지 못했어요. 지역 검색을 이용해 주세요.');
   weatherPopupUpdate();
- },{enableHighAccuracy:false,timeout:12000,maximumAge:600000});
+ },{enableHighAccuracy:false,timeout:9000,maximumAge:900000});
 }
 async function weatherAutoUpdate(force=false){
  if(!startUnlocked||!currentUserId||(!force&&!weatherStale())||weatherView.loading)return;
@@ -4564,7 +4629,11 @@ async function weatherAutoUpdate(force=false){
 function openWeatherPopup(){
  if(!startUnlocked||!currentUserId)return;
  modal={type:'weather'};render();
- if(!weatherView.forecast&&!weatherView.loading)weatherAutoUpdate(true);
+ if(!weatherView.forecast&&!weatherView.loading){
+  const manual=weatherFromStorage();
+  if(manual)weatherLoadForecast(manual,true);
+  else weatherUseCurrentLocation(); // called by user tap, so permission request is expected
+ }
 }
 function weatherRefresh(){
  const manual=weatherFromStorage();if(manual){weatherLoadForecast(manual,true);return;}
@@ -4607,16 +4676,16 @@ function renderWeatherModal(){
  return `<div class="overlay weather-overlay" onclick="modal=null;render()"><div class="modal weather-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="현재 위치 날씨와 시간별 예보">
   <div class="weather-head"><h2>🌦️ 현재 위치 날씨</h2><button class="weather-close" type="button" onclick="modal=null;render()" aria-label="닫기">×</button></div>
   <div class="weather-location">📍 ${esc(weatherView.location?.name||'위치 미설정')} ${weatherView.location?.mode==='manual'?'· 선택한 지역':'· 위치 기준'}${weatherStale()&&c?' · 이전 예보':''}</div>
-  ${c?`<div class="weather-now"><span class="weather-now-icon" aria-hidden="true">${weatherIcon(c.weather_code,c.is_day!==0)}</span><strong class="weather-now-temp">${weatherTemp(c.temperature_2m)}</strong><div class="weather-now-desc"><strong>${weatherLabel(c.weather_code)}</strong>체감 ${weatherTemp(c.apparent_temperature)}</div></div>
+  ${c?`<div class="weather-now"><span class="weather-now-icon" aria-hidden="true">${weatherIcon(c.weather_code,c.is_day!==0)}</span><strong class="weather-now-temp">${weatherTemp(c.temperature_2m)}</strong><div class="weather-now-desc"><strong>${weatherLabel(c.weather_code)}</strong>${c.apparent_temperature==null?'체감 정보 없음':'체감 '+weatherTemp(c.apparent_temperature)}</div></div>
     <div class="weather-section-title">◷ 앞으로 12시간 예보</div><div class="weather-hours" aria-label="시간별 날씨 예보">${items.map(x=>`<div class="weather-hour"><b>${x.day!==currentDate?'내일 ':''}${x.hour}시</b><span class="wx" aria-hidden="true">${x.icon}</span><b>${x.temp}</b><span class="rain">💧 ${x.rain===null?'--':x.rain}%</span></div>`).join('')}</div>
     <div class="weather-info-grid"><div class="weather-info">💧 습도<b>${Number.isFinite(Number(c.relative_humidity_2m))?Math.round(c.relative_humidity_2m)+'%':'정보 없음'}</b></div><div class="weather-info">🌬️ 바람<b>${Number.isFinite(Number(c.wind_speed_10m))?Number(c.wind_speed_10m).toFixed(1)+' m/s':'정보 없음'}</b></div></div>`:
     `<p class="weather-loading">현재 위치를 선택하면 시간별 날씨를 볼 수 있어요. 위치 권한을 허용하거나 지역을 직접 검색해 주세요.</p>`}
-  ${weatherView.loading?'<p class="weather-loading" role="status">날씨를 새로 불러오는 중…</p>':''}
+  ${weatherView.loading?`<p class="weather-loading" role="status">${esc(weatherView.phase||'날씨를 새로 불러오는 중…')}</p>`:''}
   ${weatherView.error?`<p class="weather-error" role="status">${esc(weatherView.error)}</p>`:''}
   <div class="weather-actions"><span class="weather-time">업데이트 ${updated}${weatherStale()?' · 갱신 필요':''}</span><button type="button" onclick="weatherRefresh()" ${weatherView.loading?'disabled':''}>↻ 새로고침</button></div>
   <div class="weather-location-actions"><button type="button" onclick="weatherLocationAgain()" ${weatherView.loading?'disabled':''}>📍 현재 위치</button><button type="button" onclick="weatherToggleSearch()">⌕ 지역 검색</button></div>
   ${weatherView.searchOpen?`<form class="weather-search-form" onsubmit="weatherSearchCity(event)"><input name="city" aria-label="지역명" required minlength="2" value="${esc(weatherView.query)}" placeholder="예: 서울, 화성시, 수원"><button type="submit" ${weatherView.searching?'disabled':''}>검색</button></form>${weatherView.searching?'<p class="weather-loading">지역 검색 중…</p>':''}<div class="weather-place-list">${weatherView.places.map((p,i)=>`<button type="button" class="weather-place" onclick="weatherChooseCity(${i})">📍 ${esc([p.name,p.admin1,p.country].filter(Boolean).join(' · '))}</button>`).join('')}</div>`:''}
-  <p class="weather-credit">예보 출처: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · 위치 및 인터넷 연결 필요 · 기기 내 임시 저장</p>
+  <p class="weather-credit">예보 출처: ${f?.source==='met-no'?'<a href="https://api.met.no/" target="_blank" rel="noopener noreferrer">MET Norway</a>':'<a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>'} · 네트워크 오류 시 대체 예보 사용 · 기기 내 임시 저장</p>
  </div></div>`;
 }
 
@@ -5026,7 +5095,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.91</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.92</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -7115,7 +7184,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.91</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.92</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -8560,7 +8629,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.91</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.92</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
