@@ -1,13 +1,12 @@
-PokéRoutine V1.7.83 · 종료 확인 유지 / PWA 뒤로 가기 개선
+PokéRoutine V1.7.84 · 종료 버튼의 브라우저 뒤로 가기 경로 보완
 
-반영
-- 오늘 탭에서 Android 뒤로 가기: 종료하시겠습니까? → 계속 사용 / 종료
-- 팝업이 열려 있으면 팝업 닫기. 다른 탭이면 오늘 탭으로 이동
-- 종료 버튼에서 한 번의 클릭으로 native bridge(있는 경우), window.close(), 브라우저 이동 순으로 시도
-- Android Chrome의 CloseWatcher 지원 기기에서는 가짜 방문 기록을 추가하지 않아 native Back을 방해하지 않음
-- 추가 종료 안내 화면 없음
-- 퀘스트·보상·기술·데이터 로직은 변경하지 않음
+변경 사항
+- 뒤로 가기: 팝업 닫기 → 다른 탭에서 오늘 탭 → 오늘 탭에서 종료 확인
+- 종료 선택 시 추가 화면을 띄우지 않고 현재 이벤트에서 browser history back을 호출
+- 기존 CloseWatcher를 해제해 종료 확인으로 되돌아가는 루프 제거
+- 브라우저가 허용하는 경우 history.go(-2), history.back 또는 window.close 시도
+- 백업 데이터/보상/퀘스트 로직 유지
 
-제약: 설치형 일반 PWA는 브라우저 보안 정책상 JavaScript에서 Android 앱을 강제로 종료하는 API가 없습니다. 따라서 기기에 따라 '종료' 버튼으로 OS Activity를 즉시 종료하는 것은 보장되지 않습니다. APK/Android WebView 래퍼의 App.exitApp 같은 네이티브 API가 있을 때는 즉시 종료가 가능합니다.
+주의: Chrome 등의 일반 설치형 PWA에서는 자바스크립트로 Android 하드웨어 Back을 합성하거나 앱 Activity를 확실히 종료하는 표준 API가 없습니다. 따라서 버튼 한 번으로 실제 OS 차원의 강제 종료까지 보장할 수 없습니다. 지원 가능한 네이티브 래퍼에서는 App.exitApp 경로를 우선 사용합니다.
 
-적용: JSON 백업 후 index.html, moves.html, sw.js 업로드. 설치된 PWA를 완전히 닫고 다시 실행하거나 새 버전이 설치되도록 새로고침하세요.
+설치: 기존 JSON 데이터 백업 후 index.html, moves.html, sw.js를 GitHub에 덮어쓴 뒤 설치된 앱을 재실행하세요.
