@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.103 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.104 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -4246,7 +4246,6 @@ html[data-theme="light"] .sleep-week{background:linear-gradient(140deg,#f3fbff,#
 .sleep-mini-cell.sleep-mini-pass{background:#164f46;color:#a0fcd0}.sleep-mini-cell.sleep-mini-fail{background:#58333d;color:#ffabb1}.sleep-mini-cell.sleep-mini-partial{background:#594a2d;color:#ffe39b}.sleep-mini-cell.sleep-mini-missing,.sleep-mini-cell.sleep-mini-future{background:#354254;color:#a8b5c6}.sleep-mini-cell.sleep-mini-duration{background:#223c51;color:#dfebf7}
 .sleep-mini-result>.sleep-mini-cell{font-size:19px;font-weight:900;min-height:25px}
 .sleep-mini-bottom{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:10px 0 6px;font-size:10px;color:#c5deef}
-.sleep-mini-payout{background:#16364b;border-radius:8px;padding:8px 9px;text-align:center;font-size:11px;color:#85f0c4;font-weight:780}
 .sleep-mini-explain{font-size:10px;color:#b5d0df;line-height:1.55;margin:8px 2px 0}
 html[data-theme="light"] .sleep-week.sleep-mini{background:linear-gradient(135deg,#f6fcff,#eef5fa);color:#233c56;border-color:#b2d3e4}
 html[data-theme="light"] .sleep-mini-top small,html[data-theme="light"] .sleep-mini-explain,html[data-theme="light"] .sleep-mini-edit small{color:#527388}
@@ -4255,13 +4254,44 @@ html[data-theme="light"] .sleep-mini-edit{background:#e4f1f8;border-color:#aacdd
 html[data-theme="light"] .sleep-mini-summary{background:#e5f5f7}html[data-theme="light"] .sleep-mini-summary>strong{color:#07816a}html[data-theme="light"] .sleep-mini-summary>strong small,html[data-theme="light"] .sleep-mini-summary>span{color:#476c79}html[data-theme="light"] .sleep-mini-summary>b{color:#916212}
 html[data-theme="light"] .sleep-mini-head>span,html[data-theme="light"] .sleep-mini-board-row>.sleep-mini-label{background:#e1edf5;color:#25445b}
 html[data-theme="light"] .sleep-mini-cell.sleep-mini-pass{background:#d9f4e6;color:#087c55}html[data-theme="light"] .sleep-mini-cell.sleep-mini-fail{background:#ffe1e4;color:#ad293f}html[data-theme="light"] .sleep-mini-cell.sleep-mini-partial{background:#fff0ca;color:#956009}html[data-theme="light"] .sleep-mini-cell.sleep-mini-missing,html[data-theme="light"] .sleep-mini-cell.sleep-mini-future{background:#e5eaf0;color:#677788}html[data-theme="light"] .sleep-mini-cell.sleep-mini-duration{background:#e5f0f7;color:#36586f}
-html[data-theme="light"] .sleep-mini-bottom{color:#446277}html[data-theme="light"] .sleep-mini-payout{color:#05775f;background:#e1f5ef}
+html[data-theme="light"] .sleep-mini-bottom{color:#446277}
 @media(max-width:420px){.sleep-week.sleep-mini{padding:9px 7px}.sleep-mini-board-row{grid-template-columns:21px repeat(7,minmax(0,1fr));gap:2px}.sleep-mini-board-row>span{font-size:9.2px;letter-spacing:-.55px;min-height:29px}.sleep-mini-head>span{min-height:22px;font-size:10px}.sleep-mini-board-row>.sleep-mini-label{font-size:12px}.sleep-mini-goals{padding:7px 5px}.sleep-mini-goals label{font-size:10px}.sleep-mini-goals strong{font-size:11px}.sleep-mini-bottom{gap:6px;font-size:9px}.sleep-mini-result>.sleep-mini-cell{font-size:16px}.sleep-mini-top .sleep-week-nav b{font-size:10px}}
 @media(max-width:335px){.sleep-mini-board-row>span{font-size:8.5px;letter-spacing:-.7px}.sleep-mini-top strong{font-size:14px}.sleep-mini-top small{font-size:9px}}
 
 .sleep-mini-caption{font-size:10px;line-height:1.45;color:#b4d4e0;margin:8px 2px 1px}
 .sleep-mini-help{font-size:10px;color:#c4ddeb;margin:4px 2px 0}.sleep-mini-help summary{cursor:pointer;color:#93dbdd}.sleep-mini-help p{line-height:1.6;margin:5px 0}
 html[data-theme="light"] .sleep-mini-caption{color:#557888}html[data-theme="light"] .sleep-mini-help{color:#507283}
+
+/* v1.7.104 — activity-aware rhythm report. Every visual scales to 320px. */
+.lr-analysis{width:100%;max-width:100%;min-width:0;box-sizing:border-box;overflow:hidden;padding:12px;border-color:#527a89;background:linear-gradient(135deg,#142d45,#1a3445);color:#eaf5fa}
+.lr-analysis *{box-sizing:border-box}
+.lr-header{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap}
+.lr-header>div:first-child{min-width:0}.lr-header strong{display:block;font-size:16px;line-height:1.6}.lr-header small{display:block;font-size:10px;color:#afc8d9;margin-top:1px}
+.lr-range,.lr-switch{display:flex;gap:3px;padding:3px;border-radius:9px;background:#0b253a;border:1px solid #48647955}
+.lr-range button,.lr-switch button{min-height:30px;padding:4px 10px;color:#c6dce9;background:transparent;border:0;border-radius:7px;cursor:pointer;font-size:11px;font-weight:700;white-space:nowrap}
+.lr-range button.active,.lr-switch button.active{background:#087e86;color:white;box-shadow:0 1px 5px #0003}
+.lr-switch{margin-top:11px;width:100%}.lr-switch button{flex:1;min-width:0;font-size:12px}
+.lr-event-scroll{display:flex;gap:5px;margin:11px 0;overflow-x:auto;scrollbar-width:thin;padding:0 0 5px;overscroll-behavior-x:contain}
+.lr-event-chip{flex:0 0 auto;border:1px solid #526e88;background:#1f3d55;color:#d9edf7;padding:8px 10px;border-radius:9px;font-size:11px;cursor:pointer;min-height:35px}
+.lr-event-chip.active{background:#075b65;border-color:#47d7c6;color:#f4fffe;font-weight:850}
+.lr-event-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:7px 0 9px}
+.lr-event-name{display:flex;align-items:center;gap:8px;min-width:0}.lr-event-name>span{font-size:24px}.lr-event-name>div{min-width:0}.lr-event-name strong{display:block;font-size:14px}.lr-event-name small{display:block;margin-top:2px;color:#acc4d3;font-size:10px;overflow-wrap:anywhere}
+.lr-type-tag{font-size:10px;padding:4px 7px;border:1px solid #519a90;border-radius:99px;color:#78e9d1;flex:none}
+.lr-goal-row{display:flex;gap:7px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:7px 8px;background:#203d53;border-radius:8px;margin-bottom:10px;font-size:11px}
+.lr-goal-row>span{font-weight:800}.lr-goal-editor{position:relative;margin-left:auto;font-size:11px}.lr-goal-editor summary{cursor:pointer;list-style:none;border-radius:6px;padding:5px 8px;background:#2c566a;color:#d4ffff}.lr-goal-editor summary::-webkit-details-marker{display:none}
+.lr-goal-editor[open]{flex:1 1 100%}.lr-goal-editor form{display:flex;gap:8px;align-items:end;flex-wrap:wrap;padding:8px 0 0}.lr-goal-editor label{font-size:11px;display:flex;flex-direction:column;gap:4px}.lr-goal-editor input{min-width:0;max-width:138px;background:#fff!important;color:#15334a!important;border:1px solid #7190a6;border-radius:7px;padding:6px;font-size:13px}.lr-goal-editor form>div{display:flex;gap:6px}.lr-goal-editor form button{padding:7px 9px;border:1px solid #6daead;background:#2c6475;color:#fff;border-radius:7px;font-size:11px}
+.lr-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px 0 12px}.lr-stat{display:flex;flex-direction:column;gap:5px;text-align:center;align-items:center;min-width:0;padding:10px 3px;border-radius:10px;background:#29445b;border:1px solid #49708765}.lr-stat small{font-size:10px;color:#aec7d9;line-height:1.3}.lr-stat strong{font-size:clamp(14px,4vw,20px);line-height:1.25;color:#f2faff;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.lr-chart-wrap{border:1px solid #476980;border-radius:11px;background:#0d2b42;padding:10px 7px 8px;min-width:0;overflow:hidden}.lr-plot-head{display:flex;align-items:start;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:5px}.lr-plot-head strong{font-size:12px}.lr-plot-head small{font-size:10px;color:#a8bed0;line-height:1.4}.lr-time-chart{width:100%;max-width:680px;margin:0 auto;height:auto;display:block;overflow:visible;color:#b9cad9}.lr-chart-point{cursor:pointer;outline:none}.lr-chart-point:focus-visible circle:last-of-type{stroke:#fff;stroke-width:4}
+.lr-barplot{height:198px;width:100%;display:flex;align-items:stretch;gap:3px;position:relative;padding:8px 0 2px;margin-top:4px}.lr-bar-axis{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#9ab5c9;margin:0 4px}.lr-bar-col{width:0;flex:1 1 0;min-width:0;padding:0;margin:0;border:none;background:transparent;color:#d3e8f1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;cursor:pointer;gap:3px;z-index:1}.lr-bar-track{position:relative;display:block;width:min(100%,28px);flex:1 1 auto;min-height:0;background:linear-gradient(transparent,#ffffff0c);border-bottom:1px solid #527f99}.lr-bar-fill{position:absolute;bottom:0;left:0;right:0;border-radius:4px 4px 0 0;background:linear-gradient(#4dd8be,#187d9c);min-height:0}.lr-bar-fill.is-goal{background:linear-gradient(#51ed9b,#0c8d8b)}.lr-bar-count{font-size:9px;line-height:10px;min-height:10px;color:#cdeade}.lr-bar-label{font-size:9px;white-space:nowrap;overflow:hidden;max-width:100%;text-overflow:clip}.lr-bar-col:focus-visible{outline:2px solid #91eeeb;outline-offset:2px;border-radius:3px}.lr-goal-line{position:absolute;left:0;right:0;z-index:0;border-top:2px dashed #f1be51;pointer-events:none;bottom:calc(21px + (100% - 41px) * var(--lr-goal-frac))}.lr-goal-line span{position:absolute;right:0;bottom:3px;padding:1px 3px;color:#f7ce67;background:#0d2b42;font-size:9px}
+.lr-mini-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:12px 0 7px}.lr-mini-title strong{font-size:12px}.lr-mini-title small{font-size:10px;color:#abc5d6}.lr-mini-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}.lr-mini-day{min-width:0;background:#1b4850;border:1px solid #3e887a;border-radius:7px;color:#edfff9;padding:6px 1px;display:grid;place-items:center;gap:5px;cursor:pointer}.lr-mini-day small{font-size:10px;color:#d1e8ef}.lr-mini-day b{font-size:clamp(9px,2.5vw,12px);white-space:nowrap;font-variant-numeric:tabular-nums}.lr-mini-day i{font-style:normal;font-weight:800;font-size:11px;color:#79ecb1}.lr-mini-day.is-empty{background:#27394b;border-color:#54697a;color:#94aebd}.lr-mini-day.is-late{background:#563744;border-color:#95606c}.lr-mini-day.is-late i{color:#ff9ca0}.lr-mini-day:focus-visible,.lr-overview-day:focus-visible{outline:2px solid #9cedd7}
+.lr-pattern{margin-top:12px;padding:10px;border:1px solid #49647d;border-radius:9px;background:#213d52}.lr-pattern strong{font-size:12px}.lr-pattern strong small{font-size:10px;color:#c2d4e0}.lr-pattern-bar{display:flex;overflow:hidden;height:12px;border-radius:10px;background:#344b60;margin:9px 0}.lr-pattern-bar span{height:100%}.lr-pattern-legend{display:flex;justify-content:space-between;gap:7px;flex-wrap:wrap;font-size:10px;color:#dae6ee}.lr-pattern-legend span{display:flex;align-items:center;gap:4px}.lr-pattern-legend i{width:9px;height:9px;border-radius:2px;display:inline-block;flex:none}
+.lr-insight{font-size:11px;line-height:1.65;margin:10px 0 0;border:1px solid #47736e;background:#17443d;border-radius:9px;padding:9px;color:#d4f8e7}.lr-footnote{font-size:10px;line-height:1.55;color:#aac4d5;margin:8px 0 2px}.lr-empty{font-size:12px;padding:18px 8px;text-align:center;color:#bdd0de}
+.lr-overview-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.lr-overview-day{background:#1c3c53;border:1px solid #55748b;border-radius:8px;display:grid;gap:5px;padding:7px 2px;color:#eafaff;cursor:pointer;min-width:0}.lr-overview-day small{font-size:11px}.lr-overview-day span{border-radius:6px;background:rgba(35,192,131,calc(.12 + .70 * var(--lr-intensity)));padding:8px 1px;font-size:12px;font-weight:800}
+.lr-overview-list{display:grid;gap:5px}.lr-overview-list button{border:1px solid #536f83;border-radius:8px;background:#1e3c56;color:#e6f7ff;cursor:pointer;display:flex;align-items:center;gap:8px;padding:9px;text-align:left;min-width:0}.lr-overview-list button span{min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.lr-overview-list button b{font-size:12px}.lr-overview-list button small{color:#b8ccda;font-size:10px}
+html[data-theme='light'] .lr-analysis{background:linear-gradient(130deg,#f5fcff,#eef7ff);color:#1f4359;border-color:#bad6df}html[data-theme='light'] .lr-header small,html[data-theme='light'] .lr-event-name small,html[data-theme='light'] .lr-footnote,html[data-theme='light'] .lr-plot-head small,html[data-theme='light'] .lr-mini-title small{color:#557287}html[data-theme='light'] .lr-range,html[data-theme='light'] .lr-switch{background:#dbeaf2;border-color:#c3d5e2}html[data-theme='light'] .lr-range button,html[data-theme='light'] .lr-switch button{color:#31556f}html[data-theme='light'] .lr-range button.active,html[data-theme='light'] .lr-switch button.active{background:#07878a;color:white}html[data-theme='light'] .lr-event-chip{color:#315775;background:#e4f0f9;border-color:#b5cada}html[data-theme='light'] .lr-event-chip.active{background:#daf9f1;border-color:#1b9e89;color:#126d5f}html[data-theme='light'] .lr-type-tag{color:#087867}html[data-theme='light'] .lr-goal-row{background:#e2f1f8}html[data-theme='light'] .lr-goal-editor summary{background:#d6eeef;color:#245867}html[data-theme='light'] .lr-stats .lr-stat{background:#fff;border-color:#d6e5ec}html[data-theme='light'] .lr-stat strong{color:#24516a}html[data-theme='light'] .lr-stat small{color:#61788c}html[data-theme='light'] .lr-chart-wrap{background:#f7fbfe;border-color:#bfd7e6;color:#264f67}html[data-theme='light'] .lr-time-chart{color:#536d83}html[data-theme='light'] .lr-mini-day{background:#e4f9ee;border-color:#aed4c2;color:#165d54}html[data-theme='light'] .lr-mini-day small{color:#346b64}html[data-theme='light'] .lr-mini-day.is-empty{background:#edf1f5;border-color:#cad6df;color:#8495a2}html[data-theme='light'] .lr-mini-day.is-late{background:#ffedf0;border-color:#f2b5be;color:#99404b}html[data-theme='light'] .lr-pattern{background:#e6f3fa;border-color:#c6dce9}html[data-theme='light'] .lr-pattern-legend{color:#31596e}html[data-theme='light'] .lr-insight{background:#e6f7ec;border-color:#b9dec9;color:#24634c}html[data-theme='light'] .lr-overview-day{background:#e3f1f8;color:#244f66;border-color:#c7deec}html[data-theme='light'] .lr-overview-list button{background:#f8fcff;color:#2a536c;border-color:#d0e2ee}html[data-theme='light'] .lr-overview-list button small{color:#647f91}html[data-theme='light'] .lr-bar-axis{color:#5c7185}html[data-theme='light'] .lr-bar-col{color:#325b6e}html[data-theme='light'] .lr-bar-count{color:#2b6173}html[data-theme='light'] .lr-goal-line span{background:#f7fbfe;color:#977113}
+@media(max-width:420px){.lr-analysis{padding:9px 7px}.lr-header strong{font-size:14px}.lr-range button{padding:4px 7px}.lr-event-chip{padding:7px 8px}.lr-mini-week{gap:2px}.lr-mini-day{padding:6px 0}.lr-mini-day b{font-size:10px;letter-spacing:-.45px}.lr-stats{gap:4px}.lr-stat{padding:8px 2px}.lr-stat strong{font-size:15px}.lr-stat small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.lr-analysis *{transition:none!important;animation:none!important}}
+
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -4450,7 +4480,7 @@ const LIFE_DEFAULTS=[
  {id:'exercise',name:'운동',emoji:'💪',color:'#ed9d5b',mode:'repeat',enabled:true,suggest:''},
  {id:'sleep',name:'취침',emoji:'🌙',color:'#9b80d8',mode:'once',enabled:true,suggest:'23:00'}
 ];
-const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},momentLogs:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{}},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
+const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},momentLogs:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{}},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
 let settings={autoSave:true,theme:'light',fontSize:'large',swipeTabs:true};
 try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark'].includes(p?.theme))settings.theme=p.theme;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
@@ -5270,7 +5300,7 @@ function cleanBackup(v){
  safe.points=boundedNumber(v.points);safe.allEarned=boundedNumber(v.allEarned);safe.totalXp=boundedNumber(v.totalXp);
  safe.dailyNotes=cleanDailyNotes(v.dailyNotes);
  safe.momentLogs=cleanMomentLogs(v.momentLogs);
- safe.lifeEventConfig=cleanLifeEventConfig(v.lifeEventConfig);safe.lifeEventLogs=cleanLifeEventLogs(v.lifeEventLogs);
+ safe.lifeEventConfig=cleanLifeEventConfig(v.lifeEventConfig);safe.lifeEventLogs=cleanLifeEventLogs(v.lifeEventLogs);safe.lifeRhythmView=cleanLifeRhythmView(v.lifeRhythmView);safe.lifeRhythmGoals=cleanLifeRhythmGoals(v.lifeRhythmGoals);
  safe.sleepRewardStartWeek=validNoteDay(v.sleepRewardStartWeek)?sleepWeekMonday(v.sleepRewardStartWeek):'';
  safe.sleepWeeklyReviews=cleanSleepWeeklyReviews(v.sleepWeeklyReviews);safe.sleepGoalHistory=cleanSleepGoalHistory(v.sleepGoalHistory);
  safe.achievementDrafts=cleanAchievementDrafts(v.achievementDrafts,safe.quests);
@@ -5362,7 +5392,7 @@ function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.a
  if(!Array.isArray(data.rewardClaims))data.rewardClaims=[];
  data.dailyNotes=cleanDailyNotes(data.dailyNotes);
  data.momentLogs=cleanMomentLogs(data.momentLogs);
- data.lifeEventConfig=cleanLifeEventConfig(data.lifeEventConfig);data.lifeEventLogs=cleanLifeEventLogs(data.lifeEventLogs);
+ data.lifeEventConfig=cleanLifeEventConfig(data.lifeEventConfig);data.lifeEventLogs=cleanLifeEventLogs(data.lifeEventLogs);data.lifeRhythmView=cleanLifeRhythmView(data.lifeRhythmView);data.lifeRhythmGoals=cleanLifeRhythmGoals(data.lifeRhythmGoals);
  data.sleepRewardStartWeek=validNoteDay(data.sleepRewardStartWeek)?sleepWeekMonday(data.sleepRewardStartWeek):sleepWeekMonday(day());
  data.sleepWeeklyReviews=cleanSleepWeeklyReviews(data.sleepWeeklyReviews);data.sleepGoalHistory=cleanSleepGoalHistory(data.sleepGoalHistory);
  data.learnedMoves=cleanLearnedMoves(data.learnedMoves);
@@ -5443,7 +5473,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.103</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.104</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -6475,7 +6505,7 @@ ${TRAINING_MANUAL}${HONOR_MANUAL}${MOVE_CINEMA_MANUAL}${MOVE_MINIMAL_MANUAL}
 const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'],['ops','🎛 운영 설정','보상 · 확률 · 훈련 · 훈장'],['account','👥 계정·보안','트레이너 · 비밀번호'],['data','💾 데이터·시스템','백업 · 병합 · 초기화'],['guide','📖 사용 매뉴얼','최신 기능 · 공식 · FAQ'],['history','📜 개발 버전 이력','최신순 업데이트 기록']];
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
-const ADMIN_VERSION_NOTES=[['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
+const ADMIN_VERSION_NOTES=[['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
  ['1.7.68','한줄 리스트의 완료 상태를 퀘스트명 앞 네모박스(미완료)/체크된 네모박스(완료)로 표현. 기존 왼쪽 상태선 및 다른 배치 유지.'],
  ['1.7.67','간단 리스트의 자세히/접기를 수행률 아래로 이동. 한줄 리스트 추천 배지를 연속 표시 앞으로 이동.'],
  ['1.7.62','기록 탭 실제 달성량의 단위 미지정 포함 전체 단위 기본 선택, 다중 선택 비교 그래프, 단위별 실측 합계와 기록 없음/0 구분, 계정별 보기 설정 저장.'],
@@ -6889,7 +6919,6 @@ function renderSleepWeekChecker(key){
  const todayWeek=sleepWeekMonday(day()),monday=sleepViewedWeek||(day()===todayWeek?sleepDateAdd(todayWeek,-7):todayWeek),lastMorning=sleepDateAdd(monday,7),firstMorning=sleepDateAdd(monday,1);
  const rows=sleepWeekRows(monday),passed=rows.filter(x=>x.status==='pass').length,hits=rows.reduce((count,r)=>count+Number(r.bedState==='pass')+Number(r.wakeState==='pass'),0);
  const award=(data.sleepWeeklyReviews||[]).find(x=>x.week===monday),rules=cleanSleepWeeklyReward(data.rules.sleepWeeklyReward),currentWeek=sleepWeekMonday(day()),isCurrent=monday===currentWeek;
- const state=award?`확정 ${award.hits}/14 · +${format(award.points)}P · +${format(award.xp)}XP` : monday<currentWeek?`월요일 기상 체크 후 정산 · 현재 ${hits}/14`:`현재 ${hits}/14 성공 · 예상 +${format(Math.round(rules.points*hits/14))}P · +${format(Math.round(rules.xp*hits/14))}XP`;
  const nextGoals=sleepGoalsFor(sleepDateAdd(day(),1));
  const weekLabel=`${firstMorning.slice(5).replace('-','/')}~${lastMorning.slice(5).replace('-','/')}`;
  const labels=['화','수','목','금','토','일','월'];
@@ -6907,33 +6936,174 @@ function renderSleepWeekChecker(key){
     <div class="sleep-mini-board-row sleep-mini-result" role="row"><span class="sleep-mini-label" role="rowheader" aria-label="달성 결과">◉</span>${cells(r=>({state:r.status,text:sleepStatusSymbol(r.status),title:sleepStatusName(r.status)}))}</div>
   </div>
   <div class="sleep-mini-bottom"><span><b class="sleep-state-pass">✓</b> 성공</span><span><b class="sleep-state-partial">△</b> 일부</span><span><b class="sleep-state-fail">✕</b> 실패</span><span><b class="sleep-state-missing">—</b> 미기록</span><span><b>·</b> 예정</span></div>
-  <div class="sleep-mini-payout" role="status">${state}</div>
   <p class="sleep-mini-caption">월요일 🌙 = 일요일 밤 취침 · 새벽 기록은 <b>+1</b> · 🛏 기록상 수면 간격</p>
   <details class="sleep-mini-help"><summary>계산·보상 기준</summary><p>요일은 기상일 기준입니다. 월요일 새벽 01:00에 누른 취침도 전날 밤으로 자동 연결하며, 목표가 22:00이면 취침 실패입니다. 취침 버튼의 시간은 잠든 시각을 측정한 값이 아니며, 수면 간격 역시 실제 잠든 시간과 다를 수 있습니다. 월요일 기상 버튼을 누르면 지난주 월~일 밤의 7회 취침과 화~월 아침의 7회 기상을 정산해, 총 14점 비율로 보상합니다. 과거 정산은 재지급되지 않습니다.</p></details>
  </section>`;
 }
 // Actual observations only; never infer sleeping/waking from app usage.
-function lifeMinutesForStats(log){let min=timeLogPointMinute(log.clock);if(log.eventId==='sleep'&&min<720)min+=1440;return min}
-function lifeTimeStr(n){const min=Math.round(n)%1440;return String(Math.floor(min/60)).padStart(2,'0')+':'+String(min%60).padStart(2,'0')}
-function renderLifeRhythmSummary(){
- const today=day(),keys=Array.from({length:7},(_,i)=>analyticsDateShift(today,i-6));
- const active=lifeCfg().items.filter(x=>x.enabled),summary=[];
- for(const def of active){const rows=keys.map(k=>{const logs=lifeLogsForDate(k).filter(x=>x.eventId===def.id);return logs[0]||null});const vals=rows.filter(Boolean).map(lifeMinutesForStats);if(vals.length)summary.push({def,rows,values:vals,average:vals.reduce((a,b)=>a+b,0)/vals.length})}
- const chosen=summary.find(x=>x.def.id===lifeRhythmChartId)||summary[0];
- const cards=summary.filter(x=>['wake','commute','sleep'].includes(x.def.id)).slice(0,3);
- const summaryItems=(cards.length?cards:summary.slice(0,3)).map(x=>`<div class="life-rhythm-stat"><small>${esc(x.def.emoji)} 평균 ${esc(x.def.name)}</small><strong>${lifeTimeStr(x.average)}</strong><small>${x.values.length}/7일 기록</small></div>`).join('');
- let chart='';
- if(chosen&&chosen.values.length>=2){
-  const vals=chosen.rows.map(x=>x?lifeMinutesForStats(x):null),min=Math.floor((Math.min(...chosen.values)-25)/30)*30,max=Math.ceil((Math.max(...chosen.values)+25)/30)*30,span=Math.max(60,max-min);
-  const loc=(n,i)=>[42+i*43,140-(n-min)/span*98];let points='',guides='';
-  for(let h=0;h<=3;h++){const y=140-h*98/3;guides+=`<line x1="42" y1="${y}" x2="310" y2="${y}" stroke="currentColor" opacity=".12"/><text x="38" y="${y+3}" text-anchor="end" font-size="9" fill="currentColor" opacity=".8">${lifeTimeStr(min+span*h/3)}</text>`}
-  vals.forEach((n,i)=>{if(n==null)return;const [x,y]=loc(n,i);points+=`<circle cx="${x}" cy="${y.toFixed(1)}" r="4" fill="#20a16e"><title>${keys[i]} ${lifeTimeStr(n)}</title></circle>`});
-  let lines='';for(let i=1;i<vals.length;i++)if(vals[i]!=null&&vals[i-1]!=null){const a=loc(vals[i-1],i-1),b=loc(vals[i],i);lines+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#20a16e" stroke-width="2.5"/>`}
-  chart=`<svg viewBox="0 0 330 170" role="img" aria-label="최근 7일 ${esc(chosen.def.name)} 시간 추세" class="life-rhythm-svg">${guides}${lines}${points}${keys.map((k,i)=>`<text x="${42+i*43}" y="160" text-anchor="middle" font-size="9" fill="currentColor">${Number(k.slice(-2))}일</text>`).join('')}</svg>`;
- }
- return `<section class="life-rhythm-section"><div class="life-event-heading"><strong>🕒 생활 리듬 분석</strong><small>최근 7일 · 직접 입력한 기록만</small></div>${summary.length?`<div class="life-rhythm-stats">${summaryItems}</div><div class="life-rhythm-chart-title"><label>시간 추이 <select onchange="lifeRhythmChartId=this.value;render()">${summary.map(x=>`<option value="${x.def.id}" ${chosen?.def.id===x.def.id?'selected':''}>${esc(x.def.emoji)} ${esc(x.def.name)}</option>`).join('')}</select></label></div>${chart||'<p class="life-event-hint">그래프를 보려면 해당 이벤트를 2일 이상 기록해 주세요.</p>'}<p class="life-event-hint">선택 기록 평균 ${chosen?lifeTimeStr(chosen.average):'—'} · ${chosen?.values.length||0}/7일. 취침→기상 간격은 실제 수면 시간과 다를 수 있어요.</p>`:'<p class="life-event-hint">아직 생활 이벤트 기록이 없어요. 달력에서 기상·출근·취침 버튼을 눌러 시작하세요.</p>'}</section>`;
+// v1.7.104 · Life rhythm report: no synthetic activity, no duplicated sleep/reward analysis.
+function cleanLifeRhythmView(raw){
+ const x=raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};
+ return {eventId:/^[a-zA-Z0-9_-]{2,75}$/.test(String(x.eventId||''))?x.eventId:'',days:[7,30,90].includes(Number(x.days))?Number(x.days):7,panel:x.panel==='overview'?'overview':'event'};
 }
-let lifeRhythmChartId='wake';
+function cleanLifeRhythmGoals(raw){
+ const out={};if(!raw||typeof raw!=='object'||Array.isArray(raw))return out;
+ for(const [id,v] of Object.entries(raw).slice(0,40)){
+  if(!/^[a-zA-Z0-9_-]{2,75}$/.test(id)||!v||typeof v!=='object')continue;
+  const count=Number(v.count);
+  out[id]={time:lifeClockValid(v.time)?v.time:'',count:Number.isInteger(count)&&count>=1&&count<=99?count:0};
+ }
+ return out;
+}
+function lifeRhythmView(){return data.lifeRhythmView||cleanLifeRhythmView()}
+function lifeRhythmSetPanel(panel){data.lifeRhythmView={...lifeRhythmView(),panel:panel==='overview'?'overview':'event'};lifeRerender()}
+function lifeRhythmSetEvent(id){if(!lifeCfg().items.some(x=>x.id===id))return;data.lifeRhythmView={...lifeRhythmView(),eventId:id,panel:'event'};lifeRerender()}
+function lifeRhythmSetDays(n){if(![7,30,90].includes(Number(n)))return;data.lifeRhythmView={...lifeRhythmView(),days:Number(n)};lifeRerender()}
+function lifeRhythmSaveGoal(event){
+ event.preventDefault();const id=lifeRhythmView().eventId,def=lifeDef(id);
+ if(!def)return;
+ const form=event.currentTarget,goals={...(data.lifeRhythmGoals?.[id]||{time:'',count:0})};
+ if(def.mode==='repeat'){
+  const count=Number(form.elements.targetCount.value);
+  if(!Number.isInteger(count)||count<1||count>99){alert('하루 목표 횟수는 1~99회로 입력하세요.');return}
+  goals.count=count;
+ }else{
+  const clock=form.elements.targetClock.value;
+  if(!lifeClockValid(clock)){alert('HH:MM 형식의 목표 시각을 입력하세요.');return}
+  goals.time=clock;
+ }
+ if(!data.lifeRhythmGoals)data.lifeRhythmGoals={};data.lifeRhythmGoals[id]=goals;lifeRerender();
+}
+function lifeRhythmClearGoal(){const id=lifeRhythmView().eventId,def=lifeDef(id);if(!def)return;
+ const goal=data.lifeRhythmGoals?.[id];if(!goal)return;
+ if(def.mode==='repeat')goal.count=0;else goal.time='';lifeRerender();
+}
+function lifeRhythmOpenDate(key){
+ if(!validNoteDay(key)||!startUnlocked||!currentUserId)return;
+ if(data.pendingEncounter){openPendingCapture();return}
+ selectedDate=key;calendarMonth=key.slice(0,7);calendarMode='month';screen='calendar';modal=null;render();
+ requestAnimationFrame(()=>document.querySelector('.life-event-panel')?.scrollIntoView({block:'start',behavior:'instant'}));
+}
+function lifeRhythmMinute(log){
+ let n=timeLogPointMinute(log.clock);
+ // Sleep started after midnight belongs to the previous night's 24+ clock.
+ if(log.eventId==='sleep'&&n<720)n+=1440;
+ return n;
+}
+function lifeRhythmClock(min){if(!Number.isFinite(min))return '—';const n=((Math.round(min)%1440)+1440)%1440;return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+function lifeRhythmGroupDay(log){return log.eventId==='sleep'?sleepSessionNight(log):log.day}
+function lifeRhythmBuild(def,days){
+ const now=day(),keys=Array.from({length:days},(_,i)=>analyticsDateShift(now,i-days+1));
+ const idx=new Map(keys.map((k,i)=>[k,i]));
+ const buckets=keys.map(key=>({key,records:[],value:null,clock:null}));
+ // One scan of all activity records, instead of 90 full-array scans for each event.
+ for(const log of data.lifeEventLogs||[]){if(log.eventId!==def.id)continue;const i=idx.get(lifeRhythmGroupDay(log));if(i!==undefined)buckets[i].records.push(log)}
+ for(const b of buckets){b.records.sort((a,z)=>String(a.day+'T'+a.clock).localeCompare(String(z.day+'T'+z.clock))||String(a.at).localeCompare(String(z.at)));
+  if(def.mode==='repeat')b.value=b.records.length;
+  else if(b.records.length){b.clock=b.records[0].clock;b.value=lifeRhythmMinute(b.records[0]);}
+ }
+ return {keys,buckets,def,days};
+}
+function lifeRhythmWeeklyPoints(buckets,isRepeat){
+ const map=new Map();for(const b of buckets){const week=sleepWeekMonday(b.key);if(!map.has(week))map.set(week,[]);map.get(week).push(b)}
+ return [...map.entries()].map(([week,items])=>{
+  const values=items.map(x=>x.value).filter(x=>x!==null);
+  const val=isRepeat?values.reduce((a,b)=>a+b,0):values.length?values.reduce((a,b)=>a+b,0)/values.length:null;
+  return {key:week,label:week.slice(5).replace('-','/'),value:val,kind:'week',count:items.filter(x=>x.records.length).length};
+ });
+}
+function lifeRhythmSeries(model){
+ const {buckets,days,def}=model;
+ if(days===90)return lifeRhythmWeeklyPoints(buckets,def.mode==='repeat');
+ return buckets.map(x=>({key:x.key,label:days===7?['일','월','화','수','목','금','토'][new Date(x.key+'T12:00:00').getDay()]:x.key.slice(5).replace('-','/'),value:x.value,kind:'day'}));
+}
+function lifeRhythmSummaryValue(label,value,detail=''){
+ return `<div class="lr-stat"><small>${esc(label)}</small><strong>${esc(value)}</strong><small>${esc(detail)}</small></div>`;
+}
+function lifeRhythmTimeChart(points,goal){
+ const values=points.filter(x=>x.value!==null).map(x=>x.value),all=goal===null?values:[...values,goal];
+ if(!all.length)return '<div class="lr-empty">이 기간에 표시할 시각 기록이 없어요.</div>';
+ const rawMin=Math.min(...all),rawMax=Math.max(...all),span=Math.max(90,rawMax-rawMin+30);
+ let min=Math.floor((rawMin-(span-(rawMax-rawMin))/2)/15)*15;
+ if(min<0)min=0;let max=Math.max(min+span,rawMax+10);
+ const W=380,H=234,x0=50,x1=365,y0=20,y1=186;
+ const y=v=>y1-(v-min)/(max-min)*(y1-y0),x=i=>x0+(x1-x0)*(points.length===1?.5:i/(points.length-1));
+ let guides='';for(let j=0;j<=4;j++){const n=min+(max-min)*j/4,yy=y(n);guides+=`<line x1="${x0}" x2="${x1}" y1="${yy.toFixed(1)}" y2="${yy.toFixed(1)}" stroke="currentColor" opacity=".15"/><text x="${x0-8}" y="${(yy+4).toFixed(1)}" font-size="11" text-anchor="end" fill="currentColor">${lifeRhythmClock(n)}</text>`}
+ if(goal!==null){const yy=y(goal);guides+=`<line x1="${x0}" x2="${x1}" y1="${yy.toFixed(1)}" y2="${yy.toFixed(1)}" stroke="#f6bc4f" stroke-width="2" stroke-dasharray="5 4"/><text x="${x1-2}" y="${(yy-5).toFixed(1)}" font-size="11" fill="#f6bc4f" text-anchor="end">목표 ${lifeRhythmClock(goal)}</text>`}
+ let paths='',markers='',labels='';const jump=Math.max(1,Math.ceil(points.length/9));
+ points.forEach((point,i)=>{
+  const px=x(i);if(i%jump===0||i===points.length-1)labels+=`<text x="${px.toFixed(1)}" y="217" fill="currentColor" font-size="10" text-anchor="middle">${esc(point.label)}</text>`;
+  if(point.value===null)return;
+  const py=y(point.value),isLate=goal!==null&&point.value>goal;
+  if(i>0&&points[i-1].value!==null)paths+=`<line x1="${x(i-1).toFixed(1)}" y1="${y(points[i-1].value).toFixed(1)}" x2="${px.toFixed(1)}" y2="${py.toFixed(1)}" stroke="#40d2a4" stroke-width="2.5"/>`;
+  markers+=`<g class="lr-chart-point" role="button" tabindex="0" aria-label="${esc(point.label)} ${lifeRhythmClock(point.value)} 기록 자세히 보기" onclick="lifeRhythmOpenDate('${point.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lifeRhythmOpenDate('${point.key}')}"><circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${points.length>20?12:15}" fill="transparent"/><circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${points.length>20?4:6}" fill="${isLate?'#fb818b':'#5ce0b1'}" stroke="#112f45" stroke-width="2"/><title>${esc(point.key)} ${lifeRhythmClock(point.value)}</title></g>`;
+ });
+ return `<svg class="lr-time-chart" viewBox="0 0 ${W} ${H}" role="group" aria-label="기록한 날의 실제 시각 변화 그래프">${guides}${paths}${markers}${labels}</svg>`;
+}
+function lifeRhythmCountChart(points,goal){
+ const max=Math.max(1,goal||0,...points.map(x=>x.value||0)),ceiling=Math.max(2,Math.ceil(max*1.2));
+ return `<div class="lr-bar-axis"><span>${ceiling}회</span><span>0회</span></div><div class="lr-barplot" style="--lr-count:${points.length}">
+  ${goal?`<div class="lr-goal-line" style="--lr-goal-frac:${Math.min(1,goal/ceiling)}"><span>목표 ${goal}회</span></div>`:''}
+  ${points.map((p,i)=>`<button type="button" class="lr-bar-col" title="${esc(p.key)} ${p.value??0}회 · 날짜 보기" aria-label="${esc(p.key)} ${p.value??0}회 기록 보기" onclick="lifeRhythmOpenDate('${p.key}')"><span class="lr-bar-count">${points.length<=14?p.value??0:''}</span><span class="lr-bar-track"><span class="lr-bar-fill ${goal&&p.value>=goal?'is-goal':''}" style="height:${(p.value||0)/ceiling*100}%"></span></span><span class="lr-bar-label">${i%Math.max(1,Math.ceil(points.length/8))===0||i===points.length-1?esc(p.label):''}</span></button>`).join('')}
+ </div>`;
+}
+function lifeRhythmDailyStrip(model,goal){
+ // Keep the last 7 days compact even in 30/90 day modes.
+ const buckets=model.buckets.slice(-7),isRepeat=model.def.mode==='repeat',days=['일','월','화','수','목','금','토'];
+ return `<div class="lr-mini-week" role="group" aria-label="최근 7일 기록 요약">${buckets.map(b=>{
+  const label=days[new Date(b.key+'T12:00:00').getDay()],isMissing=!b.records.length,hit=goal!==null&&!isMissing&&(isRepeat?b.records.length>=goal:b.value<=goal),late=goal!==null&&!isMissing&&!hit;
+  return `<button type="button" class="lr-mini-day ${isMissing?'is-empty':late?'is-late':hit?'is-hit':''}" onclick="lifeRhythmOpenDate('${b.key}')" title="${esc(b.key)} 날짜별 기록 보기"><small>${label}</small><b>${isRepeat?b.records.length+'회':b.value!==null?lifeRhythmClock(b.value):'—'}</b><i>${isMissing?'—':goal===null?'·':hit?'✓':'✕'}</i></button>`}).join('')}</div>`;
+}
+function lifeRhythmPattern(model){
+ const logs=model.buckets.flatMap(b=>b.records),n=logs.length,slots=[0,0,0];
+ for(const log of logs){const h=Number(log.clock.slice(0,2));if(h>=5&&h<12)slots[0]++;else if(h>=12&&h<18)slots[1]++;else slots[2]++}
+ const labels=['오전 05~11','오후 12~17','저녁·야간'],colors=['#45db9d','#5aaef3','#ad86e6'];
+ if(!n)return '<div class="lr-empty">시간대별 분포를 분석할 기록이 없어요.</div>';
+ return `<div class="lr-pattern"><strong>시간대별 분포 <small>총 ${n}회</small></strong><div class="lr-pattern-bar">${slots.map((v,i)=>v?`<span style="width:${v/n*100}%;background:${colors[i]}"></span>`:'').join('')}</div><div class="lr-pattern-legend">${slots.map((v,i)=>`<span><i style="background:${colors[i]}"></i>${labels[i]} ${v}회 (${Math.round(v/n*100)}%)</span>`).join('')}</div></div>`;
+}
+function lifeRhythmEventReport(model){
+ const {def,buckets,days}=model,isRepeat=def.mode==='repeat',logs=buckets.flatMap(b=>b.records),recorded=buckets.filter(b=>b.records.length),numDays=recorded.length;
+ const goals=data.lifeRhythmGoals?.[def.id]||{},goal=isRepeat?(goals.count||null):(lifeClockValid(goals.time)?lifeRhythmMinute({eventId:def.id,clock:goals.time}):null);
+ const times=buckets.map(b=>b.value).filter(x=>x!==null),avg=times.length?times.reduce((a,b)=>a+b,0)/times.length:null;
+ const spread=times.length?Math.round(Math.max(...times)-Math.min(...times)):null;
+ const series=lifeRhythmSeries(model),start=buckets[0]?.key,end=buckets[buckets.length-1]?.key;
+ const successes=goal===null?null:buckets.filter(b=>b.records.length&&(isRepeat?b.records.length>=goal:b.value<=goal)).length;
+ let summary='';if(isRepeat){summary=lifeRhythmSummaryValue('총 기록',logs.length+'회','해당 기간 모든 기록')+lifeRhythmSummaryValue('기록일',`${numDays}/${days}일`,'기록이 있는 날짜')+lifeRhythmSummaryValue('기록일 평균',numDays?(logs.length/numDays).toFixed(1)+'회':'—','0회인 날 제외');}
+ else summary=lifeRhythmSummaryValue('평균 시각',avg===null?'—':lifeRhythmClock(avg),'기록일 기준')+lifeRhythmSummaryValue('기록일',`${numDays}/${days}일`,'미기록은 제외')+lifeRhythmSummaryValue('시각 변동폭',spread===null?'—':spread+'분','가장 빠름 ↔ 가장 늦음');
+ const goalText=goal===null?'목표 미설정':isRepeat?`하루 ${goal}회 이상`:`${lifeRhythmClock(goal)} 이전`;
+ const form=isRepeat?`<label>하루 목표 횟수 <input name="targetCount" type="number" min="1" max="99" step="1" value="${goals.count||2}" required></label>`:`<label>목표 시각 <input name="targetClock" type="time" value="${esc(goals.time||def.suggest||'08:00')}" required></label>`;
+ const insight=isRepeat?(logs.length?`최근 ${days}일에 ${numDays}일 기록했고, 총 ${logs.length}회예요. ${successes===null?'목표를 설정하면 날짜별 달성을 비교할 수 있어요.':`목표를 달성한 날은 ${successes}일이에요.`}`:'아직 기록이 없어요. 기존 생활 이벤트 버튼으로 첫 기록을 남겨보세요.'):(avg===null?'아직 시각 기록이 없어요.':`평균 ${lifeRhythmClock(avg)} · 변동폭 ${spread}분. ${successes===null?'참고 시각은 성공·실패 판정에 사용하지 않아요.':'목표를 충족한 기록일은 '+successes+'일이에요.'}`);
+ return `<div class="lr-event-head"><div class="lr-event-name"><span>${esc(def.emoji)}</span><div><strong>${esc(def.name)}</strong><small>${isRepeat?'여러 번 기록 · 횟수형':'하루 1회 · 시각형'} · ${esc(start)} ~ ${esc(end)}</small></div></div><span class="lr-type-tag">${isRepeat?'횟수':'시각'}</span></div>
+ <div class="lr-goal-row"><span>🎯 ${esc(goalText)}</span><details class="lr-goal-editor"><summary>✎ 목표 설정</summary><form onsubmit="lifeRhythmSaveGoal(event)">${form}<div><button type="submit">저장</button>${goal!==null?'<button type="button" onclick="lifeRhythmClearGoal()">목표 해제</button>':''}</div></form></details></div>
+ <div class="lr-stats">${summary}</div>
+ <div class="lr-chart-wrap"><div class="lr-plot-head"><strong>${isRepeat?'기록 횟수':'실제 기록 시각'} ${days===90?'· 주간 집계':'· 일별 추세'}</strong><small>${isRepeat?(days===90?'주별 총횟수 · 하루 목표선 제외':'횟수가 많을수록 막대가 높아요'):'위쪽일수록 늦은 시각 · 미기록은 연결하지 않음'}</small></div>${isRepeat?lifeRhythmCountChart(series,days===90?null:goal):lifeRhythmTimeChart(series,goal)}</div>
+ <div class="lr-mini-title"><strong>최근 7일 상세</strong><small>날짜 터치 → 원본 기록</small></div>${lifeRhythmDailyStrip(model,goal)}
+ ${isRepeat?lifeRhythmPattern(model):''}
+ <p class="lr-insight">💡 ${esc(insight)}</p><p class="lr-footnote">${isRepeat?'0회는 앱에 기록된 이벤트가 없다는 뜻이지, 실제 활동을 하지 않았다는 뜻은 아니에요.':'하루 1회형의 대표 시각은 해당 날짜의 첫 기록이에요. 여러 과거 기록이 있으면 원본에는 모두 남아 있어요.'}${goal===null?' · 참고 시각은 목표로 자동 전환하지 않아요. 목표를 바꾸면 과거 기록도 현재 기준으로 비교하되 과거 보상은 변경하지 않아요.':''}</p>`;
+}
+function lifeRhythmOverview(defs,days){
+ const keys=Array.from({length:days},(_,i)=>analyticsDateShift(day(),i-days+1)),lookups=new Map(keys.map((k,i)=>[k,i]));
+ const totals=keys.map(k=>({key:k,count:0})),counts=new Map();
+ for(const x of data.lifeEventLogs||[]){const k=lifeRhythmGroupDay(x),i=lookups.get(k);if(i===undefined)continue;totals[i].count++;counts.set(x.eventId,(counts.get(x.eventId)||0)+1)}
+ const total=totals.reduce((a,b)=>a+b.count,0),daysWith=totals.filter(x=>x.count).length,max=Math.max(1,...totals.slice(-7).map(x=>x.count));
+ return `<div class="lr-stats">${lifeRhythmSummaryValue('전체 이벤트',total+'건',`${days}일 전체 기록`)}${lifeRhythmSummaryValue('기록일',`${daysWith}/${days}일`,'1건 이상 기록한 날')}${lifeRhythmSummaryValue('기록일 평균',daysWith?(total/daysWith).toFixed(1)+'건':'—','기록일만 기준')}</div>
+ <div class="lr-mini-title"><strong>최근 7일 활동 기록량</strong><small>기록 횟수 · 성공률 아님</small></div><div class="lr-overview-week">${totals.slice(-7).map(b=>`<button type="button" onclick="lifeRhythmOpenDate('${b.key}')" class="lr-overview-day" title="${esc(b.key)} 원본 보기"><small>${['일','월','화','수','목','금','토'][new Date(b.key+'T12:00:00').getDay()]}</small><span style="--lr-intensity:${b.count/max}">${b.count||'—'}</span></button>`).join('')}</div>
+ <div class="lr-mini-title"><strong>이벤트별 기록</strong><small>선택하면 유형별 그래프</small></div><div class="lr-overview-list">${defs.map(d=>`<button type="button" onclick="lifeRhythmSetEvent('${d.id}')"><span>${esc(d.emoji)} ${esc(d.name)}</span><b>${counts.get(d.id)||0}건</b><small>${d.mode==='repeat'?'여러 번':'하루 1회'} ›</small></button>`).join('')}</div>
+ <p class="lr-footnote">이벤트를 눌러 실제 시각과 횟수 그래프를 확인할 수 있어요. 기상·취침의 수면 목표 보상은 아래 ‘수면 리듬’에서 별도로 관리해요.</p>`;
+}
+function renderLifeRhythmSummary(){
+ const all=lifeCfg().items,defs=all,fallback=defs.find(d=>d.id==='commute')||defs.find(d=>!['wake','sleep'].includes(d.id))||defs[0];
+ const prefs=lifeRhythmView(),id=defs.some(d=>d.id===prefs.eventId)?prefs.eventId:fallback?.id||'',days=prefs.days,panel=prefs.panel;
+ // Keep fallback in memory for change handlers, but don't rewrite user data during render.
+ if(!data.lifeRhythmView)data.lifeRhythmView=cleanLifeRhythmView();
+ data.lifeRhythmView.eventId=id;
+ const active=defs.find(x=>x.id===id),model=active?lifeRhythmBuild(active,days):null;
+ return `<section id="lifeRhythmAnalysis" class="life-rhythm-section lr-analysis" aria-label="생활 리듬 분석">
+  <div class="lr-header"><div><strong>🕒 생활 리듬 분석</strong><small>1회형은 시간 · 반복형은 횟수로 구분</small></div><div class="lr-range" role="group" aria-label="분석 기간">${[7,30,90].map(n=>`<button type="button" class="${days===n?'active':''}" aria-pressed="${days===n}" onclick="lifeRhythmSetDays(${n})">${n}일</button>`).join('')}</div></div>
+  <div class="lr-switch" role="group" aria-label="분석 보기"><button type="button" class="${panel==='overview'?'active':''}" aria-pressed="${panel==='overview'}" onclick="lifeRhythmSetPanel('overview')">전체 흐름</button><button type="button" class="${panel==='event'?'active':''}" aria-pressed="${panel==='event'}" onclick="lifeRhythmSetPanel('event')">이벤트 분석</button></div>
+  ${!defs.length?'<div class="lr-empty">등록된 라이프이벤트가 없어요. 달력의 ⚙️ 설정에서 추가해 주세요.</div>':panel==='overview'?lifeRhythmOverview(defs,days):`<div class="lr-event-scroll" role="group" aria-label="분석할 라이프이벤트">${defs.map(d=>`<button type="button" class="lr-event-chip ${d.id===id?'active':''}" aria-pressed="${d.id===id}" onclick="lifeRhythmSetEvent('${d.id}')">${esc(d.emoji)} ${esc(d.name)}</button>`).join('')}</div>${lifeRhythmEventReport(model)}`}
+ </section>`;
+}
 // v1.7.74: Time log records are zero-duration points, not interval timers.
 function timeLogClock(value){
  if(!value)return '';
@@ -8154,7 +8324,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.103</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.104</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -9601,7 +9771,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.103</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.104</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
