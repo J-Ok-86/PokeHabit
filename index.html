@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.97 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.98 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -3647,14 +3647,6 @@ html[data-theme="light"] .time-log-gridline.is-edge{background:#607d9466}
 .time-log-dot.time-log-moment .time-log-dot-number{background:#59451c;border-color:#d5ad5e;color:#fff5db}
 .time-log-dot[aria-expanded="true"]{outline:1.5px solid #e9c980;outline-offset:-1px;border-radius:7px;z-index:2}
 .time-log-dot:focus-visible{outline:2px solid #f5d37f!important;outline-offset:-1px!important;border-radius:7px}
-.time-log-cluster-detail{margin:8px 0 4px;padding:9px;border:1px solid #52718e;border-radius:9px;background:#1c3754;color:#eaf5ff;box-shadow:none}
-.time-log-cluster-detail[hidden]{display:none!important}
-.time-log-cluster-heading{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;margin-bottom:7px}
-.time-log-cluster-close{border:1px solid #718da5;background:#264866;color:inherit;border-radius:6px;font-size:11px;padding:4px 8px;cursor:pointer}
-.time-log-cluster-items{display:grid;gap:4px;max-height:210px;overflow-y:auto;overscroll-behavior:contain}
-.time-log-cluster-entry{display:flex;gap:9px;align-items:center;text-align:left;min-height:32px;width:100%;border:1px solid #496c8c;background:#15314e;border-radius:7px;color:inherit;padding:6px 8px;cursor:pointer;font-size:11px}
-.time-log-cluster-entry b{font-variant-numeric:tabular-nums;white-space:nowrap}
-.time-log-cluster-entry span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .time-log-row.time-log-row-selected{border-color:#ffd166;box-shadow:0 0 0 2px #ffd16677}
 .time-log-legend{display:flex;gap:7px 13px;align-items:center;flex-wrap:wrap;font-size:10px;color:#afc4d8;margin:9px 1px 10px}
 .time-log-legend>span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
@@ -3668,9 +3660,6 @@ html[data-theme="light"] .time-log-tick{background:#90acbe75}
 html[data-theme="light"] .time-log-tick.time-log-major-2{background:#668a9fb0}
 html[data-theme="light"] .time-log-lane-head{color:#355a72}
 html[data-theme="light"] .time-log-lane-head small{color:#63849a}
-html[data-theme="light"] .time-log-cluster-detail{background:#f5faff;border-color:#c5d9ec;color:#214761}
-html[data-theme="light"] .time-log-cluster-entry{background:#fff;border-color:#cee0ed;color:#214761}
-html[data-theme="light"] .time-log-cluster-close{background:#e8f2fc;border-color:#b5cedf;color:#214761}
 html[data-theme="light"] .time-log-dot .time-log-dot-number{background:#e6f0f6;border-color:#8fb2c3;color:#224b67}
 html[data-theme="light"] .time-log-dot.time-log-moment .time-log-dot-number{background:#fff3d9;border-color:#dfbb75;color:#755111}
 @media(max-width:400px){.time-log-chart-scroll{width:calc(100% + 20px);margin:3px -10px 0;padding:0 6px 4px}.time-log-chart{padding:0}.time-log-hour-labels{font-size:9.5px}}
@@ -4024,7 +4013,7 @@ html[data-theme='light'] .life-event-more{color:#58768f;border-color:#b2cbdd}
 .life-event-heading-sub{flex:1}
 @media(max-width:360px){.life-event-quick{flex-basis:calc((100% - (var(--life-columns) - 1) * 5px) / var(--life-columns))}.life-event-name{font-size:10px;letter-spacing:-.4px}.life-event-quick{padding-left:0;padding-right:0}}
 
-/* v1.7.97 — Complete per-quest history; collapsed until requested. */
+/* v1.7.98 — Complete per-quest history; collapsed until requested. */
 .full-history-section{margin:16px 0 12px;border:1px solid #55758f;border-radius:13px;background:#162f4ac4;overflow:hidden;min-width:0}
 .full-history-section>summary{list-style:none;cursor:pointer;padding:13px;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:50px;font-size:14px;font-weight:850;user-select:none}
 .full-history-section>summary::-webkit-details-marker,.full-history-card>summary::-webkit-details-marker{display:none}
@@ -4072,6 +4061,55 @@ html[data-theme="light"] .full-history-achievement,html[data-theme="light"] .ful
 html[data-theme="light"] .full-history-note p{color:#385b74}
 html[data-theme="light"] .full-history-more{background:#e9f3fb;color:#28516c;border-color:#a9c9db}
 @media(max-width:390px){.full-history-body{padding:9px}.full-history-filters{grid-template-columns:minmax(0,1fr) minmax(92px,auto);gap:6px}.full-history-card>summary{grid-template-columns:minmax(74px,auto) minmax(0,1fr) auto 12px;gap:6px;padding:10px 8px}.full-history-date b{font-size:11px}.full-history-measure{font-size:11px}}
+
+/* v1.7.98 — additive, responsive time-log drill-down; the original 24h graph and the three existing record lists remain the single source of truth. */
+.time-log-section .time-log-zoom-selection{position:absolute;top:24px;bottom:0;z-index:2;pointer-events:none;box-sizing:border-box;background:rgba(43,196,157,.11);border:1px solid rgba(70,216,187,.65);border-radius:5px}
+.time-log-section .time-log-zoom-selection[hidden],.time-log-section .time-log-zoom-panel[hidden]{display:none!important}
+.time-log-section .time-log-zoom-panel{min-width:0;max-width:100%;box-sizing:border-box;margin:9px 0 13px;padding:11px 9px 9px;border:1px solid #3baf9b;border-radius:12px;background:#112b44;color:#eaf8ff}
+.time-log-section .time-log-zoom-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:9px;margin-bottom:10px}
+.time-log-section .time-log-zoom-head-title{min-width:0;display:flex;flex-direction:column;gap:3px}
+.time-log-section .time-log-zoom-head-title strong{font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+.time-log-section .time-log-zoom-head-title small{font-size:10px;color:#accbdc;line-height:1.45}
+.time-log-section .time-log-zoom-actions{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.time-log-section .time-log-zoom-actions button{border:1px solid #6389a2;border-radius:7px;padding:6px 8px;min-height:32px;font:inherit;font-weight:750;font-size:11px;color:#e8f6ff;background:#1e4462;cursor:pointer}
+.time-log-section .time-log-zoom-actions button.time-log-zoom-reset{border-color:#50c5ab;color:#d9fff2;background:#1c5b55}
+.time-log-section .time-log-zoom-actions button:disabled{opacity:.45;cursor:default}
+.time-log-section .time-log-zoom-actions button:focus-visible,.time-log-section .time-log-zoom-point:focus-visible,.time-log-section .time-log-zoom-scroll:focus-visible{outline:2px solid #ffe18b;outline-offset:2px}
+.time-log-section .time-log-zoom-grid{display:grid;grid-template-columns:minmax(56px,70px) minmax(0,1fr);gap:0;min-width:0;max-width:100%;border:1px solid #456a82;border-radius:8px;overflow:hidden;background:#173550}
+.time-log-section .time-log-zoom-labels{min-width:0;background:#16334c;border-right:1px solid #4b7590;display:flex;flex-direction:column}
+.time-log-section .time-log-zoom-lane-label{display:flex;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;overflow-wrap:anywhere;padding:0 3px;border-top:1px solid #466780;font-size:10px;font-weight:700;line-height:1.35}
+.time-log-section .time-log-zoom-axis-label{height:32px;box-sizing:border-box;display:grid;place-items:center;color:#b9d7e6;font-size:10px;font-weight:750}
+.time-log-section .time-log-zoom-scroll{width:100%;min-width:0;max-width:100%;box-sizing:border-box;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;cursor:grab;scrollbar-width:thin;scrollbar-color:#64a5ac transparent}
+.time-log-section .time-log-zoom-scroll.is-dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.time-log-section .time-log-zoom-content{position:relative;box-sizing:border-box;min-height:1px}
+.time-log-section .time-log-zoom-axis{position:relative;height:32px;box-sizing:border-box;border-bottom:1px solid #56748a;font-variant-numeric:tabular-nums}
+.time-log-section .time-log-zoom-tick{position:absolute;top:0;bottom:0;width:1px;background:#789fb44f;pointer-events:none;z-index:0}
+.time-log-section .time-log-zoom-tick span{position:absolute;top:4px;left:0;transform:translateX(-50%);background:#173550;padding:0 3px;font-size:10px;font-weight:700;color:#a9cfdf;white-space:nowrap}
+.time-log-section .time-log-zoom-track{position:relative;box-sizing:border-box;border-top:1px solid #466780;background:rgba(20,169,115,.055)}
+.time-log-section .time-log-zoom-track[data-kind="moment"]{background:rgba(239,176,54,.055)}
+.time-log-section .time-log-zoom-track[data-kind="life"]{background:rgba(95,157,235,.055)}
+.time-log-section .time-log-zoom-point{position:absolute;transform:translateX(-50%);display:inline-flex;align-items:center;justify-content:flex-start;gap:4px;width:108px;max-width:108px;height:27px;padding:3px 5px;box-sizing:border-box;border:1px solid #539b81;border-radius:7px;background:#19463e;color:#e9fff5;box-shadow:0 1px 3px #081b3255;font:inherit;font-size:10px;line-height:1.2;cursor:pointer;white-space:nowrap;z-index:1;touch-action:manipulation}
+.time-log-section .time-log-zoom-point[data-kind="moment"]{background:#55431f;border-color:#c69c44;color:#fff7df}
+.time-log-section .time-log-zoom-point[data-kind="life"]{background:#234e76;border-color:#5d9fdb;color:#edf7ff}
+.time-log-section .time-log-zoom-point time{font-weight:800;font-variant-numeric:tabular-nums;flex:none}
+.time-log-section .time-log-zoom-point .time-log-zoom-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;font-weight:650}
+.time-log-section .time-log-zoom-help{font-size:10px;line-height:1.5;color:#afcad9;margin:7px 0 0}
+html[data-theme="light"] .time-log-section .time-log-zoom-panel{background:#f4fbff;color:#224963;border-color:#47b8a5}
+html[data-theme="light"] .time-log-section .time-log-zoom-head-title small,html[data-theme="light"] .time-log-section .time-log-zoom-help{color:#53748a}
+html[data-theme="light"] .time-log-section .time-log-zoom-actions button{background:#eaf5fe;border-color:#b5cfe1;color:#2d5974}
+html[data-theme="light"] .time-log-section .time-log-zoom-actions button.time-log-zoom-reset{background:#d9f7ed;border-color:#4caa8b;color:#176852}
+html[data-theme="light"] .time-log-section .time-log-zoom-grid{background:#fff;border-color:#cadce7}
+html[data-theme="light"] .time-log-section .time-log-zoom-labels{background:#edf6fc;border-right-color:#c6dce8}
+html[data-theme="light"] .time-log-section .time-log-zoom-lane-label,html[data-theme="light"] .time-log-section .time-log-zoom-track{border-top-color:#d7e6ef}
+html[data-theme="light"] .time-log-section .time-log-zoom-axis{border-bottom-color:#b6cad7}
+html[data-theme="light"] .time-log-section .time-log-zoom-tick{background:#8baabc65}
+html[data-theme="light"] .time-log-section .time-log-zoom-tick span{background:#fff;color:#52768b}
+html[data-theme="light"] .time-log-section .time-log-zoom-point{background:#e3fbef;border-color:#69bb9a;color:#156249;box-shadow:0 1px 3px #abc5ce55}
+html[data-theme="light"] .time-log-section .time-log-zoom-point[data-kind="moment"]{background:#fff1d4;border-color:#d2a955;color:#745318}
+html[data-theme="light"] .time-log-section .time-log-zoom-point[data-kind="life"]{background:#e5f2ff;border-color:#83b6e4;color:#225c8b}
+@media(max-width:400px){.time-log-section .time-log-zoom-panel{padding:8px 6px}.time-log-section .time-log-zoom-grid{grid-template-columns:54px minmax(0,1fr)}.time-log-section .time-log-zoom-lane-label{font-size:9px;padding:0 2px}.time-log-section .time-log-zoom-head-title strong{font-size:12px}.time-log-section .time-log-zoom-actions button{padding:5px 6px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.time-log-section .time-log-zoom-scroll{scroll-behavior:auto!important}}
+
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -5248,7 +5286,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.97</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.98</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -6266,7 +6304,7 @@ ${TRAINING_MANUAL}${HONOR_MANUAL}${MOVE_CINEMA_MANUAL}${MOVE_MINIMAL_MANUAL}
 const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'],['ops','🎛 운영 설정','보상 · 확률 · 훈련 · 훈장'],['account','👥 계정·보안','트레이너 · 비밀번호'],['data','💾 데이터·시스템','백업 · 병합 · 초기화'],['guide','📖 사용 매뉴얼','최신 기능 · 공식 · FAQ'],['history','📜 개발 버전 이력','최신순 업데이트 기록']];
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
-const ADMIN_VERSION_NOTES=[['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
+const ADMIN_VERSION_NOTES=[['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
  ['1.7.68','한줄 리스트의 완료 상태를 퀘스트명 앞 네모박스(미완료)/체크된 네모박스(완료)로 표현. 기존 왼쪽 상태선 및 다른 배치 유지.'],
  ['1.7.67','간단 리스트의 자세히/접기를 수행률 아래로 이동. 한줄 리스트 추천 배지를 연속 표시 앞으로 이동.'],
  ['1.7.62','기록 탭 실제 달성량의 단위 미지정 포함 전체 단위 기본 선택, 다중 선택 비교 그래프, 단위별 실측 합계와 기록 없음/0 구분, 계정별 보기 설정 저장.'],
@@ -6674,10 +6712,154 @@ function appendTimeLogMarkerVisual(btn,kind,items){
  btn.innerHTML=timeLogMarkerSvg(kind);
 }
 // Display positions are proportional to 24 hours. Merge close points, never hide records.
+
+// v1.7.98 — zoom is ephemeral view state. No second event log, persistence key or duplicate list.
+const TIME_LOG_ZOOM_LEVELS=[15,30,60,90,180,360,720,1440];
+let timeLogZoomState=null,timeLogZoomScrollFrame=0,timeLogZoomDrag=null,timeLogZoomObservedView=null;
+const timeLogZoomResizeObserver=typeof ResizeObserver==='function'?new ResizeObserver(entries=>{
+ const view=entries[0]?.target;
+ if(view!==timeLogZoomObservedView||!timeLogZoomState||document.getElementById('timeLogZoomPanel')?.hidden)return;
+ if(Math.abs(view.clientWidth-(timeLogZoomState.lastWidth||0))>1)requestAnimationFrame(layoutTimeLogZoom);
+}):null;
+const clampTimeLogZoom=(v,min,max)=>Math.min(max,Math.max(min,v));
+function timeLogZoomFormat(minute){
+ const m=clampTimeLogZoom(Math.round(Number(minute)||0),0,1440);
+ return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;
+}
+function timeLogZoomVisibleRange(){
+ const view=document.getElementById('timeLogZoomScroll');
+ const state=timeLogZoomState;
+ if(!view||!state)return null;
+ const ppm=Number(view.dataset.pixelsPerMinute)||1;
+ const start=clampTimeLogZoom(view.scrollLeft/ppm,0,1440-state.minutes);
+ return {start,end:Math.min(1440,start+state.minutes),center:start+state.minutes/2};
+}
+function timeLogZoomUpdatePosition(){
+ timeLogZoomScrollFrame=0;
+ const state=timeLogZoomState,view=document.getElementById('timeLogZoomScroll');
+ if(!state||!view||document.getElementById('timeLogZoomPanel')?.hidden)return;
+ const range=timeLogZoomVisibleRange();if(!range)return;
+ state.center=range.center;
+ const label=document.getElementById('timeLogZoomRange');
+ if(label)label.textContent=`${timeLogZoomFormat(range.start)}–${timeLogZoomFormat(range.end)} · 확대`;
+ const selection=document.getElementById('timeLogZoomSelection'),chart=document.getElementById('dailyTimeLogChart');
+ if(selection&&chart){
+  const width=chart.getBoundingClientRect().width,plot=Math.max(1,width-28);
+  selection.style.left=(14+(range.start/1440)*plot)+'px';
+  selection.style.width=(Math.max(1,(state.minutes/1440)*plot))+'px';
+  selection.hidden=false;
+ }
+}
+function timeLogZoomOnScroll(){
+ if(!timeLogZoomScrollFrame)timeLogZoomScrollFrame=requestAnimationFrame(timeLogZoomUpdatePosition);
+}
+function timeLogZoomTrackHeight(points,ppm){
+ // Allocate as many lines as needed; do not hide events recorded at the same minute.
+ const occupied=[];
+ const slots=points.map(point=>{
+  const x=(point.minute*ppm);
+  let row=occupied.findIndex(last=>x-last>=111);
+  if(row<0){row=occupied.length;occupied.push(x)}else occupied[row]=x;
+  return row;
+ });
+ return {slots,height:Math.max(37,slots.length?Math.max(...slots)*31+38:37)};
+}
+function layoutTimeLogZoom(){
+ const state=timeLogZoomState,panel=document.getElementById('timeLogZoomPanel');
+ const view=document.getElementById('timeLogZoomScroll'),content=document.getElementById('timeLogZoomContent'),labels=document.getElementById('timeLogZoomLabels');
+ if(!state||!panel||!view||!content||!labels||panel.hidden)return;
+ if(state.key!==document.getElementById('dailyTimeLog')?.dataset.day||state.userId!==currentUserId)return;
+ if(timeLogZoomResizeObserver&&timeLogZoomObservedView!==view){timeLogZoomResizeObserver.disconnect();timeLogZoomResizeObserver.observe(view);timeLogZoomObservedView=view}
+ const clientWidth=view.clientWidth;if(clientWidth<=0)return;
+ state.lastWidth=clientWidth;
+ const margin=55,ppm=Math.max(.05,(clientWidth-margin*2)/state.minutes),fullWidth=Math.max(clientWidth,margin*2+1440*ppm);
+ view.dataset.pixelsPerMinute=String(ppm);
+ content.style.width=fullWidth+'px';content.replaceChildren();labels.replaceChildren();
+ const axisLabel=document.createElement('div');axisLabel.className='time-log-zoom-axis-label';axisLabel.textContent='시각';labels.appendChild(axisLabel);
+ const axis=document.createElement('div');axis.className='time-log-zoom-axis';content.appendChild(axis);
+ const steps=[5,10,15,30,60,120];const step=steps.find(x=>x*ppm>=64)||120;
+ for(let minute=0;minute<=1440;minute+=step){
+  const tick=document.createElement('div');tick.className='time-log-zoom-tick';tick.style.left=(margin+minute*ppm)+'px';
+  const text=document.createElement('span');text.textContent=timeLogZoomFormat(minute);tick.appendChild(text);axis.appendChild(tick);
+ }
+ const chart=document.getElementById('dailyTimeLogChart');
+ const types=[['quest','✅ 완료'],['moment','💭 순간'],['life','🕒 생활']];
+ types.forEach(([kind,name])=>{
+  const points=Array.from(chart?.querySelectorAll(`.time-log-lane[data-kind="${kind}"] .time-log-event-source [data-index]`)||[]).map(el=>({
+   index:Number(el.dataset.index),minute:clampTimeLogZoom(Number(el.dataset.minute)||0,0,1439),clock:el.dataset.clock||'',label:el.dataset.label||'',emoji:el.dataset.emoji||''
+  })).sort((a,b)=>a.minute-b.minute||a.index-b.index);
+  const placement=timeLogZoomTrackHeight(points,ppm),height=placement.height;
+  const laneLabel=document.createElement('div');laneLabel.className='time-log-zoom-lane-label';laneLabel.style.height=height+'px';laneLabel.textContent=name;labels.appendChild(laneLabel);
+  const lane=document.createElement('div');lane.className='time-log-zoom-track';lane.dataset.kind=kind;lane.style.height=height+'px';content.appendChild(lane);
+  points.forEach((point,i)=>{
+   const b=document.createElement('button');b.type='button';b.className='time-log-zoom-point';b.dataset.kind=kind;
+   b.style.left=(margin+point.minute*ppm)+'px';b.style.top=(5+placement.slots[i]*31)+'px';
+   const t=document.createElement('time');t.textContent=point.clock;
+   const name=document.createElement('span');name.className='time-log-zoom-name';name.textContent=point.label||point.clock;
+   b.append(t,name);b.title=point.clock+' · '+point.label;b.setAttribute('aria-label',b.title);
+   b.addEventListener('click',()=>{const row=document.getElementById('timeLogEntry'+point.index);if(row?.tagName==='DETAILS')row.open=true;jumpToTimeLogEntry(point.index)});
+   lane.appendChild(b);
+  });
+ });
+ // Restore the time in the middle of the view after zoom-level, orientation or width changes.
+ const start=clampTimeLogZoom(state.center-state.minutes/2,0,1440-state.minutes);
+ view.scrollLeft=start*ppm;timeLogZoomUpdatePosition();
+ const i=TIME_LOG_ZOOM_LEVELS.indexOf(state.minutes),plus=document.getElementById('timeLogZoomIn'),minus=document.getElementById('timeLogZoomOut');
+ if(plus)plus.disabled=i<=0;if(minus)minus.disabled=i>=TIME_LOG_ZOOM_LEVELS.length-1;
+}
+function openTimeLogZoom(items,kind){
+ const panel=document.getElementById('timeLogZoomPanel'),section=document.getElementById('dailyTimeLog');if(!panel||!section||!items?.length)return;
+ const minutes=items.map(x=>clampTimeLogZoom(Number(x.minute)||0,0,1439));
+ const span=Math.max(...minutes)-Math.min(...minutes);
+ const level=TIME_LOG_ZOOM_LEVELS.find(n=>n>=90&&span<=n*.95)||1440;
+ timeLogZoomState={key:section.dataset.day,userId:currentUserId,minutes:level,center:(Math.min(...minutes)+Math.max(...minutes))/2};
+ panel.hidden=false;layoutTimeLogZoom();
+ // A second pass handles grid width settling after first reveal on Android/WebView.
+ requestAnimationFrame(()=>{if(timeLogZoomState&&document.getElementById('timeLogZoomPanel')===panel)layoutTimeLogZoom()});
+ // Keep the chart in context, but make the new panel visible on narrow screens.
+ requestAnimationFrame(()=>panel.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest'}));
+}
+function changeTimeLogZoom(direction){
+ if(!timeLogZoomState)return;
+ const i=TIME_LOG_ZOOM_LEVELS.indexOf(timeLogZoomState.minutes);
+ const next=clampTimeLogZoom(i+(direction>0?-1:1),0,TIME_LOG_ZOOM_LEVELS.length-1);
+ if(next===i)return;
+ const visible=timeLogZoomVisibleRange();if(visible)timeLogZoomState.center=visible.center;
+ timeLogZoomState.minutes=TIME_LOG_ZOOM_LEVELS[next];layoutTimeLogZoom();
+}
+function closeTimeLogZoom(){
+ timeLogZoomState=null;
+ const panel=document.getElementById('timeLogZoomPanel');if(panel)panel.hidden=true;
+ const selection=document.getElementById('timeLogZoomSelection');if(selection)selection.hidden=true;
+ const view=document.getElementById('timeLogZoomScroll');if(view){view.classList.remove('is-dragging');view.scrollLeft=0}
+ timeLogZoomDrag=null;
+ if(timeLogZoomResizeObserver)timeLogZoomResizeObserver.disconnect();timeLogZoomObservedView=null;
+}
+function timeLogZoomPointerDown(e){
+ // Touchscreens use native momentum scroll; only mouse uses explicit grab-and-drag.
+ if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('button'))return;
+ const view=e.currentTarget;
+ timeLogZoomDrag={id:e.pointerId,x:e.clientX,left:view.scrollLeft};
+ view.classList.add('is-dragging');view.setPointerCapture(e.pointerId);
+}
+function timeLogZoomPointerMove(e){
+ const d=timeLogZoomDrag;if(!d||d.id!==e.pointerId)return;
+ e.currentTarget.scrollLeft=d.left+(d.x-e.clientX);
+}
+function timeLogZoomPointerEnd(e){
+ const d=timeLogZoomDrag;if(!d||d.id!==e.pointerId)return;
+ timeLogZoomDrag=null;e.currentTarget.classList.remove('is-dragging');
+ if(e.currentTarget.hasPointerCapture?.(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);
+}
+function initTimeLogZoomAfterRender(){
+ const panel=document.getElementById('timeLogZoomPanel'),section=document.getElementById('dailyTimeLog');
+ if(!panel||!section)return;
+ if(!timeLogZoomState||timeLogZoomState.key!==section.dataset.day||timeLogZoomState.userId!==currentUserId){timeLogZoomState=null;return}
+ panel.hidden=false;layoutTimeLogZoom();
+}
+
 function layoutTimeLogMarkers(){
  const chart=document.getElementById('dailyTimeLogChart');if(!chart)return;
- const detail=document.getElementById('timeLogClusterDetail');
- if(detail){detail.hidden=true;detail.replaceChildren()}
  chart.querySelectorAll('.time-log-lane').forEach(lane=>{
   const layer=lane.querySelector('.time-log-markers');if(!layer)return;
   layer.replaceChildren();
@@ -6717,7 +6899,7 @@ function layoutTimeLogMarkers(){
    btn.title=grouped?`${range} · ${typeName} ${group.items.length}건 (아래 목록에서 확인)`:`${range} · ${group.items[0].label}`;
    btn.setAttribute('aria-label',btn.title);
    btn.addEventListener('click',()=>{
-    if(grouped){jumpToTimeLogGroup(group.items);return}
+    if(grouped){openTimeLogZoom(group.items,kind);return}
     jumpToTimeLogEntry(group.items[0].index);
    });
    layer.appendChild(btn);
@@ -6728,31 +6910,6 @@ function jumpToTimeLogEntry(i){
  const row=document.getElementById('timeLogEntry'+i);if(!row)return;
  row.classList.add('time-log-row-selected');row.scrollIntoView({behavior:'smooth',block:'center'});
  window.setTimeout(()=>row.classList.remove('time-log-row-selected'),2300);
-}
-function jumpToTimeLogGroup(items){
- const rows=(items||[]).map(item=>document.getElementById('timeLogEntry'+item.index)).filter(Boolean);
- if(!rows.length)return;
- rows.forEach(row=>row.classList.add('time-log-row-selected'));
- rows[0].scrollIntoView({behavior:'smooth',block:'center'});
- window.setTimeout(()=>rows.forEach(row=>row.classList.remove('time-log-row-selected')),2300);
-}
-function showTimeLogGroup(panel,items,kind,range){
- if(!panel)return;
- panel.replaceChildren();
- const heading=document.createElement('div');heading.className='time-log-cluster-heading';
- const strong=document.createElement('strong');strong.textContent=(kind==='quest'?'✅ 퀘스트 완료':'✎ 순간 기록')+' · '+range+' · '+items.length+'건';
- const close=document.createElement('button');close.type='button';close.className='time-log-cluster-close';close.textContent='닫기';close.addEventListener('click',()=>{
-  panel.hidden=true;panel.replaceChildren();document.querySelectorAll('#dailyTimeLogChart .time-log-dot[aria-expanded]').forEach(x=>x.setAttribute('aria-expanded','false'));
- });
- heading.append(strong,close);panel.appendChild(heading);
- const list=document.createElement('div');list.className='time-log-cluster-items';
- items.forEach(item=>{
-  const b=document.createElement('button');b.type='button';b.className='time-log-cluster-entry';
-  const t=document.createElement('b');t.textContent=item.clock;
-  const l=document.createElement('span');l.textContent=item.label;
-  b.append(t,l);b.addEventListener('click',()=>jumpToTimeLogEntry(item.index));list.appendChild(b);
- });
- panel.appendChild(list);panel.hidden=false;
 }
 // v1.7.86: A single quest completion card list, shared with the timeline's event navigation.
 // Preserve reward, achievement and edit controls from the previous calendar list.
@@ -6783,9 +6940,9 @@ function renderDailyTimeLog(key,selected,quests){
  const entryIndex=new Map(entries.map((x,i)=>[x.id,i]));
  const axisPos=h=>`calc(14px + ${h/24*100}% - ${(h/24)*28}px)`;
  const dotLane=(kind,label)=>`<div class="time-log-lane time-log-${kind}" data-kind="${kind}" aria-label="${label} 시각 표시"><div class="time-log-event-source" hidden>${entries.filter(x=>x.kind===kind&&x.clock).map(x=>{const i=entries.indexOf(x);return `<span data-index="${i}" data-minute="${timeLogPointMinute(x.clock)}" data-clock="${esc(x.clock)}" data-label="${esc(x.kind==='moment'?x.label+' · '+String(x.info||'').slice(0,70):x.label)}" data-emoji="${esc(x.emoji||'')}"></span>`}).join('')}</div><div class="time-log-markers"></div></div>`;
- return `<section class="time-log-section" id="dailyTimeLog" aria-label="${fmtKey(key)} 하루 타임로그">
+ return `<section class="time-log-section" id="dailyTimeLog" data-day="${esc(key)}" aria-label="${fmtKey(key)} 하루 타임로그">
   <div class="time-log-title"><h3>🕒 하루 타임로그</h3></div>
-  <p class="time-log-summary">시간축 아이콘을 누르면 아래 해당 목록으로 이동합니다.</p>
+  <p class="time-log-summary">겹친 숫자를 누르면 확대합니다. 개별 기록은 누르면 상세 목록으로 이동합니다.</p>
   ${(key===day()||editing)?`<details class="time-log-compose" id="momentCompose" ${editing?'open':''}><summary>✍️ ${editing?'순간 기록 수정':'순간 기록 작성'} <span>눌러서 ${editing?'내용 확인':'펼치기'}</span></summary><form class="time-log-form" onsubmit="saveMomentLog(event,'${key}')">
    <div class="time-log-form-row"><select name="momentKind" aria-label="순간 기록 종류">${[['thought','💭 생각'],['event','📍 일상 사건'],['idea','⭐ 아이디어']].map(([id,name])=>`<option value="${id}" ${editing?.kind===id?'selected':''}>${name}</option>`).join('')}</select>
     <select name="momentMood" aria-label="순간 기록 기분">${[['😄','😄 좋음'],['🙂','🙂 괜찮음'],['😐','😐 보통'],['😟','😟 답답함'],['😡','😡 화남']].map(([id,name])=>`<option value="${id}" ${(editing?.mood||'🙂')===id?'selected':''}>${name}</option>`).join('')}</select></div>
@@ -6796,8 +6953,15 @@ function renderDailyTimeLog(key,selected,quests){
   <div class="time-log-chart-scroll" role="region" aria-label="전체 가로폭을 사용하는 24시간 완료·기록 시간축"><div class="time-log-chart" id="dailyTimeLogChart">
    <div class="time-log-hour-labels" role="img" aria-label="하루 00시부터 24시까지의 시간 눈금">${[2,3].map(n=>Array.from({length:24/n+1},(_,i)=>i*n).map(h=>`<span class="time-log-label-${n}" style="left:${axisPos(h)}">${String(h).padStart(2,'0')}</span>`).join('')).join('')}${Array.from({length:25},(_,h)=>`<i class="time-log-tick ${h%2===0?'time-log-major-2':''} ${h%3===0?'time-log-major-3':''} ${h===0||h===24?'is-edge':''}" aria-hidden="true" style="left:${axisPos(h)}"></i>`).join('')}</div>
    <div class="time-log-ruler-grid" aria-hidden="true">${Array.from({length:25},(_,h)=>`<i class="time-log-gridline ${h%2===0?'time-log-grid-major-2':''} ${h%3===0?'time-log-grid-major-3':''} ${h===0||h===24?'is-edge':''}" style="left:${axisPos(h)}"></i>`).join('')}</div>
+   <div class="time-log-zoom-selection" id="timeLogZoomSelection" aria-hidden="true" hidden></div>
    ${dotLane('quest','퀘스트 완료')}${dotLane('moment','순간 기록')}${dotLane('life','생활 기록')}
   </div></div>
+  <div class="time-log-zoom-panel" id="timeLogZoomPanel" aria-label="타임로그 확대 보기" hidden>
+   <div class="time-log-zoom-head"><div class="time-log-zoom-head-title"><strong>🔍 <span id="timeLogZoomRange" aria-live="off">선택 시간 확대</span></strong><small>겹친 기록을 분리하여 표시 · 좌우로 드래그 이동</small></div>
+    <div class="time-log-zoom-actions"><button type="button" id="timeLogZoomOut" onclick="changeTimeLogZoom(-1)" aria-label="시간 범위를 넓혀 축소">− 축소</button><button type="button" id="timeLogZoomIn" onclick="changeTimeLogZoom(1)" aria-label="시간 범위를 좁혀 확대">＋ 확대</button><button type="button" class="time-log-zoom-reset" onclick="closeTimeLogZoom()">↩ 전체 보기</button></div></div>
+   <div class="time-log-zoom-grid"><div class="time-log-zoom-labels" id="timeLogZoomLabels" aria-hidden="true"></div><div class="time-log-zoom-scroll" id="timeLogZoomScroll" role="region" tabindex="0" aria-label="확대된 시간축, 좌우로 스크롤하여 이동" onscroll="timeLogZoomOnScroll()" onpointerdown="timeLogZoomPointerDown(event)" onpointermove="timeLogZoomPointerMove(event)" onpointerup="timeLogZoomPointerEnd(event)" onpointercancel="timeLogZoomPointerEnd(event)"><div class="time-log-zoom-content" id="timeLogZoomContent"></div></div></div>
+   <p class="time-log-zoom-help">📍 시간 위치는 위 24시간 그래프에 표시됩니다. 개별 기록을 누르면 기존 상세 항목이 열립니다.</p>
+  </div>
 
   ${qTimed===0&&mTimed===0&&lTimed===0?'<p class="time-log-empty">표시할 시각이 아직 없습니다. 퀘스트 완료 또는 순간 기록을 저장하면 표시돼요.</p>':''}
   ${renderCalendarTimeLogQuestPanel(quests,entryIndex)}
@@ -7325,7 +7489,7 @@ function renderAchievementAnalytics(id,rows,allChartRows){
  ${target>0?`<p class="growth-target-note">🎯 현재 목표 ${fmt(target)} ${esc(unitName)} · 과거 목표가 변경되었다면 당시 목표 달성률로 해석하지 마세요.</p>`:''}
  <div class="growth-insight"><strong>💡 달성량 분석</strong><p>${insights.map(esc).join(' ')}</p><strong>🎯 다음 실천 제안</strong><p>${guidance.map(esc).join(' ')}</p></div></section>`;
 }
-// v1.7.97: Read-only, complete per-quest history ledger under the growth charts.
+// v1.7.98: Read-only, complete per-quest history ledger under the growth charts.
 // Filters are display-only and do not change records or trainer JSON.
 let fullHistoryUI={id:'',open:false,query:'',period:0,notes:false,sort:'new',limit:30};
 function fullHistoryEntries(id){
@@ -7526,7 +7690,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.97</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.98</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -8972,7 +9136,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.97</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.98</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -9046,7 +9210,7 @@ function scheduleDailyQuoteFit(){
  dailyQuoteFitFrame=requestAnimationFrame(fitDailyQuoteSingleLine);
 }
 window.addEventListener('resize',scheduleDailyQuoteFit,{passive:true});
-let timeLogResizeFrame=0;window.addEventListener('resize',()=>{cancelAnimationFrame(timeLogResizeFrame);timeLogResizeFrame=requestAnimationFrame(layoutTimeLogMarkers)},{passive:true});
+let timeLogResizeFrame=0;window.addEventListener('resize',()=>{cancelAnimationFrame(timeLogResizeFrame);timeLogResizeFrame=requestAnimationFrame(()=>{layoutTimeLogMarkers();layoutTimeLogZoom()})},{passive:true});
 if(document.fonts?.ready)document.fonts.ready.then(scheduleDailyQuoteFit).catch(()=>{});
 function render(){
  if(startUnlocked&&currentUserId&&!data.honorMedals?.initialized)syncHonorMedals(false);
@@ -9059,6 +9223,7 @@ function render(){
  maybeOpenDailyBriefing();document.getElementById('popup').innerHTML=renderModal();
  updateNavigationVisibility();updateFeverVisual();
  layoutTimeLogMarkers();
+ initTimeLogZoomAfterRender();
  scheduleDailyQuoteFit();
  if(modal?.type==='quest')runRewardAnimation();else cancelRewardAnimation();
  if(!modal&&pendingLevelGift())setTimeout(resumeLevelGiftRoulette,60);
