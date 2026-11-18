@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.99 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.100 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -4111,7 +4111,7 @@ html[data-theme="light"] .time-log-section .time-log-zoom-point[data-kind="life"
 @media(prefers-reduced-motion:reduce){.time-log-section .time-log-zoom-scroll{scroll-behavior:auto!important}}
 
 
-/* v1.7.99 · Read-only calendar day recap. No duplicate editor, time axis or archive. */
+/* v1.7.100 · Read-only calendar day recap. No duplicate editor, time axis or archive. */
 .daily-recap-launch{display:flex;gap:12px;align-items:center;text-align:left;width:100%;min-width:0;box-sizing:border-box;padding:12px 14px;margin:9px 0 12px;border:1px solid #36b9b5;border-radius:13px;color:#e9f9ff;background:linear-gradient(120deg,#16364a,#1b2b53);box-shadow:0 2px 12px #061c3028;cursor:pointer;font:inherit}
 .daily-recap-launch-icon{font-size:22px;flex:0 0 auto}.daily-recap-launch-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}.daily-recap-launch-copy strong{font-size:14px;font-weight:800}.daily-recap-launch-copy small{font-size:10px;line-height:1.45;color:#b3d6e1;overflow-wrap:anywhere}.daily-recap-launch-action{font-size:11px;font-weight:800;white-space:nowrap;color:#78f2d5}.daily-recap-launch-action span{font-size:17px}.daily-recap-launch:focus-visible,.daily-recap-modal button:focus-visible{outline:2px solid #f8d476;outline-offset:2px}
 .daily-recap-overlay{padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom));align-items:center}
@@ -4125,6 +4125,50 @@ html[data-theme="light"] .daily-recap-modal{background:#f8fcff!important;color:#
 @media(max-width:380px){.daily-recap-achievements{grid-template-columns:1fr}.daily-recap-top{padding:15px 12px 10px}.daily-recap-body{padding:0 11px 6px}.daily-recap-metrics{margin:11px}.daily-recap-achievement{padding:8px}.daily-recap-overlay{padding:5px}.daily-recap-modal{max-height:calc(100dvh - 10px)!important}.daily-recap-launch{gap:8px;padding:10px}.daily-recap-launch-copy strong{font-size:13px}}
 @media(min-width:700px){.daily-recap-achievements{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.recap-source-highlight{transition:none!important}}
+
+/* v1.7.100 · Complete and selectable recap (no preview limits). */
+.daily-recap-modal{max-width:880px!important;max-height:min(94dvh,980px)!important;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;}
+.daily-recap-body{padding:0 15px 8px;min-width:0;}
+.daily-recap-sections{display:grid;grid-template-columns:minmax(0,1fr);gap:0;min-width:0;}
+.daily-recap-achievements,.daily-recap-thought-list{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;min-width:0;}
+.daily-recap-achievement{display:block;min-width:0;padding:11px 12px;border-radius:11px;cursor:default;}
+.daily-recap-achievement-head{display:flex;align-items:center;gap:9px;min-width:0;}
+.daily-recap-achievement-copy{flex:1;min-width:0;gap:4px;}
+.daily-recap-achievement-copy strong{font-size:12px;white-space:normal;overflow-wrap:anywhere;overflow:visible;text-overflow:clip;line-height:1.4;}
+.daily-recap-achievement-copy small{font-size:10px;line-height:1.4;}
+.daily-recap-achievement-value{max-width:42%;flex:0 1 auto;white-space:normal;overflow-wrap:anywhere;text-align:right;font-size:14px;font-weight:900;color:#79f4d9;font-variant-numeric:tabular-nums;}
+.daily-recap-achievement-note{font-size:11px;line-height:1.65;margin:9px 0 0;padding:9px 10px;border-radius:8px;background:#102f45;color:#d6e6f3;white-space:pre-wrap;overflow-wrap:anywhere;user-select:text;}
+.daily-recap-item-action{display:flex;justify-content:flex-end;margin-top:7px;}
+.daily-recap-source-button{font:inherit;flex:0 0 auto;border:1px solid #54758d;background:#213d56;color:#b4ebef;border-radius:7px;padding:5px 9px;min-height:28px;font-size:10px;font-weight:800;cursor:pointer;touch-action:manipulation;}
+.daily-recap-thought{display:block;min-width:0;width:100%;margin:0;padding:12px 13px;border-radius:11px;cursor:default;}
+.daily-recap-thought-head{display:flex;align-items:center;gap:8px;min-width:0;}
+.daily-recap-thought-time{flex:0 0 auto;font-size:11px;font-weight:900;color:#c9b7f4;font-variant-numeric:tabular-nums;}
+.daily-recap-thought-kind{flex:1;min-width:0;overflow-wrap:anywhere;font-size:10px;color:#cec0ec;font-weight:700;}
+.daily-recap-thought-text{margin:9px 0 0;font-size:12px;line-height:1.75;color:inherit;white-space:pre-wrap;overflow-wrap:anywhere;user-select:text;}
+.daily-recap-note{white-space:pre-wrap;overflow-wrap:anywhere;user-select:text;font-size:12px;line-height:1.8;max-width:100%;}
+.daily-recap-footer{position:sticky;bottom:0;z-index:2;padding-bottom:max(12px,env(safe-area-inset-bottom));box-shadow:0 -8px 20px #07132220;}
+html[data-theme="light"] .daily-recap-achievement-value{color:#087964;}
+html[data-theme="light"] .daily-recap-achievement-note{background:#e1f0f6;color:#30576c;}
+html[data-theme="light"] .daily-recap-thought-kind{color:#69569a;}
+html[data-theme="light"] .daily-recap-thought-time{color:#7355b0;}
+html[data-theme="light"] .daily-recap-source-button{background:#fff;color:#216d7d;border-color:#b6d4dc;}
+@media(min-width:760px){
+ .daily-recap-modal{max-width:min(900px,calc(100vw - 35px))!important;}
+ .daily-recap-body{padding:0 20px 12px;}
+ .daily-recap-sections{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:18px;align-items:start;}
+ .daily-recap-achievements,.daily-recap-thought-list{grid-template-columns:minmax(0,1fr);}
+ .daily-recap-top{padding:22px 24px 15px;}
+ .daily-recap-metrics{margin:15px 20px;}
+ .daily-recap-note-section{margin-top:5px;}
+}
+@media(max-width:379px){
+ .daily-recap-modal{scrollbar-gutter:auto;}
+ .daily-recap-achievement{padding:9px;}
+ .daily-recap-achievement-value{font-size:13px;max-width:35%;}
+ .daily-recap-thought{padding:10px;}
+ .daily-recap-achievement-copy strong,.daily-recap-thought-text{font-size:11px;}
+ .daily-recap-source-button{padding:5px 6px;}
+}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -5301,7 +5345,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.99</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.100</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -6319,7 +6363,7 @@ ${TRAINING_MANUAL}${HONOR_MANUAL}${MOVE_CINEMA_MANUAL}${MOVE_MINIMAL_MANUAL}
 const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'],['ops','🎛 운영 설정','보상 · 확률 · 훈련 · 훈장'],['account','👥 계정·보안','트레이너 · 비밀번호'],['data','💾 데이터·시스템','백업 · 병합 · 초기화'],['guide','📖 사용 매뉴얼','최신 기능 · 공식 · FAQ'],['history','📜 개발 버전 이력','최신순 업데이트 기록']];
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
-const ADMIN_VERSION_NOTES=[['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
+const ADMIN_VERSION_NOTES=[['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
  ['1.7.68','한줄 리스트의 완료 상태를 퀘스트명 앞 네모박스(미완료)/체크된 네모박스(완료)로 표현. 기존 왼쪽 상태선 및 다른 배치 유지.'],
  ['1.7.67','간단 리스트의 자세히/접기를 수행률 아래로 이동. 한줄 리스트 추천 배지를 연속 표시 앞으로 이동.'],
  ['1.7.62','기록 탭 실제 달성량의 단위 미지정 포함 전체 단위 기본 선택, 다중 선택 비교 그래프, 단위별 실측 합계와 기록 없음/0 구분, 계정별 보기 설정 저장.'],
@@ -6989,7 +7033,7 @@ function renderDailyTimeLog(key,selected,quests){
  </section>`;
 }
 
-// v1.7.99 · Daily recap is a read-only projection of existing trainer data.
+// v1.7.100 · Daily recap is a read-only projection of existing trainer data.
 // Never persist a second copy of a note, moment, life event, or completion.
 // The normalized snapshot can later be aggregated by week/month without a schema change.
 function dailyRecapSnapshot(key,source=data){
@@ -7075,33 +7119,54 @@ function renderDailyRecapLauncher(key){
   <span class="daily-recap-launch-icon" aria-hidden="true">✨</span><span class="daily-recap-launch-copy"><strong>하루 돌아보기</strong><small>${r?.hasContent?`퀘스트 ${n.quest} · 생각 ${n.moment} · 생활 ${n.life}${r.note.trim()?' · 노트 있음':''}`:'아직 기록이 없는 날이에요. 기록이 생기면 자동 정리됩니다.'}</small></span><span class="daily-recap-launch-action">보기 <span aria-hidden="true">›</span></span>
  </button>`;
 }
+// v1.7.100: Full, unabridged read-only recap items; source records remain canonical.
+function dailyRecapAchievementCard(record){
+ const q=dailyRecapHighlight(record),note=String(record.achievement?.note||'');
+ const mood=record.achievement?.mood?achievementSummary({achievement:{...record.achievement,amount:null}}):'';
+ return `<article class="daily-recap-achievement" aria-label="${esc(q.title)} ${esc(q.stat)}">
+  <div class="daily-recap-achievement-head"><span class="daily-recap-achievement-emoji" aria-hidden="true">${esc(q.emoji||'✅')}</span>
+   <div class="daily-recap-achievement-copy"><strong>${esc(q.title)}</strong><small><time>${esc(q.clock)}</time> 완료${mood?' · '+esc(mood):''}</small></div>
+   <span class="daily-recap-achievement-value">${esc(q.stat)}</span></div>
+  ${note.trim()?`<p class="daily-recap-achievement-note">${esc(note)}</p>`:''}
+  <div class="daily-recap-item-action"><button type="button" class="daily-recap-source-button" onclick="dailyRecapGoTo('quest','${dailyRecapRef(q.ref)}')" aria-label="${esc(q.title)} 원본 기록으로 이동">원본 기록 ↗</button></div>
+ </article>`;
+}
+function dailyRecapThoughtCard(m){
+ const clock=m.clock||timeLogClock(m.at)||'--:--';
+ return `<article class="daily-recap-thought" aria-label="${esc(clock)} 순간 기록">
+  <div class="daily-recap-thought-head"><span class="daily-recap-thought-time"><time>${esc(clock)}</time></span>
+   <span class="daily-recap-thought-kind">${esc(momentKindLabel(m.kind))}${m.mood?' · '+esc(m.mood):''}</span>
+   <button type="button" class="daily-recap-source-button" onclick="dailyRecapGoTo('moment','${dailyRecapRef(m.id)}')" aria-label="${esc(clock)} 순간 기록 원본으로 이동">원본 ↗</button></div>
+  <p class="daily-recap-thought-text">${esc(String(m.text||''))}</p>
+ </article>`;
+}
 function renderDailyRecapModal(){
  const key=modal?.key;
  if(modal?.userId!==currentUserId||!validNoteDay(key))return '';
  const r=dailyRecapSnapshot(key);if(!r)return '';
  const dates=dailyRecapDates();const prev=dates.filter(d=>d<key).at(-1),next=dates.find(d=>d>key);
- const thoughts=r.moments.slice(-2).reverse(),latest=r.events.filter(x=>x.clock).at(-1),first=r.events.find(x=>x.clock);
- // Only numeric achievements get prominent cards; all other completions stay in the existing timeline.
- const highlights=r.numeric.slice().sort((a,b)=>String(a.at||'').localeCompare(String(b.at||''))).slice(0,4).map(dailyRecapHighlight);
+ const latest=r.events.filter(x=>x.clock).at(-1),first=r.events.find(x=>x.clock);
+ const achievements=r.numeric.slice().sort((a,b)=>String(a.at||'').localeCompare(String(b.at||'')));
  return `<div class="overlay daily-recap-overlay" onclick="closeDailyRecap()"><section class="modal daily-recap-modal" role="dialog" aria-modal="true" aria-labelledby="dailyRecapTitle" onclick="event.stopPropagation()">
-  <div class="daily-recap-top"><div><p class="daily-recap-eyebrow">기록 기반 자동 회고 · 오프라인</p><h2 id="dailyRecapTitle" tabindex="-1">✨ ${fmtKey(key)}</h2><p class="daily-recap-sub">다시 작성하지 않아도, 이미 남긴 기록으로 하루를 돌아봐요.</p></div><button type="button" id="dailyRecapClose" class="daily-recap-icon-button" aria-label="회고 닫기" onclick="closeDailyRecap()">✕</button></div>
+  <div class="daily-recap-top"><div><p class="daily-recap-eyebrow">기록 기반 자동 회고 · 오프라인</p><h2 id="dailyRecapTitle" tabindex="-1">✨ ${fmtKey(key)}</h2><p class="daily-recap-sub">오늘 기록을 한곳에서 모두 확인해요. 수정할 때만 원본으로 이동하세요.</p></div><button type="button" id="dailyRecapClose" class="daily-recap-icon-button" aria-label="회고 닫기" onclick="closeDailyRecap()">✕</button></div>
   <div class="daily-recap-date-nav"><button type="button" ${prev?`onclick="moveDailyRecap('${prev}')"`:'disabled'} aria-label="이전 기록 날짜" >‹ 이전 기록</button><strong>${esc(key)}</strong><button type="button" ${next?`onclick="moveDailyRecap('${next}')"`:'disabled'} aria-label="다음 기록 날짜">다음 기록 ›</button></div>
   <div class="daily-recap-metrics"><div><strong>${r.counts.quest}</strong><span>✅ 퀘스트</span></div><div><strong>${r.counts.moment}</strong><span>💭 순간생각</span></div><div><strong>${r.counts.life}</strong><span>🕒 생활 기록</span></div></div>
   ${r.hasContent?`<div class="daily-recap-body">
    ${first&&latest?`<div class="daily-recap-fact"><span aria-hidden="true">⌁</span> 시간 기록의 첫 지점 <b>${esc(first.clock)}</b> · 마지막 지점 <b>${esc(latest.clock)}</b><small>기록 시각이며 활동 지속시간은 아니에요.</small></div>`:''}
-   <section class="daily-recap-block"><div class="daily-recap-block-title"><h3>📈 측정된 성과</h3><span>${r.numeric.length}건</span></div>
-    ${highlights.length?`<div class="daily-recap-achievements">${highlights.map(q=>`<button type="button" class="daily-recap-achievement" onclick="dailyRecapGoTo('quest','${dailyRecapRef(q.ref)}')"><span class="daily-recap-achievement-emoji">${esc(q.emoji)}</span><span class="daily-recap-achievement-copy"><strong>${esc(q.title)}</strong><small>${esc(q.clock)} · 상세 보기</small></span><b>${esc(q.stat)}</b></button>`).join('')}</div>${r.numeric.length>4?`<p class="daily-recap-muted">그 외 ${r.numeric.length-4}건은 아래 타임로그에서 확인할 수 있어요.</p>`:''}`:'<p class="daily-recap-muted">수치로 입력한 달성량은 없어요. 완료 횟수는 위쪽에 표시돼요.</p>'}
+   <div class="daily-recap-sections">
+    <section class="daily-recap-block daily-recap-achievement-section" aria-label="측정된 성과 전체"><div class="daily-recap-block-title"><h3>📈 측정된 성과</h3><span>${achievements.length}건 모두 표시</span></div>
+     ${achievements.length?`<div class="daily-recap-achievements">${achievements.map(dailyRecapAchievementCard).join('')}</div>`:'<p class="daily-recap-muted">수치로 입력한 달성량은 없어요. 완료 횟수는 위쪽에 표시돼요.</p>'}
+    </section>
+    <section class="daily-recap-block daily-recap-thought-section" aria-label="순간생각 전체 원문"><div class="daily-recap-block-title"><h3>💭 순간생각 전체</h3><span>${r.moments.length}건 모두 표시</span></div>
+     ${r.moments.length?`<div class="daily-recap-thought-list">${r.moments.map(dailyRecapThoughtCard).join('')}</div>`:'<p class="daily-recap-muted">순간생각은 아직 없어요.</p>'}
+    </section>
+   </div>
+   <section class="daily-recap-block daily-recap-note-section"><div class="daily-recap-block-title"><h3>📝 데일리 노트</h3><span>${r.note.trim()?'원문 전체':'미작성'}</span></div>
+    ${r.note.trim()?`<p class="daily-recap-note">${esc(r.note.trim())}</p>`:'<p class="daily-recap-muted">노트는 별도로 작성하지 않아도 돼요. 필요할 때만 남겨보세요.</p>'}
+    <button type="button" class="daily-recap-text-link" onclick="dailyRecapGoTo('note','')">${r.note.trim()?'노트 수정하러 가기':'기존 노트에서 작성'} ›</button>
    </section>
-   <section class="daily-recap-block"><div class="daily-recap-block-title"><h3>💭 최근 생각</h3><span>${r.counts.moment}건</span></div>
-    ${thoughts.length?thoughts.map(m=>`<button type="button" class="daily-recap-thought" onclick="dailyRecapGoTo('moment','${dailyRecapRef(m.id)}')"><time>${esc(m.clock||timeLogClock(m.at)||'--:--')}</time><span><strong>${esc(momentKindLabel(m.kind))}</strong> ${esc(String(m.text||'').replace(/\s+/g,' ').slice(0,105))}${String(m.text||'').length>105?'…':''}</span><span class="daily-recap-chevron" aria-hidden="true">›</span></button>`).join(''):'<p class="daily-recap-muted">순간생각은 아직 없어요.</p>'}
-    ${r.moments.length>2?`<p class="daily-recap-muted">최근 2건만 미리보기 · 전체 ${r.moments.length}건은 기존 순간 기록에서 볼 수 있어요.</p>`:''}
-   </section>
-   <section class="daily-recap-block"><div class="daily-recap-block-title"><h3>📝 데일리 노트</h3><span>${r.note.trim()?'저장됨':'미작성'}</span></div>
-    ${r.note.trim()?`<p class="daily-recap-note">${esc(r.note.trim().slice(0,170))}${r.note.trim().length>170?'…':''}</p>`:'<p class="daily-recap-muted">노트는 별도로 작성하지 않아도 돼요. 필요할 때만 남겨보세요.</p>'}
-    <button type="button" class="daily-recap-text-link" onclick="dailyRecapGoTo('note','')">${r.note.trim()?'노트 원문 보기':'기존 노트에서 작성'} ›</button>
-   </section>
-   <p class="daily-recap-disclaimer">원본 기록의 사실만 자동 정리합니다. 감정 상태나 행동의 원인은 추정하지 않아요. 수정은 각 원본 기록에서만 할 수 있어요.</p>
-  </div>`:'<div class="daily-recap-empty">이 날짜에는 아직 회고할 기록이 없어요.<br>퀘스트를 완료하거나 순간 기록을 남기면 자동으로 표시됩니다.</div>'}
+   <p class="daily-recap-disclaimer">기존 기록을 그대로 보여주며 저장 데이터는 수정하지 않아요. 모든 텍스트는 이 화면에서 선택·복사할 수 있고, 원본 버튼은 수정이 필요할 때만 이용하세요.</p>
+  </div>`:'<div class="daily-recap-empty">이 날짜에는 아직 회고할 기록이 없어요. 퀘스트를 완료하거나 순간 기록을 남기면 자동으로 표시됩니다.</div>'}
   <div class="daily-recap-footer"><button class="daily-recap-secondary" type="button" onclick="closeDailyRecap()">달력으로 돌아가기</button><button class="daily-recap-primary" type="button" onclick="copyDailyRecap()" ${r.hasContent?'':'disabled'}>▣ 회고 복사</button></div><p class="daily-recap-copy-status" id="dailyRecapCopyStatus" role="status" aria-live="polite"></p><textarea id="dailyRecapCopyFallback" class="daily-recap-copy-fallback" aria-label="복사할 회고 텍스트" readonly hidden></textarea>
  </section></div>`;
 }
@@ -7823,7 +7888,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.99</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.100</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -9270,7 +9335,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.99</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.100</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
