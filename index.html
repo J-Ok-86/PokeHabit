@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.113 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.115 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -4427,7 +4427,7 @@ html[data-theme="light"] .home-quest-section .quest-reco-card.combined{backgroun
 .smart-report-legacy>summary{cursor:pointer;font-weight:700;font-size:.87rem}
 @media(max-width:420px){.smart-book-brief{max-width:85px}.smart-book-status{font-size:.68rem}.smart-book-form-dates{grid-template-columns:1fr}.smart-book-day{grid-template-columns:72px minmax(0,1fr)}.smart-book-day time{font-size:.7rem}}
 
-/* v1.7.113 · Compact date-first reading timeline; existing book list untouched. */
+/* v1.7.114 · Compact date-first reading timeline; existing book list untouched. */
 .smart-reading-timeline{min-width:0;display:grid;gap:9px;margin:5px 0 9px}
 .smart-reading-timeline-top{display:flex;align-items:flex-start;justify-content:space-between;gap:9px;flex-wrap:wrap}
 .smart-reading-timeline-top h4{margin:0!important;font-size:.98rem}
@@ -4455,7 +4455,7 @@ html[data-theme="light"] .smart-reading-book-link{background:#fff;border-color:#
 html[data-theme="light"] .smart-reading-book-status{color:#a66c1c}
 @media(max-width:420px){.smart-reading-timeline-top{gap:6px}.smart-reading-day{flex-basis:158px;padding:9px}.smart-reading-book-link{padding:8px 6px 8px 8px}.smart-reading-book-name{font-size:.79rem}}
 
-/* v1.7.113 · Reading period overview: all 30 calendar days fit in the available width. */
+/* v1.7.114 · Reading period overview: all 30 calendar days fit in the available width. */
 .smart-reading-timeline{min-width:0;display:grid;gap:9px;margin:7px 0 11px}
 .smart-reading-timeline-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .smart-reading-timeline-top h4{margin:0!important;font-size:.98rem}
@@ -4505,6 +4505,79 @@ html[data-theme="light"] .smart-reading-timeline-legend .read-start{color:#0e8a7
 .growth-quest-title .growth-periods .qa-toggle{flex:0 1 auto;min-width:43px;min-height:32px;padding:6px 9px;font-size:11px;border-radius:8px}
 @media(max-width:390px){.smart-reading-overview{padding:8px 6px}.smart-reading-ruler,.smart-reading-line{grid-template-columns:85px minmax(0,1fr);gap:4px}.smart-reading-line-book button{font-size:.74rem}.smart-reading-line-book small{font-size:.6rem}.growth-quest-title .growth-periods{width:100%;margin-left:0}.growth-quest-title .growth-periods .qa-toggle{flex:1}}
 
+
+/* v1.7.115 · Compact milestone labels anchored to their real date points.
+ * Two dedicated in-row lanes prevent any cross-book overlap. */
+.smart-reading-timeline{gap:7px;margin:7px 0 10px;min-width:0}
+.smart-reading-timeline-top{gap:6px;align-items:center}
+.smart-reading-timeline-heading{min-width:0;flex:1 1 140px}
+.smart-reading-timeline-heading h4{letter-spacing:-.02em}
+.smart-reading-timeline-heading p{margin:2px 0 0}
+.smart-reading-navigation{display:flex;align-items:center;justify-content:space-between;gap:5px;min-width:0}
+.smart-reading-nav-arrow,.smart-reading-today{display:grid;place-items:center;flex:0 0 auto;min-width:33px;min-height:32px;padding:4px 8px;border:1px solid #607f9e77;border-radius:8px;background:#183554;color:#e0f2ff;font-size:17px;font-weight:750;cursor:pointer;touch-action:manipulation}
+.smart-reading-nav-arrow:disabled,.smart-reading-today:disabled{opacity:.35;cursor:default}
+.smart-reading-today{font-size:11px;min-width:40px}
+.smart-reading-date-range{font-size:12px;font-weight:850;text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums;min-width:0;flex:1}
+.smart-reading-overview{border-radius:12px;border:1px solid #7395b34f;padding:8px 8px 5px;min-width:0;overflow:visible;touch-action:pan-y;overscroll-behavior:auto;user-select:none;-webkit-user-select:none}
+.smart-reading-ruler,.smart-reading-line{grid-template-columns:clamp(88px,27%,152px) minmax(0,1fr);gap:6px}
+.smart-reading-ruler{padding-bottom:5px}
+.smart-reading-ruler-axis{height:24px}
+.smart-reading-ruler-axis.seven{height:26px}
+.smart-reading-axis-tick{position:absolute;top:0;color:#b7cbe0;line-height:1.1;font-size:9px;font-weight:700;white-space:nowrap;text-align:center;font-variant-numeric:tabular-nums}
+.smart-reading-axis-tick.is-seven{display:flex;flex-direction:column;align-items:center;font-size:9px;gap:1px;width:24px;transform:translateX(-50%)}
+.smart-reading-axis-tick.is-seven strong{font-size:11px;font-weight:850}
+.smart-reading-axis-tick.is-seven.first,.smart-reading-axis-tick.is-seven.last{transform:translateX(-50%)}
+.smart-reading-axis-tick.is-month{font-size:9px}
+.smart-reading-lines{max-height:none;overflow:visible;overscroll-behavior:auto;scrollbar-width:auto}
+.smart-reading-line{padding:3px 0;min-height:51px;border-bottom:1px solid #627e9530}
+.smart-reading-line:last-child{border-bottom:0}
+.smart-reading-line-book{gap:3px}
+.smart-reading-line-book button{font-size:clamp(11px,2.9vw,13px);font-weight:850;line-height:1.3}
+.smart-reading-line-book small{color:#a9c5db;font-size:9px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.smart-reading-track{height:44px;grid-template-columns:repeat(var(--reading-days),minmax(0,1fr));border-radius:5px;align-items:center;overflow:visible;background:repeating-linear-gradient(90deg,transparent,transparent calc(100% / var(--reading-days) - 1px),rgba(112,157,186,.11) calc(100% / var(--reading-days) - 1px),rgba(112,157,186,.11) calc(100% / var(--reading-days)))}
+.smart-reading-duration{height:8px;border-radius:5px;background:color-mix(in srgb,var(--book-accent) 18%,transparent);border:1px solid color-mix(in srgb,var(--book-accent) 32%,transparent)}
+.smart-reading-point{width:clamp(4px,1.4vw,7px);height:clamp(4px,1.4vw,7px);background:var(--book-accent);box-shadow:0 0 0 1px rgba(10,26,44,.25)}
+.smart-reading-point.estimated{width:7px;height:7px;background:transparent;border:1.5px solid #deb05e;box-shadow:none}
+.smart-reading-point.draft{width:7px;height:7px}
+/* The dot sits at the exact center of the date's grid cell. Its date label stays
+ * in the same row, on an exclusive upper (start) or lower (finish) lane. */
+.smart-reading-event{position:absolute;z-index:5;left:var(--event-x);top:50%;width:0;height:0;overflow:visible;pointer-events:none}
+.smart-reading-event::before{content:'';position:absolute;left:-.6px;width:1.2px;background:#56c3ad;z-index:0}
+.smart-reading-event.start::before{top:-8px;height:5px}
+.smart-reading-event.finish::before{top:4px;height:5px;background:#7cbdca}
+.smart-reading-event.uncertain::before{background:#cba45b}
+.smart-reading-event-pin{position:absolute;left:-4px;top:-4px;width:8px;height:8px;display:block;border:1.4px solid #56cbb5;border-radius:50%;background:#173f43;box-shadow:0 0 0 1px #09233a80}
+.smart-reading-event.finish .smart-reading-event-pin{border-color:#a1e8c2;background:#26765c}
+.smart-reading-event.finish.uncertain .smart-reading-event-pin{border-color:#d4aa64;background:#14283e;border-style:dashed}
+.smart-reading-event-date{position:absolute;left:0;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;height:15px;min-width:34px;padding:0 3px;border:1px solid #418d83;border-radius:5px;background:#193e41;color:#c5fff0;font-size:9px;font-weight:800;line-height:1;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums;transform:translateX(-50%);box-shadow:0 1px 2px #07172a33}
+.smart-reading-event.start .smart-reading-event-date{top:-22px}
+.smart-reading-event.finish .smart-reading-event-date{top:8px;border-color:#568aa3;background:#1b384f;color:#e2effe}
+.smart-reading-event.finish.uncertain .smart-reading-event-date{border-color:#ad8749;border-style:dashed;background:#403727;color:#ffdc9d}
+.smart-reading-event.edge-left .smart-reading-event-date{transform:none}
+.smart-reading-event.edge-right .smart-reading-event-date{transform:translateX(-100%)}
+.smart-reading-timeline-legend{display:flex;align-items:center;flex-wrap:wrap;gap:5px 11px;font-size:.69rem;color:#a9c5df}
+.smart-reading-timeline-legend i{display:inline-block;vertical-align:middle;width:8px;height:8px;margin-right:4px;border-radius:50%;box-sizing:border-box}
+.smart-reading-timeline-legend .read-dot{background:#18a38d}
+.smart-reading-timeline-legend .read-start{background:#173f43;border:2px solid #4bc3ad}
+.smart-reading-timeline-legend .read-finish{background:#288a67;border:1px solid #b1e6c5}
+.smart-reading-timeline-legend .read-est{background:transparent;border:2px solid #deb05e}
+.smart-reading-timeline-help{margin:0;color:#a9c5df;font-size:.69rem;line-height:1.4}
+.smart-reading-swipe-hint{margin:0;text-align:center;color:#9cbad3;font-size:10px;line-height:1.35}
+html[data-theme="light"] .smart-reading-nav-arrow,html[data-theme="light"] .smart-reading-today{background:#f1f7fa;color:#34586b;border-color:#c1d3de}
+html[data-theme="light"] .smart-reading-line-book small{color:#526c82}
+html[data-theme="light"] .smart-reading-axis-tick{color:#506d83}
+html[data-theme="light"] .smart-reading-event.start .smart-reading-event-date{background:#e4f7f0;color:#156558;border-color:#7cbfae}
+html[data-theme="light"] .smart-reading-event.finish .smart-reading-event-date{background:#e6f1f8;color:#2c6379;border-color:#8bb5c8}
+html[data-theme="light"] .smart-reading-event.finish.uncertain .smart-reading-event-date{background:#fff3dc;color:#926726;border-color:#c9a763}
+html[data-theme="light"] .smart-reading-swipe-hint{color:#607d92}
+@media(max-width:390px){
+ .smart-reading-overview{padding:8px 6px 5px}
+ .smart-reading-ruler,.smart-reading-line{grid-template-columns:86px minmax(0,1fr);gap:4px}
+ .smart-reading-line-book button{font-size:11px}
+ .smart-reading-line-book small{font-size:9px}
+ .smart-reading-axis-tick.is-month{font-size:8px}
+ .smart-reading-event-date{font-size:8.5px;min-width:32px;padding:0 2px}
+}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -5752,16 +5825,17 @@ function smartQuestTemplateChange(el){const form=el.closest('form'),kind=el.valu
  const preview=form.querySelector('#questTemplatePreview');if(preview)preview.innerHTML=smartTemplatePreviewHTML(kind);
 }
 function dailyCount(items){return new Set(items.map(x=>x.c?.day).filter(Boolean)).size}
-// v1.7.113 · Reading calendar dates shown as a compact horizontal timeline.
-// Only presentation is changed; original completions, drafts and inferred notes remain read-only.
+// v1.7.114 · Reading period map: legible 7/30-day axes, dated milestones,
+// accessible previous/next navigation and native vertical page scrolling.
+// Timeline state is view-only; no past completion, reward or book record is modified.
 let smartReadingTimelinePeriod=30;
-function smartReadingTimelineEvents(days=30){
- const today=day(), d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-(days-1));
- const since=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
- const byDay=new Map(),completed=new Set();
- const priority={confirmed:0,draft:1,estimated:2};
+let smartReadingTimelineOffsetDays=0;
+let smartReadingTimelineTouch=null;
+let smartReadingTimelineMouse=null;
+function smartReadingTimelineEvents(start,end){
+ const byDay=new Map(),completed=new Set(),priority={confirmed:0,draft:1,estimated:2};
  const add=(date,title,status)=>{
-  if(!validNoteDay(date)||date<since||date>today)return;
+  if(!validNoteDay(date)||date<start||date>end)return;
   title=smartName(title,160);if(!title)return;
   const key=title.normalize('NFKC').toLocaleLowerCase('ko');
   let names=byDay.get(date);if(!names){names=new Map();byDay.set(date,names)}
@@ -5792,54 +5866,105 @@ function smartReadingBookColor(title){
  return colors[hash%colors.length];
 }
 function smartReadingTimelineHTML(days=smartReadingTimelinePeriod){
- // Fixed-size day columns: 7 or 30 days ALWAYS fit the timeline width.
  days=days===7?7:30;
- const today=day(),start=analyticsDateShift(today,1-days),labels=Array.from({length:days},(_,i)=>analyticsDateShift(start,i));
- const eventDays=smartReadingTimelineEvents(days),byTitle=new Map(),priority={confirmed:0,draft:1,estimated:2};
+ const today=day(),offset=Math.max(0,smartReadingTimelineOffsetDays);
+ const end=analyticsDateShift(today,-offset),start=analyticsDateShift(end,1-days);
+ const labels=Array.from({length:days},(_,i)=>analyticsDateShift(start,i));
+ const eventDays=smartReadingTimelineEvents(start,end),byTitle=new Map(),priority={confirmed:0,draft:1,estimated:2};
  for(const row of eventDays)for(const e of row.books){
   const key=e.title.normalize('NFKC').toLocaleLowerCase('ko'),prev=byTitle.get(key)||{title:e.title,dates:new Map()};
   const old=prev.dates.get(row.date);if(!old||priority[e.status]<priority[old])prev.dates.set(row.date,e.status);
   byTitle.set(key,prev);
  }
- // Registered start/finish dates are authoritative; older notes remain labelled estimates.
  const entries=[...byTitle.values()].map(item=>{
   const book=smartBookByTitle(item.title),info=smartBookDates(book||item.title);
-  const sorted=[...item.dates].sort((a,b)=>a[0].localeCompare(b[0]));
-  const recordedFirst=sorted[0]?.[0]||'',first=info.startedOn&&(!recordedFirst||info.startedOn<recordedFirst)?info.startedOn:recordedFirst,lastRead=sorted.at(-1)?.[0]||'';
+  const recordedFirst=[...item.dates.keys()].sort()[0]||'';
+  const first=info.startedOn||recordedFirst;
+  const lastRead=[...item.dates.keys()].sort().at(-1)||'';
   const finished=!!info.finished,uncertainFinish=!finished&&!!info.finishedOn;
-  const end=info.finishedOn&&info.finishedOn>=first&&info.finishedOn>lastRead?info.finishedOn:lastRead;
-  const estimated=[...item.dates.values()].some(v=>v==='estimated')||info.startTag.includes('추정')||uncertainFinish;
-  return {...item,first,end,info,estimated,finished,uncertainFinish,lastRead};
+  const finishDate=info.finishedOn||'';
+  const spanEnd=lastRead>finishDate?lastRead:finishDate;
+  const estimated=[...item.dates.values()].some(v=>v==='estimated')||String(info.startTag||'').includes('추정')||uncertainFinish;
+  return {...item,first,spanEnd,finishDate,info,estimated,finished,uncertainFinish,lastRead};
  }).sort((a,b)=>b.lastRead.localeCompare(a.lastRead)||a.title.localeCompare(b.title,'ko'));
  const buttons=[7,30].map(n=>`<button type="button" class="tinybtn ${days===n?'smart-current':''}" aria-pressed="${days===n}" onclick="smartReadingTimelineSetPeriod(${n})">${n}일</button>`).join('');
- const tickIndices=days===7?labels.map((_,i)=>i):[0,7,14,21,29];
- const ticks=tickIndices.map((i,j)=>`<span class="smart-reading-axis-tick ${j===0?'first':j===tickIndices.length-1?'last':''}" style="left:${(i+0.5)*100/days}%">${esc(labels[i].slice(5).replace('-','/'))}</span>`).join('');
+ const ticks=(days===7?labels.map((_,i)=>i):[0,7,14,21,29]).map((i,j)=>{
+  const date=labels[i],pct=((i+.5)*100/days).toFixed(4);
+  const label=days===7?`<span>${date.slice(5,7)}</span><strong>${date.slice(8,10)}</strong>`:date.slice(5).replace('-','/');
+  return `<span class="smart-reading-axis-tick ${days===7?'is-seven':'is-month'} ${j===0?'first':''} ${i===days-1?'last':''}" style="left:${pct}%" aria-label="${esc(date)}">${label}</span>`;
+ }).join('');
  const rows=entries.map(item=>{
-  const accent=smartReadingBookColor(item.title);
+  const accent=smartReadingBookColor(item.title),validSpan=!!item.first&&!!item.spanEnd&&item.first<=end&&item.spanEnd>=start;
   const firstVisible=item.first&&item.first<start?start:item.first;
-  const endVisible=item.end&&item.end>today?today:item.end;
+  const endVisible=item.spanEnd&&item.spanEnd>end?end:item.spanEnd;
   const a=labels.indexOf(firstVisible),b=labels.indexOf(endVisible);
-  const period=a>=0&&b>=a?`<span class="smart-reading-duration" style="grid-column:${a+1} / ${b+2}" aria-hidden="true"></span>`:'';
+  const period=validSpan&&a>=0&&b>=a?`<span class="smart-reading-duration" style="grid-column:${a+1} / ${b+2}" aria-hidden="true"></span>`:'';
   const markers=[...item.dates].map(([date,status])=>{
    const i=labels.indexOf(date);if(i<0)return '';
-   const text=status==='estimated'?'(추정)':status==='draft'?'작성 중':'확정';
+   const text=status==='estimated'?'추정':status==='draft'?'작성 중':'확정';
    return `<span class="smart-reading-point ${status}" style="grid-column:${i+1}" title="${esc(date)} · ${esc(item.title)} · ${text}" aria-hidden="true"></span>`;
   }).join('');
-  const startIndex=labels.indexOf(item.first),endIndex=labels.indexOf(item.info.finishedOn);
-  const startMark=startIndex>=0?`<span class="smart-reading-milestone start" style="grid-column:${startIndex+1}" title="${esc(item.first)} · ${esc(item.info.startTag||'첫 독서 기록')}" aria-hidden="true">▶</span>`:item.first<start?'<span class="smart-reading-carry" style="grid-column:1" title="조회 기간 이전부터 읽음" aria-hidden="true">‹</span>':'';
-  const endMark=endIndex>=0?`<span class="smart-reading-milestone finish ${item.uncertainFinish?'uncertain':''}" style="grid-column:${endIndex+1}" title="${esc(item.info.finishedOn)} · ${esc(item.info.finishTag||'완독')}" aria-hidden="true">${item.uncertainFinish?'?':'✓'}</span>`:'';
+  const marker=(date,kind,carry=false,uncertain=false)=>{
+   if(!date||date>end&&kind==='start'||date<start&&kind==='finish')return '';
+   const displayDate=date.slice(5).replace('-','/'),idx=labels.indexOf(date),col=carry?0:idx;
+   if(col<0)return '';
+   // The pin never moves away from its exact date. Edge badges extend inward,
+   // while all other badges are centered and on separate start/finish lanes.
+   const pct=((col+.5)*100/days).toFixed(4),edgeMargin=days===30?3:0;
+   const edge=col<=edgeMargin?'edge-left':col>=days-1-edgeMargin?'edge-right':'';
+   const tag=kind==='start'?(carry?'기간 이전부터':'시작·첫 기록'):(uncertain?'완독 언급 · 미확정':'완독');
+   const dateLabel=(carry?'‹':'')+displayDate+(uncertain?'?':'');
+   return `<span class="smart-reading-event ${kind} ${edge} ${uncertain?'uncertain':''} ${carry?'carry':''}" style="--event-x:${pct}%" title="${esc(date)} · ${esc(tag)}" aria-label="${esc(tag)} ${esc(date)}"><span class="smart-reading-event-date">${esc(dateLabel)}</span><span class="smart-reading-event-pin" aria-hidden="true"></span></span>`;
+  };
+  const startMark=marker(item.first,'start',!!item.first&&item.first<start,false);
+  const endMark=marker(item.finishDate,'finish',false,item.uncertainFinish);
   const status=item.finished?'완독':item.uncertainFinish?'완독 언급 (추정)':'읽는 중';
-  const aria=`${item.title}, ${status}, 첫 기록 또는 시작 ${item.first||'미상'}, ${item.dates.size}일 기록${item.estimated?', 추정 기록 포함':''}`;
-  return `<div class="smart-reading-line"><div class="smart-reading-line-book"><button type="button" data-book-title="${esc(item.title)}" title="${esc(item.title)} 상세 보기" onclick="smartReadingTimelineOpenBook(this.dataset.bookTitle)">${esc(item.title)}</button><small>${esc(status)}${item.estimated?' · 추정 포함':''} · ${item.dates.size}일</small></div><div class="smart-reading-track" style="--reading-days:${days};--book-accent:${accent}" role="img" aria-label="${esc(aria)}">${period}${markers}${startMark}${endMark}</div></div>`;
+  const aria=`${item.title}, ${status}, 시작 또는 첫 기록 ${item.first||'미상'}, 독서 기록 ${item.dates.size}일${item.estimated?', 추정 포함':''}`;
+  return `<div class="smart-reading-line"><div class="smart-reading-line-book"><button type="button" data-book-title="${esc(item.title)}" title="${esc(item.title)} 상세 보기" onclick="smartReadingTimelineOpenBook(this.dataset.bookTitle)">${esc(item.title)}</button><small>${esc(status)} · ${item.dates.size}일${item.estimated?' · 추정':''}</small></div><div class="smart-reading-track" style="--reading-days:${days};--book-accent:${accent}" role="img" aria-label="${esc(aria)}">${period}${markers}${startMark}${endMark}</div></div>`;
  }).join('');
- const content=entries.length?`<div class="smart-reading-overview"><div class="smart-reading-ruler"><span class="smart-reading-ruler-label">읽은 책</span><div class="smart-reading-ruler-axis">${ticks}</div></div><div class="smart-reading-lines">${rows}</div></div><div class="smart-reading-timeline-legend"><span><i class="read-dot">●</i>읽은 날</span><span><i class="read-start">▶</i>시작·첫 기록</span><span><i class="read-finish">✓</i>완독</span><span><i class="read-est">○</i>추정</span></div><p class="smart-reading-timeline-help">옅은 띠는 첫 기록·시작부터 마지막 기록·완독까지의 구간이며 매일 읽었다는 뜻은 아닙니다. 점이 실제 기록된 날짜입니다. 책 제목을 누르면 날짜별 읽은 쪽수를 확인할 수 있습니다. 완독 언급만 있는 경우 ?로 표시합니다.</p>`:`<div class="smart-reading-timeline-empty">최근 ${days}일에 읽은 책 기록이 없습니다.${days===7?' 30일을 선택하면 더 긴 기간을 볼 수 있어요.':''}</div>`;
- return `<section id="smartReadingTimeline" class="smart-reading-timeline" aria-label="독서 책별 기간과 실제 기록 날짜"><div class="smart-reading-timeline-top"><div><h4>📚 책별 독서 타임라인</h4><p>${days}일 전체 표시 · ${eventDays.length}일 기록 · ${entries.length}권</p></div><div class="smart-reading-timeline-periods" role="group" aria-label="독서 조회 기간">${buttons}</div></div>${content}</section>`;
+ const content=entries.length?`<div class="smart-reading-overview" aria-label="날짜별 독서 기간표. 좌우로 밀면 이전 또는 다음 기간을 봅니다"><div class="smart-reading-ruler"><span class="smart-reading-ruler-label">읽은 책</span><div class="smart-reading-ruler-axis ${days===7?'seven':''}">${ticks}</div></div><div class="smart-reading-lines">${rows}</div></div><div class="smart-reading-timeline-legend"><span><i class="read-dot"></i>읽은 날</span><span><i class="read-start"></i>시작·첫 기록</span><span><i class="read-finish"></i>완독</span><span><i class="read-est"></i>추정</span></div><p class="smart-reading-timeline-help">옅은 띠는 독서 기간, 작은 점은 실제 기록일입니다. 시작 날짜는 점 위, 완독 날짜는 점 아래에 연결해 표시하며, 기존 메모의 추정은 별도로 구분합니다. 책 제목을 누르면 읽은 구간을 볼 수 있습니다.</p>`:`<div class="smart-reading-timeline-empty">${esc(start.slice(5).replace('-','/'))}~${esc(end.slice(5).replace('-','/'))} 기간의 독서 기록이 없습니다.</div>`;
+ const dateRange=`${start.slice(5).replace('-','/')} — ${end.slice(5).replace('-','/')}`;
+ return `<section id="smartReadingTimeline" class="smart-reading-timeline" aria-label="책별 독서 타임라인"><div class="smart-reading-timeline-top"><div class="smart-reading-timeline-heading"><h4>📚 책별 독서 타임라인</h4><p>${eventDays.length}일 기록 · ${entries.length}권</p></div><div class="smart-reading-timeline-periods" role="group" aria-label="독서 조회 기간">${buttons}</div></div><div class="smart-reading-navigation"><button type="button" class="smart-reading-nav-arrow" onclick="smartReadingTimelineShift(1)" aria-label="이전 ${days}일" title="이전 기간">‹</button><span class="smart-reading-date-range" aria-live="polite">${esc(dateRange)}</span><button type="button" class="smart-reading-nav-arrow" onclick="smartReadingTimelineShift(-1)" aria-label="다음 ${days}일" title="다음 기간" ${offset===0?'disabled':''}>›</button><button type="button" class="smart-reading-today" onclick="smartReadingTimelineReset()" ${offset===0?'disabled':''}>오늘</button></div>${content}<p class="smart-reading-swipe-hint">화면을 좌우로 밀면 ${days}일씩 이동합니다 · 위아래는 평소처럼 스크롤</p></section>`;
+}
+function smartReadingTimelineRefresh(){
+ const el=document.getElementById('smartReadingTimeline');if(el)el.outerHTML=smartReadingTimelineHTML(smartReadingTimelinePeriod);
 }
 function smartReadingTimelineSetPeriod(days){
  smartReadingTimelinePeriod=days===7?7:30;
- const el=document.getElementById('smartReadingTimeline');
- if(el)el.outerHTML=smartReadingTimelineHTML(smartReadingTimelinePeriod);
+ smartReadingTimelineRefresh();
 }
+function smartReadingTimelineShift(direction){
+ smartReadingTimelineOffsetDays=Math.max(0,Math.min(20000,smartReadingTimelineOffsetDays+(direction>0?smartReadingTimelinePeriod:-smartReadingTimelinePeriod)));
+ smartReadingTimelineRefresh();
+}
+function smartReadingTimelineReset(){smartReadingTimelineOffsetDays=0;smartReadingTimelineRefresh();}
+// Native vertical scroll always wins: passive listeners, no touchmove preventDefault.
+const smartReadingTimelineSurface=document.getElementById('view');
+smartReadingTimelineSurface.addEventListener('touchstart',event=>{
+ smartReadingTimelineTouch=null;
+ if(event.touches.length!==1||!event.target.closest?.('.smart-reading-overview'))return;
+ const t=event.touches[0];smartReadingTimelineTouch={x:t.clientX,y:t.clientY};
+},{passive:true});
+smartReadingTimelineSurface.addEventListener('touchcancel',()=>{smartReadingTimelineTouch=null;},{passive:true});
+smartReadingTimelineSurface.addEventListener('touchend',event=>{
+ const gesture=smartReadingTimelineTouch;smartReadingTimelineTouch=null;
+ if(!gesture||event.changedTouches.length!==1)return;
+ const t=event.changedTouches[0],dx=t.clientX-gesture.x,dy=t.clientY-gesture.y;
+ if(Math.abs(dx)<45||Math.abs(dx)<Math.abs(dy)*1.5)return;
+ smartReadingTimelineShift(dx>0?1:-1);
+},{passive:true});
+// Mouse/trackpad users retain arrow buttons; allow pointer drag on the chart itself.
+smartReadingTimelineSurface.addEventListener('pointerdown',event=>{
+ smartReadingTimelineMouse=null;
+ if(event.pointerType!=='mouse'||event.button!==0||!event.target.closest?.('.smart-reading-overview')||event.target.closest?.('button'))return;
+ smartReadingTimelineMouse={x:event.clientX,y:event.clientY};
+});
+smartReadingTimelineSurface.addEventListener('pointerup',event=>{
+ const gesture=smartReadingTimelineMouse;smartReadingTimelineMouse=null;
+ if(!gesture||event.pointerType!=='mouse')return;
+ const dx=event.clientX-gesture.x,dy=event.clientY-gesture.y;
+ if(Math.abs(dx)>=45&&Math.abs(dx)>Math.abs(dy)*1.5)smartReadingTimelineShift(dx>0?1:-1);
+});
 function smartReadingTimelineOpenBook(title){
  if(!startUnlocked||!currentUserId)return;
  title=smartName(title,160);if(!title)return;
@@ -6351,7 +6476,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.113</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.115</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -7429,7 +7554,7 @@ ${TRAINING_MANUAL}${HONOR_MANUAL}${MOVE_CINEMA_MANUAL}${MOVE_MINIMAL_MANUAL}
 const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'],['ops','🎛 운영 설정','보상 · 확률 · 훈련 · 훈장'],['account','👥 계정·보안','트레이너 · 비밀번호'],['data','💾 데이터·시스템','백업 · 병합 · 초기화'],['guide','📖 사용 매뉴얼','최신 기능 · 공식 · FAQ'],['history','📜 개발 버전 이력','최신순 업데이트 기록']];
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
-const ADMIN_VERSION_NOTES=[['1.7.113','독서 상세 분석의 7/30일 가로 카드 목록을 한 화면에서 30일 전체를 확인할 수 있는 책별 기간표로 변경했습니다. 각 책의 첫 독서 기록 또는 직접 입력한 시작일 ▶, 실제 기록된 날 ●, 확정 완독일 ✓, 과거 메모 추정 ○를 구분하며 제목 터치로 책 상세에 이동합니다. 퀘스트 분석 7/30/90/1년 선택 버튼은 퀘스트별 성장 분석 제목 옆으로 이동했습니다. 기존 독서 목록·데이터·보상과 다른 템플릿은 유지합니다.'],['1.7.112','독서 템플릿의 최근 기록 추세 그래프를 날짜별 책 이름 타임라인(7/30일)으로 교체했습니다. 기록 있는 날짜만 최근순으로 표시하고 같은 날짜의 여러 책을 세로로 나열합니다. 책 제목 터치 시 기존 전체 독서 목록의 해당 책 상세가 바로 열리며, 작성 중과 과거 메모 (추정)을 구분합니다. 운동·다른 템플릿의 그래프와 기존 기록·보상은 유지합니다.'],['1.7.110','독서 목록에 책 검색과 한 줄 접기/펼치기를 추가하고, 각 책에 독서 시작일·완독일 및 날짜별 읽은 구간을 표시합니다. 과거 메모는 (추정)으로 유지하고 시작/완독 날짜를 직접 지정할 수 있습니다.'],['1.7.109','독서 기록의 기존 메모에서 책 제목과 페이지 구간을 읽기 전용 추정 분석하고, 등록된 책과 함께 자동완성 후보에 표시합니다. 전체 책 목록에서 추정 책을 직접 등록할 수 있으며 총 쪽수·완독은 수동으로 확인합니다. 과거 원본·완료·보상은 변경하지 않습니다.'],['1.7.108','템플릿 선택 미리보기와 기존 임시 기록 전환 문제를 수정했습니다.'],['1.7.107','퀘스트별 스마트 기록 템플릿, 책 목록, 운동 세트별 시각, 상세 분석을 추가했습니다.'],['1.7.106','오늘 탭 상단 연속 도전·오늘 완료·퀘스트 추천을 컴팩트하게 재배치하고 순간생각 링크를 강조했습니다. 복귀 중심 오늘 추천과 진행 기록·익숙한 수행 중심 마무리 추천을 분리했으며, 이유 표시·리스트 바로 이동·중복 추천 통합·최근 미수행 추천 회피를 적용했습니다. 기존 +10%/+20% 보상은 유지합니다.'],['1.7.105','생활 리듬 분석 1회형·반복형 차트 높이를 통일하고 30/90일 X축 눈금 밀도를 조정했습니다. 반복형 시간대 분포를 제거하고, 기상/취침 목표를 수면 리듬의 단일 목표 설정에 연결했습니다.'],['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
+const ADMIN_VERSION_NOTES=[['1.7.115','독서 타임라인 시작·완독 날짜를 해당 날짜의 실제 점에 연결하고 행 내부 상·하단에 배치했습니다. 가까운 날짜도 겹치지 않도록 라벨 방향을 보정하고 책별 행 높이를 축소했습니다. 7/30일 기간 이동·자연스러운 상하 스크롤·기존 독서 목록·저장 구조를 유지했습니다.'],['1.7.114','독서 타임라인의 7일 날짜 겹침 해결, 7/30일 좌우 드래그 및 이전/다음/오늘 이동, 시작·완독 날짜 배지와 단정한 표식, 내부 세로 스크롤 제거 및 탭 스와이프 충돌 방지. 기존 책 목록과 독서·운동 기록 및 보상 유지.'],['1.7.113','독서 상세 분석의 7/30일 가로 카드 목록을 한 화면에서 30일 전체를 확인할 수 있는 책별 기간표로 변경했습니다. 각 책의 첫 독서 기록 또는 직접 입력한 시작일 ▶, 실제 기록된 날 ●, 확정 완독일 ✓, 과거 메모 추정 ○를 구분하며 제목 터치로 책 상세에 이동합니다. 퀘스트 분석 7/30/90/1년 선택 버튼은 퀘스트별 성장 분석 제목 옆으로 이동했습니다. 기존 독서 목록·데이터·보상과 다른 템플릿은 유지합니다.'],['1.7.112','독서 템플릿의 최근 기록 추세 그래프를 날짜별 책 이름 타임라인(7/30일)으로 교체했습니다. 기록 있는 날짜만 최근순으로 표시하고 같은 날짜의 여러 책을 세로로 나열합니다. 책 제목 터치 시 기존 전체 독서 목록의 해당 책 상세가 바로 열리며, 작성 중과 과거 메모 (추정)을 구분합니다. 운동·다른 템플릿의 그래프와 기존 기록·보상은 유지합니다.'],['1.7.110','독서 목록에 책 검색과 한 줄 접기/펼치기를 추가하고, 각 책에 독서 시작일·완독일 및 날짜별 읽은 구간을 표시합니다. 과거 메모는 (추정)으로 유지하고 시작/완독 날짜를 직접 지정할 수 있습니다.'],['1.7.109','독서 기록의 기존 메모에서 책 제목과 페이지 구간을 읽기 전용 추정 분석하고, 등록된 책과 함께 자동완성 후보에 표시합니다. 전체 책 목록에서 추정 책을 직접 등록할 수 있으며 총 쪽수·완독은 수동으로 확인합니다. 과거 원본·완료·보상은 변경하지 않습니다.'],['1.7.108','템플릿 선택 미리보기와 기존 임시 기록 전환 문제를 수정했습니다.'],['1.7.107','퀘스트별 스마트 기록 템플릿, 책 목록, 운동 세트별 시각, 상세 분석을 추가했습니다.'],['1.7.106','오늘 탭 상단 연속 도전·오늘 완료·퀘스트 추천을 컴팩트하게 재배치하고 순간생각 링크를 강조했습니다. 복귀 중심 오늘 추천과 진행 기록·익숙한 수행 중심 마무리 추천을 분리했으며, 이유 표시·리스트 바로 이동·중복 추천 통합·최근 미수행 추천 회피를 적용했습니다. 기존 +10%/+20% 보상은 유지합니다.'],['1.7.105','생활 리듬 분석 1회형·반복형 차트 높이를 통일하고 30/90일 X축 눈금 밀도를 조정했습니다. 반복형 시간대 분포를 제거하고, 기상/취침 목표를 수면 리듬의 단일 목표 설정에 연결했습니다.'],['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
  ['1.7.68','한줄 리스트의 완료 상태를 퀘스트명 앞 네모박스(미완료)/체크된 네모박스(완료)로 표현. 기존 왼쪽 상태선 및 다른 배치 유지.'],
  ['1.7.67','간단 리스트의 자세히/접기를 수행률 아래로 이동. 한줄 리스트 추천 배지를 연속 표시 앞으로 이동.'],
  ['1.7.62','기록 탭 실제 달성량의 단위 미지정 포함 전체 단위 기본 선택, 다중 선택 비교 그래프, 단위별 실측 합계와 기록 없음/0 구분, 계정별 보기 설정 저장.'],
@@ -9285,7 +9410,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.113</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.115</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -10762,7 +10887,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.113</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.115</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -11053,6 +11178,7 @@ function tabSwipeAvailable(){
 function tabSwipeBlockedTarget(target){
  if(!(target instanceof Element))return true;
  if(target.closest('input,textarea,select,[contenteditable="true"],[contenteditable=""],[role="slider"],[draggable="true"],.dex-density-controls,.training-view-settings,.move-demo-stage,.capture-arena,.capture-modal,.overlay'))return true;
+ if(target.closest('.smart-reading-timeline'))return true; // Timeline swipes page through dates; do not switch tabs.
  // Horizontal scroll lists and carousels must keep their own gestures.
  for(let el=target;el&&el.id!=='view';el=el.parentElement){
   if(el.scrollWidth>el.clientWidth+8){
