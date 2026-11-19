@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.119 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.120 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -4666,7 +4666,7 @@ html[data-theme="light"] .smart-reading-swipe-hint{color:#607d92}
 .smart-exercise-day-sets>div strong{white-space:nowrap}
 @media(max-width:390px){.smart-exercise-trend{padding:9px;gap:9px}.smart-exercise-periods button{padding:6px 7px}.smart-exercise-metrics strong{font-size:16px}.smart-exercise-metrics small{font-size:9px}}
 
-/* v1.7.119 · responsive stacked daily set charts */
+/* v1.7.120 · responsive stacked daily set charts */
 .smart-exercise-chart{padding:10px 8px 11px;display:grid;gap:10px}
 .smart-exercise-graph-title{line-height:1.45}.smart-exercise-graph-title span{display:block;margin-top:2px}
 .smart-stack-overview{display:grid;gap:5px;padding:7px 7px 5px;border:1px solid #8da9b535;border-radius:9px;background:rgba(112,155,170,.045)}
@@ -4713,7 +4713,7 @@ html[data-theme="light"] .smart-reading-swipe-hint{color:#607d92}
 html[data-theme="light"] .smart-exercise-controls select{background:#f5fafc;color:#24455a}
 
 
-/* v1.7.119 · readable daily stacked areas / consistent axis labels */
+/* v1.7.120 · readable daily stacked areas / consistent axis labels */
 .smart-daily-area-touch{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0;background:transparent;cursor:crosshair;touch-action:pan-y;outline-offset:-2px}
 .smart-daily-area-touch:focus-visible{outline:2px solid #168d7e}
 
@@ -4744,6 +4744,21 @@ html[data-theme="light"] .smart-exercise-controls select{background:#f5fafc;colo
 .smart-stack-focus-day .smart-stack-day-label{font-size:10px;opacity:.83}
 @media(max-width:355px){.smart-daily-area-graph{grid-template-columns:30px minmax(0,1fr);gap:4px}.smart-daily-area-date-axis span{font-size:9px}.smart-stack-focus-inner{gap:3px}.smart-stack-focus-y span{font-size:9px}.smart-stack-day-label{font-size:9px}}
 
+
+/* v1.7.120 — Records & Calendar: contextual navigation and responsive axes. */
+.record-analysis-nav{margin:10px 0 12px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--card2);display:flex;flex-direction:column;gap:7px}
+.record-analysis-nav>span{color:var(--sub);font-size:11px;font-weight:800}
+.record-analysis-nav>div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.record-analysis-nav button{min-width:0;min-height:35px;padding:6px 2px;font-size:11px;border:1px solid #516782;border-radius:8px;background:#1b3659;color:#edf5ff;font-weight:750}
+.calendar-analysis-context{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 6px;padding:8px 10px;border:1px solid var(--line);border-radius:12px}
+.calendar-analysis-context>strong{font-size:12px}
+.calendar-analysis-context .qa-quest-select{min-width:0;flex:1}
+.calendar-selected-anchor{scroll-margin-top:18px;min-width:0}
+.calendar-selected-label{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 2px 3px;font-size:12px}
+.calendar-selected-label span{color:var(--sub);font-size:11px}
+#recordWeeklyBrief,#lifeRhythmAnalysis,#sleepWeekChecker,#recordQuestGrowth{scroll-margin-top:16px}
+.calendar-selected-anchor input[type=time],.lr-analysis input[type=time],.life-rhythm-section input[type=time]{min-width:0;max-width:100%;box-sizing:border-box}
+@media(max-width:365px){.record-analysis-nav{padding:8px 7px}.record-analysis-nav button{font-size:10px;min-height:36px}.calendar-analysis-context{padding:7px}.calendar-analysis-context>strong{width:100%}.pr-chart-tick{font-size:11px}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -5044,6 +5059,8 @@ function deleteDailyNote(key){
 }
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function save(){
+ // Invalidate only derived analysis caches; saved records and rewards are untouched.
+ prAnalysisFrame=null;
  if(!currentUserId||!registry?.users[currentUserId])return false;
  openRegionsIfReady(data);
  syncHonorMedals(true);
@@ -6186,7 +6203,7 @@ function smartTemplateAnalysis(id){
  return `<section class="smart-analysis"><div class="smart-report-head"><h3>📊 템플릿 상세 분석</h3><small>${esc(SMART_TEMPLATES[kind]?.label||'구조화 기록')}</small></div>${summaryText}${metricKpis}<p class="growth-help">확정 기록과 기존 기록 (추정)을 구분해 표시합니다. 과거 값을 구조화 데이터로 변환하거나 보상에 반영하지 않습니다.</p>${kind==='reading'?smartReadingTimelineHTML(smartReadingTimelinePeriod):''}${special}${kind==='reading'||kind==='reps'||kind==='strength'?'':'<h4>최근 구조화 기록 추세</h4>'+bars}${sorted.length?`<h4>${kind==='reading'?'책별 독서량':'항목별 누적량'}</h4><div class="smart-item-breakdown">${sorted.slice(0,30).map(x=>`<div><span>${esc(x.label)}</span><b>${achievementNumberText(x.amount)} ${esc(unit)}</b></div>`).join('')}</div>`:''}${estRows}</section>`;
 }
 
-// v1.7.119 · Daily stacked exercise sets: each set has its own colour (largest at bottom).
+// v1.7.120 · Daily stacked exercise sets: each set has its own colour (largest at bottom).
 // Seven days: full annotated bars; 30 days: whole-period overview and readable 7-day focus;
 // 90 days: 13 weekly BEST-set overview and readable 7-day focus, not misleading tiny text.
 let smartExerciseTrendUI={questId:'',kind:'',name:'',weight:'all',days:30,week:0,selectedDay:''};
@@ -6834,7 +6851,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.119</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.120</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -7912,7 +7929,7 @@ ${TRAINING_MANUAL}${HONOR_MANUAL}${MOVE_CINEMA_MANUAL}${MOVE_MINIMAL_MANUAL}
 const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'],['ops','🎛 운영 설정','보상 · 확률 · 훈련 · 훈장'],['account','👥 계정·보안','트레이너 · 비밀번호'],['data','💾 데이터·시스템','백업 · 병합 · 초기화'],['guide','📖 사용 매뉴얼','최신 기능 · 공식 · FAQ'],['history','📜 개발 버전 이력','최신순 업데이트 기록']];
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
-const ADMIN_VERSION_NOTES=[['1.7.119','운동 세트 구성 그래프의 기준을 통일했습니다. 7일은 일별 누적 막대, 30·90일은 일별 세트 순위별 누적 영역으로 표시하고 두 기간 모두 같은 일별 합계로 비교합니다. 모든 X축은 월/일, Y축은 회 단위의 읽기 쉬운 눈금으로 표시합니다. 날짜를 선택하면 7일 누적 막대와 세트별 세부 기록이 열립니다.'],['1.7.118','운동 세트 그래프를 하루 한 막대의 색상별 누적 세트 구성으로 교체했습니다. 가장 많은 세트가 아래에 놓이고 7일은 내부 횟수·상단 일합계를 표시합니다. 30일은 전체 흐름+선택 7일 확대, 90일은 주별 최고 세트+선택 7일 확대를 지원합니다.'],['1.7.117','운동 템플릿의 중복된 구조화 달성량 그래프를 종목별 최고 세트 횟수 추세와 일별 세트 수·실제 시각 기록으로 교체했습니다. 종목 및 7/30/90일 선택, 근력 운동의 중량별 비교를 지원합니다. 실제 달성량과 독서·다른 템플릿 분석, 원본 기록 및 보상은 변경하지 않습니다.'],['1.7.116','생활 리듬 전체 흐름을 이벤트 횟수 대신 최근 7일 주요 1회형 이벤트 시각 비교로 바꾸고, 선택 기간의 평균 시각·변동폭 요약을 추가했습니다. 비교할 이벤트 최대 4개 선택이 가능하며 반복형 이벤트 분석에는 개별 수행 시각과 원본 편집 버튼, 과거 기간 접기/펼치기를 추가했습니다. 데이터와 보상은 유지됩니다.'],['1.7.115','독서 타임라인 시작·완독 날짜를 해당 날짜의 실제 점에 연결하고 행 내부 상·하단에 배치했습니다. 가까운 날짜도 겹치지 않도록 라벨 방향을 보정하고 책별 행 높이를 축소했습니다. 7/30일 기간 이동·자연스러운 상하 스크롤·기존 독서 목록·저장 구조를 유지했습니다.'],['1.7.114','독서 타임라인의 7일 날짜 겹침 해결, 7/30일 좌우 드래그 및 이전/다음/오늘 이동, 시작·완독 날짜 배지와 단정한 표식, 내부 세로 스크롤 제거 및 탭 스와이프 충돌 방지. 기존 책 목록과 독서·운동 기록 및 보상 유지.'],['1.7.113','독서 상세 분석의 7/30일 가로 카드 목록을 한 화면에서 30일 전체를 확인할 수 있는 책별 기간표로 변경했습니다. 각 책의 첫 독서 기록 또는 직접 입력한 시작일 ▶, 실제 기록된 날 ●, 확정 완독일 ✓, 과거 메모 추정 ○를 구분하며 제목 터치로 책 상세에 이동합니다. 퀘스트 분석 7/30/90/1년 선택 버튼은 퀘스트별 성장 분석 제목 옆으로 이동했습니다. 기존 독서 목록·데이터·보상과 다른 템플릿은 유지합니다.'],['1.7.112','독서 템플릿의 최근 기록 추세 그래프를 날짜별 책 이름 타임라인(7/30일)으로 교체했습니다. 기록 있는 날짜만 최근순으로 표시하고 같은 날짜의 여러 책을 세로로 나열합니다. 책 제목 터치 시 기존 전체 독서 목록의 해당 책 상세가 바로 열리며, 작성 중과 과거 메모 (추정)을 구분합니다. 운동·다른 템플릿의 그래프와 기존 기록·보상은 유지합니다.'],['1.7.110','독서 목록에 책 검색과 한 줄 접기/펼치기를 추가하고, 각 책에 독서 시작일·완독일 및 날짜별 읽은 구간을 표시합니다. 과거 메모는 (추정)으로 유지하고 시작/완독 날짜를 직접 지정할 수 있습니다.'],['1.7.109','독서 기록의 기존 메모에서 책 제목과 페이지 구간을 읽기 전용 추정 분석하고, 등록된 책과 함께 자동완성 후보에 표시합니다. 전체 책 목록에서 추정 책을 직접 등록할 수 있으며 총 쪽수·완독은 수동으로 확인합니다. 과거 원본·완료·보상은 변경하지 않습니다.'],['1.7.108','템플릿 선택 미리보기와 기존 임시 기록 전환 문제를 수정했습니다.'],['1.7.107','퀘스트별 스마트 기록 템플릿, 책 목록, 운동 세트별 시각, 상세 분석을 추가했습니다.'],['1.7.106','오늘 탭 상단 연속 도전·오늘 완료·퀘스트 추천을 컴팩트하게 재배치하고 순간생각 링크를 강조했습니다. 복귀 중심 오늘 추천과 진행 기록·익숙한 수행 중심 마무리 추천을 분리했으며, 이유 표시·리스트 바로 이동·중복 추천 통합·최근 미수행 추천 회피를 적용했습니다. 기존 +10%/+20% 보상은 유지합니다.'],['1.7.105','생활 리듬 분석 1회형·반복형 차트 높이를 통일하고 30/90일 X축 눈금 밀도를 조정했습니다. 반복형 시간대 분포를 제거하고, 기상/취침 목표를 수면 리듬의 단일 목표 설정에 연결했습니다.'],['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
+const ADMIN_VERSION_NOTES=[['1.7.120','기록·달력 분석 정리: 분석 바로가기, 관련 퀘스트 선택의 위치 정돈, 월/일 X축 및 Y축 눈금 간격 최적화, 미기록과 실제 0 구분을 유지했습니다. 분석 렌더링은 화면별 메모와 날짜별 인덱스로 반복 검색을 줄이고 현재 계정·데이터 변경 시 즉시 갱신하도록 개선했습니다. 기존 기록·보상·그 외 탭은 유지합니다.'],['1.7.119','운동 세트 구성 그래프의 기준을 통일했습니다. 7일은 일별 누적 막대, 30·90일은 일별 세트 순위별 누적 영역으로 표시하고 두 기간 모두 같은 일별 합계로 비교합니다. 모든 X축은 월/일, Y축은 회 단위의 읽기 쉬운 눈금으로 표시합니다. 날짜를 선택하면 7일 누적 막대와 세트별 세부 기록이 열립니다.'],['1.7.118','운동 세트 그래프를 하루 한 막대의 색상별 누적 세트 구성으로 교체했습니다. 가장 많은 세트가 아래에 놓이고 7일은 내부 횟수·상단 일합계를 표시합니다. 30일은 전체 흐름+선택 7일 확대, 90일은 주별 최고 세트+선택 7일 확대를 지원합니다.'],['1.7.117','운동 템플릿의 중복된 구조화 달성량 그래프를 종목별 최고 세트 횟수 추세와 일별 세트 수·실제 시각 기록으로 교체했습니다. 종목 및 7/30/90일 선택, 근력 운동의 중량별 비교를 지원합니다. 실제 달성량과 독서·다른 템플릿 분석, 원본 기록 및 보상은 변경하지 않습니다.'],['1.7.116','생활 리듬 전체 흐름을 이벤트 횟수 대신 최근 7일 주요 1회형 이벤트 시각 비교로 바꾸고, 선택 기간의 평균 시각·변동폭 요약을 추가했습니다. 비교할 이벤트 최대 4개 선택이 가능하며 반복형 이벤트 분석에는 개별 수행 시각과 원본 편집 버튼, 과거 기간 접기/펼치기를 추가했습니다. 데이터와 보상은 유지됩니다.'],['1.7.115','독서 타임라인 시작·완독 날짜를 해당 날짜의 실제 점에 연결하고 행 내부 상·하단에 배치했습니다. 가까운 날짜도 겹치지 않도록 라벨 방향을 보정하고 책별 행 높이를 축소했습니다. 7/30일 기간 이동·자연스러운 상하 스크롤·기존 독서 목록·저장 구조를 유지했습니다.'],['1.7.114','독서 타임라인의 7일 날짜 겹침 해결, 7/30일 좌우 드래그 및 이전/다음/오늘 이동, 시작·완독 날짜 배지와 단정한 표식, 내부 세로 스크롤 제거 및 탭 스와이프 충돌 방지. 기존 책 목록과 독서·운동 기록 및 보상 유지.'],['1.7.113','독서 상세 분석의 7/30일 가로 카드 목록을 한 화면에서 30일 전체를 확인할 수 있는 책별 기간표로 변경했습니다. 각 책의 첫 독서 기록 또는 직접 입력한 시작일 ▶, 실제 기록된 날 ●, 확정 완독일 ✓, 과거 메모 추정 ○를 구분하며 제목 터치로 책 상세에 이동합니다. 퀘스트 분석 7/30/90/1년 선택 버튼은 퀘스트별 성장 분석 제목 옆으로 이동했습니다. 기존 독서 목록·데이터·보상과 다른 템플릿은 유지합니다.'],['1.7.112','독서 템플릿의 최근 기록 추세 그래프를 날짜별 책 이름 타임라인(7/30일)으로 교체했습니다. 기록 있는 날짜만 최근순으로 표시하고 같은 날짜의 여러 책을 세로로 나열합니다. 책 제목 터치 시 기존 전체 독서 목록의 해당 책 상세가 바로 열리며, 작성 중과 과거 메모 (추정)을 구분합니다. 운동·다른 템플릿의 그래프와 기존 기록·보상은 유지합니다.'],['1.7.110','독서 목록에 책 검색과 한 줄 접기/펼치기를 추가하고, 각 책에 독서 시작일·완독일 및 날짜별 읽은 구간을 표시합니다. 과거 메모는 (추정)으로 유지하고 시작/완독 날짜를 직접 지정할 수 있습니다.'],['1.7.109','독서 기록의 기존 메모에서 책 제목과 페이지 구간을 읽기 전용 추정 분석하고, 등록된 책과 함께 자동완성 후보에 표시합니다. 전체 책 목록에서 추정 책을 직접 등록할 수 있으며 총 쪽수·완독은 수동으로 확인합니다. 과거 원본·완료·보상은 변경하지 않습니다.'],['1.7.108','템플릿 선택 미리보기와 기존 임시 기록 전환 문제를 수정했습니다.'],['1.7.107','퀘스트별 스마트 기록 템플릿, 책 목록, 운동 세트별 시각, 상세 분석을 추가했습니다.'],['1.7.106','오늘 탭 상단 연속 도전·오늘 완료·퀘스트 추천을 컴팩트하게 재배치하고 순간생각 링크를 강조했습니다. 복귀 중심 오늘 추천과 진행 기록·익숙한 수행 중심 마무리 추천을 분리했으며, 이유 표시·리스트 바로 이동·중복 추천 통합·최근 미수행 추천 회피를 적용했습니다. 기존 +10%/+20% 보상은 유지합니다.'],['1.7.105','생활 리듬 분석 1회형·반복형 차트 높이를 통일하고 30/90일 X축 눈금 밀도를 조정했습니다. 반복형 시간대 분포를 제거하고, 기상/취침 목표를 수면 리듬의 단일 목표 설정에 연결했습니다.'],['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
  ['1.7.68','한줄 리스트의 완료 상태를 퀘스트명 앞 네모박스(미완료)/체크된 네모박스(완료)로 표현. 기존 왼쪽 상태선 및 다른 배치 유지.'],
  ['1.7.67','간단 리스트의 자세히/접기를 수행률 아래로 이동. 한줄 리스트 추천 배지를 연속 표시 앞으로 이동.'],
  ['1.7.62','기록 탭 실제 달성량의 단위 미지정 포함 전체 단위 기본 선택, 다중 선택 비교 그래프, 단위별 실측 합계와 기록 없음/0 구분, 계정별 보기 설정 저장.'],
@@ -8074,11 +8091,17 @@ function saveNoteFromList(e,k){
  data.dailyNotes[k]={text:content,updatedAt:new Date().toISOString()};if(modal?.type==='notesList')modal.openDay=k;save();render();
 }
 function scheduledCountForDate(k,filterId='all'){
- const defs=data.quests.filter(q=>{if((filterId!=='all'&&q.id!==filterId)||questType(q)==='event')return false;const created=data.questEvents.find(e=>e.id===q.id&&e.action==='create');if(created&&dateKeyFromTime(created.at)>k)return false;if(questType(q)==='once')return !data.completions.some(c=>c.id===q.id&&c.day<k);return scheduledOnDate(q,k)});
- // Historical completions remain visible even when the quest has since been edited/deleted.
- const completed=new Set(data.completions.filter(c=>c.day===k&&(filterId==='all'||c.id===filterId)&&c.questType!=='event').map(c=>c.id));
- const fixed=defs.length;
- const planned=Math.max(fixed,completed.size);
+ const a=prAnalysisIndex();
+ const defs=(data.quests||[]).filter(q=>{
+  if((filterId!=='all'&&q.id!==filterId)||questType(q)==='event')return false;
+  const created=a.createDatesById.get(String(q.id));if(created&&created>k)return false;
+  if(questType(q)==='once'){
+   const first=a.firstCompletionById.get(String(q.id));return !first||first>=k;
+  }
+  return scheduledOnDate(q,k);
+ });
+ const completed=new Set((a.completionsByDay.get(k)||[]).filter(c=>(filterId==='all'||c.id===filterId)&&c.questType!=='event').map(c=>c.id));
+ const planned=Math.max(defs.length,completed.size);
  return {planned,completed:completed.size,rate:planned?Math.min(100,Math.round(100*completed.size/planned)):0,level:completed.size?Math.max(1,Math.min(5,Math.ceil(5*completed.size/Math.max(1,planned)))):0};
 }
 
@@ -8095,7 +8118,7 @@ function getDailyEvents(key){
  const bonus=(data.bonusAt&&dateKeyFromTime(data.bonusAt)===key?600:0)+data.dailyBonuses.filter(b=>b.day===key).reduce((a,b)=>a+Number(b.points||0),0);
  return {completions,draws,changes,events,bonus,earned:completions.reduce((n,x)=>n+Number(x.points||0),0)+bonus,spent:draws.reduce((n,x)=>n+Number(x.price||0),0)};
 }
-function dailySummaryMap(questFilter="all"){const out=new Map();
+function dailySummaryMap(questFilter="all"){const a=prAnalysisIndex();if(a.summaries.has(questFilter))return a.summaries.get(questFilter);const out=new Map();
  const ensure=k=>{if(!out.has(k))out.set(k,{quests:0,draws:0,caught:0,escaped:0,changes:0,earned:0,spent:0,bonus:0});return out.get(k)};
  for(const c of data.completions){if((questFilter==="all"||c.id===questFilter)&&/^\d{4}-\d{2}-\d{2}$/.test(c.day)){const d=ensure(c.day);d.quests++;d.earned+=Number(c.points||0)}}
  for(const d of data.draws){const k=dateKeyFromTime(d.timestamp||d.date);if(k){const x=ensure(k);x.draws++;x.spent+=Number(d.price||0);if(d.caught===false)x.escaped++;else x.caught++}}
@@ -8103,7 +8126,7 @@ function dailySummaryMap(questFilter="all"){const out=new Map();
  for(const e of data.categoryEvents){const k=dateKeyFromTime(e.at);if(k)ensure(k).changes++}
  for(const b of data.dailyBonuses){if(b.day){const item=ensure(b.day);item.bonus=(item.bonus||0)+b.points;item.earned+=b.points;}}
  if(data.bonusAt){const k=dateKeyFromTime(data.bonusAt);if(k){ensure(k).bonus+=600;ensure(k).earned+=600}}
- return out;
+ a.summaries.set(questFilter,out);return out;
 }
 function fmtKey(k){const [y,m,d]=k.split('-');return `${y}년 ${Number(m)}월 ${Number(d)}일`}
 const CAL_PIKA_ICON = `<svg class="cal-pika" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M19 24 8 3 24 18 40 18 56 3 45 24" fill="#ffe25d" stroke="#5d4221" stroke-width="2.5" stroke-linejoin="round"/><path d="m8 3 5 11 7-4Z M56 3 44 10 51 14Z" fill="#684326"/><path d="M13 29c0-15 10-21 19-21s19 6 19 21v9c0 12-9 19-19 19S13 50 13 38Z" fill="#ffe35b" stroke="#5d4221" stroke-width="2.5"/><ellipse cx="22.8" cy="34" rx="3.2" ry="4.3" fill="#2b2925"/><ellipse cx="41.2" cy="34" rx="3.2" ry="4.3" fill="#2b2925"/><circle cx="18" cy="43" r="5.7" fill="#f2575a"/><circle cx="46" cy="43" r="5.7" fill="#f2575a"/><path d="M29 42q3 4 6 0M32 45q0 3-3 3" fill="none" stroke="#795038" stroke-width="2" stroke-linecap="round"/></svg>`;
@@ -9140,6 +9163,7 @@ function analyticsPrefs(){
  return data.analyticsView;
 }
 function analyticsCatalog(){
+ const analysis=prAnalysisIndex();if(analysis.catalog)return analysis.catalog;
  const map=new Map();
  for(const q of data.quests||[])if(q?.id)map.set(String(q.id),{id:String(q.id),title:q.title||'퀘스트',quest:q});
  for(const e of data.questEvents||[]){const id=String(e.id||e.after?.id||e.before?.id||'');if(!id)continue;
@@ -9148,7 +9172,7 @@ function analyticsCatalog(){
  for(const c of data.completions||[]){const id=String(c.id||'');if(!id)continue;
   if(!map.has(id))map.set(id,{id,title:c.title||'이전 퀘스트',quest:null});
  }
- return [...map.values()].sort((a,b)=>String(a.title).localeCompare(String(b.title),'ko'));
+ return (analysis.catalog=[...map.values()].sort((a,b)=>String(a.title).localeCompare(String(b.title),'ko')));
 }
 // v1.7.64: Calendar and Records share a compact, non-overlay quest navigator.
 // Normal mode lists only recurring daily/weekday quests. Past mode lists ALL
@@ -9211,41 +9235,72 @@ function setAnalyticsMetric(metric){if(!['completions','points','xp'].includes(m
 function analyticsDateShift(key,delta){const d=questDateObj(key);d.setDate(d.getDate()+delta);
  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
+// v1.7.120: render-scoped, account-isolated indexes. Rebuilt for each render,
+// so edits, import/merge, undo and account switching can never use stale facts.
+let prAnalysisFrame=null;
+function prAnalysisIndex(){
+ if(prAnalysisFrame)return prAnalysisFrame;
+ const completionsById=new Map(),completionsByDay=new Map(),firstCompletionById=new Map(),completionKeys=new Set();
+ for(const c of data.completions||[]){
+  if(!c?.id||!validNoteDay(c.day))continue;
+  const id=String(c.id),k=c.day;
+  if(!completionsById.has(id))completionsById.set(id,new Map());
+  const perId=completionsById.get(id);
+  if(!perId.has(k))perId.set(k,[]);perId.get(k).push(c);
+  if(!completionsByDay.has(k))completionsByDay.set(k,[]);completionsByDay.get(k).push(c);
+  if(!firstCompletionById.has(id)||firstCompletionById.get(id)>k)firstCompletionById.set(id,k);
+  completionKeys.add(id+'|'+k);
+ }
+ const eventsById=new Map(),createDatesById=new Map();
+ for(const e of data.questEvents||[]){if(!e?.id)continue;const id=String(e.id);
+  if(!eventsById.has(id))eventsById.set(id,[]);eventsById.get(id).push(e);
+  if(e.action==='create'){
+   const k=dateKeyFromTime(e.at);
+   if(k&&(!createDatesById.has(id)||createDatesById.get(id)>k))createDatesById.set(id,k);
+  }
+ }
+ for(const v of eventsById.values())v.sort((a,b)=>String(a.at||'').localeCompare(String(b.at||'')));
+ prAnalysisFrame={completionsById,completionsByDay,firstCompletionById,completionKeys,eventsById,createDatesById,
+  questById:new Map((data.quests||[]).map(q=>[String(q.id),q])),starts:new Map(),series:new Map(),due:new Map(),summaries:new Map(),catalog:null,
+  momentDays:new Set((data.momentLogs||[]).map(x=>x.day).filter(validNoteDay)),
+  lifeDays:new Set((data.lifeEventLogs||[]).map(x=>x.day).filter(validNoteDay)),
+  noteDays:new Set(Object.entries(data.dailyNotes||{}).filter(([,v])=>typeof v==='string'?!!v.trim():!!v?.text?.trim()).map(([k])=>k))};
+ return prAnalysisFrame;
+}
 function questHistoryStart(id){
- const ev=(data.questEvents||[]).filter(e=>e.id===id).sort((a,b)=>String(a.at).localeCompare(String(b.at)));
- const created=ev.find(e=>e.action==='create');if(created){const k=dateKeyFromTime(created.at);if(k)return k}
- const performed=(data.completions||[]).filter(c=>c.id===id).map(c=>c.day).filter(validNoteDay).sort();
- // Old backups don't store creation date for every quest. Never invent missed scheduled days.
- if(performed.length)return performed[0];
- const firstEvent=ev.map(e=>dateKeyFromTime(e.at)).filter(validNoteDay).sort()[0];
- return firstEvent||day();
+ const a=prAnalysisIndex(),sid=String(id);
+ if(a.starts.has(sid))return a.starts.get(sid);
+ const ev=a.eventsById.get(sid)||[],created=a.createDatesById.get(sid);
+ const first=created||a.firstCompletionById.get(sid)||(ev.map(e=>dateKeyFromTime(e.at)).filter(validNoteDay).sort()[0])||day();
+ a.starts.set(sid,first);return first;
 }
 function questHistorySnapshot(id,key){
- if(!validNoteDay(key))return null;
- const events=(data.questEvents||[]).filter(e=>e.id===id).sort((a,b)=>String(a.at).localeCompare(String(b.at)));
- const current=data.quests.find(q=>q.id===id);
- if(key<questHistoryStart(id))return null;
+ if(!validNoteDay(key)||key<questHistoryStart(id))return null;
+ const a=prAnalysisIndex(),sid=String(id),events=a.eventsById.get(sid)||[],current=a.questById.get(sid);
  if(!events.length)return current||null;
  let snapshot=events[0]?.before||current||events[0]?.after||null;
- for(const e of events){const k=dateKeyFromTime(e.at);if(k&&k<=key){snapshot=e.action==='delete'?null:e.after||snapshot}}
+ for(const e of events){const k=dateKeyFromTime(e.at);if(k&&k<=key)snapshot=e.action==='delete'?null:e.after||snapshot;
+  if(k&&k>key)break;
+ }
  return snapshot;
 }
 function questHistoryDue(id,key){
  if(key>day())return false;
- const snapshot=questHistorySnapshot(id,key);
- if(!snapshot)return false;
- const type=questType(snapshot);
- return type==='daily'||(type==='weekly'&&questWeekdays(snapshot).includes(questDateObj(key).getDay()));
+ const a=prAnalysisIndex(),cacheKey=String(id)+'|'+key;
+ if(a.due.has(cacheKey))return a.due.get(cacheKey);
+ const snapshot=questHistorySnapshot(id,key),type=snapshot?questType(snapshot):'';
+ const result=type==='daily'||(type==='weekly'&&questWeekdays(snapshot).includes(questDateObj(key).getDay()));
+ a.due.set(cacheKey,result);return result;
 }
-function questHistorySeries(id,n){const end=day(),start=analyticsDateShift(end,-n+1),rows=[];
- const completedDays=new Map();for(const c of data.completions||[])if(c.id===id&&validNoteDay(c.day)){
-  const old=completedDays.get(c.day)||[];old.push(c);completedDays.set(c.day,old);
- }
+function questHistorySeries(id,n){
+ const a=prAnalysisIndex(),sid=String(id),key=sid+'|'+n;
+ if(a.series.has(key))return a.series.get(key);
+ const end=day(),start=analyticsDateShift(end,-n+1),rows=[],completedDays=a.completionsById.get(sid)||new Map();
  for(let d=start;d<=end;d=analyticsDateShift(d,1)){
-  const events=completedDays.get(d)||[],due=questHistoryDue(id,d);
-  rows.push({day:d,due,events,count:events.length,points:events.reduce((a,c)=>a+(Number(c.points)||0),0),xp:events.reduce((a,c)=>a+(Number(c.xpEarned)||0),0)});
+  const events=completedDays.get(d)||[],due=questHistoryDue(sid,d);
+  rows.push({day:d,due,events,count:events.length,points:events.reduce((x,c)=>x+(Number(c.points)||0),0),xp:events.reduce((x,c)=>x+(Number(c.xpEarned)||0),0)});
  }
- return rows;
+ a.series.set(key,rows);return rows;
 }
 function questStreakHistory(id){
  const start=questHistoryStart(id),end=day();let max=0,count=0,latest=0;
@@ -9307,7 +9362,8 @@ function prChartSelect(id,idx){const d=prChartDetails[id]?.[idx],el=document.get
  el.textContent=d;const svg=el.closest('.pr-chart')?.querySelector('.pr-chart-svg');
  svg?.querySelectorAll('.pr-chart-hit').forEach((n,i)=>n.classList.toggle('is-selected',i===idx));
 }
-function prDateLabel(day,monthly){if(!day)return '—';return monthly?`${Number(day.slice(0,4))}년 ${Number(day.slice(5,7))}월`:`${Number(day.slice(5,7))}/${Number(day.slice(8,10))}`}
+function prDateLabel(day,monthly){if(!day)return '—';return `${Number(day.slice(5,7))}/${String(monthly?1:Number(day.slice(8,10))).padStart(2,'0')}`;}
+function prChartTickIndices(n,width){if(n<=0)return new Set();const limit=Math.max(2,Math.min(6,Math.floor(width/52)));if(n<=limit)return new Set(Array.from({length:n},(_,i)=>i));const result=new Set([0,n-1]);for(let i=1;i<limit-1;i++)result.add(Math.round(i*(n-1)/(limit-1)));return result;}
 function prChartBucketKey(day,mode){if(mode==='month')return day.slice(0,7);if(mode==='week'){const d=questDateObj(day);const delta=(d.getDay()+6)%7;d.setDate(d.getDate()-delta);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}return day;}
 function prChartGroup(values,group,aggregate){const out=[];for(const r of values){const key=prChartBucketKey(r.day,group);let b=out[out.length-1];
  if(!b||b.key!==key){b={key,first:r.day,last:r.day,known:0,missing:0,notScheduled:0,value:null,count:0};out.push(b)}b.last=r.day;
@@ -9328,9 +9384,9 @@ function prChartPanel(id,title,rows,unit,defaultSpan,aggregate='sum',extra=''){
  const y=prChartNice(largest,unit==='회'||unit==='일'),left=56,right=376,top=27,bottom=190,width=right-left,height=bottom-top;
  const xFor=i=>left+(i+.5)*width/Math.max(1,bins.length),yFor=v=>bottom-Math.max(0,v)/y.top*height;
  const details=bins.map(b=>`${b.first===b.last?b.first:b.first+' ~ '+b.last} · ${b.value===null?(b.notScheduled&&!b.missing?'예정 없음':'기록 없음'):prChartNum(b.value)+(unit==='단위 미지정'?' (단위 미지정)':unit)}${b.value===0?' (실제 0)':''}${b.missing&&b.value!==null?' · 수치 미기록 '+b.missing+'일':''}`);prChartDetails[id]=details;
- const tickEvery=Math.max(1,Math.ceil(bins.length/5));
+ const tickIndices=prChartTickIndices(bins.length,width);
  const grid=Array.from({length:5},(_,i)=>{const val=i*y.step,yy=yFor(val);return `<g>${state.grid!=='off'?`<line class="pr-chart-grid" x1="${left}" x2="${right}" y1="${yy}" y2="${yy}"/>`:''}<text class="pr-chart-axis" x="${left-8}" y="${yy+4}" text-anchor="end">${prChartNum(val)}</text></g>`}).join('');
- const xt=bins.map((b,i)=>((i%tickEvery===0&&i<bins.length-1-Math.max(1,Math.ceil(tickEvery/2)))||i===bins.length-1)?`<g>${state.grid==='both'?`<line class="pr-chart-grid" x1="${xFor(i)}" y1="${top}" x2="${xFor(i)}" y2="${bottom}"/>`:''}<text class="pr-chart-tick" x="${xFor(i)}" y="${bottom+19}" text-anchor="middle">${prDateLabel(b.last,group==='month')}</text></g>`:'').join('');
+ const xt=bins.map((b,i)=>tickIndices.has(i)?`<g>${state.grid==='both'?`<line class="pr-chart-grid" x1="${xFor(i)}" y1="${top}" x2="${xFor(i)}" y2="${bottom}"/>`:''}<text class="pr-chart-tick" x="${xFor(i)}" y="${bottom+19}" text-anchor="middle">${prDateLabel(b.last,group==='month')}</text></g>`:'').join('');
  const bw=Math.max(2,Math.min(27,width/Math.max(1,bins.length)*.67));
  const bars=bins.map((b,i)=>b.value===null?`<rect class="pr-chart-null" x="${xFor(i)-bw/2}" y="${bottom-3}" width="${Math.max(3,Math.min(10,bw))}" height="3" rx="1"/>`:b.value===0?`<circle cx="${xFor(i)}" cy="${bottom}" r="3.1" fill="none" stroke="var(--pr-series)" stroke-width="2"/>`:`<rect class="pr-chart-bar" x="${xFor(i)-bw/2}" y="${yFor(b.value)}" width="${bw}" height="${Math.max(1,bottom-yFor(b.value))}" rx="2"/>`).join('');
  let lines='';let segment=[];const segments=[];for(let i=0;i<bins.length;i++){const b=bins[i];if(b.value===null){if(segment.length)segments.push(segment);segment=[]}else segment.push({x:xFor(i),y:yFor(b.value)})}if(segment.length)segments.push(segment);
@@ -9408,9 +9464,9 @@ function prAchievementMultiChart(allRows,units){
  const maxValue=Math.max(0,...dataByUnit.flatMap(d=>d.bins.map(b=>b.value??0)));
  const yScale=prChartNice(maxValue,false);
  const xFor=i=>left+(i+.5)*width/Math.max(1,base.length),yFor=n=>bottom-Math.max(0,n)/yScale.top*height;
- const tickEvery=Math.max(1,Math.ceil(base.length/5));
+ const tickIndices=prChartTickIndices(base.length,width);
  const grid=Array.from({length:5},(_,i)=>{const t=i*yScale.step,y=yFor(t);return `<g>${state.grid!=='off'?`<line class="pr-chart-grid" x1="${left}" x2="${right}" y1="${y}" y2="${y}"/>`:''}<text class="pr-chart-axis" x="${left-8}" y="${y+4}" text-anchor="end">${prChartNum(t)}</text></g>`}).join('');
- const ticks=base.map((b,i)=>((i%tickEvery===0&&i<base.length-1-Math.max(1,Math.ceil(tickEvery/2)))||i===base.length-1)?`<g>${state.grid==='both'?`<line class="pr-chart-grid" x1="${xFor(i)}" x2="${xFor(i)}" y1="${top}" y2="${bottom}"/>`:''}<text class="pr-chart-tick" x="${xFor(i)}" y="${bottom+19}" text-anchor="middle">${prDateLabel(b.last,group==='month')}</text></g>`:'').join('');
+ const ticks=base.map((b,i)=>tickIndices.has(i)?`<g>${state.grid==='both'?`<line class="pr-chart-grid" x1="${xFor(i)}" x2="${xFor(i)}" y1="${top}" y2="${bottom}"/>`:''}<text class="pr-chart-tick" x="${xFor(i)}" y="${bottom+19}" text-anchor="middle">${prDateLabel(b.last,group==='month')}</text></g>`:'').join('');
  let art='';
  for(let n=0;n<dataByUnit.length;n++){
   const {bins}=dataByUnit[n],color=colors[n];
@@ -9477,7 +9533,7 @@ function growthWeeklyBrief(){
  if(delta!==null){insight.push(delta>0?`이전 7일보다 달성률이 ${delta}%p 올랐어요.`:delta<0?`이전 7일보다 달성률이 ${Math.abs(delta)}%p 낮아졌어요.`:'지난 7일과 달성률이 같아요.')}else insight.push('비교 가능한 예정 퀘스트 기록이 쌓이면 지난주와 비교할 수 있어요.');
  if(leading&&leading.rate>=70)insight.push(`잘 유지한 퀘스트: ${names.get(leading.id)||'퀘스트'} (${leading.done}/${leading.planned}).`);
  if(trailing&&trailing.rate<70)insight.push(`점검할 퀘스트: ${names.get(trailing.id)||'퀘스트'} (${trailing.done}/${trailing.planned}).`);
- return `<section class="section growth-weekly" aria-label="주간 성장 브리핑"><div class="section-title"><h2>📊 주간 성장 브리핑</h2></div><p class="growth-help">어제까지 끝난 7일과 그 이전 7일 비교 · 반복 퀘스트만 집계 · 오늘은 양쪽에서 제외</p>
+ return `<section id="recordWeeklyBrief" class="section growth-weekly" aria-label="주간 성장 브리핑"><div class="section-title"><h2>📊 주간 성장 브리핑</h2></div><p class="growth-help">어제까지 끝난 7일과 그 이전 7일 비교 · 반복 퀘스트만 집계 · 오늘은 양쪽에서 제외</p>
  <div class="growth-weekly-cards"><div class="growth-stat"><small>최근 7일 달성률 (어제까지)</small><strong>${growthFormatPercent(now.rate)}</strong><span>예정 ${now.planned}회 중 완료 ${now.done}회</span></div><div class="growth-stat"><small>이전 7일 대비</small><strong class="${delta===null?'':delta>0?'trend-up':delta<0?'trend-down':''}">${delta===null?'—':(delta>0?'+':'')+delta+'%p'}</strong><span>${growthFormatPercent(prior.rate)} → ${growthFormatPercent(now.rate)}</span></div></div>
  <div class="growth-insight"><strong>💡 이번 주의 기록</strong><p>${insight.map(esc).join(' ')}</p></div></section>`;
 }
@@ -9486,7 +9542,7 @@ function growthRhythm(rows,span){
  let buckets=[];
  if(span>=365){const m=new Map();for(const r of days){const k=r.day.slice(0,7);if(!m.has(k))m.set(k,[]);m.get(k).push(r)}buckets=[...m].map(([k,group])=>({label:k.slice(2).replace('-','/'),title:k,rows:group}));}
  else if(span>=90){for(let i=0;i<days.length;i+=7){const group=days.slice(i,i+7);buckets.push({label:group[0].day.slice(5).replace('-','/'),title:group[0].day+' ~ '+group[group.length-1].day,rows:group})}}
- else buckets=days.map(r=>({label:r.day.slice(8),title:r.day,rows:[r]}));
+ else buckets=days.map(r=>({label:r.day.slice(5).replace('-','/'),title:r.day,rows:[r]}));
  const tiles=buckets.map(b=>{const due=b.rows.filter(r=>r.due&&(r.day!==today||r.count>0)),success=due.filter(r=>r.count>0).length,anyFuture=b.rows.some(r=>r.due&&r.day===today&&r.count===0),undue=due.length===0;
  const state=undue?(anyFuture?'pending':'off'):success===due.length?'done':success===0?'miss':'partial';
  const title=`${b.title} · ${due.length?`예정 ${due.length}, 완료 ${success}`:anyFuture?'오늘 진행 중':'예정 없음'}`;
@@ -9692,7 +9748,7 @@ function renderQuestFullHistory(id){
 
 function renderQuestGrowthReport(){
  const selected=analyticsSelected('stats'),av=analyticsPrefs(),cat=analyticsCatalog();
- const head=`<section class="section quest-analytics growth-quest-report"><div class="section-title growth-quest-title"><h2>🎯 퀘스트별 성장 분석</h2>${growthPeriodButtons()}</div>${analyticsQuestSelect('stats')}`;
+ const head=`<section id="recordQuestGrowth" class="section quest-analytics growth-quest-report"><div class="section-title growth-quest-title"><h2>🎯 퀘스트별 성장 분석</h2>${growthPeriodButtons()}</div>${analyticsQuestSelect('stats')}`;
  if(selected==='all')return `${head}<div class="smart-report-head" style="margin:10px 0"><span>구조화된 독서 목록을 계정 전체에서 관리</span><button type="button" class="tinybtn" onclick="openBookLibrary()">📚 전체 독서 목록</button></div>${growthQuestOverview()}</section>`;
  const item=cat.find(q=>q.id===selected),history=questHistorySeries(selected,365),rows=history.slice(-av.range),score=growthScheduledScore(rows);
  const prevEnd=analyticsDateShift(day(),-av.range),prevStart=analyticsDateShift(prevEnd,-av.range+1),prevRows=questHistorySeries(selected,Math.min(730,av.range*2)).filter(r=>r.day>=prevStart&&r.day<=prevEnd),previous=growthScheduledScore(prevRows);
@@ -9787,7 +9843,7 @@ function renderQuestRateCalendar(){
 function growthCalendarPeriodRate(first,last,selected){
  const cutoff=analyticsDateShift(day(),-1);if(first>cutoff)return {done:0,due:0,rate:null};
  const catalog=analyticsCatalog().filter(q=>selected==='all'||q.id===selected).filter(q=>!q.quest||['daily','weekly'].includes(questType(q.quest)));
- const completions=new Set((data.completions||[]).map(c=>String(c.id)+'|'+c.day));
+ const completions=prAnalysisIndex().completionKeys;
  let done=0,due=0;
  for(const q of catalog)for(let d=first;d<=last&&d<=cutoff;d=analyticsDateShift(d,1)){
   if(!questHistoryDue(q.id,d))continue;
@@ -9802,12 +9858,12 @@ function renderCalendar(){const summaries=dailySummaryMap(analyticsSelected("cal
  const monthPerformance=growthCalendarPeriodRate(`${calendarMonth}-01`,`${calendarMonth}-${String(last).padStart(2,'0')}`,analyticsSelected('calendar'));
  return `${pageHeader('습관 <em>캘린더</em>','전체 날짜의 퀘스트·포인트·포획 기록을 한눈에')}
  ${sharedProgressSummary('calendar')}
- ${analyticsQuestSelect('calendar')}<p class="qa-calendar-hint">${analyticsSelected('calendar')==='all'?'전체 퀘스트 완료 횟수를 표시합니다.':'선택한 퀘스트의 수행 날짜만 색상으로 표시합니다. 뽑기와 노트 기록은 계속 볼 수 있어요.'}</p>
+ <div class="calendar-analysis-context"><strong>달력에서 볼 퀘스트</strong>${analyticsQuestSelect('calendar')}</div><p class="qa-calendar-hint">${analyticsSelected('calendar')==='all'?'전체 퀘스트 완료 횟수를 표시합니다.':'선택한 퀘스트의 수행 날짜만 색상으로 표시합니다. 뽑기와 노트 기록은 계속 볼 수 있어요.'}</p>
  <div class="calendar-toolbar"><div class="view-switch"><button class="${calendarMode==='month'?'active':''}" onclick="setCalendarMode('month')">월간 달력</button><button class="${calendarMode==='year'?'active':''}" onclick="setCalendarMode('year')">연간 요약</button></div><button class="cal-today" onclick="jumpToday()">오늘로</button></div>
  <div class="calendar-shell"><div class="cal-titlebar"><button aria-label="이전 ${calendarMode==='year'?'연도':'달'}" onclick="${calendarMode==='year'?'yearShift':'monthShift'}(-1)">‹</button><h2>${calendarMode==='year'?`${year}년`:`${y}년 ${m}월`}</h2><button aria-label="다음 ${calendarMode==='year'?'연도':'달'}" onclick="${calendarMode==='year'?'yearShift':'monthShift'}(1)">›</button></div>
- ${calendarMode==='month'?`<div class="calendar-stats calendar-stats-compact"><span>✅ 완료 <b>${monthTasks}회</b></span><span>🔥 활동 <b>${active}일</b></span><span>🎯 반복 달성 <b>${monthPerformance.rate===null?'—':monthPerformance.rate+'%'}</b></span></div><div class="calendar-weekdays">${['일','월','화','수','목','금','토'].map(t=>`<span>${t}</span>`).join('')}</div><div class="calendar-grid">${dates.map(k=>{const v=summaries.get(k)||{quests:0,draws:0,changes:0};const rate=scheduledCountForDate(k,analyticsSelected('calendar')),intensity=rate.level,booking=reservedForDate(k),outside=!k.startsWith(calendarMonth);return `<button aria-label="${fmtKey(k)} 퀘스트 ${v.quests}회, 달성률 ${rate.rate}%, 예약 ${booking.length}개, 뽑기 ${v.draws}회" class="cal-day heat-${intensity} ${bookingCalendarClass(k,booking)} ${outside?'other-month':''} ${k===today?'today':''} ${k===selectedDate?'selected':''}" onclick="selectCalendarDate('${k}')"><span class="cal-number">${Number(k.slice(-2))}</span>${rate.completed?`<b class="cal-quests">✓${rate.completed}/${rate.planned}</b>`:'<span class="cal-empty-dot"></span>'}<span class="cal-icons">${booking.length?`<span class="calendar-booking-marker" title="예약 ${booking.length}건">📅${booking.length>1?booking.length:''}</span>`:''}${v.draws?CAL_PIKA_ICON:''}${dailyNote(k)?'📝':''}${(data.momentLogs||[]).some(x=>x.day===k)?'<span class="time-log-month-icon" title="순간 기록 있음">💭</span>':''}${(data.lifeEventLogs||[]).some(x=>x.day===k)?'<span class="time-log-month-icon" title="생활 기록 있음">🕒</span>':''}${v.changes?'✎':''}</span></button>`}).join('')}</div><div class="heat-legend" aria-label="퀘스트 달성률 1부터 100퍼센트까지 5단계"><span>달성률</span>${legend.map((v,i)=>`<span class="leg-item" title="${i===0?'1~20':(i*20+1)+'~'+((i+1)*20)}%"><i class="heat-${i+1}"></i>${v}${i===4?'%':''}</span>`).join('')}</div><div class="calendar-explainer">초록색 5단계는 예정 퀘스트 대비 당일 완료율입니다. 📅 마크는 예약된 날짜이며 시작~종료일에 표시합니다. ${CAL_PIKA_ICON} 포켓몬 뽑기 · 📝 데일리 노트 · 💭 순간 기록 · 🕒 라이프 이벤트 · ✎ 퀘스트 변경. 날짜를 누르면 노트를 작성하고 활동 이력을 볼 수 있습니다.</div>`:
+ ${calendarMode==='month'?`<div class="calendar-stats calendar-stats-compact"><span>✅ 완료 <b>${monthTasks}회</b></span><span>🔥 활동 <b>${active}일</b></span><span>🎯 반복 달성 <b>${monthPerformance.rate===null?'—':monthPerformance.rate+'%'}</b></span></div><div class="calendar-weekdays">${['일','월','화','수','목','금','토'].map(t=>`<span>${t}</span>`).join('')}</div><div class="calendar-grid">${dates.map(k=>{const v=summaries.get(k)||{quests:0,draws:0,changes:0};const rate=scheduledCountForDate(k,analyticsSelected('calendar')),intensity=rate.level,booking=reservedForDate(k),outside=!k.startsWith(calendarMonth);return `<button aria-label="${fmtKey(k)} 퀘스트 ${v.quests}회, 달성률 ${rate.rate}%, 예약 ${booking.length}개, 뽑기 ${v.draws}회" class="cal-day heat-${intensity} ${bookingCalendarClass(k,booking)} ${outside?'other-month':''} ${k===today?'today':''} ${k===selectedDate?'selected':''}" onclick="selectCalendarDate('${k}')"><span class="cal-number">${Number(k.slice(-2))}</span>${rate.completed?`<b class="cal-quests">✓${rate.completed}/${rate.planned}</b>`:'<span class="cal-empty-dot"></span>'}<span class="cal-icons">${booking.length?`<span class="calendar-booking-marker" title="예약 ${booking.length}건">📅${booking.length>1?booking.length:''}</span>`:''}${v.draws?CAL_PIKA_ICON:''}${prAnalysisIndex().noteDays.has(k)?'📝':''}${prAnalysisIndex().momentDays.has(k)?'<span class="time-log-month-icon" title="순간 기록 있음">💭</span>':''}${prAnalysisIndex().lifeDays.has(k)?'<span class="time-log-month-icon" title="생활 기록 있음">🕒</span>':''}${v.changes?'✎':''}</span></button>`}).join('')}</div><div class="heat-legend" aria-label="퀘스트 달성률 1부터 100퍼센트까지 5단계"><span>달성률</span>${legend.map((v,i)=>`<span class="leg-item" title="${i===0?'1~20':(i*20+1)+'~'+((i+1)*20)}%"><i class="heat-${i+1}"></i>${v}${i===4?'%':''}</span>`).join('')}</div><div class="calendar-explainer">초록색 5단계는 예정 퀘스트 대비 당일 완료율입니다. 📅 마크는 예약된 날짜이며 시작~종료일에 표시합니다. ${CAL_PIKA_ICON} 포켓몬 뽑기 · 📝 데일리 노트 · 💭 순간 기록 · 🕒 라이프 이벤트 · ✎ 퀘스트 변경. 날짜를 누르면 노트를 작성하고 활동 이력을 볼 수 있습니다.</div>`:
  `<div class="year-grid">${Array.from({length:12},(_,i)=>{const key=`${year}-${String(i+1).padStart(2,'0')}`,lastOfMonth=new Date(year,i+1,0).getDate(),performance=growthCalendarPeriodRate(`${key}-01`,`${key}-${String(lastOfMonth).padStart(2,'0')}`,analyticsSelected('calendar')),rate=performance.rate;return `<button onclick="calendarMonth='${key}';selectedDate='${key}-01';calendarMode='month';render()" class="year-month"><strong>${i+1}월</strong><div class="year-month-score">${rate===null?'—':rate+'%'}</div><div class="year-month-progress" aria-hidden="true"><i style="width:${rate??0}%"></i></div><small>${performance.done}/${performance.due}회 · 반복 예정 기준${rate===null?' · 자료 없음':''}</small></button>`}).join('')}</div>`}</div>
- ${calendarMode==='month'?renderDayDetails(selectedDate):'<p class="calendar-explainer">월을 선택하면 날짜별 완료 이력·포켓몬 포획·변경 내역을 확인할 수 있습니다.</p>'}
+ ${calendarMode==='month'?`<div id="calendarDayAnalysis" class="calendar-selected-anchor"><div class="calendar-selected-label"><strong>선택한 날짜의 상세 기록</strong><span>${fmtKey(selectedDate)}</span></div>${renderDayDetails(selectedDate)}</div>`:'<p class="calendar-explainer">월을 선택하면 날짜별 완료 이력·포켓몬 포획·변경 내역을 확인할 수 있습니다.</p>'}
 `;
 }
 function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 방식과 백업·기기 이전 설정')}
@@ -9823,7 +9879,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.119</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.120</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -10936,6 +10992,7 @@ function renderDex(){
 }
 function renderStats(){
  return `${pageHeader('성장 <em>기록</em>','달성 추세와 개선점을 분석해요 · 날짜별 활동은 달력에서')}${sharedProgressSummary('stats')}
+ <nav class="record-analysis-nav" aria-label="기록 분석 바로가기"><span>분석 바로가기</span><div><button type="button" onclick="document.getElementById('recordWeeklyBrief')?.scrollIntoView({behavior:'smooth',block:'start'})">주간 요약</button><button type="button" onclick="document.getElementById('lifeRhythmAnalysis')?.scrollIntoView({behavior:'smooth',block:'start'})">생활 리듬</button><button type="button" onclick="document.getElementById('sleepWeekChecker')?.scrollIntoView({behavior:'smooth',block:'start'})">수면</button><button type="button" onclick="document.getElementById('recordQuestGrowth')?.scrollIntoView({behavior:'smooth',block:'start'})">퀘스트 분석</button></div></nav>
  <div class="growth-record-container">
  ${growthWeeklyBrief()}${renderLifeRhythmSummary()}${renderSleepWeekChecker(day())}${renderQuestGrowthReport()}
  <section class="growth-archive-shortcut"><div><strong>📝 노트·순간 기록 모아보기</strong><small>날짜별 회고 · 메모 통합 검색</small></div><button type="button" class="tinybtn" onclick="openDailyNotes()">모아보기 ›</button></section>
@@ -11300,7 +11357,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.119</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.120</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -11377,6 +11434,7 @@ window.addEventListener('resize',scheduleDailyQuoteFit,{passive:true});
 let timeLogResizeFrame=0;window.addEventListener('resize',()=>{cancelAnimationFrame(timeLogResizeFrame);timeLogResizeFrame=requestAnimationFrame(()=>{layoutTimeLogMarkers();layoutTimeLogZoom()})},{passive:true});
 if(document.fonts?.ready)document.fonts.ready.then(scheduleDailyQuoteFit).catch(()=>{});
 function render(){
+ prAnalysisFrame=null;
  if(startUnlocked&&currentUserId){if(!data.honorMedals?.initialized)syncHonorMedals(false);}
  if(!startUnlocked||!currentUserId){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}
  document.getElementById('app').classList.remove('locked');
