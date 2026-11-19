@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.106 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.107 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -4263,7 +4263,7 @@ html[data-theme="light"] .sleep-mini-bottom{color:#446277}
 html[data-theme="light"] .sleep-mini-caption{color:#557888}html[data-theme="light"] .sleep-mini-help{color:#507283}
 
 
-/* v1.7.106 — unified plot height and consistent 7/30/90-day x-axis density */
+/* v1.7.107 — unified plot height and consistent 7/30/90-day x-axis density */
 .lr-chart-wrap .lr-time-chart{display:block;width:100%;max-width:480px;height:auto;aspect-ratio:380/234;margin:0 auto;overflow:hidden;color:#b9cad9}
 .lr-chart-wrap .lr-count-chart{max-width:480px}
 .lr-shared-goal{display:block;margin-top:4px;font-size:10px;font-weight:500;color:#aad6d8}
@@ -4299,7 +4299,7 @@ html[data-theme='light'] .lr-analysis{background:linear-gradient(130deg,#f5fcff,
 @media(prefers-reduced-motion:reduce){.lr-analysis *{transition:none!important;animation:none!important}}
 
 
-/* v1.7.106 — Today-only compact status + actionable recommendation layout. */
+/* v1.7.107 — Today-only compact status + actionable recommendation layout. */
 .home-quest-section .home-time-log-inline,.home-time-log-inline{
  display:inline-flex;align-items:center;justify-content:center;gap:4px;
  min-height:36px;max-width:56%;padding:7px 11px;border-radius:999px;
@@ -4360,6 +4360,21 @@ html[data-theme="light"] .home-quest-section .quest-reco-card.combined{backgroun
  .home-quest-section .quest-reco-card{flex:1 1 0;min-width:0;width:0;max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){.home-quest-section .quest-reco-focus{transition:none}}
+
+/* v1.7.107 · smart templates */
+.smart-editor{margin:14px 0;padding:12px;border:1px solid #a7c4e68a;border-radius:15px;background:rgba(79,135,193,.07);display:grid;gap:11px}
+.smart-template-top,.smart-entry-head,.smart-report-head,.smart-inline-tools,.smart-filter-row{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap}
+.smart-entry-list{display:grid;gap:10px}.smart-entry{border:1px solid #aac3dc80;border-radius:12px;padding:11px;display:grid;gap:9px;background:rgba(123,161,199,.065)}
+.smart-entry-head strong{font-size:.91rem}.smart-entry .smart-field{display:flex;flex-direction:column;min-width:0;gap:4px}.smart-entry .smart-field small{font-size:.74rem;opacity:.78}
+.smart-entry .qentry{box-sizing:border-box;min-width:0;width:100%;margin:0}.smart-fields-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.smart-add-entry{border:1px dashed #64a9bd;background:rgba(47,170,175,.12);padding:11px;border-radius:10px;color:inherit;font-weight:700;width:100%;cursor:pointer}
+.smart-set-list{display:grid;gap:5px}.smart-set{display:grid;grid-template-columns:45px minmax(65px,1fr) auto 30px;gap:5px;align-items:center}.smart-set input{padding:7px!important}.smart-set span{font-size:.75rem}.smart-set-at{font-size:.64rem;opacity:.72;white-space:nowrap}.smart-small-remove{background:transparent;border:0;color:inherit;font-size:1.3rem;cursor:pointer}
+.smart-set:has([data-set-field="weight"]){grid-template-columns:42px minmax(55px,1fr) minmax(55px,1fr) auto 22px}
+.smart-totals{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:5px;padding:11px;border-radius:10px;background:rgba(27,151,133,.14)}.smart-totals strong{font-size:1.23rem;color:#159c82}.smart-totals small{width:100%;text-align:right}
+.smart-library-modal{max-height:91dvh;overflow-y:auto}.smart-book-list,.smart-report-books{display:grid;gap:8px;margin:10px 0}.smart-book-line,.smart-report-book{padding:11px;border:1px solid #a0b6d080;border-radius:11px;display:grid;gap:6px}.smart-book-line>div:first-child,.smart-report-book{min-width:0}.smart-book-line strong,.smart-report-book strong{display:block;overflow-wrap:anywhere}.smart-book-line small,.smart-report-book small{display:block;font-size:.78rem;opacity:.8}.smart-book-form{margin-top:12px}.smart-finished{display:flex;align-items:center;gap:7px}.smart-progress{height:7px;overflow:hidden;border-radius:10px;background:#9eb2c550}.smart-progress span{display:block;height:100%;background:#15ae94;border-radius:inherit}
+.smart-analysis{border:1px solid #8baebe80;border-radius:14px;padding:14px;margin:15px 0;display:grid;gap:10px}.smart-analysis h4{margin:6px 0 0;font-size:.93rem}.smart-report-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.smart-report-stats>div{display:grid;gap:4px;padding:10px;border-radius:10px;background:rgba(103,155,186,.10)}.smart-report-stats small,.smart-report-stats span{opacity:.73;font-size:.74rem}.smart-report-stats strong{font-size:1.13rem}
+.smart-bars{height:115px;display:flex;gap:3px;align-items:end;padding:6px 2px}.smart-bars>div{flex:1;min-width:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px}.smart-bars span{width:65%;min-height:2px;background:#18b99e;border-radius:4px 4px 0 0}.smart-bars small{font-size:.57rem;white-space:nowrap}.smart-item-breakdown>div,.smart-set-history>div{display:flex;align-items:center;justify-content:space-between;gap:6px;border-bottom:1px solid #a1abc449;padding:8px 0}.smart-set-history small{font-size:.72rem;opacity:.75}.smart-set-history{max-height:300px;overflow:auto}.smart-estimate{border-top:1px solid #a1abc449;padding-top:10px}.smart-estimate>div{padding:4px 0;font-size:.82rem}.smart-estimate b{color:#a07816}.smart-history-summary{padding:8px;border-radius:9px;background:rgba(78,155,182,.08);font-size:.83rem}.smart-history-summary>div{margin:5px 0}.smart-filter-row{justify-content:flex-start}
+@media(max-width:420px){.smart-fields-3{grid-template-columns:repeat(2,minmax(0,1fr))}.smart-set{grid-template-columns:40px minmax(55px,1fr) auto 20px}.smart-set:has([data-set-field="weight"]){grid-template-columns:38px minmax(45px,1fr) minmax(45px,1fr) auto 20px}.smart-set-at{font-size:.57rem}}
 </style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
@@ -4548,7 +4563,7 @@ const LIFE_DEFAULTS=[
  {id:'exercise',name:'운동',emoji:'💪',color:'#ed9d5b',mode:'repeat',enabled:true,suggest:''},
  {id:'sleep',name:'취침',emoji:'🌙',color:'#9b80d8',mode:'once',enabled:true,suggest:'23:00'}
 ];
-const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},momentLogs:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{}},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
+const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},momentLogs:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{}},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},recordLibrary:{books:[]},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
 let settings={autoSave:true,theme:'light',fontSize:'large',swipeTabs:true};
 try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark'].includes(p?.theme))settings.theme=p.theme;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
@@ -5147,6 +5162,315 @@ setInterval(updateAppHeaderClock,1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){updateAppHeaderClock();weatherAutoUpdate();}});
 
 
+// v1.7.107 · Smart Template Library and detailed analytics
+// v1.7.107 Smart Record Templates — backward-compatible structured entries.
+const SMART_TEMPLATES={
+ basic:{label:'기본 수치·메모',unit:''},
+ reading:{label:'📚 독서 · 책별 구간',unit:'쪽'},
+ reps:{label:'💪 반복 운동 · 종목/세트',unit:'회'},
+ strength:{label:'🏋️ 근력 운동 · 무게/세트',unit:'회'},
+ study:{label:'📝 학습 · 과목별 정답',unit:'문제'},
+ time:{label:'⏱️ 활동 시간 · 구간별',unit:'분'},
+ distance:{label:'🏃 거리 · 활동별',unit:'km'},
+ quantity:{label:'🔢 수량 · 항목별',unit:'개'}
+};
+const SMART_KIND_LABEL={reading:'책',reps:'운동',strength:'운동',study:'과목',time:'활동',distance:'활동',quantity:'항목'};
+function smartTemplateId(q){return SMART_TEMPLATES[q?.recordTemplateId]?q.recordTemplateId:'basic'}
+function smartIso(value){const str=String(value||'');return str&&Number.isFinite(Date.parse(str))?new Date(str).toISOString().slice(0,40):''}
+function smartName(v,max=100){return String(v||'').trim().slice(0,max)}
+function smartNumber(v,max=999999){if(v===''||v===null||v===undefined)return null;const n=Number(v);return Number.isFinite(n)&&n>=0&&n<=max?Math.round(n*100)/100:null}
+function smartInteger(v,max=999999){const n=smartNumber(v,max);return n!==null&&Number.isInteger(n)?n:null}
+function smartCleanBookCatalog(raw){
+ const out=[],ids=new Set(),titles=new Set();
+ for(const b of (Array.isArray(raw)?raw:[]).slice(0,3000)){
+  if(!b||typeof b!=='object')continue;
+  const title=smartName(b.title,160),id=smartName(b.id,100)||('book_'+out.length),key=title.toLocaleLowerCase('ko');
+  if(!title||ids.has(id)||titles.has(key))continue;
+  const totalPages=smartInteger(b.totalPages,200000),finished=b.finished===true;
+  out.push({id,title,totalPages:totalPages>0?totalPages:null,finished,createdAt:smartIso(b.createdAt),finishedAt:finished?smartIso(b.finishedAt):''});ids.add(id);titles.add(key);
+ }
+ return out;
+}
+function smartCleanLibrary(raw){return {books:smartCleanBookCatalog(raw?.books)}}
+function smartLibraryBooks(){return data?.recordLibrary?.books||[]}
+function smartBookById(id){return smartLibraryBooks().find(x=>x.id===id)||null}
+function smartBookByTitle(title){const key=smartName(title,160).toLocaleLowerCase('ko');return key?smartLibraryBooks().find(x=>x.title.toLocaleLowerCase('ko')===key)||null:null}
+function smartCleanStructured(raw){
+ if(!raw||!SMART_TEMPLATES[raw.templateId]||raw.templateId==='basic'||!Array.isArray(raw.entries))return null;
+ const kind=raw.templateId;const list=[];
+ for(const e of raw.entries.slice(0,100)){
+  if(!e||typeof e!=='object')continue;
+  const id=smartName(e.id,100)||('item_'+list.length);
+  if(kind==='reading'){
+   const title=smartName(e.title,160),startPage=smartInteger(e.startPage,200000),endPage=smartInteger(e.endPage,200000);
+   if(!title||!startPage||!endPage||endPage<startPage)continue;
+   const whole=smartInteger(e.totalPages,200000);
+   list.push({id,bookId:smartName(e.bookId,100),title,startPage,endPage,totalPages:whole>0?whole:null});
+  }else if(kind==='reps'||kind==='strength'){
+   const name=smartName(e.name,100),sets=[];if(!name)continue;
+   for(const row of (Array.isArray(e.sets)?e.sets:[]).slice(0,100)){
+    const reps=smartInteger(row?.reps,100000),weight=smartNumber(row?.weight,100000);
+    if(reps===null)continue;
+    sets.push({id:smartName(row?.id,100)||('set_'+sets.length),reps,weight:kind==='strength'?weight:null,at:smartIso(row?.at)});
+   }
+   if(sets.length)list.push({id,name,sets});
+  }else{
+   const name=smartName(e.name,100);if(!name)continue;
+   const fields={};
+   if(kind==='study')for(const k of ['solved','correct'])fields[k]=smartInteger(e[k],100000);
+   if(kind==='time'){
+    fields.start= /^\d{2}:\d{2}$/.test(String(e.start||''))?e.start:'';
+    fields.end= /^\d{2}:\d{2}$/.test(String(e.end||''))?e.end:'';
+    fields.breakMin=smartInteger(e.breakMin,1440)||0;
+   }
+   if(kind==='distance'){fields.km=smartNumber(e.km,100000);fields.minutes=smartNumber(e.minutes,100000)}
+   if(kind==='quantity')fields.count=smartNumber(e.count,100000);
+   list.push({id,name,...fields,at:smartIso(e.at)});
+  }
+ }
+ return list.length?{schemaVersion:1,templateId:kind,templateVersion:1,entries:list}:null;
+}
+function smartTimeMinutes(start,end,breakMin){
+ if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(start||'')||!/^([01]\d|2[0-3]):[0-5]\d$/.test(end||''))return 0;
+ const hhmm=t=>Number(t.slice(0,2))*60+Number(t.slice(3));let diff=hhmm(end)-hhmm(start);if(diff<0)diff+=1440;
+ return Math.max(0,diff-(Number(breakMin)||0));
+}
+function smartTotals(record){
+ const s=smartCleanStructured(record),totals={amount:0,unit:SMART_TEMPLATES[s?.templateId]?.unit||'',count:0,extra:0};
+ if(!s)return totals;
+ for(const entry of s.entries){totals.count++;
+  if(s.templateId==='reading')totals.amount+=entry.endPage-entry.startPage+1;
+  if(s.templateId==='reps'||s.templateId==='strength')for(const set of entry.sets){totals.amount+=set.reps;totals.extra+=set.reps*(set.weight||0)}
+  if(s.templateId==='study'){totals.amount+=entry.solved||0;totals.extra+=entry.correct||0}
+  if(s.templateId==='time')totals.amount+=smartTimeMinutes(entry.start,entry.end,entry.breakMin);
+  if(s.templateId==='distance'){totals.amount+=entry.km||0;totals.extra+=entry.minutes||0}
+  if(s.templateId==='quantity')totals.amount+=entry.count||0;
+ }
+ totals.amount=Math.round(totals.amount*100)/100;totals.extra=Math.round(totals.extra*100)/100;return totals;
+}
+function smartCommitLibrary(achievement){
+ const s=smartCleanStructured(achievement?.structured);if(s?.templateId!=='reading')return;
+ if(!data.recordLibrary)data.recordLibrary={books:[]};
+ data.recordLibrary=smartCleanLibrary(data.recordLibrary);
+ for(const entry of s.entries){
+  let book=smartBookById(entry.bookId)||smartBookByTitle(entry.title);
+  if(!book){book={id:'book_'+randomId().replace(/-/g,''),title:entry.title,totalPages:entry.totalPages||null,finished:false,createdAt:new Date().toISOString(),finishedAt:''};data.recordLibrary.books.push(book)}
+  else if(!book.totalPages&&entry.totalPages)book.totalPages=entry.totalPages;
+  entry.bookId=book.id;
+  // Attach resolved id to committed record so titles can be renamed in the catalog.
+  const matching=achievement.structured?.entries?.find(x=>x.id===entry.id);if(matching)matching.bookId=book.id;
+ }
+}
+function smartBookSave(e){
+ e.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='bookLibrary')return;
+ const f=e.currentTarget,title=smartName(f.elements.bookTitle.value,160),totalStr=String(f.elements.totalPages.value).trim(),total=smartInteger(totalStr,200000),finished=f.elements.finished.checked;
+ if(!title){alert('책 제목을 입력하세요.');return}
+ if(totalStr&&(!total||total<1)){alert('전체 쪽수는 1 이상의 정수로 입력하세요.');return}
+ const edit=smartBookById(modal.editId),duplicate=smartBookByTitle(title);
+ if(duplicate&&duplicate.id!==edit?.id){alert('이미 등록된 제목입니다. 자동완성에서 기존 책을 선택하거나 목록에서 수정하세요.');return}
+ if(!data.recordLibrary)data.recordLibrary={books:[]};
+ if(edit){edit.title=title;edit.totalPages=total||null;edit.finished=finished;edit.finishedAt=finished?(edit.finishedAt||new Date().toISOString()):''}
+ else data.recordLibrary.books.push({id:'book_'+randomId().replace(/-/g,''),title,totalPages:total||null,finished,finishedAt:finished?new Date().toISOString():'',createdAt:new Date().toISOString()});
+ modal.editId='';save();render();
+}
+function smartBookEdit(id=''){if(modal?.type!=='bookLibrary')return;modal.editId=id;render()}
+function openBookLibrary(){if(!startUnlocked||!currentUserId)return;const form=document.querySelector('#popup .smart-editor')?.closest('form');if(form&&[...form.querySelectorAll('.smart-editor input')].some(x=>x.value.trim())&&!confirm('아직 저장하지 않은 입력 내용은 사라질 수 있습니다. 중간 저장한 뒤 책 목록을 열기를 권장합니다. 계속할까요?'))return;modal={type:'bookLibrary',editId:'',filter:'all'};render()}
+function smartBookFilter(filter){if(modal?.type!=='bookLibrary')return;modal.filter=['all','reading','finished'].includes(filter)?filter:'all';render()}
+function smartBookToggle(id){const book=smartBookById(id);if(!book||!startUnlocked||!currentUserId)return;book.finished=!book.finished;book.finishedAt=book.finished?new Date().toISOString():'';save();render()}
+function smartBookProgress(book){
+ const intervals=[];
+ for(const c of data.completions||[]){const s=smartCleanStructured(c.achievement?.structured);if(s?.templateId!=='reading')continue;for(const e of s.entries)if(e.bookId===book.id||(!e.bookId&&e.title===book.title))intervals.push([e.startPage,e.endPage]);}
+ intervals.sort((a,b)=>a[0]-b[0]);let total=0,last=0;
+ for(const [from,to] of intervals){const begin=Math.max(from,last+1);if(to>=begin)total+=to-begin+1;last=Math.max(last,to)}
+ return {unique:total,percent:book.totalPages?Math.min(100,Math.round(total/book.totalPages*100)):null};
+}
+function smartBookLibraryHTML(){
+ const edit=smartBookById(modal?.editId),filter=modal?.filter||'all';const books=[...smartLibraryBooks()].sort((a,b)=>Number(a.finished)-Number(b.finished)||a.title.localeCompare(b.title,'ko'));
+ const visible=books.filter(b=>filter==='all'||(filter==='finished'?b.finished:!b.finished));
+ return `<div class="overlay" onclick="modal=null;render()"><div class="modal smart-library-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>📚 전체 독서 목록</h2><p class="modal-sub">책 제목과 전체 쪽수는 한 번 등록하고, 매일 읽은 구간을 연결합니다. 완독은 직접 체크합니다.</p>
+ <div class="smart-filter-row">${[['all','전체'],['reading','읽는 중'],['finished','완독']].map(([v,label])=>`<button type="button" class="tinybtn ${filter===v?'smart-current':''}" onclick="smartBookFilter('${v}')">${label}</button>`).join('')}</div>
+ <div class="smart-book-list">${visible.map(b=>{const p=smartBookProgress(b);return `<div class="smart-book-line"><div><strong>${esc(b.title)}</strong><small>${b.totalPages?`${p.unique}/${b.totalPages}쪽 · ${p.percent}% 확인된 구간`:`확인된 구간 ${p.unique}쪽 · 전체 쪽수 미등록`} · ${b.finished?'✅ 완독':'📖 읽는 중'}</small>${p.percent!==null?`<div class="smart-progress"><span style="width:${p.percent}%"></span></div>`:''}</div><div class="smart-inline-tools"><button type="button" class="tinybtn" onclick="smartBookToggle('${b.id}')">${b.finished?'완독 해제':'완독 체크'}</button><button type="button" class="tinybtn" onclick="smartBookEdit('${b.id}')">수정</button></div></div>`}).join('')||'<p class="growth-help">이 상태의 책이 없습니다.</p>'}</div>
+ <form class="qform smart-book-form" onsubmit="smartBookSave(event)"><h3>${edit?'📖 책 정보 수정':'➕ 새 책 등록'}</h3><label>책 제목<input name="bookTitle" class="qentry" maxlength="160" required value="${esc(edit?.title||'')}" placeholder="책 제목"></label><div class="achievement-number-row"><label>전체 쪽수 (1회 등록)<input name="totalPages" type="number" class="qentry" min="1" max="200000" step="1" value="${edit?.totalPages||''}" placeholder="예: 320"></label><label class="smart-finished"><input name="finished" type="checkbox" ${edit?.finished?'checked':''}> ✅ 완독 여부</label></div><button class="modal-btn" type="submit">💾 ${edit?'책 정보 수정':'책 등록'}</button></form>
+ <button class="modal-btn secondary" type="button" onclick="modal=null;render()">닫기</button></div></div>`;
+}
+function smartNextId(prefix='entry'){return prefix+'_'+randomId().replace(/-/g,'')}
+function smartFieldInput(field,value,kind,index){
+ const options={startPage:['시작 쪽','number'],endPage:['종료 쪽','number'],totalPages:['전체 쪽수 · 신규 책만','number'],solved:['푼 문제','number'],correct:['정답 수','number'],start:['시작 시간','time'],end:['종료 시간','time'],breakMin:['휴식 분','number'],km:['거리 km','number'],minutes:['소요 분','number'],count:['수량','number']};
+ const [label,type]=options[field]||[field,'text'];return `<label class="smart-field"><small>${label}</small><input class="qentry" data-smart-field="${field}" type="${type}" ${type==='number'?'min="0" step="any" inputmode="decimal"':''} value="${esc(value??'')}" oninput="smartRecalculate(this.form)"></label>`;
+}
+function smartEntryMarkup(kind,item={},index=0){
+ const id=smartName(item.id,100)||smartNextId(),titleLabel=SMART_KIND_LABEL[kind];
+ const book=kind==='reading'?(smartBookById(item.bookId)||smartBookByTitle(item.title)):null;
+ let inside='';
+ if(kind==='reading')inside=`<label class="smart-field smart-full"><small>책 제목 · 자동완성</small><input class="qentry" data-smart-field="title" data-book-id="${esc(book?.id||item.bookId||'')}" type="text" list="smartBookTitles" maxlength="160" value="${esc(item.title||book?.title||'')}" placeholder="책 제목을 입력하거나 목록에서 선택" oninput="smartReadingLookup(this)"><small class="smart-book-hint">${book?`📖 등록된 책 · ${book.totalPages||'전체 쪽수 미등록'}${book.totalPages?'쪽':''} · ${book.finished?'완독':'읽는 중'}`:'새 책은 여기에서 전체 쪽수를 한 번 등록할 수 있어요.'}</small></label><div class="smart-fields-3">${smartFieldInput('startPage',item.startPage,kind,index)}${smartFieldInput('endPage',item.endPage,kind,index)}${smartFieldInput('totalPages',book?.totalPages||item.totalPages,kind,index).replace('<input ','<input '+(book?.totalPages?'readonly ':''))}</div>`;
+ else if(kind==='reps'||kind==='strength'){
+  const sets=item.sets?.length?item.sets:[{id:smartNextId('set'),reps:'',weight:'',at:''}];
+  inside=`<label class="smart-field smart-full"><small>운동 종목</small><input class="qentry" data-smart-field="name" list="smartExerciseTitles" maxlength="100" value="${esc(item.name||'')}" placeholder="예: 턱걸이" oninput="smartRecalculate(this.form)"></label><div class="smart-set-list">${sets.map((s,i)=>`<div class="smart-set" data-smart-set="${esc(s.id||smartNextId('set'))}" data-at="${esc(s.at||'')}"><span>${i+1}세트</span><input class="qentry" type="number" data-set-field="reps" min="0" max="100000" inputmode="numeric" step="1" value="${esc(s.reps??'')}" placeholder="횟수" aria-label="${i+1}세트 횟수" oninput="smartSetChanged(this)">${kind==='strength'?`<input class="qentry" type="number" data-set-field="weight" min="0" max="100000" step="any" value="${esc(s.weight??'')}" placeholder="kg" aria-label="무게 kg" oninput="smartSetChanged(this)">`:''}<small class="smart-set-at">${s.at?new Date(s.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'입력 시각 자동 기록'}</small><button type="button" class="smart-small-remove" onclick="smartRemoveSet(this)" title="세트 삭제">×</button></div>`).join('')}</div><button type="button" class="tinybtn" onclick="smartAddSet(this)">＋ 세트 추가</button>`;
+ }else{
+  const fields={study:['solved','correct'],time:['start','end','breakMin'],distance:['km','minutes'],quantity:['count']}[kind]||[];
+  inside=`<label class="smart-field smart-full"><small>${titleLabel}명</small><input class="qentry" data-smart-field="name" maxlength="100" value="${esc(item.name||'')}" placeholder="${kind==='study'?'예: 영어 단어':kind==='quantity'?'예: 영단어 암기':kind==='time'?'예: 집중 공부':'예: 산책'}" oninput="smartRecalculate(this.form)"></label><div class="smart-fields-3">${fields.map(f=>smartFieldInput(f,item[f],kind,index)).join('')}</div>`;
+ }
+ return `<div class="smart-entry" data-entry-id="${esc(id)}"><div class="smart-entry-head"><strong>${index+1}. ${titleLabel}</strong><button type="button" class="tinybtn" onclick="smartRemoveEntry(this)">삭제</button></div>${inside}</div>`;
+}
+function smartEditorHTML(q,structured=null){
+ const kind=smartTemplateId(q);if(kind==='basic'||achievementMode(q)==='none')return '';
+ const s=smartCleanStructured(structured),items=(s?.templateId===kind?s.entries:[]),entries=items.length?items:[{id:smartNextId()}];
+ const bookList=kind==='reading'?`<datalist id="smartBookTitles">${[...smartLibraryBooks()].sort((a,b)=>Number(a.finished)-Number(b.finished)).map(b=>`<option value="${esc(b.title)}">${esc(b.finished?'완독':'읽는 중')}</option>`).join('')}</datalist>`:'';
+ const exerciseNames=(data.completions||[]).flatMap(c=>['reps','strength'].includes(c.achievement?.structured?.templateId)?c.achievement.structured.entries.map(e=>e.name):[]).filter(Boolean);
+ const exerciseList=['reps','strength'].includes(kind)?`<datalist id="smartExerciseTitles">${[...new Set(exerciseNames)].slice(-100).map(n=>`<option value="${esc(n)}"></option>`).join('')}</datalist>`:'';
+ return `<div class="smart-editor" data-smart-template="${kind}"><div class="smart-template-top"><b>${esc(SMART_TEMPLATES[kind].label)}</b>${kind==='reading'?'<button type="button" class="tinybtn" onclick="openBookLibrary()">📚 전체 책 목록</button>':''}</div>${bookList}${exerciseList}<div class="smart-entry-list">${entries.map((e,i)=>smartEntryMarkup(kind,e,i)).join('')}</div><button type="button" class="smart-add-entry" onclick="smartAddEntry(this)">＋ 다른 ${SMART_KIND_LABEL[kind]} 추가</button><div class="smart-totals" aria-live="polite">${s?`<span>자동 계산 · ${smartTotals(s).count}항목</span><strong>${achievementNumberText(smartTotals(s).amount)} ${esc(SMART_TEMPLATES[kind].unit)}</strong>`:'합계는 입력과 동시에 계산됩니다.'}</div><p class="qform-note">${kind==='reading'?'책 제목 자동완성 · 전체 쪽수는 책당 1회 등록 · 완독은 목록에서 직접 체크':kind==='reps'||kind==='strength'?'횟수를 입력하는 시각을 세트별로 자동 기록합니다. 중간 저장 후 다시 이어 쓸 수 있습니다.':'항목별 원본 값을 저장하고 기존 달성량 통계에 합계가 반영됩니다.'}</p></div>`;
+}
+function smartFormEntries(form,validate=false){
+ const root=form.querySelector('.smart-editor');if(!root)return null;
+ const kind=root.dataset.smartTemplate,entries=[];
+ for(const group of root.querySelectorAll('.smart-entry')){
+  const fields={};for(const field of group.querySelectorAll('[data-smart-field]'))fields[field.dataset.smartField]=field.value.trim();
+  const item={id:group.dataset.entryId||smartNextId()};
+  if(kind==='reading'){
+   if(!fields.title&&!fields.startPage&&!fields.endPage)continue;
+   if(!fields.title||smartInteger(fields.startPage,200000)===null||smartInteger(fields.endPage,200000)===null||Number(fields.startPage)<1||Number(fields.endPage)<Number(fields.startPage)){
+    if(validate)throw Error('각 책의 제목과 시작·종료 쪽(1 이상)을 올바르게 입력하세요.');continue;
+   }
+   const book=smartBookById(group.querySelector('[data-smart-field="title"]')?.dataset.bookId)||smartBookByTitle(fields.title);
+   const total=smartInteger(fields.totalPages,200000);
+   if(fields.totalPages&&(!total||total<1)){if(validate)throw Error('전체 쪽수는 양의 정수로 입력하세요.');continue;}
+   if((book?.totalPages||total)&&Number(fields.endPage)>(book?.totalPages||total)){if(validate)throw Error('종료 쪽이 등록된 책의 전체 쪽수보다 큽니다.');continue;}
+   Object.assign(item,{bookId:book?.id||'',title:fields.title,startPage:Number(fields.startPage),endPage:Number(fields.endPage),totalPages:book?.totalPages||total||null});
+  }else if(kind==='reps'||kind==='strength'){
+   const sets=[];
+   for(const s of group.querySelectorAll('.smart-set')){
+    const count=s.querySelector('[data-set-field="reps"]')?.value.trim()||'',weight=s.querySelector('[data-set-field="weight"]')?.value.trim()||'';
+    if(!count&&!weight)continue;
+    const reps=smartInteger(count,100000),kg=smartNumber(weight,100000);
+    if(reps===null||(kind==='strength'&&weight!==''&&kg===null)){
+     if(validate)throw Error('세트별 횟수(0 이상)와 무게를 확인하세요.');continue;
+    }
+    sets.push({id:s.dataset.smartSet||smartNextId('set'),reps,weight:kind==='strength'?kg:null,at:s.dataset.at||new Date().toISOString()});
+   }
+   if(!fields.name&&!sets.length)continue;
+   if(!fields.name||!sets.length){if(validate)throw Error('운동 종목과 세트별 횟수를 입력하세요.');continue;}
+   Object.assign(item,{name:fields.name,sets});
+  }else{
+   if(!fields.name&&Object.values(fields).every(v=>!v))continue;
+   if(!fields.name){if(validate)throw Error('활동/과목/항목 이름을 입력하세요.');continue;}
+   Object.assign(item,{name:fields.name});
+   if(kind==='study'){
+    if(smartInteger(fields.solved,100000)===null||smartInteger(fields.correct,100000)===null||Number(fields.correct)>Number(fields.solved)){
+     if(validate)throw Error('푼 문제와 정답 수를 입력하고 정답 수가 푼 문제를 넘지 않게 해주세요.');continue;}
+    item.solved=Number(fields.solved);item.correct=Number(fields.correct);
+   }
+   if(kind==='time'){
+    if(!fields.start||!fields.end||smartInteger(fields.breakMin||'0',1440)===null){if(validate)throw Error('시작·종료 시간과 휴식 시간을 입력하세요.');continue;}
+    item.start=fields.start;item.end=fields.end;item.breakMin=Number(fields.breakMin||0);
+   }
+   if(kind==='distance'){
+    if(smartNumber(fields.km,100000)===null){if(validate)throw Error('거리 값을 입력하세요.');continue;}
+    item.km=Number(fields.km);item.minutes=smartNumber(fields.minutes,100000);
+   }
+   if(kind==='quantity'){
+    if(smartNumber(fields.count,100000)===null){if(validate)throw Error('수량을 입력하세요.');continue;}
+    item.count=Number(fields.count);
+   }
+   item.at=new Date().toISOString();
+  }
+  entries.push(item);
+ }
+ if(validate&&!entries.length)throw Error('상세 항목을 하나 이상 입력하세요.');
+ return {schemaVersion:1,templateId:kind,templateVersion:1,entries};
+}
+// UI-only snapshot: retain partially typed rows when adding/removing items.
+function smartRawFormEntries(form){
+ const root=form.querySelector('.smart-editor'),kind=root?.dataset.smartTemplate;if(!kind)return {templateId:'basic',entries:[]};
+ const entries=[];
+ for(const group of root.querySelectorAll('.smart-entry')){
+  const e={id:group.dataset.entryId||smartNextId()};
+  for(const input of group.querySelectorAll('[data-smart-field]'))e[input.dataset.smartField]=input.value;
+  if(kind==='reading')e.bookId=group.querySelector('[data-smart-field="title"]')?.dataset.bookId||'';
+  if(kind==='reps'||kind==='strength'){
+   e.sets=[...group.querySelectorAll('.smart-set')].map(row=>({id:row.dataset.smartSet||smartNextId('set'),reps:row.querySelector('[data-set-field="reps"]')?.value||'',weight:row.querySelector('[data-set-field="weight"]')?.value||'',at:row.dataset.at||''}));
+  }
+  entries.push(e);
+ }
+ return {templateId:kind,entries};
+}
+function smartRebuild(form,entries){
+ const root=form.querySelector('.smart-editor');if(!root)return;
+ const list=root.querySelector('.smart-entry-list'),kind=root.dataset.smartTemplate;
+ list.innerHTML=entries.map((e,i)=>smartEntryMarkup(kind,e,i)).join('');smartRecalculate(form);
+}
+function smartAddEntry(button){const form=button.closest('form'),s=smartRawFormEntries(form),kind=s?.templateId;if(!kind)return;if(s.entries.length>=50){alert('한 기록에는 최대 50개 항목을 추가할 수 있습니다.');return;}smartRebuild(form,[...s.entries,{id:smartNextId()}]);}
+function smartRemoveEntry(button){const form=button.closest('form'),target=button.closest('.smart-entry'),s=smartRawFormEntries(form);const id=target?.dataset.entryId;smartRebuild(form,s.entries.filter(x=>x.id!==id).length?s.entries.filter(x=>x.id!==id):[{id:smartNextId()}]);}
+function smartAddSet(button){const form=button.closest('form'),target=button.closest('.smart-entry'),s=smartRawFormEntries(form),entry=s?.entries.find(x=>x.id===target.dataset.entryId);if(!entry)return;if(entry.sets.length>=50){alert('세트는 최대 50개입니다.');return;}entry.sets.push({id:smartNextId('set'),reps:'',weight:'',at:''});smartRebuild(form,s.entries);}
+function smartRemoveSet(button){const form=button.closest('form'),target=button.closest('.smart-entry'),s=smartRawFormEntries(form),entry=s?.entries.find(x=>x.id===target.dataset.entryId);if(!entry)return;const id=button.closest('.smart-set')?.dataset.smartSet;entry.sets=entry.sets.filter(x=>x.id!==id);if(!entry.sets.length)entry.sets=[{id:smartNextId('set'),reps:'',at:''}];smartRebuild(form,s.entries);}
+function smartSetChanged(input){const set=input.closest('.smart-set');if(set&&!set.dataset.at&&input.value.trim()){set.dataset.at=new Date().toISOString();const label=set.querySelector('.smart-set-at');if(label)label.textContent='기록 '+new Date(set.dataset.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}smartRecalculate(input.form)}
+function smartReadingLookup(input){
+ const box=input.closest('.smart-entry'),book=smartBookByTitle(input.value),id=input.dataset.bookId,old=smartBookById(id);
+ if(book){input.dataset.bookId=book.id;const whole=box.querySelector('[data-smart-field="totalPages"]');if(whole){whole.value=book.totalPages||'';whole.readOnly=!!book.totalPages}}
+ else {input.dataset.bookId='';if(old){const whole=box.querySelector('[data-smart-field="totalPages"]');if(whole){whole.value='';whole.readOnly=false;}}}
+ const hint=box.querySelector('.smart-book-hint');if(hint)hint.textContent=book?`📖 등록된 책 · ${book.totalPages?book.totalPages+'쪽':'전체 쪽수 미등록'} · ${book.finished?'완독':'읽는 중'}`:'새 책은 전체 쪽수를 한 번 입력하면 독서 목록에 자동 등록됩니다.';
+ smartRecalculate(input.form);
+}
+function smartRecalculate(form){
+ const root=form?.querySelector('.smart-editor');if(!root)return;
+ const s=smartFormEntries(form,false),t=smartTotals(s),slot=root.querySelector('.smart-totals');if(!slot)return;
+ slot.innerHTML=`<span>자동 계산 · ${t.count}항목</span><strong>${achievementNumberText(t.amount)} ${esc(t.unit)}</strong>${s.templateId==='strength'?`<small>총 운동 볼륨 ${achievementNumberText(t.extra)} kg·회</small>`:s.templateId==='study'?`<small>정답 ${t.extra} / ${t.amount} · 정답률 ${t.amount?Math.round(t.extra/t.amount*100):0}%</small>`:''}`;
+}
+function smartQuestTemplateChange(el){const form=el.closest('form'),kind=el.value,meta=SMART_TEMPLATES[kind];if(!meta)return;
+ const mode=form.elements.recordMode,unit=form.elements.recordUnit;if(kind!=='basic'){
+  mode.value='number';document.getElementById('recordUnitSetup').hidden=false;unit.value=meta.unit;unit.readOnly=true;
+ }else{unit.readOnly=false;}
+}
+function dailyCount(items){return new Set(items.map(x=>x.c?.day).filter(Boolean)).size}
+function smartTemplateAnalysis(id){
+ const quest=data.quests.find(q=>q.id===id),records=(data.completions||[]).filter(c=>c.id===id),structured=records.map(c=>({c,s:smartCleanStructured(c.achievement?.structured)})).filter(x=>x.s),legacy=records.filter(c=>!c.achievement?.structured&&achievementAmount(c.achievement?.amount)!==null);
+ const kind=smartTemplateId(quest)!=='basic'?smartTemplateId(quest):(structured.at(-1)?.s.templateId||'basic');
+ if(kind==='basic'&&!structured.length)return '';
+ const exact=structured.filter(x=>x.s.templateId===kind),approx=legacy.filter(c=>{
+  const unit=String(c.achievement?.unit||c.recordUnit||'').trim().toLocaleLowerCase('ko');return kind==='reading'?['쪽','페이지','p'].includes(unit):kind==='reps'||kind==='strength'?unit==='회':kind==='study'?unit==='문제':kind==='time'?['분','시간'].includes(unit):kind==='distance'?['km','m'].includes(unit):unit==='개';
+ });
+ const totals=exact.map(x=>smartTotals(x.s)),precise=totals.reduce((n,x)=>n+x.amount,0),estimated=approx.reduce((n,c)=>{
+  const u=String(c.achievement?.unit||c.recordUnit||'').trim().toLocaleLowerCase('ko');
+  const factor=kind==='time'&&u==='시간'?60:kind==='distance'&&u==='m'?0.001:1;
+  return n+Number(c.achievement.amount||0)*factor;
+ },0),unit=SMART_TEMPLATES[kind]?.unit||'';
+ const groups=new Map();for(const {c,s} of exact){for(const e of s.entries){const key=kind==='reading'?(e.bookId||e.title):e.name,old=groups.get(key)||{label:kind==='reading'?(smartBookById(e.bookId)?.title||e.title):e.name,amount:0,dates:new Set(),sets:[],pages:[]};old.dates.add(c.day);if(kind==='reading'){old.amount+=e.endPage-e.startPage+1;old.pages.push([e.startPage,e.endPage])}else if(kind==='reps'||kind==='strength'){old.amount+=e.sets.reduce((n,x)=>n+x.reps,0);old.sets.push(...e.sets.map(x=>({...x,day:c.day})))}else{const t=smartTotals({templateId:kind,entries:[e]});old.amount+=t.amount}groups.set(key,old)}}
+ const sorted=[...groups.values()].sort((a,b)=>b.amount-a.amount),summaryText=`<div class="smart-report-stats"><div><small>확정 기록</small><strong>${achievementNumberText(precise)} ${esc(unit)}</strong><span>${exact.length}회 · 구조화</span></div><div><small>기존 기록 (추정)</small><strong>${achievementNumberText(estimated)} ${esc(unit)}</strong><span>${approx.length}회 · 별도 합산</span></div></div>`;
+ const allEntries=exact.flatMap(({s})=>s.entries);
+ let kpis=[];
+ if(kind==='reading')kpis=[['책 목록',smartLibraryBooks().length+'권'],['완독한 책',smartLibraryBooks().filter(b=>b.finished).length+'권']];
+ if(kind==='reps'||kind==='strength'){
+  const sets=allEntries.flatMap(e=>e.sets||[]),maxReps=sets.length?Math.max(...sets.map(x=>x.reps)):0;
+  kpis=[['전체 세트',sets.length+'세트'],['세트 최고 기록',maxReps+'회']];
+  if(kind==='strength')kpis.push(['총 운동 볼륨',achievementNumberText(sets.reduce((n,x)=>n+x.reps*(x.weight||0),0))+' kg·회']);
+  else if(sets.length)kpis.push(['세트 평균',achievementNumberText(Math.round(precise/sets.length*10)/10)+'회']);
+ }
+ if(kind==='study'){
+  const correct=allEntries.reduce((n,e)=>n+(e.correct||0),0);
+  kpis=[['정답 문제',correct+'문제'],['전체 정답률',precise?Math.round(correct/precise*100)+'%':'—']];
+ }
+ if(kind==='time')kpis=[['활동 구간',allEntries.length+'개'],['일별 평균',dailyCount(exact)?achievementNumberText(Math.round(precise/dailyCount(exact)*10)/10)+'분':'—']];
+ if(kind==='distance'){
+  const minutes=allEntries.reduce((n,e)=>n+(e.minutes||0),0);
+  kpis=[['활동 횟수',allEntries.length+'회'],['평균 페이스',precise&&minutes?achievementNumberText(Math.round(minutes/precise*100)/100)+'분/km':'—']];
+ }
+ if(kind==='quantity')kpis=[['항목 종류',new Set(allEntries.map(e=>e.name)).size+'개'],['기록 횟수',allEntries.length+'건']];
+ const metricKpis=kpis.length?`<div class="smart-report-stats smart-detail-kpis">${kpis.map(([label,value])=>`<div><small>${esc(label)}</small><strong>${esc(value)}</strong></div>`).join('')}</div>`:'';
+ const estRows=approx.length?`<details class="smart-estimate"><summary>기존 기록의 추정값 ${approx.length}건 보기</summary><p class="qform-note">과거 원본은 그대로 유지됩니다. 당시 기입한 숫자를 단위 기준으로 해석한 값이며 종목·책 제목·세트 시간은 추정하지 않습니다.</p>${approx.slice(-25).reverse().map(c=>`<div>${esc(c.day)} · ${achievementNumberText(c.achievement.amount)} ${esc(c.achievement.unit)} <b>(추정)</b></div>`).join('')}</details>`:'';
+ let special='';
+ if(kind==='reading'){
+  const books=[...smartLibraryBooks()].sort((a,b)=>Number(a.finished)-Number(b.finished)||a.title.localeCompare(b.title,'ko'));
+  special=`<div class="smart-report-head"><h4>📚 전체 독서 목록 ${books.length}권</h4><button type="button" class="tinybtn" onclick="openBookLibrary()">목록 관리 · 완독 체크</button></div><div class="smart-report-books">${books.map(b=>{const p=smartBookProgress(b);return `<div class="smart-report-book"><strong>${esc(b.title)}</strong><small>${b.finished?'✅ 완독':'📖 읽는 중'} · ${b.totalPages?`${p.unique}/${b.totalPages}쪽 · ${p.percent}% (구간 기준)`:`확인 구간 ${p.unique}쪽 · 전체 쪽수 미설정`}</small>${p.percent!==null?`<div class="smart-progress"><span style="width:${p.percent}%"></span></div>`:''}</div>`}).join('')||'<p class="growth-help">등록된 책이 없습니다. 독서 템플릿에서 제목을 입력하면 자동 등록됩니다.</p>'}</div>`;
+ }
+ if(kind==='reps'||kind==='strength'){
+  const setRows=exact.flatMap(({c,s})=>s.entries.flatMap(e=>e.sets.map(x=>({name:e.name,...x,day:c.day})))).sort((a,b)=>String(b.at||b.day).localeCompare(String(a.at||a.day)));
+  special=`<h4>⏰ 세트별 기록 시간</h4><div class="smart-set-history">${setRows.slice(0,40).map(x=>`<div><span>${esc(x.name)}</span><b>${x.reps}회${kind==='strength'&&x.weight!==null?` · ${x.weight}kg`:''}</b><small>${esc(x.at?new Date(x.at).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):x.day+' · 시간 미기록')}</small></div>`).join('')||'<p class="growth-help">세트 기록을 시작하면 시간별 이력이 표시됩니다.</p>'}</div>`;
+ }
+ const daily=new Map();for(const {c,s} of exact)daily.set(c.day,(daily.get(c.day)||0)+smartTotals(s).amount);
+ const chart=[...daily].sort(([a],[b])=>a.localeCompare(b)).slice(-14),max=Math.max(1,...chart.map(x=>x[1]));
+ const bars=`<div class="smart-bars">${chart.map(([date,value])=>`<div title="${esc(date)} · ${achievementNumberText(value)}${esc(unit)}"><span style="height:${Math.max(3,Math.round(value/max*100))}%"></span><small>${esc(date.slice(5))}</small></div>`).join('')||'<p class="growth-help">확정된 세부 기록이 쌓이면 그래프가 표시됩니다.</p>'}</div>`;
+ return `<section class="smart-analysis"><div class="smart-report-head"><h3>📊 템플릿 상세 분석</h3><small>${esc(SMART_TEMPLATES[kind]?.label||'구조화 기록')}</small></div>${summaryText}${metricKpis}<p class="growth-help">확정 기록과 기존 기록 (추정)을 구분해 표시합니다. 과거 값을 구조화 데이터로 변환하거나 보상에 반영하지 않습니다.</p>${special}<h4>최근 구조화 기록 추세</h4>${bars}${sorted.length?`<h4>${kind==='reading'?'책별 독서량':'항목별 누적량'}</h4><div class="smart-item-breakdown">${sorted.slice(0,30).map(x=>`<div><span>${esc(x.label)}</span><b>${achievementNumberText(x.amount)} ${esc(unit)}</b></div>`).join('')}</div>`:''}${estRows}</section>`;
+}
+
 // v1.7.57 · Structured achievement logging and optional one-time writing bonus.
 const ACHIEVEMENT_MODES=['none','memo','number'];
 function achievementMode(q){return ACHIEVEMENT_MODES.includes(q?.recordMode)?q.recordMode:'number'}
@@ -5157,7 +5481,7 @@ function achievementAmount(value){
 }
 function cleanAchievement(raw){
  const amount=achievementAmount(raw?.amount);
- return {amount,unit:String(raw?.unit||'').trim().slice(0,12),note:String(raw?.note||'').trim().slice(0,500),mood:['good','normal','hard'].includes(raw?.mood)?raw.mood:''};
+ return {amount,unit:String(raw?.unit||'').trim().slice(0,12),note:String(raw?.note||'').trim().slice(0,500),mood:['good','normal','hard'].includes(raw?.mood)?raw.mood:'',structured:smartCleanStructured(raw?.structured)};
 }
 // Drafts stay out of completions: they never grant points, XP, streaks or chart credits.
 function cleanAchievementDrafts(raw,quests=null){
@@ -5170,8 +5494,8 @@ function cleanAchievementDrafts(raw,quests=null){
    if(!/^[A-Za-z0-9_-]{1,90}$/.test(id)||!item||typeof item!=='object')continue;
    // Preserve old drafts even for quests deleted later so historical notes aren't lost.
    const achievement=cleanAchievement(item.achievement);
-   if(achievement.amount===null&&!achievement.note&&!achievement.mood)continue;
-   dayDrafts[id]={achievement,updatedAt:String(item.updatedAt||'').slice(0,40),title:String(item.title||'').slice(0,45),recordMode:ACHIEVEMENT_MODES.includes(item.recordMode)?item.recordMode:'number',recordUnit:String(item.recordUnit||'').slice(0,12)};
+   if(achievement.amount===null&&!achievement.note&&!achievement.mood&&!achievement.structured)continue;
+   dayDrafts[id]={achievement,updatedAt:String(item.updatedAt||'').slice(0,40),title:String(item.title||'').slice(0,45),recordMode:ACHIEVEMENT_MODES.includes(item.recordMode)?item.recordMode:'number',recordUnit:String(item.recordUnit||'').slice(0,12),recordTemplateId:smartTemplateId(item)};
   }
   if(Object.keys(dayDrafts).length)result[date]=dayDrafts;
  }
@@ -5198,7 +5522,7 @@ function achievementLastSavedUnit(questId){
 }
 function achievementDraft(date,id){return data.achievementDrafts?.[date]?.[id]||null}
 function achievementDraftToday(id){return achievementDraft(day(),id)}
-function achievementHasContent(a){return a?.amount!==null&&a?.amount!==undefined||!!String(a?.note||'').trim()||!!a?.mood}
+function achievementHasContent(a){return a?.amount!==null&&a?.amount!==undefined||!!String(a?.note||'').trim()||!!a?.mood||!!a?.structured?.entries?.length}
 function achievementQualifiesBonus(a,q){
  if(achievementMode(q)==='none')return false;
  // Zero is an explicitly recorded quantity, not an empty field.
@@ -5216,15 +5540,15 @@ function storeAchievementDraft(id,date,achievement,q){
  if(!startUnlocked||!currentUserId||!validNoteDay(date)||date>day())return false;
  if(data.completions.some(c=>c.day===date&&c.id===id)){alert('이미 완료한 퀘스트입니다. 달력의 완료 기록에서 수정하세요.');return false;}
  if(!achievementHasContent(achievement)){alert('달성량, 컨디션 또는 메모 중 하나를 입력해 주세요.');return false;}
- const previous=deepCopy(data.achievementDrafts||{});
+ const previous=deepCopy(data.achievementDrafts||{}),previousLibrary=deepCopy(data.recordLibrary||{books:[]});
  if(!data.achievementDrafts)data.achievementDrafts={};
  if(!data.achievementDrafts[date])data.achievementDrafts[date]={};
- data.achievementDrafts[date][id]={achievement:cleanAchievement(achievement),updatedAt:new Date().toISOString(),title:String(q?.title||achievementDraft(date,id)?.title||'퀘스트').slice(0,45),recordMode:achievementMode(q),recordUnit:achievementUnit(q)};
+ const cleaned=cleanAchievement(achievement);smartCommitLibrary(cleaned);data.achievementDrafts[date][id]={achievement:cleaned,updatedAt:new Date().toISOString(),title:String(q?.title||achievementDraft(date,id)?.title||'퀘스트').slice(0,45),recordMode:achievementMode(q),recordUnit:achievementUnit(q),recordTemplateId:cleaned.structured?.templateId||smartTemplateId(q)};
  const user=registry.users[currentUserId],previousRev=user.rev,previousLineage=[...lineageList(user.lineage)],previousUpdated=user.updatedAt;
  user.data=data;bumpVersion(user);
  // Explicit "save draft" always persists, even when general automatic saving is OFF.
  if(!saveRegistry(true)){
-  data.achievementDrafts=previous;user.rev=previousRev;user.lineage=previousLineage;user.updatedAt=previousUpdated;
+  data.achievementDrafts=previous;data.recordLibrary=previousLibrary;user.rev=previousRev;user.lineage=previousLineage;user.updatedAt=previousUpdated;
   alert('임시 기록을 기기에 저장하지 못했습니다. 저장 공간을 확인하고 다시 시도하세요.');return false;
  }
  return true;
@@ -5264,19 +5588,22 @@ function achievementNumberText(n){return Number(n).toLocaleString('ko-KR',{maxim
 function achievementSummary(c){
  const a=cleanAchievement(c?.achievement),parts=[];
  if(a.amount!==null)parts.push('📏 '+achievementNumberText(a.amount)+(a.unit?' '+a.unit:''));
+ if(a.structured?.entries?.length)parts.push('🗂️ '+a.structured.entries.length+'항목');
  if(a.mood)parts.push(({good:'😊 좋음',normal:'🙂 보통',hard:'😮‍💨 힘듦'})[a.mood]);
  return parts.join(' · ');
 }
 function achievementFields(q,record=null,context="completion"){
  const mode=achievementMode(q);if(mode==='none')return '';
  const a=cleanAchievement(record?.achievement),isEditing=context==="edit",isDraft=context==="draft";
+ const templateId=record?.achievement?.structured?.templateId||(record&&(isEditing||isDraft||achievementHasContent(a))?'basic':smartTemplateId(q));
+ const templateQ={...q,recordTemplateId:templateId};
  const bonusEnabled=!!data.rules?.recordBonusEnabled;
  // Preserve a value already recorded for this date; otherwise use the latest saved unit
  // for the same quest, falling back to the administrator-defined quest default.
  const initialUnit=record&&achievementAmount(record?.achievement?.amount)!==null
   ?a.unit:(achievementLastSavedUnit(q?.id||record?.id)??achievementUnit(q));
- return `<details class="achievement-entry" ${isEditing||isDraft||!!record||bonusEnabled?'open':''}><summary>📝 달성 기록 (선택) ${bonusEnabled&&!isEditing&&!isDraft?'<span class="achievement-bonus-hint">달성량 입력 또는 상세 메모 10자 이상 → P·XP +20%</span>':''}</summary><div class="achievement-entry-body">
- ${mode==='number'?`<div class="achievement-number-row"><label>실제 달성량<input class="qentry" name="achievementAmount" type="number" inputmode="decimal" min="0" max="999999" step="any" value="${a.amount===null?'':a.amount}" placeholder="예: 25"></label><label>단위<input class="qentry" name="achievementUnit" maxlength="12" value="${esc(initialUnit)}" placeholder="회 / 분 / 쪽 / km"></label></div>`:''}
+ return `<details class="achievement-entry" ${isEditing||isDraft||!!record||bonusEnabled||templateId!=='basic'?'open':''}><summary>📝 달성 기록 (선택) ${bonusEnabled&&!isEditing&&!isDraft?'<span class="achievement-bonus-hint">달성량 입력 또는 상세 메모 10자 이상 → P·XP +20%</span>':''}</summary><div class="achievement-entry-body">
+ ${mode==='number'&&templateId!=='basic'?smartEditorHTML(templateQ,a.structured):mode==='number'?`<div class="achievement-number-row"><label>실제 달성량<input class="qentry" name="achievementAmount" type="number" inputmode="decimal" min="0" max="999999" step="any" value="${a.amount===null?'':a.amount}" placeholder="예: 25"></label><label>단위<input class="qentry" name="achievementUnit" maxlength="12" value="${esc(initialUnit)}" placeholder="회 / 분 / 쪽 / km"></label></div>`:''}
  <label>체감 난이도 / 컨디션<select name="achievementMood" class="qentry"><option value="" ${!a.mood?'selected':''}>기록하지 않음</option>${[['good','😊 좋음'],['normal','🙂 보통'],['hard','😮‍💨 힘듦']].map(([v,label])=>`<option value="${v}" ${a.mood===v?'selected':''}>${label}</option>`).join('')}</select></label>
  <label>실제 달성 내용 · 상세 메모<textarea class="qentry achievement-note" name="achievementNote" maxlength="500" rows="3" placeholder="무엇을 했고 무엇이 달라졌나요? (최대 500자)">${esc(a.note)}</textarea></label>
  <small>${isEditing?'기록은 수정할 수 있지만 완료 보상은 추가 지급하지 않습니다.':isDraft?'임시 기록만 저장합니다. 퀘스트 완료·보상 지급·통계 반영은 아직 하지 않습니다.':bonusEnabled?'완료 승인 시 달성량 숫자 입력 또는 상세 메모 10자 이상으로 P·XP +20%가 한 번 적용됩니다. 입력은 선택입니다.':'기록은 선택 사항입니다. 완료 후 달력에서 수정 가능 · 기록 보너스 OFF'}</small>
@@ -5285,6 +5612,15 @@ function achievementFields(q,record=null,context="completion"){
 function achievementFromForm(form,q){
  const mode=achievementMode(q);
  if(mode==='none')return cleanAchievement(null);
+ const smartRoot=form.querySelector('.smart-editor');
+ if(smartRoot){
+  const hasInput=[...smartRoot.querySelectorAll('input[data-smart-field],input[data-set-field]')].some(el=>String(el.value||'').trim()!=='');
+  let structured=null;
+  if(hasInput)structured=smartFormEntries(form,true);
+  const totals=structured?smartTotals(structured):{amount:null,unit:SMART_TEMPLATES[smartRoot.dataset.smartTemplate].unit};
+  if(totals.amount!==null&&totals.amount>999999)throw Error('자동 합계가 최대 999999를 초과합니다. 기록을 나누어 주세요.');
+  return cleanAchievement({amount:structured?totals.amount:null,unit:totals.unit,note:form.elements.achievementNote?.value||'',mood:form.elements.achievementMood?.value||'',structured});
+ }
  const value=String(form.elements.achievementAmount?.value||'').trim();
  const amount=achievementAmount(value);
  if(mode==='number'&&value!==''&&amount===null)throw Error('달성량은 0~999999 사이 숫자로 입력하세요.');
@@ -5304,13 +5640,13 @@ function openAchievementEditor(key,id,recordIndex=null){
  const record=Number.isInteger(recordIndex)&&data.completions[recordIndex]?.day===key&&data.completions[recordIndex]?.id===id?data.completions[recordIndex]:data.completions.find(c=>c.day===key&&c.id===id);if(!record)return;
  const q=data.quests.find(q=>q.id===id)||{recordMode:record.achievement?.amount!==null?'number':'memo',recordUnit:record.achievement?.unit||''};
  const mode=ACHIEVEMENT_MODES.includes(record.recordMode)?record.recordMode:achievementMode(q);
- modal={type:'achievementEdit',key,id,recordIndex:record===data.completions[recordIndex]?recordIndex:null,mode:mode==='none'?'memo':mode,unit:String(record.recordUnit||achievementUnit(q))};render();
+ modal={type:'achievementEdit',key,id,recordIndex:record===data.completions[recordIndex]?recordIndex:null,mode:mode==='none'?'memo':mode,unit:String(record.recordUnit||achievementUnit(q)),templateId:record.achievement?.structured?.templateId||'basic'};render();
 }
 function saveAchievementEdit(event){
  event.preventDefault();if(modal?.type!=='achievementEdit'||!startUnlocked||!currentUserId)return;
  const record=completionEditorRecord();if(!record)return;
- let next;try{next=achievementFromForm(event.currentTarget,{recordMode:modal.mode,recordUnit:modal.unit});}catch(err){alert(err.message);return;}
- record.achievement=next;record.achievementUpdatedAt=new Date().toISOString();
+ let next;try{next=achievementFromForm(event.currentTarget,{recordMode:modal.mode,recordUnit:modal.unit,recordTemplateId:modal.templateId});}catch(err){alert(err.message);return;}
+ record.achievement=next;smartCommitLibrary(record.achievement);record.achievementUpdatedAt=new Date().toISOString();
  const ok=save();modal=null;render();
  if(!settings.autoSave||!ok)alert('달성 기록은 앱에 반영됐지만 자동 저장되지 않았습니다. JSON Save를 이용해 백업하세요.');
 }
@@ -5347,7 +5683,7 @@ function saveAchievementBonusToggle(event){
  data.rules.recordBonusEnabled=!!modal.wanted;bumpRulesVersion();saveRegistry();save();modal=null;render();
  if(!settings.autoSave)alert('기록 보너스 설정은 현재 실행에 반영됐습니다. JSON Save로 백업하세요.');
 }
-function cleanQuestSnapshot(q){return {id:String(q.id||'').slice(0,100),title:String(q.title||'').slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((q.mins||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:'',recordMode:achievementMode(q),recordUnit:achievementUnit(q)}}
+function cleanQuestSnapshot(q){return {id:String(q.id||'').slice(0,100),title:String(q.title||'').slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((q.mins||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:'',recordMode:achievementMode(q),recordUnit:achievementUnit(q),recordTemplateId:smartTemplateId(q)}}
 function auditQuest(action,id,before,after){data.questEvents.push({at:new Date().toISOString(),action,id,before:before?cleanQuestSnapshot(before):null,after:after?cleanQuestSnapshot(after):null})}
 function cleanBackup(v){
  if(v&&v.app==='PokeRoutine'&&v.data)v=v.data;
@@ -5355,7 +5691,7 @@ function cleanBackup(v){
  const safe=DEFAULT(),seen=new Set();
  if(v.quests.length>30)throw new Error('퀘스트는 최대 30개까지 등록할 수 있습니다.');
  safe.categories=Array.isArray(v.categories)?v.categories.filter(c=>c&&typeof c.name==='string'&&typeof c.emoji==='string').slice(0,100).map(c=>({name:c.name.trim().slice(0,25),emoji:c.emoji.slice(0,12)})).filter(c=>c.name):DEFAULT_CATEGORIES.map(c=>({...c}));
- safe.quests=v.quests.map(q=>({id:String(q.id||''),title:String(q.title||'').trim().slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((Number(q.mins)||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:'',recordMode:achievementMode(q),recordUnit:achievementUnit(q)})).filter(q=>q.title&&/^[A-Za-z0-9_-]{1,90}$/.test(q.id)&&!seen.has(q.id)&&seen.add(q.id));
+ safe.quests=v.quests.map(q=>({id:String(q.id||''),title:String(q.title||'').trim().slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((Number(q.mins)||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:'',recordMode:achievementMode(q),recordUnit:achievementUnit(q),recordTemplateId:smartTemplateId(q)})).filter(q=>q.title&&/^[A-Za-z0-9_-]{1,90}$/.test(q.id)&&!seen.has(q.id)&&seen.add(q.id));
  safe.dexView=['cards','large','list'].includes(v.dexView)?v.dexView:'cards';
  safe.regionsOpened=Object.fromEntries(POKE_REGIONS.slice(1).filter(r=>v.regionsOpened?.[r.key]===true).map(r=>[r.key,true]));
  safe.regionPolicyVersion=REGION_POLICY_VERSION;
@@ -5371,7 +5707,7 @@ function cleanBackup(v){
  safe.lifeEventConfig=cleanLifeEventConfig(v.lifeEventConfig);safe.lifeEventLogs=cleanLifeEventLogs(v.lifeEventLogs);safe.lifeRhythmView=cleanLifeRhythmView(v.lifeRhythmView);safe.lifeRhythmGoals=cleanLifeRhythmGoals(v.lifeRhythmGoals);
  safe.sleepRewardStartWeek=validNoteDay(v.sleepRewardStartWeek)?sleepWeekMonday(v.sleepRewardStartWeek):'';
  safe.sleepWeeklyReviews=cleanSleepWeeklyReviews(v.sleepWeeklyReviews);safe.sleepGoalHistory=cleanSleepGoalHistory(v.sleepGoalHistory);
- safe.achievementDrafts=cleanAchievementDrafts(v.achievementDrafts,safe.quests);
+ safe.achievementDrafts=cleanAchievementDrafts(v.achievementDrafts,safe.quests);safe.recordLibrary=smartCleanLibrary(v.recordLibrary);
  safe.learnedMoves=cleanLearnedMoves(v.learnedMoves);
  safe.feverTime=cleanFever(v.feverTime);
  safe.dailyVisitRewards=cleanDailyVisitRewards(v.dailyVisitRewards);
@@ -5396,7 +5732,7 @@ function cleanBackup(v){
   streakStagePoints:boundedNumber(c.streakStagePoints??c.points,150000),
   feverStagePoints:boundedNumber(c.feverStagePoints??c.eveningStagePoints??c.recommendedStagePoints??c.points,150000),feverStageXp:boundedNumber(c.feverStageXp??c.eveningStageXp??c.recommendedXpPoints??c.xpEarned,15000),
   medalPermanent:Math.max(0,Math.min(15,Number(c.medalPermanent)||0)),medalTemporary:Math.max(0,Math.min(20,Number(c.medalTemporary)||0)),medalBoostRate:Math.max(0,Math.min(35,Number(c.medalBoostRate)||0)),
-  xpStreakPoints:boundedNumber(c.xpStreakPoints??c.xpEarned,15000),achievement:cleanAchievement(c.achievement),achievementUpdatedAt:String(c.achievementUpdatedAt||'').slice(0,40),recordBonus:c.recordBonus===true,recordBonusPoints:boundedNumber(c.recordBonusPoints,150000),recordBonusXp:boundedNumber(c.recordBonusXp,15000),preRecordPoints:boundedNumber(c.preRecordPoints??c.points,150000),preRecordXp:boundedNumber(c.preRecordXp??c.xpEarned,15000),recordMode:ACHIEVEMENT_MODES.includes(c.recordMode)?c.recordMode:'',recordUnit:achievementUnit(c),at:String(c.at||'').slice(0,40)}));
+  xpStreakPoints:boundedNumber(c.xpStreakPoints??c.xpEarned,15000),achievement:cleanAchievement(c.achievement),achievementUpdatedAt:String(c.achievementUpdatedAt||'').slice(0,40),recordBonus:c.recordBonus===true,recordBonusPoints:boundedNumber(c.recordBonusPoints,150000),recordBonusXp:boundedNumber(c.recordBonusXp,15000),preRecordPoints:boundedNumber(c.preRecordPoints??c.points,150000),preRecordXp:boundedNumber(c.preRecordXp??c.xpEarned,15000),recordMode:ACHIEVEMENT_MODES.includes(c.recordMode)?c.recordMode:'',recordUnit:achievementUnit(c),recordTemplateId:smartTemplateId(c),at:String(c.at||'').slice(0,40)}));
  safe.owned={};for(const [id,item] of Object.entries(v.owned||{})){const n=Number(id);if(Number.isInteger(n)&&n>=1&&n<=POKE_MAX_ID&&item&&typeof item==='object')safe.owned[n]={count:Math.max(1,boundedNumber(item.count,100000)),firstDate:String(item.firstDate||'').slice(0,25)};}
  // The previous v1.7.58 considered the second region open at 76 even if its opened flag
  // was not persisted yet. Honor that historical entitlement on an upgraded backup.
@@ -5448,7 +5784,7 @@ function catchFor(t){const id=typeof t==='string'?t:t.id;return data.rules?.tier
 function rewardOptions(){const {pointMin:min,pointMax:max,pointStep:step}=data.rules;return Array.from({length:Math.floor((max-min)/step)+1},(_,i)=>min+i*step)}
 function rewardText(){return `${data.rules.pointMin}~${data.rules.pointMax}P (${data.rules.pointStep}P 간격, 각 ${+(100/rewardOptions().length).toFixed(2)}%)`}
 function categoryEmoji(n){return data.categories?.find(c=>c.name===n)?.emoji||icons[n]||'✨'}
-function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.achievementDrafts,data.quests);openRegionsIfReady(data);const dc=DEFAULT_CATEGORIES.map(c=>({...c}));if(!Array.isArray(data.categories))data.categories=dc;
+function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.achievementDrafts,data.quests);data.recordLibrary=smartCleanLibrary(data.recordLibrary);openRegionsIfReady(data);const dc=DEFAULT_CATEGORIES.map(c=>({...c}));if(!Array.isArray(data.categories))data.categories=dc;
  data.categories=data.categories.filter(c=>c&&typeof c.name==='string'&&typeof c.emoji==='string').map(c=>({name:c.name.slice(0,25),emoji:c.emoji.slice(0,12)}));
  if(!data.categories.some(c=>c.name==='기타'))data.categories.push({name:'기타',emoji:'✨'});if(!data.categories.some(c=>c.name==='예약'))data.categories.push({name:'예약',emoji:'📅'});
  if(!['cards','large','list'].includes(data.dexView))data.dexView='cards';
@@ -5551,7 +5887,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.106</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.107</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -5567,7 +5903,7 @@ function cleanRecommendedQuest(value){
  if(!value||typeof value!=='object'||!/^(?:\d{4})-(?:\d{2})-(?:\d{2})$/.test(String(value.day||''))||!String(value.id||'').trim())return null;
  return {day:String(value.day),id:String(value.id).slice(0,100)};
 }
-// v1.7.106: A small per-trainer rotation log. Historical quest records and rewards are unchanged.
+// v1.7.107: A small per-trainer rotation log. Historical quest records and rewards are unchanged.
 function cleanRecommendationHistory(value){
  const seen=new Set();
  return (Array.isArray(value)?value:[]).filter(item=>item&&validNoteDay(String(item.day||''))&&['today','evening'].includes(item.kind)&&/^[A-Za-z0-9_-]{1,90}$/.test(String(item.id||''))).slice(-240).map(item=>({day:String(item.day),kind:item.kind,id:String(item.id)})).filter(item=>{const key=item.day+'|'+item.kind;if(seen.has(key))return false;seen.add(key);return true}).slice(-180);
@@ -5823,7 +6159,8 @@ function verifyQuest(e){
   mode:normal?'normal':'time',points:pts,basePoints:basePts,multiplier:mult,pointBoost,xpBoost,pointCombinedMultiplier:combined,questStreak:todayQuestRun,overallStreak:todayOverallRun,xpBase:baseXp,
   feverActive:fever.active,feverRate:fever.active?fever.rate:0,feverStart:fever.start,timeStagePoints,streakStagePoints,xpStreakPoints,recommendedBonus,recommendedStagePoints,recommendedXpPoints,eveningBonus,eveningStagePoints,eveningStageXp,feverStagePoints,feverStageXp,medalPermanent:medalSnapshot.permanent,medalTemporary:medalSnapshot.temporary,medalBoostRate:medalSnapshot.total,
   limitSeconds:normal?0:a.limitSeconds,elapsedSeconds,holdSeconds,holdCount:normal?0:(a.holdCount||0),
-  rewardRule:questReward(q),xpEarned:earnedXp,achievement,recordMode:achievementMode(q),recordUnit:achievementUnit(q),achievementUpdatedAt:now,recordBonus,recordBonusPoints,recordBonusXp,preRecordPoints,preRecordXp,at:now});
+  rewardRule:questReward(q),xpEarned:earnedXp,achievement,recordMode:achievementMode(q),recordUnit:achievementUnit(q),recordTemplateId:smartTemplateId(q),achievementUpdatedAt:now,recordBonus,recordBonusPoints,recordBonusXp,preRecordPoints,preRecordXp,at:now});
+ smartCommitLibrary(achievement);
  if(data.achievementDrafts?.[day()]?.[id]){delete data.achievementDrafts[day()][id];if(!Object.keys(data.achievementDrafts[day()]).length)delete data.achievementDrafts[day()];}
  data.points+=pts;data.allEarned+=pts;
  const levelUps=awardQuestXp(earnedXp),newLevelGifts=[];
@@ -6210,7 +6547,7 @@ function importQuests(scope){
  }
  for(const q of unique){
   let id;do{id='copy_'+randomId().replace(/-/g,'')}while(usedIds.has(id));usedIds.add(id);
-  const copy={id,title:String(q.title).slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal||'').slice(0,90),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),recordMode:achievementMode(q),recordUnit:achievementUnit(q)};
+  const copy={id,title:String(q.title).slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal||'').slice(0,90),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),recordMode:achievementMode(q),recordUnit:achievementUnit(q),recordTemplateId:smartTemplateId(q)};
   data.quests.push(copy);auditQuest('import',id,null,copy);
  }
  const persisted=save();modal=null;render();
@@ -6227,7 +6564,7 @@ function renderQuestImportModal(){
 }
 
 function saveTask(event){
- event.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='questEditor'||modal.authorized!==true){alert('관리자 비밀번호 인증이 필요합니다.');return}const f=event.currentTarget,title=f.elements['title'].value.trim().slice(0,45),category=f.elements['questType'].value==='reserved'?'예약':f.elements['category'].value,goal=f.elements['goal'].value.trim().slice(0,90),limitMinutes=Number(f.elements['limitMinutes'].value),questKind=f.elements['questType'].value,weekdays=[...f.querySelectorAll('input[name=weekdays]:checked')].map(x=>Number(x.value)),eventChance=Number(f.elements['eventChance'].value),mode=f.elements['rewardMode'].value,xpMode=f.elements['xpMode'].value,recordMode=f.elements['recordMode'].value,recordUnit=String(f.elements['recordUnit'].value||'').trim().slice(0,12);
+ event.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='questEditor'||modal.authorized!==true){alert('관리자 비밀번호 인증이 필요합니다.');return}const f=event.currentTarget,title=f.elements['title'].value.trim().slice(0,45),category=f.elements['questType'].value==='reserved'?'예약':f.elements['category'].value,goal=f.elements['goal'].value.trim().slice(0,90),limitMinutes=Number(f.elements['limitMinutes'].value),questKind=f.elements['questType'].value,weekdays=[...f.querySelectorAll('input[name=weekdays]:checked')].map(x=>Number(x.value)),eventChance=Number(f.elements['eventChance'].value),mode=f.elements['rewardMode'].value,xpMode=f.elements['xpMode'].value,recordMode=f.elements['recordMode'].value,recordUnit=String(f.elements['recordUnit'].value||'').trim().slice(0,12),recordTemplateId=SMART_TEMPLATES[f.elements['recordTemplateId']?.value]?f.elements['recordTemplateId'].value:'basic';
  let rewardOverride=null;
  if(mode==='custom'){
   if(['rewardMin','rewardMax','rewardStep'].some(n=>f.elements[n].value.trim()==='')){alert('개별 포인트 값은 모두 입력하세요.');return}
@@ -6243,8 +6580,8 @@ function saveTask(event){
  if(questKind==='reserved'&&(!validNoteDay(f.elements.startDate.value)||!validNoteDay(f.elements.endDate.value)||f.elements.endDate.value<f.elements.startDate.value)){alert('예약 시작일과 종료일을 확인해 주세요.');return}
  if(data.activeQuest&&data.activeQuest.id===modal.id){alert('진행 중인 퀘스트는 종료 또는 포기한 뒤 수정하세요.');return}
  if(!data.categories.some(c=>c.name===category)){alert('카테고리를 먼저 등록하세요.');return}
- if(modal.id){const q=data.quests.find(q=>q.id===modal.id);if(q){const old={...q};q.title=title;q.category=category;q.goal=goal;q.limitMinutes=limitMinutes;q.rewardOverride=rewardOverride;q.xpOverride=xpOverride;q.questType=questKind;q.weekdays=weekdays;q.eventChance=eventChance;q.recordMode=recordMode;q.recordUnit=recordMode==='number'?recordUnit:'';q.startDate=questKind==='reserved'?f.elements.startDate.value:'';q.endDate=questKind==='reserved'?f.elements.endDate.value:'';delete q.mins;auditQuest('edit',q.id,old,q)}}
- else{if(data.quests.length>=30){alert('최대 30개까지 등록할 수 있습니다.');return}const newQ={id:'custom_'+Date.now()+'_'+ri(100,999),title,category,goal,limitMinutes,rewardOverride,xpOverride,questType:questKind,weekdays,eventChance,recordMode,recordUnit:recordMode==='number'?recordUnit:'',startDate:questKind==='reserved'?f.elements.startDate.value:'',endDate:questKind==='reserved'?f.elements.endDate.value:''};data.quests.push(newQ);auditQuest('create',newQ.id,null,newQ)}
+ if(modal.id){const q=data.quests.find(q=>q.id===modal.id);if(q){const old={...q};q.title=title;q.category=category;q.goal=goal;q.limitMinutes=limitMinutes;q.rewardOverride=rewardOverride;q.xpOverride=xpOverride;q.questType=questKind;q.weekdays=weekdays;q.eventChance=eventChance;q.recordMode=recordMode;q.recordUnit=recordMode==='number'?(recordTemplateId==='basic'?recordUnit:SMART_TEMPLATES[recordTemplateId].unit):'';q.recordTemplateId=recordMode==='number'?recordTemplateId:'basic';q.startDate=questKind==='reserved'?f.elements.startDate.value:'';q.endDate=questKind==='reserved'?f.elements.endDate.value:'';delete q.mins;auditQuest('edit',q.id,old,q)}}
+ else{if(data.quests.length>=30){alert('최대 30개까지 등록할 수 있습니다.');return}const newQ={id:'custom_'+Date.now()+'_'+ri(100,999),title,category,goal,limitMinutes,rewardOverride,xpOverride,questType:questKind,weekdays,eventChance,recordMode,recordUnit:recordMode==='number'?(recordTemplateId==='basic'?recordUnit:SMART_TEMPLATES[recordTemplateId].unit):'',recordTemplateId:recordMode==='number'?recordTemplateId:'basic',startDate:questKind==='reserved'?f.elements.startDate.value:'',endDate:questKind==='reserved'?f.elements.endDate.value:''};data.quests.push(newQ);auditQuest('create',newQ.id,null,newQ)}
  save();modal=null;render();
 }
 function openCategories(){modal={type:'categoryManager'};render()}
@@ -6976,7 +7313,7 @@ function sleepGoalsFor(morning,profile=data){
  for(const item of hist){if(item.from>morning)break;v={bed:item.bed,wake:item.wake}}
  return v;
 }
-// v1.7.106: a single, dated target source for sleep tracker and life-rhythm graphs.
+// v1.7.107: a single, dated target source for sleep tracker and life-rhythm graphs.
 function persistSleepGoals(bed,wake){
  if(!lifeClockValid(bed)||!lifeClockValid(wake))return false;
  const effective=sleepDateAdd(day(),1); // Apply to tonight's sleep / next morning, never retroactively.
@@ -8327,6 +8664,7 @@ function fullHistoryRows(id){
   return `<details class="full-history-card"><summary><span class="full-history-date"><b>${esc(c.day)}</b><small>${esc(clock)}</small></span><span class="full-history-measure">${esc(emoji)} ${metric}${preview}</span><span class="full-history-points">+${format(c.points||0)}P</span><span class="full-history-chevron" aria-hidden="true">⌄</span></summary>
    <div class="full-history-detail"><div class="full-history-info"><span>🕒 ${esc(clock==='--:--'?'완료 시각 정보 없음':clock+' 완료')}</span><span>🎯 ${esc(c.goal||'목표 정보 없음')}</span><span>⭐ +${format(c.xpEarned??0)}XP</span><span>🪙 +${format(c.points||0)}P</span>${ach.mood?`<span>${esc(achievementSummary({achievement:{...ach,amount:null}}))}</span>`:''}</div>
    <div class="full-history-achievement"><strong>실제 달성량</strong> ${ach.amount===null?'미기록':amount}</div>
+   ${ach.structured?.entries?.length?`<div class="smart-history-summary"><strong>🗂️ 구조화 상세 기록</strong>${ach.structured.entries.map(e=>`<div>${esc(e.title||e.name)} · ${ach.structured.templateId==='reading'?`${e.startPage}~${e.endPage}쪽`:Array.isArray(e.sets)?e.sets.map(x=>`${x.reps}회${x.at?` (${new Date(x.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})})`:''}`).join(' / '):achievementNumberText(smartTotals({templateId:ach.structured.templateId,entries:[e]}).amount)+' '+(SMART_TEMPLATES[ach.structured.templateId]?.unit||'')}</div>`).join('')}</div>`:''}
    <div class="full-history-note"><strong>상세 기록</strong><p>${note?esc(note):'작성된 메모가 없습니다.'}</p></div>
    <div class="full-history-buttons"><button type="button" class="tinybtn" onclick="openAchievementEditor('${c.day}',decodeURIComponent('${encodeURIComponent(c.id).replaceAll("'",'%27')}'),${index})">✎ 기록 확인·수정</button><button type="button" class="tinybtn" onclick="fullHistoryOpenDate('${c.day}',decodeURIComponent('${encodeURIComponent(c.id).replaceAll("'",'%27')}'))">📅 날짜 상세</button></div></div></details>`;
  }).join('');
@@ -8353,7 +8691,7 @@ function renderQuestFullHistory(id){
 function renderQuestGrowthReport(){
  const selected=analyticsSelected('stats'),av=analyticsPrefs(),cat=analyticsCatalog();
  const head=`<section class="section quest-analytics growth-quest-report"><div class="section-title"><h2>🎯 퀘스트별 성장 분석</h2></div>${analyticsQuestSelect('stats')}`;
- if(selected==='all')return `${head}${growthQuestOverview()}</section>`;
+ if(selected==='all')return `${head}<div class="smart-report-head" style="margin:10px 0"><span>구조화된 독서 목록을 계정 전체에서 관리</span><button type="button" class="tinybtn" onclick="openBookLibrary()">📚 전체 독서 목록</button></div>${growthQuestOverview()}</section>`;
  const item=cat.find(q=>q.id===selected),history=questHistorySeries(selected,365),rows=history.slice(-av.range),score=growthScheduledScore(rows);
  const prevEnd=analyticsDateShift(day(),-av.range),prevStart=analyticsDateShift(prevEnd,-av.range+1),prevRows=questHistorySeries(selected,Math.min(730,av.range*2)).filter(r=>r.day>=prevStart&&r.day<=prevEnd),previous=growthScheduledScore(prevRows);
  const delta=score.rate!==null&&previous.rate!==null?Math.round((score.rate-previous.rate)*10)/10:null;
@@ -8363,6 +8701,7 @@ function renderQuestGrowthReport(){
  <p class="growth-report-fine">이번 기간 완료 <b>${completed}회</b> · 전체 누적 <b>${totalDone}회</b> · 획득 <b>${format(points)}P / ${format(xp)}XP</b></p>
  ${isRegular?growthRhythm(rows,av.range):'<div class="growth-empty">일회성·이벤트는 예정일 연속 수행 대신 완료 횟수로 기록합니다.</div>'}
  ${renderAchievementAnalytics(selected,rows,history)}
+ ${smartTemplateAnalysis(selected)}
  ${renderQuestFullHistory(selected)}
  <p class="growth-help">예정일 정보가 확인되는 날만 달성률에 포함하며, 오늘 미완료는 마감 전까지 제외합니다. 예전 기록의 등록 시점이 없으면 미확인 날짜를 실패로 처리하지 않습니다.</p>
  <button type="button" class="tinybtn qa-open-cal" onclick="setAnalyticsQuest('calendar',decodeURIComponent('${encodeURIComponent(selected).replaceAll("'",'%27')}'));calendarMonth=day().slice(0,7);setScreen('calendar')">📅 날짜별 상세는 달력에서 보기</button></section>`;
@@ -8482,7 +8821,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.106</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.107</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -9127,7 +9466,7 @@ function renderBuddyBriefing(){
  <button class="modal-btn secondary" type="button" onclick="closeBuddyBriefing()">${kind==='morning'?'오늘 모험 시작하기':'오늘의 마무리 확인'}</button><small class="briefing-once-note">자동 브리핑은 하루에 한 번 · 오늘 탭의 다시보기 버튼으로 언제든 열 수 있어요.</small></div></div>`;
 }
 
-// v1.7.106: actionable, compact recommendations; same-target bonuses share one card.
+// v1.7.107: actionable, compact recommendations; same-target bonuses share one card.
 function renderQuestRecommendationPanel(){
  const todayPick=dailyRecommendedQuest();
  const todayValid=!!todayPick&&!completedToday(todayPick.id);
@@ -9735,14 +10074,15 @@ if(modal.type==='achievementBonusAuth')return `<div class="overlay" onclick="mod
 if(modal.type==='achievementDraft'){
  const {id,date}=modal,raw=data.quests.find(q=>q.id===id),saved=achievementDraft(date,id),q=(saved&&achievementMode(raw)==='none')?saved:(raw||saved);
  if(!q)return '';
- return `<div class="overlay" onclick="modal=null;render()"><div class="modal achievement-edit-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>📝 달성 기록 중간 저장</h2><p class="modal-sub">${esc(date)} · ${esc(q.title)} · 완료 버튼은 따로 누르세요.</p><div class="achievement-draft-status"><strong>${saved?'💾 이전 기록을 불러왔어요':'✍️ 지금까지 한 만큼 기록하세요'}</strong>현재까지의 <b>누적 달성량</b>으로 수정해서 저장하세요. (예: 10회 → 25회, 10+25로 자동 합산하지 않음.) ${saved?`<br>마지막 저장: ${esc(saved.updatedAt?new Date(saved.updatedAt).toLocaleString('ko-KR'):'')}`:''}<br><b>포인트·XP 지급 없음 · 완료 처리 안 함</b></div><form class="qform" onsubmit="saveAchievementDraft(event)">${achievementFields(q,saved?{achievement:saved.achievement}:null,'draft')}<div class="achievement-draft-controls"><button class="modal-btn" type="submit">💾 지금 기록 저장</button>${saved?`<button type="button" class="modal-btn secondary" onclick="deleteAchievementDraft('${id}','${date}')">임시 기록 삭제</button>`:''}</div></form><button class="modal-btn secondary" type="button" onclick="modal=null;render()">닫기</button></div></div>`;
+ return `<div class="overlay" onclick="modal=null;render()"><div class="modal achievement-edit-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>📝 달성 기록 중간 저장</h2><p class="modal-sub">${esc(date)} · ${esc(q.title)} · 완료 버튼은 따로 누르세요.</p><div class="achievement-draft-status"><strong>${saved?'💾 이전 기록을 불러왔어요':'✍️ 지금까지 한 만큼 기록하세요'}</strong>${smartTemplateId(q)!=='basic'?'항목과 세트를 추가·수정하면 오늘의 합계가 자동 계산됩니다. 세트별 기록 시각은 최초 입력 시각으로 보존됩니다.':'현재까지의 <b>누적 달성량</b>으로 수정해서 저장하세요. (예: 10회 → 25회, 10+25로 자동 합산하지 않음.)'} ${saved?`<br>마지막 저장: ${esc(saved.updatedAt?new Date(saved.updatedAt).toLocaleString('ko-KR'):'')}`:''}<br><b>포인트·XP 지급 없음 · 완료 처리 안 함</b></div><form class="qform" onsubmit="saveAchievementDraft(event)">${achievementFields(q,saved?{achievement:saved.achievement}:null,'draft')}<div class="achievement-draft-controls"><button class="modal-btn" type="submit">💾 지금 기록 저장</button>${saved?`<button type="button" class="modal-btn secondary" onclick="deleteAchievementDraft('${id}','${date}')">임시 기록 삭제</button>`:''}</div></form><button class="modal-btn secondary" type="button" onclick="modal=null;render()">닫기</button></div></div>`;
 }
-if(modal.type==='achievementEdit'){const c=completionEditorRecord();if(!c)return '';return `<div class="overlay" onclick="modal=null;render()"><div class="modal achievement-edit-modal" role="dialog" aria-modal="true" onclick="event.stopPropagation()"><h2>📝 달성 기록 수정</h2><p class="modal-sub">${esc(c.day)} · ${esc(c.title)}</p><form class="qform" onsubmit="saveAchievementEdit(event)">${achievementFields({recordMode:modal.mode,recordUnit:modal.unit},c,"edit")}<p class="qform-note">포인트·XP는 완료 승인 시 한 번만 지급됩니다. 기록 수정으로 보너스가 재지급되지 않습니다.</p><button class="modal-btn" type="submit">💾 기록 저장</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;}
+if(modal.type==='bookLibrary')return smartBookLibraryHTML();
+if(modal.type==='achievementEdit'){const c=completionEditorRecord();if(!c)return '';return `<div class="overlay" onclick="modal=null;render()"><div class="modal achievement-edit-modal" role="dialog" aria-modal="true" onclick="event.stopPropagation()"><h2>📝 달성 기록 수정</h2><p class="modal-sub">${esc(c.day)} · ${esc(c.title)}</p><form class="qform" onsubmit="saveAchievementEdit(event)">${achievementFields({recordMode:modal.mode,recordUnit:modal.unit,recordTemplateId:modal.templateId},c,"edit")}<p class="qform-note">포인트·XP는 완료 승인 시 한 번만 지급됩니다. 기록 수정으로 보너스가 재지급되지 않습니다.</p><button class="modal-btn" type="submit">💾 기록 저장</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;}
 if(modal.type==='categoryManager')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><h2>🎨 카테고리 관리</h2><p class="modal-sub">나만의 카테고리·이모지를 추가, 수정 또는 삭제할 수 있습니다.</p><div class="category-list">${data.categories.map(c=>`<div class="category-item"><span class="category-icon">${esc(c.emoji)}</span><span class="category-name">${esc(c.name)}</span><button class="quest-edit" onclick="categoryEditor(decodeURIComponent('${encodeURIComponent(c.name)}'))">✎ 수정</button><button class="tiny-danger" onclick="deleteCategory(decodeURIComponent('${encodeURIComponent(c.name)}'))" ${c.name==='기타'?'disabled':''}>삭제</button></div>`).join('')}</div><button class="modal-btn" onclick="categoryEditor()">＋ 카테고리 만들기</button><button class="modal-btn secondary" onclick="modal=null;render()">닫기</button></div></div>`;
 if(modal.type==='categoryEditor'){const oldName=modal.original||'',cat=data.categories.find(c=>c.name===oldName),value=cat?.emoji||'✨';return `<div class="overlay" onclick="modal={type:'categoryManager'};render()"><div class="modal" onclick="event.stopPropagation()"><h2>${cat?'카테고리 수정':'카테고리 추가'}</h2><form class="qform" onsubmit="saveCategory(event)"><label>카테고리 이름</label><input class="qentry" name="categoryName" type="text" maxlength="25" required value="${esc(oldName)}" placeholder="예: 과학, 피아노, 영어"><label>아이콘 선택</label><input id="categoryEmojiValue" type="hidden" name="categoryEmoji" value="${esc(value)}"><div class="emoji-grid">${EMOJI_CHOICES.map(em=>`<button class="emoji-pick ${em===value?'selected':''}" type="button" data-emoji="${esc(em)}" onclick="selectEmoji(this.dataset.emoji)" title="${esc(em)}">${esc(em)}</button>`).join('')}</div><button class="modal-btn" type="submit">카테고리 저장</button></form><button class="modal-btn secondary" onclick="modal={type:'categoryManager'};render()">취소</button></div></div>`;}
 if(modal.type==='rankGuide'){const current=lvl(),rank=growthStage(current);return `<div class="overlay" onclick="modal=null;render()"><div class="modal rank-guide-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="트레이너 직급 안내"><h2>🏅 트레이너 성장 도감</h2><p class="modal-sub">5레벨마다 새로운 칭호를 만나 보세요! 현재 <b>Lv.${current} ${rank.name}</b></p><div class="rank-guide-grid">${TRAINER_RANKS.map(([threshold,icon,title],idx)=>`<div class="rank-entry ${current>=threshold?'unlocked':''} ${rank.min===threshold?'current':''}"><span class="rank-entry-icon" aria-hidden="true">${icon}</span><span class="rank-entry-label"><strong>${esc(title)}</strong><small>Lv.${threshold} ${current>=threshold?'· 획득':'· 미달성'}</small></span>${rank.min===threshold?'<b class="rank-current-label">현재</b>':''}</div>`).join('')}</div><p class="rank-guide-note">Lv.200 이후에도 50레벨마다 명예 등급이 오릅니다. 직급은 성장 표시용이며 포인트·XP·등장 확률·포획 확률을 바꾸지 않습니다.</p><button class="modal-btn" onclick="modal=null;render()">닫기</button></div></div>`;}
 if(modal.type==='questEditAuth')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="퀘스트 편집 관리자 인증"><div class="spark">🔐</div><h2>관리자 확인</h2><p class="modal-sub">퀘스트 ${modal.id?'수정·삭제':'등록'}는 관리자 비밀번호 인증 후 가능합니다.</p><form class="qform" onsubmit="authorizeQuestEditor(event)"><label>관리자 비밀번호</label><input class="qentry" name="questAdminPin" type="password" inputmode="numeric" autocomplete="off" required placeholder="관리자 비밀번호 입력"><button class="modal-btn" type="submit">🔓 편집하기</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;
-if(modal.type==='questEditor'){const old=modal.id?data.quests.find(q=>q.id===modal.id):null;return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" style="max-height:92dvh;overflow-y:auto"><h2>${old?'퀘스트 수정':'퀘스트 추가'}</h2><p class="modal-sub">매일·요일별·일회성·이벤트 중 선택하세요. 기본값은 매일이며 이벤트는 발생 전 숨깁니다.</p><form class="qform" onsubmit="saveTask(event)"><label for="questName">퀘스트 이름</label><input class="qentry" id="questName" name="title" type="text" required maxlength="45" placeholder="예: 피아노 연습" value="${old?esc(old.title):''}"><label for="qCat">카테고리</label><select class="qentry" id="qCat" name="category">${data.categories.map(c=>`<option value="${esc(c.name)}" ${old?.category===c.name?'selected':''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select><div class="quest-calendar-editor"><label for="questTypeSelect">🗓️ 퀘스트 유형</label><select class="qentry" id="questTypeSelect" name="questType" onchange="updateQuestTypeFields(this)">${[['daily','🔁 매일 (기본)'],['weekly','📅 요일별 반복'],['once','🎯 일회성'],['event','✨ 이벤트 · 발생 전 숨김'],['reserved','📅 예약 · 시작일~종료일']].map(([v,t])=>`<option value="${v}" ${questType(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="questWeeklyEditor" ${questType(old)==='weekly'?'':'hidden'}><p class="qform-note">반복할 요일을 하나 이상 선택하세요.</p><div class="quest-weekday-picks">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" name="weekdays" value="${d}" ${questWeekdays(old).includes(d)?'checked':''}>${WEEKDAY_LABELS[d]}</label>`).join('')}</div></div><div id="questEventEditor" ${questType(old)==='event'?'':'hidden'}><label for="eventChanceInput">✨ 일반 퀘스트 완료 시 이벤트 발생 확률 (%)</label><input class="qentry" id="eventChanceInput" name="eventChance" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="${questChance(old)}"><p class="qform-note">각 등록 이벤트를 독립 판정하고, 동시에 당첨되면 하나만 랜덤 선택합니다. 보유 도감이 있어야 발생합니다. 하루 한 건만 활성화하며 22:00에 만료합니다.</p></div><div id="questReservedEditor" ${questType(old)==='reserved'?'':'hidden'}><p class="qform-note">📅 지정한 기간에만 매일 표시되며 예약 카테고리가 자동 적용됩니다.</p><div class="qform-row"><div><label>시작일</label><input class="qentry" name="startDate" type="date" value="${esc(old?.startDate||day())}"></div><div><label>종료일</label><input class="qentry" name="endDate" type="date" value="${esc(old?.endDate||day())}"></div></div></div></div><label for="qGoal">목표 (자유 입력)</label><input class="qentry" id="qGoal" name="goal" type="text" maxlength="90" required placeholder="예: 30분, 20문제, 한자 5자 암기" value="${esc(old?.goal||((old?.mins||'')?old.mins+'분':''))}"><div class="achievement-quest-config"><label for="recordModeSelect">📝 완료 시 달성 기록 유형</label><select class="qentry" id="recordModeSelect" name="recordMode" onchange="document.getElementById('recordUnitSetup').hidden=this.value!=='number'">${[['none','사용 안 함'],['memo','상세 메모만'],['number','달성량(숫자·단위) + 메모 (추천)']].map(([v,t])=>`<option value="${v}" ${achievementMode(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="recordUnitSetup" ${achievementMode(old)==='number'?'':'hidden'}><label>기본 측정 단위<input class="qentry" name="recordUnit" maxlength="12" placeholder="예: 회, 분, 페이지, km" value="${esc(achievementUnit(old))}"></label></div><p class="qform-note">기록은 선택 사항입니다. 달성량만 적어도 기록 보너스가 켜져 있으면 완료 시 +20%를 받을 수 있습니다. 완료 전에 여러 번 임시 저장할 수도 있습니다.</p></div><label for="limitMinutes">⏳ 시간 제한 (분, 기본 10분)</label><input class="qentry" id="limitMinutes" name="limitMinutes" type="number" inputmode="numeric" min="1" max="240" step="1" required value="${old?.limitMinutes||10}"><label for="rewardMode">🎁 랜덤 기본 포인트</label><select class="qentry" id="rewardMode" name="rewardMode" onchange="document.getElementById('customRewardInputs').hidden=this.value!=='custom'"><option value="default" ${!old?.rewardOverride?'selected':''}>관리자 기본값 적용 (${data.rules.pointMin}~${data.rules.pointMax}P)</option><option value="custom" ${old?.rewardOverride?'selected':''}>이 퀘스트만 별도 범위 지정</option></select><div id="customRewardInputs" class="quest-reward-editor" ${old?.rewardOverride?'':'hidden'}><label>최소 포인트<input class="qentry" name="rewardMin" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.min??data.rules.pointMin}"></label><label>최대 포인트<input class="qentry" name="rewardMax" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.max??data.rules.pointMax}"></label><label>지급 간격<select class="qentry" name="rewardStep">${REWARD_STEPS.map(step=>`<option value="${step}" ${step===(old?.rewardOverride?.step??data.rules.pointStep)?'selected':''}>${step}P</option>`).join('')}</select></label><p class="qform-note">범위의 각 포인트는 동일한 확률로 뽑힙니다. 시간 배수는 뽑힌 기본 포인트에 최대 ×3 적용됩니다.</p></div><label for="xpMode">🌟 퀘스트 완료 경험치 (XP)</label><select class="qentry" id="xpMode" name="xpMode" onchange="document.getElementById('customXpInputs').hidden=this.value!=='custom'"><option value="default" ${old?.xpOverride==null?'selected':''}>관리자 기본값 상속 (${format(data.rules.defaultXp)}XP)</option><option value="custom" ${old?.xpOverride!=null?'selected':''}>이 퀘스트만 별도 XP 지정</option></select><div class="quest-xp-editor" id="customXpInputs" ${old?.xpOverride!=null?'':'hidden'}><label>획득 경험치<input class="qentry" type="number" name="questXp" inputmode="numeric" min="0" max="1000" step="1" value="${old?.xpOverride??data.rules.defaultXp}"></label><p class="qform-note">일반 완료와 타임챌린지에서 동일하게 지급됩니다. 시간 ×3 보너스는 포인트에만 적용됩니다.</p></div><p class="qform-note">🔒 등록·수정·삭제는 관리자 인증 필요 · 완료는 퀘스트 완료 비밀번호 필요</p><button class="modal-btn" type="submit">${old?'변경사항 저장':'퀘스트 등록'}</button></form>${old?`<button class="modal-btn secondary" onclick="removeTask('${old.id}')">퀘스트 삭제</button>`:''}<button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`}
+if(modal.type==='questEditor'){const old=modal.id?data.quests.find(q=>q.id===modal.id):null;return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" style="max-height:92dvh;overflow-y:auto"><h2>${old?'퀘스트 수정':'퀘스트 추가'}</h2><p class="modal-sub">매일·요일별·일회성·이벤트 중 선택하세요. 기본값은 매일이며 이벤트는 발생 전 숨깁니다.</p><form class="qform" onsubmit="saveTask(event)"><label for="questName">퀘스트 이름</label><input class="qentry" id="questName" name="title" type="text" required maxlength="45" placeholder="예: 피아노 연습" value="${old?esc(old.title):''}"><label for="qCat">카테고리</label><select class="qentry" id="qCat" name="category">${data.categories.map(c=>`<option value="${esc(c.name)}" ${old?.category===c.name?'selected':''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select><div class="quest-calendar-editor"><label for="questTypeSelect">🗓️ 퀘스트 유형</label><select class="qentry" id="questTypeSelect" name="questType" onchange="updateQuestTypeFields(this)">${[['daily','🔁 매일 (기본)'],['weekly','📅 요일별 반복'],['once','🎯 일회성'],['event','✨ 이벤트 · 발생 전 숨김'],['reserved','📅 예약 · 시작일~종료일']].map(([v,t])=>`<option value="${v}" ${questType(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="questWeeklyEditor" ${questType(old)==='weekly'?'':'hidden'}><p class="qform-note">반복할 요일을 하나 이상 선택하세요.</p><div class="quest-weekday-picks">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" name="weekdays" value="${d}" ${questWeekdays(old).includes(d)?'checked':''}>${WEEKDAY_LABELS[d]}</label>`).join('')}</div></div><div id="questEventEditor" ${questType(old)==='event'?'':'hidden'}><label for="eventChanceInput">✨ 일반 퀘스트 완료 시 이벤트 발생 확률 (%)</label><input class="qentry" id="eventChanceInput" name="eventChance" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="${questChance(old)}"><p class="qform-note">각 등록 이벤트를 독립 판정하고, 동시에 당첨되면 하나만 랜덤 선택합니다. 보유 도감이 있어야 발생합니다. 하루 한 건만 활성화하며 22:00에 만료합니다.</p></div><div id="questReservedEditor" ${questType(old)==='reserved'?'':'hidden'}><p class="qform-note">📅 지정한 기간에만 매일 표시되며 예약 카테고리가 자동 적용됩니다.</p><div class="qform-row"><div><label>시작일</label><input class="qentry" name="startDate" type="date" value="${esc(old?.startDate||day())}"></div><div><label>종료일</label><input class="qentry" name="endDate" type="date" value="${esc(old?.endDate||day())}"></div></div></div></div><label for="qGoal">목표 (자유 입력)</label><input class="qentry" id="qGoal" name="goal" type="text" maxlength="90" required placeholder="예: 30분, 20문제, 한자 5자 암기" value="${esc(old?.goal||((old?.mins||'')?old.mins+'분':''))}"><div class="achievement-quest-config"><label for="recordModeSelect">📝 완료 시 달성 기록 유형</label><select class="qentry" id="recordModeSelect" name="recordMode" onchange="document.getElementById('recordUnitSetup').hidden=this.value!=='number'">${[['none','사용 안 함'],['memo','상세 메모만'],['number','달성량(숫자·단위) + 메모 (추천)']].map(([v,t])=>`<option value="${v}" ${achievementMode(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="recordUnitSetup" ${achievementMode(old)==='number'?'':'hidden'}><label>기본 측정 단위<input class="qentry" name="recordUnit" maxlength="12" placeholder="예: 회, 분, 페이지, km" ${smartTemplateId(old)!=='basic'?'readonly':''} value="${esc(achievementUnit(old))}"></label></div><label>🗂️ 퀘스트별 상세 템플릿<select class="qentry" name="recordTemplateId" onchange="smartQuestTemplateChange(this)">${Object.entries(SMART_TEMPLATES).map(([v,x])=>`<option value="${v}" ${smartTemplateId(old)===v?'selected':''}>${esc(x.label)}</option>`).join('')}</select></label><p class="qform-note">템플릿을 지정하면 상세 기록을 자동 계산합니다. 책 제목 자동완성·세트별 입력 시간 기록·항목 추가를 지원합니다.</p><p class="qform-note">기록은 선택 사항입니다. 달성량만 적어도 기록 보너스가 켜져 있으면 완료 시 +20%를 받을 수 있습니다. 완료 전에 여러 번 임시 저장할 수도 있습니다.</p></div><label for="limitMinutes">⏳ 시간 제한 (분, 기본 10분)</label><input class="qentry" id="limitMinutes" name="limitMinutes" type="number" inputmode="numeric" min="1" max="240" step="1" required value="${old?.limitMinutes||10}"><label for="rewardMode">🎁 랜덤 기본 포인트</label><select class="qentry" id="rewardMode" name="rewardMode" onchange="document.getElementById('customRewardInputs').hidden=this.value!=='custom'"><option value="default" ${!old?.rewardOverride?'selected':''}>관리자 기본값 적용 (${data.rules.pointMin}~${data.rules.pointMax}P)</option><option value="custom" ${old?.rewardOverride?'selected':''}>이 퀘스트만 별도 범위 지정</option></select><div id="customRewardInputs" class="quest-reward-editor" ${old?.rewardOverride?'':'hidden'}><label>최소 포인트<input class="qentry" name="rewardMin" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.min??data.rules.pointMin}"></label><label>최대 포인트<input class="qentry" name="rewardMax" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.max??data.rules.pointMax}"></label><label>지급 간격<select class="qentry" name="rewardStep">${REWARD_STEPS.map(step=>`<option value="${step}" ${step===(old?.rewardOverride?.step??data.rules.pointStep)?'selected':''}>${step}P</option>`).join('')}</select></label><p class="qform-note">범위의 각 포인트는 동일한 확률로 뽑힙니다. 시간 배수는 뽑힌 기본 포인트에 최대 ×3 적용됩니다.</p></div><label for="xpMode">🌟 퀘스트 완료 경험치 (XP)</label><select class="qentry" id="xpMode" name="xpMode" onchange="document.getElementById('customXpInputs').hidden=this.value!=='custom'"><option value="default" ${old?.xpOverride==null?'selected':''}>관리자 기본값 상속 (${format(data.rules.defaultXp)}XP)</option><option value="custom" ${old?.xpOverride!=null?'selected':''}>이 퀘스트만 별도 XP 지정</option></select><div class="quest-xp-editor" id="customXpInputs" ${old?.xpOverride!=null?'':'hidden'}><label>획득 경험치<input class="qentry" type="number" name="questXp" inputmode="numeric" min="0" max="1000" step="1" value="${old?.xpOverride??data.rules.defaultXp}"></label><p class="qform-note">일반 완료와 타임챌린지에서 동일하게 지급됩니다. 시간 ×3 보너스는 포인트에만 적용됩니다.</p></div><p class="qform-note">🔒 등록·수정·삭제는 관리자 인증 필요 · 완료는 퀘스트 완료 비밀번호 필요</p><button class="modal-btn" type="submit">${old?'변경사항 저장':'퀘스트 등록'}</button></form>${old?`<button class="modal-btn secondary" onclick="removeTask('${old.id}')">퀘스트 삭제</button>`:''}<button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`}
 
 if(modal.type==='quest'){
  const baseP=Number(modal.basePts??modal.pts),baseX=Number(modal.xpBase??modal.xpEarned??25);
@@ -9958,7 +10298,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.106</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.107</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
