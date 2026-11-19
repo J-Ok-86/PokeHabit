@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.108 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.109 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -4263,7 +4263,7 @@ html[data-theme="light"] .sleep-mini-bottom{color:#446277}
 html[data-theme="light"] .sleep-mini-caption{color:#557888}html[data-theme="light"] .sleep-mini-help{color:#507283}
 
 
-/* v1.7.108 — unified plot height and consistent 7/30/90-day x-axis density */
+/* v1.7.109 — unified plot height and consistent 7/30/90-day x-axis density */
 .lr-chart-wrap .lr-time-chart{display:block;width:100%;max-width:480px;height:auto;aspect-ratio:380/234;margin:0 auto;overflow:hidden;color:#b9cad9}
 .lr-chart-wrap .lr-count-chart{max-width:480px}
 .lr-shared-goal{display:block;margin-top:4px;font-size:10px;font-weight:500;color:#aad6d8}
@@ -4299,7 +4299,7 @@ html[data-theme='light'] .lr-analysis{background:linear-gradient(130deg,#f5fcff,
 @media(prefers-reduced-motion:reduce){.lr-analysis *{transition:none!important;animation:none!important}}
 
 
-/* v1.7.108 — Today-only compact status + actionable recommendation layout. */
+/* v1.7.109 — Today-only compact status + actionable recommendation layout. */
 .home-quest-section .home-time-log-inline,.home-time-log-inline{
  display:inline-flex;align-items:center;justify-content:center;gap:4px;
  min-height:36px;max-width:56%;padding:7px 11px;border-radius:999px;
@@ -4361,7 +4361,7 @@ html[data-theme="light"] .home-quest-section .quest-reco-card.combined{backgroun
 }
 @media(prefers-reduced-motion:reduce){.home-quest-section .quest-reco-focus{transition:none}}
 
-/* v1.7.108 · live template preview & safe draft conversion */
+/* v1.7.109 · live template preview & safe draft conversion */
 .smart-template-preview{border:1px solid rgba(65,155,168,.45);border-radius:14px;padding:12px;background:rgba(50,130,155,.08);display:grid;gap:10px;margin:10px 0;min-width:0}
 .smart-preview-title,.smart-preview-row,.smart-preview-total{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .smart-preview-title{align-items:start;flex-wrap:wrap}.smart-preview-title b{font-size:.94rem}.smart-preview-title small,.smart-preview-footer{font-size:.72rem;opacity:.72}
@@ -4372,7 +4372,14 @@ html[data-theme="light"] .home-quest-section .quest-reco-card.combined{backgroun
 .smart-preview-analytics{padding:8px 10px;border-radius:8px;background:rgba(115,139,190,.09);font-size:.79rem}.smart-preview-analytics p{margin:4px 0 0;line-height:1.5}
 .smart-migration-note{padding:10px;line-height:1.6;border-radius:10px;background:rgba(214,162,54,.12);border:1px solid rgba(214,162,54,.38);font-size:.81rem}
 @media(max-width:360px){.smart-preview-row{flex-wrap:wrap}.smart-preview-row strong{max-width:100%;text-align:left}}
-/* v1.7.108 · smart templates */
+/* v1.7.109 · inferred legacy reading candidates */
+.smart-legacy-candidates,.smart-legacy-book-details{display:grid;gap:8px;margin-top:14px}.smart-legacy-candidates h3,.smart-legacy-book-details h4{margin:0}
+.smart-estimated,.smart-legacy-book summary b{font-size:.7rem;color:#b27922;font-weight:700}
+.smart-legacy-book{border:1px solid #a0b6d080;border-radius:10px;padding:10px;min-width:0}
+.smart-legacy-book summary{cursor:pointer;overflow-wrap:anywhere}.smart-legacy-book summary small{opacity:.75}
+.smart-legacy-page-rows{display:grid;gap:4px;margin-top:8px}.smart-legacy-page-rows>div{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-top:1px solid #a0b6d040;font-size:.79rem}
+.smart-legacy-page-rows b{color:#b27922}
+/* v1.7.109 · smart templates */
 .smart-editor{margin:14px 0;padding:12px;border:1px solid #a7c4e68a;border-radius:15px;background:rgba(79,135,193,.07);display:grid;gap:11px}
 .smart-template-top,.smart-entry-head,.smart-report-head,.smart-inline-tools,.smart-filter-row{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap}
 .smart-entry-list{display:grid;gap:10px}.smart-entry{border:1px solid #aac3dc80;border-radius:12px;padding:11px;display:grid;gap:9px;background:rgba(123,161,199,.065)}
@@ -5173,8 +5180,8 @@ setInterval(updateAppHeaderClock,1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){updateAppHeaderClock();weatherAutoUpdate();}});
 
 
-// v1.7.108 · Smart Template Library and detailed analytics
-// v1.7.108 Smart Record Templates — backward-compatible structured entries.
+// v1.7.109 · Smart Template Library and detailed analytics
+// v1.7.109 Smart Record Templates — backward-compatible structured entries.
 const SMART_TEMPLATES={
  basic:{label:'기본 수치·메모',unit:''},
  reading:{label:'📚 독서 · 책별 구간',unit:'쪽'},
@@ -5241,6 +5248,58 @@ function smartCleanStructured(raw){
  }
  return list.length?{schemaVersion:1,templateId:kind,templateVersion:1,entries:list}:null;
 }
+// v1.7.109 · Read-only legacy reading interpretation. Original notes and amounts are never rewritten.
+function smartLegacyReadingRecords(){
+ const quests=new Map((data?.quests||[]).filter(q=>smartTemplateId(q)==='reading'||/독서|책\s*읽|읽은\s*책|reading/i.test(q.title||'')||/^(쪽|페이지|p)$/i.test(String(q.recordUnit||'').trim())).map(q=>[q.id,q]));
+ const records=[];
+ for(const c of (data?.completions||[])){
+  if(c?.achievement?.structured||!c?.achievement||typeof c.achievement.note!=='string')continue;
+  const q=quests.get(c.id);
+  const unit=String(c.achievement.unit||c.recordUnit||q?.recordUnit||'').trim();
+  if(!q&&!/^(쪽|페이지|p)$/i.test(unit))continue;
+  const note=c.achievement.note.slice(0,5000),lines=note.split(/\r?\n/).slice(0,80);
+  const entries=[];
+  for(const raw of lines){
+   const line=raw.trim().replace(/^[·•*\-]\s+/, '');
+   if(!line||line.length>180)continue;
+   const range=line.match(/^(.{1,105}?)\s+(\d{1,5})\s*(?:-|~|～|〜|–|—|∼)\s*(\d{1,5})\s*(?:쪽|페이지|p(?:ages?)?\.?)?\s*$/i);
+   if(range){
+    const title=smartName(range[1],105),start=Number(range[2]),end=Number(range[3]);
+    if(title.length>=1&&/[^\d\s\-~]/.test(title)&&start>=1&&end>=start&&end<=200000&&end-start<=10000){
+     entries.push({title,startPage:start,endPage:end,finishMention:false,day:String(c.day||''),source:'legacy'});
+    }
+    continue;
+   }
+   const finished=line.match(/^(.{1,105}?)\s+완독(?:\s*(?:완료|했음|함|했습니다))?\s*$/);
+   if(finished){const title=smartName(finished[1],105);if(title&&/[^\d\s]/.test(title))entries.push({title,startPage:null,endPage:null,finishMention:true,day:String(c.day||''),source:'legacy'});}
+  }
+  if(entries.length)records.push({day:String(c.day||''),amount:achievementAmount(c.achievement.amount),unit,entries,questId:c.id});
+ }
+ return records;
+}
+function smartLegacyReadingBooks(){
+ const map=new Map();
+ for(const record of smartLegacyReadingRecords()){
+  for(const e of record.entries){
+   const key=e.title.toLocaleLowerCase('ko');
+   let b=map.get(key);if(!b){b={title:e.title,ranges:[],finishMentions:0,days:new Set(),maxPage:0};map.set(key,b)}
+   b.days.add(record.day);
+   if(e.finishMention)b.finishMentions++;
+   else {b.ranges.push({startPage:e.startPage,endPage:e.endPage,day:record.day,recordAmount:record.amount});b.maxPage=Math.max(b.maxPage,e.endPage)}
+  }
+ }
+ return [...map.values()].map(b=>({...b,days:[...b.days].sort(),legacyEstimate:b.ranges.reduce((n,r)=>n+Math.max(0,r.endPage-r.startPage),0)})).sort((a,b)=>String(b.days.at(-1)||'').localeCompare(String(a.days.at(-1)||''))||a.title.localeCompare(b.title,'ko'));
+}
+function smartLegacyBookByTitle(title){const key=smartName(title,160).toLocaleLowerCase('ko');return key?smartLegacyReadingBooks().find(b=>b.title.toLocaleLowerCase('ko')===key)||null:null}
+function smartLegacyBookCandidates(){return smartLegacyReadingBooks().filter(x=>!smartBookByTitle(x.title))}
+function smartImportLegacyBook(title){
+ if(modal?.type!=='bookLibrary')return;
+ const match=smartLegacyBookByTitle(title);
+ if(!match)return;
+ modal.editId='';modal.newTitle=match.title;
+ render();
+ const field=document.querySelector('.smart-book-form input[name="bookTitle"]');if(field){field.scrollIntoView({block:'center',behavior:'smooth'});field.focus();}
+}
 function smartTimeMinutes(start,end,breakMin){
  if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(start||'')||!/^([01]\d|2[0-3]):[0-5]\d$/.test(end||''))return 0;
  const hhmm=t=>Number(t.slice(0,2))*60+Number(t.slice(3));let diff=hhmm(end)-hhmm(start);if(diff<0)diff+=1440;
@@ -5282,26 +5341,33 @@ function smartBookSave(e){
  if(!data.recordLibrary)data.recordLibrary={books:[]};
  if(edit){edit.title=title;edit.totalPages=total||null;edit.finished=finished;edit.finishedAt=finished?(edit.finishedAt||new Date().toISOString()):''}
  else data.recordLibrary.books.push({id:'book_'+randomId().replace(/-/g,''),title,totalPages:total||null,finished,finishedAt:finished?new Date().toISOString():'',createdAt:new Date().toISOString()});
- modal.editId='';save();render();
+ modal.editId='';modal.newTitle='';save();render();
 }
-function smartBookEdit(id=''){if(modal?.type!=='bookLibrary')return;modal.editId=id;render()}
+function smartBookEdit(id=''){if(modal?.type!=='bookLibrary')return;modal.editId=id;modal.newTitle='';render()}
 function openBookLibrary(){if(!startUnlocked||!currentUserId)return;const form=document.querySelector('#popup .smart-editor')?.closest('form');if(form&&[...form.querySelectorAll('.smart-editor input')].some(x=>x.value.trim())&&!confirm('아직 저장하지 않은 입력 내용은 사라질 수 있습니다. 중간 저장한 뒤 책 목록을 열기를 권장합니다. 계속할까요?'))return;modal={type:'bookLibrary',editId:'',filter:'all'};render()}
 function smartBookFilter(filter){if(modal?.type!=='bookLibrary')return;modal.filter=['all','reading','finished'].includes(filter)?filter:'all';render()}
 function smartBookToggle(id){const book=smartBookById(id);if(!book||!startUnlocked||!currentUserId)return;book.finished=!book.finished;book.finishedAt=book.finished?new Date().toISOString():'';save();render()}
-function smartBookProgress(book){
- const intervals=[];
- for(const c of data.completions||[]){const s=smartCleanStructured(c.achievement?.structured);if(s?.templateId!=='reading')continue;for(const e of s.entries)if(e.bookId===book.id||(!e.bookId&&e.title===book.title))intervals.push([e.startPage,e.endPage]);}
+function smartUnionPageCount(intervals){
  intervals.sort((a,b)=>a[0]-b[0]);let total=0,last=0;
  for(const [from,to] of intervals){const begin=Math.max(from,last+1);if(to>=begin)total+=to-begin+1;last=Math.max(last,to)}
- return {unique:total,percent:book.totalPages?Math.min(100,Math.round(total/book.totalPages*100)):null};
+ return total;
+}
+function smartBookProgress(book){
+ const exact=[];
+ for(const c of data.completions||[]){const s=smartCleanStructured(c.achievement?.structured);if(s?.templateId!=='reading')continue;for(const e of s.entries)if(e.bookId===book.id||(!e.bookId&&e.title===book.title))exact.push([e.startPage,e.endPage]);}
+ const historical=smartLegacyBookByTitle(book.title),estimated=(historical?.ranges||[]).map(r=>[r.startPage,r.endPage]);
+ const exactUnique=smartUnionPageCount(exact),estimatedUnique=smartUnionPageCount(estimated);
+ const unique=smartUnionPageCount([...exact,...estimated]);
+ return {unique,exactUnique,estimatedUnique,hasEstimate:!!estimated.length,percent:book.totalPages?Math.min(100,Math.round(unique/book.totalPages*100)):null};
 }
 function smartBookLibraryHTML(){
  const edit=smartBookById(modal?.editId),filter=modal?.filter||'all';const books=[...smartLibraryBooks()].sort((a,b)=>Number(a.finished)-Number(b.finished)||a.title.localeCompare(b.title,'ko'));
- const visible=books.filter(b=>filter==='all'||(filter==='finished'?b.finished:!b.finished));
+ const visible=books.filter(b=>filter==='all'||(filter==='finished'?b.finished:!b.finished));const inferred=smartLegacyBookCandidates();
  return `<div class="overlay" onclick="modal=null;render()"><div class="modal smart-library-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>📚 전체 독서 목록</h2><p class="modal-sub">책 제목과 전체 쪽수는 한 번 등록하고, 매일 읽은 구간을 연결합니다. 완독은 직접 체크합니다.</p>
  <div class="smart-filter-row">${[['all','전체'],['reading','읽는 중'],['finished','완독']].map(([v,label])=>`<button type="button" class="tinybtn ${filter===v?'smart-current':''}" onclick="smartBookFilter('${v}')">${label}</button>`).join('')}</div>
- <div class="smart-book-list">${visible.map(b=>{const p=smartBookProgress(b);return `<div class="smart-book-line"><div><strong>${esc(b.title)}</strong><small>${b.totalPages?`${p.unique}/${b.totalPages}쪽 · ${p.percent}% 확인된 구간`:`확인된 구간 ${p.unique}쪽 · 전체 쪽수 미등록`} · ${b.finished?'✅ 완독':'📖 읽는 중'}</small>${p.percent!==null?`<div class="smart-progress"><span style="width:${p.percent}%"></span></div>`:''}</div><div class="smart-inline-tools"><button type="button" class="tinybtn" onclick="smartBookToggle('${b.id}')">${b.finished?'완독 해제':'완독 체크'}</button><button type="button" class="tinybtn" onclick="smartBookEdit('${b.id}')">수정</button></div></div>`}).join('')||'<p class="growth-help">이 상태의 책이 없습니다.</p>'}</div>
- <form class="qform smart-book-form" onsubmit="smartBookSave(event)"><h3>${edit?'📖 책 정보 수정':'➕ 새 책 등록'}</h3><label>책 제목<input name="bookTitle" class="qentry" maxlength="160" required value="${esc(edit?.title||'')}" placeholder="책 제목"></label><div class="achievement-number-row"><label>전체 쪽수 (1회 등록)<input name="totalPages" type="number" class="qentry" min="1" max="200000" step="1" value="${edit?.totalPages||''}" placeholder="예: 320"></label><label class="smart-finished"><input name="finished" type="checkbox" ${edit?.finished?'checked':''}> ✅ 완독 여부</label></div><button class="modal-btn" type="submit">💾 ${edit?'책 정보 수정':'책 등록'}</button></form>
+ <div class="smart-book-list">${visible.map(b=>{const p=smartBookProgress(b);return `<div class="smart-book-line"><div><strong>${esc(b.title)}</strong><small>${b.totalPages?`${p.unique}/${b.totalPages}쪽 · ${p.percent}% ${p.hasEstimate?'(추정 포함)':'확인된 구간'}`:`확인된 구간 ${p.exactUnique}쪽${p.hasEstimate?` · 기존 범위 ${p.estimatedUnique}쪽 (추정)`:''}`} · ${b.finished?'✅ 완독':'📖 읽는 중'}</small>${p.percent!==null?`<div class="smart-progress"><span style="width:${p.percent}%"></span></div>`:''}</div><div class="smart-inline-tools"><button type="button" class="tinybtn" onclick="smartBookToggle('${b.id}')">${b.finished?'완독 해제':'완독 체크'}</button><button type="button" class="tinybtn" onclick="smartBookEdit('${b.id}')">수정</button></div></div>`}).join('')||'<p class="growth-help">이 상태의 책이 없습니다.</p>'}</div>
+ ${inferred.length?`<section class="smart-legacy-candidates"><h3>🔍 기존 메모에서 발견한 책 <small>(${inferred.length}권 · 추정)</small></h3><p class="qform-note">원본 메모는 그대로 유지합니다. 책 목록에 등록해야 전체 쪽수와 완독 여부를 직접 설정할 수 있어요.</p>${inferred.map(b=>`<div class="smart-book-line"><div><strong>${esc(b.title)} <span class="smart-estimated">(추정)</span></strong><small>${b.maxPage?`마지막 확인 ${b.maxPage}쪽 · `:''}${b.ranges.length}개 구간${b.finishMentions?' · 완독 언급(미확정)':''}</small></div><button type="button" class="tinybtn" data-book-title="${esc(b.title)}" onclick="smartImportLegacyBook(this.dataset.bookTitle)">목록에 등록</button></div>`).join('')}</section>`:''}
+ <form class="qform smart-book-form" onsubmit="smartBookSave(event)"><h3>${edit?'📖 책 정보 수정':'➕ 새 책 등록'}</h3><label>책 제목<input name="bookTitle" class="qentry" maxlength="160" required value="${esc(edit?.title||modal?.newTitle||'')}" placeholder="책 제목"></label><div class="achievement-number-row"><label>전체 쪽수 (1회 등록)<input name="totalPages" type="number" class="qentry" min="1" max="200000" step="1" value="${edit?.totalPages||''}" placeholder="예: 320"></label><label class="smart-finished"><input name="finished" type="checkbox" ${edit?.finished?'checked':''}> ✅ 완독 여부</label></div><button class="modal-btn" type="submit">💾 ${edit?'책 정보 수정':'책 등록'}</button></form>
  <button class="modal-btn secondary" type="button" onclick="modal=null;render()">닫기</button></div></div>`;
 }
 function smartNextId(prefix='entry'){return prefix+'_'+randomId().replace(/-/g,'')}
@@ -5311,9 +5377,9 @@ function smartFieldInput(field,value,kind,index){
 }
 function smartEntryMarkup(kind,item={},index=0){
  const id=smartName(item.id,100)||smartNextId(),titleLabel=SMART_KIND_LABEL[kind];
- const book=kind==='reading'?(smartBookById(item.bookId)||smartBookByTitle(item.title)):null;
+ const book=kind==='reading'?(smartBookById(item.bookId)||smartBookByTitle(item.title)):null;const legacy=kind==='reading'&&!book?smartLegacyBookByTitle(item.title):null;
  let inside='';
- if(kind==='reading')inside=`<label class="smart-field smart-full"><small>책 제목 · 자동완성</small><input class="qentry" data-smart-field="title" data-book-id="${esc(book?.id||item.bookId||'')}" type="text" list="smartBookTitles" maxlength="160" value="${esc(item.title||book?.title||'')}" placeholder="책 제목을 입력하거나 목록에서 선택" oninput="smartReadingLookup(this)"><small class="smart-book-hint">${book?`📖 등록된 책 · ${book.totalPages||'전체 쪽수 미등록'}${book.totalPages?'쪽':''} · ${book.finished?'완독':'읽는 중'}`:'새 책은 여기에서 전체 쪽수를 한 번 등록할 수 있어요.'}</small></label><div class="smart-fields-3">${smartFieldInput('startPage',item.startPage,kind,index)}${smartFieldInput('endPage',item.endPage,kind,index)}${smartFieldInput('totalPages',book?.totalPages||item.totalPages,kind,index).replace('<input ','<input '+(book?.totalPages?'readonly ':''))}</div>`;
+ if(kind==='reading')inside=`<label class="smart-field smart-full"><small>책 제목 · 자동완성</small><input class="qentry" data-smart-field="title" data-book-id="${esc(book?.id||item.bookId||'')}" type="text" list="smartBookTitles" maxlength="160" value="${esc(item.title||book?.title||'')}" placeholder="책 제목을 입력하거나 목록에서 선택" oninput="smartReadingLookup(this)"><small class="smart-book-hint">${book?`📖 등록된 책 · ${book.totalPages||'전체 쪽수 미등록'}${book.totalPages?'쪽':''} · ${book.finished?'완독':'읽는 중'}`:legacy?'(추정) 과거 기록에서 발견 · 전체 쪽수와 완독 여부는 직접 등록': '새 책은 여기에서 전체 쪽수를 한 번 등록할 수 있어요.'}</small></label><div class="smart-fields-3">${smartFieldInput('startPage',item.startPage,kind,index)}${smartFieldInput('endPage',item.endPage,kind,index)}${smartFieldInput('totalPages',book?.totalPages||item.totalPages,kind,index).replace('<input ','<input '+(book?.totalPages?'readonly ':''))}</div>`;
  else if(kind==='reps'||kind==='strength'){
   const sets=item.sets?.length?item.sets:[{id:smartNextId('set'),reps:'',weight:'',at:''}];
   inside=`<label class="smart-field smart-full"><small>운동 종목</small><input class="qentry" data-smart-field="name" list="smartExerciseTitles" maxlength="100" value="${esc(item.name||'')}" placeholder="예: 턱걸이" oninput="smartRecalculate(this.form)"></label><div class="smart-set-list">${sets.map((s,i)=>`<div class="smart-set" data-smart-set="${esc(s.id||smartNextId('set'))}" data-at="${esc(s.at||'')}"><span>${i+1}세트</span><input class="qentry" type="number" data-set-field="reps" min="0" max="100000" inputmode="numeric" step="1" value="${esc(s.reps??'')}" placeholder="횟수" aria-label="${i+1}세트 횟수" oninput="smartSetChanged(this)">${kind==='strength'?`<input class="qentry" type="number" data-set-field="weight" min="0" max="100000" step="any" value="${esc(s.weight??'')}" placeholder="kg" aria-label="무게 kg" oninput="smartSetChanged(this)">`:''}<small class="smart-set-at">${s.at?new Date(s.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'}):'입력 시각 자동 기록'}</small><button type="button" class="smart-small-remove" onclick="smartRemoveSet(this)" title="세트 삭제">×</button></div>`).join('')}</div><button type="button" class="tinybtn" onclick="smartAddSet(this)">＋ 세트 추가</button>`;
@@ -5326,7 +5392,7 @@ function smartEntryMarkup(kind,item={},index=0){
 function smartEditorHTML(q,structured=null){
  const kind=smartTemplateId(q);if(kind==='basic'||achievementMode(q)==='none')return '';
  const s=smartCleanStructured(structured),items=(s?.templateId===kind?s.entries:[]),entries=items.length?items:[{id:smartNextId()}];
- const bookList=kind==='reading'?`<datalist id="smartBookTitles">${[...smartLibraryBooks()].sort((a,b)=>Number(a.finished)-Number(b.finished)).map(b=>`<option value="${esc(b.title)}">${esc(b.finished?'완독':'읽는 중')}</option>`).join('')}</datalist>`:'';
+ const bookList=kind==='reading'?`<datalist id="smartBookTitles">${[...smartLibraryBooks()].sort((a,b)=>Number(a.finished)-Number(b.finished)).map(b=>`<option value="${esc(b.title)}">${esc(b.finished?'완독':'읽는 중')}</option>`).join('')}${smartLegacyBookCandidates().map(b=>`<option value="${esc(b.title)}">(추정) 과거 독서 기록</option>`).join('')}</datalist>`:'';
  const exerciseNames=(data.completions||[]).flatMap(c=>['reps','strength'].includes(c.achievement?.structured?.templateId)?c.achievement.structured.entries.map(e=>e.name):[]).filter(Boolean);
  const exerciseList=['reps','strength'].includes(kind)?`<datalist id="smartExerciseTitles">${[...new Set(exerciseNames)].slice(-100).map(n=>`<option value="${esc(n)}"></option>`).join('')}</datalist>`:'';
  return `<div class="smart-editor" data-smart-template="${kind}"><div class="smart-template-top"><b>${esc(SMART_TEMPLATES[kind].label)}</b>${kind==='reading'?'<button type="button" class="tinybtn" onclick="openBookLibrary()">📚 전체 책 목록</button>':''}</div>${bookList}${exerciseList}<div class="smart-entry-list">${entries.map((e,i)=>smartEntryMarkup(kind,e,i)).join('')}</div><button type="button" class="smart-add-entry" onclick="smartAddEntry(this)">＋ 다른 ${SMART_KIND_LABEL[kind]} 추가</button><div class="smart-totals" aria-live="polite">${s?`<span>자동 계산 · ${smartTotals(s).count}항목</span><strong>${achievementNumberText(smartTotals(s).amount)} ${esc(SMART_TEMPLATES[kind].unit)}</strong>`:'합계는 입력과 동시에 계산됩니다.'}</div><p class="qform-note">${kind==='reading'?'책 제목 자동완성 · 전체 쪽수는 책당 1회 등록 · 완독은 목록에서 직접 체크':kind==='reps'||kind==='strength'?'횟수를 입력하는 시각을 세트별로 자동 기록합니다. 중간 저장 후 다시 이어 쓸 수 있습니다.':'항목별 원본 값을 저장하고 기존 달성량 통계에 합계가 반영됩니다.'}</p></div>`;
@@ -5415,10 +5481,10 @@ function smartAddSet(button){const form=button.closest('form'),target=button.clo
 function smartRemoveSet(button){const form=button.closest('form'),target=button.closest('.smart-entry'),s=smartRawFormEntries(form),entry=s?.entries.find(x=>x.id===target.dataset.entryId);if(!entry)return;const id=button.closest('.smart-set')?.dataset.smartSet;entry.sets=entry.sets.filter(x=>x.id!==id);if(!entry.sets.length)entry.sets=[{id:smartNextId('set'),reps:'',at:''}];smartRebuild(form,s.entries);}
 function smartSetChanged(input){const set=input.closest('.smart-set');if(set&&!set.dataset.at&&input.value.trim()){set.dataset.at=new Date().toISOString();const label=set.querySelector('.smart-set-at');if(label)label.textContent='기록 '+new Date(set.dataset.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}smartRecalculate(input.form)}
 function smartReadingLookup(input){
- const box=input.closest('.smart-entry'),book=smartBookByTitle(input.value),id=input.dataset.bookId,old=smartBookById(id);
+ const box=input.closest('.smart-entry'),book=smartBookByTitle(input.value),legacy=!book?smartLegacyBookByTitle(input.value):null,id=input.dataset.bookId,old=smartBookById(id);
  if(book){input.dataset.bookId=book.id;const whole=box.querySelector('[data-smart-field="totalPages"]');if(whole){whole.value=book.totalPages||'';whole.readOnly=!!book.totalPages}}
  else {input.dataset.bookId='';if(old){const whole=box.querySelector('[data-smart-field="totalPages"]');if(whole){whole.value='';whole.readOnly=false;}}}
- const hint=box.querySelector('.smart-book-hint');if(hint)hint.textContent=book?`📖 등록된 책 · ${book.totalPages?book.totalPages+'쪽':'전체 쪽수 미등록'} · ${book.finished?'완독':'읽는 중'}`:'새 책은 전체 쪽수를 한 번 입력하면 독서 목록에 자동 등록됩니다.';
+ const hint=box.querySelector('.smart-book-hint');if(hint)hint.textContent=book?`📖 등록된 책 · ${book.totalPages?book.totalPages+'쪽':'전체 쪽수 미등록'} · ${book.finished?'완독':'읽는 중'}`:legacy?'📖 (추정) 과거 독서 기록에서 발견 · 전체 쪽수를 입력하면 새 기록에 연결됩니다. 완독 여부는 직접 체크하세요.':'새 책은 전체 쪽수를 한 번 입력하면 독서 목록에 자동 등록됩니다.';
  smartRecalculate(input.form);
 }
 function smartRecalculate(form){
@@ -5482,11 +5548,11 @@ function smartTemplateAnalysis(id){
  }
  if(kind==='quantity')kpis=[['항목 종류',new Set(allEntries.map(e=>e.name)).size+'개'],['기록 횟수',allEntries.length+'건']];
  const metricKpis=kpis.length?`<div class="smart-report-stats smart-detail-kpis">${kpis.map(([label,value])=>`<div><small>${esc(label)}</small><strong>${esc(value)}</strong></div>`).join('')}</div>`:'';
- const estRows=approx.length?`<details class="smart-estimate"><summary>기존 기록의 추정값 ${approx.length}건 보기</summary><p class="qform-note">과거 원본은 그대로 유지됩니다. 당시 기입한 숫자를 단위 기준으로 해석한 값이며 종목·책 제목·세트 시간은 추정하지 않습니다.</p>${approx.slice(-25).reverse().map(c=>`<div>${esc(c.day)} · ${achievementNumberText(c.achievement.amount)} ${esc(c.achievement.unit)} <b>(추정)</b></div>`).join('')}</details>`:'';
+ const estRows=approx.length?`<details class="smart-estimate"><summary>기존 기록의 추정값 ${approx.length}건 보기</summary><p class="qform-note">과거 원본은 그대로 유지됩니다. 숫자 기록은 단위 기준으로 별도 집계합니다. 독서 메모의 책 제목·구간은 (추정)으로만 연결하며 완독 여부와 정확한 분량은 자동 확정하지 않습니다.</p>${approx.slice(-25).reverse().map(c=>`<div>${esc(c.day)} · ${achievementNumberText(c.achievement.amount)} ${esc(c.achievement.unit)} <b>(추정)</b></div>`).join('')}</details>`:'';
  let special='';
  if(kind==='reading'){
-  const books=[...smartLibraryBooks()].sort((a,b)=>Number(a.finished)-Number(b.finished)||a.title.localeCompare(b.title,'ko'));
-  special=`<div class="smart-report-head"><h4>📚 전체 독서 목록 ${books.length}권</h4><button type="button" class="tinybtn" onclick="openBookLibrary()">목록 관리 · 완독 체크</button></div><div class="smart-report-books">${books.map(b=>{const p=smartBookProgress(b);return `<div class="smart-report-book"><strong>${esc(b.title)}</strong><small>${b.finished?'✅ 완독':'📖 읽는 중'} · ${b.totalPages?`${p.unique}/${b.totalPages}쪽 · ${p.percent}% (구간 기준)`:`확인 구간 ${p.unique}쪽 · 전체 쪽수 미설정`}</small>${p.percent!==null?`<div class="smart-progress"><span style="width:${p.percent}%"></span></div>`:''}</div>`}).join('')||'<p class="growth-help">등록된 책이 없습니다. 독서 템플릿에서 제목을 입력하면 자동 등록됩니다.</p>'}</div>`;
+  const books=[...smartLibraryBooks()].sort((a,b)=>Number(a.finished)-Number(b.finished)||a.title.localeCompare(b.title,'ko'));const legacyBooks=smartLegacyReadingBooks();
+  special=`<div class="smart-report-head"><h4>📚 전체 독서 목록 ${books.length}권</h4><button type="button" class="tinybtn" onclick="openBookLibrary()">목록 관리 · 완독 체크</button></div><div class="smart-report-books">${books.map(b=>{const p=smartBookProgress(b);return `<div class="smart-report-book"><strong>${esc(b.title)}</strong><small>${b.finished?'✅ 완독':'📖 읽는 중'} · ${b.totalPages?`${p.unique}/${b.totalPages}쪽 · ${p.percent}% ${p.hasEstimate?'(추정 포함)':'(구간 기준)'}`:`확인 구간 ${p.exactUnique}쪽${p.hasEstimate?` · 과거 범위 ${p.estimatedUnique}쪽 (추정)`:''} · 전체 쪽수 미설정`}</small>${p.percent!==null?`<div class="smart-progress"><span style="width:${p.percent}%"></span></div>`:''}</div>`}).join('')||'<p class="growth-help">등록된 책이 없습니다. 독서 템플릿에서 제목을 입력하면 자동 등록됩니다.</p>'}</div><h4>🔎 기존 메모에서 찾은 책 · ${legacyBooks.length}권 <small>(추정)</small></h4><div class="smart-legacy-book-details">${legacyBooks.map(b=>`<details class="smart-legacy-book"><summary><strong>${esc(b.title)}</strong> <b>(추정)</b> <small>${b.ranges.length}개 읽은 구간${b.finishMentions?' · 완독 언급 (미확정)':''}</small></summary>${b.ranges.length?`<div class="smart-legacy-page-rows">${b.ranges.map(r=>`<div><span>${esc(r.day)} · ${r.startPage}~${r.endPage}쪽</span><b>(추정)</b></div>`).join('')}</div>`:'<p class="growth-help">완독 언급만 확인됐고 쪽수는 확인되지 않았습니다.</p>'}</details>`).join('')||'<p class="growth-help">기존 메모에서 인식 가능한 책 제목이 없습니다.</p>'}</div><p class="growth-help">과거 책 제목과 쪽수는 기록 메모를 읽기 전용으로 해석합니다. 확정 기록과 합산하지 않으며, 같은 쪽을 재독했거나 범위 해석이 다를 수 있습니다. 전체 쪽수와 완독 상태는 직접 입력하세요.</p>`;
  }
  if(kind==='reps'||kind==='strength'){
   const setRows=exact.flatMap(({c,s})=>s.entries.flatMap(e=>e.sets.map(x=>({name:e.name,...x,day:c.day})))).sort((a,b)=>String(b.at||b.day).localeCompare(String(a.at||a.day)));
@@ -5951,7 +6017,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.108</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.109</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -5967,7 +6033,7 @@ function cleanRecommendedQuest(value){
  if(!value||typeof value!=='object'||!/^(?:\d{4})-(?:\d{2})-(?:\d{2})$/.test(String(value.day||''))||!String(value.id||'').trim())return null;
  return {day:String(value.day),id:String(value.id).slice(0,100)};
 }
-// v1.7.108: A small per-trainer rotation log. Historical quest records and rewards are unchanged.
+// v1.7.109: A small per-trainer rotation log. Historical quest records and rewards are unchanged.
 function cleanRecommendationHistory(value){
  const seen=new Set();
  return (Array.isArray(value)?value:[]).filter(item=>item&&validNoteDay(String(item.day||''))&&['today','evening'].includes(item.kind)&&/^[A-Za-z0-9_-]{1,90}$/.test(String(item.id||''))).slice(-240).map(item=>({day:String(item.day),kind:item.kind,id:String(item.id)})).filter(item=>{const key=item.day+'|'+item.kind;if(seen.has(key))return false;seen.add(key);return true}).slice(-180);
@@ -7029,7 +7095,7 @@ ${TRAINING_MANUAL}${HONOR_MANUAL}${MOVE_CINEMA_MANUAL}${MOVE_MINIMAL_MANUAL}
 const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'],['ops','🎛 운영 설정','보상 · 확률 · 훈련 · 훈장'],['account','👥 계정·보안','트레이너 · 비밀번호'],['data','💾 데이터·시스템','백업 · 병합 · 초기화'],['guide','📖 사용 매뉴얼','최신 기능 · 공식 · FAQ'],['history','📜 개발 버전 이력','최신순 업데이트 기록']];
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
-const ADMIN_VERSION_NOTES=[['1.7.106','오늘 탭 상단 연속 도전·오늘 완료·퀘스트 추천을 컴팩트하게 재배치하고 순간생각 링크를 강조했습니다. 복귀 중심 오늘 추천과 진행 기록·익숙한 수행 중심 마무리 추천을 분리했으며, 이유 표시·리스트 바로 이동·중복 추천 통합·최근 미수행 추천 회피를 적용했습니다. 기존 +10%/+20% 보상은 유지합니다.'],['1.7.105','생활 리듬 분석 1회형·반복형 차트 높이를 통일하고 30/90일 X축 눈금 밀도를 조정했습니다. 반복형 시간대 분포를 제거하고, 기상/취침 목표를 수면 리듬의 단일 목표 설정에 연결했습니다.'],['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
+const ADMIN_VERSION_NOTES=[['1.7.109','독서 기록의 기존 메모에서 책 제목과 페이지 구간을 읽기 전용 추정 분석하고, 등록된 책과 함께 자동완성 후보에 표시합니다. 전체 책 목록에서 추정 책을 직접 등록할 수 있으며 총 쪽수·완독은 수동으로 확인합니다. 과거 원본·완료·보상은 변경하지 않습니다.'],['1.7.108','템플릿 선택 미리보기와 기존 임시 기록 전환 문제를 수정했습니다.'],['1.7.107','퀘스트별 스마트 기록 템플릿, 책 목록, 운동 세트별 시각, 상세 분석을 추가했습니다.'],['1.7.106','오늘 탭 상단 연속 도전·오늘 완료·퀘스트 추천을 컴팩트하게 재배치하고 순간생각 링크를 강조했습니다. 복귀 중심 오늘 추천과 진행 기록·익숙한 수행 중심 마무리 추천을 분리했으며, 이유 표시·리스트 바로 이동·중복 추천 통합·최근 미수행 추천 회피를 적용했습니다. 기존 +10%/+20% 보상은 유지합니다.'],['1.7.105','생활 리듬 분석 1회형·반복형 차트 높이를 통일하고 30/90일 X축 눈금 밀도를 조정했습니다. 반복형 시간대 분포를 제거하고, 기상/취침 목표를 수면 리듬의 단일 목표 설정에 연결했습니다.'],['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
  ['1.7.68','한줄 리스트의 완료 상태를 퀘스트명 앞 네모박스(미완료)/체크된 네모박스(완료)로 표현. 기존 왼쪽 상태선 및 다른 배치 유지.'],
  ['1.7.67','간단 리스트의 자세히/접기를 수행률 아래로 이동. 한줄 리스트 추천 배지를 연속 표시 앞으로 이동.'],
  ['1.7.62','기록 탭 실제 달성량의 단위 미지정 포함 전체 단위 기본 선택, 다중 선택 비교 그래프, 단위별 실측 합계와 기록 없음/0 구분, 계정별 보기 설정 저장.'],
@@ -7377,7 +7443,7 @@ function sleepGoalsFor(morning,profile=data){
  for(const item of hist){if(item.from>morning)break;v={bed:item.bed,wake:item.wake}}
  return v;
 }
-// v1.7.108: a single, dated target source for sleep tracker and life-rhythm graphs.
+// v1.7.109: a single, dated target source for sleep tracker and life-rhythm graphs.
 function persistSleepGoals(bed,wake){
  if(!lifeClockValid(bed)||!lifeClockValid(wake))return false;
  const effective=sleepDateAdd(day(),1); // Apply to tonight's sleep / next morning, never retroactively.
@@ -8885,7 +8951,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.108</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.109</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -9530,7 +9596,7 @@ function renderBuddyBriefing(){
  <button class="modal-btn secondary" type="button" onclick="closeBuddyBriefing()">${kind==='morning'?'오늘 모험 시작하기':'오늘의 마무리 확인'}</button><small class="briefing-once-note">자동 브리핑은 하루에 한 번 · 오늘 탭의 다시보기 버튼으로 언제든 열 수 있어요.</small></div></div>`;
 }
 
-// v1.7.108: actionable, compact recommendations; same-target bonuses share one card.
+// v1.7.109: actionable, compact recommendations; same-target bonuses share one card.
 function renderQuestRecommendationPanel(){
  const todayPick=dailyRecommendedQuest();
  const todayValid=!!todayPick&&!completedToday(todayPick.id);
@@ -10362,7 +10428,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.108</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.109</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.

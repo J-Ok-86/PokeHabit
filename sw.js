@@ -1,5 +1,5 @@
 /* PokéRoutine personal, offline app shell. External Pokémon artwork may need internet. */
-const CACHE = 'pokeroutine-shell-v17108-template-preview-v1';
+const CACHE = 'pokeroutine-shell-v17109-legacy-reading-v1';
 const APP_SHELL = ['./', './index.html', './moves.html'];
 const OPTIONAL_SHELL = ['./manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
