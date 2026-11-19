@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.107 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.108 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -4263,7 +4263,7 @@ html[data-theme="light"] .sleep-mini-bottom{color:#446277}
 html[data-theme="light"] .sleep-mini-caption{color:#557888}html[data-theme="light"] .sleep-mini-help{color:#507283}
 
 
-/* v1.7.107 — unified plot height and consistent 7/30/90-day x-axis density */
+/* v1.7.108 — unified plot height and consistent 7/30/90-day x-axis density */
 .lr-chart-wrap .lr-time-chart{display:block;width:100%;max-width:480px;height:auto;aspect-ratio:380/234;margin:0 auto;overflow:hidden;color:#b9cad9}
 .lr-chart-wrap .lr-count-chart{max-width:480px}
 .lr-shared-goal{display:block;margin-top:4px;font-size:10px;font-weight:500;color:#aad6d8}
@@ -4299,7 +4299,7 @@ html[data-theme='light'] .lr-analysis{background:linear-gradient(130deg,#f5fcff,
 @media(prefers-reduced-motion:reduce){.lr-analysis *{transition:none!important;animation:none!important}}
 
 
-/* v1.7.107 — Today-only compact status + actionable recommendation layout. */
+/* v1.7.108 — Today-only compact status + actionable recommendation layout. */
 .home-quest-section .home-time-log-inline,.home-time-log-inline{
  display:inline-flex;align-items:center;justify-content:center;gap:4px;
  min-height:36px;max-width:56%;padding:7px 11px;border-radius:999px;
@@ -4361,7 +4361,18 @@ html[data-theme="light"] .home-quest-section .quest-reco-card.combined{backgroun
 }
 @media(prefers-reduced-motion:reduce){.home-quest-section .quest-reco-focus{transition:none}}
 
-/* v1.7.107 · smart templates */
+/* v1.7.108 · live template preview & safe draft conversion */
+.smart-template-preview{border:1px solid rgba(65,155,168,.45);border-radius:14px;padding:12px;background:rgba(50,130,155,.08);display:grid;gap:10px;margin:10px 0;min-width:0}
+.smart-preview-title,.smart-preview-row,.smart-preview-total{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.smart-preview-title{align-items:start;flex-wrap:wrap}.smart-preview-title b{font-size:.94rem}.smart-preview-title small,.smart-preview-footer{font-size:.72rem;opacity:.72}
+.smart-preview-description{font-size:.8rem;line-height:1.5}.smart-preview-panel{border:1px solid rgba(112,159,182,.36);border-radius:11px;padding:10px;background:rgba(115,153,191,.07);display:grid;gap:7px}
+.smart-preview-panel-title{font-weight:750;font-size:.82rem;margin-bottom:2px}.smart-preview-row{font-size:.79rem;align-items:start;border-bottom:1px solid rgba(136,152,176,.20);padding:3px 0}
+.smart-preview-row span{opacity:.78;min-width:0;flex:1}.smart-preview-row strong{font-size:.79rem;max-width:64%;text-align:right;overflow-wrap:anywhere}
+.smart-preview-total{border-radius:8px;padding:10px;background:rgba(14,153,123,.13);font-size:.77rem}.smart-preview-total strong{font-size:.91rem;color:#0b9e87}
+.smart-preview-analytics{padding:8px 10px;border-radius:8px;background:rgba(115,139,190,.09);font-size:.79rem}.smart-preview-analytics p{margin:4px 0 0;line-height:1.5}
+.smart-migration-note{padding:10px;line-height:1.6;border-radius:10px;background:rgba(214,162,54,.12);border:1px solid rgba(214,162,54,.38);font-size:.81rem}
+@media(max-width:360px){.smart-preview-row{flex-wrap:wrap}.smart-preview-row strong{max-width:100%;text-align:left}}
+/* v1.7.108 · smart templates */
 .smart-editor{margin:14px 0;padding:12px;border:1px solid #a7c4e68a;border-radius:15px;background:rgba(79,135,193,.07);display:grid;gap:11px}
 .smart-template-top,.smart-entry-head,.smart-report-head,.smart-inline-tools,.smart-filter-row{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap}
 .smart-entry-list{display:grid;gap:10px}.smart-entry{border:1px solid #aac3dc80;border-radius:12px;padding:11px;display:grid;gap:9px;background:rgba(123,161,199,.065)}
@@ -5162,8 +5173,8 @@ setInterval(updateAppHeaderClock,1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){updateAppHeaderClock();weatherAutoUpdate();}});
 
 
-// v1.7.107 · Smart Template Library and detailed analytics
-// v1.7.107 Smart Record Templates — backward-compatible structured entries.
+// v1.7.108 · Smart Template Library and detailed analytics
+// v1.7.108 Smart Record Templates — backward-compatible structured entries.
 const SMART_TEMPLATES={
  basic:{label:'기본 수치·메모',unit:''},
  reading:{label:'📚 독서 · 책별 구간',unit:'쪽'},
@@ -5415,10 +5426,26 @@ function smartRecalculate(form){
  const s=smartFormEntries(form,false),t=smartTotals(s),slot=root.querySelector('.smart-totals');if(!slot)return;
  slot.innerHTML=`<span>자동 계산 · ${t.count}항목</span><strong>${achievementNumberText(t.amount)} ${esc(t.unit)}</strong>${s.templateId==='strength'?`<small>총 운동 볼륨 ${achievementNumberText(t.extra)} kg·회</small>`:s.templateId==='study'?`<small>정답 ${t.extra} / ${t.amount} · 정답률 ${t.amount?Math.round(t.extra/t.amount*100):0}%</small>`:''}`;
 }
+const SMART_TEMPLATE_PREVIEWS={
+ basic:{lead:'기존 숫자·단위·메모를 직접 작성하는 방식',rows:[['실제 달성량','25'],['단위','회'],['상세 메모','오늘의 기록']],total:'25회 (입력값)',analysis:'기존 달성량 추세 · 완료 이력'},
+ reading:{lead:'책을 자동완성으로 찾고, 여러 권의 읽은 구간을 입력',rows:[['책 제목 · 자동완성','울트라러닝'],['시작 쪽 / 종료 쪽','21 / 36'],['전체 쪽수 · 책별 최초 1회','450'],['＋ 다른 책 추가','공부의 뇌과학 5~14쪽']],total:'두 권 합계 26쪽',analysis:'전체 독서 목록 · 책별 진도 · 완독 체크 · 일별 독서량'},
+ reps:{lead:'운동 종목마다 세트를 여러 번 기록하고 입력 시각 자동 저장',rows:[['운동 종목','턱걸이'],['1세트 · 자동 시각','08:15  ·  10회'],['2세트 · 자동 시각','12:40  ·  8회'],['＋ 세트 추가 / 다른 운동','언제든 중간 저장']],total:'2세트 · 총 18회',analysis:'시간대별 세트 이력 · 종목별 반복수 · 성장 추세'},
+ strength:{lead:'운동 종목마다 무게와 세트별 횟수를 함께 작성',rows:[['운동 종목','스쿼트'],['1세트 · 무게 × 횟수','40kg × 12회'],['2세트 · 무게 × 횟수','40kg × 10회'],['＋ 세트 추가 / 다른 운동','입력 시간 자동 저장']],total:'22회 · 볼륨 880kg·회',analysis:'운동 볼륨 · 종목별 기록 · 중량·세트 성장'},
+ study:{lead:'과목이나 문제 묶음을 추가해 풀이 수와 정답을 기록',rows:[['과목 / 항목','영어 단어'],['푼 문제','20문제'],['정답','17문제'],['＋ 다른 과목 추가','문제 묶음 추가']],total:'20문제 · 정답률 85%',analysis:'과목별 정답률 · 누적 풀이 · 추세'},
+ time:{lead:'활동별 시작·종료 시각과 휴식 시간을 입력',rows:[['활동명','집중 공부'],['시작 / 종료','09:00 / 10:30'],['휴식','10분'],['＋ 다른 활동 추가','활동별 시간 구간']],total:'순수 수행 80분',analysis:'일별 순수 수행시간 · 활동별 누적 시간'},
+ distance:{lead:'활동별 거리와 소요시간을 여러 번 기록',rows:[['활동명','걷기'],['이동 거리','3km'],['소요 시간','30분'],['＋ 다른 활동 추가','산책 1km / 12분']],total:'4km · 총 42분',analysis:'누적 거리 · 활동별 평균 페이스 · 거리 추세'},
+ quantity:{lead:'수량이 필요한 항목을 여러 개 입력하고 합계를 계산',rows:[['항목명','영단어 암기'],['수량','25개'],['＋ 다른 항목 추가','복습 15개']],total:'합계 40개',analysis:'항목별 수량 · 누적량 · 일별 추세'}
+};
+function smartTemplatePreviewHTML(kind){
+ const d=SMART_TEMPLATE_PREVIEWS[kind]||SMART_TEMPLATE_PREVIEWS.basic;
+ const label=SMART_TEMPLATES[kind]?.label||SMART_TEMPLATES.basic.label;
+ return `<div class="smart-preview-title"><b>👀 선택한 템플릿 미리보기</b><small>저장 전 확인 · 예시 데이터</small></div><div class="smart-preview-description">${esc(d.lead)}</div><div class="smart-preview-panel"><div class="smart-preview-panel-title">📝 ${esc(label)} · 실제 입력창 형태</div>${d.rows.map(([a,b])=>`<div class="smart-preview-row"><span>${esc(a)}</span><strong>${esc(b)}</strong></div>`).join('')}<div class="smart-preview-total">자동 계산 예시 <strong>${esc(d.total)}</strong></div></div><div class="smart-preview-analytics"><b>📊 이 템플릿의 상세 분석</b><p>${esc(d.analysis)}</p></div><small class="smart-preview-footer">※ 실제 입력 가능 영역이 아닌 미리보기입니다. 아래의 퀘스트 저장 후 기록 입력창에서 사용할 수 있어요.</small>`;
+}
 function smartQuestTemplateChange(el){const form=el.closest('form'),kind=el.value,meta=SMART_TEMPLATES[kind];if(!meta)return;
  const mode=form.elements.recordMode,unit=form.elements.recordUnit;if(kind!=='basic'){
   mode.value='number';document.getElementById('recordUnitSetup').hidden=false;unit.value=meta.unit;unit.readOnly=true;
  }else{unit.readOnly=false;}
+ const preview=form.querySelector('#questTemplatePreview');if(preview)preview.innerHTML=smartTemplatePreviewHTML(kind);
 }
 function dailyCount(items){return new Set(items.map(x=>x.c?.day).filter(Boolean)).size}
 function smartTemplateAnalysis(id){
@@ -5479,9 +5506,35 @@ function achievementAmount(value){
  if(value===null||value===undefined||String(value).trim()==='')return null;
  const n=Number(value);return Number.isFinite(n)&&n>=0&&n<=999999?Math.round(n*100)/100:null;
 }
+function smartCleanPriorDrafts(raw){
+ if(!Array.isArray(raw))return [];
+ return raw.slice(-8).map(x=>{
+  const structured=smartCleanStructured(x?.structured),amount=achievementAmount(x?.amount),unit=String(x?.unit||'').trim().slice(0,12);
+  if(!structured&&amount===null)return null;
+  return {amount,unit,structured,at:smartIso(x?.at)};
+ }).filter(Boolean);
+}
+function smartExistingUnfinishedForForm(q){
+ if(!modal||!data)return null;
+ if(modal.type==='achievementEdit')return completionEditorRecord()?.achievement||null;
+ if(modal.type==='achievementDraft'||modal.type==='questVerify'||modal.type==='questVerifyNormal'){
+  const id=q?.id||modal.id,dt=modal.type==='achievementDraft'?modal.date:day();
+  return achievementDraft(dt,id)?.achievement||null;
+ }
+ return null;
+}
+function smartSwitchHistory(q,chosenTemplate){
+ const prior=smartExistingUnfinishedForForm(q),clean=cleanAchievement(prior),history=[...clean.priorDrafts];
+ if(!prior)return history;
+ const prevTemplate=clean.structured?.templateId||'basic';
+ if(prevTemplate!==chosenTemplate&&(clean.structured||clean.amount!==null)){
+  history.push({amount:clean.amount,unit:clean.unit,structured:clean.structured,at:new Date().toISOString()});
+ }
+ return smartCleanPriorDrafts(history);
+}
 function cleanAchievement(raw){
  const amount=achievementAmount(raw?.amount);
- return {amount,unit:String(raw?.unit||'').trim().slice(0,12),note:String(raw?.note||'').trim().slice(0,500),mood:['good','normal','hard'].includes(raw?.mood)?raw.mood:'',structured:smartCleanStructured(raw?.structured)};
+ return {amount,unit:String(raw?.unit||'').trim().slice(0,12),note:String(raw?.note||'').trim().slice(0,500),mood:['good','normal','hard'].includes(raw?.mood)?raw.mood:'',structured:smartCleanStructured(raw?.structured),priorDrafts:smartCleanPriorDrafts(raw?.priorDrafts)};
 }
 // Drafts stay out of completions: they never grant points, XP, streaks or chart credits.
 function cleanAchievementDrafts(raw,quests=null){
@@ -5589,13 +5642,17 @@ function achievementSummary(c){
  const a=cleanAchievement(c?.achievement),parts=[];
  if(a.amount!==null)parts.push('📏 '+achievementNumberText(a.amount)+(a.unit?' '+a.unit:''));
  if(a.structured?.entries?.length)parts.push('🗂️ '+a.structured.entries.length+'항목');
+ if(a.priorDrafts?.length)parts.push('📌 이전 임시값 별도 보존 '+a.priorDrafts.length+'건');
  if(a.mood)parts.push(({good:'😊 좋음',normal:'🙂 보통',hard:'😮‍💨 힘듦'})[a.mood]);
  return parts.join(' · ');
 }
 function achievementFields(q,record=null,context="completion"){
  const mode=achievementMode(q);if(mode==='none')return '';
  const a=cleanAchievement(record?.achievement),isEditing=context==="edit",isDraft=context==="draft";
- const templateId=record?.achievement?.structured?.templateId||(record&&(isEditing||isDraft||achievementHasContent(a))?'basic':smartTemplateId(q));
+ const recordedTemplate=record?.achievement?.structured?.templateId||'basic';
+ // Completed records retain their original editor; an unfinished draft follows
+ // the quest's currently selected template immediately after settings change.
+ const templateId=isEditing?recordedTemplate:(smartTemplateId(q)!=='basic'?smartTemplateId(q):recordedTemplate);
  const templateQ={...q,recordTemplateId:templateId};
  const bonusEnabled=!!data.rules?.recordBonusEnabled;
  // Preserve a value already recorded for this date; otherwise use the latest saved unit
@@ -5603,6 +5660,7 @@ function achievementFields(q,record=null,context="completion"){
  const initialUnit=record&&achievementAmount(record?.achievement?.amount)!==null
   ?a.unit:(achievementLastSavedUnit(q?.id||record?.id)??achievementUnit(q));
  return `<details class="achievement-entry" ${isEditing||isDraft||!!record||bonusEnabled||templateId!=='basic'?'open':''}><summary>📝 달성 기록 (선택) ${bonusEnabled&&!isEditing&&!isDraft?'<span class="achievement-bonus-hint">달성량 입력 또는 상세 메모 10자 이상 → P·XP +20%</span>':''}</summary><div class="achievement-entry-body">
+ ${mode==='number'&&templateId!=='basic'&&recordedTemplate!==templateId&&achievementHasContent(a)?`<div class="smart-migration-note">📌 기존 임시 기록 보존: <b>${a.amount===null?'달성량 없음':achievementNumberText(a.amount)+' '+esc(a.unit)}</b>${a.structured?` · 이전 상세 템플릿 ${esc(SMART_TEMPLATES[recordedTemplate]?.label||'')}`:''}<br>새 양식에 자동으로 옮기거나 합산하지 않습니다. 새 항목을 저장하면 원래 입력값은 별도 보관됩니다.</div>`:''}
  ${mode==='number'&&templateId!=='basic'?smartEditorHTML(templateQ,a.structured):mode==='number'?`<div class="achievement-number-row"><label>실제 달성량<input class="qentry" name="achievementAmount" type="number" inputmode="decimal" min="0" max="999999" step="any" value="${a.amount===null?'':a.amount}" placeholder="예: 25"></label><label>단위<input class="qentry" name="achievementUnit" maxlength="12" value="${esc(initialUnit)}" placeholder="회 / 분 / 쪽 / km"></label></div>`:''}
  <label>체감 난이도 / 컨디션<select name="achievementMood" class="qentry"><option value="" ${!a.mood?'selected':''}>기록하지 않음</option>${[['good','😊 좋음'],['normal','🙂 보통'],['hard','😮‍💨 힘듦']].map(([v,label])=>`<option value="${v}" ${a.mood===v?'selected':''}>${label}</option>`).join('')}</select></label>
  <label>실제 달성 내용 · 상세 메모<textarea class="qentry achievement-note" name="achievementNote" maxlength="500" rows="3" placeholder="무엇을 했고 무엇이 달라졌나요? (최대 500자)">${esc(a.note)}</textarea></label>
@@ -5619,12 +5677,18 @@ function achievementFromForm(form,q){
   if(hasInput)structured=smartFormEntries(form,true);
   const totals=structured?smartTotals(structured):{amount:null,unit:SMART_TEMPLATES[smartRoot.dataset.smartTemplate].unit};
   if(totals.amount!==null&&totals.amount>999999)throw Error('자동 합계가 최대 999999를 초과합니다. 기록을 나누어 주세요.');
-  return cleanAchievement({amount:structured?totals.amount:null,unit:totals.unit,note:form.elements.achievementNote?.value||'',mood:form.elements.achievementMood?.value||'',structured});
+  const previous=smartExistingUnfinishedForForm(q),previousClean=cleanAchievement(previous);
+  // If nothing has been entered in the new template, do not delete the old
+  // numerical draft just because the user opened and saved the new screen.
+  if(!structured&&previous&&previousClean.structured?.templateId!==smartRoot.dataset.smartTemplate){
+   return cleanAchievement({...previousClean,note:form.elements.achievementNote?.value||'',mood:form.elements.achievementMood?.value||''});
+  }
+  return cleanAchievement({amount:structured?totals.amount:null,unit:totals.unit,note:form.elements.achievementNote?.value||'',mood:form.elements.achievementMood?.value||'',structured,priorDrafts:smartSwitchHistory(q,smartRoot.dataset.smartTemplate)});
  }
  const value=String(form.elements.achievementAmount?.value||'').trim();
  const amount=achievementAmount(value);
  if(mode==='number'&&value!==''&&amount===null)throw Error('달성량은 0~999999 사이 숫자로 입력하세요.');
- return cleanAchievement({amount:mode==='number'?amount:null,unit:mode==='number'?(form.elements.achievementUnit?form.elements.achievementUnit.value:achievementUnit(q)):'',note:form.elements.achievementNote?.value||'',mood:form.elements.achievementMood?.value||''});
+ return cleanAchievement({amount:mode==='number'?amount:null,unit:mode==='number'?(form.elements.achievementUnit?form.elements.achievementUnit.value:achievementUnit(q)):'',note:form.elements.achievementNote?.value||'',mood:form.elements.achievementMood?.value||'',priorDrafts:smartSwitchHistory(q,'basic')});
 }
 function completionEditorRecord(){
  if(modal?.type!=='achievementEdit')return null;
@@ -5887,7 +5951,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.107</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.108</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -5903,7 +5967,7 @@ function cleanRecommendedQuest(value){
  if(!value||typeof value!=='object'||!/^(?:\d{4})-(?:\d{2})-(?:\d{2})$/.test(String(value.day||''))||!String(value.id||'').trim())return null;
  return {day:String(value.day),id:String(value.id).slice(0,100)};
 }
-// v1.7.107: A small per-trainer rotation log. Historical quest records and rewards are unchanged.
+// v1.7.108: A small per-trainer rotation log. Historical quest records and rewards are unchanged.
 function cleanRecommendationHistory(value){
  const seen=new Set();
  return (Array.isArray(value)?value:[]).filter(item=>item&&validNoteDay(String(item.day||''))&&['today','evening'].includes(item.kind)&&/^[A-Za-z0-9_-]{1,90}$/.test(String(item.id||''))).slice(-240).map(item=>({day:String(item.day),kind:item.kind,id:String(item.id)})).filter(item=>{const key=item.day+'|'+item.kind;if(seen.has(key))return false;seen.add(key);return true}).slice(-180);
@@ -7313,7 +7377,7 @@ function sleepGoalsFor(morning,profile=data){
  for(const item of hist){if(item.from>morning)break;v={bed:item.bed,wake:item.wake}}
  return v;
 }
-// v1.7.107: a single, dated target source for sleep tracker and life-rhythm graphs.
+// v1.7.108: a single, dated target source for sleep tracker and life-rhythm graphs.
 function persistSleepGoals(bed,wake){
  if(!lifeClockValid(bed)||!lifeClockValid(wake))return false;
  const effective=sleepDateAdd(day(),1); // Apply to tonight's sleep / next morning, never retroactively.
@@ -8821,7 +8885,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.107</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.108</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -9466,7 +9530,7 @@ function renderBuddyBriefing(){
  <button class="modal-btn secondary" type="button" onclick="closeBuddyBriefing()">${kind==='morning'?'오늘 모험 시작하기':'오늘의 마무리 확인'}</button><small class="briefing-once-note">자동 브리핑은 하루에 한 번 · 오늘 탭의 다시보기 버튼으로 언제든 열 수 있어요.</small></div></div>`;
 }
 
-// v1.7.107: actionable, compact recommendations; same-target bonuses share one card.
+// v1.7.108: actionable, compact recommendations; same-target bonuses share one card.
 function renderQuestRecommendationPanel(){
  const todayPick=dailyRecommendedQuest();
  const todayValid=!!todayPick&&!completedToday(todayPick.id);
@@ -10082,7 +10146,7 @@ if(modal.type==='categoryManager')return `<div class="overlay" onclick="modal=nu
 if(modal.type==='categoryEditor'){const oldName=modal.original||'',cat=data.categories.find(c=>c.name===oldName),value=cat?.emoji||'✨';return `<div class="overlay" onclick="modal={type:'categoryManager'};render()"><div class="modal" onclick="event.stopPropagation()"><h2>${cat?'카테고리 수정':'카테고리 추가'}</h2><form class="qform" onsubmit="saveCategory(event)"><label>카테고리 이름</label><input class="qentry" name="categoryName" type="text" maxlength="25" required value="${esc(oldName)}" placeholder="예: 과학, 피아노, 영어"><label>아이콘 선택</label><input id="categoryEmojiValue" type="hidden" name="categoryEmoji" value="${esc(value)}"><div class="emoji-grid">${EMOJI_CHOICES.map(em=>`<button class="emoji-pick ${em===value?'selected':''}" type="button" data-emoji="${esc(em)}" onclick="selectEmoji(this.dataset.emoji)" title="${esc(em)}">${esc(em)}</button>`).join('')}</div><button class="modal-btn" type="submit">카테고리 저장</button></form><button class="modal-btn secondary" onclick="modal={type:'categoryManager'};render()">취소</button></div></div>`;}
 if(modal.type==='rankGuide'){const current=lvl(),rank=growthStage(current);return `<div class="overlay" onclick="modal=null;render()"><div class="modal rank-guide-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="트레이너 직급 안내"><h2>🏅 트레이너 성장 도감</h2><p class="modal-sub">5레벨마다 새로운 칭호를 만나 보세요! 현재 <b>Lv.${current} ${rank.name}</b></p><div class="rank-guide-grid">${TRAINER_RANKS.map(([threshold,icon,title],idx)=>`<div class="rank-entry ${current>=threshold?'unlocked':''} ${rank.min===threshold?'current':''}"><span class="rank-entry-icon" aria-hidden="true">${icon}</span><span class="rank-entry-label"><strong>${esc(title)}</strong><small>Lv.${threshold} ${current>=threshold?'· 획득':'· 미달성'}</small></span>${rank.min===threshold?'<b class="rank-current-label">현재</b>':''}</div>`).join('')}</div><p class="rank-guide-note">Lv.200 이후에도 50레벨마다 명예 등급이 오릅니다. 직급은 성장 표시용이며 포인트·XP·등장 확률·포획 확률을 바꾸지 않습니다.</p><button class="modal-btn" onclick="modal=null;render()">닫기</button></div></div>`;}
 if(modal.type==='questEditAuth')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-label="퀘스트 편집 관리자 인증"><div class="spark">🔐</div><h2>관리자 확인</h2><p class="modal-sub">퀘스트 ${modal.id?'수정·삭제':'등록'}는 관리자 비밀번호 인증 후 가능합니다.</p><form class="qform" onsubmit="authorizeQuestEditor(event)"><label>관리자 비밀번호</label><input class="qentry" name="questAdminPin" type="password" inputmode="numeric" autocomplete="off" required placeholder="관리자 비밀번호 입력"><button class="modal-btn" type="submit">🔓 편집하기</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;
-if(modal.type==='questEditor'){const old=modal.id?data.quests.find(q=>q.id===modal.id):null;return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" style="max-height:92dvh;overflow-y:auto"><h2>${old?'퀘스트 수정':'퀘스트 추가'}</h2><p class="modal-sub">매일·요일별·일회성·이벤트 중 선택하세요. 기본값은 매일이며 이벤트는 발생 전 숨깁니다.</p><form class="qform" onsubmit="saveTask(event)"><label for="questName">퀘스트 이름</label><input class="qentry" id="questName" name="title" type="text" required maxlength="45" placeholder="예: 피아노 연습" value="${old?esc(old.title):''}"><label for="qCat">카테고리</label><select class="qentry" id="qCat" name="category">${data.categories.map(c=>`<option value="${esc(c.name)}" ${old?.category===c.name?'selected':''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select><div class="quest-calendar-editor"><label for="questTypeSelect">🗓️ 퀘스트 유형</label><select class="qentry" id="questTypeSelect" name="questType" onchange="updateQuestTypeFields(this)">${[['daily','🔁 매일 (기본)'],['weekly','📅 요일별 반복'],['once','🎯 일회성'],['event','✨ 이벤트 · 발생 전 숨김'],['reserved','📅 예약 · 시작일~종료일']].map(([v,t])=>`<option value="${v}" ${questType(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="questWeeklyEditor" ${questType(old)==='weekly'?'':'hidden'}><p class="qform-note">반복할 요일을 하나 이상 선택하세요.</p><div class="quest-weekday-picks">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" name="weekdays" value="${d}" ${questWeekdays(old).includes(d)?'checked':''}>${WEEKDAY_LABELS[d]}</label>`).join('')}</div></div><div id="questEventEditor" ${questType(old)==='event'?'':'hidden'}><label for="eventChanceInput">✨ 일반 퀘스트 완료 시 이벤트 발생 확률 (%)</label><input class="qentry" id="eventChanceInput" name="eventChance" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="${questChance(old)}"><p class="qform-note">각 등록 이벤트를 독립 판정하고, 동시에 당첨되면 하나만 랜덤 선택합니다. 보유 도감이 있어야 발생합니다. 하루 한 건만 활성화하며 22:00에 만료합니다.</p></div><div id="questReservedEditor" ${questType(old)==='reserved'?'':'hidden'}><p class="qform-note">📅 지정한 기간에만 매일 표시되며 예약 카테고리가 자동 적용됩니다.</p><div class="qform-row"><div><label>시작일</label><input class="qentry" name="startDate" type="date" value="${esc(old?.startDate||day())}"></div><div><label>종료일</label><input class="qentry" name="endDate" type="date" value="${esc(old?.endDate||day())}"></div></div></div></div><label for="qGoal">목표 (자유 입력)</label><input class="qentry" id="qGoal" name="goal" type="text" maxlength="90" required placeholder="예: 30분, 20문제, 한자 5자 암기" value="${esc(old?.goal||((old?.mins||'')?old.mins+'분':''))}"><div class="achievement-quest-config"><label for="recordModeSelect">📝 완료 시 달성 기록 유형</label><select class="qentry" id="recordModeSelect" name="recordMode" onchange="document.getElementById('recordUnitSetup').hidden=this.value!=='number'">${[['none','사용 안 함'],['memo','상세 메모만'],['number','달성량(숫자·단위) + 메모 (추천)']].map(([v,t])=>`<option value="${v}" ${achievementMode(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="recordUnitSetup" ${achievementMode(old)==='number'?'':'hidden'}><label>기본 측정 단위<input class="qentry" name="recordUnit" maxlength="12" placeholder="예: 회, 분, 페이지, km" ${smartTemplateId(old)!=='basic'?'readonly':''} value="${esc(achievementUnit(old))}"></label></div><label>🗂️ 퀘스트별 상세 템플릿<select class="qentry" name="recordTemplateId" onchange="smartQuestTemplateChange(this)">${Object.entries(SMART_TEMPLATES).map(([v,x])=>`<option value="${v}" ${smartTemplateId(old)===v?'selected':''}>${esc(x.label)}</option>`).join('')}</select></label><p class="qform-note">템플릿을 지정하면 상세 기록을 자동 계산합니다. 책 제목 자동완성·세트별 입력 시간 기록·항목 추가를 지원합니다.</p><p class="qform-note">기록은 선택 사항입니다. 달성량만 적어도 기록 보너스가 켜져 있으면 완료 시 +20%를 받을 수 있습니다. 완료 전에 여러 번 임시 저장할 수도 있습니다.</p></div><label for="limitMinutes">⏳ 시간 제한 (분, 기본 10분)</label><input class="qentry" id="limitMinutes" name="limitMinutes" type="number" inputmode="numeric" min="1" max="240" step="1" required value="${old?.limitMinutes||10}"><label for="rewardMode">🎁 랜덤 기본 포인트</label><select class="qentry" id="rewardMode" name="rewardMode" onchange="document.getElementById('customRewardInputs').hidden=this.value!=='custom'"><option value="default" ${!old?.rewardOverride?'selected':''}>관리자 기본값 적용 (${data.rules.pointMin}~${data.rules.pointMax}P)</option><option value="custom" ${old?.rewardOverride?'selected':''}>이 퀘스트만 별도 범위 지정</option></select><div id="customRewardInputs" class="quest-reward-editor" ${old?.rewardOverride?'':'hidden'}><label>최소 포인트<input class="qentry" name="rewardMin" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.min??data.rules.pointMin}"></label><label>최대 포인트<input class="qentry" name="rewardMax" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.max??data.rules.pointMax}"></label><label>지급 간격<select class="qentry" name="rewardStep">${REWARD_STEPS.map(step=>`<option value="${step}" ${step===(old?.rewardOverride?.step??data.rules.pointStep)?'selected':''}>${step}P</option>`).join('')}</select></label><p class="qform-note">범위의 각 포인트는 동일한 확률로 뽑힙니다. 시간 배수는 뽑힌 기본 포인트에 최대 ×3 적용됩니다.</p></div><label for="xpMode">🌟 퀘스트 완료 경험치 (XP)</label><select class="qentry" id="xpMode" name="xpMode" onchange="document.getElementById('customXpInputs').hidden=this.value!=='custom'"><option value="default" ${old?.xpOverride==null?'selected':''}>관리자 기본값 상속 (${format(data.rules.defaultXp)}XP)</option><option value="custom" ${old?.xpOverride!=null?'selected':''}>이 퀘스트만 별도 XP 지정</option></select><div class="quest-xp-editor" id="customXpInputs" ${old?.xpOverride!=null?'':'hidden'}><label>획득 경험치<input class="qentry" type="number" name="questXp" inputmode="numeric" min="0" max="1000" step="1" value="${old?.xpOverride??data.rules.defaultXp}"></label><p class="qform-note">일반 완료와 타임챌린지에서 동일하게 지급됩니다. 시간 ×3 보너스는 포인트에만 적용됩니다.</p></div><p class="qform-note">🔒 등록·수정·삭제는 관리자 인증 필요 · 완료는 퀘스트 완료 비밀번호 필요</p><button class="modal-btn" type="submit">${old?'변경사항 저장':'퀘스트 등록'}</button></form>${old?`<button class="modal-btn secondary" onclick="removeTask('${old.id}')">퀘스트 삭제</button>`:''}<button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`}
+if(modal.type==='questEditor'){const old=modal.id?data.quests.find(q=>q.id===modal.id):null;return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" style="max-height:92dvh;overflow-y:auto"><h2>${old?'퀘스트 수정':'퀘스트 추가'}</h2><p class="modal-sub">매일·요일별·일회성·이벤트 중 선택하세요. 기본값은 매일이며 이벤트는 발생 전 숨깁니다.</p><form class="qform" onsubmit="saveTask(event)"><label for="questName">퀘스트 이름</label><input class="qentry" id="questName" name="title" type="text" required maxlength="45" placeholder="예: 피아노 연습" value="${old?esc(old.title):''}"><label for="qCat">카테고리</label><select class="qentry" id="qCat" name="category">${data.categories.map(c=>`<option value="${esc(c.name)}" ${old?.category===c.name?'selected':''}>${esc(c.emoji)} ${esc(c.name)}</option>`).join('')}</select><div class="quest-calendar-editor"><label for="questTypeSelect">🗓️ 퀘스트 유형</label><select class="qentry" id="questTypeSelect" name="questType" onchange="updateQuestTypeFields(this)">${[['daily','🔁 매일 (기본)'],['weekly','📅 요일별 반복'],['once','🎯 일회성'],['event','✨ 이벤트 · 발생 전 숨김'],['reserved','📅 예약 · 시작일~종료일']].map(([v,t])=>`<option value="${v}" ${questType(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="questWeeklyEditor" ${questType(old)==='weekly'?'':'hidden'}><p class="qform-note">반복할 요일을 하나 이상 선택하세요.</p><div class="quest-weekday-picks">${[1,2,3,4,5,6,0].map(d=>`<label><input type="checkbox" name="weekdays" value="${d}" ${questWeekdays(old).includes(d)?'checked':''}>${WEEKDAY_LABELS[d]}</label>`).join('')}</div></div><div id="questEventEditor" ${questType(old)==='event'?'':'hidden'}><label for="eventChanceInput">✨ 일반 퀘스트 완료 시 이벤트 발생 확률 (%)</label><input class="qentry" id="eventChanceInput" name="eventChance" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="${questChance(old)}"><p class="qform-note">각 등록 이벤트를 독립 판정하고, 동시에 당첨되면 하나만 랜덤 선택합니다. 보유 도감이 있어야 발생합니다. 하루 한 건만 활성화하며 22:00에 만료합니다.</p></div><div id="questReservedEditor" ${questType(old)==='reserved'?'':'hidden'}><p class="qform-note">📅 지정한 기간에만 매일 표시되며 예약 카테고리가 자동 적용됩니다.</p><div class="qform-row"><div><label>시작일</label><input class="qentry" name="startDate" type="date" value="${esc(old?.startDate||day())}"></div><div><label>종료일</label><input class="qentry" name="endDate" type="date" value="${esc(old?.endDate||day())}"></div></div></div></div><label for="qGoal">목표 (자유 입력)</label><input class="qentry" id="qGoal" name="goal" type="text" maxlength="90" required placeholder="예: 30분, 20문제, 한자 5자 암기" value="${esc(old?.goal||((old?.mins||'')?old.mins+'분':''))}"><div class="achievement-quest-config"><label for="recordModeSelect">📝 완료 시 달성 기록 유형</label><select class="qentry" id="recordModeSelect" name="recordMode" onchange="document.getElementById('recordUnitSetup').hidden=this.value!=='number'">${[['none','사용 안 함'],['memo','상세 메모만'],['number','달성량(숫자·단위) + 메모 (추천)']].map(([v,t])=>`<option value="${v}" ${achievementMode(old)===v?'selected':''}>${t}</option>`).join('')}</select><div id="recordUnitSetup" ${achievementMode(old)==='number'?'':'hidden'}><label>기본 측정 단위<input class="qentry" name="recordUnit" maxlength="12" placeholder="예: 회, 분, 페이지, km" ${smartTemplateId(old)!=='basic'?'readonly':''} value="${esc(achievementUnit(old))}"></label></div><label>🗂️ 퀘스트별 상세 템플릿<select class="qentry" name="recordTemplateId" onchange="smartQuestTemplateChange(this)">${Object.entries(SMART_TEMPLATES).map(([v,x])=>`<option value="${v}" ${smartTemplateId(old)===v?'selected':''}>${esc(x.label)}</option>`).join('')}</select></label><div id="questTemplatePreview" class="smart-template-preview" aria-live="polite">${smartTemplatePreviewHTML(smartTemplateId(old))}</div><p class="qform-note">템플릿을 지정하면 상세 기록을 자동 계산합니다. 책 제목 자동완성·세트별 입력 시간 기록·항목 추가를 지원합니다.</p><p class="qform-note">기록은 선택 사항입니다. 달성량만 적어도 기록 보너스가 켜져 있으면 완료 시 +20%를 받을 수 있습니다. 완료 전에 여러 번 임시 저장할 수도 있습니다.</p></div><label for="limitMinutes">⏳ 시간 제한 (분, 기본 10분)</label><input class="qentry" id="limitMinutes" name="limitMinutes" type="number" inputmode="numeric" min="1" max="240" step="1" required value="${old?.limitMinutes||10}"><label for="rewardMode">🎁 랜덤 기본 포인트</label><select class="qentry" id="rewardMode" name="rewardMode" onchange="document.getElementById('customRewardInputs').hidden=this.value!=='custom'"><option value="default" ${!old?.rewardOverride?'selected':''}>관리자 기본값 적용 (${data.rules.pointMin}~${data.rules.pointMax}P)</option><option value="custom" ${old?.rewardOverride?'selected':''}>이 퀘스트만 별도 범위 지정</option></select><div id="customRewardInputs" class="quest-reward-editor" ${old?.rewardOverride?'':'hidden'}><label>최소 포인트<input class="qentry" name="rewardMin" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.min??data.rules.pointMin}"></label><label>최대 포인트<input class="qentry" name="rewardMax" type="number" min="0" max="10000" step="1" value="${old?.rewardOverride?.max??data.rules.pointMax}"></label><label>지급 간격<select class="qentry" name="rewardStep">${REWARD_STEPS.map(step=>`<option value="${step}" ${step===(old?.rewardOverride?.step??data.rules.pointStep)?'selected':''}>${step}P</option>`).join('')}</select></label><p class="qform-note">범위의 각 포인트는 동일한 확률로 뽑힙니다. 시간 배수는 뽑힌 기본 포인트에 최대 ×3 적용됩니다.</p></div><label for="xpMode">🌟 퀘스트 완료 경험치 (XP)</label><select class="qentry" id="xpMode" name="xpMode" onchange="document.getElementById('customXpInputs').hidden=this.value!=='custom'"><option value="default" ${old?.xpOverride==null?'selected':''}>관리자 기본값 상속 (${format(data.rules.defaultXp)}XP)</option><option value="custom" ${old?.xpOverride!=null?'selected':''}>이 퀘스트만 별도 XP 지정</option></select><div class="quest-xp-editor" id="customXpInputs" ${old?.xpOverride!=null?'':'hidden'}><label>획득 경험치<input class="qentry" type="number" name="questXp" inputmode="numeric" min="0" max="1000" step="1" value="${old?.xpOverride??data.rules.defaultXp}"></label><p class="qform-note">일반 완료와 타임챌린지에서 동일하게 지급됩니다. 시간 ×3 보너스는 포인트에만 적용됩니다.</p></div><p class="qform-note">🔒 등록·수정·삭제는 관리자 인증 필요 · 완료는 퀘스트 완료 비밀번호 필요</p><button class="modal-btn" type="submit">${old?'변경사항 저장':'퀘스트 등록'}</button></form>${old?`<button class="modal-btn secondary" onclick="removeTask('${old.id}')">퀘스트 삭제</button>`:''}<button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`}
 
 if(modal.type==='quest'){
  const baseP=Number(modal.basePts??modal.pts),baseX=Number(modal.xpBase??modal.xpEarned??25);
@@ -10298,7 +10362,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.107</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.108</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
