@@ -1,34 +1,10 @@
-PokéRoutine v1.7.126 — 독서 템플릿 시작 쪽 자동 제안 (v1.7.124 기능 유지)
+PokéRoutine v1.7.127 – Calendar + Records shortcut styling and numeric life-event repeat badge
 
-배포: GitHub 저장소의 index.html / moves.html / sw.js 교체. 적용 전 JSON 전체 백업 권장.
+Update: copy index.html, moves.html, and sw.js to the GitHub Pages repository.
 
-이전 v1.7.122에서 유지: 기록 탭 → 노트·순간 기록 모아보기
-- 검색 전에는 기존 날짜별 펼치기·노트 작성/수정 UI 그대로 보입니다.
-- 검색 중에는 일치한 개별 노트·순간 기록만 검색 결과로 나옵니다. 같은 날짜의 무관한 기록은 노출되지 않습니다.
-- 각 검색 결과마다 YYYY-MM-DD 날짜, 순간 기록의 실제 저장 시각, 종류와 본문을 표기하고 검색어를 강조합니다.
-- 날짜, 내용, 카테고리, 기분, 시각을 검색할 수 있으며 공백으로 나눈 여러 단어는 모두 만족하는 기록만 표시합니다.
-- 검색 결과에서 기존 노트 날짜 화면 또는 순간 기록 수정 화면으로 이동할 수 있습니다.
-- 결과가 많으면 100개씩 더 보기로 확장, 검색을 지우면 기존 전체 목록으로 복귀합니다.
-- 기록 내용·JSON 저장·기존 계정 분리·보상과 관련된 데이터는 변경하지 않습니다.
+Changes (v1.7.126 baseline):
+1) Repeat-mode life-event count chip displays only a number, not `회`. Accessibility title/label still identifies the count as a number of occurrences.
+2) New calendar shortcut navigation: 달력 보기, 선택일 상세, 타임로그, 데일리 노트. If year view is active, day-specific shortcuts switch to month view first.
+3) Records and calendar shortcuts use the same neutral theme-aware styling. Both light and dark skins are supported.
 
-v1.7.121에서 이어지는 독서 타임라인 변경:
-- 직접 완독 체크한 책의 체크 표시·연한 초록 배경, 전체/읽는 중/완독 필터
-- 타임라인에서는 추정 표시/특수 색상을 숨기되 상세 기록과 원본에는 그대로 보존
-
-QA: 브라우저 320/390/760px 렌더링, 단일/복수 검색어, 날짜 검색, 하이라이트 이스케이프, 검색 내 관련 기록만 표출, 기존 목록 복귀, 독서 필터 확인
-
-[v1.7.123] 독서 타임라인 표시만 개선: 진행률/쪽수 표시, 완료 체크와 은은한 초록 음영 정리, 날짜별 누적진도 색상, 동일 초록 팔레트, 최근 독서순 기본 정렬/선택 정렬 저장. 전체 쪽수 없는 책은 가짜 진행률을 표시하지 않으며 기록은 변경하지 않습니다.
-
-[v1.7.124] 완료 후 기록 추가 (공통)
-- 오늘 탭의 모든 완료된 퀘스트에 '＋ 기록 추가' 표시 (격자/리스트/간단/한줄 동일). 기록 모드가 '사용 안 함'인 퀘스트에도 메모 추가 가능.
-- 새 입력은 기존 기록을 지우지 않고 합산: 숫자형 달성량 추가, 구조화 기록(독서·반복운동·근력·학습·시간·거리·수량)은 기존 항목에 새 항목 병합, 메모는 날짜/시각과 함께 뒤에 추가.
-- 기존 기록 전체 수정 버튼도 제공. 추가 기록 이력에 작성 시각/추가량/항목수 저장하고 JSON 복원 시 유지.
-- 동일 완료 기록만 수정되며 포인트, XP, 완료 횟수, 완료 승인 시각, 기존 기록 보너스를 절대로 재지급하거나 재계산하지 않음.
-- 독서 진행률: '읽은 쪽수 누계' 대신 기록된 종료 쪽 중 가장 높은 마지막 페이지 / 책 총 페이지 수. 여러 번 재독하거나 중간 구간만 기록한 경우에도 정확히 현재 도달 쪽으로 계산. 완독 직접 체크는 100% 유지.
-- 기존 독서/운동 그래프 및 필터/정렬 기능 유지. 기기에서 전체 JSON 백업 후 세 파일 교체.
-
-[v1.7.126] 독서 템플릿: 책 제목 선택 시 같은 책의 최근 종료 쪽을 시작 쪽 기본값으로 자동 입력. 임의 수정값 유지, 기존 기록 불변.
-
-[v1.7.126]
-- 취침 00:00~05:59는 전날 밤으로 판정하며 실제 입력된 날짜/시각은 원본대로 저장. 같은 날 새벽 및 저녁 취침은 서로 다른 밤으로 표시.
-- 반복형 생활 이벤트는 기존 크기 그대로 아이콘 옆에 날짜별 횟수 배지(예: 3회)를 표시하며 마지막 기록 시각을 아래에 유지.
+No reward, record or backup schema changes. Back up all user data before deploying.
