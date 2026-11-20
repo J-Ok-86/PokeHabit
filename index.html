@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.123 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.124 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -4745,6 +4745,14 @@ html[data-theme="light"] .smart-exercise-controls select{background:#f5fafc;colo
 @media(max-width:355px){.smart-daily-area-graph{grid-template-columns:30px minmax(0,1fr);gap:4px}.smart-daily-area-date-axis span{font-size:9px}.smart-stack-focus-inner{gap:3px}.smart-stack-focus-y span{font-size:9px}.smart-stack-day-label{font-size:9px}}
 
 
+/* v1.7.124 — compact post-completion entry point and additive editor. */
+.quest-record-after-done{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.quest-record-append-button{border:1px solid #44bb9f!important;background:rgba(38,154,128,.23)!important;color:#d6fff2!important;font-weight:750;white-space:nowrap;min-height:38px;min-width:106px;width:auto!important;flex:0 0 auto;font-size:12px!important}
+html[data-theme=light] .quest-record-append-button{color:#0b7563!important;background:rgba(38,154,128,.10)!important;border-color:#2f9d86!important}
+.quest-record-append-summary{flex:1 1 120px;min-width:0;font-size:.75rem;color:var(--muted,#607486);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.quest-append-modal{max-height:90dvh;overflow-y:auto;overscroll-behavior:contain}
+.quest-append-existing{display:grid;gap:4px;padding:11px 12px;background:rgba(35,156,130,.08);border-radius:11px;margin:10px 0}
+.quest-append-existing span{font-weight:600;font-size:.93rem}.quest-append-existing small{font-size:.75rem;line-height:1.4;color:var(--muted,#607486)}
 /* v1.7.120 — Records & Calendar: contextual navigation and responsive axes. */
 .record-analysis-nav{margin:10px 0 12px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--card2);display:flex;flex-direction:column;gap:7px}
 .record-analysis-nav>span{color:var(--sub);font-size:11px;font-weight:800}
@@ -5829,7 +5837,11 @@ function smartBookProgress(book){
  const historical=smartLegacyBookByTitle(book.title),estimated=(historical?.ranges||[]).map(r=>[r.startPage,r.endPage]);
  const exactUnique=smartUnionPageCount(exact),estimatedUnique=smartUnionPageCount(estimated);
  const unique=smartUnionPageCount([...exact,...estimated]);
- return {unique,exactUnique,estimatedUnique,hasEstimate:!!estimated.length,percent:book.totalPages?Math.min(100,Math.round(unique/book.totalPages*100)):null};
+ // Reading completion is page position, not how many non-overlapping pages were logged.
+ // A reread does not lower progress and a missing earlier range does not undercount it.
+ const lastPage=Math.max(0,...exact.map(x=>x[1]),...estimated.map(x=>x[1]));
+ const percent=book.finished?100:book.totalPages?Math.min(100,Math.round(lastPage/book.totalPages*100)):null;
+ return {unique,exactUnique,estimatedUnique,lastPage,hasEstimate:!!estimated.length,percent};
 }
 function smartBookTimeline(book){
  const title=typeof book==='string'?smartName(book,160):smartName(book?.title,160);
@@ -5904,7 +5916,7 @@ function smartBookAccordion(book,{legacy=false,includeActions=false}={}){
  const title=legacy?book.title:book.title,dates=smartBookDates(legacy?title:book);
  const progress=legacy?null:smartBookProgress(book);
  const badge=legacy?'(추정)':book.finished?'✅ 완독':progress?.percent!==null?`${progress.percent}%`:'📖 읽는 중';
- const summary=legacy?`${book.ranges.length}구간 · 과거 메모`:book.totalPages?`${progress.unique}/${book.totalPages}쪽`:'';
+ const summary=legacy?`${book.ranges.length}구간 · 과거 메모`:book.totalPages?`마지막 ${progress.lastPage}/${book.totalPages}쪽`:'';
  const itemAttrs=legacy?'':`data-book-id="${esc(book.id)}"`;
  const actions=includeActions?legacy?`<div class="smart-inline-tools"><button type="button" class="tinybtn" data-book-title="${esc(title)}" onclick="smartImportLegacyBook(this.dataset.bookTitle)">목록에 등록</button></div>`:`<div class="smart-inline-tools"><button type="button" class="tinybtn" onclick="smartBookToggle(this.closest('[data-book-id]').dataset.bookId)">${book.finished?'완독 해제':'완독 체크'}</button><button type="button" class="tinybtn" onclick="smartBookEdit(this.closest('[data-book-id]').dataset.bookId)">책 수정</button></div>`:'';
  return `<details class="smart-book-accordion" data-book-title="${esc(title)}" ${itemAttrs}><summary aria-label="${esc(title)} 상세 보기"><span class="smart-book-title">${esc(title)}</span>${summary?`<span class="smart-book-brief">${esc(summary)}</span>`:''}<span class="smart-book-status ${legacy?'smart-estimated':''}">${esc(badge)}</span></summary><div class="smart-book-expanded">${smartBookDatesHTML(dates)}${!legacy&&progress?.percent!==null?`<div class="smart-progress" title="${progress.percent}%"><span style="width:${progress.percent}%"></span></div>`:''}${!legacy?`<p class="smart-book-subnote">${progress.hasEstimate?'과거 구간은 (추정)으로 포함 · ':''}현재 읽은 구간과 완료된 기록을 날짜별로 표시</p>`:'<p class="smart-book-subnote">과거 메모에서 인식한 정보 · 원본 유지 · 완독은 미확정</p>'}<div class="smart-book-history-header">📖 날짜별 읽은 구간 <span>${dates.events.filter(x=>x.startPage!==null).length}건</span></div>${smartBookDayRows(dates.events)}${actions}</div></details>`;
@@ -6118,20 +6130,19 @@ function smartReadingTimelineProgress(bookOrTitle){
  const events=smartBookTimeline(book||title)
   .filter(e=>e.startPage!==null&&e.endPage!==null&&e.status!=='draft')
   .sort((a,b)=>a.day.localeCompare(b.day));
- const intervals=[],dayPct=new Map();
- let i=0,unique=0;
+ const dayPct=new Map();
+ let i=0,maxEnd=0;
  while(i<events.length){
   const date=events[i].day;
   while(i<events.length&&events[i].day===date){
-   intervals.push([events[i].startPage,events[i].endPage]);i++;
+   maxEnd=Math.max(maxEnd,events[i].endPage);i++;
   }
-  unique=smartUnionPageCount(intervals.slice());
-  if(pages)dayPct.set(date,Math.min(100,Math.round(unique/pages*100)));
+  if(pages)dayPct.set(date,Math.min(100,Math.round(maxEnd/pages*100)));
  }
  const finished=book?.finished===true;
- const percent=finished?100:pages?Math.min(100,Math.round(unique/pages*100)):null;
- const label=finished?'완독 · 100%':pages?`진행률 ${percent}% · ${unique}/${pages}쪽`:unique?`읽은 구간 ${unique}쪽 · 전체 미등록`:'전체 쪽수 미등록';
- return {percent,label,dayPct,unique,hasTotal:!!pages};
+ const percent=finished?100:pages?Math.min(100,Math.round(maxEnd/pages*100)):null;
+ const label=finished?'완독 · 100%':pages?`진행률 ${percent}% · 마지막 ${maxEnd}/${pages}쪽`:maxEnd?`마지막 ${maxEnd}쪽 · 전체 미등록`:'전체 쪽수 미등록';
+ return {percent,label,dayPct,lastPage:maxEnd,hasTotal:!!pages};
 }
 // Pale jade for early pages, deep teal when close to finishing; never purple.
 function smartReadingProgressColor(percent){
@@ -6558,9 +6569,17 @@ function smartSwitchHistory(q,chosenTemplate){
  }
  return smartCleanPriorDrafts(history);
 }
+function smartCleanRecordUpdates(raw){
+ if(!Array.isArray(raw))return [];
+ return raw.slice(-300).filter(x=>x&&typeof x==='object').map(x=>({
+  at:smartIso(x.at),templateId:SMART_TEMPLATES[x.templateId]?x.templateId:'basic',
+  amount:achievementAmount(x.amount),unit:String(x.unit||'').slice(0,12),
+  note:String(x.note||'').slice(0,250),entryCount:Math.min(100,Math.max(0,Math.trunc(Number(x.entryCount)||0)))
+ })).filter(x=>x.at);
+}
 function cleanAchievement(raw){
  const amount=achievementAmount(raw?.amount);
- return {amount,unit:String(raw?.unit||'').trim().slice(0,12),note:String(raw?.note||'').trim().slice(0,500),mood:['good','normal','hard'].includes(raw?.mood)?raw.mood:'',structured:smartCleanStructured(raw?.structured),priorDrafts:smartCleanPriorDrafts(raw?.priorDrafts)};
+ return {amount,unit:String(raw?.unit||'').trim().slice(0,12),note:String(raw?.note||'').trim().slice(0,500),mood:['good','normal','hard'].includes(raw?.mood)?raw.mood:'',structured:smartCleanStructured(raw?.structured),priorDrafts:smartCleanPriorDrafts(raw?.priorDrafts),updates:smartCleanRecordUpdates(raw?.updates)};
 }
 // Drafts stay out of completions: they never grant points, XP, streaks or chart credits.
 function cleanAchievementDrafts(raw,quests=null){
@@ -6656,7 +6675,12 @@ function deleteAchievementDraft(id,date){
  modal=null;render();
 }
 function questDraftUI(q,done){
- if(done||achievementMode(q)==='none'||questType(q)==='event')return '';
+ if(done){
+  const c=data.completions.find(x=>x.day===day()&&x.id===q.id);
+  if(!c)return '';
+  return `<div class="quest-draft-line quest-record-after-done"><button type="button" class="quest-draft-button quest-record-append-button" onclick="openAchievementAppend('${esc(q.id)}')" aria-label="${esc(q.title)} 완료 후 기록 추가">＋ 기록 추가</button><span class="quest-record-append-summary">${esc(achievementSummary(c)||'오늘 완료 기록')}</span></div>`;
+ }
+ if(achievementMode(q)==='none'||questType(q)==='event')return '';
  const saved=achievementDraftToday(q.id),label=saved?'📝 중간 기록 이어쓰기':'📝 달성량 중간 저장';
  const info=saved?(achievementSummary({achievement:saved.achievement})||'메모 기록됨'):'';
  return `<div class="quest-draft-line"><button type="button" class="quest-draft-button" onclick="openAchievementDraft('${q.id}')" aria-label="${esc(q.title)} 임시 달성 기록">${label}${info?` · ${esc(info)}`:''}</button></div>`;
@@ -6674,23 +6698,23 @@ function achievementSummary(c){
 }
 function achievementFields(q,record=null,context="completion"){
  const mode=achievementMode(q);if(mode==='none')return '';
- const a=cleanAchievement(record?.achievement),isEditing=context==="edit",isDraft=context==="draft";
+ const a=cleanAchievement(record?.achievement),isEditing=context==="edit",isDraft=context==="draft",isAppending=context==="append";
  const recordedTemplate=record?.achievement?.structured?.templateId||'basic';
  // Completed records retain their original editor; an unfinished draft follows
  // the quest's currently selected template immediately after settings change.
  const templateId=isEditing?recordedTemplate:(smartTemplateId(q)!=='basic'?smartTemplateId(q):recordedTemplate);
  const templateQ={...q,recordTemplateId:templateId};
- const bonusEnabled=!!data.rules?.recordBonusEnabled;
+ const bonusEnabled=!!data.rules?.recordBonusEnabled&&!isAppending;
  // Preserve a value already recorded for this date; otherwise use the latest saved unit
  // for the same quest, falling back to the administrator-defined quest default.
  const initialUnit=record&&achievementAmount(record?.achievement?.amount)!==null
   ?a.unit:(achievementLastSavedUnit(q?.id||record?.id)??achievementUnit(q));
- return `<details class="achievement-entry" ${isEditing||isDraft||!!record||bonusEnabled||templateId!=='basic'?'open':''}><summary>📝 달성 기록 (선택) ${bonusEnabled&&!isEditing&&!isDraft?'<span class="achievement-bonus-hint">달성량 입력 또는 상세 메모 10자 이상 → P·XP +20%</span>':''}</summary><div class="achievement-entry-body">
+ return `<details class="achievement-entry" ${isEditing||isDraft||isAppending||!!record||bonusEnabled||templateId!=='basic'?'open':''}><summary>📝 달성 기록 (선택) ${bonusEnabled&&!isEditing&&!isDraft?'<span class="achievement-bonus-hint">달성량 입력 또는 상세 메모 10자 이상 → P·XP +20%</span>':''}</summary><div class="achievement-entry-body">
  ${mode==='number'&&templateId!=='basic'&&recordedTemplate!==templateId&&achievementHasContent(a)?`<div class="smart-migration-note">📌 기존 임시 기록 보존: <b>${a.amount===null?'달성량 없음':achievementNumberText(a.amount)+' '+esc(a.unit)}</b>${a.structured?` · 이전 상세 템플릿 ${esc(SMART_TEMPLATES[recordedTemplate]?.label||'')}`:''}<br>새 양식에 자동으로 옮기거나 합산하지 않습니다. 새 항목을 저장하면 원래 입력값은 별도 보관됩니다.</div>`:''}
- ${mode==='number'&&templateId!=='basic'?smartEditorHTML(templateQ,a.structured):mode==='number'?`<div class="achievement-number-row"><label>실제 달성량<input class="qentry" name="achievementAmount" type="number" inputmode="decimal" min="0" max="999999" step="any" value="${a.amount===null?'':a.amount}" placeholder="예: 25"></label><label>단위<input class="qentry" name="achievementUnit" maxlength="12" value="${esc(initialUnit)}" placeholder="회 / 분 / 쪽 / km"></label></div>`:''}
+ ${mode==='number'&&templateId!=='basic'?smartEditorHTML(templateQ,a.structured):mode==='number'?`<div class="achievement-number-row"><label>${isAppending?'이번에 추가할 달성량':'실제 달성량'}<input class="qentry" name="achievementAmount" type="number" inputmode="decimal" min="0" max="999999" step="any" value="${a.amount===null?'':a.amount}" placeholder="예: 25"></label><label>단위<input class="qentry" name="achievementUnit" maxlength="12" value="${esc(initialUnit)}" placeholder="회 / 분 / 쪽 / km"></label></div>`:''}
  <label>체감 난이도 / 컨디션<select name="achievementMood" class="qentry"><option value="" ${!a.mood?'selected':''}>기록하지 않음</option>${[['good','😊 좋음'],['normal','🙂 보통'],['hard','😮‍💨 힘듦']].map(([v,label])=>`<option value="${v}" ${a.mood===v?'selected':''}>${label}</option>`).join('')}</select></label>
- <label>실제 달성 내용 · 상세 메모<textarea class="qentry achievement-note" name="achievementNote" maxlength="500" rows="3" placeholder="무엇을 했고 무엇이 달라졌나요? (최대 500자)">${esc(a.note)}</textarea></label>
- <small>${isEditing?'기록은 수정할 수 있지만 완료 보상은 추가 지급하지 않습니다.':isDraft?'임시 기록만 저장합니다. 퀘스트 완료·보상 지급·통계 반영은 아직 하지 않습니다.':bonusEnabled?'완료 승인 시 달성량 숫자 입력 또는 상세 메모 10자 이상으로 P·XP +20%가 한 번 적용됩니다. 입력은 선택입니다.':'기록은 선택 사항입니다. 완료 후 달력에서 수정 가능 · 기록 보너스 OFF'}</small>
+ <label>${isAppending?'이번에 추가할 메모 (선택)':'실제 달성 내용 · 상세 메모'}<textarea class="qentry achievement-note" name="achievementNote" maxlength="500" rows="3" placeholder="무엇을 했고 무엇이 달라졌나요? (최대 500자)">${esc(a.note)}</textarea></label>
+ <small>${isAppending?'완료 상태와 포인트·XP는 그대로 유지됩니다. 이번 입력만 기존 기록에 추가합니다.':isEditing?'기록은 수정할 수 있지만 완료 보상은 추가 지급하지 않습니다.':isDraft?'임시 기록만 저장합니다. 퀘스트 완료·보상 지급·통계 반영은 아직 하지 않습니다.':bonusEnabled?'완료 승인 시 달성량 숫자 입력 또는 상세 메모 10자 이상으로 P·XP +20%가 한 번 적용됩니다. 입력은 선택입니다.':'기록은 선택 사항입니다. 완료 후 달력에서 수정 가능 · 기록 보너스 OFF'}</small>
  </div></details>`;
 }
 function achievementFromForm(form,q){
@@ -6736,9 +6760,74 @@ function saveAchievementEdit(event){
  event.preventDefault();if(modal?.type!=='achievementEdit'||!startUnlocked||!currentUserId)return;
  const record=completionEditorRecord();if(!record)return;
  let next;try{next=achievementFromForm(event.currentTarget,{recordMode:modal.mode,recordUnit:modal.unit,recordTemplateId:modal.templateId});}catch(err){alert(err.message);return;}
- record.achievement=next;smartCommitLibrary(record.achievement);record.achievementUpdatedAt=new Date().toISOString();
+ next.updates=cleanAchievement(record.achievement).updates;
+ record.achievement=cleanAchievement(next);smartCommitLibrary(record.achievement);record.achievementUpdatedAt=new Date().toISOString();
  const ok=save();modal=null;render();
  if(!settings.autoSave||!ok)alert('달성 기록은 앱에 반영됐지만 자동 저장되지 않았습니다. JSON Save를 이용해 백업하세요.');
+}
+// v1.7.124 · Append after completion across ALL quest templates.
+// The existing completion remains a single record, and neither its rewards nor completion
+// counter are touched. Structured records merge by entry; basic records add a delta.
+function appendAchievementContext(){
+ if(modal?.type!=='achievementAppend')return null;
+ const c=data.completions.find(x=>x.day===modal.key&&x.id===modal.id);
+ if(!c)return null;
+ const q=data.quests.find(x=>x.id===c.id)||c,original=cleanAchievement(c.achievement);
+ const templateId=original.structured?.templateId||(original.amount!==null?'basic':smartTemplateId(q));
+ const mode=templateId!=='basic'||original.amount!==null?'number':(achievementMode(q)==='none'?'memo':achievementMode(q));
+ const unit=original.unit||achievementUnit(q)||SMART_TEMPLATES[templateId]?.unit||'';
+ return {c,q,original,templateId,mode,unit};
+}
+function openAchievementAppend(id,key=day()){
+ if(!startUnlocked||!currentUserId||!validNoteDay(key)||key>day())return;
+ if(!data.completions.some(c=>c.day===key&&c.id===id))return;
+ modal={type:'achievementAppend',id,key};render();
+}
+function saveAchievementAppend(event){
+ event.preventDefault();if(!startUnlocked||!currentUserId)return;
+ const ctx=appendAchievementContext();if(!ctx)return;
+ const {c,original,templateId,mode,unit}=ctx;
+ const form=event.currentTarget;
+ let extra;
+ try{extra=achievementFromForm(form,{recordMode:mode,recordUnit:unit,recordTemplateId:templateId});}
+ catch(err){alert(err.message);return;}
+ if(!achievementHasContent(extra)){alert('추가할 횟수·항목 또는 메모를 입력하세요.');return;}
+ const before=deepCopy(c.achievement),libraryBefore=deepCopy(data.recordLibrary||{books:[]});
+ const next=cleanAchievement(original),stamp=new Date().toISOString();
+ if(extra.structured){
+  const base=smartCleanStructured(original.structured);
+  if(base&&base.templateId!==extra.structured.templateId){alert('기존 기록과 템플릿이 달라 합칠 수 없습니다. 전체 수정에서 확인하세요.');return;}
+  const entries=[...(base?.entries||[]),...extra.structured.entries];
+  if(entries.length>100){alert('하루 기록은 항목 최대 100개입니다. 전체 수정에서 기록을 정리하세요.');return;}
+  next.structured=smartCleanStructured({...extra.structured,entries});
+  const totals=smartTotals(next.structured);
+  next.amount=totals.amount;next.unit=totals.unit;
+ }else if(extra.amount!==null){
+  if(next.structured){alert('구조화된 기록에는 같은 템플릿으로 항목을 추가해 주세요.');return;}
+  if(original.amount!==null&&original.unit&&extra.unit&&original.unit!==extra.unit){alert('기존 기록 단위와 추가 단위가 달라요. 기존 단위로 입력해 주세요.');return;}
+  next.amount=achievementAmount((original.amount||0)+extra.amount);
+  if(next.amount===null){alert('일일 합계가 입력 가능한 최대값을 초과했습니다.');return;}
+  next.unit=original.unit||extra.unit;
+ }
+ if(extra.note){
+  const dateTime=new Date(stamp).toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+  const noteBlock=`[추가 ${dateTime}] ${extra.note}`;
+  const combined=next.note?next.note+'\n'+noteBlock:noteBlock;
+  if(combined.length>500){alert('메모가 500자를 넘습니다. 기존 기록 전체 수정에서 정리해 주세요.');return;}
+  next.note=combined;
+ }
+ if(extra.mood)next.mood=extra.mood;
+ next.updates=[...next.updates,{at:stamp,templateId,amount:extra.amount,unit:extra.unit,note:extra.note,entryCount:extra.structured?.entries?.length||0}].slice(-300);
+ c.achievement=cleanAchievement(next);
+ smartCommitLibrary(c.achievement);
+ c.achievementUpdatedAt=stamp;
+ const persisted=save();
+ if(settings.autoSave&&!persisted){
+  c.achievement=before;data.recordLibrary=libraryBefore;
+  alert('기기 저장에 실패해 변경을 취소했습니다. 저장 공간을 확인하세요.');return;
+ }
+ modal=null;render();
+ if(!settings.autoSave)alert('추가 기록은 현재 실행에 반영됐습니다. JSON Save로 백업해 주세요.');
 }
 function requestAchievementBonusToggle(enabled){
  if(!startUnlocked||!currentUserId)return;
@@ -6977,7 +7066,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.123</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.124</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -8207,7 +8296,7 @@ function bookingCalendarClass(k,list){
  const begins=list.some(q=>q.startDate===k),ends=list.some(q=>q.endDate===k);
  return 'has-reservation '+(begins?'reservation-start ':'')+(ends?'reservation-end ':'')+(!begins&&!ends?'reservation-middle':'');
 }
-// v1.7.123: Search INDIVIDUAL note/moment records, never whole days containing unrelated records.
+// v1.7.124: Search INDIVIDUAL note/moment records, never whole days containing unrelated records.
 // These helpers only read user data; a search never modifies original notes or moment logs.
 function noteListTerms(query){return String(query||'').trim().toLocaleLowerCase('ko-KR').split(/\s+/).filter(Boolean).slice(0,12)}
 function noteListDateFields(k){
@@ -10072,7 +10161,7 @@ function renderSettings(){return `${pageHeader('저장 <em>설정</em>','저장 
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.123</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.124</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="settings-link" onclick="setScreen('settings')" title="저장 설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -11330,6 +11419,14 @@ if(modal.type==='achievementDraft'){
  return `<div class="overlay" onclick="modal=null;render()"><div class="modal achievement-edit-modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>📝 달성 기록 중간 저장</h2><p class="modal-sub">${esc(date)} · ${esc(q.title)} · 완료 버튼은 따로 누르세요.</p><div class="achievement-draft-status"><strong>${saved?'💾 이전 기록을 불러왔어요':'✍️ 지금까지 한 만큼 기록하세요'}</strong>${smartTemplateId(q)!=='basic'?'항목과 세트를 추가·수정하면 오늘의 합계가 자동 계산됩니다. 세트별 기록 시각은 최초 입력 시각으로 보존됩니다.':'현재까지의 <b>누적 달성량</b>으로 수정해서 저장하세요. (예: 10회 → 25회, 10+25로 자동 합산하지 않음.)'} ${saved?`<br>마지막 저장: ${esc(saved.updatedAt?new Date(saved.updatedAt).toLocaleString('ko-KR'):'')}`:''}<br><b>포인트·XP 지급 없음 · 완료 처리 안 함</b></div><form class="qform" onsubmit="saveAchievementDraft(event)">${achievementFields(q,saved?{achievement:saved.achievement}:null,'draft')}<div class="achievement-draft-controls"><button class="modal-btn" type="submit">💾 지금 기록 저장</button>${saved?`<button type="button" class="modal-btn secondary" onclick="deleteAchievementDraft('${id}','${date}')">임시 기록 삭제</button>`:''}</div></form><button class="modal-btn secondary" type="button" onclick="modal=null;render()">닫기</button></div></div>`;
 }
 if(modal.type==='bookLibrary')return smartBookLibraryHTML();
+if(modal.type==='achievementAppend'){
+ const ctx=appendAchievementContext();if(!ctx)return '';
+ const {c,templateId,mode,unit,original}=ctx;
+ const q={recordMode:mode,recordUnit:unit,recordTemplateId:templateId};
+ const amount=original.amount===null?'미기록':`${achievementNumberText(original.amount)}${original.unit?' '+esc(original.unit):''}`;
+ const name=SMART_TEMPLATES[templateId]?.label||'기본 기록';
+ return `<div class="overlay" onclick="modal=null;render()"><div class="modal achievement-edit-modal quest-append-modal" role="dialog" aria-modal="true" aria-label="완료 후 기록 추가" onclick="event.stopPropagation()"><h2>＋ 완료 후 기록 추가</h2><p class="modal-sub">${esc(c.day)} · ${esc(c.title)}</p><div class="quest-append-existing"><span>✅ 완료 유지 · 기존 합계 <strong>${amount}</strong></span><small>기존 기록은 보존하고 새 내용만 합산합니다. 보상·완료 횟수는 변하지 않아요.</small></div><form class="qform" onsubmit="saveAchievementAppend(event)">${achievementFields(q,null,'append')}<button type="submit" class="modal-btn">＋ 추가 기록 저장</button></form><button type="button" class="modal-btn secondary" onclick="openAchievementEditor('${esc(c.day)}','${esc(c.id)}')">✎ 기존 기록 전체 수정</button><button type="button" class="modal-btn secondary" onclick="modal=null;render()">닫기</button></div></div>`;
+}
 if(modal.type==='achievementEdit'){const c=completionEditorRecord();if(!c)return '';return `<div class="overlay" onclick="modal=null;render()"><div class="modal achievement-edit-modal" role="dialog" aria-modal="true" onclick="event.stopPropagation()"><h2>📝 달성 기록 수정</h2><p class="modal-sub">${esc(c.day)} · ${esc(c.title)}</p><form class="qform" onsubmit="saveAchievementEdit(event)">${achievementFields({recordMode:modal.mode,recordUnit:modal.unit,recordTemplateId:modal.templateId},c,"edit")}<p class="qform-note">포인트·XP는 완료 승인 시 한 번만 지급됩니다. 기록 수정으로 보너스가 재지급되지 않습니다.</p><button class="modal-btn" type="submit">💾 기록 저장</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;}
 if(modal.type==='categoryManager')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><h2>🎨 카테고리 관리</h2><p class="modal-sub">나만의 카테고리·이모지를 추가, 수정 또는 삭제할 수 있습니다.</p><div class="category-list">${data.categories.map(c=>`<div class="category-item"><span class="category-icon">${esc(c.emoji)}</span><span class="category-name">${esc(c.name)}</span><button class="quest-edit" onclick="categoryEditor(decodeURIComponent('${encodeURIComponent(c.name)}'))">✎ 수정</button><button class="tiny-danger" onclick="deleteCategory(decodeURIComponent('${encodeURIComponent(c.name)}'))" ${c.name==='기타'?'disabled':''}>삭제</button></div>`).join('')}</div><button class="modal-btn" onclick="categoryEditor()">＋ 카테고리 만들기</button><button class="modal-btn secondary" onclick="modal=null;render()">닫기</button></div></div>`;
 if(modal.type==='categoryEditor'){const oldName=modal.original||'',cat=data.categories.find(c=>c.name===oldName),value=cat?.emoji||'✨';return `<div class="overlay" onclick="modal={type:'categoryManager'};render()"><div class="modal" onclick="event.stopPropagation()"><h2>${cat?'카테고리 수정':'카테고리 추가'}</h2><form class="qform" onsubmit="saveCategory(event)"><label>카테고리 이름</label><input class="qentry" name="categoryName" type="text" maxlength="25" required value="${esc(oldName)}" placeholder="예: 과학, 피아노, 영어"><label>아이콘 선택</label><input id="categoryEmojiValue" type="hidden" name="categoryEmoji" value="${esc(value)}"><div class="emoji-grid">${EMOJI_CHOICES.map(em=>`<button class="emoji-pick ${em===value?'selected':''}" type="button" data-emoji="${esc(em)}" onclick="selectEmoji(this.dataset.emoji)" title="${esc(em)}">${esc(em)}</button>`).join('')}</div><button class="modal-btn" type="submit">카테고리 저장</button></form><button class="modal-btn secondary" onclick="modal={type:'categoryManager'};render()">취소</button></div></div>`;}
@@ -11551,7 +11648,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.123</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.124</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
