@@ -1,5 +1,5 @@
 /* PokéRoutine personal, offline app shell. External Pokémon artwork may need internet. */
-const CACHE = 'pokeroutine-shell-v17135-widget-six-counts-v1';
+const CACHE = 'pokeroutine-shell-v17136-walking-briefings-v1';
 const APP_SHELL = ['./', './index.html', './moves.html'];
 const OPTIONAL_SHELL = ['./manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
@@ -35,7 +35,8 @@ self.addEventListener('notificationclick', event => {
  event.waitUntil((async()=>{
   const all=await self.clients.matchAll({type:'window',includeUncontrolled:true});
   const client=all.find(c=>c.url.startsWith(self.registration.scope));
-  if(client){await client.focus();return;}
-  await self.clients.openWindow('./index.html');
+  if(client){await client.focus();if(event.notification.data?.kind)client.postMessage({type:'openBriefing',kind:event.notification.data.kind,userId:event.notification.data.userId});return;}
+  const opened=await self.clients.openWindow('./index.html?briefing='+encodeURIComponent(event.notification.data?.kind||'')+'&trainer='+encodeURIComponent(event.notification.data?.userId||''));
+  if(opened&&event.notification.data?.kind)opened.postMessage({type:'openBriefing',kind:event.notification.data.kind,userId:event.notification.data.userId});
  })());
 });
