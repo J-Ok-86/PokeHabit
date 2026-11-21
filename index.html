@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.134 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.135 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -5072,7 +5072,7 @@ html{
   .home-id-owner .home-id-rank{word-break:keep-all;overflow-wrap:break-word}
 }
 
-/* v1.7.134 native/PWA-compatible reminder and sleep extensions */
+/* v1.7.135 native/PWA-compatible reminder and sleep extensions */
 .reminder-weekdays{display:flex;flex-wrap:wrap;gap:8px;margin:7px 0 12px}
 .reminder-weekdays label,.widget-pick-list label{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line,#9ba7b6);border-radius:9px;padding:6px 10px}
 [data-reminder-condition][hidden]{display:none!important}
@@ -5273,7 +5273,7 @@ const LIFE_DEFAULTS=[
  {id:'exercise',name:'운동',emoji:'💪',color:'#ed9d5b',mode:'repeat',enabled:true,suggest:''},
  {id:'sleep',name:'취침',emoji:'🌙',color:'#9b80d8',mode:'once',enabled:true,suggest:'23:00'}
 ];
-const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},momentLogs:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],widgetButtonIds:[],deviceSleepEstimates:[],personalReminders:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{},readingTimelineSort:'recent'},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},recordLibrary:{books:[]},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
+const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},momentLogs:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],widgetButtonIds:[],widgetSixSelectionSaved:false,deviceSleepEstimates:[],personalReminders:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{},readingTimelineSort:'recent'},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},recordLibrary:{books:[]},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
 let settings={autoSave:true,theme:'light',fontSize:'large',swipeTabs:true};
 try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark'].includes(p?.theme))settings.theme=p.theme;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
@@ -5393,16 +5393,41 @@ function cleanPersonalReminders(raw){
  }).filter(r=>/^[a-zA-Z0-9_-]{4,90}$/.test(r.id)&&lifeClockValid(r.time)&&r.title&&
  (r.repeat!=='once'||validNoteDay(r.date))&&(r.repeat!=='custom'||r.days.length)&&!seen.has(r.id)&&seen.add(r.id)).slice(0,100);
 }
-function cleanWidgetButtonIds(raw){return [...new Set((Array.isArray(raw)?raw:[]).map(String).filter(x=>/^[a-zA-Z0-9_-]{2,75}$/.test(x)))].slice(0,4)}
-function chosenWidgetDefs(){const enabled=lifeCfg().items.filter(x=>x.enabled),ids=cleanWidgetButtonIds(data.widgetButtonIds);
- return ids.length?ids.map(id=>enabled.find(v=>v.id===id)).filter(Boolean):[...['wake','commute','exercise','sleep'].map(id=>enabled.find(v=>v.id===id)).filter(Boolean),...enabled.filter(v=>!['wake','commute','exercise','sleep'].includes(v.id))].slice(0,4)}
+// v1.7.135: All enabled Life Event buttons appear automatically when there are <= 6.
+// For larger collections, the user may select six; existing four-button choices
+// automatically migrate to a six-button layout without removing any selection.
+function cleanWidgetButtonIds(raw){return [...new Set((Array.isArray(raw)?raw:[]).map(String).filter(x=>/^[a-zA-Z0-9_-]{2,75}$/.test(x)))].slice(0,6)}
+function chosenWidgetDefs(){
+ const enabled=lifeCfg().items.filter(x=>x.enabled);
+ if(enabled.length<=6)return enabled;
+ const ids=cleanWidgetButtonIds(data.widgetButtonIds);
+ const chosen=ids.map(id=>enabled.find(v=>v.id===id)).filter(Boolean);
+ // Users of the former 4-button widget start with all six by default.
+ // Only a deliberate selection in this version limits the list.
+ if(data.widgetSixSelectionSaved)return chosen;
+ const unchosen=enabled.filter(v=>!chosen.some(c=>c.id===v.id));
+ return [...chosen,...unchosen].slice(0,6);
+}
 function toggleWidgetButton(id,checked){
- let ids=cleanWidgetButtonIds(data.widgetButtonIds);
- if(!ids.length)ids=chosenWidgetDefs().map(x=>x.id);
- if(checked&&!ids.includes(id)){if(ids.length>=4)return alert('위젯 버튼은 최대 4개입니다. 먼저 다른 버튼을 해제하세요.');ids.push(id)}
- if(!checked){if(ids.length<=1)return alert('위젯 버튼은 최소 1개를 유지해 주세요.');ids=ids.filter(x=>x!==id);}
- // If the last button was unchecked, keep an explicit empty selection as a sentinel.
- data.widgetButtonIds=ids;save();nativeAlarmSync(true);render();
+ const enabled=lifeCfg().items.filter(x=>x.enabled);
+ if(enabled.length<=6)return; // Six or fewer events are always shown.
+ let ids=chosenWidgetDefs().map(x=>x.id);
+ if(checked&&!ids.includes(id)){
+  if(ids.length>=6)return alert('위젯 버튼은 최대 6개입니다. 먼저 다른 버튼을 해제하세요.');
+  ids.push(id);
+ }
+ if(!checked){if(ids.length<=1)return alert('위젯 버튼은 최소 1개를 유지해 주세요.');ids=ids.filter(x=>x!==id)}
+ data.widgetButtonIds=ids;data.widgetSixSelectionSaved=true;save();nativeAlarmSync(true);render();
+}
+function nativeWidgetLifeRecords(){
+ // Send a small, account-local projection. It is read-only on the native side;
+ // authoritative editing and backup always remain in the web app.
+ const earliest=analyticsDateShift(day(),-9);
+ return (data.lifeEventLogs||[]).filter(x=>x&&x.day>=earliest&&x.day<=day()&&
+  lifeClockValid(x.clock)&&validNoteDay(x.day)&&Number.isFinite(new Date(x.at).getTime())&&
+  /^[A-Za-z0-9_-]{2,75}$/.test(String(x.eventId||'')))
+  .slice(-800).map(x=>({id:String(x.id||''),eventId:x.eventId,day:x.day,
+    clock:x.clock,at:x.at,timestampMs:new Date(x.at).getTime()}));
 }
 function cleanDeviceSleepEstimates(raw){
  const seen=new Set();return (Array.isArray(raw)?raw:[]).filter(x=>x&&validNoteDay(x.night)&&validNoteDay(x.morning)&&lifeClockValid(x.bed)&&lifeClockValid(x.wake)&&x.source==='device_usage'&&
@@ -7236,7 +7261,7 @@ function cleanBackup(v){
  safe.questView=v.questView==='large'?'list':(['cards','list','compact','mini'].includes(v.questView)?v.questView:'cards');
  safe.rewardClaims=Array.isArray(v.rewardClaims)?v.rewardClaims.filter(c=>c&&Number.isInteger(Number(c.level))&&Number(c.level)>=2&&Number(c.level)<=100000&&Number(c.points)===Number(c.level)*50).slice(0,100000).map(c=>({level:Number(c.level),points:Number(c.points),at:String(c.at||'').slice(0,45),claimId:String(c.claimId||('level_'+c.level)).slice(0,100)})).filter((c,i,all)=>all.findIndex(other=>other.level===c.level)===i):[];
  safe.points=boundedNumber(v.points);safe.allEarned=boundedNumber(v.allEarned);safe.totalXp=boundedNumber(v.totalXp);
- safe.personalReminders=cleanPersonalReminders(v.personalReminders);safe.widgetButtonIds=cleanWidgetButtonIds(v.widgetButtonIds);safe.deviceSleepEstimates=cleanDeviceSleepEstimates(v.deviceSleepEstimates);
+ safe.personalReminders=cleanPersonalReminders(v.personalReminders);safe.widgetButtonIds=cleanWidgetButtonIds(v.widgetButtonIds);safe.widgetSixSelectionSaved=v.widgetSixSelectionSaved===true;safe.deviceSleepEstimates=cleanDeviceSleepEstimates(v.deviceSleepEstimates);
  safe.dailyNotes=cleanDailyNotes(v.dailyNotes);
  safe.momentLogs=cleanMomentLogs(v.momentLogs);
  safe.lifeEventConfig=cleanLifeEventConfig(v.lifeEventConfig);safe.lifeEventLogs=cleanLifeEventLogs(v.lifeEventLogs);safe.lifeRhythmView=cleanLifeRhythmView(v.lifeRhythmView);safe.lifeRhythmGoals=cleanLifeRhythmGoals(v.lifeRhythmGoals);
@@ -7329,7 +7354,7 @@ function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.a
  if(data.questView==='large')data.questView='list';
  if(!['cards','list','compact','mini'].includes(data.questView))data.questView='cards';
  if(!Array.isArray(data.rewardClaims))data.rewardClaims=[];
- data.personalReminders=cleanPersonalReminders(data.personalReminders);data.widgetButtonIds=cleanWidgetButtonIds(data.widgetButtonIds);data.deviceSleepEstimates=cleanDeviceSleepEstimates(data.deviceSleepEstimates);
+ data.personalReminders=cleanPersonalReminders(data.personalReminders);data.widgetButtonIds=cleanWidgetButtonIds(data.widgetButtonIds);data.widgetSixSelectionSaved=data.widgetSixSelectionSaved===true;data.deviceSleepEstimates=cleanDeviceSleepEstimates(data.deviceSleepEstimates);
  data.dailyNotes=cleanDailyNotes(data.dailyNotes);
  data.momentLogs=cleanMomentLogs(data.momentLogs);
  data.lifeEventConfig=cleanLifeEventConfig(data.lifeEventConfig);data.lifeEventLogs=cleanLifeEventLogs(data.lifeEventLogs);data.lifeRhythmView=cleanLifeRhythmView(data.lifeRhythmView);data.lifeRhythmGoals=cleanLifeRhythmGoals(data.lifeRhythmGoals);
@@ -7423,7 +7448,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.134</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.135</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -8810,7 +8835,7 @@ const LIFE_SLEEP_NIGHT_CUTOFF_MINUTES=6*60;
 function lifeClockNow(){const now=new Date();return `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`}
 function lifeNightTitle(key){const d=new Date(`${key}T12:00:00`);return `${Number(key.slice(5,7))}/${Number(key.slice(8,10))}(${['일','월','화','수','목','금','토'][d.getDay()]}) 밤`}
 function lifeSleepLogsForNight(night){return (data.lifeEventLogs||[]).filter(x=>x.eventId==='sleep'&&sleepSessionNight(x)===night).sort((a,b)=>String(a.at||'').localeCompare(String(b.at||'')))}
-function lifeRerender(){const sc=window.scrollY;save();render();window.scrollTo({top:sc,behavior:'instant'})}
+function lifeRerender(){const sc=window.scrollY;save();render();nativeAlarmSync(true);window.scrollTo({top:sc,behavior:'instant'})}
 function lifeQuickRecord(id){
  if(!startUnlocked||!currentUserId||!lifeCfg().enabled)return;
  const event=lifeDef(id);if(!event||!event.enabled)return;
@@ -8918,7 +8943,7 @@ function renderLifeEventModal(){
   <label class="life-settings-line">달력에서 사용 <input type="checkbox" ${cfg.enabled?'checked':''} onchange="toggleLifeEventSystem(this.checked)"></label>
   <label class="life-settings-line">한 줄에 표시할 버튼 <select onchange="changeLifeVisibleCount(this.value)">${[3,4,5,6].map(n=>`<option value="${n}" ${cfg.visibleCount===n?'selected':''}>${n}개</option>`).join('')}</select></label>
   <div class="life-settings-list">${cfg.items.map((v,i)=>`<div class="life-settings-item"><span class="life-settings-icon" style="background:${v.color}22">${esc(v.emoji)}</span><div class="life-settings-name"><strong>${esc(v.name)}</strong><small>${v.mode==='once'?'하루 1회':'여러 번'}${v.suggest?' · 참고 '+esc(v.suggest):''}</small></div><button type="button" class="life-mini" onclick="moveLifeEvent('${v.id}',-1)" ${i===0?'disabled':''} aria-label="위로 이동">↑</button><button type="button" class="life-mini" onclick="moveLifeEvent('${v.id}',1)" ${i===cfg.items.length-1?'disabled':''} aria-label="아래로 이동">↓</button><button type="button" class="life-mini" onclick="openLifeEventEditor('${v.id}')">✎</button><input aria-label="${esc(v.name)} 표시" type="checkbox" ${v.enabled?'checked':''} onchange="toggleLifeEvent('${v.id}',this.checked)"></div>`).join('')}</div>
-  ${nativeAlarmAvailable()?`<section class="native-widget-settings"><h3>📱 홈 화면 원터치 위젯</h3><p>선택한 최대 4개 버튼이 APK 위젯에 표시돼요. 휴대폰 홈 화면 빈 곳 길게 누르기 → 위젯 → PokeHabit.</p><div class="widget-pick-list">${cfg.items.filter(v=>v.enabled).map(v=>`<label><input type="checkbox" ${chosenWidgetDefs().some(x=>x.id===v.id)?'checked':''} onchange="toggleWidgetButton('${v.id}',this.checked)"> ${esc(v.emoji)} ${esc(v.name)}</label>`).join('')}</div></section>`:''}
+  ${nativeAlarmAvailable()?`<section class="native-widget-settings"><h3>📱 홈 화면 원터치 위젯</h3><p>활성 라이프 이벤트가 6개 이하면 자동으로 전부 표시돼요. 각 버튼에 오늘의 마지막 시각과 기록 횟수가 함께 표시됩니다. 7개 이상이면 최대 6개를 고를 수 있어요. 홈 화면 빈 곳 길게 누르기 → 위젯 → PokeHabit.</p><div class="widget-pick-list">${cfg.items.filter(v=>v.enabled).map(v=>`<label><input type="checkbox" ${chosenWidgetDefs().some(x=>x.id===v.id)?'checked':''} ${cfg.items.filter(x=>x.enabled).length<=6?'disabled':''} onchange="toggleWidgetButton('${v.id}',this.checked)"> ${esc(v.emoji)} ${esc(v.name)}</label>`).join('')}</div></section>`:''}
   <button class="modal-btn" type="button" onclick="openLifeEventEditor()">＋ 새로운 이벤트 추가</button>${bottom}`;
  if(modal.type==='lifeEditor'){
   const old=lifeDef(modal.id)||{name:'',emoji:'📌',color:'#27ac7a',mode:'once',suggest:''};
@@ -10561,7 +10586,7 @@ function nativeAlarmSend(message){
 }
 function nativeAlarmSync(force=false){
  if(!nativeAlarmAvailable()||!startUnlocked||!currentUserId||!data)return;
- const payload={type:'sync',userId:String(currentUserId),items:cleanPersonalReminders(data.personalReminders).filter(r=>r.repeat!=='once'||r.date>=day()).filter(r=>!r.questId||r.date!==day()||!completedToday(r.questId)),widgetButtons:chosenWidgetDefs()};
+ const payload={type:'sync',userId:String(currentUserId),items:cleanPersonalReminders(data.personalReminders).filter(r=>r.repeat!=='once'||r.date>=day()).filter(r=>!r.questId||r.date!==day()||!completedToday(r.questId)),widgetButtons:lifeCfg().enabled?chosenWidgetDefs():[],widgetRecords:nativeWidgetLifeRecords()};
  const fingerprint=JSON.stringify(payload);
  if(force||fingerprint!==nativeAlarmLastSnapshot){
   if(nativeAlarmSend(payload))nativeAlarmLastSnapshot=fingerprint;
@@ -10625,7 +10650,7 @@ function ingestNativeWidgetLogs(logs){
    if(!persisted)return;
    if(changed&&!document.activeElement?.matches('input,textarea,select'))render();
  }
- if(ack.length)nativeAlarmSend({type:'ackWidgetLogs',userId:currentUserId,ids:ack});
+ if(ack.length){nativeAlarmSync(true);nativeAlarmSend({type:'ackWidgetLogs',userId:currentUserId,ids:ack});}
 }
 function sleepEstimateForNight(night){return (data.deviceSleepEstimates||[]).find(x=>x.night===night)||null}
 function calibratedSleepEstimate(estimate){
@@ -10844,7 +10869,7 @@ function renderSettings(){
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.134</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.135</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -12331,7 +12356,7 @@ function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.134</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.135</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
