@@ -1,9 +1,10 @@
-PokeRoutine v1.7.129 - 설정 메뉴 및 개인 알림
+PokeHabit v1.7.130 · Android wrapper bridge support
 
-배포: index.html, moves.html, sw.js를 GitHub Pages 저장소에 덮어쓰기
-변경: 기존 설정 페이지를 그룹형 메뉴로 개편 (계정·개인 알림·화면·백업·고급)
-개인 알림: 사용자 계정별 매일 반복, 시간·문구·ON/OFF·수정·삭제·권한 요청·테스트. JSON 백업 포함.
-알림 동작 범위: PWA/Chrome에서 HTTPS + 알림 권한 승인 + 페이지가 실제 화면에 보이는 동안 해당 시간에만 시도.
-화면 잠금, 백그라운드, 앱 종료 시 정시 알림은 지원하지 않음. 지나간 알림 재발송 없음.
-Web Push/Firebase 서버 연동 없음. 중요 알림은 휴대폰 기본 알람 이용.
-주의: 적용 전에 전체 사용자 JSON 백업을 반드시 저장하세요.
+1. Deploy index.html, moves.html, sw.js to your existing GitHub Pages /PokeHabit/ site.
+2. PWA/Chrome remains independent and receives foreground-only reminders.
+3. Separate Android WebView wrapper loads the same URL and schedules alarms using Android.
+4. APK has its own browser storage; export JSON from PWA then import into APK.
+5. Native bridge is injected only by trusted Android wrapper and is absent in ordinary Chrome.
+6. Native JSON backup uses chunked transfer and Android file picker; import uses WebView file chooser.
+7. First install requires internet; offline use after initial load depends on cached content.
+8. APK build project is supplied separately.
