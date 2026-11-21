@@ -1,5 +1,5 @@
 /* PokéRoutine personal, offline app shell. External Pokémon artwork may need internet. */
-const CACHE = 'pokeroutine-shell-v17127-calendar-record-shortcuts-v1';
+const CACHE = 'pokeroutine-shell-v17129-settings-personal-reminders-v1';
 const APP_SHELL = ['./', './index.html', './moves.html'];
 const OPTIONAL_SHELL = ['./manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
@@ -27,4 +27,15 @@ self.addEventListener('fetch', event => {
     return;
   }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request)));
+});
+
+// Open existing PokeHabit tab when a foreground-scheduled reminder is tapped.
+self.addEventListener('notificationclick', event => {
+ event.notification.close();
+ event.waitUntil((async()=>{
+  const all=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+  const client=all.find(c=>c.url.startsWith(self.registration.scope));
+  if(client){await client.focus();return;}
+  await self.clients.openWindow('./index.html');
+ })());
 });
