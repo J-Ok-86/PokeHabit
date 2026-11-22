@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.146 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.147 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -5428,7 +5428,7 @@ html:not([data-theme="light"]) .time-log-flow-top button{background:#2c455f;colo
 .time-log-section .reference-alarm-mark{height:17px!important;width:17px!important;min-width:17px!important;min-height:17px!important;font-size:11px!important;line-height:16px!important;z-index:7!important}
 .time-log-zoom-reference-bar span{font-weight:700!important;font-size:11px!important;line-height:18px!important;font-family:inherit!important}
 @media(max-width:680px){.time-log-zoom-dialog-body{padding:10px 11px 20px!important}.time-log-section .time-log-zoom-grid{grid-template-columns:25px minmax(0,1fr)!important}.time-log-zoom-context-list{max-height:38vh}}
-/* v1.7.146: quiet text-only names in the 24h overview; duration remains a fine line. */
+/* v1.7.147: quiet text-only names in the 24h overview; duration remains a fine line. */
 .time-log-section .reference-compact-title,
 .time-log-section .reference-compact-title[data-palette]{
  background:transparent!important;border:0!important;box-shadow:none!important;
@@ -5480,6 +5480,44 @@ html:not([data-theme="light"]) .time-log-section .reference-compact-title[data-p
 html:not([data-theme="light"]) .time-log-section .time-log-zoom-reference-bar.is-narrow .time-log-ref-contents{
  background:#34445b!important;color:#f0f5fb!important;
 }
+
+/* v1.7.147: a narrow reference interval is one compact label, not two overlapping boxes. */
+.time-log-section .time-log-zoom-reference-bar.is-narrow,
+.time-log-section .time-log-zoom-reference-bar.is-narrow[data-palette]{
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ overflow:visible!important;border-radius:0!important;
+}
+.time-log-section .time-log-zoom-reference-bar.is-narrow::after{
+ content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+ background:var(--ref-border,#789ab0);border-radius:4px;opacity:.85;pointer-events:none;
+}
+.time-log-section .time-log-zoom-reference-bar.is-narrow .time-log-ref-contents{
+ top:-4px!important;left:0!important;z-index:2;
+}
+.auto-theme-time-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 8px}
+.auto-theme-time-row label{display:grid;gap:5px;font-size:12px;font-weight:700}
+.auto-theme-time-row input{width:100%;min-width:0}
+@media(max-width:370px){.auto-theme-time-row{grid-template-columns:1fr}}
+
+/* Unified in-app dialogs; no browser-origin 'github.io says' confirmation windows. */
+.app-dialog-cover{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(15,30,47,.48);backdrop-filter:blur(3px)}
+.app-dialog-card{width:min(430px,100%);max-height:min(85dvh,730px);overflow-y:auto;background:#fff;border:1px solid #cad9e8;border-radius:18px;box-shadow:0 22px 55px #071d3452;padding:20px;color:#223e58}
+.app-dialog-mark{display:inline-flex;align-items:center;justify-content:center;width:39px;height:39px;border-radius:13px;background:#ebf2fa;font-size:20px;margin-bottom:10px}
+.app-dialog-cover[data-kind="danger"] .app-dialog-mark{background:#fff0ed}
+.app-dialog-card h2{margin:0 0 8px;font-size:19px;line-height:1.3;color:inherit}
+.app-dialog-message{font-size:14px;line-height:1.62;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 18px;color:inherit}
+.app-dialog-field{width:100%;border:1px solid #aac2d9;border-radius:10px;background:#fff;color:#243f5c;padding:12px;font-size:16px;margin-bottom:18px}
+.app-dialog-actions{display:flex;gap:9px;justify-content:flex-end}
+.app-dialog-actions button{min-width:85px;min-height:42px;border-radius:10px;border:1px solid #bfd0df;background:#eff3f8;color:#304d69;padding:9px 16px;font-weight:750;font-size:14px;cursor:pointer}
+.app-dialog-actions button.app-dialog-primary{background:#315777;color:#fff;border-color:#315777}
+.app-dialog-cover[data-kind="danger"] .app-dialog-actions button.app-dialog-primary{background:#a93b36;border-color:#a93b36}
+html[data-theme="dark"] .app-dialog-card{background:#1b3048;color:#e9f3fb;border-color:#58708a}
+html[data-theme="dark"] .app-dialog-mark{background:#334b65}
+html[data-theme="dark"] .app-dialog-message{color:#dce8f3}
+html[data-theme="dark"] .app-dialog-field{background:#14253c;color:#eff7ff;border-color:#668099}
+html[data-theme="dark"] .app-dialog-actions button{background:#304962;color:#eff6ff;border-color:#69809a}
+html[data-theme="dark"] .app-dialog-actions button.app-dialog-primary{background:#7599bb;color:#112a43}
+html[data-theme="dark"] .app-dialog-cover[data-kind="danger"] .app-dialog-actions button.app-dialog-primary{background:#bb5551;color:#fff}
 </style>
 <style>
 /* v1.7.136: optional per-trainer briefing notifications */
@@ -5499,6 +5537,41 @@ html:not([data-theme="light"]) .time-log-section .time-log-zoom-reference-bar.is
 </style>
 </head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
+// v1.7.147: Styled, queued in-app dialogs. Keep DOM outside #app so render() never destroys a pending answer.
+const appDialogQueue=[];let appDialogBusy=false;
+function appDialog(message,kind='info'){
+ return new Promise(resolve=>{appDialogQueue.push({message:String(message??''),kind,resolve});appDialogNext()});
+}
+function appDialogNext(){
+ if(appDialogBusy||!appDialogQueue.length)return;
+ appDialogBusy=true;const job=appDialogQueue.shift(),previous=document.activeElement;
+ const cover=document.createElement('div');cover.className='app-dialog-cover';
+ cover.dataset.kind=job.kind==='confirm'&&/(삭제|초기화|포기|복원|되돌|비활성)/.test(job.message)?'danger':job.kind;
+ const card=document.createElement('section');card.className='app-dialog-card';card.setAttribute('role','dialog');card.setAttribute('aria-modal','true');
+ const icon=document.createElement('div');icon.className='app-dialog-mark';icon.textContent=cover.dataset.kind==='danger'?'⚠️':job.kind==='prompt'?'🔒':job.kind==='confirm'?'❔':'💬';
+ const title=document.createElement('h2');title.id='appDialogTitle';
+ const heading=job.kind==='prompt'?'관리자 PIN 확인':job.kind==='info'?'안내':/(삭제|초기화|포기|되돌|복원)/.test(job.message)?'중요한 변경 확인':/(포인트|보상|XP|FEVER)/.test(job.message)?'보상·포인트 확인':/(진화|포켓몬)/.test(job.message)?'진화 확인':'확인해 주세요';
+ title.textContent=heading;card.setAttribute('aria-labelledby',title.id);
+ const desc=document.createElement('p');desc.className='app-dialog-message';desc.textContent=job.message;
+ card.append(icon,title,desc);let field=null;
+ if(job.kind==='prompt'){
+  field=document.createElement('input');field.type='password';field.inputMode='numeric';field.autocomplete='off';field.placeholder='PIN 입력';field.className='app-dialog-field';field.setAttribute('aria-label','관리자 승인 PIN');card.appendChild(field);
+ }
+ const actions=document.createElement('div');actions.className='app-dialog-actions';
+ function finish(value){document.removeEventListener('keydown',onKey,true);cover.remove();appDialogBusy=false;job.resolve(value);try{previous?.focus?.({preventScroll:true})}catch(e){};appDialogNext()}
+ function addButton(text,primary,result){const b=document.createElement('button');b.type='button';b.textContent=text;if(primary)b.className='app-dialog-primary';b.addEventListener('click',()=>finish(job.kind==='prompt'&&result?field.value:result));actions.appendChild(b);return b}
+ if(job.kind!=='info')addButton('취소',false,job.kind==='prompt'?null:false);
+ const yes=addButton(job.kind==='info'?'확인':job.kind==='prompt'?'승인':'진행',true,job.kind==='info'?undefined:true);
+ card.appendChild(actions);cover.appendChild(card);document.body.appendChild(cover);
+ cover.addEventListener('click',e=>{if(e.target===cover&&job.kind!=='info')finish(job.kind==='prompt'?null:false)});
+ function onKey(e){if(e.key==='Escape'){e.preventDefault();e.stopPropagation();finish(job.kind==='prompt'?null:false)}else if(e.key==='Enter'&&job.kind!=='info'&&(!e.target.closest('button'))){e.preventDefault();e.stopPropagation();yes.click()}else if(e.key==='Tab'){const nodes=[...cover.querySelectorAll('button,input')];const i=nodes.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();nodes[nodes.length-1].focus()}else if(!e.shiftKey&&i===nodes.length-1){e.preventDefault();nodes[0].focus()}}}
+ document.addEventListener('keydown',onKey,true);
+ (field||yes).focus({preventScroll:true});
+}
+function appAlert(message){void appDialog(message,'info')}
+function appConfirm(message){return appDialog(message,'confirm')}
+function appPrompt(message){return appDialog(message,'prompt')}
+
 const NAMES=["이상해씨", "이상해풀", "이상해꽃", "파이리", "리자드", "리자몽", "꼬부기", "어니부기", "거북왕", "캐터피", "단데기", "버터플", "뿔충이", "딱충이", "독침붕", "구구", "피죤", "피죤투", "꼬렛", "레트라", "깨비참", "깨비드릴조", "아보", "아보크", "피카츄", "라이츄", "모래두지", "고지", "니드런♀", "니드리나", "니드퀸", "니드런♂", "니드리노", "니드킹", "삐삐", "픽시", "식스테일", "나인테일", "푸린", "푸크린", "주뱃", "골뱃", "뚜벅쵸", "냄새꼬", "라플레시아", "파라스", "파라섹트", "콘팡", "도나리", "디그다", "닥트리오", "나옹", "페르시온", "고라파덕", "골덕", "망키", "성원숭", "가디", "윈디", "발챙이", "슈륙챙이", "강챙이", "캐이시", "윤겔라", "후딘", "알통몬", "근육몬", "괴력몬", "모다피", "우츠동", "우츠보트", "왕눈해", "독파리", "꼬마돌", "데구리", "딱구리", "포니타", "날쌩마", "야돈", "야도란", "코일", "레어코일", "파오리", "두두", "두트리오", "쥬쥬", "쥬레곤", "질퍽이", "질뻐기", "셀러", "파르셀", "고오스", "고우스트", "팬텀", "롱스톤", "슬리프", "슬리퍼", "크랩", "킹크랩", "찌리리공", "붐볼", "아라리", "나시", "탕구리", "텅구리", "시라소몬", "홍수몬", "내루미", "또가스", "또도가스", "뿔카노", "코뿌리", "럭키", "덩쿠리", "캥카", "쏘드라", "시드라", "콘치", "왕콘치", "별가사리", "아쿠스타", "마임맨", "스라크", "루주라", "에레브", "마그마", "쁘사이저", "켄타로스", "잉어킹", "갸라도스", "라프라스", "메타몽", "이브이", "샤미드", "쥬피썬더", "부스터", "폴리곤", "암나이트", "암스타", "투구", "투구푸스", "프테라", "잠만보", "프리져", "썬더", "파이어", "미뇽", "신뇽", "망나뇽", "뮤츠", "뮤"];
 NAMES.push(...["치코리타", "베이리프", "메가니움", "브케인", "마그케인", "블레이범", "리아코", "엘리게이", "장크로다일", "꼬리선", "다꼬리", "부우부", "야부엉", "레디바", "레디안", "페이검", "아리아도스", "크로뱃", "초라기", "랜턴", "피츄", "삐", "푸푸린", "토게피", "토게틱", "네이티", "네이티오", "메리프", "보송송", "전룡", "아르코", "마릴", "마릴리", "꼬지모", "왕구리", "통통코", "두코", "솜솜코", "에이팜", "해너츠", "해루미", "왕자리", "우파", "누오", "에브이", "블래키", "니로우", "야도킹", "무우마", "안농", "마자용", "키링키", "피콘", "쏘콘", "노고치", "글라이거", "강철톤", "블루", "그랑블루", "침바루", "핫삼", "단단지", "헤라크로스", "포푸니", "깜지곰", "링곰", "마그마그", "마그카르고", "꾸꾸리", "메꾸리", "코산호", "총어", "대포무노", "딜리버드", "만타인", "무장조", "델빌", "헬가", "킹드라", "코코리", "코리갑", "폴리곤2", "노라키", "루브도", "배루키", "카포에라", "뽀뽀라", "에레키드", "마그비", "밀탱크", "해피너스", "라이코", "앤테이", "스이쿤", "애버라스", "데기라스", "마기라스", "루기아", "칠색조", "세레비"]);
 
@@ -5688,18 +5761,38 @@ const LIFE_DEFAULTS=[
 ];
 const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',morningBriefTime:'06:00',briefingMorningNotifyOn:false,briefingEveningNotifyOn:false,eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},momentLogs:[],referenceActivities:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],walkingSession:null,widgetButtonIds:[],widgetSixSelectionSaved:false,deviceSleepEstimates:[],personalReminders:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{},readingTimelineSort:'recent'},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},recordLibrary:{books:[]},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
-let settings={autoSave:true,theme:'light',fontSize:'large',swipeTabs:true};
-try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark'].includes(p?.theme))settings.theme=p.theme;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
-function applyDisplaySettings(){document.documentElement.dataset.theme=settings.theme;document.documentElement.dataset.fontSize=settings.fontSize;const color=document.querySelector('meta[name="theme-color"]');if(color)color.content=settings.theme==='light'?'#f1f7ff':'#071429'}
-function setTheme(v){if(!['light','dark'].includes(v))return;settings.theme=v;persistSettings();applyDisplaySettings();render()}
+let settings={autoSave:true,theme:'light',autoLightAt:'07:00',autoDarkAt:'19:00',fontSize:'large',swipeTabs:true};
+try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark','auto'].includes(p?.theme))settings.theme=p.theme;if(/^([01]\d|2[0-3]):[0-5]\d$/.test(p?.autoLightAt||''))settings.autoLightAt=p.autoLightAt;if(/^([01]\d|2[0-3]):[0-5]\d$/.test(p?.autoDarkAt||''))settings.autoDarkAt=p.autoDarkAt;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
+function effectiveTheme(now=new Date()){
+ if(settings.theme!=='auto')return settings.theme;
+ const toMinutes=t=>{const [h,m]=String(t).split(':').map(Number);return h*60+m};
+ const light=toMinutes(settings.autoLightAt||'07:00'),dark=toMinutes(settings.autoDarkAt||'19:00'),curr=now.getHours()*60+now.getMinutes();
+ if(light===dark)return 'light';
+ return (light<dark?curr>=light&&curr<dark:curr>=light||curr<dark)?'light':'dark';
+}
+function applyDisplaySettings(){
+ const resolved=effectiveTheme(),root=document.documentElement;
+ root.dataset.theme=resolved;root.dataset.themeMode=settings.theme;
+ root.dataset.fontSize=settings.fontSize;
+ const color=document.querySelector('meta[name="theme-color"]');if(color)color.content=resolved==='light'?'#f1f7ff':'#071429';
+}
+function setTheme(v){if(!['light','dark','auto'].includes(v))return;settings.theme=v;persistSettings();applyDisplaySettings();render()}
+function setAutoThemeTime(which,value){
+ if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(value))return;
+ const field=which==='light'?'autoLightAt':'autoDarkAt',other=which==='light'?'autoDarkAt':'autoLightAt';
+ if(value===settings[other]){appAlert('밝은 스킨과 어두운 스킨의 전환 시각을 다르게 지정하세요.');render();return}
+ settings[field]=value;persistSettings();applyDisplaySettings();render();
+}
+setInterval(()=>{if(settings.theme==='auto'&&!document.hidden){const before=document.documentElement.dataset.theme,after=effectiveTheme();if(before!==after)applyDisplaySettings()}},15000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&settings.theme==='auto')applyDisplaySettings()});
 function setFontSize(v){if(!['small','normal','large','xlarge'].includes(v))return;settings.fontSize=v;persistSettings();applyDisplaySettings();render()}
 function toggleSwipeTabs(enabled){settings.swipeTabs=!!enabled;persistSettings();render()}
 applyDisplaySettings();
 function persistSettings(){try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));return true}catch(e){return false}}
 function toggleAutoSave(enabled){
  settings.autoSave=!!enabled;const savedPrefs=persistSettings();
- if(settings.autoSave){const ok=save();if(!ok)alert('자동 저장을 켰지만 브라우저 저장이 실패했습니다. JSON 백업을 사용하세요.')}
- else if(!savedPrefs)alert('브라우저가 설정 저장을 제한합니다. 다음 실행 시 자동 저장 설정이 유지되지 않을 수 있습니다.');
+ if(settings.autoSave){const ok=save();if(!ok)appAlert('자동 저장을 켰지만 브라우저 저장이 실패했습니다. JSON 백업을 사용하세요.')}
+ else if(!savedPrefs)appAlert('브라우저가 설정 저장을 제한합니다. 다음 실행 시 자동 저장 설정이 유지되지 않을 수 있습니다.');
  render();
 }
 function validData(v){return v&&typeof v==='object'&&Array.isArray(v.quests)&&Array.isArray(v.completions)&&typeof v.owned==='object'&&Array.isArray(v.draws)}
@@ -5801,7 +5894,7 @@ function walkStatsRange(days){data.lifeEventConfig.walkStatsDays=Number(days)===
 function walkQuickRecord(){
  if(!startUnlocked||!currentUserId||!lifeCfg().enabled||!lifeDef('walk')?.enabled)return;
  if(nativeAlarmAvailable()){
-  if(!nativeAlarmSend({type:'walkToggle',userId:String(currentUserId)}))alert('걷기 기록 연결이 실패했습니다.');
+  if(!nativeAlarmSend({type:'walkToggle',userId:String(currentUserId)}))appAlert('걷기 기록 연결이 실패했습니다.');
   return;
  }
  if(data.walkingSession){
@@ -5874,10 +5967,10 @@ function toggleWidgetButton(id,checked){
  if(enabled.length<=6)return; // Six or fewer events are always shown.
  let ids=chosenWidgetDefs().map(x=>x.id);
  if(checked&&!ids.includes(id)){
-  if(ids.length>=6)return alert('위젯 버튼은 최대 6개입니다. 먼저 다른 버튼을 해제하세요.');
+  if(ids.length>=6)return appAlert('위젯 버튼은 최대 6개입니다. 먼저 다른 버튼을 해제하세요.');
   ids.push(id);
  }
- if(!checked){if(ids.length<=1)return alert('위젯 버튼은 최소 1개를 유지해 주세요.');ids=ids.filter(x=>x!==id)}
+ if(!checked){if(ids.length<=1)return appAlert('위젯 버튼은 최소 1개를 유지해 주세요.');ids=ids.filter(x=>x!==id)}
  data.widgetButtonIds=ids;data.widgetSixSelectionSaved=true;save();nativeAlarmSync(true);render();
 }
 function nativeWidgetLifeRecords(){
@@ -5902,19 +5995,19 @@ function saveDailyNote(event,key){
  event.preventDefault();if(!startUnlocked||!currentUserId||!validNoteDay(key))return;
  const input=event.currentTarget.elements.dailyNoteText;
  const content=String(input?.value||'').trim().slice(0,2000);
- if(!content){alert('빈 노트는 저장되지 않습니다. 내용을 적거나 삭제 버튼을 사용하세요.');return;}
+ if(!content){appAlert('빈 노트는 저장되지 않습니다. 내용을 적거나 삭제 버튼을 사용하세요.');return;}
  if(!data.dailyNotes||typeof data.dailyNotes!=='object')data.dailyNotes={};
- if(dailyNote(key)===content){alert('이미 저장된 내용입니다.');return;}
+ if(dailyNote(key)===content){appAlert('이미 저장된 내용입니다.');return;}
  data.dailyNotes[key]={text:content,updatedAt:new Date().toISOString()};
  const stored=save();render();
- if(!settings.autoSave)alert('노트를 저장했습니다. 자동 저장 OFF 상태이므로 JSON Save로 백업해 주세요.');
- else if(!stored)alert('브라우저 저장에 실패했습니다. JSON Save로 백업해 주세요.');
+ if(!settings.autoSave)appAlert('노트를 저장했습니다. 자동 저장 OFF 상태이므로 JSON Save로 백업해 주세요.');
+ else if(!stored)appAlert('브라우저 저장에 실패했습니다. JSON Save로 백업해 주세요.');
 }
-function deleteDailyNote(key){
+async function deleteDailyNote(key){
  if(!startUnlocked||!currentUserId||!validNoteDay(key)||!dailyNote(key))return;
- if(!confirm(fmtKey(key)+' 데일리 노트를 삭제할까요? 퀘스트와 포인트 기록은 삭제되지 않습니다.'))return;
+ if(!(await appConfirm(fmtKey(key)+' 데일리 노트를 삭제할까요? 퀘스트와 포인트 기록은 삭제되지 않습니다.')))return;
  delete data.dailyNotes[key];const stored=save();render();
- if(!settings.autoSave||!stored)alert('노트 삭제 내용을 유지하려면 JSON Save로 백업하세요.');
+ if(!settings.autoSave||!stored)appAlert('노트 삭제 내용을 유지하려면 JSON Save로 백업하세요.');
 }
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function save(){
@@ -6566,13 +6659,13 @@ function smartBookSave(e){
  e.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='bookLibrary')return;
  const f=e.currentTarget,title=smartName(f.elements.bookTitle.value,160),totalStr=String(f.elements.totalPages.value).trim(),total=smartInteger(totalStr,200000),finished=f.elements.finished.checked;
  const startedOn=String(f.elements.startedOn.value||''),finishedOn=String(f.elements.finishedOn.value||'');
- if(!title){alert('책 제목을 입력하세요.');return}
- if(totalStr&&(!total||total<1)){alert('전체 쪽수는 1 이상의 정수로 입력하세요.');return}
- if(startedOn&&!validNoteDay(startedOn)){alert('올바른 독서 시작 날짜를 입력하세요.');return}
- if(finished&&finishedOn&&!validNoteDay(finishedOn)){alert('올바른 완독 날짜를 입력하세요.');return}
- if(finished&&startedOn&&finishedOn&&finishedOn<startedOn){alert('완독 날짜는 시작 날짜보다 빠를 수 없습니다.');return}
+ if(!title){appAlert('책 제목을 입력하세요.');return}
+ if(totalStr&&(!total||total<1)){appAlert('전체 쪽수는 1 이상의 정수로 입력하세요.');return}
+ if(startedOn&&!validNoteDay(startedOn)){appAlert('올바른 독서 시작 날짜를 입력하세요.');return}
+ if(finished&&finishedOn&&!validNoteDay(finishedOn)){appAlert('올바른 완독 날짜를 입력하세요.');return}
+ if(finished&&startedOn&&finishedOn&&finishedOn<startedOn){appAlert('완독 날짜는 시작 날짜보다 빠를 수 없습니다.');return}
  const edit=smartBookById(modal.editId),duplicate=smartBookByTitle(title);
- if(duplicate&&duplicate.id!==edit?.id){alert('이미 등록된 제목입니다. 자동완성에서 기존 책을 선택하거나 목록에서 수정하세요.');return}
+ if(duplicate&&duplicate.id!==edit?.id){appAlert('이미 등록된 제목입니다. 자동완성에서 기존 책을 선택하거나 목록에서 수정하세요.');return}
  if(!data.recordLibrary)data.recordLibrary={books:[]};
  if(edit){
   edit.title=title;edit.totalPages=total||null;edit.startedOn=startedOn;edit.finished=finished;
@@ -6589,10 +6682,10 @@ function smartBookFinishFieldChange(checkbox){
  if(!checkbox.checked)field.value='';
 }
 function smartBookEdit(id=''){if(modal?.type!=='bookLibrary')return;modal.editId=id;modal.newTitle='';render()}
-function openBookLibrary(){
+async function openBookLibrary(){
  if(!startUnlocked||!currentUserId)return;
  const form=document.querySelector('#popup .smart-editor')?.closest('form');
- if(form&&[...form.querySelectorAll('.smart-editor input')].some(x=>x.value.trim())&&!confirm('아직 저장하지 않은 입력 내용은 사라질 수 있습니다. 중간 저장한 뒤 책 목록을 열기를 권장합니다. 계속할까요?'))return;
+ if(form&&[...form.querySelectorAll('.smart-editor input')].some(x=>x.value.trim())&&!(await appConfirm('아직 저장하지 않은 입력 내용은 사라질 수 있습니다. 중간 저장한 뒤 책 목록을 열기를 권장합니다. 계속할까요?')))return;
  modal={type:'bookLibrary',editId:'',filter:'all',search:''};render();
 }
 function smartBookFilter(filter){if(modal?.type!=='bookLibrary')return;modal.filter=['all','reading','finished'].includes(filter)?filter:'all';render()}
@@ -6838,9 +6931,9 @@ function smartRebuild(form,entries){
  const list=root.querySelector('.smart-entry-list'),kind=root.dataset.smartTemplate;
  list.innerHTML=entries.map((e,i)=>smartEntryMarkup(kind,e,i)).join('');smartRecalculate(form);
 }
-function smartAddEntry(button){const form=button.closest('form'),s=smartRawFormEntries(form),kind=s?.templateId;if(!kind)return;if(s.entries.length>=50){alert('한 기록에는 최대 50개 항목을 추가할 수 있습니다.');return;}smartRebuild(form,[...s.entries,{id:smartNextId()}]);}
+function smartAddEntry(button){const form=button.closest('form'),s=smartRawFormEntries(form),kind=s?.templateId;if(!kind)return;if(s.entries.length>=50){appAlert('한 기록에는 최대 50개 항목을 추가할 수 있습니다.');return;}smartRebuild(form,[...s.entries,{id:smartNextId()}]);}
 function smartRemoveEntry(button){const form=button.closest('form'),target=button.closest('.smart-entry'),s=smartRawFormEntries(form);const id=target?.dataset.entryId;smartRebuild(form,s.entries.filter(x=>x.id!==id).length?s.entries.filter(x=>x.id!==id):[{id:smartNextId()}]);}
-function smartAddSet(button){const form=button.closest('form'),target=button.closest('.smart-entry'),s=smartRawFormEntries(form),entry=s?.entries.find(x=>x.id===target.dataset.entryId);if(!entry)return;if(entry.sets.length>=50){alert('세트는 최대 50개입니다.');return;}entry.sets.push({id:smartNextId('set'),reps:'',weight:'',at:''});smartRebuild(form,s.entries);}
+function smartAddSet(button){const form=button.closest('form'),target=button.closest('.smart-entry'),s=smartRawFormEntries(form),entry=s?.entries.find(x=>x.id===target.dataset.entryId);if(!entry)return;if(entry.sets.length>=50){appAlert('세트는 최대 50개입니다.');return;}entry.sets.push({id:smartNextId('set'),reps:'',weight:'',at:''});smartRebuild(form,s.entries);}
 function smartRemoveSet(button){const form=button.closest('form'),target=button.closest('.smart-entry'),s=smartRawFormEntries(form),entry=s?.entries.find(x=>x.id===target.dataset.entryId);if(!entry)return;const id=button.closest('.smart-set')?.dataset.smartSet;entry.sets=entry.sets.filter(x=>x.id!==id);if(!entry.sets.length)entry.sets=[{id:smartNextId('set'),reps:'',at:''}];smartRebuild(form,s.entries);}
 function smartSetChanged(input){const set=input.closest('.smart-set');if(set&&!set.dataset.at&&input.value.trim()){set.dataset.at=new Date().toISOString();const label=set.querySelector('.smart-set-at');if(label)label.textContent='기록 '+new Date(set.dataset.at).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})}smartRecalculate(input.form)}
 // v1.7.130 · Per-book reading continuation suggestion (display only, no data migration).
@@ -7476,8 +7569,8 @@ function openAchievementDraft(id,date=day()){
 }
 function storeAchievementDraft(id,date,achievement,q){
  if(!startUnlocked||!currentUserId||!validNoteDay(date)||date>day())return false;
- if(data.completions.some(c=>c.day===date&&c.id===id)){alert('이미 완료한 퀘스트입니다. 달력의 완료 기록에서 수정하세요.');return false;}
- if(!achievementHasContent(achievement)){alert('달성량, 컨디션 또는 메모 중 하나를 입력해 주세요.');return false;}
+ if(data.completions.some(c=>c.day===date&&c.id===id)){appAlert('이미 완료한 퀘스트입니다. 달력의 완료 기록에서 수정하세요.');return false;}
+ if(!achievementHasContent(achievement)){appAlert('달성량, 컨디션 또는 메모 중 하나를 입력해 주세요.');return false;}
  const previous=deepCopy(data.achievementDrafts||{}),previousLibrary=deepCopy(data.recordLibrary||{books:[]});
  if(!data.achievementDrafts)data.achievementDrafts={};
  if(!data.achievementDrafts[date])data.achievementDrafts[date]={};
@@ -7487,31 +7580,31 @@ function storeAchievementDraft(id,date,achievement,q){
  // Explicit "save draft" always persists, even when general automatic saving is OFF.
  if(!saveRegistry(true)){
   data.achievementDrafts=previous;data.recordLibrary=previousLibrary;user.rev=previousRev;user.lineage=previousLineage;user.updatedAt=previousUpdated;
-  alert('임시 기록을 기기에 저장하지 못했습니다. 저장 공간을 확인하고 다시 시도하세요.');return false;
+  appAlert('임시 기록을 기기에 저장하지 못했습니다. 저장 공간을 확인하고 다시 시도하세요.');return false;
  }
  return true;
 }
 function saveAchievementDraft(event){
  event.preventDefault();if(modal?.type!=='achievementDraft'||!currentUserId)return;
  const {id,date}=modal,q=data.quests.find(item=>item.id===id)||achievementDraft(date,id);
- let result;try{result=achievementFromForm(event.currentTarget,q)}catch(err){alert(err.message);return;}
+ let result;try{result=achievementFromForm(event.currentTarget,q)}catch(err){appAlert(err.message);return;}
  if(!storeAchievementDraft(id,date,result,q))return;
  modal=null;render();
 }
 function saveDraftFromVerify(button){
  if(!startUnlocked||!currentUserId||!['questVerify','questVerifyNormal'].includes(modal?.type))return;
  const id=modal.id,q=data.quests.find(x=>x.id===id),form=button.closest('form');if(!q||!form)return;
- let result;try{result=achievementFromForm(form,q)}catch(err){alert(err.message);return;}
+ let result;try{result=achievementFromForm(form,q)}catch(err){appAlert(err.message);return;}
  if(!storeAchievementDraft(id,day(),result,q))return;
  modal=null;render();
 }
-function deleteAchievementDraft(id,date){
- if(!currentUserId||!startUnlocked||!achievementDraft(date,id)||!confirm('이 날짜의 임시 기록을 삭제할까요? 완료 기록과 보상은 변경되지 않습니다.'))return;
+async function deleteAchievementDraft(id,date){
+ if(!currentUserId||!startUnlocked||!achievementDraft(date,id)||!(await appConfirm('이 날짜의 임시 기록을 삭제할까요? 완료 기록과 보상은 변경되지 않습니다.')))return;
  const old=deepCopy(data.achievementDrafts),user=registry.users[currentUserId];
  delete data.achievementDrafts[date][id];if(!Object.keys(data.achievementDrafts[date]).length)delete data.achievementDrafts[date];
  const rev=user.rev,lineage=[...lineageList(user.lineage)],updatedAt=user.updatedAt;
  user.data=data;bumpVersion(user);
- if(!saveRegistry(true)){data.achievementDrafts=old;user.rev=rev;user.lineage=lineage;user.updatedAt=updatedAt;alert('삭제 내용을 저장하지 못했습니다.');return;}
+ if(!saveRegistry(true)){data.achievementDrafts=old;user.rev=rev;user.lineage=lineage;user.updatedAt=updatedAt;appAlert('삭제 내용을 저장하지 못했습니다.');return;}
  modal=null;render();
 }
 function questDraftUI(q,done){
@@ -7599,11 +7692,11 @@ function openAchievementEditor(key,id,recordIndex=null){
 function saveAchievementEdit(event){
  event.preventDefault();if(modal?.type!=='achievementEdit'||!startUnlocked||!currentUserId)return;
  const record=completionEditorRecord();if(!record)return;
- let next;try{next=achievementFromForm(event.currentTarget,{recordMode:modal.mode,recordUnit:modal.unit,recordTemplateId:modal.templateId});}catch(err){alert(err.message);return;}
+ let next;try{next=achievementFromForm(event.currentTarget,{recordMode:modal.mode,recordUnit:modal.unit,recordTemplateId:modal.templateId});}catch(err){appAlert(err.message);return;}
  next.updates=cleanAchievement(record.achievement).updates;
  record.achievement=cleanAchievement(next);smartCommitLibrary(record.achievement);record.achievementUpdatedAt=new Date().toISOString();
  const ok=save();modal=null;render();
- if(!settings.autoSave||!ok)alert('달성 기록은 앱에 반영됐지만 자동 저장되지 않았습니다. JSON Save를 이용해 백업하세요.');
+ if(!settings.autoSave||!ok)appAlert('달성 기록은 앱에 반영됐지만 자동 저장되지 않았습니다. JSON Save를 이용해 백업하세요.');
 }
 // v1.7.124 · Append after completion across ALL quest templates.
 // The existing completion remains a single record, and neither its rewards nor completion
@@ -7630,30 +7723,30 @@ function saveAchievementAppend(event){
  const form=event.currentTarget;
  let extra;
  try{extra=achievementFromForm(form,{recordMode:mode,recordUnit:unit,recordTemplateId:templateId});}
- catch(err){alert(err.message);return;}
- if(!achievementHasContent(extra)){alert('추가할 횟수·항목 또는 메모를 입력하세요.');return;}
+ catch(err){appAlert(err.message);return;}
+ if(!achievementHasContent(extra)){appAlert('추가할 횟수·항목 또는 메모를 입력하세요.');return;}
  const before=deepCopy(c.achievement),libraryBefore=deepCopy(data.recordLibrary||{books:[]});
  const next=cleanAchievement(original),stamp=new Date().toISOString();
  if(extra.structured){
   const base=smartCleanStructured(original.structured);
-  if(base&&base.templateId!==extra.structured.templateId){alert('기존 기록과 템플릿이 달라 합칠 수 없습니다. 전체 수정에서 확인하세요.');return;}
+  if(base&&base.templateId!==extra.structured.templateId){appAlert('기존 기록과 템플릿이 달라 합칠 수 없습니다. 전체 수정에서 확인하세요.');return;}
   const entries=[...(base?.entries||[]),...extra.structured.entries];
-  if(entries.length>100){alert('하루 기록은 항목 최대 100개입니다. 전체 수정에서 기록을 정리하세요.');return;}
+  if(entries.length>100){appAlert('하루 기록은 항목 최대 100개입니다. 전체 수정에서 기록을 정리하세요.');return;}
   next.structured=smartCleanStructured({...extra.structured,entries});
   const totals=smartTotals(next.structured);
   next.amount=totals.amount;next.unit=totals.unit;
  }else if(extra.amount!==null){
-  if(next.structured){alert('구조화된 기록에는 같은 템플릿으로 항목을 추가해 주세요.');return;}
-  if(original.amount!==null&&original.unit&&extra.unit&&original.unit!==extra.unit){alert('기존 기록 단위와 추가 단위가 달라요. 기존 단위로 입력해 주세요.');return;}
+  if(next.structured){appAlert('구조화된 기록에는 같은 템플릿으로 항목을 추가해 주세요.');return;}
+  if(original.amount!==null&&original.unit&&extra.unit&&original.unit!==extra.unit){appAlert('기존 기록 단위와 추가 단위가 달라요. 기존 단위로 입력해 주세요.');return;}
   next.amount=achievementAmount((original.amount||0)+extra.amount);
-  if(next.amount===null){alert('일일 합계가 입력 가능한 최대값을 초과했습니다.');return;}
+  if(next.amount===null){appAlert('일일 합계가 입력 가능한 최대값을 초과했습니다.');return;}
   next.unit=original.unit||extra.unit;
  }
  if(extra.note){
   const dateTime=new Date(stamp).toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
   const noteBlock=`[추가 ${dateTime}] ${extra.note}`;
   const combined=next.note?next.note+'\n'+noteBlock:noteBlock;
-  if(combined.length>500){alert('메모가 500자를 넘습니다. 기존 기록 전체 수정에서 정리해 주세요.');return;}
+  if(combined.length>500){appAlert('메모가 500자를 넘습니다. 기존 기록 전체 수정에서 정리해 주세요.');return;}
   next.note=combined;
  }
  if(extra.mood)next.mood=extra.mood;
@@ -7664,24 +7757,24 @@ function saveAchievementAppend(event){
  const persisted=save();
  if(settings.autoSave&&!persisted){
   c.achievement=before;data.recordLibrary=libraryBefore;
-  alert('기기 저장에 실패해 변경을 취소했습니다. 저장 공간을 확인하세요.');return;
+  appAlert('기기 저장에 실패해 변경을 취소했습니다. 저장 공간을 확인하세요.');return;
  }
  modal=null;render();
- if(!settings.autoSave)alert('추가 기록은 현재 실행에 반영됐습니다. JSON Save로 백업해 주세요.');
+ if(!settings.autoSave)appAlert('추가 기록은 현재 실행에 반영됐습니다. JSON Save로 백업해 주세요.');
 }
 function requestAchievementBonusToggle(enabled){
  if(!startUnlocked||!currentUserId)return;
  modal={type:'achievementBonusAuth',wanted:!!enabled};render();
 }
-function saveRegionThresholdSettings(event){
+async function saveRegionThresholdSettings(event){
  event.preventDefault();
  if(!startUnlocked||!currentUserId||!registry)return;
  const f=event.currentTarget,raw=String(f.elements.johtoOpenTarget?.value||'').trim(),next=Number(raw);
- if(!/^\d+$/.test(raw)||!Number.isSafeInteger(next)||next<1||next>151){alert('1~151 사이의 정수를 입력하세요.');f.elements.johtoOpenTarget?.focus();return;}
- if(!checkAdminPin(String(f.elements.regionAdminPin?.value||''))){alert('관리자 비밀번호가 올바르지 않습니다.');f.elements.regionAdminPin.value='';f.elements.regionAdminPin.focus();return;}
+ if(!/^\d+$/.test(raw)||!Number.isSafeInteger(next)||next<1||next>151){appAlert('1~151 사이의 정수를 입력하세요.');f.elements.johtoOpenTarget?.focus();return;}
+ if(!checkAdminPin(String(f.elements.regionAdminPin?.value||''))){appAlert('관리자 비밀번호가 올바르지 않습니다.');f.elements.regionAdminPin.value='';f.elements.regionAdminPin.focus();return;}
  const current=regionOpenThreshold(data,POKE_REGIONS[1]);
- if(next===current){alert('이미 설정된 수집 기준입니다.');f.elements.regionAdminPin.value='';return;}
- if(!confirm(`2세대 지역 열림 기준을 ${current}종에서 ${next}종으로 변경할까요?\n모든 트레이너에게 적용되며, 이미 열린 지역은 다시 잠기지 않습니다.`))return;
+ if(next===current){appAlert('이미 설정된 수집 기준입니다.');f.elements.regionAdminPin.value='';return;}
+ if(!(await appConfirm(`2세대 지역 열림 기준을 ${current}종에서 ${next}종으로 변경할까요?\n모든 트레이너에게 적용되며, 이미 열린 지역은 다시 잠기지 않습니다.`)))return;
  // Snapshot in case browser storage rejects the update. User data itself is never reset.
  const before=deepCopy(registry);
  data.rules.regionUnlockTargets={...cleanRegionUnlockTargets(data.rules.regionUnlockTargets),johto:next};
@@ -7689,18 +7782,18 @@ function saveRegionThresholdSettings(event){
  for(const u of Object.values(registry.users)){u.data.rules=registry.rules;openRegionsIfReady(u.data);bumpVersion(u);}
  if(settings.autoSave&&!saveRegistry(true)){
   registry=before;data=registry.users[currentUserId].data;data.rules=registry.rules;
-  alert('기기 저장 공간에 저장하지 못해 변경을 취소했습니다. JSON 백업으로 저장 공간을 확인하세요.');render();return;
+  appAlert('기기 저장 공간에 저장하지 못해 변경을 취소했습니다. JSON 백업으로 저장 공간을 확인하세요.');render();return;
  }
  // When auto save is off, it remains in memory and is included in manual JSON Save.
  data=registry.users[currentUserId].data;render();
- alert(`성도지방 열림 기준: ${next}종\n${settings.autoSave?'변경 내용을 저장했습니다.':'자동 저장 OFF: 지금 JSON Save로 백업하세요.'}\n이미 열린 지역은 계속 이용할 수 있습니다.`);
+ appAlert(`성도지방 열림 기준: ${next}종\n${settings.autoSave?'변경 내용을 저장했습니다.':'자동 저장 OFF: 지금 JSON Save로 백업하세요.'}\n이미 열린 지역은 계속 이용할 수 있습니다.`);
 }
 function saveAchievementBonusToggle(event){
  event.preventDefault();if(modal?.type!=='achievementBonusAuth'||!startUnlocked||!currentUserId)return;
  const pin=String(event.currentTarget.elements.adminPin?.value||'');
- if(!checkAdminPin(pin)){alert('관리자 비밀번호가 올바르지 않습니다.');return;}
+ if(!checkAdminPin(pin)){appAlert('관리자 비밀번호가 올바르지 않습니다.');return;}
  data.rules.recordBonusEnabled=!!modal.wanted;bumpRulesVersion();saveRegistry();save();modal=null;render();
- if(!settings.autoSave)alert('기록 보너스 설정은 현재 실행에 반영됐습니다. JSON Save로 백업하세요.');
+ if(!settings.autoSave)appAlert('기록 보너스 설정은 현재 실행에 반영됐습니다. JSON Save로 백업하세요.');
 }
 function cleanQuestSnapshot(q){return {id:String(q.id||'').slice(0,100),title:String(q.title||'').slice(0,45),category:String(q.category||'기타').slice(0,25),goal:String(q.goal??((q.mins||10)+'분')).slice(0,90),mins:boundedNumber(q.mins,999),limitMinutes:Math.min(240,Math.max(1,Number(q.limitMinutes)||10)),rewardOverride:cleanQuestReward(q.rewardOverride),xpOverride:cleanQuestXp(q.xpOverride),questType:questType(q),weekdays:questWeekdays(q),eventChance:questChance(q),startDate:validNoteDay(q.startDate)?q.startDate:'',endDate:validNoteDay(q.endDate)?q.endDate:'',recordMode:achievementMode(q),recordUnit:achievementUnit(q),recordTemplateId:smartTemplateId(q)}}
 function auditQuest(action,id,before,after){data.questEvents.push({at:new Date().toISOString(),action,id,before:before?cleanQuestSnapshot(before):null,after:after?cleanQuestSnapshot(after):null})}
@@ -7903,12 +7996,12 @@ function awardQuestXp(xp){
 function beginGame(e){
  e.preventDefault();const typed=document.getElementById('startAdminCode')?.value;
  if(!checkAdminPin(typed)){
-  alert('관리자 비밀번호가 올바르지 않습니다.');
+  appAlert('관리자 비밀번호가 올바르지 않습니다.');
   const input=document.getElementById('startAdminCode');if(input){input.value='';input.focus()};return;
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.146</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.147</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -8046,8 +8139,8 @@ function focusTrainingSection(targetId){
 }
 function focusSelectedTrainingPokemon(){focusTrainingSection('trainingDetail')}
 function focusTrainingRoster(){focusTrainingSection('trainingRoster')}
-function setScreen(s,options=null){
- if(screen==='manual'&&s!=='manual'&&adminDraftChanges()&&!confirm('저장하지 않은 관리자 설정이 있습니다. 이동하면 입력한 내용이 사라집니다. 계속할까요?'))return;
+async function setScreen(s,options=null){
+ if(screen==='manual'&&s!=='manual'&&adminDraftChanges()&&!(await appConfirm('저장하지 않은 관리자 설정이 있습니다. 이동하면 입력한 내용이 사라집니다. 계속할까요?')))return;
  if(s==='manual'&&!adminUnlocked){screen='stats';render();return}
  if(data.pendingEncounter&&s!=='manual'){openPendingCapture();return}
  if(s==='settings')settingsPage=options?.settingsPage||'menu';
@@ -8067,13 +8160,13 @@ function questTimeState(active,now=Date.now()){
 function questMultiplier(active){return questTimeState(active,active.finishedAt||Date.now()).multiplier}
 function questTimeFmt(seconds){const total=Math.ceil(Math.max(0,seconds));return String(Math.floor(total/60)).padStart(2,'0')+':'+String(total%60).padStart(2,'0')}
 function complete(id){startQuest(id)}
-function requestNormalCompletion(id){
+async function requestNormalCompletion(id){
  if(!startUnlocked||!currentUserId)return;
  closePreviousDayTimer();
  const q=data.quests.find(x=>x.id===id);
  if(!q||completedToday(id)||!questIsEligible(q))return;
  if(data.activeQuest?.id===id){
-  if(!confirm('이 퀘스트의 타임챌린지가 진행 중입니다. 타이머와 속도 보너스를 포기하고 일반 완료로 전환할까요?'))return;
+  if(!(await appConfirm('이 퀘스트의 타임챌린지가 진행 중입니다. 타이머와 속도 보너스를 포기하고 일반 완료로 전환할까요?')))return;
   data.activeQuest=null;save();
  }
  modal={type:'questVerifyNormal',id,openedDay:day()};render();
@@ -8090,7 +8183,7 @@ function startQuest(id){
 }
 function toggleQuestHold(){
  const a=data.activeQuest;if(!a||a.finishedAt)return;
- if(a.startedDay!==day()){alert('날짜가 바뀌었습니다. 오늘의 퀘스트로 다시 시작하세요.');data.activeQuest=null;save();modal=null;render();return}
+ if(a.startedDay!==day()){appAlert('날짜가 바뀌었습니다. 오늘의 퀘스트로 다시 시작하세요.');data.activeQuest=null;save();modal=null;render();return}
  const now=Date.now();
  if(a.pausedAt){a.pausedMs=Math.max(0,(Number(a.pausedMs)||0)+Math.max(0,now-a.pausedAt));a.pausedAt=null;}
  else{a.pausedAt=now;a.holdCount=(Number(a.holdCount)||0)+1;}
@@ -8099,12 +8192,12 @@ function toggleQuestHold(){
 function questHoldSeconds(a,now=Date.now()){
  return Math.max(0,Math.floor(((Number(a?.pausedMs)||0)+(a?.pausedAt?Math.max(0,now-a.pausedAt):0))/1000));
 }
-function abandonQuest(){if(!data.activeQuest)return;if(!confirm('진행 중인 퀘스트를 포기할까요? 포인트는 지급되지 않습니다.'))return;data.activeQuest=null;save();modal=null;render()}
+async function abandonQuest(){if(!data.activeQuest)return;if(!(await appConfirm('진행 중인 퀘스트를 포기할까요? 포인트는 지급되지 않습니다.')))return;data.activeQuest=null;save();modal=null;render()}
 function finishQuest(){
  const a=data.activeQuest;if(!a)return;
- if(a.pausedAt){alert('홀드 중입니다. ▶ 다시 시작을 누른 후 완료해 주세요.');return}
+ if(a.pausedAt){appAlert('홀드 중입니다. ▶ 다시 시작을 누른 후 완료해 주세요.');return}
  if(!data.quests.some(q=>q.id===a.id&&questIsEligible(q))||completedToday(a.id)){data.activeQuest=null;save();modal=null;render();return}
- if(a.startedDay!==day()){alert('날짜가 바뀌어 이번 퀘스트의 시간 보상은 적용할 수 없습니다. 다시 시작하세요.');data.activeQuest=null;save();modal=null;render();return}
+ if(a.startedDay!==day()){appAlert('날짜가 바뀌어 이번 퀘스트의 시간 보상은 적용할 수 없습니다. 다시 시작하세요.');data.activeQuest=null;save();modal=null;render();return}
  a.finishedAt=Date.now();save();modal={type:'questVerify',id:a.id};render();
  setTimeout(()=>document.getElementById('questUserCode')?.focus(),20);
 }
@@ -8127,16 +8220,16 @@ function verifyQuest(e){
  const normal=modal.type==='questVerifyNormal',id=modal.id;
  const q=data.quests.find(x=>x.id===id),a=data.activeQuest;
  const input=document.getElementById('questUserCode');
- if(input?.value!==data.userPassword){alert('퀘스트 완료 비밀번호가 올바르지 않습니다. 완료 처리되지 않았습니다.');if(input){input.value='';input.focus()}return;}
+ if(input?.value!==data.userPassword){appAlert('퀘스트 완료 비밀번호가 올바르지 않습니다. 완료 처리되지 않았습니다.');if(input){input.value='';input.focus()}return;}
  if(!q||completedToday(id)||!questIsEligible(q)){modal=null;render();return;}
  if(normal){
-  if(modal.openedDay!==day()){alert('날짜가 변경되었습니다. 오늘의 퀘스트에서 다시 완료해 주세요.');modal=null;render();return;}
-  if(a?.id===id){alert('진행 중인 타이머가 있습니다. 먼저 타임챌린지를 정리해 주세요.');modal=null;render();return;}
+  if(modal.openedDay!==day()){appAlert('날짜가 변경되었습니다. 오늘의 퀘스트에서 다시 완료해 주세요.');modal=null;render();return;}
+  if(a?.id===id){appAlert('진행 중인 타이머가 있습니다. 먼저 타임챌린지를 정리해 주세요.');modal=null;render();return;}
  }else{
   if(!a||a.id!==id||!a.finishedAt){modal=null;render();return;}
-  if(a.startedDay!==day()){alert('다른 날짜의 퀘스트는 완료할 수 없습니다.');data.activeQuest=null;save();modal=null;render();return;}
+  if(a.startedDay!==day()){appAlert('다른 날짜의 퀘스트는 완료할 수 없습니다.');data.activeQuest=null;save();modal=null;render();return;}
  }
- let achievement;try{achievement=achievementFromForm(e.currentTarget,q)}catch(err){alert(err.message);return;}
+ let achievement;try{achievement=achievementFromForm(e.currentTarget,q)}catch(err){appAlert(err.message);return;}
  const recordBonus=data.rules?.recordBonusEnabled===true&&achievementQualifiesBonus(achievement,q);
  const growthBeforePoints=data.points;
  const growthBeforeTrainer={level:lvl(),xp:currentLevelXp(),target:levelTarget(lvl())};
@@ -8341,20 +8434,20 @@ function runRewardAnimation(){
 function changeMainQuestPassword(e){
   e.preventDefault();
   if(!startUnlocked||!adminUnlocked||screen!=='manual'){
-   alert('관리자 모드에서만 변경할 수 있습니다.');return;
+   appAlert('관리자 모드에서만 변경할 수 있습니다.');return;
   }
   const main=registry?.users?.main;
-  if(!main){alert('main 계정이 없습니다. 관리자 → 사용자 계정 관리에서 계정을 확인하세요.');return;}
+  if(!main){appAlert('main 계정이 없습니다. 관리자 → 사용자 계정 관리에서 계정을 확인하세요.');return;}
   const f=e.currentTarget,next=f.elements['newPin'].value,confirmPin=f.elements['confirmPin'].value;
-  if(!/^[0-9]{4,8}$/.test(next)){alert('퀘스트 완료 비밀번호는 숫자 4~8자리로 설정하세요.');return;}
-  if(next!==confirmPin){alert('새 퀘스트 완료 비밀번호가 서로 다릅니다.');return;}
+  if(!/^[0-9]{4,8}$/.test(next)){appAlert('퀘스트 완료 비밀번호는 숫자 4~8자리로 설정하세요.');return;}
+  if(next!==confirmPin){appAlert('새 퀘스트 완료 비밀번호가 서로 다릅니다.');return;}
   main.data.userPassword=next;
   bumpVersion(main);
   const saved=saveRegistry();
   f.reset();
-  if(!settings.autoSave){alert('main 계정의 퀘스트 완료 비밀번호가 변경되었습니다. 자동 저장이 꺼져 있으므로 지금 전체 JSON Save로 백업하세요.');}
-  else if(!saved){alert('변경 내용을 기기에 저장하지 못했습니다. JSON Save로 즉시 백업하세요.');}
-  else{alert('main 계정의 퀘스트 완료 비밀번호만 변경되었습니다. 다른 계정은 변경되지 않습니다.');}
+  if(!settings.autoSave){appAlert('main 계정의 퀘스트 완료 비밀번호가 변경되었습니다. 자동 저장이 꺼져 있으므로 지금 전체 JSON Save로 백업하세요.');}
+  else if(!saved){appAlert('변경 내용을 기기에 저장하지 못했습니다. JSON Save로 즉시 백업하세요.');}
+  else{appAlert('main 계정의 퀘스트 완료 비밀번호만 변경되었습니다. 다른 계정은 변경되지 않습니다.');}
   render();
  }function unclaimedLevels(){
  const ownedLevels=new Set((data.rewardClaims||[]).map(x=>Number(x.level)));
@@ -8392,13 +8485,13 @@ function grantMilestonePokemon(level){
 }
 function claimLevelReward(level){
  if(!startUnlocked||!currentUserId||!Number.isInteger(level)||level<=Number(data.rewardStartLevel)||level>lvl())return;
- if((data.rewardClaims||[]).some(c=>c.level===level)){alert('이미 수령한 레벨 보상입니다.');return;}
+ if((data.rewardClaims||[]).some(c=>c.level===level)){appAlert('이미 수령한 레벨 보상입니다.');return;}
  const points=level*50,record={level,points,at:new Date().toISOString(),claimId:'level_'+level};
  data.rewardClaims.push(record);data.points+=points;data.allEarned+=points;
  save();modal={type:'levelClaim',level,pts:points};render();
 }
 function bonus(){
- if(data.demoGranted){alert('첫 선물은 계정당 한 번만 받을 수 있습니다.');return}
+ if(data.demoGranted){appAlert('첫 선물은 계정당 한 번만 받을 수 있습니다.');return}
  data.points+=600;data.allEarned+=600;data.demoGranted=true;data.bonusAt=new Date().toISOString();save();modal={type:'bonus'};render();
 }
 
@@ -8427,8 +8520,8 @@ function applyDailyBuddyXp(mon,amount){
 }
 function claimDailyVisitGift(){
  if(!startUnlocked||!currentUserId||!data.demoGranted||!dailyGiftAvailable())return;
- if(!settings.autoSave){alert('일일 선물 중복 수령을 방지하려면 자동 저장을 켜주세요.');return}
- if(dailyGiftCommittedElsewhere()){alert('다른 창에서 오늘의 선물을 이미 받았습니다. 해당 창에서 JSON 백업 후 이 화면을 새로고침해 주세요.');return}
+ if(!settings.autoSave){appAlert('일일 선물 중복 수령을 방지하려면 자동 저장을 켜주세요.');return}
+ if(dailyGiftCommittedElsewhere()){appAlert('다른 창에서 오늘의 선물을 이미 받았습니다. 해당 창에서 JSON 백업 후 이 화면을 새로고침해 주세요.');return}
  const snapshot=JSON.stringify(data),now=new Date(),prize=dailyGiftPick(),record={day:localDayAt(now),type:prize.type,points:prize.points,xp:prize.xp,buddyXp:prize.buddyXp,buddyUid:'',at:now.toISOString(),activatedAt:'',endsAt:'',fallback:false};
  if(record.type==='buddyXp'){
   const mon=currentBuddy();
@@ -8445,21 +8538,21 @@ function claimDailyVisitGift(){
  data.dailyVisitRewards.push(record);
  if(!save()){
   data=JSON.parse(snapshot);registry.users[currentUserId].data=data;
-  alert('일일 선물을 저장하지 못해 지급을 취소했습니다. 저장 공간을 확인한 후 다시 시도하세요.');render();return;
+  appAlert('일일 선물을 저장하지 못해 지급을 취소했습니다. 저장 공간을 확인한 후 다시 시도하세요.');render();return;
  }
  modal={type:'dailyVisitReward',record};render();
 }
-function activateDailyFeverTicket(){
+async function activateDailyFeverTicket(){
  if(!startUnlocked||!currentUserId)return;
  const ticket=todayDailyGift();
  if(!ticket||ticket.type!=='feverTicket'||ticket.activatedAt)return;
- if(!settings.autoSave){alert('FEVER 활성화에는 자동 저장이 필요합니다.');return}
- if(!confirm('지금부터 60분간 퀘스트 완료 P·XP +20%를 적용할까요? 오늘 자정이 지나면 종료됩니다.'))return;
+ if(!settings.autoSave){appAlert('FEVER 활성화에는 자동 저장이 필요합니다.');return}
+ if(!(await appConfirm('지금부터 60분간 퀘스트 완료 P·XP +20%를 적용할까요? 오늘 자정이 지나면 종료됩니다.')))return;
  const snapshot=JSON.stringify(data),now=new Date(),midnight=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1).getTime();
  ticket.activatedAt=now.toISOString();ticket.endsAt=new Date(Math.min(now.getTime()+3600000,midnight)).toISOString();
  if(!save()){
   data=JSON.parse(snapshot);registry.users[currentUserId].data=data;
-  alert('FEVER 시작 기록을 저장하지 못했습니다. 다시 시도하세요.');render();return;
+  appAlert('FEVER 시작 기록을 저장하지 못했습니다. 다시 시도하세요.');render();return;
  }
  modal=null;render();
 }
@@ -8481,7 +8574,7 @@ function renderDailyVisitHub(){
 }
 
 function openQuestManager(){if(!startUnlocked||!currentUserId)return;modal={type:'questManagerAuth'};render()}
-function authorizeQuestManager(e){e.preventDefault();if(!checkAdminPin(String(e.currentTarget.elements.questManagerPin?.value||''))){alert('관리자 비밀번호를 확인하세요.');return}modal={type:'questManager',authorized:true};render()}
+function authorizeQuestManager(e){e.preventDefault();if(!checkAdminPin(String(e.currentTarget.elements.questManagerPin?.value||''))){appAlert('관리자 비밀번호를 확인하세요.');return}modal={type:'questManager',authorized:true};render()}
 function renderQuestManager(){
  if(modal?.type==='questManagerAuth')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()"><h2>🔐 전체 퀘스트 관리</h2><form class="qform" onsubmit="authorizeQuestManager(event)"><label>관리자 비밀번호</label><input class="qentry" type="password" name="questManagerPin" required autocomplete="off"><button class="modal-btn" type="submit">관리 목록 보기</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;
  if(modal?.type!=='questManager'||!modal.authorized)return '';
@@ -8494,7 +8587,7 @@ function editTask(id){if(!data.quests.find(q=>q.id===id))return;modal={type:'que
 function authorizeQuestEditor(e){
  e.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='questEditAuth')return;
  const typed=String(e.currentTarget.elements['questAdminPin']?.value||'');
- if(!checkAdminPin(typed)){alert('관리자 비밀번호가 올바르지 않습니다.');e.currentTarget.elements['questAdminPin'].value='';e.currentTarget.elements['questAdminPin'].focus();return}
+ if(!checkAdminPin(typed)){appAlert('관리자 비밀번호가 올바르지 않습니다.');e.currentTarget.elements['questAdminPin'].value='';e.currentTarget.elements['questAdminPin'].focus();return}
  const id=modal.id||null;modal={type:'questEditor',id,authorized:true};render();
 }
 
@@ -8509,14 +8602,14 @@ function questImportSources(){
 }
 function openQuestImport(){
  if(!startUnlocked||!currentUserId)return;
- if(!questImportSources().length){alert('가져올 다른 계정이 없습니다. 관리자 메뉴에서 다른 사용자 계정을 먼저 만들어 주세요.');return;}
+ if(!questImportSources().length){appAlert('가져올 다른 계정이 없습니다. 관리자 메뉴에서 다른 사용자 계정을 먼저 만들어 주세요.');return;}
  modal={type:'questImportAuth'};render();
 }
 function authorizeQuestImport(e){
  e.preventDefault();
  if(!startUnlocked||!currentUserId||modal?.type!=='questImportAuth')return;
  const input=e.currentTarget.elements['importAdminPin'];
- if(!checkAdminPin(input.value)){alert('관리자 비밀번호가 올바르지 않습니다.');input.value='';input.focus();return;}
+ if(!checkAdminPin(input.value)){appAlert('관리자 비밀번호가 올바르지 않습니다.');input.value='';input.focus();return;}
  const first=questImportSources()[0];
  if(!first){modal=null;render();return;}
  modal={type:'questImport',sourceId:first.id,authorized:true};render();
@@ -8535,11 +8628,11 @@ function updateQuestImportCount(){
  const el=document.getElementById('questImportSelectedCount');
  if(el)el.textContent=count+'개 선택';
 }
-function importQuests(scope){
+async function importQuests(scope){
  if(!startUnlocked||!currentUserId||modal?.type!=='questImport'||modal.authorized!==true||!['all','selected'].includes(scope))return;
  const destinationId=currentUserId,sourceId=modal.sourceId;
  const source=registry.users[sourceId],destination=registry.users[destinationId];
- if(!source||sourceId===destinationId||!destination||destination.data!==data){alert('계정 정보를 다시 확인해 주세요.');return;}
+ if(!source||sourceId===destinationId||!destination||destination.data!==data){appAlert('계정 정보를 다시 확인해 주세요.');return;}
  const existing=new Set(data.quests.map(questImportKey));
  const checked=new Set([...document.querySelectorAll('#questImportList input[name="selectedQuest"]:checked')].map(x=>x.value));
  const sourceList=source.data.quests||[],unique=[],keys=new Set(),skipped=[];
@@ -8549,18 +8642,18 @@ function importQuests(scope){
   if(existing.has(key)||keys.has(key)){skipped.push(q.title);continue;}
   unique.push(q);keys.add(key);
  }
- if(!unique.length){alert(scope==='selected'&&!checked.size?'가져올 퀘스트를 체크하세요.':'가져올 새로운 퀘스트가 없습니다. 같은 이름·카테고리·목표의 항목은 중복으로 복사하지 않습니다.');return;}
+ if(!unique.length){appAlert(scope==='selected'&&!checked.size?'가져올 퀘스트를 체크하세요.':'가져올 새로운 퀘스트가 없습니다. 같은 이름·카테고리·목표의 항목은 중복으로 복사하지 않습니다.');return;}
  const freeSlots=30-data.quests.length;
- if(unique.length>freeSlots){alert('퀘스트는 계정당 최대 30개입니다. 현재 빈 자리 '+freeSlots+'개, 가져올 항목 '+unique.length+'개입니다. 선택 수를 줄이거나 기존 퀘스트를 정리해 주세요. 아직 아무것도 복사하지 않았습니다.');return;}
+ if(unique.length>freeSlots){appAlert('퀘스트는 계정당 최대 30개입니다. 현재 빈 자리 '+freeSlots+'개, 가져올 항목 '+unique.length+'개입니다. 선택 수를 줄이거나 기존 퀘스트를 정리해 주세요. 아직 아무것도 복사하지 않았습니다.');return;}
  const missingCategories=[];
  for(const q of unique){
   if(data.categories.some(c=>c.name===q.category)||missingCategories.some(c=>c.name===q.category))continue;
   const from=source.data.categories?.find(c=>c.name===q.category);
   missingCategories.push({name:String(q.category||'기타').slice(0,25),emoji:String(from?.emoji||icons[q.category]||'✨').slice(0,12)});
  }
- if(data.categories.length+missingCategories.length>100){alert('가져오기에는 추가 카테고리가 필요하지만, 카테고리 최대 100개를 넘습니다. 기존 카테고리를 정리한 다음 다시 진행하세요.');return;}
+ if(data.categories.length+missingCategories.length>100){appAlert('가져오기에는 추가 카테고리가 필요하지만, 카테고리 최대 100개를 넘습니다. 기존 카테고리를 정리한 다음 다시 진행하세요.');return;}
  const summary='@'+sourceId+' → @'+destinationId+'\n새 퀘스트 '+unique.length+'개 가져오기'+(skipped.length?'\n중복 '+skipped.length+'개 제외':'')+'\n\n기존 퀘스트와 완료 기록은 유지됩니다. 진행할까요?';
- if(!confirm(summary))return;
+ if(!(await appConfirm(summary)))return;
  // Generate new IDs and audit entries; never mutate the source account or transfer its records.
  const usedIds=new Set(data.quests.map(q=>q.id));
  for(const cat of missingCategories){
@@ -8573,7 +8666,7 @@ function importQuests(scope){
   data.quests.push(copy);auditQuest('import',id,null,copy);
  }
  const persisted=save();modal=null;render();
- alert('✅ '+unique.length+'개 퀘스트를 가져왔습니다.'+(skipped.length?'\n중복 '+skipped.length+'개는 제외했습니다.':'')+(settings.autoSave&&!persisted?'\n⚠ 자동 저장이 실패했습니다. JSON Save로 즉시 백업해 주세요.':!settings.autoSave?'\n⚠ 자동 저장이 꺼져 있습니다. JSON Save로 백업해 주세요.':''));
+ appAlert('✅ '+unique.length+'개 퀘스트를 가져왔습니다.'+(skipped.length?'\n중복 '+skipped.length+'개는 제외했습니다.':'')+(settings.autoSave&&!persisted?'\n⚠ 자동 저장이 실패했습니다. JSON Save로 즉시 백업해 주세요.':!settings.autoSave?'\n⚠ 자동 저장이 꺼져 있습니다. JSON Save로 백업해 주세요.':''));
 }
 function renderQuestImportModal(){
  if(modal?.type==='questImportAuth')return `<div class="overlay" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()" role="dialog" aria-modal="true"><h2>🔐 퀘스트 가져오기 승인</h2><p class="modal-sub">다른 계정의 퀘스트를 복사하려면 관리자 비밀번호가 필요합니다.</p><form class="qform" onsubmit="authorizeQuestImport(event)"><label for="importAdminPin">관리자 비밀번호</label><input class="qentry" type="password" id="importAdminPin" name="importAdminPin" inputmode="numeric" autocomplete="off" required placeholder="비밀번호 입력"><button class="modal-btn" type="submit">🔓 가져오기 화면 열기</button></form><button class="modal-btn secondary" onclick="modal=null;render()">취소</button></div></div>`;
@@ -8586,65 +8679,65 @@ function renderQuestImportModal(){
 }
 
 function saveTask(event){
- event.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='questEditor'||modal.authorized!==true){alert('관리자 비밀번호 인증이 필요합니다.');return}const f=event.currentTarget,title=f.elements['title'].value.trim().slice(0,45),category=f.elements['questType'].value==='reserved'?'예약':f.elements['category'].value,goal=f.elements['goal'].value.trim().slice(0,90),limitMinutes=Number(f.elements['limitMinutes'].value),questKind=f.elements['questType'].value,weekdays=[...f.querySelectorAll('input[name=weekdays]:checked')].map(x=>Number(x.value)),eventChance=Number(f.elements['eventChance'].value),mode=f.elements['rewardMode'].value,xpMode=f.elements['xpMode'].value,recordMode=f.elements['recordMode'].value,recordUnit=String(f.elements['recordUnit'].value||'').trim().slice(0,12),recordTemplateId=SMART_TEMPLATES[f.elements['recordTemplateId']?.value]?f.elements['recordTemplateId'].value:'basic';
+ event.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='questEditor'||modal.authorized!==true){appAlert('관리자 비밀번호 인증이 필요합니다.');return}const f=event.currentTarget,title=f.elements['title'].value.trim().slice(0,45),category=f.elements['questType'].value==='reserved'?'예약':f.elements['category'].value,goal=f.elements['goal'].value.trim().slice(0,90),limitMinutes=Number(f.elements['limitMinutes'].value),questKind=f.elements['questType'].value,weekdays=[...f.querySelectorAll('input[name=weekdays]:checked')].map(x=>Number(x.value)),eventChance=Number(f.elements['eventChance'].value),mode=f.elements['rewardMode'].value,xpMode=f.elements['xpMode'].value,recordMode=f.elements['recordMode'].value,recordUnit=String(f.elements['recordUnit'].value||'').trim().slice(0,12),recordTemplateId=SMART_TEMPLATES[f.elements['recordTemplateId']?.value]?f.elements['recordTemplateId'].value:'basic';
  let rewardOverride=null;
  if(mode==='custom'){
-  if(['rewardMin','rewardMax','rewardStep'].some(n=>f.elements[n].value.trim()==='')){alert('개별 포인트 값은 모두 입력하세요.');return}
+  if(['rewardMin','rewardMax','rewardStep'].some(n=>f.elements[n].value.trim()==='')){appAlert('개별 포인트 값은 모두 입력하세요.');return}
   rewardOverride=cleanQuestReward({min:f.elements['rewardMin'].value,max:f.elements['rewardMax'].value,step:f.elements['rewardStep'].value});
-  if(!rewardOverride){alert('개별 포인트 범위를 확인하세요. 최소·최대 0~10000P, 최대≥최소, 간격으로 나누어떨어져야 합니다.');return}
+  if(!rewardOverride){appAlert('개별 포인트 범위를 확인하세요. 최소·최대 0~10000P, 최대≥최소, 간격으로 나누어떨어져야 합니다.');return}
  }
  const xpOverride=xpMode==='custom'&&f.elements['questXp'].value.trim()!==''?Number(f.elements['questXp'].value):null;
-  if(!['default','custom'].includes(xpMode)||(xpMode==='custom'&&cleanQuestXp(xpOverride)===null)){alert('개별 경험치는 0~1000XP 사이의 정수로 설정하세요.');return}
-  if(!ACHIEVEMENT_MODES.includes(recordMode)){alert('달성 기록 유형을 확인하세요.');return}
-  if(!title||!goal){alert('퀘스트 이름과 목표를 입력하세요. 예: 30분, 20쪽 읽기, 단어 15개');return}
- if(!QUEST_TYPES.includes(questKind)||(questKind==='weekly'&&!weekdays.length)||(questKind==='event'&&(!Number.isFinite(eventChance)||eventChance<0||eventChance>100))){alert('요일별 퀘스트는 요일을 선택하고 이벤트 발생률은 0~100%로 입력하세요.');return}
- if(!Number.isInteger(limitMinutes)||limitMinutes<1||limitMinutes>240){alert('시간 제한은 1~240분으로 설정하세요.');return}
- if(questKind==='reserved'&&(!validNoteDay(f.elements.startDate.value)||!validNoteDay(f.elements.endDate.value)||f.elements.endDate.value<f.elements.startDate.value)){alert('예약 시작일과 종료일을 확인해 주세요.');return}
- if(data.activeQuest&&data.activeQuest.id===modal.id){alert('진행 중인 퀘스트는 종료 또는 포기한 뒤 수정하세요.');return}
- if(!data.categories.some(c=>c.name===category)){alert('카테고리를 먼저 등록하세요.');return}
+  if(!['default','custom'].includes(xpMode)||(xpMode==='custom'&&cleanQuestXp(xpOverride)===null)){appAlert('개별 경험치는 0~1000XP 사이의 정수로 설정하세요.');return}
+  if(!ACHIEVEMENT_MODES.includes(recordMode)){appAlert('달성 기록 유형을 확인하세요.');return}
+  if(!title||!goal){appAlert('퀘스트 이름과 목표를 입력하세요. 예: 30분, 20쪽 읽기, 단어 15개');return}
+ if(!QUEST_TYPES.includes(questKind)||(questKind==='weekly'&&!weekdays.length)||(questKind==='event'&&(!Number.isFinite(eventChance)||eventChance<0||eventChance>100))){appAlert('요일별 퀘스트는 요일을 선택하고 이벤트 발생률은 0~100%로 입력하세요.');return}
+ if(!Number.isInteger(limitMinutes)||limitMinutes<1||limitMinutes>240){appAlert('시간 제한은 1~240분으로 설정하세요.');return}
+ if(questKind==='reserved'&&(!validNoteDay(f.elements.startDate.value)||!validNoteDay(f.elements.endDate.value)||f.elements.endDate.value<f.elements.startDate.value)){appAlert('예약 시작일과 종료일을 확인해 주세요.');return}
+ if(data.activeQuest&&data.activeQuest.id===modal.id){appAlert('진행 중인 퀘스트는 종료 또는 포기한 뒤 수정하세요.');return}
+ if(!data.categories.some(c=>c.name===category)){appAlert('카테고리를 먼저 등록하세요.');return}
  if(modal.id){const q=data.quests.find(q=>q.id===modal.id);if(q){const old={...q};q.title=title;q.category=category;q.goal=goal;q.limitMinutes=limitMinutes;q.rewardOverride=rewardOverride;q.xpOverride=xpOverride;q.questType=questKind;q.weekdays=weekdays;q.eventChance=eventChance;q.recordMode=recordMode;q.recordUnit=recordMode==='number'?(recordTemplateId==='basic'?recordUnit:SMART_TEMPLATES[recordTemplateId].unit):'';q.recordTemplateId=recordMode==='number'?recordTemplateId:'basic';q.startDate=questKind==='reserved'?f.elements.startDate.value:'';q.endDate=questKind==='reserved'?f.elements.endDate.value:'';delete q.mins;auditQuest('edit',q.id,old,q)}}
- else{if(data.quests.length>=30){alert('최대 30개까지 등록할 수 있습니다.');return}const newQ={id:'custom_'+Date.now()+'_'+ri(100,999),title,category,goal,limitMinutes,rewardOverride,xpOverride,questType:questKind,weekdays,eventChance,recordMode,recordUnit:recordMode==='number'?(recordTemplateId==='basic'?recordUnit:SMART_TEMPLATES[recordTemplateId].unit):'',recordTemplateId:recordMode==='number'?recordTemplateId:'basic',startDate:questKind==='reserved'?f.elements.startDate.value:'',endDate:questKind==='reserved'?f.elements.endDate.value:''};data.quests.push(newQ);auditQuest('create',newQ.id,null,newQ)}
+ else{if(data.quests.length>=30){appAlert('최대 30개까지 등록할 수 있습니다.');return}const newQ={id:'custom_'+Date.now()+'_'+ri(100,999),title,category,goal,limitMinutes,rewardOverride,xpOverride,questType:questKind,weekdays,eventChance,recordMode,recordUnit:recordMode==='number'?(recordTemplateId==='basic'?recordUnit:SMART_TEMPLATES[recordTemplateId].unit):'',recordTemplateId:recordMode==='number'?recordTemplateId:'basic',startDate:questKind==='reserved'?f.elements.startDate.value:'',endDate:questKind==='reserved'?f.elements.endDate.value:''};data.quests.push(newQ);auditQuest('create',newQ.id,null,newQ)}
  save();modal=null;render();
 }
 function openCategories(){modal={type:'categoryManager'};render()}
 function categoryEditor(original=''){modal={type:'categoryEditor',original};render()}
 function selectEmoji(emoji){const field=document.getElementById('categoryEmojiValue');if(field)field.value=emoji;document.querySelectorAll('.emoji-pick').forEach(b=>b.classList.toggle('selected',b.dataset.emoji===emoji))}
 function saveCategory(e){e.preventDefault();const original=modal?.original||'',f=e.currentTarget,name=f.elements['categoryName'].value.trim().slice(0,25),emoji=f.elements['categoryEmoji'].value;
- if(!name||!EMOJI_CHOICES.includes(emoji)){alert('이름과 아이콘을 선택하세요.');return}
- if(data.categories.some(c=>c.name===name&&c.name!==original)){alert('이미 있는 카테고리 이름입니다.');return}
+ if(!name||!EMOJI_CHOICES.includes(emoji)){appAlert('이름과 아이콘을 선택하세요.');return}
+ if(data.categories.some(c=>c.name===name&&c.name!==original)){appAlert('이미 있는 카테고리 이름입니다.');return}
  if(original){const cat=data.categories.find(c=>c.name===original);if(!cat)return;cat.name=name;cat.emoji=emoji;
  if(original!==name){for(const q of data.quests){if(q.category===original){const old={...q};q.category=name;auditQuest('edit',q.id,old,q)}}}
- }else{if(data.categories.length>=100){alert('카테고리는 최대 100개입니다.');return}data.categories.push({name,emoji})}
+ }else{if(data.categories.length>=100){appAlert('카테고리는 최대 100개입니다.');return}data.categories.push({name,emoji})}
  data.categoryEvents.push({at:new Date().toISOString(),action:original?'edit':'create',before:original,after:name,emoji});save();modal={type:'categoryManager'};render();
 }
-function deleteCategory(name){if(name==='기타'){alert('기타 카테고리는 삭제할 수 없습니다.');return}
+async function deleteCategory(name){if(name==='기타'){appAlert('기타 카테고리는 삭제할 수 없습니다.');return}
  const category=data.categories.find(c=>c.name===name);if(!category)return;
  const count=data.quests.filter(q=>q.category===name).length;
- if(!confirm(`「${name}」 카테고리를 삭제할까요?\n연결된 퀘스트 ${count}개는 '기타' 카테고리로 이동하고 기존 완료 이력은 유지합니다.`))return;
+ if(!(await appConfirm(`「${name}」 카테고리를 삭제할까요?\n연결된 퀘스트 ${count}개는 '기타' 카테고리로 이동하고 기존 완료 이력은 유지합니다.`)))return;
  for(const q of data.quests){if(q.category===name){const before={...q};q.category='기타';auditQuest('edit',q.id,before,q)}}
  data.categories=data.categories.filter(c=>c.name!==name);data.categoryEvents.push({at:new Date().toISOString(),action:'delete',before:name,after:'기타',emoji:category.emoji});save();modal={type:'categoryManager'};render();
 }
 function saveRewards(e){e.preventDefault();if(!adminUnlocked||screen!=='manual')return;const f=e.currentTarget,min=Number(f.elements['pointMin'].value),max=Number(f.elements['pointMax'].value),step=Number(f.elements['pointStep'].value),bonus=Number(f.elements['allDoneBonus'].value),defaultXp=Number(f.elements['defaultXp'].value);
- if(cleanQuestXp(defaultXp)===null){alert('기본 경험치는 0~1000XP 사이의 정수로 설정하세요.');return}
- if(![min,max,step,bonus].every(Number.isInteger)||min<0||max<min||max>10000||![1,5,10,20,50,100].includes(step)||(max-min)%step!==0||bonus<0||bonus>100000){alert('포인트 범위 또는 간격이 올바르지 않습니다. (최대-최소)는 간격으로 나누어떨어져야 합니다.');return}
- data.rules.pointMin=min;data.rules.pointMax=max;data.rules.pointStep=step;data.rules.defaultXp=defaultXp;data.rules.allDoneBonus=bonus;save();alert('포인트와 기본 경험치 설정을 저장했습니다. 다음 퀘스트 완료부터 적용됩니다.');render();
+ if(cleanQuestXp(defaultXp)===null){appAlert('기본 경험치는 0~1000XP 사이의 정수로 설정하세요.');return}
+ if(![min,max,step,bonus].every(Number.isInteger)||min<0||max<min||max>10000||![1,5,10,20,50,100].includes(step)||(max-min)%step!==0||bonus<0||bonus>100000){appAlert('포인트 범위 또는 간격이 올바르지 않습니다. (최대-최소)는 간격으로 나누어떨어져야 합니다.');return}
+ data.rules.pointMin=min;data.rules.pointMax=max;data.rules.pointStep=step;data.rules.defaultXp=defaultXp;data.rules.allDoneBonus=bonus;save();appAlert('포인트와 기본 경험치 설정을 저장했습니다. 다음 퀘스트 완료부터 적용됩니다.');render();
 }
 function saveSleepWeeklyReward(e){
  e.preventDefault();if(!adminUnlocked||!startUnlocked||screen!=='manual')return;
  const f=e.currentTarget,p=Number(f.elements.sleepPoints.value),xp=Number(f.elements.sleepXp.value);
- if(!Number.isSafeInteger(p)||p<0||p>100000||!Number.isSafeInteger(xp)||xp<0||xp>10000){alert('수면 보상은 포인트 0~100,000 / XP 0~10,000 정수로 설정하세요.');return}
+ if(!Number.isSafeInteger(p)||p<0||p>100000||!Number.isSafeInteger(xp)||xp<0||xp>10000){appAlert('수면 보상은 포인트 0~100,000 / XP 0~10,000 정수로 설정하세요.');return}
  const current=cleanSleepWeeklyReward(data.rules.sleepWeeklyReward);
- if(p===current.points&&xp===current.xp){alert('변경된 수면 보상 설정이 없습니다.');return}
+ if(p===current.points&&xp===current.xp){appAlert('변경된 수면 보상 설정이 없습니다.');return}
  data.rules.sleepWeeklyReward={points:p,xp};bumpRulesVersion();
  for(const u of Object.values(registry.users)){u.data.rules=registry.rules;bumpVersion(u)}
  const stored=saveRegistry();render();
- alert('수면 주간 보상이 저장됐습니다. '+(stored?'다음 미정산 주부터 적용돼요.':'자동 저장 OFF 상태입니다. JSON 백업을 사용하세요.'));
+ appAlert('수면 주간 보상이 저장됐습니다. '+(stored?'다음 미정산 주부터 적용돼요.':'자동 저장 OFF 상태입니다. JSON 백업을 사용하세요.'));
 }
 function saveOdds(e){e.preventDefault();if(!adminUnlocked||screen!=='manual')return;const f=e.currentTarget,next={};
  for(const t of TIERS){const prob=RARITIES.map((r,i)=>Number(f.elements[`${t.id}_prob_${i}`].value)),catchArr=RARITIES.map((r,i)=>Number(f.elements[`${t.id}_catch_${i}`].value));
- if([...prob,...catchArr].some(x=>!Number.isFinite(x)||x<0||x>100)||Math.abs(prob.reduce((a,b)=>a+b,0)-100)>0.00001){alert(`${t.name}: 등장 확률 합계는 반드시 100%이고 각 값은 0~100이어야 합니다.`);return}
+ if([...prob,...catchArr].some(x=>!Number.isFinite(x)||x<0||x>100)||Math.abs(prob.reduce((a,b)=>a+b,0)-100)>0.00001){appAlert(`${t.name}: 등장 확률 합계는 반드시 100%이고 각 값은 0~100이어야 합니다.`);return}
  next[t.id]={prob,catch:catchArr};}
- data.rules.tiers=next;save();alert('등장·포획 확률이 저장되었습니다. 다음 뽑기부터 반영됩니다.');render();
+ data.rules.tiers=next;save();appAlert('등장·포획 확률이 저장되었습니다. 다음 뽑기부터 반영됩니다.');render();
 }
 // Live draft controls; all preview actions affect form inputs only until explicit save.
 const clampPercent=v=>Math.max(0,Math.min(100,Number(v)||0));
@@ -8666,10 +8759,10 @@ function updateOddsSummary(){
  return `<tr><th>${esc(t.name)}</th><td>${(100-p[0]).toFixed(2)}%</td><td>${legend.toFixed(3)}%</td><td>${catchTotal.toFixed(2)}%</td><td>${total.toFixed(2)}%</td></tr>`;
  }).join('');
 }
-function oddsQuickAdjust(mode){
+async function oddsQuickAdjust(mode){
  if(!adminUnlocked||screen!=='manual')return;
  const form=document.getElementById('oddsEditor');if(!form)return;
- if(mode==='defaults'&&!confirm('등장·포획 확률 입력값을 추천 초기값으로 되돌릴까요? 실제 저장은 저장 버튼을 눌렀을 때만 적용됩니다.'))return;
+ if(mode==='defaults'&&!(await appConfirm('등장·포획 확률 입력값을 추천 초기값으로 되돌릴까요? 실제 저장은 저장 버튼을 눌렀을 때만 적용됩니다.')))return;
  const draft=draftOddsTable();
  for(const [i,t] of TIERS.entries()){
   const current=draft[t.id],def=DEFAULT_RULES().tiers[t.id];let p=[...current.prob],c=[...current.catch];
@@ -8692,9 +8785,9 @@ function oddsQuickAdjust(mode){
 function saveBoostSettings(e){
  e.preventDefault();if(!adminUnlocked||screen!=='manual')return;
  const f=e.currentTarget,b={},limits={pointPerDay:[0,50],pointCap:[0,500],xpPerDay:[0,50],xpCap:[0,500],totalPointCap:[1,10]};
- for(const [k,[min,max]] of Object.entries(limits)){const n=Number(f.elements[k].value);if(!Number.isFinite(n)||n<min||n>max){alert(k+' 설정 범위를 확인하세요.');return}b[k]=n}
+ for(const [k,[min,max]] of Object.entries(limits)){const n=Number(f.elements[k].value);if(!Number.isFinite(n)||n<min||n>max){appAlert(k+' 설정 범위를 확인하세요.');return}b[k]=n}
  b.pointEnabled=f.elements.pointEnabled.checked;b.xpEnabled=f.elements.xpEnabled.checked;
- data.rules.boost=b;bumpRulesVersion();saveRegistry();save();alert('연속 수행 포인트·XP 부스트 설정을 저장했습니다.');render();
+ data.rules.boost=b;bumpRulesVersion();saveRegistry();save();appAlert('연속 수행 포인트·XP 부스트 설정을 저장했습니다.');render();
 }
 function updateGiftSummary(){
  const f=document.getElementById('giftCurveEditor'),target=document.getElementById('giftPreviewRows');if(!f||!target)return;
@@ -8718,22 +8811,22 @@ function saveGiftCurve(e){
  const f=e.currentTarget,rows=[];
  for(let i=0;i<DEFAULT_GIFT_CURVE().length;i++){
   const level=Number(f.elements[`giftLevel_${i}`].value),weights=TIERS.map((_,j)=>Number(f.elements[`giftWeight_${i}_${j}`].value));
-  if(!Number.isInteger(level)||level<5||level%5!==0||level>100000||(i&&level<=rows[i-1].level)||weights.some(w=>!Number.isFinite(w)||w<0||w>100)||Math.abs(weights.reduce((a,v)=>a+v,0)-100)>.001){alert(`${i+1}번째 선물 단계: 레벨은 5의 배수·오름차순, 혼합 비율 합계는 100%여야 합니다.`);return}
+  if(!Number.isInteger(level)||level<5||level%5!==0||level>100000||(i&&level<=rows[i-1].level)||weights.some(w=>!Number.isFinite(w)||w<0||w>100)||Math.abs(weights.reduce((a,v)=>a+v,0)-100)>.001){appAlert(`${i+1}번째 선물 단계: 레벨은 5의 배수·오름차순, 혼합 비율 합계는 100%여야 합니다.`);return}
   rows.push({level,weights});
  }
- data.rules.giftCurve=rows;bumpRulesVersion();saveRegistry();save();alert('레벨 선물 확률 곡선을 저장했습니다. 앞으로 달성할 레벨부터 적용됩니다.');render();
+ data.rules.giftCurve=rows;bumpRulesVersion();saveRegistry();save();appAlert('레벨 선물 확률 곡선을 저장했습니다. 앞으로 달성할 레벨부터 적용됩니다.');render();
 }
-function resetRuleSection(section){
+async function resetRuleSection(section){
  if(!adminUnlocked||screen!=='manual')return;
  const names={all:'모든 관리자 확률·보상·부스트·선물 설정',boost:'연속 수행 부스트',gift:'5레벨 선물 비율'};
- if(!confirm(`${names[section]}을(를) 추천 초기값으로 복원할까요? 계정/퀘스트/포인트/도감/이력은 변경하지 않습니다.`))return;
+ if(!(await appConfirm(`${names[section]}을(를) 추천 초기값으로 복원할까요? 계정/퀘스트/포인트/도감/이력은 변경하지 않습니다.`)))return;
  const defaults=DEFAULT_RULES();
  if(section==='all')data.rules=defaults;
  if(section==='boost')data.rules.boost=defaults.boost;
  if(section==='gift')data.rules.giftCurve=defaults.giftCurve;
- bumpRulesVersion();saveRegistry();save();render();alert('해당 설정을 초기값으로 복원했습니다.');
+ bumpRulesVersion();saveRegistry();save();render();appAlert('해당 설정을 초기값으로 복원했습니다.');
 }
-function removeTask(id){if(!startUnlocked||!currentUserId||modal?.type!=='questEditor'||modal.authorized!==true||modal.id!==id){alert('삭제 전 관리자 비밀번호 인증이 필요합니다.');return}if(data.activeQuest?.id===id){alert('진행 중인 퀘스트는 먼저 종료하거나 포기한 후 삭제하세요.');return;}const q=data.quests.find(x=>x.id===id);if(q&&confirm(`'${q.title}' 퀘스트를 삭제할까요?\n과거 완료·수정 기록은 유지됩니다.`)){auditQuest('delete',q.id,q,null);data.quests=data.quests.filter(x=>x.id!==id);save();modal=null;render()}}
+async function removeTask(id){if(!startUnlocked||!currentUserId||modal?.type!=='questEditor'||modal.authorized!==true||modal.id!==id){appAlert('삭제 전 관리자 비밀번호 인증이 필요합니다.');return}if(data.activeQuest?.id===id){appAlert('진행 중인 퀘스트는 먼저 종료하거나 포기한 후 삭제하세요.');return;}const q=data.quests.find(x=>x.id===id);if(q&&(await appConfirm(`'${q.title}' 퀘스트를 삭제할까요?\n과거 완료·수정 기록은 유지됩니다.`))){auditQuest('delete',q.id,q,null);data.quests=data.quests.filter(x=>x.id!==id);save();modal=null;render()}}
 function randomRarity(weights,roll=rng()*100){let total=0;for(let i=0;i<weights.length;i++){total+=weights[i];if(roll<total)return RARITIES[i]}return 'legendary'}
 // v1.7.69: level distribution for draw-only encounters. Milestone gifts remain Lv.1.
 function wildEncounterLevel(){const roll=rng()*100;const picked=roll<80?1:roll<95?ri(2,9):roll<99?ri(10,19):ri(20,30);return Math.min(trainingRules().maxLevel,picked)}
@@ -8759,7 +8852,7 @@ function battlePlan(mon,wildId,wildLevel){
  return {buddyUid:mon.uid,buddySpecies:mon.species,buddyLevel:mon.level,allyMove,enemyMove,levelBoost,moveBoost,typeBoost,winPct:pct};
 }
 function draw(tierId){ensureTrainingProfile(data);if(data.pendingEncounter){openPendingCapture();return}
- const t=TIERS.find(x=>x.id===tierId);if(!t||data.points<t.price){alert('포인트가 부족합니다. 퀘스트를 완료해 포인트를 모으세요.');return}
+ const t=TIERS.find(x=>x.id===tierId);if(!t||data.points<t.price){appAlert('포인트가 부족합니다. 퀘스트를 완료해 포인트를 모으세요.');return}
  const rarityRoll=rng()*100,rarity=randomRarity(probFor(t),rarityRoll);
  const pool=availableRarityPool(rarity,data),poolIndex=ri(0,pool.length-1),id=pool[poolIndex];
  const wildLevel=wildEncounterLevel(),buddy=wildLevel>=10?currentBuddy():null;
@@ -8841,24 +8934,24 @@ function openAdminReset(){
  if(!startUnlocked||!adminUnlocked||screen!=='manual')return;
  modal={type:'adminReset'};render();setTimeout(()=>document.getElementById('resetAdminCode')?.focus(),30);
 }
-function oldResetAll(event){
+async function oldResetAll(event){
  event.preventDefault();
  if(!startUnlocked||!adminUnlocked||screen!=='manual'||modal?.type!=='adminReset')return;
  const pin=document.getElementById('resetAdminCode')?.value;
  const phrase=document.getElementById('resetConfirmWord')?.value?.trim();
  if(!checkAdminPin(pin)||phrase!=='초기화'){
-  alert('관리자 비밀번호 또는 확인 문구가 올바르지 않아 초기화하지 않았습니다.');
+  appAlert('관리자 비밀번호 또는 확인 문구가 올바르지 않아 초기화하지 않았습니다.');
   const pinInput=document.getElementById('resetAdminCode');if(pinInput){pinInput.value='';pinInput.focus()}
   return;
  }
- if(!confirm('마지막 확인입니다. 모든 퀘스트, 달력 이력, 포인트, 포켓몬 도감, 뽑기 기록과 퀘스트 완료 비밀번호가 삭제/초기화됩니다. JSON 백업이 없다면 복구할 수 없습니다. 정말 새로 시작할까요?'))return;
+ if(!(await appConfirm('마지막 확인입니다. 모든 퀘스트, 달력 이력, 포인트, 포켓몬 도감, 뽑기 기록과 퀘스트 완료 비밀번호가 삭제/초기화됩니다. JSON 백업이 없다면 복구할 수 없습니다. 정말 새로 시작할까요?')))return;
  // 자동 저장 OFF인 경우에도 예전 자동 저장 데이터가 다시 나타나지 않게 저장소 원본을 지웁니다.
- try{localStorage.removeItem(KEY)}catch(e){alert('브라우저 저장소 삭제에 실패해 초기화를 중단했습니다. 저장소 설정을 확인하세요.');return}
+ try{localStorage.removeItem(KEY)}catch(e){appAlert('브라우저 저장소 삭제에 실패해 초기화를 중단했습니다. 저장소 설정을 확인하세요.');return}
  clearCaptureTimers();data=DEFAULT();
- if(settings.autoSave&&!save())alert('새 게임 상태의 자동 저장에 실패했습니다. 새로 시작한 후 JSON Save를 권장합니다.');
+ if(settings.autoSave&&!save())appAlert('새 게임 상태의 자동 저장에 실패했습니다. 새로 시작한 후 JSON Save를 권장합니다.');
  adminUnlocked=false;startUnlocked=false;screen='home';modal=null;filter='all';manualSearch='';manualRarity='all';
  calendarMonth=day().slice(0,7);selectedDate=day();calendarMode='month';render();
- alert('새 게임 상태로 초기화했습니다. 관리자 비밀번호로 다시 시작하세요.');
+ appAlert('새 게임 상태로 초기화했습니다. 관리자 비밀번호로 다시 시작하세요.');
 }
 function oldExportData(){
  const snapshot={app:'PokeRoutine',version:9,exportedAt:new Date().toISOString(),settings:{autoSave:settings.autoSave,theme:settings.theme,fontSize:settings.fontSize},data};
@@ -8866,9 +8959,9 @@ function oldExportData(){
  a.href=u;a.download=`pokeroutine-save-${day()}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)
 }
 
-function loginAdmin(e){e.preventDefault();const typed=document.getElementById('adminPassword')?.value;if(checkAdminPin(typed)){adminUnlocked=true;modal=null;screen='manual';render()}else{alert('관리자 비밀번호가 올바르지 않습니다.');document.getElementById('adminPassword').value='';document.getElementById('adminPassword').focus()}}
+function loginAdmin(e){e.preventDefault();const typed=document.getElementById('adminPassword')?.value;if(checkAdminPin(typed)){adminUnlocked=true;modal=null;screen='manual';render()}else{appAlert('관리자 비밀번호가 올바르지 않습니다.');document.getElementById('adminPassword').value='';document.getElementById('adminPassword').focus()}}
 function openAdmin(){if(adminUnlocked){setScreen('manual');return}modal={type:'adminLogin'};render();setTimeout(()=>document.getElementById('adminPassword')?.focus(),30)}
-function logoutAdmin(){if(adminDraftChanges()&&!confirm('저장하지 않은 관리자 설정이 있습니다. 로그아웃할까요?'))return;adminUnlocked=false;manualSearch='';manualRarity='all';screen='home';render()}
+async function logoutAdmin(){if(adminDraftChanges()&&!(await appConfirm('저장하지 않은 관리자 설정이 있습니다. 로그아웃할까요?')))return;adminUnlocked=false;manualSearch='';manualRarity='all';screen='home';render()}
 function updateManualSearch(value){manualSearch=value;const wrap=document.getElementById('manualPokeList');if(wrap)wrap.innerHTML=renderManualRows()}
 function updateManualRarity(value){manualRarity=value;const wrap=document.getElementById('manualPokeList');if(wrap)wrap.innerHTML=renderManualRows()}
 function renderManualRows(){const filtered=availablePokemonIds(data).filter(id=>(manualRarity==='all'||pokeClass(id)===manualRarity)&&(name(id).toLowerCase().includes(manualSearch.toLowerCase())||String(id).includes(manualSearch)));
@@ -8889,7 +8982,7 @@ function resetHonorCriteriaDraft(){
  const form=document.getElementById('honorCriteriaAdminForm');if(!form)return;
  for(const [key,values] of Object.entries(HONOR_DEFAULT_TARGETS))values.forEach((v,i)=>{form.elements[`honor_${key}_${i}`].value=v});
 }
-function saveHonorCriteria(event){
+async function saveHonorCriteria(event){
  event.preventDefault();if(!adminUnlocked||!startUnlocked||screen!=='manual')return;
  const f=event.currentTarget,next={};
  for(const c of HONOR_REGULAR){
@@ -8897,14 +8990,14 @@ function saveHonorCriteria(event){
   for(let i=0;i<5;i++){
    const input=f.elements[`honor_${c.id}_${i}`],raw=String(input?.value||'').trim(),value=Number(raw);
    if(!/^\d+$/.test(raw)||!Number.isSafeInteger(value)||value<1||value>HONOR_TARGET_LIMITS[c.id]||(i>0&&value<=values[i-1])){
-    alert(`${c.name} ${HONOR_GRADES[i+1]} 기준은 1~${HONOR_TARGET_LIMITS[c.id]} 사이의 정수이고, 앞 등급보다 커야 합니다.`);input?.focus();return;
+    appAlert(`${c.name} ${HONOR_GRADES[i+1]} 기준은 1~${HONOR_TARGET_LIMITS[c.id]} 사이의 정수이고, 앞 등급보다 커야 합니다.`);input?.focus();return;
    }
    values.push(value);
   }
   next[c.id]=values;
  }
- if(JSON.stringify(next)===JSON.stringify(cleanHonorTargets(registry.rules?.honorTargets))){alert('변경된 기준이 없습니다.');return;}
- if(!confirm('관리자 훈장 기준을 전체 계정에 적용할까요?\n기존 획득 훈장을 현재 기록으로 재판정하고, 이전 48시간 훈장 부스트는 종료됩니다.\n훈련·퀘스트·도감 기록과 현재 보유 포인트는 그대로 유지됩니다.'))return;
+ if(JSON.stringify(next)===JSON.stringify(cleanHonorTargets(registry.rules?.honorTargets))){appAlert('변경된 기준이 없습니다.');return;}
+ if(!(await appConfirm('관리자 훈장 기준을 전체 계정에 적용할까요?\n기존 획득 훈장을 현재 기록으로 재판정하고, 이전 48시간 훈장 부스트는 종료됩니다.\n훈련·퀘스트·도감 기록과 현재 보유 포인트는 그대로 유지됩니다.')))return;
  const previous=deepCopy(registry);
  data.rules={...registry.rules,honorTargets:next};bumpRulesVersion();
  for(const u of Object.values(registry.users)){
@@ -8914,9 +9007,9 @@ function saveHonorCriteria(event){
  }
  if(!saveRegistry(true)){
   registry=previous;data=registry.users[currentUserId]?.data||DEFAULT();data.rules=registry.rules;
-  alert('저장 공간 문제로 기준 변경을 취소했습니다. 기존 설정과 훈장 상태를 복구했습니다.');render();return;
+  appAlert('저장 공간 문제로 기준 변경을 취소했습니다. 기존 설정과 훈장 상태를 복구했습니다.');render();return;
  }
- data=registry.users[currentUserId].data;modal=null;render();alert(`일반 훈장 기준을 저장했습니다. 전체 ${Object.keys(registry.users).length}개 계정을 새 기준으로 재판정했습니다.`);
+ data=registry.users[currentUserId].data;modal=null;render();appAlert(`일반 훈장 기준을 저장했습니다. 전체 ${Object.keys(registry.users).length}개 계정을 새 기준으로 재판정했습니다.`);
 }
 function renderAdminLegacyContent(){if(!adminUnlocked||!startUnlocked)return '';return `
 ${renderTrainingAdmin()}
@@ -9115,7 +9208,7 @@ function openReservation(id=null){
  modal={type:'reservationAuth',id};render();
 }
 function authorizeReservation(e){
- e.preventDefault();if(!checkAdminPin(e.currentTarget.elements.reservationPin.value)){alert('관리자 비밀번호를 확인하세요.');return}
+ e.preventDefault();if(!checkAdminPin(e.currentTarget.elements.reservationPin.value)){appAlert('관리자 비밀번호를 확인하세요.');return}
  modal={type:'reservationEditor',id:modal.id||null,authorized:true};render();
 }
 function saveReservation(e){
@@ -9123,11 +9216,11 @@ function saveReservation(e){
  const f=e.currentTarget,title=String(f.elements.reservedTitle.value||'').trim().slice(0,45);
  const start=String(f.elements.reservedStart.value||''),end=String(f.elements.reservedEnd.value||'');
  const goal=String(f.elements.reservedGoal.value||'').trim().slice(0,90)||'10분';
- if(!title||!validNoteDay(start)||!validNoteDay(end)||end<start){alert('퀘스트 이름 및 예약 기간을 확인하세요.');return}
+ if(!title||!validNoteDay(start)||!validNoteDay(end)||end<start){appAlert('퀘스트 이름 및 예약 기간을 확인하세요.');return}
  const old=modal.id?data.quests.find(q=>q.id===modal.id&&questType(q)==='reserved'):null;
- if(old){if(data.activeQuest?.id===old.id){alert('진행 중인 퀘스트는 수정할 수 없습니다.');return}const prev={...old};Object.assign(old,{title,goal,category:'예약',startDate:start,endDate:end});auditQuest('edit',old.id,prev,old)}
+ if(old){if(data.activeQuest?.id===old.id){appAlert('진행 중인 퀘스트는 수정할 수 없습니다.');return}const prev={...old};Object.assign(old,{title,goal,category:'예약',startDate:start,endDate:end});auditQuest('edit',old.id,prev,old)}
  else{
-  if(data.quests.length>=30){alert('퀘스트는 최대 30개까지 등록 가능합니다.');return}
+  if(data.quests.length>=30){appAlert('퀘스트는 최대 30개까지 등록 가능합니다.');return}
   const newQ={id:'reserve_'+Date.now()+'_'+ri(100,999),title,category:'예약',goal,questType:'reserved',startDate:start,endDate:end,weekdays:[],eventChance:0,limitMinutes:10,rewardOverride:null,xpOverride:null};
   data.quests.push(newQ);auditQuest('create',newQ.id,null,newQ);
  }
@@ -9212,7 +9305,7 @@ function showCalendarNote(k){modal=null;screen='calendar';selectedDate=k;calenda
 function saveNoteFromList(e,k){
  e.preventDefault();if(!validNoteDay(k))return;
  const content=String(e.currentTarget.elements.noteText.value||'').trim().slice(0,2000);
- if(!content){alert('내용을 입력하세요.');return}
+ if(!content){appAlert('내용을 입력하세요.');return}
  data.dailyNotes[k]={text:content,updatedAt:new Date().toISOString()};if(modal?.type==='notesList')modal.openDay=k;save();render();
 }
 function scheduledCountForDate(k,filterId='all'){
@@ -9297,7 +9390,7 @@ function lifeNightTitle(key){const d=new Date(`${key}T12:00:00`);return `${Numbe
 function lifeSleepLogsForNight(night){return (data.lifeEventLogs||[]).filter(x=>x.eventId==='sleep'&&sleepSessionNight(x)===night).sort((a,b)=>String(a.at||'').localeCompare(String(b.at||'')))}
 function lifeRerender(){const sc=window.scrollY;save();render();nativeAlarmSync(true);window.scrollTo({top:sc,behavior:'instant'})}
 function lifeQuickRecord(id){
- if(id==='walk'){if(selectedDate===day())return walkQuickRecord();return alert('걷기 시작·종료는 오늘 날짜에서만 사용할 수 있어요.')}
+ if(id==='walk'){if(selectedDate===day())return walkQuickRecord();return appAlert('걷기 시작·종료는 오늘 날짜에서만 사용할 수 있어요.')}
  if(!startUnlocked||!currentUserId||!lifeCfg().enabled)return;
  const event=lifeDef(id);if(!event||!event.enabled)return;
  // A calendar left open across midnight may still be displaying yesterday. The sleep quick action
@@ -9332,16 +9425,16 @@ function openLifeEventEditor(id=''){modal={type:'lifeEditor',id};render()}
 function saveLifeEventDefinition(e){
  e.preventDefault();if(!startUnlocked||!currentUserId||modal?.type!=='lifeEditor')return;
  const f=e.currentTarget,name=String(f.elements.lifeName.value||'').trim().slice(0,22),emoji=String(f.elements.lifeEmoji.value||'').trim().slice(0,12),color=lifeSafeColor(f.elements.lifeColor.value),mode=f.elements.lifeMode.value==='repeat'?'repeat':'once',suggest=lifeClockValid(f.elements.lifeSuggest.value)?f.elements.lifeSuggest.value:'';
- if(!name){alert('이벤트 이름을 입력해 주세요.');return}
+ if(!name){appAlert('이벤트 이름을 입력해 주세요.');return}
  const old=lifeDef(modal.id);
  if(old)Object.assign(old,{name,emoji:emoji||'📌',color,mode:old.id==='walk'?'repeat':mode,suggest});
  else if(lifeCfg().items.length<30)lifeCfg().items.push({id:'life_'+randomId().replaceAll('-',''),name,emoji:emoji||'📌',color,mode,suggest,enabled:true});
- else return alert('이벤트는 최대 30개까지 만들 수 있어요.');
+ else return appAlert('이벤트는 최대 30개까지 만들 수 있어요.');
  modal={type:'lifeSettings'};lifeRerender();
 }
-function deleteLifeEventDefinition(id){
+async function deleteLifeEventDefinition(id){
  const cfg=lifeCfg(),old=lifeDef(id);if(!old)return;
- if(!confirm(`'${old.name}' 버튼을 삭제할까요? 이미 작성한 생활 기록은 유지돼요.`))return;
+ if(!(await appConfirm(`'${old.name}' 버튼을 삭제할까요? 이미 작성한 생활 기록은 유지돼요.`)))return;
  cfg.items=cfg.items.filter(x=>x.id!==id);modal={type:'lifeSettings'};lifeRerender();
 }
 function openLifeMore(){modal={type:'lifeMore'};render()}
@@ -9355,26 +9448,26 @@ function openLifeLogEditor(logId='',eventId='',key=selectedDate){
 function saveLifeEventLog(e){
  e.preventDefault();if(modal?.type!=='lifeLogEditor'||!startUnlocked||!currentUserId)return;
  const f=e.currentTarget,key=f.elements.lifeDay.value,clock=f.elements.lifeClock.value,note=String(f.elements.lifeNote.value||'').slice(0,300);
- if(!validNoteDay(key)||!lifeClockValid(clock))return alert('날짜와 시간을 확인해 주세요.');
+ if(!validNoteDay(key)||!lifeClockValid(clock))return appAlert('날짜와 시간을 확인해 주세요.');
  const old=(data.lifeEventLogs||[]).find(x=>x.id===modal.logId),def=lifeDef(modal.eventId);
  if(!old&&!def)return;
- if((def?.mode||'once')==='once'&&(data.lifeEventLogs||[]).some(x=>x.eventId===modal.eventId&&x.id!==old?.id&&(modal.eventId==='sleep'?sleepSessionNight(x)===sleepSessionNight({day:key,clock}):x.day===key)))return alert(modal.eventId==='sleep'?'같은 밤의 취침 기록이 이미 있어요. 기존 기록을 수정해 주세요.':'이 이벤트는 하루 한 번만 기록할 수 있어요. 기존 기록을 수정해 주세요.');
+ if((def?.mode||'once')==='once'&&(data.lifeEventLogs||[]).some(x=>x.eventId===modal.eventId&&x.id!==old?.id&&(modal.eventId==='sleep'?sleepSessionNight(x)===sleepSessionNight({day:key,clock}):x.day===key)))return appAlert(modal.eventId==='sleep'?'같은 밤의 취침 기록이 이미 있어요. 기존 기록을 수정해 주세요.':'이 이벤트는 하루 한 번만 기록할 수 있어요. 기존 기록을 수정해 주세요.');
  const at=lifeLocalTime(key,clock),updatedAt=new Date().toISOString();
  let walkExtra={};
  if(modal.eventId==='walk'){
   const endDay=String(f.elements.lifeEndDay?.value||''),endClock=String(f.elements.lifeEndClock?.value||'');
-  if(!validNoteDay(endDay)||!lifeClockValid(endClock))return alert('걷기 종료 날짜와 시각을 입력하세요.');
+  if(!validNoteDay(endDay)||!lifeClockValid(endClock))return appAlert('걷기 종료 날짜와 시각을 입력하세요.');
   const endAt=lifeLocalTime(endDay,endClock),durationMinutes=walkDurationMinutes(at,endAt);
-  if(new Date(endAt)<new Date(at)||new Date(endAt)-new Date(at)>7*24*3600000)return alert('종료는 시작 이후, 7일 이내여야 해요.');
+  if(new Date(endAt)<new Date(at)||new Date(endAt)-new Date(at)>7*24*3600000)return appAlert('종료는 시작 이후, 7일 이내여야 해요.');
   walkExtra={endAt,endClock,durationMinutes,steps:Number.isInteger(old?.steps)?old.steps:null};
  }
  if(old)Object.assign(old,{day:key,clock,at,note,updatedAt,...walkExtra});
  else data.lifeEventLogs.push({id:randomId(),eventId:def.id,day:key,clock,at,name:def.name,emoji:def.emoji,color:def.color,note,updatedAt,...walkExtra});
  const review=sleepWeeklyCheckFromWake(old||data.lifeEventLogs[data.lifeEventLogs.length-1]);selectedDate=key;calendarMonth=key.slice(0,7);modal=null;lastLifeEntryId=null;lifeRerender();sleepWeeklyCheckNotice(review);
 }
-function deleteLifeLog(id){
+async function deleteLifeLog(id){
  if(!startUnlocked||!currentUserId||(data.lifeEventLogs||[]).every(x=>x.id!==id))return;
- if(!confirm('이 생활 기록을 삭제할까요? 퀘스트와 보상은 그대로 유지됩니다.'))return;
+ if(!(await appConfirm('이 생활 기록을 삭제할까요? 퀘스트와 보상은 그대로 유지됩니다.')))return;
  data.lifeEventLogs=data.lifeEventLogs.filter(x=>x.id!==id);lastLifeEntryId=null;modal=null;lifeRerender();
 }
 function renderLifeEventPanel(key){
@@ -9466,8 +9559,8 @@ function persistSleepGoals(bed,wake){
 function saveSleepGoals(e){
  e.preventDefault();if(!startUnlocked||!currentUserId)return;
  const form=e.currentTarget,bed=form.elements.bedGoal.value,wake=form.elements.wakeGoal.value;
- if(!persistSleepGoals(bed,wake))return alert('취침·기상 목표 시각을 확인해 주세요.');
- lifeRerender();alert(`수면 목표가 저장됐습니다. 오늘 밤 → 내일 아침부터 적용됩니다.\n취침 ${bed} 이전 · 기상 ${wake} 이전`);
+ if(!persistSleepGoals(bed,wake))return appAlert('취침·기상 목표 시각을 확인해 주세요.');
+ lifeRerender();appAlert(`수면 목표가 저장됐습니다. 오늘 밤 → 내일 아침부터 적용됩니다.\n취침 ${bed} 이전 · 기상 ${wake} 이전`);
 }
 function sleepNightLog(night,profile=data){
  const next=sleepDateAdd(night,1),logs=profile.lifeEventLogs||[];
@@ -9514,8 +9607,8 @@ function sleepWeeklyCheckFromWake(log){
 }
 function sleepWeeklyCheckNotice(review){
  if(!review)return;
- if(review.status==='awarded')alert(`🎁 지난주 수면 습관 ${review.hits}/14개 달성${review.perfect?' · 완벽 달성!':''}\n+${format(review.points)}P · +${format(review.xp)}XP 지급!`);
- else alert(`🌙 지난주 수면 습관 ${review.hits}/14개 달성\n이번 주 보상은 0P · 0XP예요. 다음 주에도 이어가요!`);
+ if(review.status==='awarded')appAlert(`🎁 지난주 수면 습관 ${review.hits}/14개 달성${review.perfect?' · 완벽 달성!':''}\n+${format(review.points)}P · +${format(review.xp)}XP 지급!`);
+ else appAlert(`🌙 지난주 수면 습관 ${review.hits}/14개 달성\n이번 주 보상은 0P · 0XP예요. 다음 주에도 이어가요!`);
 }
 let sleepViewedWeek='';
 function sleepWeekNavigate(delta){const start=sleepViewedWeek||sleepWeekMonday(day());sleepViewedWeek=delta===0?sleepWeekMonday(day()):sleepDateAdd(start,7*delta);render()}
@@ -9580,8 +9673,8 @@ function lifeRhythmToggleOverview(id){
  const defs=lifeCfg().items.filter(d=>d.mode!=='repeat');if(!defs.some(d=>d.id===id))return;
  const existing=lifeRhythmOverviewSelection(lifeCfg().items).map(x=>x.id);
  const next=existing.includes(id)?existing.filter(x=>x!==id):[...existing,id];
- if(next.length<1)return alert('비교할 이벤트를 하나 이상 선택해 주세요.');
- if(next.length>4)return alert('한눈에 비교할 이벤트는 최대 4개까지 선택할 수 있어요.');
+ if(next.length<1)return appAlert('비교할 이벤트를 하나 이상 선택해 주세요.');
+ if(next.length>4)return appAlert('한눈에 비교할 이벤트는 최대 4개까지 선택할 수 있어요.');
  data.lifeRhythmView={...lifeRhythmView(),overviewIds:next};lifeRerender();
 }
 function lifeRhythmSaveGoal(event){
@@ -9590,11 +9683,11 @@ function lifeRhythmSaveGoal(event){
  const form=event.currentTarget,goals={...(data.lifeRhythmGoals?.[id]||{time:'',count:0})};
  if(def.mode==='repeat'){
   const count=Number(form.elements.targetCount.value);
-  if(!Number.isInteger(count)||count<1||count>99){alert('하루 목표 횟수는 1~99회로 입력하세요.');return}
+  if(!Number.isInteger(count)||count<1||count>99){appAlert('하루 목표 횟수는 1~99회로 입력하세요.');return}
   goals.count=count;
  }else{
   const clock=form.elements.targetClock.value;
-  if(!lifeClockValid(clock)){alert('HH:MM 형식의 목표 시각을 입력하세요.');return}
+  if(!lifeClockValid(clock)){appAlert('HH:MM 형식의 목표 시각을 입력하세요.');return}
   if(id==='sleep'||id==='wake'){
    const current=sleepGoalsFor(sleepDateAdd(day(),1));
    const bed=id==='sleep'?clock:current.bed,wake=id==='wake'?clock:current.wake;
@@ -9824,21 +9917,21 @@ function cancelMomentLogEdit(){editingMomentLogId=null;render();document.getElem
 function saveMomentLog(e,key){
  e.preventDefault();if(!startUnlocked||!currentUserId||!validNoteDay(key))return;
  const form=e.currentTarget,kind=['thought','event','idea'].includes(form.elements.momentKind.value)?form.elements.momentKind.value:'thought',mood=['😄','🙂','😐','😟','😡'].includes(form.elements.momentMood.value)?form.elements.momentMood.value:'😐',text=String(form.elements.momentText.value||'').trim().slice(0,500);
- if(!text){alert('기록 내용을 한 줄이라도 작성해 주세요.');return;}
+ if(!text){appAlert('기록 내용을 한 줄이라도 작성해 주세요.');return;}
  const old=editingMomentLogId?(data.momentLogs||[]).find(x=>x.id===editingMomentLogId&&x.day===key):null;
- if(!old&&key!==day()){alert('새 순간 기록은 오늘 날짜에만 작성할 수 있어요. 지난 기록은 기존 항목을 수정할 수 있습니다.');return;}
+ if(!old&&key!==day()){appAlert('새 순간 기록은 오늘 날짜에만 작성할 수 있어요. 지난 기록은 기존 항목을 수정할 수 있습니다.');return;}
  const now=new Date().toISOString();
  if(old){old.text=text;old.kind=kind;old.mood=mood;old.updatedAt=now;}
  else {data.momentLogs=data.momentLogs||[];data.momentLogs.push({id:randomId(),day:key,at:now,clock:momentClockAtCreation(),kind,mood,text,updatedAt:now});}
  editingMomentLogId=null;const ok=save();render();document.getElementById('dailyTimeLog')?.scrollIntoView({behavior:'instant',block:'start'});
- if(!settings.autoSave||!ok)alert('기록은 화면에 반영되었습니다. 기기 저장을 유지하려면 자동 저장을 켜거나 JSON Save로 백업하세요.');
+ if(!settings.autoSave||!ok)appAlert('기록은 화면에 반영되었습니다. 기기 저장을 유지하려면 자동 저장을 켜거나 JSON Save로 백업하세요.');
 }
-function deleteMomentLog(id){
+async function deleteMomentLog(id){
  if(!startUnlocked||!currentUserId||!(data.momentLogs||[]).some(x=>x.id===id))return;
- if(!confirm('선택한 순간 기록을 삭제할까요? 퀘스트 완료와 보상은 변경되지 않습니다.'))return;
+ if(!(await appConfirm('선택한 순간 기록을 삭제할까요? 퀘스트 완료와 보상은 변경되지 않습니다.')))return;
  data.momentLogs=data.momentLogs.filter(x=>x.id!==id);
  editingMomentLogId=null;const ok=save();render();document.getElementById('dailyTimeLog')?.scrollIntoView({behavior:'instant',block:'start'});
- if(!settings.autoSave||!ok)alert('삭제 결과를 유지하려면 JSON Save로 백업하세요.');
+ if(!settings.autoSave||!ok)appAlert('삭제 결과를 유지하려면 JSON Save로 백업하세요.');
 }
 function timeLogPointMinute(clock){
  const m=/^(\d{2}):(\d{2})$/.exec(String(clock||''));
@@ -10582,26 +10675,26 @@ function referenceActivitySave(event){
  const f=event.currentTarget.elements,title=String(f.refTitle.value||'').trim().slice(0,60);
  const startAt=f.refStartDate.value+'T'+f.refStartTime.value+':00';
  const endAt=f.refEndTime.value?f.refEndDate.value+'T'+f.refEndTime.value+':00':'';
- if(!title||!referenceValidLocalStamp(startAt))return alert('활동명과 시작 날짜·시각을 확인하세요.');
- if(endAt&&(!referenceValidLocalStamp(endAt)||Date.parse(endAt)<=Date.parse(startAt)))return alert('종료 시각은 시작 시각보다 나중이어야 합니다.');
- if(endAt&&Date.parse(endAt)-Date.parse(startAt)>7*86400000)return alert('한 기록은 최대 7일까지 가능합니다. 더 긴 기간은 나누어 기록해 주세요.');
+ if(!title||!referenceValidLocalStamp(startAt))return appAlert('활동명과 시작 날짜·시각을 확인하세요.');
+ if(endAt&&(!referenceValidLocalStamp(endAt)||Date.parse(endAt)<=Date.parse(startAt)))return appAlert('종료 시각은 시작 시각보다 나중이어야 합니다.');
+ if(endAt&&Date.parse(endAt)-Date.parse(startAt)>7*86400000)return appAlert('한 기록은 최대 7일까지 가능합니다. 더 긴 기간은 나누어 기록해 주세요.');
  const notify=!!f.refNotify.checked&&Date.parse(startAt)>Date.now()+60000;
  const lead=Number(f.refLead.value)||0,notifyAt=Date.parse(startAt)-lead*60000;
- if(notify&&notifyAt<Date.now()+60000)return alert('알림 시점이 이미 지났습니다. 다른 알림 시점을 선택하세요.');
- if(notify&&notifyAt>Date.now()+365*86400000)return alert('시작 알림은 1년 이내 일정만 예약할 수 있어요. 알림을 끄면 더 먼 미래 활동도 저장할 수 있습니다.');
+ if(notify&&notifyAt<Date.now()+60000)return appAlert('알림 시점이 이미 지났습니다. 다른 알림 시점을 선택하세요.');
+ if(notify&&notifyAt>Date.now()+365*86400000)return appAlert('시작 알림은 1년 이내 일정만 예약할 수 있어요. 알림을 끄면 더 먼 미래 활동도 저장할 수 있습니다.');
  const old=referenceAll().find(a=>a.id===referenceEditId);
- if(referenceAll().length>=10000&&!old)return alert('참고 활동 저장 한도에 도달했습니다. 기존 기록을 정리해 주세요.');
+ if(referenceAll().length>=10000&&!old)return appAlert('참고 활동 저장 한도에 도달했습니다. 기존 기록을 정리해 주세요.');
  const item={id:old?.id||'act_'+randomId().replaceAll('-',''),title,startAt,endAt,note:String(f.refNote.value||'').trim().slice(0,300),reminderOn:notify,reminderLead:lead,updatedAt:new Date().toISOString()};
  if(old)Object.assign(old,item);else {if(!Array.isArray(data.referenceActivities))data.referenceActivities=[];data.referenceActivities.push(item)}
  const back=referenceEditorFromExpand,key=referenceOverlayDay;
  closeReferenceOverlay();const saved=save();nativeAlarmSync(true);render();
  if(back)openReferenceExpand(key,item.id);
- if(!settings.autoSave||!saved)alert('참고 활동을 현재 화면에 반영했지만 자동 저장이 꺼져 있거나 저장에 실패했습니다. JSON 백업을 확인하세요.');
+ if(!settings.autoSave||!saved)appAlert('참고 활동을 현재 화면에 반영했지만 자동 저장이 꺼져 있거나 저장에 실패했습니다. JSON 백업을 확인하세요.');
  if(notify&&nativeAlarmAvailable()&&!nativeAlarmState.notifications)nativeAlarmSend({type:'permissions'});
  if(notify&&!nativeAlarmAvailable()&&notificationSupported()&&Notification.permission==='default')askPersonalReminderPermission();
 }
-function deleteReferenceActivity(id){
- const item=referenceAll().find(a=>a.id===id);if(!item||!confirm('참고 활동 "'+item.title+'" 기록을 삭제할까요?'))return;
+async function deleteReferenceActivity(id){
+ const item=referenceAll().find(a=>a.id===id);if(!item||!(await appConfirm('참고 활동 "'+item.title+'" 기록을 삭제할까요?')))return;
  const back=referenceEditorFromExpand,key=referenceOverlayDay;
  data.referenceActivities=referenceAll().filter(a=>a.id!==id);
  closeReferenceOverlay();save();nativeAlarmSync(true);render();if(back)openReferenceExpand(key);
@@ -10609,7 +10702,7 @@ function deleteReferenceActivity(id){
 function referenceFinishNow(id){
  const item=referenceAll().find(a=>a.id===id);if(!item||item.endAt)return;
  const now=new Date(),stamp=dayFromLocalDate(now)+'T'+lifeClockNow()+':00';
- if(Date.parse(stamp)<=Date.parse(item.startAt))return alert('시작 시각보다 이후에 종료할 수 있어요.');
+ if(Date.parse(stamp)<=Date.parse(item.startAt))return appAlert('시작 시각보다 이후에 종료할 수 있어요.');
  item.endAt=stamp;item.updatedAt=now.toISOString();save();nativeAlarmSync(true);render();openReferenceExpand(referenceOverlayDay,id);
 }
 function openReferenceExpand(key=selectedDate,id=''){
@@ -11717,12 +11810,12 @@ function briefingNotificationDefs(){
 function saveBriefingNotificationSettings(event){
  event.preventDefault();const f=event.currentTarget;
  const morning=String(f.elements.briefMorningClock.value||''),evening=String(f.elements.briefEveningClock.value||'');
- if(!validBriefingClock(morning)||!validBriefingClock(evening))return alert('아침과 저녁 시각을 확인해 주세요.');
+ if(!validBriefingClock(morning)||!validBriefingClock(evening))return appAlert('아침과 저녁 시각을 확인해 주세요.');
  data.morningBriefTime=morning;data.eveningTime=evening;
  data.briefingMorningNotifyOn=!!f.elements.briefMorningEnabled.checked;
  data.briefingEveningNotifyOn=!!f.elements.briefEveningEnabled.checked;
  const ok=save();nativeAlarmSync(true);render();
- if(!ok)alert('자동 저장이 꺼져 있거나 브라우저 저장에 실패했습니다. JSON 백업으로 설정을 보관해 주세요.');
+ if(!ok)appAlert('자동 저장이 꺼져 있거나 브라우저 저장에 실패했습니다. JSON 백업으로 설정을 보관해 주세요.');
 }
 function nativeAlarmSync(force=false){
  if(!nativeAlarmAvailable()||!startUnlocked||!currentUserId||!data)return;
@@ -11760,7 +11853,7 @@ function nativeAlarmMessage(event){
    const status=document.getElementById('nativeWebRefreshStatus');
    if(status)status.textContent=txt;
    if(txt.includes('실패')||txt.includes('유지합니다'))nativeWebRefreshPending=false;
-  }else if(msg.type==='info' && msg.message){alert(String(msg.message).slice(0,300));}
+  }else if(msg.type==='info' && msg.message){appAlert(String(msg.message).slice(0,300));}
  }catch(e){}
 }
 let nativeUsagePermissionState=false;
@@ -11768,9 +11861,9 @@ let nativeWalkSession=null;
 let nativeWalkPermission=false,nativeWalkSensor=false;
 // APK-only web refresh: server version is checked by native code; PWA never shows the action.
 function requestNativeWebRefresh(){
- if(!nativeWebRefreshSupported||!nativeAlarmAvailable())return alert('이 기능은 최신 APK에서만 사용할 수 있습니다.');
+ if(!nativeWebRefreshSupported||!nativeAlarmAvailable())return appAlert('이 기능은 최신 APK에서만 사용할 수 있습니다.');
  if(nativeWebRefreshPending)return;
- if(!settings.autoSave||!storageAvailable)return alert('자동 저장이 꺼져 있거나 저장에 실패했습니다. 설정 → 데이터 백업 및 복원에서 자동 저장을 켜고, 정상 저장을 확인한 후 이용해 주세요.');
+ if(!settings.autoSave||!storageAvailable)return appAlert('자동 저장이 꺼져 있거나 저장에 실패했습니다. 설정 → 데이터 백업 및 복원에서 자동 저장을 켜고, 정상 저장을 확인한 후 이용해 주세요.');
  const status=document.getElementById('nativeWebRefreshStatus');
  if(status)status.textContent='최신 웹 버전 확인 중…';
  nativeWebRefreshPending=true;
@@ -11781,7 +11874,7 @@ function requestNativeWebRefresh(){
 }
 function requestWalkSensorPermission(){if(nativeAlarmAvailable())nativeAlarmSend({type:'walkPermission'});}
 
-function requestNativeUsageAccess(){if(!nativeAlarmAvailable())return alert('이 기능은 Android APK에서만 설정할 수 있어요.');nativeAlarmSend({type:'usagePermission'})}
+function requestNativeUsageAccess(){if(!nativeAlarmAvailable())return appAlert('이 기능은 Android APK에서만 설정할 수 있어요.');nativeAlarmSend({type:'usagePermission'})}
 function ingestNativeSleepEstimates(raw){
  const incoming=cleanDeviceSleepEstimates(raw);if(!incoming.length)return;
  const before=JSON.stringify(data.deviceSleepEstimates||[]);
@@ -11881,7 +11974,7 @@ function acceptNativeSleepEstimate(night,type){
  const clock=type==='sleep'?est.bed:est.wake;
  const key=type==='sleep'&&Number(clock.slice(0,2))<6?est.morning:type==='sleep'?night:est.morning;
  const exists=type==='sleep'?lifeSleepLogsForNight(night).length:lifeLogsForDate(key).some(x=>x.eventId==='wake');
- if(exists)return alert('이미 수동 기록이 있습니다. 기존 기록을 수정하세요.');
+ if(exists)return appAlert('이미 수동 기록이 있습니다. 기존 기록을 수정하세요.');
  const at=lifeLocalTime(key,clock),now=new Date().toISOString();
  data.lifeEventLogs.push({id:randomId(),eventId:type,day:key,clock,at,name:def.name,emoji:def.emoji,color:def.color,note:'휴대폰 미사용 기반 추정값을 사용자가 채택',updatedAt:now});
  const review=type==='wake'?sleepWeeklyCheckFromWake(data.lifeEventLogs[data.lifeEventLogs.length-1]):null;
@@ -11900,7 +11993,7 @@ setInterval(()=>{if(nativeAlarmAvailable())nativeAlarmSync()},5000);
 async function nativeDownloadJson(object,filename){
  // A single bridge message can exceed Android's message buffer: transfer in 24KB chunks.
  const bytes=new TextEncoder().encode(JSON.stringify(object,null,2));
- if(bytes.byteLength>100*1024*1024){alert('JSON 백업이 100MB를 넘어 APK에서 바로 저장할 수 없어요.');return}
+ if(bytes.byteLength>100*1024*1024){appAlert('JSON 백업이 100MB를 넘어 APK에서 바로 저장할 수 없어요.');return}
  const token='backup_'+Date.now()+'_'+Math.floor(Math.random()*1000000);
  if(!nativeAlarmSend({type:'fileBegin',token,name:filename,size:bytes.length}))throw Error('파일 저장 통신을 시작하지 못했습니다.');
  const chunkSize=24576;
@@ -11936,30 +12029,30 @@ function reminderSave(event){
  event.preventDefault();if(!currentUserId)return;
  const f=event.currentTarget,time=String(f.elements.reminderTime.value||''),title=String(f.elements.reminderTitle.value||'').trim().slice(0,80);
  const repeat=f.elements.reminderRepeat.value,weekday=Number(f.elements.reminderWeekday.value),date=String(f.elements.reminderDate.value||''),days=[...f.querySelectorAll('[name="reminderDays"]:checked')].map(e=>Number(e.value));
- if(repeat==='once'&&!validNoteDay(date))return alert('한 번만 알림의 날짜를 선택하세요.');
- if(repeat==='once'&&(date<day()||(date===day()&&time<=lifeClockNow())))return alert('한 번만 알림은 현재보다 미래의 날짜와 시간으로 설정해 주세요.');
- if(repeat==='custom'&&!days.length)return alert('알림을 받을 요일을 최소 하나 선택하세요.');
- if(!reminderTimeValid(time)||!title){alert('시간과 알림 내용을 입력하세요.');return}
+ if(repeat==='once'&&!validNoteDay(date))return appAlert('한 번만 알림의 날짜를 선택하세요.');
+ if(repeat==='once'&&(date<day()||(date===day()&&time<=lifeClockNow())))return appAlert('한 번만 알림은 현재보다 미래의 날짜와 시간으로 설정해 주세요.');
+ if(repeat==='custom'&&!days.length)return appAlert('알림을 받을 요일을 최소 하나 선택하세요.');
+ if(!reminderTimeValid(time)||!title){appAlert('시간과 알림 내용을 입력하세요.');return}
  const list=personalReminderList();
  if(reminderEditId){const r=list.find(x=>x.id===reminderEditId);if(!r)return;Object.assign(r,{time,title,repeat,weekday,days,date});}
- else {if(list.length>=100){alert('알림은 최대 100개까지 설정할 수 있어요.');return}list.push({id:'rem_'+randomId().replaceAll('-',''),time,title,enabled:true,repeat,weekday,days,date,questId:''});}
+ else {if(list.length>=100){appAlert('알림은 최대 100개까지 설정할 수 있어요.');return}list.push({id:'rem_'+randomId().replaceAll('-',''),time,title,enabled:true,repeat,weekday,days,date,questId:''});}
  const ok=save();nativeAlarmSync(true);reminderEditId='';render();
- if(!ok&&!settings.autoSave)alert('현재 앱에는 반영됐지만 자동 저장 OFF 상태입니다. JSON Save로 백업해 주세요.');
- else if(!ok)alert('알림 저장에 실패했습니다. 전체 JSON 백업을 확인해 주세요.');
+ if(!ok&&!settings.autoSave)appAlert('현재 앱에는 반영됐지만 자동 저장 OFF 상태입니다. JSON Save로 백업해 주세요.');
+ else if(!ok)appAlert('알림 저장에 실패했습니다. 전체 JSON 백업을 확인해 주세요.');
 }
 function reminderToggle(id,enabled){const r=personalReminderList().find(x=>x.id===id);if(!r)return;r.enabled=!!enabled;save();nativeAlarmSync(true);render()}
-function reminderDelete(id){const r=personalReminderList().find(x=>x.id===id);if(!r)return;if(!confirm('이 알림을 삭제할까요?'))return;data.personalReminders=personalReminderList().filter(x=>x.id!==id);if(reminderEditId===id)reminderEditId='';save();nativeAlarmSync(true);render()}
+async function reminderDelete(id){const r=personalReminderList().find(x=>x.id===id);if(!r)return;if(!(await appConfirm('이 알림을 삭제할까요?')))return;data.personalReminders=personalReminderList().filter(x=>x.id!==id);if(reminderEditId===id)reminderEditId='';save();nativeAlarmSync(true);render()}
 function notificationSupported(){return typeof Notification!=='undefined'&&window.isSecureContext}
 function reminderPermissionLabel(){if(nativeAlarmAvailable())return nativeAlarmState.notice||'APK 알림 연결됨 · 권한 상태 확인 중';return !notificationSupported()?'이 브라우저/주소에서는 시스템 알림 불가':Notification.permission==='granted'?'알림 권한 허용됨':Notification.permission==='denied'?'알림이 차단됨':'알림 권한 확인 필요'}
 async function askPersonalReminderPermission(){
  if(nativeAlarmAvailable()){nativeAlarmSend({type:'permissions'});return}
- if(!notificationSupported()){alert('HTTPS에서 Chrome/PWA로 실행해야 시스템 알림을 사용할 수 있습니다.');return}
+ if(!notificationSupported()){appAlert('HTTPS에서 Chrome/PWA로 실행해야 시스템 알림을 사용할 수 있습니다.');return}
  try{
   const perm=await Notification.requestPermission();
-  if(perm==='granted')alert('알림 권한이 허용됐습니다. 테스트 알림으로 수신을 확인하세요.');
-  else if(perm==='denied')alert('알림이 차단되어 있습니다. 휴대폰의 사이트 알림 설정에서 허용해야 해요.');
-  else alert('알림 권한을 허용하지 않았습니다.');
- }catch(e){alert('알림 권한 요청에 실패했습니다. Chrome 알림 설정을 확인해 주세요.')}
+  if(perm==='granted')appAlert('알림 권한이 허용됐습니다. 테스트 알림으로 수신을 확인하세요.');
+  else if(perm==='denied')appAlert('알림이 차단되어 있습니다. 휴대폰의 사이트 알림 설정에서 허용해야 해요.');
+  else appAlert('알림 권한을 허용하지 않았습니다.');
+ }catch(e){appAlert('알림 권한 요청에 실패했습니다. Chrome 알림 설정을 확인해 주세요.')}
  if(screen==='settings'&&settingsPage==='reminders')render();
 }
 async function showPersonalSystemNotification(title,id,isTest=false){
@@ -11977,10 +12070,10 @@ async function showPersonalSystemNotification(title,id,isTest=false){
 }
 async function testPersonalReminder(){
  if(nativeAlarmAvailable()){nativeAlarmSend({type:'test'});return}
- if(!notificationSupported()){alert('시스템 알림은 HTTPS의 지원 브라우저에서만 이용할 수 있습니다.');return}
- if(Notification.permission!=='granted'){alert('먼저 알림 권한을 허용해 주세요.');return}
+ if(!notificationSupported()){appAlert('시스템 알림은 HTTPS의 지원 브라우저에서만 이용할 수 있습니다.');return}
+ if(Notification.permission!=='granted'){appAlert('먼저 알림 권한을 허용해 주세요.');return}
  const ok=await showPersonalSystemNotification('PokeHabit 테스트 알림','test',true);
- if(!ok)alert('알림 표시가 실패했습니다. 휴대폰의 Chrome·PokeHabit 알림 설정을 확인해 주세요.');
+ if(!ok)appAlert('알림 표시가 실패했습니다. 휴대폰의 Chrome·PokeHabit 알림 설정을 확인해 주세요.');
 }
 function reminderSentKey(){return REMINDER_SENT_PREFIX+(currentUserId||'')}
 function getReminderSent(){try{return JSON.parse(localStorage.getItem(reminderSentKey())||'{}')||{}}catch(e){return {}}}
@@ -12024,14 +12117,14 @@ function setQuestBriefingReminder(id,clock){
  const list=personalReminderList(),old=questBriefingReminder(id);
  if(!clock){if(old)data.personalReminders=list.filter(x=>x.id!==old.id);}
  else{
-  if(!reminderTimeValid(clock))return alert('알림 시간을 확인하세요.');
-  if(completedToday(id))return alert('이미 완료한 퀘스트입니다.');
-  const now=lifeClockNow();if(clock<=now)return alert('오늘 남은 시간으로 설정하세요.');
+  if(!reminderTimeValid(clock))return appAlert('알림 시간을 확인하세요.');
+  if(completedToday(id))return appAlert('이미 완료한 퀘스트입니다.');
+  const now=lifeClockNow();if(clock<=now)return appAlert('오늘 남은 시간으로 설정하세요.');
   const r={time:clock,title:'퀘스트 · '+quest.title,enabled:true,repeat:'once',date:day(),questId:id,weekday:1,days:[]};
   if(old)Object.assign(old,r);
   else{
    data.personalReminders=list.filter(x=>x.repeat!=='once'||x.date>=day());
-   if(data.personalReminders.length>=100)return alert('알림은 최대 100개까지 설정할 수 있어요.');
+   if(data.personalReminders.length>=100)return appAlert('알림은 최대 100개까지 설정할 수 있어요.');
    data.personalReminders.push({id:'qrem_'+randomId().replaceAll('-',''),...r});
   }
  }
@@ -12076,7 +12169,7 @@ function renderSettings(){
   case 'profile':contents=`<section class="settings-card"><h2>👤 ${esc(currentTrainer().name)}</h2><p>현재 로그인: @${esc(currentUserId)}</p><div class="backup-actions"><button class="tinybtn" type="button" onclick="setScreen('trainers')">트레이너 비교</button><button class="tinybtn" type="button" onclick="logoutUser()">계정 전환·로그아웃</button></div></section>`;break;
   case 'reminders':contents=renderPersonalReminderSettings();break;
   case 'app':contents=nativeWebRefreshSupported?`<section class="settings-card"><h2>🔄 최신 웹 버전 확인 및 새로고침</h2><p>GitHub Pages의 최신 웹 버전을 먼저 확인한 후, 화면 파일만 다시 불러옵니다. 기존 퀘스트·라이프 이벤트·로그인 데이터는 삭제하지 않습니다.</p><button class="tinybtn" type="button" onclick="requestNativeWebRefresh()">최신 웹 버전 확인 및 새로고침</button><p class="backup-hint" id="nativeWebRefreshStatus" role="status" aria-live="polite">버튼을 누르면 최신 웹 버전을 확인합니다. 인터넷 연결이 없으면 기존 화면을 유지합니다.</p><p class="backup-hint">주의: 안전한 새로고침을 위해 자동 저장이 정상 동작할 때만 진행됩니다. 별도 JSON 백업도 권장합니다. PWA에는 이 메뉴가 나타나지 않습니다.</p></section>`:'';break;
-  case 'appearance':contents=`<section class="settings-card"><h2>🎨 화면 스킨</h2><p>밝고 화사한 스킨과 기존의 진한 밤하늘 스킨을 선택하세요.</p><div class="appearance-options"><button type="button" class="appearance-btn ${settings.theme==='light'?'chosen':''}" onclick="setTheme('light')">☀️ 밝은 스킨</button><button type="button" class="appearance-btn ${settings.theme==='dark'?'chosen':''}" onclick="setTheme('dark')">🌙 밤하늘 스킨</button></div></section><section class="settings-card"><h2>🔠 글자 크기</h2><p>아이들이 보기 편하게 전체 글자와 버튼 크기를 조절합니다.</p><div class="appearance-options"><button type="button" class="appearance-btn ${settings.fontSize==='small'?'chosen':''}" onclick="setFontSize('small')">작게</button><button type="button" class="appearance-btn ${settings.fontSize==='normal'?'chosen':''}" onclick="setFontSize('normal')">보통</button><button type="button" class="appearance-btn ${settings.fontSize==='large'?'chosen':''}" onclick="setFontSize('large')">크게</button><button type="button" class="appearance-btn ${settings.fontSize==='xlarge'?'chosen':''}" onclick="setFontSize('xlarge')">아주 크게</button></div></section><section class="settings-card"><div class="setting-header"><div><h2>👆 좌우 스와이프로 탭 이동</h2><p>오늘 ↔ 뽑기 ↔ 도감 ↔ 훈련 ↔ 달력 ↔ 기록. 화면을 한 손가락으로 좌우로 밀면 옆 탭으로 이동합니다. 세로 스크롤, 카드 조작, 두 손가락 도감 확대는 그대로 이용할 수 있어요.</p></div><label class="toggle"><input type="checkbox" id="swipeTabsToggle" ${settings.swipeTabs?'checked':''} onchange="toggleSwipeTabs(this.checked)" aria-label="좌우 스와이프 탭 이동 켜기 끄기"><span class="toggle-track"></span></label></div><div class="setting-state">현재: <b>${settings.swipeTabs?'스와이프 ON':'스와이프 OFF'}</b> · 이 기기에 저장 · 기본값 ON</div></section><section class="settings-card"><h2>🌙 대표 포켓몬 마무리 브리핑 시간</h2><p>지정 시각 이후 오늘 탭에서 하루 한 번 표시됩니다. 저녁 브리핑 알림을 켜면 이 시각에 발송하며, 알림 ON/OFF는 개인 알림 메뉴에서 설정합니다.</p><form class="qform" onsubmit="saveEveningBriefingTime(event)"><label>저녁 브리핑 시각</label><input class="qentry" type="time" name="eveningBriefTime" required value="${esc(data.eveningTime||'21:00')}"><button class="tinybtn" type="submit">브리핑 시간 저장</button></form></section>`;break;
+  case 'appearance':contents=`<section class="settings-card"><h2>🎨 화면 스킨</h2><p>밝음·어두움 고정 또는 기기 현지 시각에 따라 자동 전환할 수 있어요.</p><div class="appearance-options"><button type="button" class="appearance-btn ${settings.theme==='light'?'chosen':''}" onclick="setTheme('light')">☀️ 밝은 스킨</button><button type="button" class="appearance-btn ${settings.theme==='dark'?'chosen':''}" onclick="setTheme('dark')">🌙 밤하늘 스킨</button><button type="button" class="appearance-btn ${settings.theme==='auto'?'chosen':''}" onclick="setTheme('auto')">🌓 자동 전환</button></div>${settings.theme==='auto'?`<div class="auto-theme-time-row"><label>☀️ 밝게 전환<input type="time" class="qentry" value="${settings.autoLightAt}" onchange="setAutoThemeTime('light',this.value)"></label><label>🌙 어둡게 전환<input type="time" class="qentry" value="${settings.autoDarkAt}" onchange="setAutoThemeTime('dark',this.value)"></label></div><p class="backup-hint">현재 적용: <b>${effectiveTheme()==='light'?'밝은 스킨':'밤하늘 스킨'}</b> · 기기 시간 기준 · 앱을 열어둬도 자동 변경</p>`:''}</section><section class="settings-card"><h2>🔠 글자 크기</h2><p>아이들이 보기 편하게 전체 글자와 버튼 크기를 조절합니다.</p><div class="appearance-options"><button type="button" class="appearance-btn ${settings.fontSize==='small'?'chosen':''}" onclick="setFontSize('small')">작게</button><button type="button" class="appearance-btn ${settings.fontSize==='normal'?'chosen':''}" onclick="setFontSize('normal')">보통</button><button type="button" class="appearance-btn ${settings.fontSize==='large'?'chosen':''}" onclick="setFontSize('large')">크게</button><button type="button" class="appearance-btn ${settings.fontSize==='xlarge'?'chosen':''}" onclick="setFontSize('xlarge')">아주 크게</button></div></section><section class="settings-card"><div class="setting-header"><div><h2>👆 좌우 스와이프로 탭 이동</h2><p>오늘 ↔ 뽑기 ↔ 도감 ↔ 훈련 ↔ 달력 ↔ 기록. 화면을 한 손가락으로 좌우로 밀면 옆 탭으로 이동합니다. 세로 스크롤, 카드 조작, 두 손가락 도감 확대는 그대로 이용할 수 있어요.</p></div><label class="toggle"><input type="checkbox" id="swipeTabsToggle" ${settings.swipeTabs?'checked':''} onchange="toggleSwipeTabs(this.checked)" aria-label="좌우 스와이프 탭 이동 켜기 끄기"><span class="toggle-track"></span></label></div><div class="setting-state">현재: <b>${settings.swipeTabs?'스와이프 ON':'스와이프 OFF'}</b> · 이 기기에 저장 · 기본값 ON</div></section><section class="settings-card"><h2>🌙 대표 포켓몬 마무리 브리핑 시간</h2><p>지정 시각 이후 오늘 탭에서 하루 한 번 표시됩니다. 저녁 브리핑 알림을 켜면 이 시각에 발송하며, 알림 ON/OFF는 개인 알림 메뉴에서 설정합니다.</p><form class="qform" onsubmit="saveEveningBriefingTime(event)"><label>저녁 브리핑 시각</label><input class="qentry" type="time" name="eveningBriefTime" required value="${esc(data.eveningTime||'21:00')}"><button class="tinybtn" type="submit">브리핑 시간 저장</button></form></section>`;break;
   case 'backup':contents=`<section class="settings-card"><div class="setting-header"><div><h2>💾 상태 변경 시 자동 저장</h2><p>퀘스트 등록·수정·삭제, 완료, 포인트 획득·소모, 뽑기, 포획 성공·실패 등 모든 상태 변경을 즉시 저장합니다.</p></div><label class="toggle"><input type="checkbox" id="autoSaveToggle" ${settings.autoSave?'checked':''} onchange="toggleAutoSave(this.checked)" aria-label="자동 저장 ON OFF"><span class="toggle-track"></span></label></div><div class="setting-state">현재: <b>${settings.autoSave?'자동 저장 ON':'자동 저장 OFF'}</b> · 초기 설정은 ON</div>${storageStatus()}</section><section class="settings-card"><h2>📂 전체 데이터 Save / Load</h2><p>JSON 하나에 모든 ID의 퀘스트·전체 달력 이력·포인트·레벨·도감·비밀번호와 관리자 공통 규칙을 포함합니다. 여러 JSON을 한꺼번에 선택해 병합할 수 있습니다.</p>${backupButtons()}<p class="backup-hint">자동 저장이 꺼져도 수동 Save / Load는 사용할 수 있습니다. 기기를 바꿀 때는 최신 JSON을 불러오세요.</p></section>`;break;
   case 'advanced':contents=`<section class="settings-card"><div class="setting-header"><div><h2>📝 달성 기록 보너스</h2><p>퀘스트 완료 승인 시 <b>달성량 숫자 입력</b> 또는 <b>상세 메모 10자 이상</b> 중 하나를 충족하면 최종 포인트와 XP 각각 +20%를 한 번 추가 지급합니다. 완료 전 임시 저장에는 보상이 없으며 완료 후 기록 수정도 보너스를 변경하지 않습니다.</p></div><label class="toggle"><input type="checkbox" ${data.rules?.recordBonusEnabled?'checked':''} onchange="requestAchievementBonusToggle(this.checked)" aria-label="달성 기록 작성 보너스 ON OFF"><span class="toggle-track"></span></label></div><div class="setting-state">현재: <b>${data.rules?.recordBonusEnabled?'보너스 ON':'보너스 OFF'}</b> · 기본 OFF · 모든 트레이너 공통 관리자 설정 · 변경 시 관리자 PIN 필요</div></section><section class="settings-card" id="regionUnlockSettings"><h2>🗺️ 도감 지역 열림 기준 · 관리자 설정</h2><p>1세대 관동에서 서로 다른 포켓몬을 몇 종 모으면 2세대 성도가 열릴지 설정합니다. 모든 트레이너에게 같은 기준을 적용하지만, 이미 열린 지역은 다시 잠기지 않습니다.</p><form class="qform" onsubmit="saveRegionThresholdSettings(event)"><label for="johtoOpenTarget">2세대 성도지방 열림 기준 (1~151종)</label><div class="qform-row"><div><input class="qentry" id="johtoOpenTarget" type="number" name="johtoOpenTarget" inputmode="numeric" min="1" max="151" step="1" required value="${regionOpenThreshold(data,POKE_REGIONS[1])}"></div><div><input class="qentry" type="password" name="regionAdminPin" inputmode="numeric" autocomplete="off" maxlength="8" placeholder="관리자 비밀번호" aria-label="지역 설정 관리자 비밀번호" required></div></div><button class="tinybtn" type="submit">🔒 지역 열림 기준 저장</button></form><p class="backup-hint">기본값 100종 · 중복 포획은 수집 종류에 포함하지 않음 · 설정 변경은 모든 계정에 적용 · 열린 지역은 계속 유지 · JSON 백업 대상</p></section><section class="settings-card"><h2>🔒 데이터 초기화</h2><p>처음부터 다시 시작하는 기능은 위험한 작업이므로 <b>관리자 모드</b> 안에서만 이용할 수 있습니다. 설정 메뉴에서는 초기화할 수 없습니다.</p></section>`;break;
   default:contents='';
@@ -12086,7 +12179,7 @@ function renderSettings(){
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.145</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.147</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -12702,7 +12795,7 @@ function saveBriefingNote(e){
 }
 function saveEveningBriefingTime(e){
  e.preventDefault();const t=String(e.currentTarget.elements.eveningBriefTime.value||'');
- if(!validBriefingClock(t)){alert('마무리 시간은 00:00~23:59 범위로 설정하세요.');return}
+ if(!validBriefingClock(t)){appAlert('마무리 시간은 00:00~23:59 범위로 설정하세요.');return}
  data.eveningTime=t;save();nativeAlarmSync(true);render();
 }
 function buddyBriefingAvatar(){
@@ -13585,27 +13678,27 @@ function persistAdminPin(next){
  registry.adminPin=next;adminPinRevision();
  if(!saveRegistry(true)){
   Object.assign(registry,previous);
-  alert('관리자 비밀번호 저장에 실패했습니다. JSON 백업과 브라우저 저장 공간을 확인하세요.');return false;
+  appAlert('관리자 비밀번호 저장에 실패했습니다. JSON 백업과 브라우저 저장 공간을 확인하세요.');return false;
  }
  return true;
 }
 function changeAdminPin(e){
  e.preventDefault();if(!adminUnlocked||!startUnlocked||screen!=='manual')return;
  const f=e.currentTarget,oldPin=f.elements['oldAdminPin'].value,newPin=f.elements['newAdminPin'].value,verify=f.elements['newAdminPinConfirm'].value;
- if(!checkAdminPin(oldPin)){alert('현재 관리자 비밀번호가 올바르지 않습니다.');f.reset();return}
- if(!pinValid(newPin)||newPin!==verify){alert('새 관리자 비밀번호는 숫자 4~8자리이며 확인 입력과 일치해야 합니다.');return}
- if(newPin===oldPin){alert('기존과 다른 비밀번호를 입력하세요.');return}
+ if(!checkAdminPin(oldPin)){appAlert('현재 관리자 비밀번호가 올바르지 않습니다.');f.reset();return}
+ if(!pinValid(newPin)||newPin!==verify){appAlert('새 관리자 비밀번호는 숫자 4~8자리이며 확인 입력과 일치해야 합니다.');return}
+ if(newPin===oldPin){appAlert('기존과 다른 비밀번호를 입력하세요.');return}
  if(!persistAdminPin(newPin))return;
- adminUnlocked=false;modal=null;screen='home';render();alert('관리자 비밀번호를 변경했습니다. 관리자 메뉴에 다시 로그인하세요.');
+ adminUnlocked=false;modal=null;screen='home';render();appAlert('관리자 비밀번호를 변경했습니다. 관리자 메뉴에 다시 로그인하세요.');
 }
 function openMasterRecovery(){modal={type:'masterRecovery'};render()}
 function recoverAdminPin(e){
  e.preventDefault();const f=e.currentTarget;
  const master=f.elements['masterCode'].value,newPin=f.elements['recoveredAdminPin'].value,again=f.elements['recoveredAdminPinConfirm'].value;
- if(master!==MASTER_RECOVERY_PIN){alert('마스터 비밀번호가 올바르지 않습니다.');f.elements['masterCode'].value='';return}
- if(!pinValid(newPin)||newPin!==again){alert('새 관리자 비밀번호는 숫자 4~8자리이며 확인 입력과 일치해야 합니다.');return}
+ if(master!==MASTER_RECOVERY_PIN){appAlert('마스터 비밀번호가 올바르지 않습니다.');f.elements['masterCode'].value='';return}
+ if(!pinValid(newPin)||newPin!==again){appAlert('새 관리자 비밀번호는 숫자 4~8자리이며 확인 입력과 일치해야 합니다.');return}
  if(!persistAdminPin(newPin))return;
- adminUnlocked=false;modal=null;render();alert('관리자 비밀번호를 재설정했습니다. 새 비밀번호로 로그인하세요.');
+ adminUnlocked=false;modal=null;render();appAlert('관리자 비밀번호를 재설정했습니다. 새 비밀번호로 로그인하세요.');
 }
 
 // v1.1 adds login persistence only. The JSON/registry version stays 10 for compatibility.
@@ -13686,7 +13779,7 @@ function rememberLogin(id,persistent){
  try{
   if(persistent)localStorage.setItem(AUTH_REMEMBER_KEY,JSON.stringify(session));
   else localStorage.removeItem(AUTH_REMEMBER_KEY);
- }catch(e){if(persistent)alert('이 기기에서 로그인 유지 설정을 저장하지 못했습니다. 이 탭에서 새로고침하는 동안에는 로그인이 유지될 수 있습니다.')}
+ }catch(e){if(persistent)appAlert('이 기기에서 로그인 유지 설정을 저장하지 못했습니다. 이 탭에서 새로고침하는 동안에는 로그인이 유지될 수 있습니다.')}
 }
 function readRememberedLogin(){
  // Per-tab login takes precedence. Reopen from the home-screen uses localStorage.
@@ -13718,17 +13811,17 @@ function bindTrainer(id){
 }
 function loginUser(e){
  e.preventDefault();const f=e.currentTarget,id=normalizeId(f.elements['trainerId'].value),pin=f.elements['loginPin'].value,u=registry.users[id];
- if(!u||!u.enabled||u.password!==pin){alert('ID 또는 비밀번호가 맞지 않거나 비활성화된 계정입니다.');f.elements['loginPin'].value='';return}
+ if(!u||!u.enabled||u.password!==pin){appAlert('ID 또는 비밀번호가 맞지 않거나 비활성화된 계정입니다.');f.elements['loginPin'].value='';return}
  bindTrainer(id);rememberLogin(id,!!f.elements['rememberDevice']?.checked);render();openPendingNotificationBriefing();nativeAlarmSync(true);weatherAutoUpdate(true);if(data.pendingEncounter)openPendingCapture();else if(data.activeQuest){modal={type:data.activeQuest.finishedAt?'questVerify':'questTimer',id:data.activeQuest.id};render()}
  setTimeout(resumeLevelGiftRoulette,60);
 }
-function logoutUser(){if(!confirm('현재 계정에서 로그아웃하고 계정을 전환할까요? 자동 저장 OFF라면 JSON 백업이 필요합니다.'))return;
+async function logoutUser(){if(!(await appConfirm('현재 계정에서 로그아웃하고 계정을 전환할까요? 자동 저장 OFF라면 JSON 백업이 필요합니다.')))return;
  if(settings.autoSave)saveRegistry(true);
  clearRememberedLogin();clearCaptureTimers();currentUserId=null;data=DEFAULT();data.rules=registry.rules;adminUnlocked=false;screen='home';modal=null;nativeAlarmLastSnapshot='';render();}
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.145</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.147</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -13836,9 +13929,9 @@ function renderTrainers(){
 function renderFeverAdmin(){
  return `<div class="manual-section" id="m-fever"><h3>✨ 계정별 FEVER TIME · 매일 1시간</h3><p>각 트레이너마다 <b>매일 반복되는 시작 시간(24시간제)</b>을 지정합니다. 기본값은 <b>ON, 20:00~21:00</b>입니다. 날짜가 넘어가는 23:30~00:30도 지원합니다. 시간 기준은 사용 중인 기기의 현지 시각이며, 완료 비밀번호를 올바르게 승인한 순간에 적용합니다.</p><form class="qform" id="feverAdminForm" onsubmit="saveFeverSchedules(event)"><div class="fever-admin-list">${Object.values(registry.users).sort((a,b)=>a.id.localeCompare(b.id)).map(u=>{const f=cleanFever(u.data.feverTime);return `<div class="fever-admin-row"><div class="fever-admin-name"><strong>${esc(u.name)}</strong><small>@${esc(u.id)} · ${f.enabled?`${f.start}~${feverState(u.data).end}`:'현재 꺼짐'}</small></div><label class="fever-admin-toggle"><input type="checkbox" name="feverOn_${esc(u.id)}" ${f.enabled?'checked':''}> ON</label><label class="fever-admin-start">시작 <input class="qentry" type="time" name="feverStart_${esc(u.id)}" value="${f.start}" required></label></div>`}).join('')}</div><div class="admin-quick-controls"><button type="submit" class="modal-btn">✨ 모든 계정 FEVER 설정 저장</button><button type="button" class="btn-outline" onclick="resetFeverDraft()">↺ 기본값 20:00 · ON으로 입력 복원</button></div></form><p class="admin-note">설정값은 각 사용자 JSON과 계정별 데이터 병합에 포함됩니다. 입력 복원 버튼은 <b>저장 전까지 실제 값을 변경하지 않습니다.</b> 기존 완료 기록은 재계산하지 않습니다.</p></div>`;
 }
-function resetFeverDraft(){
+async function resetFeverDraft(){
  if(!adminUnlocked||screen!=='manual')return;
- if(!confirm('화면의 모든 FEVER 입력을 ON · 20:00으로 되돌릴까요? 저장을 누르기 전에는 실제 변경되지 않습니다.'))return;
+ if(!(await appConfirm('화면의 모든 FEVER 입력을 ON · 20:00으로 되돌릴까요? 저장을 누르기 전에는 실제 변경되지 않습니다.')))return;
  const f=document.getElementById('feverAdminForm');if(!f)return;
  for(const u of Object.values(registry.users)){f.elements[`feverOn_${u.id}`].checked=true;f.elements[`feverStart_${u.id}`].value='20:00'}
 }
@@ -13847,12 +13940,12 @@ function saveFeverSchedules(event){
  const f=event.currentTarget,changes=[];
  for(const u of Object.values(registry.users)){
   const start=f.elements[`feverStart_${u.id}`]?.value,enabled=!!f.elements[`feverOn_${u.id}`]?.checked;
-  if(!validFeverTime(start)){alert(`${u.name}의 FEVER 시작 시간은 HH:MM 형식이어야 합니다.`);return}
+  if(!validFeverTime(start)){appAlert(`${u.name}의 FEVER 시작 시간은 HH:MM 형식이어야 합니다.`);return}
   const newSetting={enabled,start};if(JSON.stringify(cleanFever(u.data.feverTime))!==JSON.stringify(newSetting))changes.push([u,newSetting]);
  }
  for(const [u,fv] of changes){u.data.feverTime=fv;bumpVersion(u)}
  const ok=saveRegistry();updateFeverVisual();render();
- if(changes.length)alert(ok?'계정별 FEVER TIME을 저장했습니다. 완료 보상에는 다음 승인부터 적용됩니다.':'화면의 설정은 변경됐지만 자동 저장이 꺼져 있거나 저장에 실패했습니다. JSON Save로 즉시 백업하세요.');
+ if(changes.length)appAlert(ok?'계정별 FEVER TIME을 저장했습니다. 완료 보상에는 다음 승인부터 적용됩니다.':'화면의 설정은 변경됐지만 자동 저장이 꺼져 있거나 저장에 실패했습니다. JSON Save로 즉시 백업하세요.');
 }
 function renderAdminUsers(){
  return `<div class="admin-note">총 ${Object.keys(registry.users).length}명 · 계정은 이 기기에 저장되고 전체 JSON에 포함됩니다. 로그인 비밀번호와 퀘스트 완료 비밀번호는 별개입니다.</div>
@@ -13862,29 +13955,29 @@ function renderAdminUsers(){
 function editUserModal(id=''){if(!startUnlocked||!adminUnlocked||screen!=='manual')return;modal={type:'userEditor',id};render()}
 function saveUserAccount(e){e.preventDefault();if(!adminUnlocked||screen!=='manual'||modal?.type!=='userEditor')return;
  const f=e.currentTarget,original=modal.id,id=original||normalizeId(f.elements['accountId'].value),name=f.elements['accountName'].value.trim().slice(0,28),pin=f.elements['accountPin'].value.trim()||(original?registry.users[id]?.password:''),usePin=f.elements['accountQuestPin'].value.trim()||(original?registry.users[id]?.data.userPassword:''),enabled=f.elements['enabled'].checked;
- if(!idValid(id)||!name||!pinValid(pin)||!pinValid(usePin)){alert('ID는 영문 소문자·숫자·_·- 2~24자, 비밀번호는 숫자 4~8자리로 입력하세요.');return}
+ if(!idValid(id)||!name||!pinValid(pin)||!pinValid(usePin)){appAlert('ID는 영문 소문자·숫자·_·- 2~24자, 비밀번호는 숫자 4~8자리로 입력하세요.');return}
  if(original){const u=registry.users[id];if(!u)return;if(u.password!==pin){u.authRevision=randomId();if(id===currentUserId)clearRememberedLogin()}u.name=name;u.password=pin;u.enabled=enabled;u.data.userPassword=usePin;bumpVersion(u)}
- else{if(registry.users[id]){alert('이미 사용 중인 ID입니다.');return}if(Object.keys(registry.users).length>=100){alert('계정은 최대 100명까지 등록할 수 있습니다.');return}const u=makeUser(id,name,pin);u.data.userPassword=usePin;u.data.rules=registry.rules;registry.users[id]=u}
- if(!saveRegistry()){alert('계정이 저장되지 않았습니다. 자동 저장을 켜거나 전체 JSON Save를 수행하세요.');}
+ else{if(registry.users[id]){appAlert('이미 사용 중인 ID입니다.');return}if(Object.keys(registry.users).length>=100){appAlert('계정은 최대 100명까지 등록할 수 있습니다.');return}const u=makeUser(id,name,pin);u.data.userPassword=usePin;u.data.rules=registry.rules;registry.users[id]=u}
+ if(!saveRegistry()){appAlert('계정이 저장되지 않았습니다. 자동 저장을 켜거나 전체 JSON Save를 수행하세요.');}
  if(id===currentUserId)data=registry.users[id].data;
  modal=null;render();
 }
-function disableUser(id){if(!adminUnlocked||screen!=='manual'||id===currentUserId)return alert('현재 접속 중인 계정은 비활성화할 수 없습니다.');const u=registry.users[id];if(!u)return;if(!confirm(`@${id} 계정의 활성 상태를 ${u.enabled?'비활성':'활성'}으로 바꿀까요? 기록은 그대로 유지됩니다.`))return;u.enabled=!u.enabled;bumpVersion(u);saveRegistry();render()}
+async function disableUser(id){if(!adminUnlocked||screen!=='manual'||id===currentUserId)return appAlert('현재 접속 중인 계정은 비활성화할 수 없습니다.');const u=registry.users[id];if(!u)return;if(!(await appConfirm(`@${id} 계정의 활성 상태를 ${u.enabled?'비활성':'활성'}으로 바꿀까요? 기록은 그대로 유지됩니다.`)))return;u.enabled=!u.enabled;bumpVersion(u);saveRegistry();render()}
 function deleteUser(id){
- if(!adminUnlocked||screen!=='manual'||id===currentUserId)return alert('현재 사용 중인 계정은 삭제할 수 없습니다.');
- if(Object.keys(registry.users).length<=1)return alert('마지막 계정은 삭제할 수 없습니다.');
+ if(!adminUnlocked||screen!=='manual'||id===currentUserId)return appAlert('현재 사용 중인 계정은 삭제할 수 없습니다.');
+ if(Object.keys(registry.users).length<=1)return appAlert('마지막 계정은 삭제할 수 없습니다.');
  if(!registry.users[id])return;
  modal={type:'userDeleteAuth',id};render();
 }
-function confirmDeleteUser(e){
+async function confirmDeleteUser(e){
  e.preventDefault();if(!adminUnlocked||screen!=='manual'||modal?.type!=='userDeleteAuth')return;
  const id=modal.id,u=registry.users[id],pin=e.currentTarget.elements['deleteAdminCode'].value;
- if(!checkAdminPin(pin)){alert('관리자 비밀번호가 올바르지 않습니다.');e.currentTarget.elements['deleteAdminCode'].value='';return}
+ if(!checkAdminPin(pin)){appAlert('관리자 비밀번호가 올바르지 않습니다.');e.currentTarget.elements['deleteAdminCode'].value='';return}
  if(!u||id===currentUserId||Object.keys(registry.users).length<=1)return;
- if(!confirm(`@${id} 계정과 해당 기록을 삭제합니다. 먼저 JSON 백업을 저장했나요?`))return;
+ if(!(await appConfirm(`@${id} 계정과 해당 기록을 삭제합니다. 먼저 JSON 백업을 저장했나요?`)))return;
  registry.deletedUsers=registry.deletedUsers||{};
  registry.deletedUsers[id]={deletedAt:isoNow(),rev:u.rev,lineage:[...lineageList(u.lineage),u.rev]};delete registry.users[id];
- if(!saveRegistry(true))alert('계정 삭제 상태가 저장되지 않았습니다. 즉시 JSON 백업을 만드세요.');
+ if(!saveRegistry(true))appAlert('계정 삭제 상태가 저장되지 않았습니다. 즉시 JSON 백업을 만드세요.');
  modal=null;render();
 }
 function bumpRulesVersion(){registry.rules=deepCopy(data.rules);registry.rulesLineage=[...lineageList(registry.rulesLineage),...(registry.rulesRev?[registry.rulesRev]:[])].slice(-2500);registry.rulesRev=randomId();registry.rulesUpdatedAt=isoNow();data.rules=registry.rules;}
@@ -13893,14 +13986,14 @@ const oldSaveRewards=saveRewards,oldSaveOdds=saveOdds;
 saveRewards=function(e){const before=JSON.stringify(data.rules);oldSaveRewards(e);if(JSON.stringify(data.rules)!==before){bumpRulesVersion();saveRegistry()}};
 saveOdds=function(e){const before=JSON.stringify(data.rules);oldSaveOdds(e);if(JSON.stringify(data.rules)!==before){bumpRulesVersion();saveRegistry()}};
 // The standalone administrator form edits only the main account quest-completion PIN.
-function resetAll(event){event.preventDefault();if(!startUnlocked||!adminUnlocked||screen!=='manual'||modal?.type!=='adminReset')return;
- if(!checkAdminPin(document.getElementById('resetAdminCode')?.value)||document.getElementById('resetConfirmWord')?.value?.trim()!=='초기화'){alert('관리자 비밀번호와 확인 문구를 확인하세요.');return}
- if(!confirm('모든 계정과 모든 사용자의 도감·퀘스트·전체 기록을 초기화합니다. JSON 백업 없이 복원할 수 없습니다. 정말 진행하시겠습니까?'))return;
+async function resetAll(event){event.preventDefault();if(!startUnlocked||!adminUnlocked||screen!=='manual'||modal?.type!=='adminReset')return;
+ if(!checkAdminPin(document.getElementById('resetAdminCode')?.value)||document.getElementById('resetConfirmWord')?.value?.trim()!=='초기화'){appAlert('관리자 비밀번호와 확인 문구를 확인하세요.');return}
+ if(!(await appConfirm('모든 계정과 모든 사용자의 도감·퀘스트·전체 기록을 초기화합니다. JSON 백업 없이 복원할 수 없습니다. 정말 진행하시겠습니까?')))return;
  exportData(); // Attempt a backup download before destructive reset.
- try{localStorage.removeItem(MULTI_KEY);localStorage.removeItem(UNDO_KEY);localStorage.removeItem(KEY)}catch(e){alert('저장소 접근 오류로 초기화를 중단했습니다.');return}
- nativeAlarmSend({type:'clear'});registry=freshRegistry();if(!saveRegistry(true)){alert('초기화 결과를 저장할 수 없어 작업을 중단합니다.');return}
+ try{localStorage.removeItem(MULTI_KEY);localStorage.removeItem(UNDO_KEY);localStorage.removeItem(KEY)}catch(e){appAlert('저장소 접근 오류로 초기화를 중단했습니다.');return}
+ nativeAlarmSend({type:'clear'});registry=freshRegistry();if(!saveRegistry(true)){appAlert('초기화 결과를 저장할 수 없어 작업을 중단합니다.');return}
  clearRememberedLogin();currentUserId=null;startUnlocked=false;adminUnlocked=false;data=DEFAULT();data.rules=registry.rules;screen='home';modal=null;render();}
-function downloadJson(object,filename){if(nativeAlarmAvailable()){nativeDownloadJson(object,filename).catch(err=>alert('APK JSON 저장 실패: '+err.message));return;}const blob=new Blob([JSON.stringify(object,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000)}
+function downloadJson(object,filename){if(nativeAlarmAvailable()){nativeDownloadJson(object,filename).catch(err=>appAlert('APK JSON 저장 실패: '+err.message));return;}const blob=new Blob([JSON.stringify(object,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000)}
 function snapshotForExport(){if(currentUserId)registry.users[currentUserId].data=data;
  return {app:'PokeRoutine',version:10,exportedAt:isoNow(),settings:{autoSave:settings.autoSave},multi:deepCopy(registry)};
 }
@@ -13914,7 +14007,7 @@ function compareRevisions(ours,theirs){
 }
 function isNewerTimestamp(a,b){const x=Date.parse(a.updatedAt),y=Date.parse(b.updatedAt);return Number.isFinite(x)&&Number.isFinite(y)&&x>y}
 async function importMultipleFiles(e){
- const files=[...(e.target.files||[])];e.target.value='';if(!files.length)return;if(files.length>30||files.reduce((s,f)=>s+f.size,0)>100*1024*1024){alert('한 번에 최대 30개, 합계 100MB까지만 불러올 수 있습니다.');return}
+ const files=[...(e.target.files||[])];e.target.value='';if(!files.length)return;if(files.length>30||files.reduce((s,f)=>s+f.size,0)>100*1024*1024){appAlert('한 번에 최대 30개, 합계 100MB까지만 불러올 수 있습니다.');return}
  const working=deepCopy(registry),actions=[],conflicts=[],errors=[];
  for(const file of files){
   try{
@@ -13958,7 +14051,7 @@ async function importMultipleFiles(e){
    }
   }catch(err){errors.push(`${file.name}: ${err.message}`)}
  }
- if(!actions.length){alert('불러올 계정이 없습니다.\n'+errors.join('\n'));return}
+ if(!actions.length){appAlert('불러올 계정이 없습니다.\n'+errors.join('\n'));return}
  pendingMerge={working,actions,conflicts,errors,files:files.map(f=>f.name)};
  modal={type:'mergePreview'};render();
 }
@@ -13974,20 +14067,20 @@ function applyMergedFiles(e){e.preventDefault();if(modal?.type!=='mergePreview'|
   const undo=JSON.stringify(previous),payload=JSON.stringify(next);
   localStorage.setItem(UNDO_KEY,undo);
   localStorage.setItem(MULTI_KEY,payload);
- }catch(err){alert('저장 공간 부족 또는 브라우저 저장 오류로 병합을 중단했습니다. 현재 기록은 유지됩니다. JSON Save 후 공간을 확보하세요.');return}
+ }catch(err){appAlert('저장 공간 부족 또는 브라우저 저장 오류로 병합을 중단했습니다. 현재 기록은 유지됩니다. JSON Save 후 공간을 확보하세요.');return}
  registry=next;registry.restoreLog=[...(registry.restoreLog||[]),{at:isoNow(),files:pendingMerge.files,conflicts:pendingMerge.conflicts.length}].slice(-100);
  saveRegistry(true);
  const candidateId=currentUserId;
  if(candidateId&&registry.users[candidateId]?.enabled!==false&&readRememberedLogin()?.id===candidateId)bindTrainer(candidateId);
  else{clearRememberedLogin();currentUserId=null;startUnlocked=false;adminUnlocked=false;data=DEFAULT();data.rules=registry.rules}
- pendingMerge=null;modal=null;screen='home';render();alert('병합 완료! 계정별 최신본을 반영했습니다. 충돌 선택은 미리보기 설정대로 처리했습니다. 설정에서 마지막 병합을 되돌릴 수 있습니다.');
+ pendingMerge=null;modal=null;screen='home';render();appAlert('병합 완료! 계정별 최신본을 반영했습니다. 충돌 선택은 미리보기 설정대로 처리했습니다. 설정에서 마지막 병합을 되돌릴 수 있습니다.');
 }
-function undoLastMerge(){if(!startUnlocked)return;let undo;
- try{const raw=localStorage.getItem(UNDO_KEY);if(!raw)return alert('되돌릴 병합 기록이 없습니다.');undo=cleanRegistry(JSON.parse(raw))}catch(err){return alert('되돌리기 데이터가 손상되었거나 읽을 수 없습니다.')}
- if(!confirm('마지막 병합 직전의 전체 계정 상태로 돌아갈까요? 병합 후 진행한 기록도 원상복구될 수 있습니다.'))return;
- try{localStorage.setItem(MULTI_KEY,JSON.stringify(undo));localStorage.removeItem(UNDO_KEY)}catch(err){return alert('되돌리기 저장에 실패했습니다. 기록을 유지합니다.')}
+async function undoLastMerge(){if(!startUnlocked)return;let undo;
+ try{const raw=localStorage.getItem(UNDO_KEY);if(!raw)return appAlert('되돌릴 병합 기록이 없습니다.');undo=cleanRegistry(JSON.parse(raw))}catch(err){return appAlert('되돌리기 데이터가 손상되었거나 읽을 수 없습니다.')}
+ if(!(await appConfirm('마지막 병합 직전의 전체 계정 상태로 돌아갈까요? 병합 후 진행한 기록도 원상복구될 수 있습니다.')))return;
+ try{localStorage.setItem(MULTI_KEY,JSON.stringify(undo));localStorage.removeItem(UNDO_KEY)}catch(err){return appAlert('되돌리기 저장에 실패했습니다. 기록을 유지합니다.')}
  registry=undo;const id=currentUserId;if(id&&registry.users[id]?.enabled!==false&&readRememberedLogin()?.id===id)bindTrainer(id);else{clearRememberedLogin();currentUserId=null;startUnlocked=false;data=DEFAULT();data.rules=registry.rules}
- modal=null;screen='home';adminUnlocked=false;render();alert('마지막 병합 직전 상태로 복원했습니다.');
+ modal=null;screen='home';adminUnlocked=false;render();appAlert('마지막 병합 직전 상태로 복원했습니다.');
 }
 const oldRenderModal=renderModal;
 renderModal=function(){
@@ -14150,7 +14243,7 @@ function ensureTrainingProfile(p){
 const beforeTrainingEnsure=ensureExtensions;
 ensureExtensions=function(){beforeTrainingEnsure();data.rules.training=cleanTrainingRules(data.rules.training);ensureTrainingProfile(data)};
 function trainingRegisterCapture(id,origin,level=trainingRules().startLevel){
- ensureTrainingProfile(data);if(data.pokemonRoster.length>=4000){alert('포켓몬 개체 보관 상한에 도달했습니다. JSON 백업 후 관리가 필요합니다. 도감 등록은 유지됩니다.');return}
+ ensureTrainingProfile(data);if(data.pokemonRoster.length>=4000){appAlert('포켓몬 개체 보관 상한에 도달했습니다. JSON 백업 후 관리가 필요합니다. 도감 등록은 유지됩니다.');return}
  const m={uid:'mon_'+randomId(),species:Number(id),level:Math.min(trainingRules().maxLevel,trainNum(level,1,100,1)),xp:0,origin,obtainedAt:isoNow(),learnedMoves:{},evolutions:[]};data.pokemonRoster.push(m);
  // A newly caught monster joins the roster but does not consume points.
 }
@@ -14212,7 +14305,7 @@ function openTrainingFromDex(id){
  ensureTrainingProfile(data);
  const selectedUid=modal?.type==='dexDetail'&&Number(modal.id)===Number(id)?modal.pokemonUid:null;
  const m=data.pokemonRoster.find(x=>x.species===Number(id)&&x.uid===selectedUid)||data.pokemonRoster.find(x=>x.species===Number(id));
- if(!m)return alert('현재 트레이닝 가능한 포켓몬이 없어요.');
+ if(!m)return appAlert('현재 트레이닝 가능한 포켓몬이 없어요.');
  selectedTrainingUid=m.uid;
  // The Dex may have been opened with a filtered training roster; never lose the chosen individual.
  trainingFilter='all';
@@ -14271,11 +14364,11 @@ function renderTraining(){ensureTrainingProfile(data);const rules=trainingRules(
  ${fusionEvolutionOptions(mon).length?`<div class="training-fusion-box"><strong>🧬 같은 포켓몬 5마리 진화</strong><p>같은 종류 ${data.pokemonRoster.filter(m=>m.species===mon.species).length}마리 보유 · 5마리를 모으면 4마리를 사용하고 선택한 1마리가 진화해요. 대표 포켓몬은 재료로 사용하지 않습니다.</p><button class="modal-btn" type="button" onclick="openFusionEvolution('${mon.uid}')" ${canFusionEvolve(mon)?'':'disabled'}>🧬 5마리 모아 진화${canFusionEvolve(mon)?'':' (준비 중)'}</button></div>`:''}<h3 id="trainingSpendArea">🏋️ 트레이닝 시작</h3><div class="training-spend-grid">${[10,50,100].map(x=>{const give=Math.min(x,maxTrain),cost=give>0?trainXpCost(mon,give):0;return `<button onclick="trainPokemon('${mon.uid}',${x})" ${!rules.enabled||!give||data.points<cost?'disabled':''}><b>+${give} XP</b><small>🪙 ${cost}P</small></button>`}).join('')}</div><div class="training-custom" id="trainingSpendEnd"><label>직접 경험치 지정 <input id="trainingCustomXp" type="number" min="1" max="1000" step="1" inputmode="numeric" value="${Math.min(250,Math.max(1,maxTrain))}"></label><button class="btn-outline" onclick="trainPokemon('${mon.uid}',Number(document.getElementById('trainingCustomXp').value))" ${!rules.enabled||!maxTrain?'disabled':''}>직접 트레이닝</button></div><p class="training-helper">포인트를 소비하면 XP가 증가합니다. 레벨이 오를 때 남은 XP는 이월됩니다. 진화해도 개체 ID·레벨·기록은 유지됩니다.</p></section>`:''}
  <section class="training-panel" id="trainingGrowthAlbum"><h2>📔 성장·진화 앨범</h2>${trainingMilestoneTiles()}<div class="training-album-divider"></div><h3 class="training-album-subtitle">최근 성장 기록</h3><div class="training-history">${[...data.trainingHistory].reverse().slice(0,45).map(x=>`<div><span>${x.type==='train'?'🏋️':x.type==='evolve'?'✨':x.type==='buddy'?'💗':'🐾'}</span><div><strong>${x.type==='evolve'?esc(name(x.from))+' → '+esc(name(x.to)):esc(name(x.species||x.to||1))+' '+(x.type==='train'?'트레이닝':x.type==='buddy'?'대표 지정':'획득')}</strong><small>${x.at.slice(0,16).replace('T',' ')} · Lv.${x.level}${x.type==='train'?' · +'+x.xp+'XP / -'+x.points+'P':''}</small></div></div>`).join('')||'<p class="training-helper">첫 트레이닝 후 성장 기록이 이곳에 나타납니다.</p>'}</div></section>`;
 }
-function trainPokemon(uid,req){ensureTrainingProfile(data);const mon=data.pokemonRoster.find(x=>x.uid===uid),r=trainingRules();if(!r.enabled||!mon)return;
- if(!Number.isInteger(req)||req<1||req>1000){alert('경험치는 한 번에 1~1,000XP까지 지정할 수 있어요.');return}
- const max=Math.max(0,(r.maxLevel-mon.level)*r.xpPerLevel-mon.xp),xp=Math.min(req,max);if(!xp){alert('최대 레벨에 도달했어요.');return}
- const cost=trainXpCost(mon,xp);if(data.points<cost){alert('포인트가 부족합니다.');return}
- if(!confirm(`${name(mon.species)} · ${xp}XP 획득\n포인트 ${cost}P를 사용할까요?`))return;
+async function trainPokemon(uid,req){ensureTrainingProfile(data);const mon=data.pokemonRoster.find(x=>x.uid===uid),r=trainingRules();if(!r.enabled||!mon)return;
+ if(!Number.isInteger(req)||req<1||req>1000){appAlert('경험치는 한 번에 1~1,000XP까지 지정할 수 있어요.');return}
+ const max=Math.max(0,(r.maxLevel-mon.level)*r.xpPerLevel-mon.xp),xp=Math.min(req,max);if(!xp){appAlert('최대 레벨에 도달했어요.');return}
+ const cost=trainXpCost(mon,xp);if(data.points<cost){appAlert('포인트가 부족합니다.');return}
+ if(!(await appConfirm(`${name(mon.species)} · ${xp}XP 획득\n포인트 ${cost}P를 사용할까요?`)))return;
  const before=mon.level,afterExp=mon.xp+xp;const gained=Math.floor(afterExp/r.xpPerLevel);mon.level=Math.min(r.maxLevel,mon.level+gained);mon.xp=mon.level>=r.maxLevel?0:afterExp%r.xpPerLevel;data.points-=cost;
  recordTraining({type:'train',uid:mon.uid,species:mon.species,points:cost,xp,level:mon.level});const badges=[];if(!data.trainingBadges.some(x=>x.id==='firstTrain'))badges.push(earnTrainingBadge('firstTrain',uid));if(before<10&&mon.level>=10)badges.push(earnTrainingBadge('lv10',uid));if(before<100&&mon.level>=100)badges.push(earnTrainingBadge('lv100',uid));
  let evolved=[];if(r.autoEvolve){const available=trainEvolutionOptions(mon);if(available.length===1&&available[0].kind==='level')evolved=trainingPerformEvolution(mon,available[0].to)}
@@ -14296,30 +14389,30 @@ function fusionCandidates(mon){
 function fusionEvolutionOptions(mon){return trainFutureEvolutions(mon).filter(edge=>edge.to!==mon.species)}
 function canFusionEvolve(mon){return !!mon&&fusionCandidates(mon).length>=4&&fusionEvolutionOptions(mon).length>0}
 function openFusionEvolution(uid){ensureTrainingProfile(data);const mon=data.pokemonRoster.find(m=>m.uid===uid);if(!mon||!canFusionEvolve(mon))return;modal={type:'fusionEvolve',uid};render()}
-function confirmFusionEvolution(uid,to){
+async function confirmFusionEvolution(uid,to){
  ensureTrainingProfile(data);
  const mon=data.pokemonRoster.find(m=>m.uid===uid),edge=mon&&fusionEvolutionOptions(mon).find(x=>x.to===Number(to)),feed=mon&&fusionCandidates(mon);
- if(!edge||!feed||feed.length!==4)return alert('같은 종류의 포켓몬이 5마리 필요합니다. 대표 포켓몬은 재료로 사용할 수 없어요.');
+ if(!edge||!feed||feed.length!==4)return appAlert('같은 종류의 포켓몬이 5마리 필요합니다. 대표 포켓몬은 재료로 사용할 수 없어요.');
  const message=`${name(mon.species)} 5마리 → ${name(edge.to)} 1마리\n남길 개체: Lv.${mon.level} (${mon.xp}XP)\n사용할 개체 4마리: ${feed.map(x=>'Lv.'+x.level).join(', ')}\n이 작업은 되돌릴 수 없습니다. 진화할까요?`;
- if(!confirm(message))return;
+ if(!(await appConfirm(message)))return;
  // Verify again immediately before mutation, and preserve buddy from accidental consumption.
  const usedIds=new Set(feed.map(m=>m.uid));if(usedIds.has(mon.uid)||usedIds.has(data.buddyPokemon)||usedIds.size!==4)return;
  const snapshot=JSON.stringify({roster:data.pokemonRoster,owned:data.owned,hist:data.trainingHistory,badges:data.trainingBadges});
  const from=mon.species;
  data.pokemonRoster=data.pokemonRoster.filter(m=>!usedIds.has(m.uid));
  const evolved=trainingPerformEvolution(mon,Number(to));
- if(!evolved.length){const old=JSON.parse(snapshot);data.pokemonRoster=old.roster;data.owned=old.owned;data.trainingHistory=old.hist;data.trainingBadges=old.badges;return alert('진화 조건을 다시 확인해 주세요.')}
+ if(!evolved.length){const old=JSON.parse(snapshot);data.pokemonRoster=old.roster;data.owned=old.owned;data.trainingHistory=old.hist;data.trainingBadges=old.badges;return appAlert('진화 조건을 다시 확인해 주세요.')}
  if(mon.evolutions.length)mon.evolutions[mon.evolutions.length-1].method='fusion';
  data.trainingHistory[data.trainingHistory.length-1].method='fusion';
  data.trainingHistory[data.trainingHistory.length-1].used=feed.map(m=>m.uid);
  if(selectedTrainingUid&&usedIds.has(selectedTrainingUid))selectedTrainingUid=mon.uid;
  const persisted=save();modal={type:'trainingEvolutionResult',evolved,usedCount:4,method:'fusion'};render();
- if(!persisted&&settings.autoSave)alert('저장에 실패했습니다. 종료하기 전에 JSON 백업을 저장하세요.');
+ if(!persisted&&settings.autoSave)appAlert('저장에 실패했습니다. 종료하기 전에 JSON 백업을 저장하세요.');
 }
 function openPokemonEvolution(uid){const mon=data.pokemonRoster.find(x=>x.uid===uid),options=mon&&trainEvolutionOptions(mon);if(!options?.length)return;modal={type:'trainingEvolve',uid};render()}
-function confirmPokemonEvolution(uid,to){const mon=data.pokemonRoster.find(x=>x.uid===uid),r=trainingRules(),option=mon&&trainEvolutionOptions(mon).find(x=>x.to===Number(to));if(!option)return;
- if(option.kind!=='level'&&r.mode==='original'&&!adminUnlocked){const pin=prompt(`이 진화는 ${option.kind} 조건이 필요합니다. 관리자 승인을 위해 PIN을 입력하세요.`);if(!checkAdminPin(pin))return alert('관리자 승인이 필요합니다.');}
- if(!confirm(`${name(mon.species)} → ${name(option.to)} 진화할까요?\n현재 레벨과 경험치는 유지됩니다.`))return;
+async function confirmPokemonEvolution(uid,to){const mon=data.pokemonRoster.find(x=>x.uid===uid),r=trainingRules(),option=mon&&trainEvolutionOptions(mon).find(x=>x.to===Number(to));if(!option)return;
+ if(option.kind!=='level'&&r.mode==='original'&&!adminUnlocked){const pin=(await appPrompt(`이 진화는 ${option.kind} 조건이 필요합니다. 관리자 승인을 위해 PIN을 입력하세요.`));if(!checkAdminPin(pin))return appAlert('관리자 승인이 필요합니다.');}
+ if(!(await appConfirm(`${name(mon.species)} → ${name(option.to)} 진화할까요?\n현재 레벨과 경험치는 유지됩니다.`)))return;
  const evolved=trainingPerformEvolution(mon,option.to);save();modal={type:'trainingEvolutionResult',evolved};render();}
 function trainingEvolutionCinema(evolved){
  if(!Array.isArray(evolved)||!evolved.length)return '';
@@ -14341,12 +14434,12 @@ function saveTrainingSettings(event){event.preventDefault();if(!adminUnlocked||s
  if(f.elements.rareCost.value)next.rarityCosts.rare=Number(f.elements.rareCost.value);else delete next.rarityCosts.rare;
  if(f.elements.legendCost.value)next.rarityCosts.legendary=Number(f.elements.legendCost.value);else delete next.rarityCosts.legendary;
  const specs=String(f.elements.speciesCosts.value||'').trim();next.speciesCosts={};
- if(specs){for(const item of specs.split(',')){const m=item.trim().match(/^(\d{1,3})\s*=\s*(\d{1,5})$/);if(!m||Number(m[1])<1||Number(m[1])>POKE_MAX_ID||Number(m[2])<10||Number(m[2])>10000)return alert('포켓몬별 비용은 예: 7=150,25=200 형식으로 10~10000P를 입력하세요.');next.speciesCosts[m[1]]=Number(m[2]);}}
- if(next.specialLevels.some((x,i)=>!Number.isInteger(x)||x<2||x>100||(i>0&&x<=next.specialLevels[i-1])))return alert('특별 진화 기준은 2~100 사이에서 1차 < 2차 < 3차 순서로 입력하세요.');
- const cleaned=cleanTrainingRules(next);if(cleaned.maxLevel<cleaned.startLevel)return alert('최대 레벨은 시작 레벨 이상이어야 합니다.');
+ if(specs){for(const item of specs.split(',')){const m=item.trim().match(/^(\d{1,3})\s*=\s*(\d{1,5})$/);if(!m||Number(m[1])<1||Number(m[1])>POKE_MAX_ID||Number(m[2])<10||Number(m[2])>10000)return appAlert('포켓몬별 비용은 예: 7=150,25=200 형식으로 10~10000P를 입력하세요.');next.speciesCosts[m[1]]=Number(m[2]);}}
+ if(next.specialLevels.some((x,i)=>!Number.isInteger(x)||x<2||x>100||(i>0&&x<=next.specialLevels[i-1])))return appAlert('특별 진화 기준은 2~100 사이에서 1차 < 2차 < 3차 순서로 입력하세요.');
+ const cleaned=cleanTrainingRules(next);if(cleaned.maxLevel<cleaned.startLevel)return appAlert('최대 레벨은 시작 레벨 이상이어야 합니다.');
  // Preserve each individual level and relative XP progress when the global XP target changes.
  if(old.xpPerLevel!==cleaned.xpPerLevel){for(const u of Object.values(registry.users)){ensureTrainingProfile(u.data);for(const m of u.data.pokemonRoster){m.xp=Math.min(cleaned.xpPerLevel-1,Math.max(0,Math.round(m.xp/old.xpPerLevel*cleaned.xpPerLevel)));}bumpVersion(u);}}
- data.rules.training=cleaned;bumpRulesVersion();saveRegistry();render();alert('트레이닝 설정을 저장했습니다.');}
+ data.rules.training=cleaned;bumpRulesVersion();saveRegistry();render();appAlert('트레이닝 설정을 저장했습니다.');}
 function resetTrainingSettings(){const f=document.querySelector('#m-training form');if(!f)return;const d=TRAINING_DEFAULT_RULES();for(const k of ['xpPerLevel','pointCost','startLevel','maxLevel'])f.elements[k].value=d[k];for(const k of ['enabled','autoEvolve','questXpEnabled'])f.elements[k].checked=d[k];f.elements.mode.value=d.mode;for(let i=0;i<3;i++)f.elements['specialLevel'+(i+1)].value=d.specialLevels[i];f.elements.evolutionFX.value=d.evolutionFX;f.elements.rareCost.value='';f.elements.legendCost.value='';f.elements.speciesCosts.value='';}
 
 // Optional administrator rule: the buddy also receives a quest-XP training gift at no point cost.
