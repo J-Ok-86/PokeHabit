@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.145 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.146 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -5428,6 +5428,58 @@ html:not([data-theme="light"]) .time-log-flow-top button{background:#2c455f;colo
 .time-log-section .reference-alarm-mark{height:17px!important;width:17px!important;min-width:17px!important;min-height:17px!important;font-size:11px!important;line-height:16px!important;z-index:7!important}
 .time-log-zoom-reference-bar span{font-weight:700!important;font-size:11px!important;line-height:18px!important;font-family:inherit!important}
 @media(max-width:680px){.time-log-zoom-dialog-body{padding:10px 11px 20px!important}.time-log-section .time-log-zoom-grid{grid-template-columns:25px minmax(0,1fr)!important}.time-log-zoom-context-list{max-height:38vh}}
+/* v1.7.146: quiet text-only names in the 24h overview; duration remains a fine line. */
+.time-log-section .reference-compact-title,
+.time-log-section .reference-compact-title[data-palette]{
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ padding:0 1px!important;border-radius:0!important;
+ color:var(--ref-fg,#465a72)!important;
+ font-size:9px!important;letter-spacing:-.25px!important;
+ height:22px!important;line-height:20px!important;text-align:center!important;
+ text-shadow:0 1px 0 rgba(255,255,255,.5);
+}
+html:not([data-theme="light"]) .time-log-section .reference-compact-title[data-palette]{
+ color:#e1eaf6!important;text-shadow:0 1px 1px #14263b;
+}
+.time-log-section .reference-compact-stem{display:none!important}
+.time-log-section .reference-compact-bar{height:4px!important;top:38px!important}
+/* Zoom: reference interval keeps its exact proportional length while the
+   label now contains BOTH the activity and its explicit start/end clocks. */
+.time-log-section .time-log-zoom-reference-bar{
+ height:36px!important;max-height:none!important;
+ display:flex!important;align-items:center;justify-content:center;
+ padding:2px 3px!important;overflow:visible!important;border-radius:7px!important;
+}
+.time-log-section .time-log-zoom-reference-bar .time-log-ref-contents,
+.time-log-section .time-log-zoom-reference-bar[data-palette] .time-log-ref-contents{
+ position:static!important;display:flex!important;flex-direction:column!important;
+ align-items:center!important;justify-content:center!important;gap:1px!important;
+ min-width:0;width:100%;max-width:none!important;
+ margin:0!important;padding:0!important;background:transparent!important;
+ border:0!important;box-shadow:none!important;overflow:hidden!important;
+ line-height:1.16!important;white-space:nowrap!important;text-align:center!important;
+ pointer-events:none;
+}
+.time-log-section .time-log-zoom-reference-bar .time-log-ref-contents b{
+ display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;
+ font-size:10.5px;font-weight:750;letter-spacing:-.2px;
+}
+.time-log-section .time-log-zoom-reference-bar .time-log-ref-contents small{
+ display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;
+ font-size:9px!important;line-height:1.2!important;font-weight:700;
+ font-variant-numeric:tabular-nums;letter-spacing:-.1px;
+}
+.time-log-section .time-log-zoom-reference-bar.is-narrow .time-log-ref-contents{
+ position:absolute!important;left:0!important;top:-3px!important;
+ width:max-content!important;min-width:122px!important;max-width:176px!important;
+ padding:4px 7px!important;border-radius:7px!important;
+ border:1px solid var(--ref-border,#879ab1)!important;
+ background:var(--ref-bg,#e7edf5)!important;
+ box-sizing:border-box!important;box-shadow:0 1px 2px #233e501b!important;
+}
+html:not([data-theme="light"]) .time-log-section .time-log-zoom-reference-bar.is-narrow .time-log-ref-contents{
+ background:#34445b!important;color:#f0f5fb!important;
+}
 </style>
 <style>
 /* v1.7.136: optional per-trainer briefing notifications */
@@ -7856,7 +7908,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.145</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.146</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -8935,7 +8987,7 @@ ${TRAINING_MANUAL}${HONOR_MANUAL}${MOVE_CINEMA_MANUAL}${MOVE_MINIMAL_MANUAL}
 const ADMIN_GROUPS=[['home','🏠 관리자 홈','설정 현황 · 바로가기'],['ops','🎛 운영 설정','보상 · 확률 · 훈련 · 훈장'],['account','👥 계정·보안','트레이너 · 비밀번호'],['data','💾 데이터·시스템','백업 · 병합 · 초기화'],['guide','📖 사용 매뉴얼','최신 기능 · 공식 · FAQ'],['history','📜 개발 버전 이력','최신순 업데이트 기록']];
 const ADMIN_SUB={ops:[['rewards','🪙 포인트·XP'],['boost','🔥 연속 부스트'],['fever','✨ FEVER TIME'],['honor','🏅 훈장 기준'],['odds','🎲 등장·포획 확률'],['gift','🎁 레벨 선물 확률'],['training','🏋️ 포켓몬 훈련']],account:[['users','👥 사용자 관리'],['security','🔐 비밀번호·PIN']],data:[['backup','💾 저장·백업'],['merge','🔁 JSON 병합'],['reset','⚠️ 초기화']],guide:[['start','🚀 시작·퀘스트'],['reward','🌟 성장·보상'],['pokemon','📘 포켓몬·도감'],['calendar','🗓️ 달력·기록'],['formula','🧮 계산식·확률표'],['faq','💬 FAQ']],history:[['updates','🗓 최신 버전'],['archive','📚 과거 기능 기록']]};
 let adminActiveGroup='home',adminActiveSub={},adminTrackedForms=new Map(),adminSearchEntries=[];
-const ADMIN_VERSION_NOTES=[['1.7.145','하루 타임로그 왼쪽 아이콘 열 축소, 참고 활동 이름과 겹침 수를 같은 칩에 표시, 활동별 차분한 팔레트, 확대 팝업 네 행 및 시간 눈금·구간 목록, 참고 활동 시작 알림의 예정 시각 🔔 마커를 추가했습니다. 알림 실행 결과가 아닌 예정 정보만 표시하며 원본 이벤트·보상은 변경하지 않습니다.'],['1.7.144','하루 타임로그 네 행 고정 라벨, 퀘스트 완료와 같은 행의 ✎+ 추가 기록(실제 저장 시각만), 시간순 이름 표시, 참고 활동 라벨과 정확한 구간 막대, 밝기 테마 일치, 팝업 24시간 내비게이터 및 짧은 구간 편집 개선. 완료 시각·보상·원본 기록은 변경하지 않습니다.'],['1.7.143','참고 활동 자유 구간·자동완성·시작 알림·팝업 드래그 편집을 추가하고 기존 하루 타임로그 확대를 별도 팝업으로 이동했습니다. 퀘스트 완료·순간 기록·생활 기록은 확대 팝업에서 읽기 전용이며 퀘스트 완료 시각·보상·이력은 변경하지 않습니다.'],['1.7.142','하루 타임로그 생활 기록 줄에 걷기 실측 시작~종료 구간을 비례 막대로 표시하고 자정 넘김을 날짜별로 이어서 보여줍니다. 확대 보기에서도 구간이 표시되며 원본 걷기 기록은 유지합니다. 전체 독서 목록의 책 제목 왼쪽 정렬을 바로잡았습니다.'],['1.7.141','기록 탭 주간 성장 브리핑을 일별 7일 흐름·완료 기록일·퀘스트별 성장/점검 포인트·다음 7일 제안으로 확장했습니다. 독서 템플릿의 중복 책별 독서량 목록과 기존 기록 추정값 N건 펼침만 제거하고, 원본 기록·추정 집계·책별 상세는 유지합니다.'],['1.7.140','APK 전용 설정 → 앱 관리에서 웹 버전을 확인하고 화면 캐시만 갱신하는 버튼을 추가했습니다. 네트워크 확인 실패 시 캐시는 유지되며, PWA와 이전 APK에는 메뉴가 표시되지 않습니다. 로컬 기록·쿠키·로그인 정보는 삭제하지 않습니다.'],['1.7.139','기록 탭 분석 바로가기에 걷기 통계를 추가했습니다. 걷기 통계 표시 설정이 켜졌을 때만 버튼을 보여주고 통계 영역으로 이동합니다. 기존 통계와 퀘스트·보상·라이프 이벤트 데이터는 변경하지 않습니다.'],['1.7.138','기록 탭 주간 브리핑 아래에 ChatGPT 분석용 내보내기를 추가했습니다. 7·30·90일·1년·직접 지정, 선택 기록, 5가지 분석 질문, 미리보기·복사·공유를 지원합니다. 원본 기록과 보상은 변경하지 않습니다.'],['1.7.132','PWA와 APK의 글자 크기 밸런스와 좁은 화면의 인사말·오늘 할 퀘스트 제목 표시를 조정했습니다. 데이터 저장 방식은 변경하지 않았습니다.'],['1.7.130','GitHub Pages HTML을 그대로 불러오는 Android Wrapper 전용 연결을 추가했습니다. 개인 알림은 APK에서 Android 로컬 일정으로 동기화해 화면 꺼짐에도 알림을 시도합니다. 웹/PWA는 기존 화면 실행 중 알림 방식을 유지하고 JSON 내보내기·가져오기는 네이티브 파일 선택/저장을 지원합니다.'],['1.7.129','설정을 계정·개인 알림·화면·백업·고급 메뉴로 그룹화했습니다. 계정별 독립된 매일 반복 개인 알림은 시간·내용만 설정하고, 앱 화면이 열린 경우에 한해 시스템 알림을 시도합니다. 권한·테스트·ON/OFF·수정·삭제 및 JSON 백업을 지원하며 백그라운드 예약 알람은 지원하지 않습니다.'],['1.7.126','취침은 새벽 06:00 이전 기록을 전날 밤으로 연결하며, 실제 기록한 날짜·시각은 보존합니다. 같은 날 새벽/저녁 취침이 각각 별도 밤으로 표시되고, 반복형 라이프 이벤트의 버튼 크기를 유지하면서 이모지 옆에 당일 누적 기록 횟수를 표시합니다.'],['1.7.125','독서 템플릿에서 책 제목 자동완성으로 책을 선택하면 같은 책의 최근 종료 쪽을 다음 시작 쪽 기본값으로 제안합니다. 같은 날 새 구간을 추가할 때는 직전에 입력한 종료 쪽을 우선 사용하며, 직접 수정한 시작 쪽과 모든 원본 기록은 그대로 보존합니다.'],['1.7.124','완료 이후 모든 퀘스트에 기록 추가 가능. 완료 상태, 포인트·XP 및 기존 세부 기록을 보존하고 추가 기록만 기존 기록에 합산합니다. 독서 진도는 가장 높게 도달한 종료 쪽을 기준으로 계산합니다.'],['1.7.123','책별 독서 타임라인: 완독 표시를 겹침 없는 체크 배지·연한 음영·날짜 체크로 통일하고 보라색을 제거했습니다. 책별 진행률·쪽수(등록된 책)와 누적 진도별 민트색 점을 표시하며, 최근 독서순 기본 정렬 및 시작일·완독일·진행률·제목순 선택을 계정별로 저장합니다. 기존 기록·필터·기간 이동·상세 분석·보상은 유지합니다.'],['1.7.122','노트·순간 기록 모아보기 검색을 일별 묶음 필터에서 개별 기록 검색으로 개선했습니다. 검색된 기록만 날짜·시각과 함께 표시하고 일치 단어를 강조합니다. 여러 단어·날짜 검색과 결과 100건씩 더 보기를 지원하며 기존 원문·저장·수정 기능은 유지합니다.'],['1.7.121','책별 독서 타임라인에서 직접 완독 체크한 책에 작은 체크 표시와 은은한 초록 음영을 적용하고 전체/읽는 중/완독 필터를 추가했습니다. 타임라인에만 과거 기록 추정 표시와 색상 구분을 숨기되 원본 데이터·상세 목록·기존 분석·보상은 그대로 유지합니다.'],['1.7.120','기록·달력 분석 정리: 분석 바로가기, 관련 퀘스트 선택의 위치 정돈, 월/일 X축 및 Y축 눈금 간격 최적화, 미기록과 실제 0 구분을 유지했습니다. 분석 렌더링은 화면별 메모와 날짜별 인덱스로 반복 검색을 줄이고 현재 계정·데이터 변경 시 즉시 갱신하도록 개선했습니다. 기존 기록·보상·그 외 탭은 유지합니다.'],['1.7.119','운동 세트 구성 그래프의 기준을 통일했습니다. 7일은 일별 누적 막대, 30·90일은 일별 세트 순위별 누적 영역으로 표시하고 두 기간 모두 같은 일별 합계로 비교합니다. 모든 X축은 월/일, Y축은 회 단위의 읽기 쉬운 눈금으로 표시합니다. 날짜를 선택하면 7일 누적 막대와 세트별 세부 기록이 열립니다.'],['1.7.118','운동 세트 그래프를 하루 한 막대의 색상별 누적 세트 구성으로 교체했습니다. 가장 많은 세트가 아래에 놓이고 7일은 내부 횟수·상단 일합계를 표시합니다. 30일은 전체 흐름+선택 7일 확대, 90일은 주별 최고 세트+선택 7일 확대를 지원합니다.'],['1.7.117','운동 템플릿의 중복된 구조화 달성량 그래프를 종목별 최고 세트 횟수 추세와 일별 세트 수·실제 시각 기록으로 교체했습니다. 종목 및 7/30/90일 선택, 근력 운동의 중량별 비교를 지원합니다. 실제 달성량과 독서·다른 템플릿 분석, 원본 기록 및 보상은 변경하지 않습니다.'],['1.7.116','생활 리듬 전체 흐름을 이벤트 횟수 대신 최근 7일 주요 1회형 이벤트 시각 비교로 바꾸고, 선택 기간의 평균 시각·변동폭 요약을 추가했습니다. 비교할 이벤트 최대 4개 선택이 가능하며 반복형 이벤트 분석에는 개별 수행 시각과 원본 편집 버튼, 과거 기간 접기/펼치기를 추가했습니다. 데이터와 보상은 유지됩니다.'],['1.7.115','독서 타임라인 시작·완독 날짜를 해당 날짜의 실제 점에 연결하고 행 내부 상·하단에 배치했습니다. 가까운 날짜도 겹치지 않도록 라벨 방향을 보정하고 책별 행 높이를 축소했습니다. 7/30일 기간 이동·자연스러운 상하 스크롤·기존 독서 목록·저장 구조를 유지했습니다.'],['1.7.114','독서 타임라인의 7일 날짜 겹침 해결, 7/30일 좌우 드래그 및 이전/다음/오늘 이동, 시작·완독 날짜 배지와 단정한 표식, 내부 세로 스크롤 제거 및 탭 스와이프 충돌 방지. 기존 책 목록과 독서·운동 기록 및 보상 유지.'],['1.7.113','독서 상세 분석의 7/30일 가로 카드 목록을 한 화면에서 30일 전체를 확인할 수 있는 책별 기간표로 변경했습니다. 각 책의 첫 독서 기록 또는 직접 입력한 시작일 ▶, 실제 기록된 날 ●, 확정 완독일 ✓, 과거 메모 추정 ○를 구분하며 제목 터치로 책 상세에 이동합니다. 퀘스트 분석 7/30/90/1년 선택 버튼은 퀘스트별 성장 분석 제목 옆으로 이동했습니다. 기존 독서 목록·데이터·보상과 다른 템플릿은 유지합니다.'],['1.7.112','독서 템플릿의 최근 기록 추세 그래프를 날짜별 책 이름 타임라인(7/30일)으로 교체했습니다. 기록 있는 날짜만 최근순으로 표시하고 같은 날짜의 여러 책을 세로로 나열합니다. 책 제목 터치 시 기존 전체 독서 목록의 해당 책 상세가 바로 열리며, 작성 중과 과거 메모 (추정)을 구분합니다. 운동·다른 템플릿의 그래프와 기존 기록·보상은 유지합니다.'],['1.7.110','독서 목록에 책 검색과 한 줄 접기/펼치기를 추가하고, 각 책에 독서 시작일·완독일 및 날짜별 읽은 구간을 표시합니다. 과거 메모는 (추정)으로 유지하고 시작/완독 날짜를 직접 지정할 수 있습니다.'],['1.7.109','독서 기록의 기존 메모에서 책 제목과 페이지 구간을 읽기 전용 추정 분석하고, 등록된 책과 함께 자동완성 후보에 표시합니다. 전체 책 목록에서 추정 책을 직접 등록할 수 있으며 총 쪽수·완독은 수동으로 확인합니다. 과거 원본·완료·보상은 변경하지 않습니다.'],['1.7.108','템플릿 선택 미리보기와 기존 임시 기록 전환 문제를 수정했습니다.'],['1.7.107','퀘스트별 스마트 기록 템플릿, 책 목록, 운동 세트별 시각, 상세 분석을 추가했습니다.'],['1.7.106','오늘 탭 상단 연속 도전·오늘 완료·퀘스트 추천을 컴팩트하게 재배치하고 순간생각 링크를 강조했습니다. 복귀 중심 오늘 추천과 진행 기록·익숙한 수행 중심 마무리 추천을 분리했으며, 이유 표시·리스트 바로 이동·중복 추천 통합·최근 미수행 추천 회피를 적용했습니다. 기존 +10%/+20% 보상은 유지합니다.'],['1.7.105','생활 리듬 분석 1회형·반복형 차트 높이를 통일하고 30/90일 X축 눈금 밀도를 조정했습니다. 반복형 시간대 분포를 제거하고, 기상/취침 목표를 수면 리듬의 단일 목표 설정에 연결했습니다.'],['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
+const ADMIN_VERSION_NOTES=[['1.7.146','하루 타임로그 기본 화면에서 참고 활동명 라벨의 박스를 없애 작은 글자로 표시합니다. 확대창에서는 참고 활동 구간에 활동명과 시작~종료 시각을 함께 표시하고, 확대 시간대 밖의 시점 마커가 잘려 보이지 않도록 처리합니다. 기존 기록·보상은 변경하지 않습니다.'],['1.7.145','하루 타임로그 왼쪽 아이콘 열 축소, 참고 활동 이름과 겹침 수를 같은 칩에 표시, 활동별 차분한 팔레트, 확대 팝업 네 행 및 시간 눈금·구간 목록, 참고 활동 시작 알림의 예정 시각 🔔 마커를 추가했습니다. 알림 실행 결과가 아닌 예정 정보만 표시하며 원본 이벤트·보상은 변경하지 않습니다.'],['1.7.144','하루 타임로그 네 행 고정 라벨, 퀘스트 완료와 같은 행의 ✎+ 추가 기록(실제 저장 시각만), 시간순 이름 표시, 참고 활동 라벨과 정확한 구간 막대, 밝기 테마 일치, 팝업 24시간 내비게이터 및 짧은 구간 편집 개선. 완료 시각·보상·원본 기록은 변경하지 않습니다.'],['1.7.143','참고 활동 자유 구간·자동완성·시작 알림·팝업 드래그 편집을 추가하고 기존 하루 타임로그 확대를 별도 팝업으로 이동했습니다. 퀘스트 완료·순간 기록·생활 기록은 확대 팝업에서 읽기 전용이며 퀘스트 완료 시각·보상·이력은 변경하지 않습니다.'],['1.7.142','하루 타임로그 생활 기록 줄에 걷기 실측 시작~종료 구간을 비례 막대로 표시하고 자정 넘김을 날짜별로 이어서 보여줍니다. 확대 보기에서도 구간이 표시되며 원본 걷기 기록은 유지합니다. 전체 독서 목록의 책 제목 왼쪽 정렬을 바로잡았습니다.'],['1.7.141','기록 탭 주간 성장 브리핑을 일별 7일 흐름·완료 기록일·퀘스트별 성장/점검 포인트·다음 7일 제안으로 확장했습니다. 독서 템플릿의 중복 책별 독서량 목록과 기존 기록 추정값 N건 펼침만 제거하고, 원본 기록·추정 집계·책별 상세는 유지합니다.'],['1.7.140','APK 전용 설정 → 앱 관리에서 웹 버전을 확인하고 화면 캐시만 갱신하는 버튼을 추가했습니다. 네트워크 확인 실패 시 캐시는 유지되며, PWA와 이전 APK에는 메뉴가 표시되지 않습니다. 로컬 기록·쿠키·로그인 정보는 삭제하지 않습니다.'],['1.7.139','기록 탭 분석 바로가기에 걷기 통계를 추가했습니다. 걷기 통계 표시 설정이 켜졌을 때만 버튼을 보여주고 통계 영역으로 이동합니다. 기존 통계와 퀘스트·보상·라이프 이벤트 데이터는 변경하지 않습니다.'],['1.7.138','기록 탭 주간 브리핑 아래에 ChatGPT 분석용 내보내기를 추가했습니다. 7·30·90일·1년·직접 지정, 선택 기록, 5가지 분석 질문, 미리보기·복사·공유를 지원합니다. 원본 기록과 보상은 변경하지 않습니다.'],['1.7.132','PWA와 APK의 글자 크기 밸런스와 좁은 화면의 인사말·오늘 할 퀘스트 제목 표시를 조정했습니다. 데이터 저장 방식은 변경하지 않았습니다.'],['1.7.130','GitHub Pages HTML을 그대로 불러오는 Android Wrapper 전용 연결을 추가했습니다. 개인 알림은 APK에서 Android 로컬 일정으로 동기화해 화면 꺼짐에도 알림을 시도합니다. 웹/PWA는 기존 화면 실행 중 알림 방식을 유지하고 JSON 내보내기·가져오기는 네이티브 파일 선택/저장을 지원합니다.'],['1.7.129','설정을 계정·개인 알림·화면·백업·고급 메뉴로 그룹화했습니다. 계정별 독립된 매일 반복 개인 알림은 시간·내용만 설정하고, 앱 화면이 열린 경우에 한해 시스템 알림을 시도합니다. 권한·테스트·ON/OFF·수정·삭제 및 JSON 백업을 지원하며 백그라운드 예약 알람은 지원하지 않습니다.'],['1.7.126','취침은 새벽 06:00 이전 기록을 전날 밤으로 연결하며, 실제 기록한 날짜·시각은 보존합니다. 같은 날 새벽/저녁 취침이 각각 별도 밤으로 표시되고, 반복형 라이프 이벤트의 버튼 크기를 유지하면서 이모지 옆에 당일 누적 기록 횟수를 표시합니다.'],['1.7.125','독서 템플릿에서 책 제목 자동완성으로 책을 선택하면 같은 책의 최근 종료 쪽을 다음 시작 쪽 기본값으로 제안합니다. 같은 날 새 구간을 추가할 때는 직전에 입력한 종료 쪽을 우선 사용하며, 직접 수정한 시작 쪽과 모든 원본 기록은 그대로 보존합니다.'],['1.7.124','완료 이후 모든 퀘스트에 기록 추가 가능. 완료 상태, 포인트·XP 및 기존 세부 기록을 보존하고 추가 기록만 기존 기록에 합산합니다. 독서 진도는 가장 높게 도달한 종료 쪽을 기준으로 계산합니다.'],['1.7.123','책별 독서 타임라인: 완독 표시를 겹침 없는 체크 배지·연한 음영·날짜 체크로 통일하고 보라색을 제거했습니다. 책별 진행률·쪽수(등록된 책)와 누적 진도별 민트색 점을 표시하며, 최근 독서순 기본 정렬 및 시작일·완독일·진행률·제목순 선택을 계정별로 저장합니다. 기존 기록·필터·기간 이동·상세 분석·보상은 유지합니다.'],['1.7.122','노트·순간 기록 모아보기 검색을 일별 묶음 필터에서 개별 기록 검색으로 개선했습니다. 검색된 기록만 날짜·시각과 함께 표시하고 일치 단어를 강조합니다. 여러 단어·날짜 검색과 결과 100건씩 더 보기를 지원하며 기존 원문·저장·수정 기능은 유지합니다.'],['1.7.121','책별 독서 타임라인에서 직접 완독 체크한 책에 작은 체크 표시와 은은한 초록 음영을 적용하고 전체/읽는 중/완독 필터를 추가했습니다. 타임라인에만 과거 기록 추정 표시와 색상 구분을 숨기되 원본 데이터·상세 목록·기존 분석·보상은 그대로 유지합니다.'],['1.7.120','기록·달력 분석 정리: 분석 바로가기, 관련 퀘스트 선택의 위치 정돈, 월/일 X축 및 Y축 눈금 간격 최적화, 미기록과 실제 0 구분을 유지했습니다. 분석 렌더링은 화면별 메모와 날짜별 인덱스로 반복 검색을 줄이고 현재 계정·데이터 변경 시 즉시 갱신하도록 개선했습니다. 기존 기록·보상·그 외 탭은 유지합니다.'],['1.7.119','운동 세트 구성 그래프의 기준을 통일했습니다. 7일은 일별 누적 막대, 30·90일은 일별 세트 순위별 누적 영역으로 표시하고 두 기간 모두 같은 일별 합계로 비교합니다. 모든 X축은 월/일, Y축은 회 단위의 읽기 쉬운 눈금으로 표시합니다. 날짜를 선택하면 7일 누적 막대와 세트별 세부 기록이 열립니다.'],['1.7.118','운동 세트 그래프를 하루 한 막대의 색상별 누적 세트 구성으로 교체했습니다. 가장 많은 세트가 아래에 놓이고 7일은 내부 횟수·상단 일합계를 표시합니다. 30일은 전체 흐름+선택 7일 확대, 90일은 주별 최고 세트+선택 7일 확대를 지원합니다.'],['1.7.117','운동 템플릿의 중복된 구조화 달성량 그래프를 종목별 최고 세트 횟수 추세와 일별 세트 수·실제 시각 기록으로 교체했습니다. 종목 및 7/30/90일 선택, 근력 운동의 중량별 비교를 지원합니다. 실제 달성량과 독서·다른 템플릿 분석, 원본 기록 및 보상은 변경하지 않습니다.'],['1.7.116','생활 리듬 전체 흐름을 이벤트 횟수 대신 최근 7일 주요 1회형 이벤트 시각 비교로 바꾸고, 선택 기간의 평균 시각·변동폭 요약을 추가했습니다. 비교할 이벤트 최대 4개 선택이 가능하며 반복형 이벤트 분석에는 개별 수행 시각과 원본 편집 버튼, 과거 기간 접기/펼치기를 추가했습니다. 데이터와 보상은 유지됩니다.'],['1.7.115','독서 타임라인 시작·완독 날짜를 해당 날짜의 실제 점에 연결하고 행 내부 상·하단에 배치했습니다. 가까운 날짜도 겹치지 않도록 라벨 방향을 보정하고 책별 행 높이를 축소했습니다. 7/30일 기간 이동·자연스러운 상하 스크롤·기존 독서 목록·저장 구조를 유지했습니다.'],['1.7.114','독서 타임라인의 7일 날짜 겹침 해결, 7/30일 좌우 드래그 및 이전/다음/오늘 이동, 시작·완독 날짜 배지와 단정한 표식, 내부 세로 스크롤 제거 및 탭 스와이프 충돌 방지. 기존 책 목록과 독서·운동 기록 및 보상 유지.'],['1.7.113','독서 상세 분석의 7/30일 가로 카드 목록을 한 화면에서 30일 전체를 확인할 수 있는 책별 기간표로 변경했습니다. 각 책의 첫 독서 기록 또는 직접 입력한 시작일 ▶, 실제 기록된 날 ●, 확정 완독일 ✓, 과거 메모 추정 ○를 구분하며 제목 터치로 책 상세에 이동합니다. 퀘스트 분석 7/30/90/1년 선택 버튼은 퀘스트별 성장 분석 제목 옆으로 이동했습니다. 기존 독서 목록·데이터·보상과 다른 템플릿은 유지합니다.'],['1.7.112','독서 템플릿의 최근 기록 추세 그래프를 날짜별 책 이름 타임라인(7/30일)으로 교체했습니다. 기록 있는 날짜만 최근순으로 표시하고 같은 날짜의 여러 책을 세로로 나열합니다. 책 제목 터치 시 기존 전체 독서 목록의 해당 책 상세가 바로 열리며, 작성 중과 과거 메모 (추정)을 구분합니다. 운동·다른 템플릿의 그래프와 기존 기록·보상은 유지합니다.'],['1.7.110','독서 목록에 책 검색과 한 줄 접기/펼치기를 추가하고, 각 책에 독서 시작일·완독일 및 날짜별 읽은 구간을 표시합니다. 과거 메모는 (추정)으로 유지하고 시작/완독 날짜를 직접 지정할 수 있습니다.'],['1.7.109','독서 기록의 기존 메모에서 책 제목과 페이지 구간을 읽기 전용 추정 분석하고, 등록된 책과 함께 자동완성 후보에 표시합니다. 전체 책 목록에서 추정 책을 직접 등록할 수 있으며 총 쪽수·완독은 수동으로 확인합니다. 과거 원본·완료·보상은 변경하지 않습니다.'],['1.7.108','템플릿 선택 미리보기와 기존 임시 기록 전환 문제를 수정했습니다.'],['1.7.107','퀘스트별 스마트 기록 템플릿, 책 목록, 운동 세트별 시각, 상세 분석을 추가했습니다.'],['1.7.106','오늘 탭 상단 연속 도전·오늘 완료·퀘스트 추천을 컴팩트하게 재배치하고 순간생각 링크를 강조했습니다. 복귀 중심 오늘 추천과 진행 기록·익숙한 수행 중심 마무리 추천을 분리했으며, 이유 표시·리스트 바로 이동·중복 추천 통합·최근 미수행 추천 회피를 적용했습니다. 기존 +10%/+20% 보상은 유지합니다.'],['1.7.105','생활 리듬 분석 1회형·반복형 차트 높이를 통일하고 30/90일 X축 눈금 밀도를 조정했습니다. 반복형 시간대 분포를 제거하고, 기상/취침 목표를 수면 리듬의 단일 목표 설정에 연결했습니다.'],['1.7.104','생활 리듬 분석을 하루 1회 시각형·여러 번 횟수형으로 분리하고, 7/30/90일 그래프·목표·시간대 분포·기록 상세 연결을 추가했습니다. 수면 리듬 표 아래 중복 보상 문구는 제거했습니다.'],['1.7.103','수면 리듬을 기록 탭 생활 리듬 분석 아래로 옮기고, 다음 날 기상일 기준 화~월 7열 보드·취침/기상 목표 편집·수면 기록 간격을 추가했습니다. 새벽 1시 취침은 전날 밤에 연결하고 월요일 기상으로 지난주를 정산합니다.'],['1.7.102','수면 리듬 주간 체커: 취침·다음 날 기상 각각 성공/실패/미기록 평가, 월요일 기상 체크 시 14점 비율 보상, 관리자 최대 보상 조정·중복 지급 방지.'],['1.7.101','하루 돌아보기에서 퀘스트 완료·순간생각·라이프이벤트를 시간순 한 줄 타임라인으로 합쳤습니다. 모든 측정값·원문·메모와 기존 상세 이동을 유지하고 복사도 시간순으로 정리합니다. 넓은 화면에서도 시간 순서를 지키는 단일 열로 표시하며 기존 기록·백업은 변경하지 않습니다.'],['1.7.100','하루 돌아보기에서 측정된 성과 전체와 순간생각 원문 전체를 제한 없이 표시합니다. 성과 메모와 데일리 노트도 생략하지 않고 읽을 수 있으며, 휴대폰은 세로 목록·태블릿은 2열로 배치하고 개별 원본 이동을 유지합니다.'],['1.7.99','달력의 선택 날짜에 하루 돌아보기 요약을 추가했습니다. 기존 퀘스트 완료·순간 기록·생활 이벤트·데일리 노트를 읽기 전용으로 결합하며 성과 카드·최근 생각·날짜 이동·원본 상세 이동·텍스트 복사를 지원합니다. 새 데이터 구조나 서버 전송 없이 오프라인에서 동작합니다.'],['1.7.98','달력 하루 타임로그 겹침 마커를 누르면 해당 시간대가 확대됩니다. 확대 축에서 좌우 스와이프·마우스 드래그, 확대·축소, 전체 보기 복귀가 가능하며 각 기록은 기존 상세 목록으로 연결됩니다. 중복 저장 없이 화면 크기에 맞춰 표시합니다.'],['1.7.97','기록 탭 퀘스트별 성장 분석 아래에 모든 완료 이력을 한곳에서 조회하는 기본 접힘 기록장을 추가했습니다. 날짜·메모 검색, 기간·정렬·메모 필터와 개별 기록 편집을 지원합니다. 보상과 원본 기록은 유지합니다.'],['1.7.96','기록 탭 수행 리듬의 미수행을 밝은/어두운 테마 모두 빨간색으로 구분하고 일별 미수행에는 × 표시를 추가했습니다. 완료·일부 완료·예정 없음·오늘 진행 중의 판정 방식은 유지합니다.'],['1.7.85','달력 시간축 아래에 퀘스트 완료 목록과 순간 기록 목록을 각각 배치하고 중복된 시간순 완료·기록 목록을 제거했습니다. 시간축 아이콘을 누르면 해당 상세 항목으로 이동합니다. 저장 및 보상 규칙은 유지합니다.'],['1.7.84','종료 확인 뒤 두 번째 버튼 없이 기존 브라우저 뒤로 가기 경로를 실행하도록 개선. 가로채기 해제 후 한 번의 종료 클릭에서 이동을 시도하며 웹 표준 PWA의 운영체제 강제 종료는 보장되지 않습니다.'],['1.7.83','뒤로 가기 종료 확인창을 유지하면서 Chrome PWA에서 가짜 방문 기록을 추가하지 않도록 개선했습니다. 종료 버튼은 직접 닫기 시도 후 브라우저 제약을 따릅니다.'],['1.7.82','2차 종료 안내창을 삭제했습니다. 오늘 탭에서 한 번만 확인하고 종료를 선택하면 즉시 창 닫기 또는 방문 기록 이동을 시도합니다.'],['1.7.81','안드로이드 뒤로 가기 처리 개선: 열린 팝업 닫기 → 오늘 탭 → 앱 내부 종료 확인창. CloseWatcher 우선, 사용자 제스처 이후 방문 기록 보완.'],['1.7.79','1시간 보조선이 시간 눈금과 완료·순간 기록 두 줄을 연속 관통합니다. 완료 마커는 퀘스트 카테고리 이모지로 표시하며 겹친 기록은 대표 이모지와 건수로 표시합니다.'],['1.7.78','범례 중복 제거, 숫자와 눈금을 같은 축에 결합, 오늘 탭 순간 기록 바로가기를 헤더 안으로 축소했습니다.'],['1.7.77','시간축 완료 마커의 흰 배경 CSS 충돌 수정, 2시간 기본·좁은 화면 3시간 주 눈금과 1시간 보조 눈금 추가. 기존 데이터·보상 유지.'],['1.7.76','타임로그 마커를 14px의 선명한 벡터로 축소하고 범례·시간축 기호를 동일하게 통일했습니다. 전체 폭 눈금 정렬과 작은 숫자 묶음 표시를 정밀하게 보정했습니다.'],['1.7.75','24시간 축 가로폭 확대 및 겹침 묶음 표시 추가.'],['1.7.74','달력에 24시간 완료 시각 타임라인 및 짧은 순간 기록(기분·생각·작성 시각) 추가. 퀘스트는 승인 완료 시각만 표시하며 시작·종료·소요 시간은 새로 추적하지 않습니다. 계정별 JSON 백업·복원 지원.'],['1.7.73','첫 시작 선물과 매일 행운 상자를 수령하기 전에는 퀘스트 위에, 수령 후 또는 대기 상태에서는 퀘스트 아래 기존 위치에 배치합니다. 위치는 계정별 저장된 수령 상태를 기준으로 표시됩니다.'],['1.7.72','첫 시작 선물 600P 유지, 다음 날부터 계정별 하루 1회 랜덤 보상(포인트·트레이너 XP·대표 포켓몬 XP·FEVER 티켓·대박) 추가. FEVER 티켓은 직접 활성화하는 60분 +20%이며 정규 +10%와 중복 적용하지 않습니다. 수령 이력은 JSON에 저장됩니다.'],['1.7.71','특별 대결에서 성공·실패 결과 메시지를 한 영역으로 통합하고 중복된 강조 문구를 제거했습니다. 기존 포획률·대결 연출·포켓몬 정보는 유지합니다.'],['1.7.70','야생 선제공격과 대표 포켓몬 반격, 피격·방어·헤롱헤롱 연출을 추가했습니다. 대결 승리 시 기존 포획률 +20%p(최대 99%)로 포켓볼을 시도하고, 패배하면 상대가 도망갑니다.'],
  ['1.7.68','한줄 리스트의 완료 상태를 퀘스트명 앞 네모박스(미완료)/체크된 네모박스(완료)로 표현. 기존 왼쪽 상태선 및 다른 배치 유지.'],
  ['1.7.67','간단 리스트의 자세히/접기를 수행률 아래로 이동. 한줄 리스트 추천 배지를 연속 표시 앞으로 이동.'],
  ['1.7.62','기록 탭 실제 달성량의 단위 미지정 포함 전체 단위 기본 선택, 다중 선택 비교 그래프, 단위별 실측 합계와 기록 없음/0 구분, 계정별 보기 설정 저장.'],
@@ -9871,6 +9923,19 @@ function timeLogZoomUpdatePosition(){
  const navigator=document.getElementById('timeLogZoomNavigator'),viewport=document.getElementById('timeLogZoomNavigatorViewport');
  if(navigator&&viewport){viewport.style.left=(range.start/1440*100)+'%';viewport.style.width=(state.minutes/1440*100)+'%';navigator.setAttribute('aria-valuenow',String(Math.round(range.start)));navigator.setAttribute('aria-valuetext',timeLogZoomFormat(range.start)+'~'+timeLogZoomFormat(range.end));}
  renderTimeLogZoomContext(range);
+ // Markers are instantaneous: a badge from outside the visible time range must
+ // never protrude into the zoom window as a cut-off box.
+ const viewStart=range.start,viewEnd=range.end;
+ document.querySelectorAll('#timeLogZoomContent .time-log-zoom-point[data-event-minute]').forEach(b=>{
+  const m=Number(b.dataset.eventMinute);
+  const visible=Number.isFinite(m)&&m>=viewStart-0.01&&m<=viewEnd+0.01;
+  b.style.visibility=visible?'visible':'hidden';
+  b.tabIndex=visible?0:-1;
+ });
+ document.querySelectorAll('#timeLogZoomContent .time-log-zoom-tick[data-tick-minute]').forEach(t=>{
+  const m=Number(t.dataset.tickMinute),label=t.querySelector('span');
+  if(label)label.style.visibility=m>=viewStart&&m<=viewEnd?'visible':'hidden';
+ });
  const selection=document.getElementById('timeLogZoomSelection'),chart=document.getElementById('dailyTimeLogChart');
  if(selection&&chart){
   const lane=chart.querySelector('.time-log-lane');
@@ -9970,7 +10035,7 @@ function layoutTimeLogZoom(){
  const axis=document.createElement('div');axis.className='time-log-zoom-axis';content.appendChild(axis);
  const steps=[5,10,15,30,60,120,180,240,360,480];const step=steps.find(x=>x*ppm>=65)||480;
  for(let minute=0;minute<=1440;minute+=step){
-  const tick=document.createElement('div');tick.className='time-log-zoom-tick';tick.style.left=(margin+minute*ppm)+'px';
+  const tick=document.createElement('div');tick.className='time-log-zoom-tick';tick.dataset.tickMinute=String(minute);tick.style.left=(margin+minute*ppm)+'px';
   const text=document.createElement('span');text.textContent=timeLogZoomFormat(minute);tick.appendChild(text);axis.appendChild(tick);
  }
  const chart=document.getElementById('dailyTimeLogChart');
@@ -9993,7 +10058,7 @@ function layoutTimeLogZoom(){
   });
   points.forEach((point,i)=>{
    const b=document.createElement('button');b.type='button';b.className='time-log-zoom-point';b.dataset.kind=kind;
-   b.style.left=(margin+point.minute*ppm)+'px';b.style.top=(5+placement.slots[i]*31)+'px';if(point.recordKind==='append')b.classList.add('is-append');
+   b.style.left=(margin+point.minute*ppm)+'px';b.style.top=(5+placement.slots[i]*31)+'px';b.dataset.eventMinute=String(point.minute);if(point.recordKind==='append')b.classList.add('is-append');
    const t=document.createElement('time');t.textContent=point.clock;
    const name=document.createElement('span');name.className='time-log-zoom-name';name.textContent=point.label||point.clock;
    b.append(t,name);b.title=point.clock+' · '+point.label;b.setAttribute('aria-label',b.title);
@@ -10006,22 +10071,29 @@ function layoutTimeLogZoom(){
  {
   const entries=referenceActivitiesForDate(state.key),alarms=referenceReminderMarksForDate(state.key);
   const rowEnds=[],refPlacement=entries.map(entry=>{
-   const from=margin+entry.startMinute*ppm,to=Math.max(from+Math.min(115,20+entry.record.title.length*9),margin+entry.endMinute*ppm);
+   const from=margin+entry.startMinute*ppm,to=Math.max(from+Math.min(170,100+entry.record.title.length*8),margin+entry.endMinute*ppm);
    let row=rowEnds.findIndex(end=>end+8<=from);
    if(row<0){row=rowEnds.length;rowEnds.push(to)}else rowEnds[row]=to;
    return row;
   });
-  const height=Math.max(65,34+Math.max(1,rowEnds.length)*27);
+  const height=Math.max(76,32+Math.max(1,rowEnds.length)*47);
   const name=document.createElement('div');name.className='time-log-zoom-lane-label';name.style.height=height+'px';name.textContent='✏️';name.title='참고 활동';labels.appendChild(name);
   const lane=document.createElement('div');lane.className='time-log-zoom-track time-log-zoom-reference';lane.dataset.kind='reference';lane.style.height=height+'px';content.appendChild(lane);
   entries.forEach((entry,i)=>{
    const bar=document.createElement('button');bar.type='button';bar.className='time-log-zoom-reference-bar';bar.dataset.palette=String(referencePalette(entry.record.title));
+   const actualWidth=Math.max(3,(entry.endMinute-entry.startMinute)*ppm);
    bar.style.left=(margin+entry.startMinute*ppm)+'px';
-   bar.style.width=Math.max(3,(entry.endMinute-entry.startMinute)*ppm)+'px';
-   bar.style.top=(30+refPlacement[i]*27)+'px';
+   bar.style.width=actualWidth+'px';
+   bar.style.top=(32+refPlacement[i]*47)+'px';
    const name=entry.record.title,range=referenceActivityClock(entry.startMinute)+'~'+(entry.record.endAt?referenceActivityClock(entry.endMinute):'종료 미지정');
-   bar.title=name+' '+range+' · 참고 활동 편집 열기';bar.setAttribute('aria-label',bar.title);
-   const txt=document.createElement('span');txt.textContent=name;bar.appendChild(txt);
+   bar.title=name+' · '+range+' · 참고 활동 편집 열기';bar.setAttribute('aria-label',bar.title);
+   const txt=document.createElement('span');txt.className='time-log-ref-contents';
+   const title=document.createElement('b');title.textContent=name;
+   const time=document.createElement('small');
+   const displayedMinutes=Math.max(0,Math.round(entry.endMinute-entry.startMinute));
+   time.textContent=range+(entry.record.endAt?' · '+displayedMinutes+'분':'');
+   txt.append(title,time);bar.appendChild(txt);
+   if(actualWidth<148)bar.classList.add('is-narrow');
    bar.addEventListener('click',()=>{closeTimeLogZoom();openReferenceExpand(state.key,entry.record.id)});lane.appendChild(bar);
   });
   alarms.forEach(a=>{
@@ -10406,13 +10478,13 @@ function layoutReferenceActivityCompact(){
  const anchors=events.map(item=>{
   const name=String(item.record.title||'활동');
   const anchor=pad+((item.startMinute+item.endMinute)/2/1440)*plot;
-  const width=Math.min(88,Math.max(48,24+Array.from(name).length*6.4));
+  const width=Math.min(86,Math.max(27,10+Array.from(name).length*7.2));
   return {item,name,anchor,width};
  }).sort((a,b)=>a.anchor-b.anchor);
  const clusters=[];
  anchors.forEach(a=>{
   const prev=clusters[clusters.length-1];
-  if(prev&&a.anchor-prev.anchor < Math.max(39,(prev.width+a.width)/2-7)){
+  if(prev&&a.anchor-prev.anchor < Math.max(23,(prev.width+a.width)/2-7)){
    prev.items.push(a);prev.anchor=prev.items.reduce((sum,x)=>sum+x.anchor,0)/prev.items.length;
    prev.width=Math.max(prev.width,a.width);
   }else clusters.push({items:[a],anchor:a.anchor,width:a.width});
@@ -10420,7 +10492,7 @@ function layoutReferenceActivityCompact(){
  clusters.forEach(c=>{
   const featured=c.items[0],hidden=c.items.length-1;
   const text=featured.name+(hidden?' +'+hidden:'');
-  const width=Math.min(Math.max(45,28+Array.from(text).length*6),Math.min(106,w-2*pad));
+  const width=Math.min(Math.max(27,10+Array.from(text).length*7.2),Math.min(106,w-2*pad));
   const left=Math.max(1,Math.min(w-width-1,c.anchor-width/2));
   const label=document.createElement('button');label.type='button';label.className='reference-compact-title';
   label.dataset.palette=String(referencePalette(featured.name));label.style.left=left+'px';label.style.width=width+'px';label.textContent=text;
