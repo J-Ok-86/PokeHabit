@@ -1,5 +1,5 @@
 /* PokéRoutine personal, offline app shell. External Pokémon artwork may need internet. */
-const CACHE = 'pokeroutine-shell-v17157-dark-label-layout-v1';
+const CACHE = 'pokeroutine-shell-v17158-nav-guides-josa-v1';
 const APP_SHELL = ['./', './index.html', './moves.html'];
 const OPTIONAL_SHELL = ['./manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
