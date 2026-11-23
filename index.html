@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.160 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.161 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -16605,4 +16605,213 @@ html[data-theme="light"] .time-log-section .time-log-zoom-panel.tl156-panel .tim
 .time-log-section .time-log-chart .time-log-markers{overflow:visible!important}
 .time-log-section .time-log-zoom-panel .time-log-zoom-point[data-kind="quest"]{min-height:40px!important}
 </style>
+<script>
+/* PokeHabit v1.7.161 — confirmed bedtime-to-wake visual overlay.
+   Decorative and read-only; does not create data or change any record layout. */
+(function(){
+ 'use strict';
+ if(window.__tl161SleepBands)return;
+ window.__tl161SleepBands=true;
+ const STYLE_ID='tl161-sleep-overlay-style';
+ const css=document.createElement('style');
+ css.id=STYLE_ID;
+ css.textContent=String.raw`
+ .time-log-section .tl161-sleep-band{
+  position:absolute!important;display:block!important;box-sizing:border-box!important;
+  top:0!important;bottom:0!important;height:100%!important;
+  z-index:1!important;pointer-events:none!important;user-select:none!important;
+  border-left:1px dashed rgba(183,156,247,.66)!important;
+  border-right:1px dashed rgba(183,156,247,.66)!important;
+  background:repeating-linear-gradient(132deg,rgba(151,123,222,.11) 0px,rgba(151,123,222,.11) 2px,rgba(108,88,168,.045) 2px,rgba(108,88,168,.045) 11px),rgba(94,69,159,.11)!important;
+ }
+ .time-log-section #dailyTimeLogChart .tl161-sleep-band{z-index:2!important}
+ .time-log-section .time-log-zoom-track > .tl161-sleep-band{z-index:1!important}
+ .time-log-section .tl161-sleep-band .tl161-sleep-mark{
+  position:absolute;left:4px;top:3px;max-width:calc(100% - 8px);
+  display:inline-flex;align-items:center;white-space:nowrap;
+  border:1px solid rgba(187,160,255,.54);border-radius:6px;
+  padding:1px 4px;background:rgba(48,40,91,.83);color:#f0e9ff;
+  font:700 9px/1.2 system-ui,sans-serif;pointer-events:none;overflow:hidden;
+ }
+ html[data-theme="light"] .time-log-section .tl161-sleep-band{
+  background:repeating-linear-gradient(132deg,rgba(149,127,211,.15) 0px,rgba(149,127,211,.15) 2px,rgba(163,144,217,.055) 2px,rgba(163,144,217,.055) 11px),rgba(149,127,211,.08)!important;
+  border-left-color:rgba(102,79,178,.56)!important;
+  border-right-color:rgba(102,79,178,.56)!important;
+ }
+ html[data-theme="light"] .time-log-section .tl161-sleep-band .tl161-sleep-mark{
+  background:rgba(236,228,255,.94);color:#634794;border-color:#baa9ed;
+ }
+ .time-log-section .time-log-zoom-navigator .tl161-navigator-sleep{
+  position:absolute;top:0;bottom:0;background:rgba(122,91,192,.18);
+  border-left:1px solid rgba(151,122,221,.36);
+  border-right:1px solid rgba(151,122,221,.36);
+  z-index:0;pointer-events:none;
+ }
+ /* Existing quest, moment, life, and reference captions remain above sleep shading. */
+ .time-log-section .time-log-lane .time-log-markers,
+ .time-log-section .time-log-lane .time-log-walk-ranges,
+ .time-log-section .time-log-lane .reference-lane-bars,
+ .time-log-section .time-log-lane .reference-alarm-marks{position:relative;z-index:3}
+ .time-log-section .time-log-zoom-point,
+ .time-log-section .time-log-zoom-walk-session,
+ .time-log-section .time-log-zoom-reference-bar{z-index:6}
+ `;
+ document.head.appendChild(css);
+ const validKey=k=>/^\d{4}-\d{2}-\d{2}$/.test(String(k||''));
+ const dateAt=(key,clock)=>{
+  if(!validKey(key)||!/^([01]\d|2[0-3]):[0-5]\d$/.test(String(clock||'')))return NaN;
+  return new Date(key+'T'+clock+':00').getTime();
+ };
+ const plusDays=(key,n)=>{
+  const t=new Date(key+'T12:00:00');t.setDate(t.getDate()+n);
+  return [t.getFullYear(),String(t.getMonth()+1).padStart(2,'0'),String(t.getDate()).padStart(2,'0')].join('-');
+ };
+ function confirmedSleepIntervals(key){
+  if(!validKey(key)||typeof data==='undefined'||!data)return [];
+  const logs=Array.isArray(data.lifeEventLogs)?data.lifeEventLogs:[];
+  const dayStart=new Date(key+'T00:00:00').getTime();
+  const nextDay=plusDays(key,1),dayEnd=new Date(nextDay+'T00:00:00').getTime();
+  const out=[];
+  // The displayed day can contain the END of last night's sleep and the START of tonight's sleep.
+  for(const night of [plusDays(key,-1),key]){
+   const morning=plusDays(night,1);
+   const beds=logs.filter(v=>v?.eventId==='sleep'&&(
+    (v.day===night&&dateAt(v.day,v.clock)>=dateAt(night,'06:00'))||
+    (v.day===morning&&dateAt(v.day,v.clock)<dateAt(morning,'06:00'))
+   )).sort((a,b)=>dateAt(a.day,a.clock)-dateAt(b.day,b.clock));
+   const wakes=logs.filter(v=>v?.eventId==='wake'&&v.day===morning)
+    .sort((a,b)=>dateAt(a.day,a.clock)-dateAt(b.day,b.clock));
+   if(!beds.length||!wakes.length)continue;
+   // Use the recorded bedtime; pair it with the first subsequent confirmed wake.
+   const bed=beds[0],start=dateAt(bed.day,bed.clock);
+   const wake=wakes.find(w=>dateAt(w.day,w.clock)>start);
+   if(!wake)continue;
+   const end=dateAt(wake.day,wake.clock);
+   if(!Number.isFinite(start)||!Number.isFinite(end)||end-start>18*3600000)continue;
+   const a=Math.max(start,dayStart),b=Math.min(end,dayEnd);
+   if(b<=a)continue;
+   const m0=(a-dayStart)/60000,m1=(b-dayStart)/60000;
+   out.push({start:m0,end:m1,night,bed:bed.clock,wake:wake.clock,
+    title:'🌙 기록상 취침 구간 · '+bed.day+' '+bed.clock+' 취침 → '+wake.day+' '+wake.clock+' 기상'});
+  }
+  return out.sort((a,b)=>a.start-b.start);
+ }
+ function createBand(item,left,width,label){
+  const band=document.createElement('span');band.className='tl161-sleep-band';
+  band.dataset.startMinute=String(item.start);band.dataset.endMinute=String(item.end);
+  band.style.left=left+'px';band.style.width=Math.max(1,width)+'px';
+  band.setAttribute('aria-hidden','true');band.title=item.title;
+  if(label){
+   const mark=document.createElement('span');mark.className='tl161-sleep-mark';mark.textContent='☾';
+   band.appendChild(mark);
+  }
+  return band;
+ }
+ function drawCompact(){
+  const chart=document.getElementById('dailyTimeLogChart'),section=document.getElementById('dailyTimeLog');
+  if(!chart||!section)return;
+  const dayKey=section.dataset.day;
+  const lanes=[...chart.querySelectorAll('.time-log-lane[data-kind]')];
+  if(!lanes.length)return;
+  const intervals=confirmedSleepIntervals(dayKey);
+  lanes.forEach(lane=>{
+   lane.querySelectorAll(':scope > .tl161-sleep-band').forEach(el=>el.remove());
+   const pad=14,span=Math.max(1,lane.clientWidth-2*pad);
+   if(!lane.clientWidth)return;
+   intervals.forEach(item=>{
+    const a=pad+item.start/1440*span,b=pad+item.end/1440*span;
+    // Draw ONLY inside existing rows; no new row and no expanded layout height.
+    const band=createBand(item,a,b-a,lane.dataset.kind==='quest'&&(b-a)>32);
+    lane.insertBefore(band,lane.firstChild);
+   });
+  });
+  let legend=section.querySelector('.time-log-legend');
+  const existing=legend?.querySelector('.tl161-sleep-key');
+  if(existing&&!intervals.length)existing.remove();
+  if(legend&&intervals.length&&!existing){
+   const note=document.createElement('span');note.className='tl161-sleep-key';
+   note.textContent='🌙 취침~기상 기록 구간';note.title='실제 잠든 시간의 측정값이 아니라 기록상 취침부터 기상까지의 간격입니다.';
+   legend.appendChild(note);
+  }
+ }
+ function drawNavigator(){
+  const nav=document.getElementById('timeLogZoomNavigator');
+  if(!nav)return;
+  const items=confirmedSleepIntervals(zoomKey());
+  nav.querySelectorAll('.tl161-navigator-sleep').forEach(el=>el.remove());
+  const lanes=[...nav.querySelectorAll('.time-log-nav-lane')];
+  for(const lane of lanes){
+   items.forEach(item=>{
+    const node=document.createElement('span');node.className='tl161-navigator-sleep';
+    node.style.left=(item.start/1440*100)+'%';
+    node.style.width=((item.end-item.start)/1440*100)+'%';
+    node.title=item.title;lane.prepend(node);
+   });
+  }
+ }
+ function zoomKey(){return typeof timeLogZoomState!=='undefined'?timeLogZoomState?.key:null}
+ function drawZoom(){
+  const key=zoomKey(),content=document.getElementById('timeLogZoomContent'),view=document.getElementById('timeLogZoomScroll');
+  if(!content||!view||!key)return;
+  const ppm=Number(view.dataset.pixelsPerMinute)||1,margin=55;
+  const items=confirmedSleepIntervals(key);
+  const tracks=[...content.querySelectorAll('.time-log-zoom-track[data-kind]')];
+  tracks.forEach(track=>{
+   track.querySelectorAll(':scope > .tl161-sleep-band').forEach(el=>el.remove());
+   items.forEach(item=>{
+    const width=(item.end-item.start)*ppm;
+    const band=createBand(item,margin+item.start*ppm,width,
+     track.dataset.kind==='quest'&&width>48);
+    track.prepend(band);
+   });
+  });
+  drawNavigator();
+ }
+ // Pinch zoom keeps its touch target DOM; update coordinates without replacing bands.
+ function shiftZoom(){
+  const root=document.getElementById('timeLogZoomContent'),view=document.getElementById('timeLogZoomScroll');
+  if(!root||!view)return;
+  const ppm=Number(view.dataset.pixelsPerMinute)||1;
+  root.querySelectorAll('.tl161-sleep-band').forEach(el=>{
+   const a=Number(el.dataset.startMinute),b=Number(el.dataset.endMinute);
+   if(Number.isFinite(a)&&Number.isFinite(b)){
+    el.style.left=(55+a*ppm)+'px';el.style.width=Math.max(1,(b-a)*ppm)+'px';
+   }
+  });
+ }
+ const oldMarkers=window.layoutTimeLogMarkers;
+ if(typeof oldMarkers==='function')window.layoutTimeLogMarkers=function(){
+  const ret=oldMarkers.apply(this,arguments);
+  try{drawCompact()}catch(err){console.warn('sleep band compact',err)}
+  return ret;
+ };
+ const oldReference=window.layoutReferenceActivityCompact;
+ if(typeof oldReference==='function')window.layoutReferenceActivityCompact=function(){
+  const ret=oldReference.apply(this,arguments);
+  try{drawCompact()}catch(err){console.warn('sleep band reference',err)}
+  return ret;
+ };
+ const oldZoom=window.layoutTimeLogZoom;
+ if(typeof oldZoom==='function')window.layoutTimeLogZoom=function(){
+  const ret=oldZoom.apply(this,arguments);
+  try{drawZoom()}catch(err){console.warn('sleep band zoom',err)}
+  return ret;
+ };
+ const oldNav=window.timeLogZoomRenderNavigator;
+ if(typeof oldNav==='function')window.timeLogZoomRenderNavigator=function(){
+  const ret=oldNav.apply(this,arguments);
+  try{drawNavigator()}catch(err){}
+  return ret;
+ };
+ const oldPosition=window.timeLogZoomUpdatePosition;
+ if(typeof oldPosition==='function')window.timeLogZoomUpdatePosition=function(){
+  const ret=oldPosition.apply(this,arguments);
+  try{shiftZoom()}catch(err){}
+  return ret;
+ };
+ try{drawCompact();drawZoom()}catch(err){}
+ console.info('PokeHabit 1.7.161 confirmed sleep background overlay enabled');
+})();
+
+</script>
 </body></html>
