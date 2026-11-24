@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.173 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.175 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -8364,7 +8364,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.173')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.175')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -8504,7 +8504,7 @@ function focusSelectedTrainingPokemon(){focusTrainingSection('trainingDetail')}
 function focusTrainingRoster(){focusTrainingSection('trainingRoster')}
 async function setScreen(s,options=null){
  if(screen==='manual'&&s!=='manual'&&adminDraftChanges()&&!(await appConfirm('저장하지 않은 관리자 설정이 있습니다. 이동하면 입력한 내용이 사라집니다. 계속할까요?')))return;
- if(s==='manual'&&!adminUnlocked){screen='stats';render();return}
+ if(s==='manual'&&!adminUnlocked){openAdmin();return}
  if(data.pendingEncounter&&s!=='manual'){openPendingCapture();return}
  if(s==='settings')settingsPage=options?.settingsPage||'menu';
  ++trainingScrollRequest;screen=s;modal=null;render();
@@ -10620,7 +10620,7 @@ function layoutTimeLogZoom(){
     const line=document.createElement('span');line.className='time-log-zoom-walk-duration';line.style.width=duration+'px';
     session.append(label,line);session.title=label.textContent;
     session.setAttribute('aria-label',session.title);
-    session.addEventListener('click',()=>{const id=session.dataset.walkId;closeTimeLogZoom();jumpToWalkingTimeLog(id)});
+    session.addEventListener('click',()=>{const id=session.dataset.walkId;window.prZoomCapture175?.();closeTimeLogZoom();jumpToWalkingTimeLog(id)});
     lane.appendChild(session);
    });
   points.forEach((point,i)=>{
@@ -10630,7 +10630,7 @@ function layoutTimeLogZoom(){
    const name=document.createElement('span');name.className='time-log-zoom-name';name.textContent=kind==='quest'?timeLogQuestPlainLabel(point.label):point.label||point.clock;
    if(kind==='quest')b.append(t,timeLogQuestEmblem(point.emoji,point.recordKind),name);else b.append(t,name);
    b.title=point.clock+' · '+(kind==='quest'?timeLogQuestStatus(point.recordKind).label+' · ':'')+(point.emoji||'')+' '+(point.label||'');b.setAttribute('aria-label',b.title);
-   b.addEventListener('click',()=>{closeTimeLogZoom();timeLogOpenPoint(point)});
+   b.addEventListener('click',()=>{window.prZoomCapture175?.();closeTimeLogZoom();timeLogOpenPoint(point)});
    lane.appendChild(b);
    const pin=document.createElement('span');pin.className='tl152-zoom-pin tl152-'+kind;pin.dataset.status=point.recordKind==='draft'?'draft':point.recordKind==='append'?'append':'complete';
    pin.style.left=(margin+point.minute*ppm)+'px';pin.style.top=(50+placement.slots[i]*31)+'px';lane.appendChild(pin);
@@ -10664,13 +10664,13 @@ function layoutTimeLogZoom(){
    time.textContent=range+(entry.record.endAt?' · '+displayedMinutes+'분':'');
    txt.append(title,time);bar.appendChild(txt);
    if(actualWidth<148)bar.classList.add('is-narrow');
-   bar.addEventListener('click',()=>{closeTimeLogZoom();openReferenceExpand(state.key,entry.record.id)});lane.appendChild(bar);
+   bar.addEventListener('click',()=>{window.prZoomCapture175?.();closeTimeLogZoom();openReferenceExpand(state.key,entry.record.id)});lane.appendChild(bar);
   });
   alarms.forEach(a=>{
    const btn=document.createElement('button');btn.type='button';btn.className='time-log-zoom-reminder';
    btn.style.left=(margin+a.minute*ppm)+'px';btn.style.top='3px';btn.textContent='🔔';
    btn.title=a.title+' · '+referenceActivityClock(a.minute)+' 알림 설정 시각';btn.setAttribute('aria-label',btn.title);
-   btn.addEventListener('click',()=>{closeTimeLogZoom();openReferenceEditor(a.id,state.key)});lane.appendChild(btn);
+   btn.addEventListener('click',()=>{window.prZoomCapture175?.();closeTimeLogZoom();openReferenceEditor(a.id,state.key)});lane.appendChild(btn);
   });
  }
  // Restore the time in the middle of the view after zoom-level, orientation or width changes.
@@ -12761,7 +12761,7 @@ function renderSettings(){
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.173')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.175')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -14421,7 +14421,7 @@ async function logoutUser(){if(!(await appConfirm('현재 계정에서 로그아
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.173')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.175')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -17216,7 +17216,7 @@ function top3MainMarks(){
   const button=document.createElement('button');button.type='button';button.className='tl168-rail-marker '+(group.events.some(e=>e.type==='done')?'is-done':'is-setup');
   button.style.left=group.x+'px';button.textContent=group.events.length>1?String(group.events.length):(group.events[0].type==='setup'?'＋':'✓');
   button.title=group.events.map(e=>top3Time(e.at)+' · '+e.title).join(' / ');button.setAttribute('aria-label',button.title);
-  button.onclick=()=>{if(typeof setScreen==='function')setScreen('record');requestAnimationFrame(()=>{recordJump('top3');top3OpenArchive168(section.dataset.day)})};
+  button.onclick=()=>prTop3ZoomToArchive174(section.dataset.day);
   rail.appendChild(button);
  });
  scroll.insertAdjacentElement('afterend',rail);
@@ -17259,7 +17259,7 @@ function top3ZoomMarks(){
   el.dataset.eventMinute=String(top3Minutes(item.at));el.textContent=text;
   el.title=top3Time(item.at)+' · '+item.title;el.setAttribute('aria-label',el.title);
   el.style.width=width+'px';el.style.maxWidth=width+'px';el.style.left=x+'px';el.style.top=y+'px';
-  el.onclick=()=>{const key=section.dataset.day;closeTimeLogZoom();if(typeof setScreen==='function')setScreen('record');requestAnimationFrame(()=>{recordJump('top3');top3OpenArchive168(key)})};
+  el.onclick=()=>prTop3ZoomToArchive174(section.dataset.day);
   lane.appendChild(el);
  });
  top3ZoomFit();
@@ -17747,7 +17747,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  #recordWeeklyBrief .growth-weekly-cards .growth-stat strong{font-size:22px!important;letter-spacing:-.7px;}
 }
 </style><script>
-/* v1.7.173: ONE back controller for Android CloseWatcher, fallback history and Escape.
+/* v1.7.175: ONE back controller for Android CloseWatcher, fallback history and Escape.
  * Navigations are recorded once (at render), popup origin wins, Back never pushes.
  */
 (function(){
@@ -17759,7 +17759,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  const EXIT_DELAY=2000;
  let owner=typeof currentUserId!=='undefined'?currentUserId:null;
  let last=null,origin=null,oldModal=false,restoring=false,restoreToken=0;
- let exitAt=0,toast=null;
+ let exitAt=0,toast=null,queuedBack=0;
  const canNavigate=()=>!!(startUnlocked&&currentUserId);
  const getKey=()=>screen==='settings'?'settings/'+settingsPage:String(screen);
  const getY=()=>Math.max(0,window.scrollY||document.documentElement.scrollTop||0);
@@ -17770,7 +17770,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  function toastClear(){if(toast){toast.remove();toast=null;}}
  function disarm(){exitAt=0;toastClear()}
  function showToast(){toastClear();const p=document.createElement('div');p.id='prBackExit173';p.setAttribute('role','status');p.textContent='뒤로가기를 한 번 더 누르면 종료됩니다';p.style.cssText='position:fixed;bottom:max(88px,calc(env(safe-area-inset-bottom) + 80px));left:50%;transform:translateX(-50%);z-index:2147483644;background:#1b354d;color:#fff;border:1px solid #7899ae;padding:13px 18px;border-radius:14px;box-shadow:0 7px 24px #06162688;font-size:13px;font-weight:800;max-width:calc(100vw - 24px);white-space:nowrap;pointer-events:none';document.body.appendChild(p);toast=p}
- function syncUser(){const id=typeof currentUserId!=='undefined'?currentUserId:null;if(id!==owner){owner=id;stack.length=0;origin=null;oldModal=false;last=snap();disarm();}}
+ function syncUser(){const id=typeof currentUserId!=='undefined'?currentUserId:null;if(id!==owner){owner=id;stack.length=0;origin=null;window.__prTop3ZoomReturn174=null;window.__prZoomRoute175=null;oldModal=false;last=snap();disarm();}}
  function storeFromPopup(){
    syncUser(); if(!canNavigate()||restoring)return;
    if(!origin){origin={state:{...(last&&last.key===getKey()?last:snap()),scroll:getY()},kind:'popup'};}
@@ -17790,6 +17790,10 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
    // Opening modal is not a page visit. Preserve the FROM location before any tab jump.
    if(!restoring&&canNavigate()&&modalNow&&!oldModal)storeFromPopup();
    if(!restoring&&canNavigate()&&incoming.key!==before.key){
+     // In-page timeline drilldowns become obsolete on unrelated navigation.
+     if(window.__prZoomRoute175&&incoming.screen!==window.__prZoomRoute175.screen)window.__prZoomRoute175=null;
+     // A new destination after leaving the TOP3 archive abandons its return trip.
+     if(window.__prTop3ZoomReturn174&&incoming.screen!=='stats')window.__prTop3ZoomReturn174=null;
      let from=origin?.state||before;
      if(from.key!==incoming.key)addHistory(from);
      origin=null;disarm();
@@ -17847,20 +17851,48 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
      oldModal=false;
      last={...snap(),scroll:desired};
      const finish=()=>{
-       if(token!==restoreToken||currentUserId!==account||getKey()!==to.key){restoring=false;return;}
+       if(token!==restoreToken||currentUserId!==account||getKey()!==to.key){restoring=false;queuedBack=0;return;}
        const limit=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
        window.scrollTo({top:Math.min(desired,limit),left:0,behavior:'instant'});
-       last={...snap(),scroll:getY()};restoring=false;
+       last={...snap(),scroll:getY()};restoring=false;if(queuedBack){queuedBack=0;requestAnimationFrame(back);}
      };
      requestAnimationFrame(()=>requestAnimationFrame(finish));
-   }catch(e){restoring=false;console.warn('PokeHabit history restore:',e);}
+   }catch(e){restoring=false;queuedBack=0;console.warn('PokeHabit history restore:',e);}
  }
+ function reopenZoom175(trip){
+   const section=document.getElementById('dailyTimeLog');
+   if(!section||section.dataset.day!==trip.zoomKey||typeof openTimeLogZoom!=='function')return;
+   openTimeLogZoom([{minute:trip.center}], 'all');
+   if(typeof timeLogZoomState!=='undefined'&&timeLogZoomState){
+     timeLogZoomState.minutes=trip.minutes;timeLogZoomState.center=trip.center;
+     requestAnimationFrame(()=>{if(typeof layoutTimeLogZoom==='function')layoutTimeLogZoom();
+       const el=document.getElementById('timeLogZoomDialogBody');if(el)el.scrollTop=trip.dialogScroll;});
+   }
+ }
+ function restoreZoomTrip175(trip){
+   if(!trip||trip.userId!==currentUserId)return false;
+   // A detail sheet can be modal or a standalone DOM overlay; close both before restoring.
+   document.getElementById('tl168ArchiveOverlay')?.remove();
+   restore({screen:trip.screen,key:trip.screen==='settings'?'settings/'+trip.settings:trip.screen,
+     settings:trip.settings,date:trip.date,month:trip.month,mode:trip.mode,scroll:trip.scroll});
+   requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>reopenZoom175(trip))));
+   return true;
+ }
+ window.prZoomCapture175=function(){
+   if(!canNavigate()||!timeLogZoomState)return;
+   const z=timeLogZoomState,range=typeof timeLogZoomVisibleRange==='function'?timeLogZoomVisibleRange():null;
+   const body=document.getElementById('timeLogZoomDialogBody');
+   window.__prZoomRoute175={...snap(),zoomKey:z.key,minutes:z.minutes,
+     center:range?.center??z.center,dialogScroll:body?.scrollTop||0,userId:currentUserId};
+ };
  function closePopup(){
    if(document.querySelector('.app-dialog-cover')){
      const buttons=[...document.querySelectorAll('.app-dialog-cover button')];
      const cancel=buttons.find(b=>/취소|계속 사용|닫기/.test(b.textContent||''));
      if(cancel){cancel.click();disarm();return true;}
-     return true; // prevent accidental page exit during a blocking confirmation
+     const acknowledge=buttons.find(b=>/확인|닫기/.test(b.textContent||''));
+     if(acknowledge){acknowledge.click();disarm();return true;}
+     return true; // asynchronous dialog hasn't mounted its controls yet
    }
    if(typeof referenceOverlayMode!=='undefined'&&referenceOverlayMode){closeReferenceOverlay();origin=null;disarm();return true;}
    if(typeof timeLogZoomState!=='undefined'&&timeLogZoomState){closeTimeLogZoom();origin=null;disarm();return true;}
@@ -17885,9 +17917,45 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  function back(){
    if(typeof prExitApproved!=='undefined'&&prExitApproved)return;
    syncUser();
+   if(restoring){queuedBack=1;return;} // deliver one rapid follow-up Back after restoration
+   // TOP3 marker opens a record drill-down from the expanded timeline.
+   // One Back returns to that exact expanded timeline, not home or a random tab.
+   const trip=window.__prTop3ZoomReturn174;
+   if(trip&&canNavigate()&&screen==='stats'&&trip.userId===currentUserId){
+     window.__prTop3ZoomReturn174=null;
+     // Do not let an archive dialog consume the first Back without navigating.
+     document.getElementById('tl168ArchiveOverlay')?.remove();
+     // This journey was not a separate tab visit; remove its origin stack item.
+     if(stack.length&&stack[stack.length-1].key===(trip.screen==='settings'?'settings/'+trip.settings:trip.screen))stack.pop();
+     restore({screen:trip.screen,key:trip.screen==='settings'?'settings/'+trip.settings:trip.screen,
+       settings:trip.settings,date:trip.date,month:trip.month,mode:trip.mode,scroll:trip.scroll});
+     const zoomKey=trip.zoomKey,wasZoom=trip.wasZoom,minutes=trip.minutes,center=trip.center,dialogScroll=trip.dialogScroll;
+     // restore() needs two animation frames to render and reinstate page scroll.
+     requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
+       const section=document.getElementById('dailyTimeLog');
+       if(wasZoom&&section&&section.dataset.day===zoomKey&&typeof openTimeLogZoom==='function'){
+         openTimeLogZoom([{minute:center}], 'all');
+         if(typeof timeLogZoomState!=='undefined'&&timeLogZoomState){
+           timeLogZoomState.minutes=minutes;timeLogZoomState.center=center;
+           requestAnimationFrame(()=>{
+             if(typeof layoutTimeLogZoom==='function')layoutTimeLogZoom();
+             const body=document.getElementById('timeLogZoomDialogBody');if(body)body.scrollTop=dialogScroll;
+           });
+         }
+       }
+     })));
+     return;
+   }
+   // Drilldown from an expanded time log is a reversible navigation state.
+   // One Back goes back to its expanded source (rather than closing just the detail).
+   const zoomTrip=window.__prZoomRoute175;
+   if(zoomTrip&&zoomTrip.userId===currentUserId&&screen===zoomTrip.screen){
+     window.__prZoomRoute175=null;
+     if(restoreZoomTrip175(zoomTrip))return;
+   }
    if(closePopup())return;
    if(!canNavigate())return;
-   if(restoring)return; // ignore repeated native callbacks during an in-flight restore
+   if(restoring){queuedBack=1;return;}
    while(stack.length){
      const item=stack.pop();
      if(!item||item.key===getKey()||(item.screen==='manual'&&!adminUnlocked))continue;
@@ -17916,4 +17984,36 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
    return result;
  };
 })();
-</script></body></html>
+</script>
+<script>
+/* v1.7.174: TOP3 timeline drill-down is a reversible overlay route. */
+window.prTop3ZoomToArchive174=function(key){
+ const z=(typeof timeLogZoomState!=='undefined'&&timeLogZoomState)?timeLogZoomState:null;
+ const original=(typeof screen==='string'?screen:'stats');
+ const currentKey=typeof selectedDate==='string'?selectedDate:null;
+ const view=document.getElementById('timeLogZoomDialogBody');
+ const range=z&&typeof timeLogZoomVisibleRange==='function'?timeLogZoomVisibleRange():null;
+ window.__prTop3ZoomReturn174={
+   screen:original,settings:typeof settingsPage==='string'?settingsPage:'menu',
+   date:currentKey,month:typeof calendarMonth==='string'?calendarMonth:null,
+   mode:typeof calendarMode==='string'?calendarMode:null,
+   scroll:Math.max(0,window.scrollY||0),
+   zoomKey:key||z?.key||'',wasZoom:!!z,minutes:z?.minutes||180,center:range?.center??z?.center??720,
+   dialogScroll:Math.max(0,view?.scrollTop||0),
+   userId:typeof currentUserId!=='undefined'?currentUserId:null,
+   enteredAt:Date.now()
+ };
+ if(z&&typeof closeTimeLogZoom==='function')closeTimeLogZoom();
+ const destination=()=>{
+   if(typeof recordJump==='function')recordJump('top3');
+   if(typeof top3OpenArchive168==='function')top3OpenArchive168(key||'');
+ };
+ if(original==='stats'){destination();return;}
+ if(typeof setScreen==='function'){
+   Promise.resolve(setScreen('stats')).then(()=>{
+     if(screen==='stats'&&window.__prTop3ZoomReturn174)requestAnimationFrame(destination);
+   });
+ }
+};
+</script>
+</body></html>
