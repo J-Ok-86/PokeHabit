@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.168 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.169 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -17576,5 +17576,123 @@ function top3RenderArchive168(){
   currentGroup.appendChild(row);
  });
 }
+</script>
+
+<style id="tl169-consistent-records-scroll">
+/* v1.7.169: one continuous vertical scrolling surface; horizontal graph scroll remains independent. */
+.time-log-zoom-overlay .time-log-zoom-dialog{
+  display:flex!important;flex-direction:column!important;min-height:0!important;
+  max-height:100dvh!important;overflow:hidden!important;
+}
+.time-log-zoom-overlay .time-log-zoom-dialog-head{flex:0 0 auto!important;position:relative;z-index:2}
+.time-log-zoom-overlay .time-log-zoom-dialog-body{
+  flex:1 1 auto!important;min-height:0!important;max-height:none!important;
+  overflow-y:auto!important;overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch;touch-action:pan-y!important;
+  overscroll-behavior-y:contain!important;
+  padding-bottom:max(64px,env(safe-area-inset-bottom))!important;
+}
+.time-log-zoom-overlay .time-log-zoom-context{
+  flex:0 0 auto!important;min-height:0!important;overflow:visible!important;
+}
+.time-log-zoom-overlay .time-log-zoom-context-list{
+  max-height:none!important;height:auto!important;overflow:visible!important;
+  overscroll-behavior:auto!important;display:grid;gap:7px;
+}
+.time-log-zoom-overlay .time-log-zoom-panel,
+.time-log-zoom-overlay .time-log-zoom-context-list{min-height:0}
+/* Match TOP 3 records to the same compact timestamp / icon / name grid used by other events. */
+.time-log-zoom-overlay .time-log-context-entry[data-kind="top3-setup"],
+.time-log-zoom-overlay .time-log-context-entry[data-kind="top3-done"]{
+  width:100%;display:flex!important;align-items:center!important;gap:9px!important;
+  padding:10px 11px!important;min-height:48px!important;border-radius:13px!important;
+  box-sizing:border-box;min-width:0;text-align:left;
+  font-size:11px!important;line-height:1.4;
+}
+.time-log-zoom-overlay .time-log-context-entry[data-kind="top3-setup"]{
+  background:#302a4c!important;border:1px solid #6f659c!important;color:#efe9ff!important;
+}
+.time-log-zoom-overlay .time-log-context-entry[data-kind="top3-done"]{
+  background:#203f3a!important;border:1px solid #4b967f!important;color:#e9f9f1!important;
+}
+.time-log-zoom-overlay .time-log-context-entry[data-kind^="top3"] time{
+  width:46px!important;flex:0 0 46px!important;font-size:12px!important;
+  font-weight:850!important;color:inherit!important;font-variant-numeric:tabular-nums;
+}
+.time-log-zoom-overlay .time-log-context-entry[data-kind^="top3"] .tl169-record-icon{
+  flex:0 0 23px!important;width:23px;min-width:23px;text-align:center;
+  font-size:17px;line-height:1.2;
+}
+.time-log-zoom-overlay .time-log-context-entry[data-kind^="top3"] .tl169-record-copy{
+  flex:1 1 auto;min-width:0!important;white-space:normal!important;
+  overflow:visible!important;text-overflow:clip!important;
+  overflow-wrap:anywhere!important;font-size:11px!important;font-weight:750;
+}
+.time-log-zoom-overlay .time-log-context-entry[data-kind^="top3"] .tl169-record-copy b{
+  font-weight:900;display:inline;color:inherit;margin-right:5px;
+}
+.time-log-zoom-overlay .time-log-context-entry[data-kind^="top3"] .tl169-record-arrow{
+  color:inherit;opacity:.68;flex:0 0 auto;font-size:18px;margin-left:auto;
+}
+html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kind="top3-setup"]{
+  background:#f2edfb!important;border-color:#c5b6e3!important;color:#5b4784!important;
+}
+html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kind="top3-done"]{
+  background:#eff9f4!important;border-color:#b0dcca!important;color:#22684e!important;
+}
+@media(max-width:680px){
+  .time-log-zoom-overlay .time-log-zoom-dialog{height:100dvh!important;border-radius:0!important}
+  .time-log-zoom-overlay .time-log-zoom-dialog-body{padding-bottom:max(76px,env(safe-area-inset-bottom))!important}
+}
+</style>
+<script>
+/* v1.7.169: normal chronological cards for TOP 3, and a single outer dialog scrollbar. */
+(function(){
+ 'use strict';
+ if(window.__tl169Installed)return;
+ window.__tl169Installed=true;
+ const previous=window.renderTimeLogZoomContext;
+ if(typeof previous!=='function')return;
+ function minutes(s){
+  const m=/^(\d{1,2}):(\d{2})$/.exec(String(s||''));
+  return m?Number(m[1])*60+Number(m[2]):1e9;
+ }
+ function normalize(){
+  const list=document.getElementById('timeLogZoomContextList');
+  if(!list)return;
+  const rows=Array.from(list.children).filter(el=>el.tagName==='BUTTON');
+  rows.forEach(row=>{
+   if(row.dataset.kind!=='top3-setup'&&row.dataset.kind!=='top3-done')return;
+   const raw=row.textContent||'';
+   const match=raw.match(/(\d{1,2}:\d{2})/);
+   const stamp=match?match[1]:'--:--';
+   const isSetup=row.dataset.kind==='top3-setup';
+   let name=match?raw.slice(match.index+match[0].length).replace(/^\s*[·•]\s*/,'').trim():raw.trim();
+   name=name.replace(/^(?:오늘의 목표 수립|목표 수립|목표 달성)\s*[·•:]?\s*/,'').trim();
+   if(!name)name=isSetup?'오늘의 목표':'목표 완료';
+   const time=document.createElement('time');time.textContent=stamp;
+   const icon=document.createElement('span');icon.className='tl169-record-icon';icon.textContent=isSetup?'🎯':'✅';
+   const copy=document.createElement('span');copy.className='tl169-record-copy';
+   const label=document.createElement('b');label.textContent=isSetup?'수립':'달성';
+   copy.append(label,document.createTextNode(name));
+   const arrow=document.createElement('span');arrow.className='tl169-record-arrow';arrow.textContent='›';arrow.setAttribute('aria-hidden','true');
+   row.replaceChildren(time,icon,copy,arrow);
+   row.title=`${stamp} · ${isSetup?'목표 수립':'목표 달성'} · ${name}`;
+   row.setAttribute('aria-label',row.title);
+  });
+  // Original and TOP 3 rows share one chronological list, not a second appended block.
+  const ordered=Array.from(list.children).filter(el=>el.tagName==='BUTTON').map((el,i)=>{
+    const t=el.querySelector('time')?.textContent?.trim()||'';
+    return {el,i,m:minutes(t)};
+  }).sort((a,b)=>a.m-b.m||a.i-b.i);
+  ordered.forEach(x=>list.appendChild(x.el));
+ }
+ window.renderTimeLogZoomContext=function(){
+  const result=previous.apply(this,arguments);
+  try{normalize()}catch(e){console.warn('TOP3 context formatting',e)}
+  return result;
+ };
+ // Do not change scroll positions while users are navigating the expanded graph.
+})();
 </script>
 </body></html>
