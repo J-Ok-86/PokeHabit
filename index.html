@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.162 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.163 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -6077,7 +6077,7 @@ const LIFE_DEFAULTS=[
  {id:'sleep',name:'취침',emoji:'🌙',color:'#9b80d8',mode:'once',enabled:true,suggest:'23:00'},
  {id:'walk',name:'걷기',emoji:'🚶',color:'#28b68a',mode:'repeat',enabled:true,suggest:''}
 ];
-const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',morningBriefTime:'06:00',briefingMorningNotifyOn:false,briefingEveningNotifyOn:false,eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},momentLogs:[],referenceActivities:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],walkingSession:null,widgetButtonIds:[],widgetSixSelectionSaved:false,deviceSleepEstimates:[],personalReminders:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{},readingTimelineSort:'recent'},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},achievementDraftHistory:[],recordLibrary:{books:[]},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
+const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',morningBriefTime:'06:00',briefingMorningNotifyOn:false,briefingEveningNotifyOn:false,eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},top3Days:{},momentLogs:[],referenceActivities:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],walkingSession:null,widgetButtonIds:[],widgetSixSelectionSaved:false,deviceSleepEstimates:[],personalReminders:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{},readingTimelineSort:'recent'},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},achievementDraftHistory:[],recordLibrary:{books:[]},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
 let settings={autoSave:true,theme:'light',autoLightAt:'07:00',autoDarkAt:'19:00',fontSize:'large',swipeTabs:true};
 try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark','auto'].includes(p?.theme))settings.theme=p.theme;if(/^([01]\d|2[0-3]):[0-5]\d$/.test(p?.autoLightAt||''))settings.autoLightAt=p.autoLightAt;if(/^([01]\d|2[0-3]):[0-5]\d$/.test(p?.autoDarkAt||''))settings.autoDarkAt=p.autoDarkAt;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
@@ -8158,7 +8158,7 @@ function cleanBackup(v){
  safe.rewardClaims=Array.isArray(v.rewardClaims)?v.rewardClaims.filter(c=>c&&Number.isInteger(Number(c.level))&&Number(c.level)>=2&&Number(c.level)<=100000&&Number(c.points)===Number(c.level)*50).slice(0,100000).map(c=>({level:Number(c.level),points:Number(c.points),at:String(c.at||'').slice(0,45),claimId:String(c.claimId||('level_'+c.level)).slice(0,100)})).filter((c,i,all)=>all.findIndex(other=>other.level===c.level)===i):[];
  safe.points=boundedNumber(v.points);safe.allEarned=boundedNumber(v.allEarned);safe.totalXp=boundedNumber(v.totalXp);
  safe.personalReminders=cleanPersonalReminders(v.personalReminders);safe.widgetButtonIds=cleanWidgetButtonIds(v.widgetButtonIds);safe.widgetSixSelectionSaved=v.widgetSixSelectionSaved===true;safe.deviceSleepEstimates=cleanDeviceSleepEstimates(v.deviceSleepEstimates);
- safe.dailyNotes=cleanDailyNotes(v.dailyNotes);
+ safe.dailyNotes=cleanDailyNotes(v.dailyNotes);safe.top3Days=cleanTop3Days(v.top3Days);
  safe.momentLogs=cleanMomentLogs(v.momentLogs);safe.referenceActivities=cleanReferenceActivities(v.referenceActivities);
  safe.lifeEventConfig=cleanLifeEventConfig(v.lifeEventConfig);safe.lifeEventLogs=cleanLifeEventLogs(v.lifeEventLogs);safe.walkingSession=cleanWalkingSession(v.walkingSession);safe.lifeRhythmView=cleanLifeRhythmView(v.lifeRhythmView);safe.lifeRhythmGoals=cleanLifeRhythmGoals(v.lifeRhythmGoals);
  safe.sleepRewardStartWeek=validNoteDay(v.sleepRewardStartWeek)?sleepWeekMonday(v.sleepRewardStartWeek):'';
@@ -8240,6 +8240,25 @@ function catchFor(t){const id=typeof t==='string'?t:t.id;return data.rules?.tier
 function rewardOptions(){const {pointMin:min,pointMax:max,pointStep:step}=data.rules;return Array.from({length:Math.floor((max-min)/step)+1},(_,i)=>min+i*step)}
 function rewardText(){return `${data.rules.pointMin}~${data.rules.pointMax}P (${data.rules.pointStep}P 간격, 각 ${+(100/rewardOptions().length).toFixed(2)}%)`}
 function categoryEmoji(n){return data.categories?.find(c=>c.name===n)?.emoji||icons[n]||'✨'}
+function cleanTop3Reward(x){
+ const r=x&&typeof x==='object'?x:{};
+ const n=(v,def,max)=>Number.isFinite(Number(v))&&Number(v)>=0&&Number(v)<=max?Math.floor(Number(v)):def;
+ return {setupP:n(r.setupP,30,1000),eachP:n(r.eachP,50,1000),eachXP:n(r.eachXP,25,500),allP:n(r.allP,100,2000),allXP:n(r.allXP,50,1000)};
+}
+function cleanTop3Days(v){
+ if(!v||typeof v!=='object'||Array.isArray(v))return {};
+ const out={};
+ for(const [k,raw] of Object.entries(v).sort().slice(-1500)){
+  if(!/^\d{4}-\d\d-\d\d$/.test(k)||!validNoteDay(k)||!raw||typeof raw!=='object')continue;
+  const at=t=>typeof t==='string'&&/^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(t)?t.slice(0,40):'';
+  const src=Array.isArray(raw.items)?raw.items:[];
+  const items=src.slice(0,3).map((x,i)=>({id:i+1,title:String(x?.title||'').trim().slice(0,85),doneAt:at(x?.doneAt),claimed:x?.claimed===true,awardP:Math.max(0,Math.min(1000,Number(x?.awardP)||0)),awardXP:Math.max(0,Math.min(500,Number(x?.awardXP)||0))}));
+  if(!items.some(x=>x.title))continue;
+  out[k]={items,confirmedAt:at(raw.confirmedAt),setupClaimed:raw.setupClaimed===true,setupPay:Math.max(0,Math.min(1000,Number(raw.setupPay)||0)),allClaimed:raw.allClaimed===true,allPay:Math.max(0,Math.min(2000,Number(raw.allPay)||0)),allXP:Math.max(0,Math.min(1000,Number(raw.allXP)||0)),updatedAt:at(raw.updatedAt)};
+ }
+ return out;
+}
+
 function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.achievementDrafts,data.quests);data.achievementDraftHistory=cleanAchievementDraftHistory(data.achievementDraftHistory);data.recordLibrary=smartCleanLibrary(data.recordLibrary);openRegionsIfReady(data);const dc=DEFAULT_CATEGORIES.map(c=>({...c}));if(!Array.isArray(data.categories))data.categories=dc;
  data.categories=data.categories.filter(c=>c&&typeof c.name==='string'&&typeof c.emoji==='string').map(c=>({name:c.name.slice(0,25),emoji:c.emoji.slice(0,12)}));
  if(!data.categories.some(c=>c.name==='기타'))data.categories.push({name:'기타',emoji:'✨'});if(!data.categories.some(c=>c.name==='예약'))data.categories.push({name:'예약',emoji:'📅'});
@@ -8251,7 +8270,7 @@ function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.a
  if(!['cards','list','compact','mini'].includes(data.questView))data.questView='cards';
  if(!Array.isArray(data.rewardClaims))data.rewardClaims=[];
  data.personalReminders=cleanPersonalReminders(data.personalReminders);data.widgetButtonIds=cleanWidgetButtonIds(data.widgetButtonIds);data.widgetSixSelectionSaved=data.widgetSixSelectionSaved===true;data.deviceSleepEstimates=cleanDeviceSleepEstimates(data.deviceSleepEstimates);
- data.dailyNotes=cleanDailyNotes(data.dailyNotes);
+ data.dailyNotes=cleanDailyNotes(data.dailyNotes);data.top3Days=cleanTop3Days(data.top3Days);
  data.momentLogs=cleanMomentLogs(data.momentLogs);
  data.lifeEventConfig=cleanLifeEventConfig(data.lifeEventConfig);data.lifeEventLogs=cleanLifeEventLogs(data.lifeEventLogs);data.walkingSession=cleanWalkingSession(data.walkingSession);data.lifeRhythmView=cleanLifeRhythmView(data.lifeRhythmView);data.lifeRhythmGoals=cleanLifeRhythmGoals(data.lifeRhythmGoals);
  data.sleepRewardStartWeek=validNoteDay(data.sleepRewardStartWeek)?sleepWeekMonday(data.sleepRewardStartWeek):sleepWeekMonday(day());
@@ -8293,6 +8312,7 @@ function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.a
  const b=r.boost||{},bd=DEFAULT_BOOST();
  const validBoost=(name,min,max)=>validNum(b[name],min,max)?Number(b[name]):bd[name];
  data.rules.boost={pointPerDay:validBoost('pointPerDay',0,50),pointCap:validBoost('pointCap',0,500),xpPerDay:validBoost('xpPerDay',0,50),xpCap:validBoost('xpCap',0,500),totalPointCap:validBoost('totalPointCap',1,10),pointEnabled:b.pointEnabled!==false,xpEnabled:b.xpEnabled!==false};
+ data.rules.top3Reward=cleanTop3Reward(r.top3Reward);
  data.rules.sleepWeeklyReward=cleanSleepWeeklyReward(r.sleepWeeklyReward);
  data.rules.regionUnlockTargets=cleanRegionUnlockTargets(r.regionUnlockTargets);
  data.rules.recordBonusEnabled=r.recordBonusEnabled===true;
@@ -16925,5 +16945,164 @@ html[data-theme="light"] .time-log-section .time-log-zoom-panel.tl156-panel .tim
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)repaint()});
  requestAnimationFrame(repaint);
 })();
+</script>
+<style id="top3-style-v163">
+.top3-card{margin:12px 0 14px;border:1px solid #5781a1;border-radius:16px;background:linear-gradient(135deg,#162f4b,#1b3b57);color:#eff7ff;padding:14px;box-shadow:0 4px 15px #061c301f}
+.top3-titlebar{display:flex;align-items:center;justify-content:space-between;gap:8px}.top3-titlebar h2,.top3-titlebar h3{font-size:16px;margin:0;font-weight:900}.top3-titlebar button,.top3-actions button{font:inherit;border:1px solid #6c91ae;background:#284864;color:#e7f7ff;border-radius:9px;min-height:34px;padding:6px 11px;font-size:11px;font-weight:800;cursor:pointer}
+.top3-sub{font-size:11px;color:#a9c7dc;margin:5px 0 12px;line-height:1.5}.top3-progress{height:7px;background:#38536b;border-radius:99px;overflow:hidden;margin:9px 0 12px}.top3-progress>i{display:block;height:100%;background:#55c89f;border-radius:99px;transition:width .15s}
+.top3-goals{display:grid;gap:7px}.top3-goal{width:100%;display:flex;gap:10px;align-items:center;box-sizing:border-box;border:1px solid #6582a0;border-radius:11px;background:#243f5d;color:#eff7ff;padding:11px;text-align:left;font:inherit;cursor:pointer}.top3-goal.is-done{background:#224d45;border-color:#53ae92}.top3-goal .top3-mark{font-size:22px;flex:none}.top3-goal-name{flex:1;min-width:0;overflow-wrap:anywhere;font-size:12px;font-weight:800}.top3-goal small{display:block;margin-top:3px;color:#b4cbdd;font-size:10px;font-weight:500}.top3-goal.is-done .top3-goal-name{text-decoration:line-through;text-decoration-color:#80bca6}
+.top3-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.top3-reward-hint{font-size:10px;color:#c9d9eb;margin:12px 0 0}.top3-editor{display:grid;gap:9px;margin-top:10px}.top3-editor label{display:grid;gap:4px;font-size:11px;color:#d5e7f7}.top3-editor input{min-width:0;width:100%;height:40px;box-sizing:border-box;border:1px solid #7894ad;background:#0f2943;color:#fff;border-radius:9px;padding:8px 11px;font:inherit;font-size:13px}.top3-editor input:disabled{opacity:.65}.top3-editor button{border:1px solid #74c4aa;background:#246b5a;color:#fff;border-radius:9px;min-height:42px;font-weight:850}.top3-editor button.secondary{background:#2a4862;border-color:#68849c}
+.top3-calendar-dots{display:flex;justify-content:center;gap:3px;padding:3px 0}.top3-calendar-dots i{width:6px;height:6px;border-radius:50%;background:#94a6b8;border:1px solid #edf3fa66}.top3-calendar-dots i.done{background:#39b586}.top3-calendar-dots i.pending{background:#a0adb9}
+.top3-day-panel{padding:12px;border:1px solid #658ba57a;border-radius:13px;background:#23405a;color:#e9f7ff;margin:12px 0}.top3-day-panel header{display:flex;justify-content:space-between;font-weight:800;margin-bottom:8px}.top3-day-panel p{margin:5px 0;font-size:12px;line-height:1.55}.top3-day-panel .done{color:#7be0af}
+.top3-stats{margin:13px 0;padding:14px;border:1px solid #527d9b;border-radius:13px;background:#193752;color:#e8f5ff}.top3-stats h3{margin:0 0 10px;font-size:15px}.top3-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.top3-stat-grid>div{display:grid;gap:4px;background:#254b68;border-radius:9px;padding:10px 4px;text-align:center}.top3-stat-grid strong{font-size:21px}.top3-stat-grid small{font-size:10px;color:#b6d1e6}.top3-bars{display:flex;align-items:end;height:85px;gap:8px;padding:15px 0 4px}.top3-bar-day{display:flex;flex:1;flex-direction:column;gap:5px;align-items:center;font-size:10px;color:#bcd6e8}.top3-bar-day i{display:block;width:100%;max-width:34px;border-radius:5px 5px 2px 2px;background:#55c9a3;min-height:2px}.top3-bar-day i.empty{background:#6b8298}.top3-stat-note{font-size:11px;color:#bed0e1;line-height:1.6}
+.top3-admin{margin-top:12px;padding:14px;border:1px solid #6b8aa5;border-radius:12px}.top3-admin h3{margin:0 0 8px}.top3-admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.top3-admin-grid label{font-size:11px;display:grid;gap:5px}.top3-admin-grid input{max-width:100%;box-sizing:border-box;padding:8px;border-radius:8px;border:1px solid #a4bbce;background:#fff;color:#1b384f}.top3-admin button{padding:10px;border-radius:9px;background:#377c6b;color:#fff;border:0;margin-top:10px;font-weight:800}
+.tl-top3-marker{position:absolute;z-index:12;top:8px;transform:translateX(-50%);border:1px solid #d2b475;border-radius:6px;background:#fff1c9;color:#764c1b;font:900 10px/1.1 system-ui,sans-serif;min-width:19px;height:20px;display:grid;place-items:center;cursor:pointer;padding:0 3px}
+.tl-top3-zoom-mark{position:absolute;z-index:10;top:5px;border:1px solid #d4b76f;border-radius:9px;background:#fff3d5;color:#754c1e;font:850 11px/1.2 system-ui,sans-serif;padding:5px 7px;white-space:nowrap;cursor:pointer}
+html[data-theme="light"] .top3-card,html[data-theme="light"] .top3-stats{background:#f0f8fc;color:#1c405a;border-color:#bed4e3}html[data-theme="light"] .top3-sub,html[data-theme="light"] .top3-reward-hint,html[data-theme="light"] .top3-stats small,html[data-theme="light"] .top3-stat-note{color:#52758d}
+html[data-theme="light"] .top3-goal{background:#fff;color:#244a63;border-color:#bfd2e1}html[data-theme="light"] .top3-goal.is-done{background:#e4f6ec;border-color:#8fd7b7}html[data-theme="light"] .top3-goal small{color:#5e8295}html[data-theme="light"] .top3-editor label{color:#28536e}html[data-theme="light"] .top3-editor input{background:#fff;color:#244a63;border-color:#aac6d8}html[data-theme="light"] .top3-day-panel{background:#f3f9fe;color:#224863;border-color:#c1d7e8}html[data-theme="light"] .top3-day-panel .done{color:#147d55}html[data-theme="light"] .top3-stat-grid>div{background:#e1eff7}
+@media(max-width:360px){.top3-card{padding:10px}.top3-stat-grid strong{font-size:17px}}
+</style>
+<script>
+/* v1.7.163 TOP 3: independent daily priorities, append-only reward claims, per-user backup. */
+const top3Day=k=>data.top3Days?.[k]||null;
+const top3Rules=()=>cleanTop3Reward(data.rules?.top3Reward);
+function top3Awards(entry,r=top3Rules()){
+ const items=entry?.items||[];
+ return (entry?.setupPay||0)+items.reduce((sum,x)=>sum+(x.awardP||0),0)+(entry?.allPay||0);
+}
+function top3Time(t){if(!t)return '';const d=new Date(t);return Number.isFinite(d.getTime())?d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',hour12:false}):''}
+let top3EditMode=false;
+function top3Card(){
+ const today=day(),entry=top3Day(today),items=entry?.items||[],n=items.filter(x=>x.doneAt).length,r=top3Rules();
+ const editing=top3EditMode||!entry?.confirmedAt;
+ return `<section id="top3Today" class="top3-card" aria-label="오늘의 TOP 3">
+ <div class="top3-titlebar"><h2>🎯 오늘의 TOP 3</h2><button type="button" onclick="top3EditMode=!top3EditMode;render()">${editing&&entry?.confirmedAt?'닫기':'✎ 편집'}</button></div>
+ <p class="top3-sub">반복 퀘스트와 별개인 오늘의 우선순위 · ${n}/3 달성</p>
+ <div class="top3-progress"><i style="width:${n/3*100}%"></i></div>
+ ${editing?`<form class="top3-editor" onsubmit="top3Save(event)">${[0,1,2].map(i=>`<label>목표 ${i+1}<input type="text" name="goal${i}" maxlength="85" value="${esc(items[i]?.title||'')}" placeholder="오늘 가장 중요한 일 ${i+1}" ${items[i]?.doneAt?'disabled':''} required></label>`).join('')}<button type="submit">${entry?.confirmedAt?'변경 저장 (추가 설정 보상 없음)':`3개 확정하고 +${r.setupP}P 받기`}</button></form>`:
+ `<div class="top3-goals">${items.map((x,i)=>`<button type="button" class="top3-goal ${x.doneAt?'is-done':''}" onclick="top3Toggle(${i})" aria-label="${esc(x.title)} ${x.doneAt?'완료 취소':'완료 체크'}"><span class="top3-mark">${x.doneAt?'✅':'◯'}</span><span class="top3-goal-name">${esc(x.title)}<small>${x.doneAt?'완료 '+top3Time(x.doneAt):`완료 보상 +${r.eachP}P / +${r.eachXP}XP`}</small></span></button>`).join('')}</div>`}
+ <div class="top3-actions">${!editing&&entry?.confirmedAt?'<button type="button" onclick="top3EditMode=true;render()">목표 수정</button>':''}${!entry?.confirmedAt?'<button type="button" onclick="top3CopyYesterday()">어제 목표 가져오기</button>':''}<button type="button" onclick="screen='calendar';selectedDate=day();render()">달력에서 확인</button></div>
+ <p class="top3-reward-hint">🎁 설정 +${r.setupP}P · 목표별 +${r.eachP}P/+${r.eachXP}XP · 3개 달성 추가 +${r.allP}P/+${r.allXP}XP${entry?.allClaimed?' · 🏆 전체 달성 완료':''}</p>
+ </section>`;
+}
+function top3CopyYesterday(){
+ if(top3Day(day())?.confirmedAt)return;
+ const d=new Date(day()+'T12:00:00');d.setDate(d.getDate()-1);
+ const prev=top3Day(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`);
+ if(!prev?.confirmedAt)return appAlert('어제 확정한 목표가 없습니다.');
+ if(!prev.items.some(x=>!x.doneAt))return appAlert('어제 미완료 목표가 없습니다.');
+ data.top3Days=data.top3Days||{};
+ data.top3Days[day()]={items:[...prev.items.filter(x=>!x.doneAt).map(x=>x.title),...Array(3).fill('')].slice(0,3).map((title,i)=>({id:i+1,title,doneAt:'',claimed:false,awardP:0,awardXP:0})),confirmedAt:'',setupClaimed:false,setupPay:0,allClaimed:false,allPay:0,allXP:0,updatedAt:new Date().toISOString()};
+ top3EditMode=true;save();render();
+}
+function top3Save(event){
+ event.preventDefault();if(!currentUserId||!startUnlocked)return;
+ const key=day(),old=top3Day(key),f=event.currentTarget;
+ const items=[0,1,2].map(i=>({id:i+1,title:String(f.elements['goal'+i]?.value||old?.items?.[i]?.title||'').trim().slice(0,85),doneAt:old?.items?.[i]?.doneAt||'',claimed:old?.items?.[i]?.claimed===true,awardP:old?.items?.[i]?.awardP||0,awardXP:old?.items?.[i]?.awardXP||0}));
+ if(items.some(x=>!x.title))return appAlert('세 가지 목표를 모두 작성해 주세요.');
+ if(new Set(items.map(x=>x.title.toLowerCase())).size!==3)return appAlert('서로 다른 목표 3개를 작성해 주세요.');
+ const now=new Date().toISOString(),newly=!old?.confirmedAt;
+ data.top3Days=data.top3Days||{};
+ data.top3Days[key]={items,confirmedAt:old?.confirmedAt||now,setupClaimed:old?.setupClaimed===true||newly,setupPay:old?.setupPay|| (newly?top3Rules().setupP:0),allClaimed:old?.allClaimed===true,allPay:old?.allPay||0,allXP:old?.allXP||0,updatedAt:now};
+ const r=top3Rules();
+ if(newly){data.points+=r.setupP;data.allEarned+=r.setupP;}
+ top3EditMode=false;save();render();
+ appAlert(newly?`오늘의 TOP 3 확정! +${r.setupP}P`:'목표가 수정되었습니다. 추가 설정 보상은 지급되지 않습니다.');
+}
+function top3Toggle(index){
+ if(!currentUserId||!startUnlocked)return;
+ const entry=top3Day(day()),item=entry?.items?.[index];
+ if(!entry?.confirmedAt||!item)return;
+ const r=top3Rules();
+ if(item.doneAt){item.doneAt='';entry.updatedAt=new Date().toISOString();save();render();appAlert('달성 체크를 취소했습니다. 이미 받은 보상은 다시 지급되지 않습니다.');return;}
+ item.doneAt=new Date().toISOString();let p=0,xp=0;
+ if(!item.claimed){item.claimed=true;item.awardP=r.eachP;item.awardXP=r.eachXP;p+=r.eachP;xp+=r.eachXP;}
+ if(entry.items.length===3&&entry.items.every(x=>x.doneAt)&&!entry.allClaimed){entry.allClaimed=true;entry.allPay=r.allP;entry.allXP=r.allXP;p+=r.allP;xp+=r.allXP;}
+ entry.updatedAt=new Date().toISOString();
+ data.points+=p;data.allEarned+=p;if(xp)awardQuestXp(xp);
+ save();render();appAlert((entry.allClaimed?'🏆 세 가지 목표 모두 달성! ':'🎯 목표 달성! ')+(p||xp?`+${p}P / +${xp}XP`:'이미 보상을 받은 목표입니다.'));
+}
+function top3DaySummary(k){
+ const e=top3Day(k),r=top3Rules();if(!e?.confirmedAt)return '<section class="top3-day-panel"><header>🎯 오늘의 TOP 3 <small>미설정</small></header><p>이 날짜에 설정한 목표가 없습니다.</p></section>';
+ const done=e.items.filter(x=>x.doneAt).length;
+ return `<section class="top3-day-panel" id="top3CalendarSection"><header>🎯 TOP 3 목표 <small>${done}/3 달성</small></header>${e.items.map((x,i)=>`<p class="${x.doneAt?'done':''}">${x.doneAt?'✅':'◯'} ${esc(x.title)} ${x.doneAt?'· '+top3Time(x.doneAt):''}</p>`).join('')}<p>확정 ${top3Time(e.confirmedAt)} · 지급 기록 ${top3Awards(e,r)}P</p></section>`;
+}
+function top3CalendarDots(k){
+ const e=top3Day(k);if(!e?.confirmedAt)return '';
+ return `<span class="top3-calendar-dots" title="TOP 3 ${e.items.filter(x=>x.doneAt).length}/3 달성" aria-label="TOP 3 ${e.items.filter(x=>x.doneAt).length}개 달성">${e.items.map(x=>`<i class="${x.doneAt?'done':'pending'}"></i>`).join('')}</span>`;
+}
+function top3StatsHTML(){
+ const now=new Date(day()+'T12:00:00'),last=[];
+ for(let i=29;i>=0;i--){const dt=new Date(now);dt.setDate(dt.getDate()-i);const k=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;last.push({key:k,record:top3Day(k),weekday:['일','월','화','수','목','금','토'][dt.getDay()]});}
+ const records=last.filter(x=>x.record?.confirmedAt),count=records.reduce((n,x)=>n+x.record.items.filter(y=>y.doneAt).length,0),full=records.filter(x=>x.record.items.length===3&&x.record.items.every(y=>y.doneAt)).length;
+ let chain=0;for(let i=last.length-1;i>=0;i--){if(last[i].record?.confirmedAt&&last[i].record.items.every(x=>x.doneAt))chain++;else break;}
+ const recent=last.slice(-7);
+ return `<section class="top3-stats" id="recordTop3"><h3>🎯 TOP 3 달성 분석 · 최근 30일</h3><div class="top3-stat-grid"><div><strong>${records.length?Math.round(count/(records.length*3)*100)+'%':'—'}</strong><small>목표 달성률</small></div><div><strong>${full}일</strong><small>모두 달성</small></div><div><strong>${chain}일</strong><small>연속 전체 달성</small></div></div><p class="top3-sub">최근 7일 · 하루 달성한 목표 수 (0–3개)</p><div class="top3-bars">${recent.map(x=>{const n=x.record?.confirmedAt?x.record.items.filter(g=>g.doneAt).length:0;return `<div class="top3-bar-day"><i class="${x.record?.confirmedAt?'':'empty'}" style="height:${Math.max(3,n/3*65)}px" title="${x.key}: ${x.record?.confirmedAt?n+'/3':'미설정'}"></i>${x.weekday}</div>`;}).join('')}</div><p class="top3-stat-note">미설정 날짜는 실패로 계산하지 않습니다. 기록은 퀘스트와 분리되고, 달력에서 날짜별 상세 내용을 확인할 수 있습니다.</p></section>`;
+}
+function top3RewardAdmin(){
+ const r=top3Rules();return `<section class="top3-admin"><h3>🎯 TOP 3 보상 설정 (관리자)</h3><p>모든 트레이너에 공통 적용 · 기존 지급 내역은 재정산하지 않음</p><form onsubmit="top3SaveRewards(event)"><div class="top3-admin-grid">${[['setupP','3개 확정 P'],['eachP','목표별 P'],['eachXP','목표별 XP'],['allP','전체 달성 P'],['allXP','전체 달성 XP']].map(([key,label])=>`<label>${label}<input name="${key}" type="number" min="0" max="${key==='allP'?2000:key==='eachXP'?500:1000}" value="${r[key]}"></label>`).join('')}</div><button type="submit">TOP 3 보상 설정 저장</button></form></section>`;
+}
+function top3SaveRewards(event){
+ event.preventDefault();if(!adminUnlocked||!startUnlocked||screen!=='manual')return;
+ const f=event.currentTarget,values={};
+ for(const k of ['setupP','eachP','eachXP','allP','allXP']){const n=Number(f.elements[k].value);if(!Number.isInteger(n)||n<0||n>(k==='allP'?2000:k==='eachXP'?500:1000))return appAlert('보상은 허용 범위의 정수로 입력해 주세요.');values[k]=n;}
+ registry.rules.top3Reward=cleanTop3Reward(values);
+ for(const rec of Object.values(registry.users)){rec.data.rules=registry.rules;bumpVersion(rec)}
+ data.rules=registry.rules;
+ bumpRulesVersion();saveRegistry();render();appAlert('TOP 3 보상 설정을 저장했습니다. 기존 지급 이력은 변경되지 않습니다.');
+}
+// Integrate into original view builders while retaining app navigation/layout.
+const __top3Home=renderHome;
+renderHome=function(){const raw=__top3Home();return raw.replace('<section class="home-quest-section',top3Card()+'<section class="home-quest-section');};
+const __top3DayDetails=renderDayDetails;
+renderDayDetails=function(k){const raw=__top3DayDetails(k);return top3DaySummary(k)+raw;};
+const __top3Calendar=renderCalendar;
+renderCalendar=function(){let raw=__top3Calendar();return raw.replace(/(<button\b[^>]*onclick="selectCalendarDate\('([0-9]{4}-[0-9]{2}-[0-9]{2})'\)"[^>]*>)([\s\S]*?)(<\/button>)/g,(full,open,key,body,close)=>open+body+top3CalendarDots(key)+close);};
+const __top3Stats=renderStats;
+renderStats=function(){const raw=__top3Stats();return raw.replace('<div class="growth-record-container">','<div class="growth-record-container">'+top3StatsHTML());};
+const __top3Manual=renderManual;
+renderManual=function(){const raw=__top3Manual();return adminUnlocked?raw+top3RewardAdmin():raw;};
+const __top3Briefing=renderBuddyBriefing;
+renderBuddyBriefing=function(){
+ const html=__top3Briefing(),e=top3Day(day());if(!e?.confirmedAt)return html;
+ const done=e.items.filter(x=>x.doneAt).length;
+ const summary=`<section class="top3-day-panel"><header>🎯 오늘의 TOP 3 <small>${done}/3 달성</small></header>${e.items.map(x=>`<p class="${x.doneAt?'done':''}">${x.doneAt?'✅':'◯'} ${esc(x.title)}</p>`).join('')}<p>${done===3?'🏆 세 목표 모두 달성':'미달성 목표는 내일 가져오기로 다시 설정할 수 있어요.'}</p></section>`;
+ return html.replace('<button class="modal-btn secondary" type="button" onclick="closeBuddyBriefing()">',summary+'<button class="modal-btn secondary" type="button" onclick="closeBuddyBriefing()">');
+};
+// Timeline: tiny unobtrusive markers in the LIFE lane; source time never changes.
+function top3EventsForDay(k){
+ const e=top3Day(k);if(!e?.confirmedAt)return [];
+ return [{at:e.confirmedAt,title:'TOP 3 목표 확정',type:'setup'},...e.items.filter(x=>x.doneAt).map(x=>({at:x.doneAt,title:'TOP 3 · '+x.title,type:'done'}))].filter(x=>new Date(x.at).toString()!=='Invalid Date');
+}
+function top3Minutes(at){const d=new Date(at);return d.getHours()*60+d.getMinutes()+d.getSeconds()/60;}
+function top3MainMarks(){
+ const section=document.getElementById('dailyTimeLog'),k=section?.dataset.day,chart=document.getElementById('dailyTimeLogChart');if(!chart||!k)return;
+ const lane=chart.querySelector('.time-log-lane[data-kind="life"]');if(!lane)return;
+ lane.querySelectorAll('.tl-top3-marker').forEach(x=>x.remove());
+ const width=lane.clientWidth||320,span=Math.max(1,width-28);
+ top3EventsForDay(k).forEach((x,i)=>{
+  const el=document.createElement('button');el.type='button';el.className='tl-top3-marker';el.textContent=x.type==='setup'?'🎯':'✓';el.title=(top3Time(x.at)+' '+x.title);el.setAttribute('aria-label',el.title);
+  el.style.left=Math.min(width-15,Math.max(15,14+top3Minutes(x.at)/1440*span))+'px';el.style.top=(i%2===0?7:34)+'px';
+  el.onclick=()=>{document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'});};lane.appendChild(el);
+ });
+}
+const __top3LayoutMarkers=window.layoutTimeLogMarkers;
+if(typeof __top3LayoutMarkers==='function')window.layoutTimeLogMarkers=function(){const v=__top3LayoutMarkers.apply(this,arguments);try{top3MainMarks()}catch(e){console.warn('TOP3 markers',e)}return v;};
+function top3ZoomMarks(){
+ const section=document.getElementById('dailyTimeLog'),c=document.getElementById('timeLogZoomContent'),view=document.getElementById('timeLogZoomScroll');
+ if(!section||!c||!view)return;
+ const lane=c.querySelector('.time-log-zoom-track[data-kind="life"]');if(!lane)return;
+ lane.querySelectorAll('.tl-top3-zoom-mark').forEach(x=>x.remove());
+ const ppm=Number(view.dataset.pixelsPerMinute)||1;
+ top3EventsForDay(section.dataset.day).forEach((x,i)=>{const el=document.createElement('button');el.type='button';el.className='tl-top3-zoom-mark';el.textContent='🎯 '+x.title;el.title=top3Time(x.at)+' · '+x.title;el.style.left=(55+top3Minutes(x.at)*ppm)+'px';el.style.top=(i%2===0?0:27)+'px';el.onclick=()=>{closeTimeLogZoom();document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'})};lane.appendChild(el);});
+}
+const __top3ZoomLayout=window.layoutTimeLogZoom;
+if(typeof __top3ZoomLayout==='function')window.layoutTimeLogZoom=function(){const v=__top3ZoomLayout.apply(this,arguments);try{top3ZoomMarks()}catch(e){console.warn('TOP3 zoom',e)}return v;};
+const __top3Context=window.renderTimeLogZoomContext;
+if(typeof __top3Context==='function')window.renderTimeLogZoomContext=function(range){const ret=__top3Context.apply(this,arguments),k=document.getElementById('dailyTimeLog')?.dataset.day,box=document.getElementById('timeLogZoomContextList');if(!box||!range||!k)return ret;
+ const extras=top3EventsForDay(k).filter(x=>{const m=top3Minutes(x.at);return m>=range.start&&m<=range.end;});
+ extras.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='time-log-context-entry';b.dataset.kind='top3';b.textContent='🎯 '+top3Time(x.at)+' · '+x.title;b.onclick=()=>{closeTimeLogZoom();document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'})};box.appendChild(b)});
+ const count=document.getElementById('timeLogZoomContextCount');if(count&&extras.length)count.textContent=(Number.parseInt(count.textContent)||0)+extras.length+'건';return ret;};
+try{if(typeof startUnlocked!=='undefined'&&startUnlocked&&currentUserId)requestAnimationFrame(()=>render());}catch(e){console.warn('TOP3 initial refresh',e)}
 </script>
 </body></html>
