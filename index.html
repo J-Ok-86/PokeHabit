@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.176 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.177 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -6077,7 +6077,7 @@ const LIFE_DEFAULTS=[
  {id:'sleep',name:'취침',emoji:'🌙',color:'#9b80d8',mode:'once',enabled:true,suggest:'23:00'},
  {id:'walk',name:'걷기',emoji:'🚶',color:'#28b68a',mode:'repeat',enabled:true,suggest:''}
 ];
-const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',morningBriefTime:'06:00',briefingMorningNotifyOn:false,briefingEveningNotifyOn:false,eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},top3Days:{},momentLogs:[],referenceActivities:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],walkingSession:null,widgetButtonIds:[],widgetSixSelectionSaved:false,deviceSleepEstimates:[],personalReminders:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{},readingTimelineSort:'recent'},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},achievementDraftHistory:[],recordLibrary:{books:[]},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
+const DEFAULT=()=>({briefingSeen:{morning:'',evening:''},eveningTime:'21:00',morningBriefTime:'06:00',briefingMorningNotifyOn:false,briefingEveningNotifyOn:false,eveningRecommended:null,pokemonRoster:[],trainingHistory:[],trainingBadges:[],honorMedals:null,buddyPokemon:null,points:0,allEarned:0,totalXp:0,level:1,levelXp:0,dailyNotes:{},dailyReviewNotes:{},top3Days:{},momentLogs:[],referenceActivities:[],sleepRewardStartWeek:"",sleepWeeklyReviews:[],sleepGoalHistory:[],lifeEventConfig:defaultLifeEventConfig(),lifeEventLogs:[],walkingSession:null,widgetButtonIds:[],widgetSixSelectionSaved:false,deviceSleepEstimates:[],personalReminders:[],lifeRhythmView:{eventId:'',days:7,panel:'event'},lifeRhythmGoals:{},learnedMoves:{},feverTime:FEVER_DEFAULT(),dailyVisitRewards:[],recommendedQuest:null,recommendationHistory:[],statsOpen:{draws:false,questEvents:false},analyticsView:{calendarQuest:"all",statsQuest:"all",range:30,metric:"completions",showArchived:false,showArchivedStats:false,chartOptions:{},achievementUnits:{},growthUnits:{},readingTimelineSort:'recent'},activeEvent:null,eventHistory:[],quests:[],completions:[],achievementDrafts:{},achievementDraftHistory:[],recordLibrary:{books:[]},owned:{},draws:[],questEvents:[],pendingEncounter:null,activeQuest:null,dexView:'cards',regionsOpened:{},regionPolicyVersion:REGION_POLICY_VERSION,regionOpenCelebrated:false,dexColumnsPhone:3,dexColumnsTablet:6,questSort:'incomplete',questView:'cards',rewardClaims:[],rewardStartLevel:1,levelGifts:[],demoGranted:false,bonusAt:null,userPassword:"1234",categories:DEFAULT_CATEGORIES.map(c=>({...c})),categoryEvents:[],dailyBonuses:[],rules:DEFAULT_RULES()});
 const SETTINGS_KEY='poke_routine_settings_v5';
 let settings={autoSave:true,theme:'light',autoLightAt:'07:00',autoDarkAt:'19:00',fontSize:'large',swipeTabs:true};
 try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY));if(p&&typeof p.autoSave==='boolean')settings.autoSave=p.autoSave;if(['light','dark','auto'].includes(p?.theme))settings.theme=p.theme;if(/^([01]\d|2[0-3]):[0-5]\d$/.test(p?.autoLightAt||''))settings.autoLightAt=p.autoLightAt;if(/^([01]\d|2[0-3]):[0-5]\d$/.test(p?.autoDarkAt||''))settings.autoDarkAt=p.autoDarkAt;if(['small','normal','large','xlarge'].includes(p?.fontSize))settings.fontSize=p.fontSize;if(typeof p?.swipeTabs==='boolean')settings.swipeTabs=p.swipeTabs}catch(e){}
@@ -8158,7 +8158,7 @@ function cleanBackup(v){
  safe.rewardClaims=Array.isArray(v.rewardClaims)?v.rewardClaims.filter(c=>c&&Number.isInteger(Number(c.level))&&Number(c.level)>=2&&Number(c.level)<=100000&&Number(c.points)===Number(c.level)*50).slice(0,100000).map(c=>({level:Number(c.level),points:Number(c.points),at:String(c.at||'').slice(0,45),claimId:String(c.claimId||('level_'+c.level)).slice(0,100)})).filter((c,i,all)=>all.findIndex(other=>other.level===c.level)===i):[];
  safe.points=boundedNumber(v.points);safe.allEarned=boundedNumber(v.allEarned);safe.totalXp=boundedNumber(v.totalXp);
  safe.personalReminders=cleanPersonalReminders(v.personalReminders);safe.widgetButtonIds=cleanWidgetButtonIds(v.widgetButtonIds);safe.widgetSixSelectionSaved=v.widgetSixSelectionSaved===true;safe.deviceSleepEstimates=cleanDeviceSleepEstimates(v.deviceSleepEstimates);
- safe.dailyNotes=cleanDailyNotes(v.dailyNotes);safe.top3Days=cleanTop3Days(v.top3Days);
+ safe.dailyNotes=cleanDailyNotes(v.dailyNotes);safe.dailyReviewNotes=cleanDailyNotes(v.dailyReviewNotes);safe.top3Days=cleanTop3Days(v.top3Days);
  safe.momentLogs=cleanMomentLogs(v.momentLogs);safe.referenceActivities=cleanReferenceActivities(v.referenceActivities);
  safe.lifeEventConfig=cleanLifeEventConfig(v.lifeEventConfig);safe.lifeEventLogs=cleanLifeEventLogs(v.lifeEventLogs);safe.walkingSession=cleanWalkingSession(v.walkingSession);safe.lifeRhythmView=cleanLifeRhythmView(v.lifeRhythmView);safe.lifeRhythmGoals=cleanLifeRhythmGoals(v.lifeRhythmGoals);
  safe.sleepRewardStartWeek=validNoteDay(v.sleepRewardStartWeek)?sleepWeekMonday(v.sleepRewardStartWeek):'';
@@ -8270,7 +8270,7 @@ function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.a
  if(!['cards','list','compact','mini'].includes(data.questView))data.questView='cards';
  if(!Array.isArray(data.rewardClaims))data.rewardClaims=[];
  data.personalReminders=cleanPersonalReminders(data.personalReminders);data.widgetButtonIds=cleanWidgetButtonIds(data.widgetButtonIds);data.widgetSixSelectionSaved=data.widgetSixSelectionSaved===true;data.deviceSleepEstimates=cleanDeviceSleepEstimates(data.deviceSleepEstimates);
- data.dailyNotes=cleanDailyNotes(data.dailyNotes);data.top3Days=cleanTop3Days(data.top3Days);
+ data.dailyNotes=cleanDailyNotes(data.dailyNotes);data.dailyReviewNotes=cleanDailyNotes(data.dailyReviewNotes);data.top3Days=cleanTop3Days(data.top3Days);
  data.momentLogs=cleanMomentLogs(data.momentLogs);
  data.lifeEventConfig=cleanLifeEventConfig(data.lifeEventConfig);data.lifeEventLogs=cleanLifeEventLogs(data.lifeEventLogs);data.walkingSession=cleanWalkingSession(data.walkingSession);data.lifeRhythmView=cleanLifeRhythmView(data.lifeRhythmView);data.lifeRhythmGoals=cleanLifeRhythmGoals(data.lifeRhythmGoals);
  data.sleepRewardStartWeek=validNoteDay(data.sleepRewardStartWeek)?sleepWeekMonday(data.sleepRewardStartWeek):sleepWeekMonday(day());
@@ -8364,7 +8364,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.176')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.177')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -12761,7 +12761,7 @@ function renderSettings(){
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.176')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.177')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -14421,7 +14421,7 @@ async function logoutUser(){if(!(await appConfirm('현재 계정에서 로그아
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.176')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.177')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -17747,7 +17747,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  #recordWeeklyBrief .growth-weekly-cards .growth-stat strong{font-size:22px!important;letter-spacing:-.7px;}
 }
 </style><script>
-/* v1.7.176: ONE back controller for Android CloseWatcher, fallback history and Escape.
+/* v1.7.177: ONE back controller for Android CloseWatcher, fallback history and Escape.
  * Navigations are recorded once (at render), popup origin wins, Back never pushes.
  */
 (function(){
@@ -18018,5 +18018,217 @@ window.prTop3ZoomToArchive174=function(key){
    });
  }
 };
+</script>
+<style id="daily-recap-177-style">/* v1.7.177: complete daily review, accessible single scrolling dialog */
+.daily-recap-modal{overscroll-behavior:contain;max-height:min(94dvh,94vh)!important;overflow-y:auto!important;overflow-x:hidden!important;scrollbar-gutter:stable}
+.daily177-controls{padding:0 16px 12px;display:grid;gap:9px}.daily177-actionbar{display:flex;gap:7px;flex-wrap:wrap}.daily177-actionbar button,.daily177-filter button,.daily177-play-controls button,.daily177-gap button,.daily177-replay button,.daily177-summary button{border:1px solid #5f8096;border-radius:9px;background:#27485f;color:#ecf8ff;padding:8px 10px;font:inherit;font-size:12px;font-weight:750;cursor:pointer;min-height:34px}
+.daily177-actionbar button.on,.daily177-filter button.on{background:#216959;border-color:#57c2a2;color:#fff}.daily177-filter{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:2px 0}.daily177-filter button{white-space:nowrap;flex:none}.daily177-stat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:0 16px 12px}.daily177-stat>div{border:1px solid #40627c;border-radius:10px;background:#1a3b53;padding:9px 5px;min-width:0;text-align:center}.daily177-stat strong{display:block;font-size:19px;line-height:1.4;color:#e5faf4;font-variant-numeric:tabular-nums}.daily177-stat small{display:block;font-size:10px;color:#b5d2e3;line-height:1.35;overflow-wrap:anywhere}
+.daily177-section{margin:10px 16px;border:1px solid #3c6077;background:#18384e;border-radius:13px;overflow:hidden}.daily177-section>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;font-weight:850;font-size:13px;cursor:pointer;list-style:none}.daily177-section>summary::-webkit-details-marker{display:none}.daily177-section>summary:after{content:'⌄';font-size:18px;color:#a5c9d8}.daily177-section:not([open])>summary:after{transform:rotate(-90deg)}.daily177-inner{padding:0 12px 12px;min-width:0}.daily177-line{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-top:1px solid #37566d}.daily177-clock{flex:0 0 43px;font-size:11px;color:#aad2dd;font-variant-numeric:tabular-nums;padding-top:2px}.daily177-line-content{min-width:0;flex:1}.daily177-line-content strong{display:block;font-size:12px;color:#e7f5fa;overflow-wrap:anywhere}.daily177-line-content small{display:block;color:#adc7d5;font-size:11px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:3px}.daily177-line-icon{flex:0 0 20px}.daily177-line button{border:1px solid #527c91;color:#ccebed;background:transparent;border-radius:7px;font-size:10px;padding:5px;cursor:pointer}.daily177-empty{font-size:12px;color:#abc6d5;line-height:1.6;margin:10px 0}.daily177-goal{display:flex;gap:7px;align-items:flex-start;padding:10px 0;border-top:1px solid #37566d}.daily177-goal strong{font-size:12px;overflow-wrap:anywhere}.daily177-goal small{font-size:11px;color:#b3d1db;display:block;margin-top:4px;white-space:pre-wrap;overflow-wrap:anywhere}.daily177-goal .done{color:#81dcb1}.daily177-gap{margin:9px 0;padding:11px;border:1px dashed #5e8597;border-radius:10px;background:#203e51;display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap}.daily177-gap small{color:#b9d1e0;font-size:11px}.daily177-gap button{flex:none}.daily177-replay{padding:12px;border:1px solid #4a7383;background:#1f4458;border-radius:12px}.daily177-replay-screen{min-height:100px;padding:12px;border-radius:10px;background:#132e44;overflow-wrap:anywhere}.daily177-replay-screen .tag{color:#9fd6c4;font-size:10px;font-weight:800}.daily177-replay-screen h3{font-size:16px;margin:6px 0;color:#f1fafc}.daily177-replay-screen p{font-size:12px;margin:4px 0;color:#cbdce5;white-space:pre-wrap;line-height:1.6}.daily177-play-controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}.daily177-play-controls select{background:#193a52;color:#fff;border:1px solid #618299;border-radius:8px;padding:7px}.daily177-play-controls input[type=range]{width:100%;min-width:0;accent-color:#6ed1a5}.daily177-replay-progress{font-size:11px;color:#aac5d7}.daily177-reflect{width:100%;min-height:75px;box-sizing:border-box;border:1px solid #63859a;border-radius:9px;padding:10px;background:#102d43;color:#f5fbff;font:inherit;font-size:13px}.daily177-note-status{font-size:11px;color:#95d4b3}.daily177-detail-tag{font-size:10px;color:#9fe1d0;margin-right:7px}.daily177-recap-nav{position:sticky;top:0;z-index:2;background:#17354b;padding:10px 12px 6px;border-bottom:1px solid #47708a}.daily177-recap-nav>div{display:flex;gap:7px;align-items:center;justify-content:space-between}.daily177-recap-nav button{border:1px solid #61869a;border-radius:8px;background:#244963;color:#eaf7ff;padding:7px 8px;font-size:11px}.daily177-recap-nav h2{font-size:17px;min-width:0;margin:0}.daily177-banner{font-size:11px;color:#b9d0db;padding:8px 16px;line-height:1.5}.daily177-end{margin:16px;padding:12px 0 22px;border-top:1px solid #52748c;display:flex;gap:8px}.daily177-end button{flex:1;padding:10px;border:1px solid #5d8a9a;border-radius:9px;background:#29546a;color:#fff}.daily177-end button:last-child{background:#276d59}
+html[data-theme="light"] .daily177-section,html[data-theme="light"] .daily177-replay,html[data-theme="light"] .daily177-stat>div{background:#f1f8fb;color:#27485d;border-color:#bfd6e0}html[data-theme="light"] .daily177-line-content strong,html[data-theme="light"] .daily177-goal strong{color:#244356}html[data-theme="light"] .daily177-line-content small,html[data-theme="light"] .daily177-goal small,html[data-theme="light"] .daily177-clock{color:#4e7183}html[data-theme="light"] .daily177-recap-nav{background:#f4f9fc}html[data-theme="light"] .daily177-replay-screen{background:#e9f2f8}html[data-theme="light"] .daily177-replay-screen h3{color:#183d54}html[data-theme="light"] .daily177-replay-screen p{color:#36566d}html[data-theme="light"] .daily177-gap{background:#eff7fa}html[data-theme="light"] .daily177-reflect{background:#fff;color:#204659}html[data-theme="light"] .daily177-banner{color:#56798b}
+@media(max-width:370px){.daily177-stat strong{font-size:16px}.daily177-section{margin:8px}.daily177-controls{padding:0 8px 10px}.daily177-line{gap:5px}.daily177-gap{padding:8px}.daily177-recap-nav h2{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.daily177-replay-screen{animation:none!important}}
+.daily177-finale{margin:4px 0 8px;text-align:center;padding:19px 13px;border:1px solid #6d7b9b;border-radius:15px;background:linear-gradient(155deg,#1c385a,#224b52 55%,#27385f);color:#f2f5ff}.daily177-stars{font-size:23px;letter-spacing:10px;color:#f8d89f}.daily177-end-label{display:block;font-size:10px;letter-spacing:2px;color:#b6cce7;margin-top:8px}.daily177-finale h3{font-size:18px;line-height:1.5;margin:10px 0 15px}.daily177-keywords{display:grid;gap:9px}.daily177-keyword{background:#203b56;border:1px solid #668294;border-radius:12px;padding:11px 10px;text-align:left;min-width:0}.daily177-keyword span,.daily177-keyword small{display:block;color:#b8ceda;font-size:10px;overflow-wrap:anywhere}.daily177-keyword strong{display:block;font-size:19px;color:#ffe6a9;overflow-wrap:anywhere;margin:5px 0}.daily177-finale-close{font-size:11px;color:#d9e3ed;line-height:1.65;margin:16px 2px 8px}.daily177-finale>button{padding:9px;border-radius:9px;background:#395c73;color:white;border:1px solid #729ab0}.daily177-replay-screen .daily177-finale{margin:0}html[data-theme="light"] .daily177-stat strong{color:#23485f}html[data-theme="light"] .daily177-stat small{color:#557486}html[data-theme="light"] .daily177-finale{background:linear-gradient(145deg,#e7edf8,#dbf1eb);color:#234058}html[data-theme="light"] .daily177-keyword{background:#f9fcff}html[data-theme="light"] .daily177-keyword strong{color:#725225}html[data-theme="light"] .daily177-finale-close{color:#36576a}
+@media (prefers-reduced-motion:no-preference){.daily177-finale{animation:daily177Reveal .45s ease-out both}@keyframes daily177Reveal{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}}
+</style>
+<script id="daily-recap-177">/* v1.7.177: integrated daily review. Canonical records are read-only, reflection is optional. */
+(function(){
+ const clockValid=s=>/^([01]\d|2[0-3]):[0-5]\d$/.test(String(s||''));
+ const clockAt=s=>{const d=new Date(s||'');return Number.isFinite(d.getTime())?String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'):''};
+ const trim=(x,n=2000)=>String(x??'').slice(0,n);
+ const escape=val=>esc(trim(val,2500));
+ const groups=[['top3','🎯 목표'],['quest','✅ 퀘스트'],['life','🕒 생활·걷기·수면'],['moment','💭 생각'],['reference','✏️ 참고 활동'],['reward','🎁 보상']];
+ let ui={key:'',filter:'all',folds:{goals:true,timeline:true,detail:false,replay:false,reflection:true,ending:true},replayIndex:0,replaySpeed:1,replayPlaying:false,tabScroll:0};
+ let timer=null,returnRoute=null;
+ function pause(){if(timer){clearInterval(timer);timer=null;}ui.replayPlaying=false;}
+ function reset(k){pause();ui={key:k,filter:'all',folds:{...ui.folds},replayIndex:0,replaySpeed:1,replayPlaying:false,tabScroll:0};}
+ function stampEvent(kind,at,title,detail='',more={}){return {kind,at:at||'',clock:clockAt(at),title:trim(title,180),detail:trim(detail,3000),...more};}
+ function amountInfo(a){try{return achievementSummary({achievement:a})||'';}catch(_){return ''}}
+ function safeSnapshot(key,source=data){
+  const orig=baseSnapshot(key,source);if(!orig)return null;
+  const events=[];
+  const add=(ev)=>{if(ev)events.push({...ev,uid:events.length})};
+  for(const e of orig.events){
+   const r=e.record||{};
+   if(e.kind==='life'&&r.eventId==='walk'&&r.endAt)continue;
+   let content=e.kind==='quest'?([amountInfo(r.achievement),r.achievement?.note].filter(Boolean).join(' · ')):
+     e.kind==='moment'?r.text:(r.note||'');
+   add({...e,kind:e.kind,title:e.kind==='quest'?'퀘스트 완료 · '+(r.title||'퀘스트'):e.kind==='moment'?'순간생각 · '+momentKindLabel(r.kind):(r.name||'생활 이벤트'),detail:trim(content),emoji:e.kind==='quest'?'✅':e.kind==='moment'?'💭':r.emoji||'🕒'});
+  }
+  const top=source.top3Days?.[key];
+  if(top?.confirmedAt){
+    const total=(top.items||[]).length;
+    if(timeLogLocalDay(top.confirmedAt)===key)add(stampEvent('top3',top.confirmedAt,'오늘의 목표 수립 · '+total+'개',(top.items||[]).map(x=>'• '+x.title).join('\n'),{phase:'setup'}));
+    for(let i=0;i<(top.items||[]).length;i++){
+      const x=top.items[i];if(x.doneAt&&timeLogLocalDay(x.doneAt)===key)add(stampEvent('top3',x.doneAt,'목표 달성 · '+x.title,x.detail||'',{phase:'done',goalIndex:i}));
+    }
+  }
+  // Canonical intermediate snapshots, including older drafts without separate history.
+  if(source===data&&typeof timeLogQuestDraftPoints==='function'){
+   for(const d of timeLogQuestDraftPoints(key))add({kind:'quest',at:d.stamp||'',clock:d.clock||'',title:'중간 저장 · '+trim(d.label.replace(/^📝\s*/,'')),detail:d.info||'',emoji:'✏️',draftHistoryId:d.draftHistoryId,questId:d.questId,questDay:d.questDay,phase:'draft',uid:events.length});
+   for(const q of timeLogQuestAppendPoints(key))add({kind:'quest',at:q.stamp||'',clock:q.clock||'',title:'추가 기록 · '+trim(q.label.replace(/^✎\+\s*/,'')),detail:q.info||'',emoji:'✏️',phase:'append',questId:q.questId,questDay:q.questDay,uid:events.length});
+  }else{
+   for(const d of source.achievementDraftHistory||[])if(d.at&&timeLogLocalDay(d.at)===key)add(stampEvent('quest',d.at,'중간 저장 · '+(d.title||'퀘스트'),[amountInfo(d.achievement),d.achievement?.note].filter(Boolean).join(' · '),{emoji:'✏️',phase:'draft'}));
+   for(const q of source.completions||[])for(const u of q.achievement?.updates||[])if(u.at&&timeLogLocalDay(u.at)===key)add(stampEvent('quest',u.at,'추가 기록 · '+(q.title||'퀘스트'),[u.amount,u.unit,u.note].filter(Boolean).join(' '),{emoji:'✏️',phase:'append'}));
+  }
+  // Walk intervals split across local date boundaries and retain measured duration.
+  if(source===data&&typeof timeLogWalkIntervals==='function'){
+   for(const w of timeLogWalkIntervals(key)){
+    const minute=Math.floor(w.startMinute),hh=String(Math.floor(minute/60)).padStart(2,'0'),mm=String(minute%60).padStart(2,'0');
+    add({kind:'life',clock:hh+':'+mm,at:key+'T'+hh+':'+mm+':00',title:'걷기 · '+w.durationMinutes+'분',detail:w.startLabel+' ~ '+w.endLabel+' · 실측 경과 시간'+(w.continuesFromYesterday||w.continuesTomorrow?' · 날짜 경계 포함':''),emoji:'🚶',phase:'walk',uid:events.length});
+   }
+  }else for(const l of source.lifeEventLogs||[])if(l.eventId==='walk'&&l.endAt&&(l.day===key||timeLogLocalDay(l.endAt)===key))add(stampEvent('life',l.at,'걷기',clockAt(l.at)+' ~ '+clockAt(l.endAt),{emoji:'🚶',phase:'walk'}));
+  // Do not duplicate walking segments already represented as intervals.
+  if(source===data&&typeof referenceActivitiesForDate==='function'){
+   for(const a of referenceActivitiesForDate(key)){
+    const rec=a.record,clock=referenceActivityClock(a.startMinute),end=rec.endAt?referenceActivityClock(a.endMinute):'';
+    add({kind:'reference',at:rec.startAt,clock,title:rec.title,detail:[end?clock+' ~ '+end:'종료 시각 미지정',rec.note].filter(Boolean).join(' · '),emoji:'✏️',ref:rec.id,uid:events.length});
+   }
+  }else for(const r of source.referenceActivities||[])if(r.startAt.slice(0,10)===key)add(stampEvent('reference',r.startAt,r.title,[r.endAt?clockAt(r.startAt)+' ~ '+clockAt(r.endAt):'종료 시각 미지정',r.note].filter(Boolean).join(' · '),{emoji:'✏️',ref:r.id}));
+  // Reward entries: events only if an actual timestamp belongs to the selected day.
+  if(top?.setupClaimed&&top.confirmedAt&&timeLogLocalDay(top.confirmedAt)===key)add(stampEvent('reward',top.confirmedAt,'목표 수립 보상',`+${Number(top.setupPay)||0}P`,{emoji:'🎁'}));
+  if(top?.settledAt&&timeLogLocalDay(top.settledAt)===key)add(stampEvent('reward',top.settledAt,'목표 달성 보상 정산','수령 기록 기준', {emoji:'🎁'}));
+  for(const b of source.dailyVisitRewards||[])if(b.at&&timeLogLocalDay(b.at)===key)add(stampEvent('reward',b.at,'첫 방문 보상',b.points?'+'+b.points+'P':'보상 기록',{emoji:'🎁'}));
+  events.sort((a,b)=>{const x=clockValid(a.clock)?a.clock:'99:99',y=clockValid(b.clock)?b.clock:'99:99';return x.localeCompare(y)||String(a.at||'').localeCompare(String(b.at||''))||a.uid-b.uid;});
+  // Scheduled items are day-level status; never invent creation/working times.
+  const scheduled=(source.quests||[]).filter(q=>{try{return scheduledOnDate(q,key)&&['reserved','once'].includes(questType(q));}catch(_){return false;}}).map(q=>({title:q.title,done:(source.completions||[]).some(c=>c.day===key&&c.id===q.id)}));
+  const drafts=Object.entries(source.achievementDrafts?.[key]||{}).map(([id,r])=>({title:r.title||source.quests?.find(q=>q.id===id)?.title||'퀘스트',note:r.achievement?.note||''}));
+  const reviewNote=String(source.dailyReviewNotes?.[key]?.text||'');
+  return {...orig,events,top,scheduled,drafts,reviewNote,counts:{...orig.counts,top:top?.items?.length||0,done:(top?.items||[]).filter(x=>x.doneAt).length,reference:events.filter(e=>e.kind==='reference').length,intermediate:events.filter(e=>e.phase==='draft'||e.phase==='append').length,walk:events.filter(e=>e.phase==='walk').length,total:events.length},hasContent:!!(events.length||orig.note.trim()||reviewNote.trim()||top?.confirmedAt||scheduled.length||drafts.length)};
+ }
+ const baseSnapshot=window.dailyRecapSnapshot;
+ window.dailyRecapSnapshot=safeSnapshot;
+ const baseDates=window.dailyRecapDates;
+ window.dailyRecapDates=function(source=data){const values=new Set(baseDates(source));for(const key of Object.keys(source.top3Days||{}))if(validNoteDay(key))values.add(key);for(const key of Object.keys(source.dailyReviewNotes||{}))if(validNoteDay(key))values.add(key);for(const r of source.referenceActivities||[]){const key=String(r.startAt||'').slice(0,10);if(validNoteDay(key))values.add(key);}for(const r of source.achievementDraftHistory||[]){const key=String(r.at||'').slice(0,10);if(validNoteDay(key))values.add(key);}return [...values].sort()};
+ const baseOpen=window.openDailyRecap;
+ window.openDailyRecap=function(key=selectedDate){reset(key);return baseOpen(key)};
+ window.moveDailyRecap=function(key){if(modal?.type!=='dailyRecap'||!validNoteDay(key))return;reset(key);modal.key=key;render();};
+ const baseClose=window.closeDailyRecap;
+ window.closeDailyRecap=function(){pause();return baseClose()};
+ function getItems(r){if(ui.filter==='all')return r.events;return r.events.filter(e=>e.kind===ui.filter)}
+ function detailsHtml(name,title,body,defaultOpen=false){const opened=ui.folds[name]??defaultOpen;return `<details class="daily177-section" data-review-fold="${name}" ${opened?'open':''} ontoggle="daily177ToggleFold(this)"><summary>${title}</summary><div class="daily177-inner">${body}</div></details>`;}
+ function eventsHtml(items){if(!items.length)return '<p class="daily177-empty">이 유형에 저장된 시각 기록이 없습니다.</p>';return items.map((e,i)=>{
+    const idx=e.uid,detail=escape(e.detail),em=escape(e.emoji||({'top3':'🎯','quest':'✅','life':'🕒','moment':'💭','reference':'✏️','reward':'🎁'}[e.kind]||'•'));
+    return `<div class="daily177-line"><span class="daily177-clock">${escape(clockValid(e.clock)?e.clock:'—')}</span><span class="daily177-line-icon">${em}</span><div class="daily177-line-content"><strong>${escape(e.title)}</strong>${detail?`<small>${detail}</small>`:''}</div><button type="button" onclick="daily177Source(${idx})" aria-label="원본 보기">원본</button></div>`;
+   }).join('');}
+ function gaps(r){
+  const toMin=s=>Number(s.slice(0,2))*60+Number(s.slice(3,5));
+  const spans=r.events.filter(e=>clockValid(e.clock)).map(e=>{
+    const a=toMin(e.clock);let b=a;
+    if(e.phase==='walk'){const match=String(e.detail||'').match(/~\s*(?:\d{4}-\d\d-\d\d\s+)?([01]\d|2[0-3]):([0-5]\d)/);if(match)b=Math.max(a,Number(match[1])*60+Number(match[2]));}
+    if(e.kind==='reference'){const match=String(e.detail||'').match(/~\s*([01]\d|2[0-3]):([0-5]\d)/);if(match)b=Math.max(a,Number(match[1])*60+Number(match[2]));}
+    return {a,b};
+  }).sort((x,y)=>x.a-y.a);
+  const out=[];let covered=-1;
+  for(const span of spans){if(covered>=0&&span.a-covered>=60)out.push({from:covered,until:span.a,duration:span.a-covered});covered=Math.max(covered,span.b);}
+  return out;
+ }
+ const hm=n=>String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
+ function gapsHtml(r){const g=gaps(r);return `${g.length?g.map(x=>`<div class="daily177-gap"><div><strong>${hm(x.from)} ~ ${hm(x.until)}</strong><small> · 기록 공백 ${Math.floor(x.duration/60)}시간 ${x.duration%60}분</small><div><small>기록이 없다는 뜻이며 미활동을 의미하지 않습니다.</small></div></div><button type="button" onclick="daily177FillGap('${r.key}',${x.from},${x.until})">＋ 활동 채우기</button></div>`).join(''):'<p class="daily177-empty">60분 이상의 기록 간격이 없습니다. 기록 시간만으로 실제 활동을 추정하지 않습니다.</p>'}`;}
+ function goalHtml(r){const e=r.top;if(!e?.confirmedAt)return '<p class="daily177-empty">이 날짜에 확정한 오늘의 목표가 없습니다.</p>';return `<p class="daily177-empty">수립 ${escape(clockAt(e.confirmedAt)||'시각 미기록')} · ${r.counts.done}/${r.counts.top} 달성</p>`+(e.items||[]).map((x,i)=>`<div class="daily177-goal"><span class="${x.doneAt?'done':''}">${x.doneAt?'✓':'○'}</span><div><strong>${escape(x.title)}</strong><small>${x.doneAt?'달성 '+escape(clockAt(x.doneAt)):'미달성 또는 미기록'}${x.detail?'\n'+escape(x.detail):''}</small></div></div>`).join('');}
+ function summaryHtml(r){const count=r.counts;return `<div class="daily177-stat"><div><strong>${count.done}/${count.top}</strong><small>🎯 오늘의 목표</small></div><div><strong>${count.quest}</strong><small>✅ 퀘스트 완료</small></div><div><strong>${count.total}</strong><small>🕒 시간 기록</small></div><div><strong>${count.intermediate}</strong><small>✏️ 중간·추가 기록</small></div><div><strong>${count.walk}</strong><small>🚶 걷기 구간</small></div><div><strong>${count.reference}</strong><small>📌 참고 활동</small></div></div>`;}
+ // Offline, deterministic multi-source keyword extraction: weighted evidence + Korean phrase normalization + source diversity + MMR.
+ const reviewGeneric=new Set('오늘 하루 목표 수립 달성 완료 미완료 기록 중간 저장 추가 활동 퀘스트 데일리 노트 메모 상세 참고 일정 예약 생각 순간 경험 시간 시각 보상 지급 수령 설정 변경 수정 확인 시작 종료 진행 내용 전체 이후 구간 정리하기 하기 있음 없음 했다 하고 했음 입니다 합니다 그리고 또는 위해 대한 있는 없던 같은 정말 너무 그냥 이제 다시 이번 이런 저런 것을 하는 것을 것은 그것 이거 저거 에서 으로 으로는 에게 까지 부터 하면서 했다 했다가 이번주 내일 어제 오전 오후 아침 저녁 새벽 시간분 단계 건 개 분 오늘의 공부 운동 가족 사람 작업 일상 챙기기 보고 보기 작성 추가하기 학습 연습 복습 수행 성공'.split(/\s+/));
+ const reviewBadFragments=new Set('오늘의','이후','수립','달성','기록','완료','미기록','진행','활동','저장','노트','중간','추가','상세','시간','퀘스트','목표','설정','공부','운동','하기','정리');
+ function reviewNormalize(w){return String(w||'').normalize('NFKC').toLocaleLowerCase().replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu,'').replace(/(?:으로부터|에서는|에게서|부터|까지|으로는|에서는|에서|에게|으로|하고|으로써|에는|들은|들은|들을|의|은|는|이|가|을|를|에|도|와|과|로|만|랑)$/u,'').trim();}
+ function keywordCandidates(value){const text=String(value||'').normalize('NFKC').replace(/https?:\/\/\S+|\b\S+@\S+\.\S+\b/g,' ').replace(/[\r\n•·\/|:;()[\]{}<>\-]+/g,' ');const raw=(text.match(/[\p{Script=Hangul}\p{L}\p{N}][\p{Script=Hangul}\p{L}\p{N}_+#]{1,25}/gu)||[]);const filtered=raw.map(w=>({raw:w,w:reviewNormalize(w)})).filter(x=>x.w.length>=2&&x.w.length<=24&&!reviewGeneric.has(x.w)&&!reviewBadFragments.has(x.w)&&!/(?:했다|합니다|하였다|했음|했었다|되었다|된다|있었다|없었다|작성했다)$/.test(x.w)&&!/^[\d_]+$/.test(x.w));const words=filtered.map(x=>x.w);
+  const seen=new Set(),result=[];for(let i=0;i<words.length;i++){const a=words[i];if(!seen.has(a)){result.push(a);seen.add(a);}if(i+1<words.length){const b=words[i+1];if(a.length+b.length<=17&&!/(?:와|과|랑|하고|이나|거나)$/.test(filtered[i].raw)&&![a,b].some(x=>reviewBadFragments.has(x))){const phrase=a+' '+b;if(!seen.has(phrase)){result.push(phrase);seen.add(phrase);}}}}return result.slice(0,65);
+ }
+ function keywords(r){const docs=[],add=(text,kind,weight,label,src)=>{if(String(text||'').trim())docs.push({text:String(text).slice(0,1500),kind,weight,label,src});};
+  for(const e of r.events){const weight=e.kind==='top3'?(e.phase==='done'?2.8:2.1):e.kind==='moment'?2.35:e.kind==='quest'?2.0:e.kind==='reference'?1.8:e.kind==='life'?1.05:0.22;add(e.title,e.kind,weight,e.title,e);if(e.detail)add(e.detail,e.kind,weight*.66,e.title,e);}
+  for(const x of r.top?.items||[])add(x.title,'top3',x.doneAt?3.1:2.15,'목표 · '+x.title,x);
+  for(const x of r.scheduled||[])add(x.title,'scheduled',.52,'예약 · '+x.title,x);
+  for(const x of r.drafts||[])add([x.title,x.note].filter(Boolean).join(' '),'quest',1.2,'중간 기록 · '+x.title,x);
+  add(r.note,'dailyNote',2.5,'데일리 노트',r);add(r.reviewNote,'reflection',2.55,'한 문장 회고',r);
+  const stats=new Map();const df=new Map();for(const d of docs){for(const w of keywordCandidates(d.text)){let st=stats.get(w);if(!st){st={word:w,weight:0,sources:new Set(),kinds:new Set(),mentions:0,evidence:[]};stats.set(w,st)}st.weight+=d.weight;st.mentions++;st.kinds.add(d.kind);st.sources.add(d.src);if(st.evidence.length<3&&!st.evidence.some(x=>x.label===d.label))st.evidence.push({label:String(d.label).slice(0,85),kind:d.kind});}}
+  const total=Math.max(1,docs.length);let scored=[];for(const st of stats.values()){const dfCount=st.sources.size;const specificity=Math.log(1+(total+1)/(dfCount+0.6));const sourceBonus=1+Math.min(.75,(dfCount-1)*.20);const diversity=1+Math.min(.5,(st.kinds.size-1)*.22);const noisy=st.word.includes(' ')?1.04:1;const score=st.weight*specificity*sourceBonus*diversity*noisy;const single=st.kinds.size===1&&st.mentions===1;if(score<1.15||single&&st.weight<1.7)continue;scored.push({...st,score});}
+  scored.sort((a,b)=>b.score-a.score||a.word.localeCompare(b.word,'ko'));const result=[];
+  for(let n=0;n<3;n++){let best=null,bestValue=-Infinity;for(const st of scored){if(result.some(x=>x.word===st.word))continue;const dup=Math.max(0,...result.map(ch=>{const a=st.word.split(' '),b=ch.word.split(' '),intersection=a.filter(x=>b.includes(x)).length;return Math.max(st.word.includes(ch.word)||ch.word.includes(st.word)?1:0,intersection/Math.max(a.length,b.length));}));const overlap=1-Math.min(1,dup);if(overlap<.35)continue;const v=st.score*(.65+.35*overlap)-dup*4; if(v>bestValue){best=st;bestValue=v;}}if(!best||bestValue<1.15)break;result.push({word:best.word,score:Number(best.score.toFixed(2)),evidence:best.evidence});}
+  return result.map(x=>({...x,word:x.word.replace(/\b[a-z]{2,5}\b/g,t=>t.toUpperCase())}));
+ }
+ window.daily177Keywords=keywords;
+ function endingHtml(r,compact=false){const terms=keywords(r);const cards=terms.map((x,i)=>`<div class="daily177-keyword"><span>0${i+1} · 오늘의 키워드</span><strong>${escape(x.word)}</strong><small>근거: ${escape(x.evidence.map(z=>z.label).slice(0,2).join(' · '))}</small></div>`).join('');return `<div class="daily177-finale"><div class="daily177-stars" aria-hidden="true">✦　✧　✦</div><span class="daily177-end-label">YOUR DAY · ${escape(r.key)}</span><h3>오늘을 남기는 세 가지 단어</h3><div class="daily177-keywords">${cards||'<p class="daily177-empty">오늘의 기록에서 충분한 키워드를 찾지 못했습니다. 기록이 쌓이면 채워집니다.</p>'}</div><p class="daily177-finale-close">${terms.length?'오늘은 이 장면들을 남겼습니다. 내일은 또 다른 이야기가 기다립니다.':'기록이 적은 하루도 하루입니다. 오늘을 있는 그대로 남겨두세요.'}</p>${compact?'':'<button type="button" onclick="daily177ShowReplay()">▶ 하루 장면 다시 보기</button>'}</div>`;}
+ function selectedReplay(r){const items=r.events.filter(e=>clockValid(e.clock));return items;}
+ function replayHtml(r){const all=selectedReplay(r);if(ui.replayIndex>all.length)ui.replayIndex=Math.max(0,all.length);const e=all[ui.replayIndex];const ending=all.length>0&&ui.replayIndex>=all.length;const before=ui.replayIndex>0?all[ui.replayIndex-1]:null;let gap='';if(before&&e){const t=s=>Number(s.slice(0,2))*60+Number(s.slice(3,5));const minutes=t(e.clock)-t(before.clock);if(minutes>=60)gap=`<p>⌛ 직전 기록 이후 ${Math.floor(minutes/60)}시간 ${minutes%60}분 동안 기록 없음</p>`;}
+  const screen=ending?endingHtml(r,true):e?`<span class="tag">${escape(e.clock)} · ${escape(groups.find(g=>g[0]===e.kind)?.[1]||'기록')}</span><h3>${escape(e.emoji||'•')} ${escape(e.title)}</h3><p>${escape(e.detail||'상세 내용 미기록')}</p>${gap}`:'<p>재생할 시각 기록이 없습니다.</p>';
+  return `<div class="daily177-replay" id="daily177Replay"><div class="daily177-replay-screen" id="daily177ReplayScreen">${screen}</div><div class="daily177-play-controls"><button type="button" onclick="daily177ReplayMove(-1)" ${ui.replayIndex===0?'disabled':''}>◀ 이전</button><button type="button" id="daily177PlayButton" onclick="daily177ReplayToggle()">${ui.replayPlaying?'⏸ 일시정지':'▶ 재생'}</button><button type="button" onclick="daily177ReplayMove(1)" ${ui.replayIndex>=all.length?'disabled':''}>다음 ▶</button><label>속도 <select onchange="daily177Speed(this.value)"><option value="1" ${ui.replaySpeed===1?'selected':''}>1×</option><option value="2" ${ui.replaySpeed===2?'selected':''}>2×</option><option value="4" ${ui.replaySpeed===4?'selected':''}>4×</option></select></label></div><div class="daily177-play-controls"><input type="range" id="daily177ReplayRange" min="0" max="${all.length}" value="${ui.replayIndex}" oninput="daily177ReplaySeek(this.value)" aria-label="리플레이 시점 이동"></div><div class="daily177-replay-progress" id="daily177ReplayProgress">${ending?'엔딩':all.length?ui.replayIndex+1:0} / ${all.length}장면 · 실제 기록 시각 기준</div></div>`;
+ }
+ function detailsSummary(r){const sections=[];
+  if(r.scheduled.length)sections.push(`<strong>📅 예약·일회성 퀘스트 (${r.scheduled.length})</strong>`+r.scheduled.map(x=>`<div class="daily177-goal"><span>${x.done?'✓':'○'}</span><div><strong>${escape(x.title)}</strong><small>${x.done?'완료':'미완료 / 예정 상태'}</small></div></div>`).join(''));
+  if(r.drafts.length)sections.push(`<strong>✏️ 완료 전 저장 상태 (${r.drafts.length})</strong>`+r.drafts.map(x=>`<div class="daily177-goal"><span>✎</span><div><strong>${escape(x.title)}</strong><small>${escape(x.note||'메모 없음')}</small></div></div>`).join(''));
+  const life=r.events.filter(e=>e.kind==='life'),moments=r.events.filter(e=>e.kind==='moment'),refs=r.events.filter(e=>e.kind==='reference');
+  if(life.length)sections.push(`<strong>🕒 생활·걷기·수면 (${life.length})</strong>`+eventsHtml(life));
+  if(moments.length)sections.push(`<strong>💭 순간생각 (${moments.length})</strong>`+eventsHtml(moments));
+  if(refs.length)sections.push(`<strong>✏️ 참고 활동 (${refs.length})</strong>`+eventsHtml(refs));
+  sections.push(`<strong>📝 데일리 노트 · 시각 미기록</strong><p class="daily177-empty">${r.note?escape(r.note):'미작성'}</p>`);
+  return sections.map(x=>`<div style="margin:12px 0">${x}</div>`).join('');
+ }
+ function renderReview(){
+  const key=modal?.key;if(modal?.userId!==currentUserId||!validNoteDay(key))return '';
+  if(ui.key!==key)reset(key);
+  const r=safeSnapshot(key),dates=window.dailyRecapDates(),prev=dates.filter(x=>x<key).at(-1),next=dates.find(x=>x>key);
+  const filterButtons=[['all','전체'],...groups].map(([id,title])=>`<button type="button" class="${ui.filter===id?'on':''}" onclick="daily177Filter('${id}')">${title}</button>`).join('');
+  const available=getItems(r);
+  return `<div class="overlay daily-recap-overlay" onclick="closeDailyRecap()"><section class="modal daily-recap-modal" role="dialog" aria-modal="true" aria-label="하루 돌아보기 전체 기록" onclick="event.stopPropagation()">
+   <div class="daily177-recap-nav"><div><button type="button" onclick="closeDailyRecap()">✕ 닫기</button><h2 id="dailyRecapTitle" tabindex="-1">✨ ${escape(fmtKey(key))}</h2><button type="button" onclick="copyDailyRecap()">▣ 복사</button></div><div style="margin-top:7px"><button type="button" ${prev?`onclick="moveDailyRecap('${prev}')"`:'disabled'}>‹ 이전 기록</button><span style="font-size:11px">${escape(key)}</span><button type="button" ${next?`onclick="moveDailyRecap('${next}')"`:'disabled'}>다음 기록 ›</button></div></div>
+   <div class="daily177-banner">저장된 실제 기록만 표시합니다. 기록 공백은 미수행이나 휴식을 뜻하지 않습니다.</div>
+   ${summaryHtml(r)}
+   <div class="daily177-controls"><div class="daily177-actionbar"><button type="button" onclick="daily177FoldAll(true)">모두 펼치기</button><button type="button" onclick="daily177FoldAll(false)">모두 접기</button><button type="button" onclick="daily177ShowReplay()">▶ 하루 리플레이</button></div><div class="daily177-filter" aria-label="기록 유형 필터">${filterButtons}</div></div>
+   ${detailsHtml('goals','🎯 오늘의 목표 · '+r.counts.done+'/'+r.counts.top,goalHtml(r),true)}
+   ${detailsHtml('replay','🎬 하루 리플레이 · '+selectedReplay(r).length+'개 장면',replayHtml(r))}
+   ${detailsHtml('timeline','🕒 시간순 전체 기록 · '+available.length+'건',eventsHtml(available),true)}
+   ${detailsHtml('gaps','⌛ 기록 공백 찾아 채우기 · '+gaps(r).length+'구간',gapsHtml(r))}
+   ${detailsHtml('detail','📂 유형별 상세 · 예약·생활·메모',detailsSummary(r))}
+   ${detailsHtml('ending','🎁 오늘의 엔딩 · 핵심 키워드',endingHtml(r),true)}
+   ${detailsHtml('reflection','✨ 오늘을 한 문장으로',`<textarea class="daily177-reflect" id="daily177Reflection" maxlength="2000" placeholder="오늘 기억하고 싶은 장면을 한 문장으로 남겨보세요">${escape(r.reviewNote)}</textarea><div class="daily177-actionbar" style="margin-top:8px"><button type="button" onclick="daily177SaveReflection()">💾 회고 저장</button><span id="daily177NoteStatus" class="daily177-note-status">데일리 노트와 별도로 저장 · JSON 백업 포함</span></div>`,true)}
+   <div class="daily177-end"><button type="button" onclick="closeDailyRecap()">달력으로 돌아가기</button><button type="button" onclick="copyDailyRecap()">▣ 전체 회고 복사</button></div><p class="daily-recap-copy-status" id="dailyRecapCopyStatus" role="status" aria-live="polite"></p><textarea id="dailyRecapCopyFallback" class="daily-recap-copy-fallback" aria-label="복사할 회고 텍스트" readonly hidden></textarea>
+  </section></div>`;
+ }
+ window.renderDailyRecapModal=renderReview;
+ window.daily177ToggleFold=function(el){if(el?.dataset?.reviewFold)ui.folds[el.dataset.reviewFold]=!!el.open;};
+ window.daily177FoldAll=function(open){Object.keys(ui.folds).forEach(k=>ui.folds[k]=open);document.querySelectorAll('[data-review-fold]').forEach(e=>e.open=open);if(!open)pause()};
+ window.daily177Filter=function(f){if(f!=='all'&&!groups.some(g=>g[0]===f))return;ui.filter=f;const sc=document.querySelector('.daily-recap-modal');const y=sc?.scrollTop||0;render();const el=document.querySelector('.daily-recap-modal');if(el)el.scrollTop=y};
+ window.daily177ShowReplay=function(){ui.folds.replay=true;const elem=document.querySelector('[data-review-fold="replay"]');if(elem){elem.open=true;elem.scrollIntoView({block:'start',behavior:'smooth'});}};
+ window.daily177SaveReflection=function(){if(modal?.type!=='dailyRecap'||modal.userId!==currentUserId)return;const key=modal.key,value=trim(document.getElementById('daily177Reflection')?.value||'').trim();data.dailyReviewNotes=cleanDailyNotes(data.dailyReviewNotes);if(value)data.dailyReviewNotes[key]={text:value,updatedAt:new Date().toISOString()};else delete data.dailyReviewNotes[key];const ok=save();const status=document.getElementById('daily177NoteStatus');if(status)status.textContent=(!settings.autoSave||!ok)?'화면에 반영됨 · 자동 저장 확인 또는 JSON 백업 필요':'✓ 회고 저장 완료';};
+ function rerenderReplay(){const r=safeSnapshot(modal?.key);if(!r)return;const temp=document.createElement('div');temp.innerHTML=replayHtml(r);const old=document.getElementById('daily177Replay');if(old)old.replaceWith(temp.firstElementChild);}
+ window.daily177ReplayMove=function(n){if(modal?.type!=='dailyRecap')return;const len=selectedReplay(safeSnapshot(modal.key)).length;ui.replayIndex=Math.max(0,Math.min(len,ui.replayIndex+n));rerenderReplay();if(ui.replayIndex>=len)pause()};
+ window.daily177ReplaySeek=function(n){if(modal?.type!=='dailyRecap')return;ui.replayIndex=Math.max(0,Number(n)||0);rerenderReplay()};
+ function scheduleReplay(){if(timer)clearInterval(timer);timer=setInterval(()=>{if(modal?.type!=='dailyRecap'||!document.getElementById('daily177Replay')){pause();return;}const len=selectedReplay(safeSnapshot(modal.key)).length;if(ui.replayIndex>=len){pause();rerenderReplay();return;}ui.replayIndex++;rerenderReplay();},Math.max(600,2400/ui.replaySpeed));}
+ window.daily177ReplayToggle=function(){if(ui.replayPlaying)pause();else if(modal?.type==='dailyRecap'){const len=selectedReplay(safeSnapshot(modal.key)).length;if(!len)return;if(ui.replayIndex>=len)ui.replayIndex=0;ui.replayPlaying=true;scheduleReplay();}rerenderReplay();};
+ window.daily177Speed=function(s){ui.replaySpeed=[1,2,4].includes(Number(s))?Number(s):1;if(ui.replayPlaying)scheduleReplay();rerenderReplay();};
+ function startReturn(kind){if(modal?.type!=='dailyRecap')return null;pause();const scroll=document.querySelector('.daily-recap-modal')?.scrollTop||0;returnRoute={userId:currentUserId,key:modal.key,scroll,kind,fromScreen:screen,fromScroll:window.scrollY};return returnRoute;}
+ window.daily177Source=function(idx){const r=safeSnapshot(modal?.key);if(!r)return;const e=r.events.find(x=>x.uid===Number(idx));if(!e)return;const route=startReturn(e.kind);if(!route)return;
+  if(e.kind==='top3'){modal=null;render();if(typeof top3OpenArchive168==='function')top3OpenArchive168(route.key);return;}
+  if(e.kind==='reference'){modal=null;render();openReferenceEditor(e.ref,route.key);return;}
+  if(e.phase==='draft'&&e.draftHistoryId){modal=null;render();openTimeLogDraftSnapshot(e.draftHistoryId);return;}
+  if(e.kind==='quest'&&e.phase==='append'&&e.questId){modal=null;render();openAchievementEditor(e.questDay,e.questId);return;}
+  // Exact timeline/record originals are on the selected calendar date.
+  modal=null;screen='calendar';calendarMode='month';selectedDate=route.key;calendarMonth=route.key.slice(0,7);render();
+  requestAnimationFrame(()=>{const sel=e.kind==='moment'?'.time-log-moments':e.kind==='life'?'#dailyTimeLog':'#dailyTimeLog';(document.querySelector(sel)||document.getElementById('dailyTimeLog'))?.scrollIntoView({block:'start',behavior:'instant'});});
+ };
+ window.daily177FillGap=function(key,from,to){if(modal?.type!=='dailyRecap'||key!==modal.key||from>=to)return;startReturn('gap');modal=null;render();if(screen!=='calendar'){screen='calendar';selectedDate=key;calendarMonth=key.slice(0,7);render();}
+   openReferenceEditor('',key);
+   const f=document.getElementById('referenceForm');if(!f)return;
+   f.elements.refStartDate.value=key;f.elements.refStartTime.value=hm(from);f.elements.refEndDate.value=key;
+   // 24:00 is not valid HTML time, so use midnight on the next local day.
+   if(to===1440){const next=new Date(key+'T12:00:00');next.setDate(next.getDate()+1);f.elements.refEndDate.value=dayFromLocalDate(next);f.elements.refEndTime.value='00:00';}else f.elements.refEndTime.value=hm(to);
+   f.elements.refTitle.placeholder='이 시간대에 한 활동 (선택하여 기록)';referenceReminderRefresh();
+ };
+ const oldBack=window.prNavigation173Back;
+ if(typeof oldBack==='function'){
+   window.prNavigation173Back=function(){if(returnRoute&&returnRoute.userId===currentUserId){const route=returnRoute;returnRoute=null;pause();
+      if(typeof closeReferenceOverlay==='function'&&typeof referenceOverlayMode!=='undefined'&&referenceOverlayMode)closeReferenceOverlay();
+      if(typeof top3CloseArchive168==='function')top3CloseArchive168();
+      if(typeof modal!=='undefined')modal=null;
+      screen=route.fromScreen||'calendar';if(screen==='calendar'){selectedDate=route.key;calendarMonth=route.key.slice(0,7);}
+      render();const reopen=()=>{if(!currentUserId||currentUserId!==route.userId)return;openDailyRecap(route.key);requestAnimationFrame(()=>{const el=document.querySelector('.daily-recap-modal');if(el)el.scrollTop=route.scroll;});};
+      requestAnimationFrame(()=>requestAnimationFrame(reopen));return;
+    }return oldBack.apply(this,arguments);};
+ }
+ const baseText=window.dailyRecapCopyText;
+ window.dailyRecapCopyText=function(r){if(!r)return '';const lines=[`${fmtKey(r.key)} · 하루 돌아보기`,`목표 ${r.counts.done}/${r.counts.top} · 퀘스트 완료 ${r.counts.quest} · 전체 시간 기록 ${r.events.length}`,'','■ 오늘의 목표'];if(r.top?.confirmedAt)for(const x of r.top.items||[])lines.push((x.doneAt?'✓ ':'○ ')+x.title+(x.doneAt?' · '+clockAt(x.doneAt):'')+(x.detail?' · '+x.detail:''));else lines.push('미설정');lines.push('','■ 시간순 전체 기록');for(const e of r.events)lines.push(`${e.clock||'시각 미기록'} ${e.emoji||'•'} ${e.title}${e.detail?' · '+e.detail:''}`);lines.push('','■ 오늘의 핵심 키워드');for(const kw of keywords(r))lines.push('✦ '+kw.word+' · 근거: '+kw.evidence.map(z=>z.label).join(' / '));lines.push('','■ 기록 공백 (60분 이상)');for(const g of gaps(r))lines.push(hm(g.from)+' ~ '+hm(g.until)+' · 기록 없음');lines.push('','■ 예약·일회성 상태');for(const s of r.scheduled)lines.push((s.done?'✓ ':'○ ')+s.title);lines.push('','■ 데일리노트',r.note||'미작성','','■ 오늘을 한 문장으로',r.reviewNote||'미작성','','※ 기록의 공백은 미활동이나 실패를 뜻하지 않습니다.');return lines.join('\n');};
+ const oldLauncher=window.renderDailyRecapLauncher;
+ window.renderDailyRecapLauncher=function(key){const r=safeSnapshot(key);const n=r?.counts||{};return `<button type="button" class="daily-recap-launch" onclick="openDailyRecap('${key}')"><span class="daily-recap-launch-icon">✨</span><span class="daily-recap-launch-copy"><strong>하루 돌아보기 · 전체 기록</strong><small>${r?.hasContent?`🎯 목표 ${n.done||0}/${n.top||0} · ✅ 퀘스트 ${n.quest||0} · ✏️ 중간기록 ${n.intermediate||0} · 전체 ${n.total||0}건`:'기록이 생기면 시간순으로 모입니다.'}</small></span><span class="daily-recap-launch-action">보기 ›</span></button>`;};
+ window.daily177Test={snapshot:safeSnapshot,gaps,hm,keywords,ui:()=>ui};
+})();
 </script>
 </body></html>
