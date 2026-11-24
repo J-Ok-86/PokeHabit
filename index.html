@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.178 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.180 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
 *{box-sizing:border-box} body{padding:0;margin:0;background:radial-gradient(ellipse at 50% -10%,#28446d 0,#0a1934 31%,#060e20 75%);color:var(--cream);font-family:'Nunito','Gowun Dodum',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif}button{font:inherit;cursor:pointer}button:disabled{opacity:.35;cursor:not-allowed}#app{max-width:430px;min-height:100dvh;margin:auto;position:relative;background:linear-gradient(160deg,#0b1d3a 0%,#061126 60%);box-shadow:0 0 50px #030b20;overflow:hidden;padding-bottom:92px}.orb{position:absolute;border-radius:50%;pointer-events:none;opacity:.22;filter:blur(45px)}.orb.a{background:#2579ea;width:160px;height:180px;top:-90px;right:-70px}.orb.b{background:#a560e9;width:120px;height:120px;top:340px;left:-90px}.main{padding:24px 19px 16px;position:relative;z-index:1}
 header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px} .eyebrow{font-size:10px;letter-spacing:2px;font-weight:900;color:#72d8ec}.brand{font-weight:900;font-size:27px;letter-spacing:-1px;line-height:1.12}.brand em{font-style:normal;color:var(--gold)}.header-badge{padding:9px 12px;background:#1a3759;border:1px solid #345579;border-radius:13px;font-size:13px;font-weight:900;color:#ffdb83}
@@ -5853,6 +5853,25 @@ html:not([data-theme="light"]) .time-log-section #dailyTimeLogChart .tl154-label
 /* Keep colors, legend, existing click actions and saved record formats unchanged. */
 
 </style>
+
+<!-- v1.7.180 Global typography: one face, two meaningful weights, no component exemptions. -->
+<style id="global-typography-v180">
+:root{--poke-typeface:'Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;--poke-regular:400;--poke-emphasis:700}
+html,body,body *,body *::before,body *::after,button,input,textarea,select,option,svg text{
+ font-family:var(--poke-typeface)!important;
+ font-weight:var(--poke-regular)!important;
+}
+/* Strong weight is reserved for structural titles, figures and explicit semantic emphasis. */
+body :is(h1,h2,h3,h4,h5,h6,b,strong,th,summary),
+body :is(.brand,.hero-title,.section-title,.tier-title,.header-badge,.quest-title,.mon-name,.hval,.daily178-digital,.daily177-keyword strong),
+body :is(.nav-title,.record-accordion-title,.growth-stat strong,.top3-goal-name,.tl-label-title),
+body :is(button.active,.active>.label,[aria-selected="true"],[aria-current="page"]),
+svg text[font-weight="700"]{
+ font-weight:var(--poke-emphasis)!important;
+}
+/* Form controls, disabled states, animated and dynamic text all share the regular weight. */
+body :is(input,textarea,select,option,button){font-family:var(--poke-typeface)!important}
+</style>
 </head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 // v1.7.147: Styled, queued in-app dialogs. Keep DOM outside #app so render() never destroys a pending answer.
@@ -8364,7 +8383,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.178')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.180')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -12761,7 +12780,7 @@ function renderSettings(){
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.178')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.180')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -14421,7 +14440,7 @@ async function logoutUser(){if(!(await appConfirm('현재 계정에서 로그아
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.178')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.180')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -14432,7 +14451,7 @@ function navIcon(type){
   home:`<path d="M4 17.2 18 5l14 12.2v14H4Z" fill="#f6faff" stroke="#38876d" stroke-width="2" stroke-linejoin="round"/><path d="m3 17 15-13 15 13" stroke="#28b88d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M14 31V20h8v11" fill="#9ce9d2" stroke="#38876d" stroke-width="1.8"/><path d="M8 20h4v5H8Zm16 0h4v5h-4Z" fill="#c9e7ff" stroke="#38876d" stroke-width="1.2"/>`,
   draw:`<circle cx="18" cy="18" r="15.2" fill="#fff" stroke="#243b54" stroke-width="2.8"/><path d="M3 18a15 15 0 0 1 30 0Z" fill="#f6595c"/><path d="M3 18h30" fill="none" stroke="#243b54" stroke-width="3"/><circle cx="18" cy="18" r="5.3" fill="#fff" stroke="#243b54" stroke-width="2.8"/><circle cx="18" cy="18" r="2.1" fill="#dfeaf5"/>`,
   dex:`<path d="M18 8q-7-5-15-2v24q9-2 15 3 6-5 15-3V6q-8-3-15 2Z" fill="#d7efff" stroke="#35689f" stroke-width="2.1" stroke-linejoin="round"/><path d="M18 8q-7-5-15-2v24q9-2 15 3Z" fill="#80c2fa"/><path d="M18 8v25" stroke="#35689f" stroke-width="2"/><path d="M7 11q4-1 7 1M7 16q4-1 7 1M22 13q3-2 7-1M22 18q3-2 7-1" stroke="#fff" stroke-width="1.9" stroke-linecap="round" fill="none"/><circle cx="26" cy="25" r="3.6" fill="#fff" stroke="#35689f" stroke-width="1.5"/><path d="M23 25h6" stroke="#35689f" stroke-width="1.2"/><circle cx="26" cy="25" r="1" fill="#35689f"/>`,
-  calendar:`<rect x="4.5" y="6.5" width="27" height="26" rx="4.8" fill="#fffdf7" stroke="#b97033" stroke-width="2"/><path d="M6.5 7h23a2 2 0 0 1 2 2v7H4.5V9a2 2 0 0 1 2-2Z" fill="#ffbe75"/><path d="M11 3.5v7.1M25 3.5v7.1" stroke="#955424" stroke-width="3.6" stroke-linecap="round"/><text x="18" y="27.5" fill="#7b482a" font-size="13" font-family="Arial,sans-serif" font-weight="900" text-anchor="middle">${new Date().getDate()}</text>`,
+  calendar:`<rect x="4.5" y="6.5" width="27" height="26" rx="4.8" fill="#fffdf7" stroke="#b97033" stroke-width="2"/><path d="M6.5 7h23a2 2 0 0 1 2 2v7H4.5V9a2 2 0 0 1 2-2Z" fill="#ffbe75"/><path d="M11 3.5v7.1M25 3.5v7.1" stroke="#955424" stroke-width="3.6" stroke-linecap="round"/><text x="18" y="27.5" fill="#7b482a" font-size="13" font-family="Noto Sans KR, sans-serif" font-weight="700" text-anchor="middle">${new Date().getDate()}</text>`,
   stats:`<rect x="6.3" y="5.5" width="23.4" height="27" rx="4" fill="#eee4ff" stroke="#8064af" stroke-width="2.1"/><path d="M12 3.8h12v5H12Z" rx="1" fill="#bfa2f6" stroke="#8064af" stroke-width="1.5"/><path d="m11 18 2.7 2.6 4.6-5" fill="none" stroke="#2aa784" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M21 18h5M11 26h15" fill="none" stroke="#8064af" stroke-width="2.2" stroke-linecap="round"/>`
  };
  return `<svg ${attrs}>${images[type]||images.home}</svg>`;
@@ -17747,7 +17766,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  #recordWeeklyBrief .growth-weekly-cards .growth-stat strong{font-size:22px!important;letter-spacing:-.7px;}
 }
 </style><script>
-/* v1.7.178: ONE back controller for Android CloseWatcher, fallback history and Escape.
+/* v1.7.180: ONE back controller for Android CloseWatcher, fallback history and Escape.
  * Navigations are recorded once (at render), popup origin wins, Back never pushes.
  */
 (function(){
@@ -18019,7 +18038,7 @@ window.prTop3ZoomToArchive174=function(key){
  }
 };
 </script>
-<style id="daily-recap-177-style">/* v1.7.178: complete daily review, accessible single scrolling dialog */
+<style id="daily-recap-177-style">/* v1.7.180: complete daily review, accessible single scrolling dialog */
 .daily-recap-modal{overscroll-behavior:contain;max-height:min(94dvh,94vh)!important;overflow-y:auto!important;overflow-x:hidden!important;scrollbar-gutter:stable}
 .daily177-controls{padding:0 16px 12px;display:grid;gap:9px}.daily177-actionbar{display:flex;gap:7px;flex-wrap:wrap}.daily177-actionbar button,.daily177-filter button,.daily177-play-controls button,.daily177-gap button,.daily177-replay button,.daily177-summary button{border:1px solid #5f8096;border-radius:9px;background:#27485f;color:#ecf8ff;padding:8px 10px;font:inherit;font-size:12px;font-weight:750;cursor:pointer;min-height:34px}
 .daily177-actionbar button.on,.daily177-filter button.on{background:#216959;border-color:#57c2a2;color:#fff}.daily177-filter{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:2px 0}.daily177-filter button{white-space:nowrap;flex:none}.daily177-stat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:0 16px 12px}.daily177-stat>div{border:1px solid #40627c;border-radius:10px;background:#1a3b53;padding:9px 5px;min-width:0;text-align:center}.daily177-stat strong{display:block;font-size:19px;line-height:1.4;color:#e5faf4;font-variant-numeric:tabular-nums}.daily177-stat small{display:block;font-size:10px;color:#b5d2e3;line-height:1.35;overflow-wrap:anywhere}
@@ -18030,7 +18049,7 @@ html[data-theme="light"] .daily177-section,html[data-theme="light"] .daily177-re
 .daily177-finale{margin:4px 0 8px;text-align:center;padding:19px 13px;border:1px solid #6d7b9b;border-radius:15px;background:linear-gradient(155deg,#1c385a,#224b52 55%,#27385f);color:#f2f5ff}.daily177-stars{font-size:23px;letter-spacing:10px;color:#f8d89f}.daily177-end-label{display:block;font-size:10px;letter-spacing:2px;color:#b6cce7;margin-top:8px}.daily177-finale h3{font-size:18px;line-height:1.5;margin:10px 0 15px}.daily177-keywords{display:grid;gap:9px}.daily177-keyword{background:#203b56;border:1px solid #668294;border-radius:12px;padding:11px 10px;text-align:left;min-width:0}.daily177-keyword span,.daily177-keyword small{display:block;color:#b8ceda;font-size:10px;overflow-wrap:anywhere}.daily177-keyword strong{display:block;font-size:19px;color:#ffe6a9;overflow-wrap:anywhere;margin:5px 0}.daily177-finale-close{font-size:11px;color:#d9e3ed;line-height:1.65;margin:16px 2px 8px}.daily177-finale>button{padding:9px;border-radius:9px;background:#395c73;color:white;border:1px solid #729ab0}.daily177-replay-screen .daily177-finale{margin:0}html[data-theme="light"] .daily177-stat strong{color:#23485f}html[data-theme="light"] .daily177-stat small{color:#557486}html[data-theme="light"] .daily177-finale{background:linear-gradient(145deg,#e7edf8,#dbf1eb);color:#234058}html[data-theme="light"] .daily177-keyword{background:#f9fcff}html[data-theme="light"] .daily177-keyword strong{color:#725225}html[data-theme="light"] .daily177-finale-close{color:#36576a}
 @media (prefers-reduced-motion:no-preference){.daily177-finale{animation:daily177Reveal .45s ease-out both}@keyframes daily177Reveal{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}}
 
-/* v1.7.178 - accessible, stable-height replay stage and synced analog clock */
+/* v1.7.180 - accessible, stable-height replay stage and synced analog clock */
 .daily178-replay{background:#163e54!important;color:#f5fbff!important;border-color:#4a8296!important}
 .daily178-replay-stage{height:278px;min-height:278px;max-height:278px;box-sizing:border-box;padding:12px!important;overflow:hidden!important;background:#102f45!important;color:#eef9ff!important}
 .daily178-stage-layout{display:grid;grid-template-columns:112px minmax(0,1fr);height:100%;gap:12px;align-items:stretch}
@@ -18066,8 +18085,46 @@ html[data-theme="light"] .daily177-actionbar button.on,html[data-theme="light"] 
 html[data-theme="light"] .daily177-line button{color:#234f66!important;border-color:#7099ac!important}
 @media(max-width:370px){.daily178-stage-layout{grid-template-columns:88px minmax(0,1fr);gap:8px}.daily178-analog{width:74px;height:74px}.daily178-hand.hour{height:18px}.daily178-hand.minute{height:27px}.daily178-replay-stage{padding:9px!important}.daily178-digital{font-size:18px!important}.daily178-scene h3{font-size:14px!important}.daily178-navigation button{font-size:12px!important}}
 @media(prefers-reduced-motion:reduce){.daily178-hand{transition:none!important}}
+
+/* v1.7.180: a legible finale in BOTH themes, avoiding pale-on-pale inherited styles */
+.daily-recap-modal .daily177-section .daily177-finale,
+.daily-recap-modal .daily177-finale{background:linear-gradient(150deg,#18324d 0%,#234953 65%,#23344c 100%)!important;color:#f8fbff!important;border:1px solid #709aac!important;box-shadow:0 7px 22px rgba(9,29,47,.16)}
+.daily-recap-modal .daily177-finale h3{color:#fff!important;text-shadow:none!important}
+.daily-recap-modal .daily177-finale .daily177-end-label{color:#e5f2ff!important;opacity:1!important}
+.daily-recap-modal .daily177-finale .daily177-keyword{background:#123047!important;border:1px solid #81a5b5!important;color:#f8fbff!important}
+.daily-recap-modal .daily177-finale .daily177-keyword span{color:#e9f4ff!important;opacity:1!important;font-weight:750!important;font-size:11px!important;line-height:1.6!important}
+.daily-recap-modal .daily177-finale .daily177-keyword small{color:#d5e8f3!important;opacity:1!important;font-size:11px!important;line-height:1.6!important}
+.daily-recap-modal .daily177-finale .daily177-keyword strong{color:#ffe6a1!important;text-shadow:none!important;font-weight:850!important}
+.daily-recap-modal .daily177-finale .daily177-finale-close{color:#e9f4fa!important;opacity:1!important;font-size:12px!important;line-height:1.75!important}
+.daily-recap-modal .daily177-finale>button{background:#326783!important;color:#fff!important;border:1px solid #b4d6e3!important;min-height:44px!important;font-weight:800!important}
+.daily178-replay-stage{position:relative;isolation:isolate}
+.daily178-stage-layout{position:relative;z-index:2}
+.daily179-sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;transition:background 650ms ease}
+.daily179-sky.is-day{background:radial-gradient(ellipse at 92% 0%,rgba(255,200,96,.32),transparent 43%),linear-gradient(122deg,#244861,#174b5e 72%,#234c61)}
+.daily179-sky.is-dawn{background:radial-gradient(ellipse at 88% 3%,rgba(255,178,98,.42),transparent 49%),linear-gradient(125deg,#39415e,#24576b)}
+.daily179-sky.is-dusk{background:radial-gradient(ellipse at 88% 4%,rgba(255,144,109,.4),transparent 49%),linear-gradient(125deg,#333858,#214459)}
+.daily179-sky.is-night{background:radial-gradient(ellipse at 88% 1%,rgba(120,158,216,.18),transparent 44%),linear-gradient(125deg,#121f39,#142e47)}
+.daily179-sky-symbol{position:absolute;right:17px;top:14px;font-size:22px;line-height:1;opacity:.9;filter:drop-shadow(0 0 9px rgba(255,240,190,.28))}
+.daily179-sky.is-night .daily179-sky-symbol{filter:drop-shadow(0 0 8px rgba(199,228,255,.4))}
+.daily179-star{position:absolute;width:2px;height:2px;background:#eaf7ff;border-radius:50%;box-shadow:0 0 7px #d9eafe;opacity:0}
+.daily179-sky.is-night .daily179-star,.daily179-sky.is-dusk .daily179-star{opacity:.82}
+.daily179-star.s1{right:13%;top:23%}.daily179-star.s2{right:31%;top:11%}.daily179-star.s3{right:8%;top:59%}.daily179-star.s4{right:35%;top:65%}
+.daily179-sky.is-day .daily179-star,.daily179-sky.is-dawn .daily179-star{opacity:0}
+.daily178-clock-block{background:rgba(8,27,47,.23);border-radius:12px;border:1px solid rgba(219,239,249,.28)!important;padding:7px 6px!important}
+.daily178-analog{box-shadow:inset 0 0 0 3px #285b72,0 2px 12px #0c253d,0 0 14px rgba(255,218,148,.12)}
+.daily179-daypart{color:#f5eac7;font-weight:750;font-size:11px;line-height:1.3;text-align:center}
+.daily179-ambient-flash{position:absolute;inset:0;pointer-events:none;z-index:3;opacity:0;background:radial-gradient(circle at 32% 48%,rgba(255,235,165,.26),transparent 50%)}
+.daily179-ambient-flash.run{animation:daily179Flash 950ms ease-out both}
+.daily179-pulse{position:absolute;inset:0;border-radius:50%;border:2px solid #ffd99a;opacity:0;pointer-events:none}
+.daily179-pulse.run{animation:daily179Pulse 720ms ease-out both}
+.daily179-scene-enter{animation:daily179SceneEnter 460ms cubic-bezier(.2,.75,.2,1) both}
+@keyframes daily179Flash{0%{opacity:0}28%{opacity:1}100%{opacity:0}}
+@keyframes daily179Pulse{0%{opacity:.8;transform:scale(.84)}100%{opacity:0;transform:scale(1.3)}}
+@keyframes daily179SceneEnter{0%{opacity:.55;transform:translateY(7px)}100%{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.daily179-sky{transition:none!important}.daily179-ambient-flash,.daily179-pulse,.daily179-scene-enter{animation:none!important}.daily178-hand{transition:none!important}}
+
 </style>
-<script id="daily-recap-177">/* v1.7.178: integrated daily review. Canonical records are read-only, reflection is optional. */
+<script id="daily-recap-177">/* v1.7.180: integrated daily review. Canonical records are read-only, reflection is optional. */
 (function(){
  const clockValid=s=>/^([01]\d|2[0-3]):[0-5]\d$/.test(String(s||''));
  const clockAt=s=>{const d=new Date(s||'');return Number.isFinite(d.getTime())?String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'):''};
@@ -18167,7 +18224,7 @@ html[data-theme="light"] .daily177-line button{color:#234f66!important;border-co
  const reviewGeneric=new Set('오늘 하루 목표 수립 달성 완료 미완료 기록 중간 저장 추가 활동 퀘스트 데일리 노트 메모 상세 참고 일정 예약 생각 순간 경험 시간 시각 보상 지급 수령 설정 변경 수정 확인 시작 종료 진행 내용 전체 이후 구간 정리하기 하기 있음 없음 했다 하고 했음 입니다 합니다 그리고 또는 위해 대한 있는 없던 같은 정말 너무 그냥 이제 다시 이번 이런 저런 것을 하는 것을 것은 그것 이거 저거 에서 으로 으로는 에게 까지 부터 하면서 했다 했다가 이번주 내일 어제 오전 오후 아침 저녁 새벽 시간분 단계 건 개 분 오늘의 공부 운동 가족 사람 작업 일상 챙기기 보고 보기 작성 추가하기 학습 연습 복습 수행 성공'.split(/\s+/));
  const reviewBadFragments=new Set('오늘의','이후','수립','달성','기록','완료','미기록','진행','활동','저장','노트','중간','추가','상세','시간','퀘스트','목표','설정','공부','운동','하기','정리');
  function reviewNormalize(w){return String(w||'').normalize('NFKC').toLocaleLowerCase().replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu,'').replace(/(?:으로부터|에서는|에게서|부터|까지|으로는|에서는|에서|에게|으로|하고|으로써|에는|들은|들은|들을|의|은|는|이|가|을|를|에|도|와|과|로|만|랑)$/u,'').trim();}
- function keywordCandidates(value){const text=String(value||'').normalize('NFKC').replace(/https?:\/\/\S+|\b\S+@\S+\.\S+\b/g,' ').replace(/[\r\n•·\/|:;()[\]{}<>\-]+/g,' ');const raw=(text.match(/[\p{Script=Hangul}\p{L}\p{N}][\p{Script=Hangul}\p{L}\p{N}_+#]{1,25}/gu)||[]);const filtered=raw.map(w=>({raw:w,w:reviewNormalize(w)})).filter(x=>x.w.length>=2&&x.w.length<=24&&!reviewGeneric.has(x.w)&&!reviewBadFragments.has(x.w)&&!/(?:했다|합니다|하였다|했음|했었다|되었다|된다|있었다|없었다|작성했다)$/.test(x.w)&&!/^[\d_]+$/.test(x.w));const words=filtered.map(x=>x.w);
+ function keywordCandidates(value){const text=String(value||'').normalize('NFKC').replace(/https?:\/\/\S+|\b\S+@\S+\.\S+\b/g,' ').replace(/[\r\n•·\/|:;()[\]{}<>\-]+/g,' ');const raw=(text.match(/[\p{Script=Hangul}\p{L}\p{N}][\p{Script=Hangul}\p{L}\p{N}_+#]{1,25}/gu)||[]);const filtered=raw.map(w=>({raw:w,w:reviewNormalize(w)})).filter(x=>x.w.length>=2&&x.w.length<=24&&!reviewGeneric.has(x.w)&&!reviewBadFragments.has(x.w)&&!/(?:했다|합니다|하였다|했음|했었다|되었다|된다|있었다|없었다|작성했다)$/.test(x.w)&&!/^[\d_]+$/.test(x.w)&&!/^\d+(?:개|건|회|분|시간|일|번|개월|명|쪽|페이지)$/.test(x.w));const words=filtered.map(x=>x.w);
   const seen=new Set(),result=[];for(let i=0;i<words.length;i++){const a=words[i];if(!seen.has(a)){result.push(a);seen.add(a);}if(i+1<words.length){const b=words[i+1];if(a.length+b.length<=17&&!/(?:와|과|랑|하고|이나|거나)$/.test(filtered[i].raw)&&![a,b].some(x=>reviewBadFragments.has(x))){const phrase=a+' '+b;if(!seen.has(phrase)){result.push(phrase);seen.add(phrase);}}}}return result.slice(0,65);
  }
  function keywords(r){const docs=[],add=(text,kind,weight,label,src)=>{if(String(text||'').trim())docs.push({text:String(text).slice(0,1500),kind,weight,label,src});};
@@ -18193,11 +18250,15 @@ html[data-theme="light"] .daily177-line button{color:#234f66!important;border-co
   const time=e?.clock||((ending&&all.length)?all[all.length-1].clock:'00:00');
   const hh=Number(time.slice(0,2))||0,mm=Number(time.slice(3,5))||0;
   const hourAngle=(hh%12)*30+mm/2,minuteAngle=mm*6;
+  const period=hh>=6&&hh<8?'dawn':hh>=8&&hh<18?'day':hh>=18&&hh<20?'dusk':'night';
+  const skySymbol=period==='day'?'☀️':period==='dawn'?'🌅':period==='dusk'?'🌇':'🌙';
+  const partLabel=period==='day'?'낮의 기록':period==='dawn'?'새벽의 기록':period==='dusk'?'저녁의 기록':'밤의 기록';
+  const sky=`<div class="daily179-sky is-${period}" aria-hidden="true"><span class="daily179-sky-symbol">${skySymbol}</span><i class="daily179-star s1"></i><i class="daily179-star s2"></i><i class="daily179-star s3"></i><i class="daily179-star s4"></i></div><div class="daily179-ambient-flash" aria-hidden="true"></div>`;
   let gap='';
   if(before&&e){const t=s=>Number(s.slice(0,2))*60+Number(s.slice(3,5));const minutes=t(e.clock)-t(before.clock);if(minutes>=60)gap=`<div class="daily178-gap-note">⌛ ${Math.floor(minutes/60)}시간 ${minutes%60}분 기록 공백 · 활동을 단정하지 않습니다</div>`;}
   const scene=ending?endingHtml(r,true):e?`<div class="daily178-scene-tag">${escape(groups.find(g=>g[0]===e.kind)?.[1]||'하루 기록')}</div><h3>${escape(e.emoji||'•')} ${escape(e.title)}</h3><p>${escape(e.detail||'상세 내용이 기록되지 않았습니다.')}</p>${gap}`:'<div class="daily178-no-scenes">시각이 기록된 장면이 없습니다.</div>';
-  const clock=`<div class="daily178-clock-block" aria-label="기록 시각 ${escape(time)}"><div class="daily178-analog" role="img" aria-label="${escape(time)}를 가리키는 아날로그 시계"><span class="daily178-tick t12">12</span><span class="daily178-tick t3">3</span><span class="daily178-tick t6">6</span><span class="daily178-tick t9">9</span><span class="daily178-hand hour" style="--angle:${hourAngle}deg"></span><span class="daily178-hand minute" style="--angle:${minuteAngle}deg"></span><span class="daily178-center"></span></div><strong class="daily178-digital">${escape(time)}</strong><small>${ending?'마지막 기록 시각':'기록 시각'}</small></div>`;
-  return `<div class="daily177-replay daily178-replay" id="daily177Replay"><div class="daily177-replay-screen daily178-replay-stage" id="daily177ReplayScreen"><div class="daily178-stage-layout">${clock}<div class="daily178-scene" aria-live="polite">${scene}</div></div></div><div class="daily178-controls"><div class="daily178-navigation" aria-label="장면 탐색"><button type="button" onclick="daily177ReplayMove(-1)" ${ui.replayIndex===0?'disabled':''} aria-label="이전 장면">◀ 이전</button><button type="button" class="daily178-mainplay" id="daily177PlayButton" onclick="daily177ReplayToggle()" ${all.length?'':'disabled'}>${ui.replayPlaying?'⏸ 일시정지':'▶ 재생'}</button><button type="button" onclick="daily177ReplayMove(1)" ${ui.replayIndex>=all.length?'disabled':''} aria-label="다음 장면">다음 ▶</button></div><div class="daily178-timing"><span class="daily177-replay-progress" id="daily177ReplayProgress">${ending?'엔딩':all.length?ui.replayIndex+1:0} / ${all.length} 장면</span><label for="daily178Speed">재생 속도</label><select id="daily178Speed" onchange="daily177Speed(this.value)"><option value="1" ${ui.replaySpeed===1?'selected':''}>1×</option><option value="2" ${ui.replaySpeed===2?'selected':''}>2×</option><option value="4" ${ui.replaySpeed===4?'selected':''}>4×</option></select></div><input type="range" class="daily178-seek" id="daily177ReplayRange" min="0" max="${all.length}" value="${ui.replayIndex}" oninput="daily177ReplaySeek(this.value)" aria-label="장면 위치 선택" aria-valuetext="${ending?'엔딩':all.length?ui.replayIndex+1:0}번째 장면"></div><p class="daily178-hint">장면을 넘기거나 재생하면 시계가 기록 시각으로 이동합니다. 실제 경과 시간을 가속 재생하는 기능은 아닙니다.</p></div>`;
+  const clock=`<div class="daily178-clock-block" aria-label="기록 시각 ${escape(time)}"><div class="daily178-analog" role="img" aria-label="${escape(time)}를 가리키는 아날로그 시계"><span class="daily178-tick t12">12</span><span class="daily178-tick t3">3</span><span class="daily178-tick t6">6</span><span class="daily178-tick t9">9</span><span class="daily178-hand hour" style="--angle:${hourAngle}deg"></span><span class="daily178-hand minute" style="--angle:${minuteAngle}deg"></span><span class="daily178-center"></span><span class="daily179-pulse"></span></div><strong class="daily178-digital">${escape(time)}</strong><small>${ending?'마지막 기록 시각':'기록 시각'}</small><span class="daily179-daypart">${partLabel}</span></div>`;
+  return `<div class="daily177-replay daily178-replay" id="daily177Replay"><div class="daily177-replay-screen daily178-replay-stage" id="daily177ReplayScreen">${sky}<div class="daily178-stage-layout">${clock}<div class="daily178-scene" aria-live="polite">${scene}</div></div></div><div class="daily178-controls"><div class="daily178-navigation" aria-label="장면 탐색"><button type="button" onclick="daily177ReplayMove(-1)" ${ui.replayIndex===0?'disabled':''} aria-label="이전 장면">◀ 이전</button><button type="button" class="daily178-mainplay" id="daily177PlayButton" onclick="daily177ReplayToggle()" ${all.length?'':'disabled'}>${ui.replayPlaying?'⏸ 일시정지':'▶ 재생'}</button><button type="button" onclick="daily177ReplayMove(1)" ${ui.replayIndex>=all.length?'disabled':''} aria-label="다음 장면">다음 ▶</button></div><div class="daily178-timing"><span class="daily177-replay-progress" id="daily177ReplayProgress">${ending?'엔딩':all.length?ui.replayIndex+1:0} / ${all.length} 장면</span><label for="daily178Speed">재생 속도</label><select id="daily178Speed" onchange="daily177Speed(this.value)"><option value="1" ${ui.replaySpeed===1?'selected':''}>1×</option><option value="2" ${ui.replaySpeed===2?'selected':''}>2×</option><option value="4" ${ui.replaySpeed===4?'selected':''}>4×</option></select></div><input type="range" class="daily178-seek" id="daily177ReplayRange" min="0" max="${all.length}" value="${ui.replayIndex}" oninput="daily177ReplaySeek(this.value)" aria-label="장면 위치 선택" aria-valuetext="${ending?'엔딩':all.length?ui.replayIndex+1:0}번째 장면"></div><p class="daily178-hint">장면을 넘기거나 재생하면 시계가 기록 시각으로 이동합니다. 실제 경과 시간을 가속 재생하는 기능은 아닙니다.</p></div>`;
  }
 
  function detailsSummary(r){const sections=[];
@@ -18237,7 +18298,41 @@ html[data-theme="light"] .daily177-line button{color:#234f66!important;border-co
  window.daily177Filter=function(f){if(f!=='all'&&!groups.some(g=>g[0]===f))return;ui.filter=f;const sc=document.querySelector('.daily-recap-modal');const y=sc?.scrollTop||0;render();const el=document.querySelector('.daily-recap-modal');if(el)el.scrollTop=y};
  window.daily177ShowReplay=function(){ui.folds.replay=true;const elem=document.querySelector('[data-review-fold="replay"]');if(elem){elem.open=true;elem.scrollIntoView({block:'start',behavior:'smooth'});}};
  window.daily177SaveReflection=function(){if(modal?.type!=='dailyRecap'||modal.userId!==currentUserId)return;const key=modal.key,value=trim(document.getElementById('daily177Reflection')?.value||'').trim();data.dailyReviewNotes=cleanDailyNotes(data.dailyReviewNotes);if(value)data.dailyReviewNotes[key]={text:value,updatedAt:new Date().toISOString()};else delete data.dailyReviewNotes[key];const ok=save();const status=document.getElementById('daily177NoteStatus');if(status)status.textContent=(!settings.autoSave||!ok)?'화면에 반영됨 · 자동 저장 확인 또는 JSON 백업 필요':'✓ 회고 저장 완료';};
- function rerenderReplay(){const r=safeSnapshot(modal?.key);if(!r)return;const old=document.getElementById('daily177Replay');const prev={};old?.querySelectorAll('.daily178-hand').forEach(el=>{prev[el.classList.contains('hour')?'hour':'minute']=Number((el.style.getPropertyValue('--angle')||'0deg').replace('deg',''));});const temp=document.createElement('div');temp.innerHTML=replayHtml(r);const fresh=temp.firstElementChild;if(old)old.replaceWith(fresh);if(!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches){fresh.querySelectorAll('.daily178-hand').forEach(el=>{const kind=el.classList.contains('hour')?'hour':'minute';if(!Number.isFinite(prev[kind]))return;const next=Number((el.style.getPropertyValue('--angle')||'0deg').replace('deg',''));if(!Number.isFinite(next)||next===prev[kind])return;const duration=ui.replayPlaying?650:420;let start=prev[kind],end=next;if(end<start&&start-end>180)end+=360;el.animate([{transform:`translateX(-50%) rotate(${start}deg)`},{transform:`translateX(-50%) rotate(${end}deg)`}],{duration,easing:'ease-in-out'});});}}
+ function rerenderReplay(){
+  const r=safeSnapshot(modal?.key);if(!r)return;
+  const old=document.getElementById('daily177Replay');
+  const oldIndex=Number(old?.dataset?.index);
+  const oldTime=old?.querySelector('.daily178-digital')?.textContent?.trim()||'';
+  const oldAngle={};
+  old?.querySelectorAll('.daily178-hand').forEach(el=>{oldAngle[el.classList.contains('hour')?'hour':'minute']=Number((el.style.getPropertyValue('--angle')||'0deg').replace('deg',''));});
+  const temp=document.createElement('div');temp.innerHTML=replayHtml(r);
+  const fresh=temp.firstElementChild;if(!fresh)return;
+  fresh.dataset.index=String(ui.replayIndex);
+  if(old)old.replaceWith(fresh);
+  const reduce=!!window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+  if(reduce||!old||!/^\d\d:\d\d$/.test(oldTime))return;
+  const nextTime=fresh.querySelector('.daily178-digital')?.textContent?.trim()||'';
+  if(!/^\d\d:\d\d$/.test(nextTime)||nextTime===oldTime)return;
+  const parseTime=t=>Number(t.slice(0,2))*60+Number(t.slice(3,5));
+  // Positive modulo makes even seeking to an earlier event advance clockwise.
+  // Duration is a cinematic scene transition, not a real-time minute-by-minute simulation.
+  const elapsed=((parseTime(nextTime)-parseTime(oldTime))%1440+1440)%1440;
+  if(!elapsed)return;
+  const duration=Math.min(1700,Math.max(700,ui.replayPlaying?1100:900));
+  fresh.querySelectorAll('.daily178-hand').forEach(el=>{
+    const kind=el.classList.contains('hour')?'hour':'minute';
+    const start=oldAngle[kind];if(!Number.isFinite(start))return;
+    const advance=kind==='hour'?elapsed*.5:elapsed*6;
+    // Always positive; even a backwards seek gives a clockwise full-day detour.
+    const anim=el.animate([{transform:`translateX(-50%) rotate(${start}deg)`},{transform:`translateX(-50%) rotate(${start+advance}deg)`}],{duration,easing:'cubic-bezier(.25,.8,.2,1)'});
+    // Animation finishes at the new scene's exact clock time supplied by CSS --angle.
+    anim.onfinish=()=>{if(!el.isConnected)return;el.style.transform=`translateX(-50%) rotate(${start+advance}deg)`;};
+  });
+  const flash=fresh.querySelector('.daily179-ambient-flash');
+  const pulse=fresh.querySelector('.daily179-pulse');
+  const scene=fresh.querySelector('.daily178-scene');
+  window.setTimeout(()=>{if(!fresh.isConnected)return;flash?.classList.add('run');pulse?.classList.add('run');scene?.classList.add('daily179-scene-enter');},duration-90);
+ }
  window.daily177ReplayMove=function(n){if(modal?.type!=='dailyRecap')return;pause();const len=selectedReplay(safeSnapshot(modal.key)).length;ui.replayIndex=Math.max(0,Math.min(len,ui.replayIndex+n));rerenderReplay();if(ui.replayIndex>=len)pause()};
  window.daily177ReplaySeek=function(n){if(modal?.type!=='dailyRecap')return;pause();ui.replayIndex=Math.max(0,Number(n)||0);rerenderReplay()};
  function scheduleReplay(){if(timer)clearInterval(timer);timer=setInterval(()=>{if(modal?.type!=='dailyRecap'||!document.getElementById('daily177Replay')){pause();return;}const len=selectedReplay(safeSnapshot(modal.key)).length;if(ui.replayIndex>=len){pause();rerenderReplay();return;}ui.replayIndex++;rerenderReplay();},Math.max(600,2400/ui.replaySpeed));}
