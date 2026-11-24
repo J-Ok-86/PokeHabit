@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.163 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.164 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -8364,7 +8364,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.160</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · v1.7.164</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -12761,7 +12761,7 @@ function renderSettings(){
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.160</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · v1.7.164</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -14421,7 +14421,7 @@ async function logoutUser(){if(!(await appConfirm('현재 계정에서 로그아
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.160</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · v1.7.164</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -16973,41 +16973,86 @@ function top3Awards(entry,r=top3Rules()){
 function top3Time(t){if(!t)return '';const d=new Date(t);return Number.isFinite(d.getTime())?d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',hour12:false}):''}
 let top3EditMode=false;
 function top3Card(){
- const today=day(),entry=top3Day(today),items=entry?.items||[],n=items.filter(x=>x.doneAt).length,r=top3Rules();
- const editing=top3EditMode||!entry?.confirmedAt;
- return `<section id="top3Today" class="top3-card" aria-label="오늘의 TOP 3">
- <div class="top3-titlebar"><h2>🎯 오늘의 TOP 3</h2><button type="button" onclick="top3EditMode=!top3EditMode;render()">${editing&&entry?.confirmedAt?'닫기':'✎ 편집'}</button></div>
- <p class="top3-sub">반복 퀘스트와 별개인 오늘의 우선순위 · ${n}/3 달성</p>
- <div class="top3-progress"><i style="width:${n/3*100}%"></i></div>
- ${editing?`<form class="top3-editor" onsubmit="top3Save(event)">${[0,1,2].map(i=>`<label>목표 ${i+1}<input type="text" name="goal${i}" maxlength="85" value="${esc(items[i]?.title||'')}" placeholder="오늘 가장 중요한 일 ${i+1}" ${items[i]?.doneAt?'disabled':''} required></label>`).join('')}<button type="submit">${entry?.confirmedAt?'변경 저장 (추가 설정 보상 없음)':`3개 확정하고 +${r.setupP}P 받기`}</button></form>`:
- `<div class="top3-goals">${items.map((x,i)=>`<button type="button" class="top3-goal ${x.doneAt?'is-done':''}" onclick="top3Toggle(${i})" aria-label="${esc(x.title)} ${x.doneAt?'완료 취소':'완료 체크'}"><span class="top3-mark">${x.doneAt?'✅':'◯'}</span><span class="top3-goal-name">${esc(x.title)}<small>${x.doneAt?'완료 '+top3Time(x.doneAt):`완료 보상 +${r.eachP}P / +${r.eachXP}XP`}</small></span></button>`).join('')}</div>`}
- <div class="top3-actions">${!editing&&entry?.confirmedAt?'<button type="button" onclick="top3EditMode=true;render()">목표 수정</button>':''}${!entry?.confirmedAt?'<button type="button" onclick="top3CopyYesterday()">어제 목표 가져오기</button>':''}<button type="button" onclick="screen='calendar';selectedDate=day();render()">달력에서 확인</button></div>
- <p class="top3-reward-hint">🎁 설정 +${r.setupP}P · 목표별 +${r.eachP}P/+${r.eachXP}XP · 3개 달성 추가 +${r.allP}P/+${r.allXP}XP${entry?.allClaimed?' · 🏆 전체 달성 완료':''}</p>
+ const entry=top3Day(day()),items=entry?.confirmedAt?(entry.items||[]):[],done=items.filter(x=>x.doneAt).length;
+ return `<section class="top3-card top3-compact" id="top3Today" aria-label="오늘의 목표">
+ <div class="top3-titlebar"><h2>🎯 오늘의 목표 <span class="top3-compact-count">${done}/${items.length}</span></h2><button type="button" class="top3-config-trigger" aria-label="오늘의 목표 추가 및 수정" onclick="top3OpenEditor()">＋ <span>설정</span></button></div>
+ ${items.length?`<div class="top3-goals">${items.map((x,i)=>`<button type="button" class="top3-goal ${x.doneAt?'is-done':''}" aria-label="${esc(x.title)} ${x.doneAt?'달성 취소':'달성 체크'}" onclick="top3Toggle(${i})"><span class="top3-mark" aria-hidden="true">${x.doneAt?'✓':'○'}</span><span class="top3-goal-name">${esc(x.title)}</span></button>`).join('')}</div>`:'<button class="top3-start" type="button" onclick="top3OpenEditor()">오늘 가장 중요한 목표를 설정해 보세요 <span>＋</span></button>'}
  </section>`;
 }
-function top3CopyYesterday(){
- if(top3Day(day())?.confirmedAt)return;
+function top3YesterdayUnfinished(){
  const d=new Date(day()+'T12:00:00');d.setDate(d.getDate()-1);
- const prev=top3Day(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`);
- if(!prev?.confirmedAt)return appAlert('어제 확정한 목표가 없습니다.');
- if(!prev.items.some(x=>!x.doneAt))return appAlert('어제 미완료 목표가 없습니다.');
- data.top3Days=data.top3Days||{};
- data.top3Days[day()]={items:[...prev.items.filter(x=>!x.doneAt).map(x=>x.title),...Array(3).fill('')].slice(0,3).map((title,i)=>({id:i+1,title,doneAt:'',claimed:false,awardP:0,awardXP:0})),confirmedAt:'',setupClaimed:false,setupPay:0,allClaimed:false,allPay:0,allXP:0,updatedAt:new Date().toISOString()};
- top3EditMode=true;save();render();
+ const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+ const previous=top3Day(key);
+ return previous?.confirmedAt?previous.items.filter(x=>x.title&&!x.doneAt).map(x=>x.title).slice(0,3):[];
+}
+function top3CloseEditor(){document.getElementById('top3EditorBackdrop')?.remove();}
+function top3OpenEditor(initialTitles){
+ if(!currentUserId||!startUnlocked)return;
+ top3CloseEditor();
+ const old=top3Day(day()),items=old?.confirmedAt?(old.items||[]):[];
+ const suggestions=Array.isArray(initialTitles)?initialTitles:[];
+ const overlay=document.createElement('div');overlay.id='top3EditorBackdrop';overlay.className='top3-modal-backdrop';
+ overlay.innerHTML=`<div role="dialog" aria-modal="true" aria-label="오늘의 목표 설정" class="top3-modal">
+ <div class="top3-modal-header"><div><strong>🎯 오늘의 목표 설정</strong><p>1~3개 목표를 입력한 뒤 저장하면 확정됩니다.</p></div><button type="button" class="top3-modal-x" aria-label="닫기" onclick="top3CloseEditor()">×</button></div>
+ <form id="top3EditorForm" onsubmit="top3Save(event)"><div class="top3-modal-count" id="top3ModalCounter"></div><div id="top3ModalRows" class="top3-modal-rows"></div>
+ <div class="top3-modal-tools"><button type="button" onclick="top3AddRow()" id="top3ModalAdd">＋ 목표 추가</button><button type="button" onclick="top3CopyYesterday()" ${top3YesterdayUnfinished().length?'':'disabled'}>↶ 어제 미완료 불러오기</button></div>
+ <p class="top3-modal-tip">첫 확정 보상은 하루 한 번만 지급됩니다. 이미 보상을 받은 목표는 편집·삭제할 수 없습니다.</p>
+ <div class="top3-modal-footer"><button type="button" class="top3-modal-cancel" onclick="top3CloseEditor()">취소</button><button type="submit" class="top3-modal-save" id="top3ModalSave">확정 저장</button></div></form></div>`;
+ overlay.addEventListener('click',e=>{if(e.target===overlay)top3CloseEditor()});
+ document.body.appendChild(overlay);
+ const display=items.length?items.map((item,i)=>({title:item.title,original:i,done:!!(item.doneAt||item.claimed)})):suggestions.map(title=>({title,original:-1,done:false}));
+ (display.length?display:[{title:'',original:-1,done:false}]).forEach(item=>top3AddRow(item));
+ top3RefreshEditor();
+ overlay.querySelector('input:not(:disabled)')?.focus({preventScroll:true});
+}
+function top3AddRow(item={title:'',original:-1,done:false}){
+ const rows=document.getElementById('top3ModalRows');if(!rows||rows.children.length>=3)return;
+ const i=rows.children.length,row=document.createElement('div');row.className='top3-modal-row';row.dataset.original=String(item.original??-1);
+ row.innerHTML=`<span class="top3-modal-number">${i+1}</span><input type="text" aria-label="목표 ${i+1}" maxlength="85" placeholder="목표를 입력하세요" ${item.done?'disabled':''} oninput="top3RefreshEditor()" value="${esc(item.title||'')}"><button type="button" aria-label="목표 삭제" title="목표 삭제" ${item.done?'disabled':''} onclick="top3RemoveRow(this)">×</button>`;
+ rows.appendChild(row);top3RefreshEditor();
+}
+function top3RemoveRow(btn){const row=btn.closest('.top3-modal-row');if(!row||row.querySelector('input')?.disabled)return;row.remove();top3RefreshEditor();}
+function top3RefreshEditor(){
+ const rows=[...document.querySelectorAll('#top3ModalRows .top3-modal-row')];
+ rows.forEach((row,i)=>{row.querySelector('.top3-modal-number').textContent=String(i+1);row.querySelector('input').setAttribute('aria-label','목표 '+(i+1))});
+ const filled=rows.filter(row=>row.querySelector('input')?.value.trim()).length;
+ const count=document.getElementById('top3ModalCounter');if(count)count.textContent=`입력한 목표 ${filled}개 · 최대 3개`;
+ const add=document.getElementById('top3ModalAdd');if(add)add.disabled=rows.length>=3;
+ const save=document.getElementById('top3ModalSave');if(save)save.textContent=`목표 ${filled}개 확정 저장`;
+}
+function top3CopyYesterday(){
+ const titles=top3YesterdayUnfinished();
+ if(!titles.length)return appAlert('어제 미완료 목표가 없습니다.');
+ const rows=document.getElementById('top3ModalRows');if(!rows){top3OpenEditor(titles);return;}
+ const old=top3Day(day());const locked=[...rows.querySelectorAll('.top3-modal-row')].filter(row=>row.querySelector('input')?.disabled);
+ const available=Math.max(0,3-locked.length);const suggestions=titles.slice(0,available);
+ if(!available)return appAlert('이미 완료한 목표 3개가 있어 불러올 수 없습니다.');
+ rows.replaceChildren(...locked);
+ suggestions.forEach(title=>top3AddRow({title,original:-1,done:false}));
+ if(!suggestions.length&&rows.children.length===0)top3AddRow();
+ top3RefreshEditor();
 }
 function top3Save(event){
  event.preventDefault();if(!currentUserId||!startUnlocked)return;
- const key=day(),old=top3Day(key),f=event.currentTarget;
- const items=[0,1,2].map(i=>({id:i+1,title:String(f.elements['goal'+i]?.value||old?.items?.[i]?.title||'').trim().slice(0,85),doneAt:old?.items?.[i]?.doneAt||'',claimed:old?.items?.[i]?.claimed===true,awardP:old?.items?.[i]?.awardP||0,awardXP:old?.items?.[i]?.awardXP||0}));
- if(items.some(x=>!x.title))return appAlert('세 가지 목표를 모두 작성해 주세요.');
- if(new Set(items.map(x=>x.title.toLowerCase())).size!==3)return appAlert('서로 다른 목표 3개를 작성해 주세요.');
- const now=new Date().toISOString(),newly=!old?.confirmedAt;
+ const key=day(),old=top3Day(key),rows=[...document.querySelectorAll('#top3ModalRows .top3-modal-row')];
+ const titles=rows.map(row=>row.querySelector('input')?.value.trim().slice(0,85)||'');
+ if(!titles.length||titles.length>3||titles.some(x=>!x))return appAlert('목표를 1~3개 입력해 주세요.');
+ if(new Set(titles.map(x=>x.toLocaleLowerCase())).size!==titles.length)return appAlert('중복되지 않는 목표를 입력해 주세요.');
+ const oldItems=old?.items||[];
+ const used=new Set();
+ const items=rows.map((row,i)=>{
+  const original=Number(row.dataset.original),previous=original>=0?oldItems[original]:null;
+  if(previous&&used.has(original))throw new Error('Duplicate TOP3 source goal');
+  if(previous)used.add(original);
+  return {id:i+1,title:previous?.doneAt?previous.title:titles[i],doneAt:previous?.doneAt||'',claimed:previous?.claimed===true,awardP:previous?.awardP||0,awardXP:previous?.awardXP||0};
+ });
+ if(old?.confirmedAt&&oldItems.some((x,i)=>(x.doneAt||x.claimed)&&!used.has(i)))return appAlert('이미 보상을 받은 목표는 삭제할 수 없습니다.');
+ const now=new Date().toISOString(),first=!old?.confirmedAt,r=top3Rules();
  data.top3Days=data.top3Days||{};
- data.top3Days[key]={items,confirmedAt:old?.confirmedAt||now,setupClaimed:old?.setupClaimed===true||newly,setupPay:old?.setupPay|| (newly?top3Rules().setupP:0),allClaimed:old?.allClaimed===true,allPay:old?.allPay||0,allXP:old?.allXP||0,updatedAt:now};
- const r=top3Rules();
- if(newly){data.points+=r.setupP;data.allEarned+=r.setupP;}
- top3EditMode=false;save();render();
- appAlert(newly?`오늘의 TOP 3 확정! +${r.setupP}P`:'목표가 수정되었습니다. 추가 설정 보상은 지급되지 않습니다.');
+ data.top3Days[key]={items,confirmedAt:old?.confirmedAt||now,setupClaimed:old?.setupClaimed===true||first,setupPay:old?.setupPay||(first?r.setupP:0),allClaimed:old?.allClaimed===true,allPay:old?.allPay||0,allXP:old?.allXP||0,updatedAt:now};
+ if(first){data.points+=r.setupP;data.allEarned+=r.setupP;}
+ top3CloseEditor();save();render();
+ appAlert(first?`목표 ${items.length}개 확정! +${r.setupP}P`:`목표 ${items.length}개 수정 완료 (추가 설정 보상 없음)`);
 }
 function top3Toggle(index){
  if(!currentUserId||!startUnlocked)return;
@@ -17017,30 +17062,33 @@ function top3Toggle(index){
  if(item.doneAt){item.doneAt='';entry.updatedAt=new Date().toISOString();save();render();appAlert('달성 체크를 취소했습니다. 이미 받은 보상은 다시 지급되지 않습니다.');return;}
  item.doneAt=new Date().toISOString();let p=0,xp=0;
  if(!item.claimed){item.claimed=true;item.awardP=r.eachP;item.awardXP=r.eachXP;p+=r.eachP;xp+=r.eachXP;}
- if(entry.items.length===3&&entry.items.every(x=>x.doneAt)&&!entry.allClaimed){entry.allClaimed=true;entry.allPay=r.allP;entry.allXP=r.allXP;p+=r.allP;xp+=r.allXP;}
+ if(entry.items.length>=1&&entry.items.every(x=>x.doneAt)&&!entry.allClaimed){entry.allClaimed=true;entry.allPay=r.allP;entry.allXP=r.allXP;p+=r.allP;xp+=r.allXP;}
  entry.updatedAt=new Date().toISOString();
  data.points+=p;data.allEarned+=p;if(xp)awardQuestXp(xp);
- save();render();appAlert((entry.allClaimed?'🏆 세 가지 목표 모두 달성! ':'🎯 목표 달성! ')+(p||xp?`+${p}P / +${xp}XP`:'이미 보상을 받은 목표입니다.'));
+ save();render();appAlert((entry.allClaimed?'🏆 오늘 설정한 목표 모두 달성! ':'🎯 목표 달성! ')+(p||xp?`+${p}P / +${xp}XP`:'이미 보상을 받은 목표입니다.'));
 }
 function top3DaySummary(k){
- const e=top3Day(k),r=top3Rules();if(!e?.confirmedAt)return '<section class="top3-day-panel"><header>🎯 오늘의 TOP 3 <small>미설정</small></header><p>이 날짜에 설정한 목표가 없습니다.</p></section>';
- const done=e.items.filter(x=>x.doneAt).length;
- return `<section class="top3-day-panel" id="top3CalendarSection"><header>🎯 TOP 3 목표 <small>${done}/3 달성</small></header>${e.items.map((x,i)=>`<p class="${x.doneAt?'done':''}">${x.doneAt?'✅':'◯'} ${esc(x.title)} ${x.doneAt?'· '+top3Time(x.doneAt):''}</p>`).join('')}<p>확정 ${top3Time(e.confirmedAt)} · 지급 기록 ${top3Awards(e,r)}P</p></section>`;
+ const e=top3Day(k),r=top3Rules();if(!e?.confirmedAt)return '<section class="top3-day-panel" id="top3CalendarSection"><header>🎯 오늘의 목표 <small>미설정</small></header><p>이 날짜에 확정한 목표가 없습니다.</p></section>';
+ const items=e.items||[],done=items.filter(x=>x.doneAt).length;
+ return `<section class="top3-day-panel" id="top3CalendarSection"><header>🎯 오늘의 목표 <small>${done}/${items.length} 달성</small></header>${items.map(x=>`<p class="${x.doneAt?'done':''}">${x.doneAt?'✅':'◯'} ${esc(x.title)} ${x.doneAt?'· '+top3Time(x.doneAt):''}</p>`).join('')}<p>확정 ${top3Time(e.confirmedAt)} · 지급 기록 ${top3Awards(e,r)}P</p></section>`;
 }
 function top3CalendarDots(k){
  const e=top3Day(k);if(!e?.confirmedAt)return '';
- return `<span class="top3-calendar-dots" title="TOP 3 ${e.items.filter(x=>x.doneAt).length}/3 달성" aria-label="TOP 3 ${e.items.filter(x=>x.doneAt).length}개 달성">${e.items.map(x=>`<i class="${x.doneAt?'done':'pending'}"></i>`).join('')}</span>`;
+ return `<span class="top3-calendar-dots" title="오늘 목표 ${e.items.filter(x=>x.doneAt).length}/${e.items.length} 달성" aria-label="TOP 3 ${e.items.filter(x=>x.doneAt).length}개 달성">${e.items.map(x=>`<i class="${x.doneAt?'done':'pending'}"></i>`).join('')}</span>`;
 }
 function top3StatsHTML(){
  const now=new Date(day()+'T12:00:00'),last=[];
  for(let i=29;i>=0;i--){const dt=new Date(now);dt.setDate(dt.getDate()-i);const k=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;last.push({key:k,record:top3Day(k),weekday:['일','월','화','수','목','금','토'][dt.getDay()]});}
- const records=last.filter(x=>x.record?.confirmedAt),count=records.reduce((n,x)=>n+x.record.items.filter(y=>y.doneAt).length,0),full=records.filter(x=>x.record.items.length===3&&x.record.items.every(y=>y.doneAt)).length;
- let chain=0;for(let i=last.length-1;i>=0;i--){if(last[i].record?.confirmedAt&&last[i].record.items.every(x=>x.doneAt))chain++;else break;}
+ const records=last.filter(x=>x.record?.confirmedAt&&x.record.items?.length);
+ const done=records.reduce((sum,x)=>sum+x.record.items.filter(g=>g.doneAt).length,0);
+ const planned=records.reduce((sum,x)=>sum+x.record.items.length,0);
+ const all=records.filter(x=>x.record.items.every(g=>g.doneAt)).length;
+ let chain=0;for(let i=last.length-1;i>=0;i--){const x=last[i].record;if(x?.confirmedAt&&x.items.length>0&&x.items.every(g=>g.doneAt))chain++;else break;}
  const recent=last.slice(-7);
- return `<section class="top3-stats" id="recordTop3"><h3>🎯 TOP 3 달성 분석 · 최근 30일</h3><div class="top3-stat-grid"><div><strong>${records.length?Math.round(count/(records.length*3)*100)+'%':'—'}</strong><small>목표 달성률</small></div><div><strong>${full}일</strong><small>모두 달성</small></div><div><strong>${chain}일</strong><small>연속 전체 달성</small></div></div><p class="top3-sub">최근 7일 · 하루 달성한 목표 수 (0–3개)</p><div class="top3-bars">${recent.map(x=>{const n=x.record?.confirmedAt?x.record.items.filter(g=>g.doneAt).length:0;return `<div class="top3-bar-day"><i class="${x.record?.confirmedAt?'':'empty'}" style="height:${Math.max(3,n/3*65)}px" title="${x.key}: ${x.record?.confirmedAt?n+'/3':'미설정'}"></i>${x.weekday}</div>`;}).join('')}</div><p class="top3-stat-note">미설정 날짜는 실패로 계산하지 않습니다. 기록은 퀘스트와 분리되고, 달력에서 날짜별 상세 내용을 확인할 수 있습니다.</p></section>`;
+ return `<section class="top3-stats" id="recordTop3"><h3>🎯 오늘의 목표 분석 · 최근 30일</h3><div class="top3-stat-grid"><div><strong>${planned?Math.round(done/planned*100)+'%':'—'}</strong><small>목표 달성률</small></div><div><strong>${all}일</strong><small>설정 목표 모두 달성</small></div><div><strong>${chain}일</strong><small>연속 전체 달성</small></div></div><p class="top3-sub">최근 7일 · 설정 목표 대비 달성 개수</p><div class="top3-bars">${recent.map(x=>{const e=x.record,n=e?.confirmedAt?e.items.filter(g=>g.doneAt).length:0,len=e?.confirmedAt?e.items.length:0;return `<div class="top3-bar-day"><i class="${len?'':'empty'}" style="height:${Math.max(3,len?n/len*65:3)}px" title="${x.key}: ${len?n+'/'+len:'미설정'}"></i>${x.weekday}</div>`;}).join('')}</div><p class="top3-stat-note">달성률은 설정한 목표 수만 분모로 계산합니다. 목표를 설정하지 않은 날짜는 실패가 아닙니다.</p></section>`;
 }
 function top3RewardAdmin(){
- const r=top3Rules();return `<section class="top3-admin"><h3>🎯 TOP 3 보상 설정 (관리자)</h3><p>모든 트레이너에 공통 적용 · 기존 지급 내역은 재정산하지 않음</p><form onsubmit="top3SaveRewards(event)"><div class="top3-admin-grid">${[['setupP','3개 확정 P'],['eachP','목표별 P'],['eachXP','목표별 XP'],['allP','전체 달성 P'],['allXP','전체 달성 XP']].map(([key,label])=>`<label>${label}<input name="${key}" type="number" min="0" max="${key==='allP'?2000:key==='eachXP'?500:1000}" value="${r[key]}"></label>`).join('')}</div><button type="submit">TOP 3 보상 설정 저장</button></form></section>`;
+ const r=top3Rules();return `<section class="top3-admin"><h3>🎯 TOP 3 보상 설정 (관리자)</h3><p>모든 트레이너에 공통 적용 · 기존 지급 내역은 재정산하지 않음</p><form onsubmit="top3SaveRewards(event)"><div class="top3-admin-grid">${[['setupP','목표 확정 P'],['eachP','목표별 P'],['eachXP','목표별 XP'],['allP','전체 달성 P'],['allXP','전체 달성 XP']].map(([key,label])=>`<label>${label}<input name="${key}" type="number" min="0" max="${key==='allP'?2000:key==='eachXP'?500:1000}" value="${r[key]}"></label>`).join('')}</div><button type="submit">TOP 3 보상 설정 저장</button></form></section>`;
 }
 function top3SaveRewards(event){
  event.preventDefault();if(!adminUnlocked||!startUnlocked||screen!=='manual')return;
@@ -17053,7 +17101,7 @@ function top3SaveRewards(event){
 }
 // Integrate into original view builders while retaining app navigation/layout.
 const __top3Home=renderHome;
-renderHome=function(){const raw=__top3Home();return raw.replace('<section class="home-quest-section',top3Card()+'<section class="home-quest-section');};
+renderHome=function(){const raw=__top3Home();return raw.replace('<div class="home-quest-list-label">',top3Card()+'<div class="home-quest-list-label">');};
 const __top3DayDetails=renderDayDetails;
 renderDayDetails=function(k){const raw=__top3DayDetails(k);return top3DaySummary(k)+raw;};
 const __top3Calendar=renderCalendar;
@@ -17066,7 +17114,7 @@ const __top3Briefing=renderBuddyBriefing;
 renderBuddyBriefing=function(){
  const html=__top3Briefing(),e=top3Day(day());if(!e?.confirmedAt)return html;
  const done=e.items.filter(x=>x.doneAt).length;
- const summary=`<section class="top3-day-panel"><header>🎯 오늘의 TOP 3 <small>${done}/3 달성</small></header>${e.items.map(x=>`<p class="${x.doneAt?'done':''}">${x.doneAt?'✅':'◯'} ${esc(x.title)}</p>`).join('')}<p>${done===3?'🏆 세 목표 모두 달성':'미달성 목표는 내일 가져오기로 다시 설정할 수 있어요.'}</p></section>`;
+ const summary=`<section class="top3-day-panel"><header>🎯 오늘의 TOP 3 <small>${done}/${e.items.length} 달성</small></header>${e.items.map(x=>`<p class="${x.doneAt?'done':''}">${x.doneAt?'✅':'◯'} ${esc(x.title)}</p>`).join('')}<p>${done===e.items.length?'🏆 설정 목표 모두 달성':'미달성 목표는 내일 가져오기로 다시 설정할 수 있어요.'}</p></section>`;
  return html.replace('<button class="modal-btn secondary" type="button" onclick="closeBuddyBriefing()">',summary+'<button class="modal-btn secondary" type="button" onclick="closeBuddyBriefing()">');
 };
 // Timeline: tiny unobtrusive markers in the LIFE lane; source time never changes.
@@ -17105,4 +17153,28 @@ if(typeof __top3Context==='function')window.renderTimeLogZoomContext=function(ra
  const count=document.getElementById('timeLogZoomContextCount');if(count&&extras.length)count.textContent=(Number.parseInt(count.textContent)||0)+extras.length+'건';return ret;};
 try{if(typeof startUnlocked!=='undefined'&&startUnlocked&&currentUserId)requestAnimationFrame(()=>render());}catch(e){console.warn('TOP3 initial refresh',e)}
 </script>
+<style id="top3-compact-v164">
+.top3-card.top3-compact{margin:8px 0 12px;padding:10px 12px;border-radius:12px;background:linear-gradient(110deg,#16324b,#203d59);box-shadow:none;border:1px solid #517592;color:#eaf4fc}
+.top3-compact .top3-titlebar{min-height:26px}.top3-compact .top3-titlebar h2{font-size:13px;display:flex;align-items:center;gap:7px;min-width:0}
+.top3-compact-count{font:800 11px/1.3 system-ui,sans-serif;color:#d0e5f7;background:#375b75;border-radius:999px;padding:2px 7px}
+.top3-compact .top3-config-trigger{min-height:29px;padding:4px 9px;font-size:11px;border:1px solid #7092aa;background:#294965;color:#edf8ff;border-radius:9px}
+.top3-compact .top3-goals{display:grid;gap:0;margin-top:4px}
+.top3-compact .top3-goal{min-height:33px;border:0;border-radius:0;border-top:1px solid #63839d50;padding:6px 2px;gap:9px;background:transparent;color:inherit;box-shadow:none}
+.top3-compact .top3-goal.is-done{background:transparent;border-color:#63839d50}
+.top3-compact .top3-goal:first-child{border-top:0}.top3-compact .top3-goal .top3-mark{font-size:17px;width:20px;color:#bfd0e4;line-height:1;text-align:center}
+.top3-compact .top3-goal.is-done .top3-mark{color:#75d9b0}.top3-compact .top3-goal-name{font-size:12px;font-weight:750;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.top3-compact .top3-start{border:1px dashed #6388a3;border-radius:9px;width:100%;background:transparent;color:#c3d8e8;font:650 11px/1.5 system-ui,sans-serif;text-align:left;padding:8px 10px;margin-top:4px;display:flex;align-items:center;justify-content:space-between}
+html[data-theme="light"] .top3-compact{background:#f0f7fc;color:#214660;border-color:#b8d0df}html[data-theme="light"] .top3-compact .top3-goal{color:#284760;background:transparent;border-color:#c9dae5}html[data-theme="light"] .top3-compact .top3-goal.is-done{background:transparent}
+html[data-theme="light"] .top3-compact-count{background:#dcebf5;color:#42627c}html[data-theme="light"] .top3-compact .top3-config-trigger{background:#fff;color:#345771;border-color:#adc8d8}html[data-theme="light"] .top3-compact .top3-start{color:#4d7088;border-color:#b3cadb}
+.top3-modal-backdrop{position:fixed;inset:0;z-index:2147483100;background:#071b31b8;display:flex;justify-content:center;align-items:center;padding:12px;box-sizing:border-box;backdrop-filter:blur(3px)}
+.top3-modal{width:min(440px,100%);max-height:90dvh;overflow-y:auto;border:1px solid #658ba5;border-radius:20px;background:#1a334d;color:#f0f7ff;box-shadow:0 22px 80px #09152666;padding:18px;box-sizing:border-box}
+.top3-modal-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.top3-modal-header strong{font-size:17px}.top3-modal-header p{font-size:11px;color:#b9cde0;margin:6px 0 13px}.top3-modal-x{width:36px;height:36px;background:#2c4964;border:1px solid #6486a2;color:inherit;border-radius:11px;font-size:23px;cursor:pointer}
+.top3-modal-count{margin:0 0 10px;font-size:12px;font-weight:850;color:#a6dfca}.top3-modal-rows{display:grid;gap:9px}.top3-modal-row{display:flex;gap:8px;align-items:center}.top3-modal-number{font-size:13px;font-weight:850;width:16px;color:#afd3e8;text-align:center}
+.top3-modal-row input{flex:1;min-width:0;min-height:44px;border:1px solid #6c8fa9;border-radius:10px;background:#102943;color:#fff;font:700 13px system-ui,sans-serif;padding:9px 11px;box-sizing:border-box}.top3-modal-row input:disabled{opacity:.7}
+.top3-modal-row>button{border:0;color:#cdd9e8;background:transparent;min-width:32px;min-height:38px;font-size:24px}.top3-modal-row>button:disabled{opacity:.25}
+.top3-modal-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.top3-modal-tools button{background:#294964;color:#e5f1fa;border:1px solid #6385a3;border-radius:10px;font:750 11px system-ui,sans-serif;padding:9px 11px;min-height:35px}.top3-modal-tools button:disabled{opacity:.35}
+.top3-modal-tip{font-size:11px;color:#a6bdd0;line-height:1.5;margin:13px 0}.top3-modal-footer{display:flex;gap:8px}.top3-modal-footer button{flex:1;min-height:44px;font:850 13px system-ui,sans-serif;border-radius:11px}.top3-modal-cancel{border:1px solid #6c879e;background:#25415c;color:#eff6ff}.top3-modal-save{border:1px solid #5ccdb1;background:#2caa8b;color:#fff}
+html[data-theme="light"] .top3-modal{background:#fff;color:#1e425b;border-color:#b9cfdf}html[data-theme="light"] .top3-modal-header p,html[data-theme="light"] .top3-modal-tip{color:#59748a}html[data-theme="light"] .top3-modal-row input{background:#f7fbff;color:#204764;border-color:#bfd0e0}html[data-theme="light"] .top3-modal-count{color:#22876a}html[data-theme="light"] .top3-modal-number{color:#52758c}html[data-theme="light"] .top3-modal-tools button,html[data-theme="light"] .top3-modal-x,html[data-theme="light"] .top3-modal-cancel{background:#eff5fa;color:#305470;border-color:#b5cbdc}
+@media(max-width:375px){.top3-card.top3-compact{padding:8px 10px}.top3-compact .top3-goal-name{font-size:11px}.top3-modal{padding:14px}}
+</style>
 </body></html>
