@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.165 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.166 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -14029,10 +14029,10 @@ async function gptExportShare(){
 
 function renderStats(){
  return `${pageHeader('성장 <em>기록</em>','달성 추세와 개선점을 분석해요 · 날짜별 활동은 달력에서')}${sharedProgressSummary('stats')}
- <nav class="record-analysis-nav${lifeCfg().walkStatsVisible?' has-walking':''}" aria-label="기록 분석 바로가기"><span>분석 바로가기</span><div><button type="button" onclick="document.getElementById('recordWeeklyBrief')?.scrollIntoView({behavior:'smooth',block:'start'})">주간 요약</button><button type="button" onclick="gptExportOpen()">AI 내보내기</button><button type="button" onclick="document.getElementById('lifeRhythmAnalysis')?.scrollIntoView({behavior:'smooth',block:'start'})">생활 리듬</button>${lifeCfg().walkStatsVisible?`<button type="button" onclick="document.getElementById('recordWalkStats')?.scrollIntoView({behavior:'smooth',block:'start'})">🚶 걷기 통계</button>`:''}<button type="button" onclick="document.getElementById('sleepWeekChecker')?.scrollIntoView({behavior:'smooth',block:'start'})">수면</button><button type="button" onclick="document.getElementById('recordQuestGrowth')?.scrollIntoView({behavior:'smooth',block:'start'})">퀘스트 분석</button></div></nav>
+ <nav class="record-analysis-nav${lifeCfg().walkStatsVisible?' has-walking':''}" aria-label="기록 분석 바로가기"><span class="record-jump-heading">분석 바로가기 <span class="record-jump-tools"><button type="button" onclick="recordSetAll(true)">모두 펼치기</button><button type="button" onclick="recordSetAll(false)">모두 접기</button></span></span><div><button type="button" onclick="recordJump('top3')">🎯 목표 분석</button><button type="button" onclick="recordJump('weekly')">주간 요약</button><button type="button" onclick="recordJump('export');gptExportOpen()">AI 내보내기</button><button type="button" onclick="recordJump('life')">생활 리듬</button>${lifeCfg().walkStatsVisible?`<button type="button" onclick="recordJump('walk')">🚶 걷기 통계</button>`:''}<button type="button" onclick="recordJump('sleep')">수면</button><button type="button" onclick="recordJump('quest')">퀘스트 분석</button><button type="button" onclick="recordJump('notes')">노트</button></div></nav>
  <div class="growth-record-container">
- ${growthWeeklyBrief()}${gptExportHTML()}${renderLifeRhythmSummary()}${renderWalkStats()}${renderSleepWeekChecker(day())}${renderQuestGrowthReport()}
- <section class="growth-archive-shortcut"><div><strong>📝 노트·순간 기록 모아보기</strong><small>날짜별 회고 · 메모 통합 검색</small></div><button type="button" class="tinybtn" onclick="openDailyNotes()">모아보기 ›</button></section>
+ ${recordAccordion('weekly','📊 주간 성장 브리핑',growthWeeklyBrief())}${recordAccordion('export','🤖 AI 분석 내보내기',gptExportHTML())}${recordAccordion('life','💓 생활 리듬 분석',renderLifeRhythmSummary())}${recordAccordion('walk','🚶 걷기 통계',renderWalkStats())}${recordAccordion('sleep','🌙 수면 분석',renderSleepWeekChecker(day()))}${recordAccordion('quest','📈 퀘스트 분석',renderQuestGrowthReport())}
+ ${recordAccordion('notes','📝 노트·순간 기록',`<section class="growth-archive-shortcut"><div><strong>📝 노트·순간 기록 모아보기</strong><small>날짜별 회고 · 메모 통합 검색</small></div><button type="button" class="tinybtn" onclick="openDailyNotes()">모아보기 ›</button></section>`)}
  <p class="growth-footer-note">날짜별 완료·뽑기·이벤트·퀘스트 변경 이력은 <b>달력 탭</b>에서만 확인합니다. 저장·복원과 자동 저장 설정은 <b>설정 탭</b>에서 관리합니다.</p></div>`;
 }
 
@@ -17100,7 +17100,12 @@ function top3StatsHTML(){
  const all=records.filter(x=>x.record.items.every(g=>g.doneAt)).length;
  let chain=0;for(let i=last.length-1;i>=0;i--){const x=last[i].record;if(x?.confirmedAt&&x.items.length>0&&x.items.every(g=>g.doneAt))chain++;else break;}
  const recent=last.slice(-7);
- return `<section class="top3-stats" id="recordTop3"><h3>🎯 오늘의 목표 분석 · 최근 30일</h3><div class="top3-stat-grid"><div><strong>${planned?Math.round(done/planned*100)+'%':'—'}</strong><small>목표 달성률</small></div><div><strong>${all}일</strong><small>설정 목표 모두 달성</small></div><div><strong>${chain}일</strong><small>연속 전체 달성</small></div></div><p class="top3-sub">최근 7일 · 설정 목표 대비 달성 개수</p><div class="top3-bars">${recent.map(x=>{const e=x.record,n=e?.confirmedAt?e.items.filter(g=>g.doneAt).length:0,len=e?.confirmedAt?e.items.length:0;return `<div class="top3-bar-day"><i class="${len?'':'empty'}" style="height:${Math.max(3,len?n/len*65:3)}px" title="${x.key}: ${len?n+'/'+len:'미설정'}"></i>${x.weekday}</div>`;}).join('')}</div><p class="top3-stat-note">달성률은 설정한 목표 수만 분모로 계산합니다. 목표를 설정하지 않은 날짜는 실패가 아닙니다.</p></section>`;
+ return `<section class="top3-stats" id="recordTop3" aria-label="오늘의 목표 30일 분석">
+ <div class="top3-stat-grid"><div><strong>${planned?Math.round(done/planned*100)+'%':'—'}</strong><small>목표 달성률</small></div><div><strong>${all}일</strong><small>설정 목표 모두 달성</small></div><div><strong>${chain}일</strong><small>연속 전체 달성</small></div></div>
+ <div class="top3-chart-head"><strong>최근 7일</strong><small>설정된 목표 중 완료 비율</small></div>
+ <div class="top3-bars-v166" role="img" aria-label="최근 7일 설정한 목표의 달성 비율. 설정하지 않은 날짜는 회색 빈 표시입니다.">
+ ${recent.map(x=>{const e=x.record,n=e?.confirmedAt?e.items.filter(g=>g.doneAt).length:0,len=e?.confirmedAt?e.items.length:0;const pct=len?Math.round(100*n/len):0;return `<div class="top3-day-v166" title="${x.key} · ${len?n+'/'+len+'개 달성':'목표 미설정'}"><div class="top3-bar-track-v166">${len?`<div class="top3-bar-fill-v166${n===0?' none-done':''}" style="height:${pct}%"></div>`:'<span class="top3-bar-unset-v166">—</span>'}</div><span class="top3-day-label-v166">${x.weekday}</span><span class="top3-bar-count-v166">${len?n+'/'+len:'—'}</span></div>`;}).join('')}
+ </div><p class="top3-stat-note">미설정 날짜는 계산에서 제외합니다. 회색 막대는 목표 미설정이 아니라 설정 후 미달성인 경우에만 사용합니다.</p></section>`;
 }
 function top3RewardAdmin(){
  const r=top3Rules();return `<section class="top3-admin"><h3>🎯 TOP 3 보상 설정 (관리자)</h3><p>모든 트레이너에 공통 적용 · 기존 지급 내역은 재정산하지 않음</p><form onsubmit="top3SaveRewards(event)"><div class="top3-admin-grid">${[['setupP','목표 확정 P'],['eachP','목표별 P'],['eachXP','목표별 XP'],['allP','전체 달성 P'],['allXP','전체 달성 XP']].map(([key,label])=>`<label>${label}<input name="${key}" type="number" min="0" max="${key==='allP'?2000:key==='eachXP'?500:1000}" value="${r[key]}"></label>`).join('')}</div><button type="submit">TOP 3 보상 설정 저장</button></form></section>`;
@@ -17168,7 +17173,7 @@ renderDayDetails=function(k){const raw=__top3DayDetails(k);return top3DaySummary
 const __top3Calendar=renderCalendar;
 renderCalendar=function(){let raw=__top3Calendar();return raw.replace(/(<button\b[^>]*onclick="selectCalendarDate\('([0-9]{4}-[0-9]{2}-[0-9]{2})'\)"[^>]*>)([\s\S]*?)(<\/button>)/g,(full,open,key,body,close)=>open+body+top3CalendarDots(key)+close);};
 const __top3Stats=renderStats;
-renderStats=function(){const raw=__top3Stats();return raw.replace('<div class="growth-record-container">','<div class="growth-record-container">'+top3StatsHTML());};
+renderStats=function(){const raw=__top3Stats();return raw.replace('<div class="growth-record-container">','<div class="growth-record-container">'+recordAccordion('top3','🎯 오늘의 목표 분석',top3StatsHTML()));};
 const __top3Manual=renderManual;
 renderManual=function(){const raw=__top3Manual();return adminUnlocked?raw+top3RewardAdmin():raw;};
 const __top3Briefing=renderBuddyBriefing;
@@ -17253,4 +17258,80 @@ html[data-theme="light"] .top3-completion-modal textarea{background:#f7fbff;colo
 html[data-theme="light"] .top3-claim-card{background:#eef7fd;border-color:#accbde;color:#264861}html[data-theme="light"] .top3-claim-card small{color:#55758c}html[data-theme="light"] .top3-claim-card b{color:#956116}
 @media(max-width:370px){.top3-claim-card{flex-direction:column;align-items:stretch}.top3-claim-card button{width:100%}.top3-goal-complete-btn{padding:5px 7px}}
 </style>
+
+<style id="record-v166-style">
+.record-jump-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.record-jump-tools{display:flex;align-items:center;gap:5px}
+.record-analysis-nav .record-jump-tools button{min-height:27px;width:auto;padding:4px 8px;font-size:10px;border-radius:8px;white-space:nowrap}
+.record-accordion{margin:10px 0;border:1px solid var(--line,#52718c);border-radius:14px;background:var(--card,#193752);overflow:hidden;min-width:0}
+.record-accordion>summary{display:flex;align-items:center;min-height:49px;gap:10px;padding:11px 14px;cursor:pointer;list-style:none;user-select:none;color:var(--text,#e8f3fb);font-weight:850;font-size:14px;background:var(--card2,#23425c)}
+.record-accordion>summary::-webkit-details-marker{display:none}
+.record-accordion .record-accordion-name{flex:1;min-width:0}
+.record-accordion .record-accordion-hint{font-size:10px;color:var(--sub,#b5cce0);font-weight:550}
+.record-accordion .record-accordion-chevron{font-size:15px;color:var(--sub,#b5cce0);transition:transform .15s}
+.record-accordion[open] .record-accordion-chevron{transform:rotate(180deg)}
+.record-accordion .record-accordion-content{padding:10px;min-width:0}
+.record-accordion .record-accordion-content>.section,.record-accordion .record-accordion-content>section,.record-accordion .record-accordion-content>.top3-stats{margin:0;max-width:100%;box-sizing:border-box}
+.record-accordion .record-accordion-content>.section .section-title:first-child{display:none}
+.record-accordion>summary:focus-visible{outline:2px solid #62bfb0;outline-offset:-3px}
+html[data-theme="light"] .record-accordion{background:#fff;border-color:#c4d7e7}
+html[data-theme="light"] .record-accordion>summary{color:#24465e;background:#f0f6fb}
+html[data-theme="light"] .record-accordion .record-accordion-hint,html[data-theme="light"] .record-accordion .record-accordion-chevron{color:#587d95}
+.record-analysis-nav>div,.record-analysis-nav.has-walking>div{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:699px){.record-analysis-nav>div,.record-analysis-nav.has-walking>div{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:355px){.record-analysis-nav>div,.record-analysis-nav.has-walking>div{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.record-accordion .top3-stats{background:transparent;border:0;padding:2px 0 0}
+.top3-chart-head{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 5px;gap:8px;font-size:12px}
+.top3-chart-head small{color:var(--sub,#a9bdcf);font-size:10px}
+.top3-bars-v166{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;height:118px;align-items:end;margin:0 0 9px}
+.top3-day-v166{min-width:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px}
+.top3-bar-track-v166{width:min(100%,32px);height:76px;border-radius:6px;background:rgba(118,145,170,.14);border:1px solid rgba(131,153,173,.22);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;box-sizing:border-box;position:relative}
+.top3-bar-fill-v166{display:block;width:100%;background:#3eb98f;border-radius:4px 4px 0 0;min-height:0!important;flex:none}
+.top3-bar-fill-v166.none-done{background:#8c9eb2;height:3px!important}
+.top3-bar-unset-v166{align-self:center;color:#9aacbe;font-size:15px;font-weight:500}
+.top3-day-label-v166{font-size:10px;color:var(--sub,#a9bdcf)}
+.top3-bar-count-v166{font-size:10px;font-weight:750;color:var(--sub,#a9bdcf)}
+.top3-stats .top3-stat-grid{gap:6px}
+.top3-stats .top3-stat-grid>div{padding:9px 3px;min-width:0}
+.top3-stats .top3-stat-grid strong{font-size:19px}
+.top3-stats .top3-stat-note{font-size:10px;margin:4px 0 0;line-height:1.5}
+</style>
+<script>
+/* v1.7.166: account-scoped record section state, persisted with normal JSON backup. */
+const RECORD_SECTION_DEFAULTS={top3:false,weekly:true,export:false,life:false,walk:false,sleep:false,quest:false,notes:false};
+function recordSectionIsOpen(id){
+ const previous=data?.recordSectionOpen;
+ return previous&&Object.prototype.hasOwnProperty.call(previous,id)?!!previous[id]:!!RECORD_SECTION_DEFAULTS[id];
+}
+function recordAccordion(id,title,html){
+ if(!html||!String(html).trim())return '';
+ const opened=recordSectionIsOpen(id);
+ return `<details class="record-accordion" id="recordSection-${id}" data-record-section="${id}" ${opened?'open':''}><summary onclick="recordToggleSection(event,'${id}')" aria-controls="recordSectionBody-${id}"><span class="record-accordion-name">${title}</span><small class="record-accordion-hint">${opened?'접기':'펼치기'}</small><span class="record-accordion-chevron" aria-hidden="true">⌄</span></summary><div class="record-accordion-content" id="recordSectionBody-${id}">${html}</div></details>`;
+}
+function recordToggleSection(event,id){
+ if(event?.preventDefault)event.preventDefault();
+ const section=document.getElementById('recordSection-'+id);
+ if(!section)return;
+ section.open=!section.open;
+ if(!data.recordSectionOpen||typeof data.recordSectionOpen!=='object')data.recordSectionOpen={};
+ data.recordSectionOpen[id]=section.open;
+ const hint=section.querySelector(':scope > summary .record-accordion-hint');
+ if(hint)hint.textContent=section.open?'접기':'펼치기';
+ save();
+}
+function recordSetAll(open){
+ if(!data.recordSectionOpen||typeof data.recordSectionOpen!=='object')data.recordSectionOpen={};
+ document.querySelectorAll('.record-accordion[data-record-section]').forEach(el=>{
+  el.open=!!open;data.recordSectionOpen[el.dataset.recordSection]=!!open;
+  const hint=el.querySelector(':scope > summary .record-accordion-hint');if(hint)hint.textContent=open?'접기':'펼치기';
+ });
+ save();
+}
+function recordJump(id){
+ const section=document.getElementById('recordSection-'+id);
+ if(!section)return;
+ if(!section.open){section.open=true;if(!data.recordSectionOpen||typeof data.recordSectionOpen!=='object')data.recordSectionOpen={};data.recordSectionOpen[id]=true;save();const hint=section.querySelector(':scope > summary .record-accordion-hint');if(hint)hint.textContent='접기';}
+ requestAnimationFrame(()=>section.scrollIntoView({behavior:'smooth',block:'start'}));
+}
+</script>
 </body></html>
