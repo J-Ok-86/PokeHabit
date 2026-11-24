@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.164 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.165 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -8252,9 +8252,9 @@ function cleanTop3Days(v){
   if(!/^\d{4}-\d\d-\d\d$/.test(k)||!validNoteDay(k)||!raw||typeof raw!=='object')continue;
   const at=t=>typeof t==='string'&&/^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(t)?t.slice(0,40):'';
   const src=Array.isArray(raw.items)?raw.items:[];
-  const items=src.slice(0,3).map((x,i)=>({id:i+1,title:String(x?.title||'').trim().slice(0,85),doneAt:at(x?.doneAt),claimed:x?.claimed===true,awardP:Math.max(0,Math.min(1000,Number(x?.awardP)||0)),awardXP:Math.max(0,Math.min(500,Number(x?.awardXP)||0))}));
+  const items=src.slice(0,3).map((x,i)=>({id:i+1,title:String(x?.title||'').trim().slice(0,85),doneAt:at(x?.doneAt),detail:String(x?.detail||'').slice(0,2000),claimed:x?.claimed===true,awardP:Math.max(0,Math.min(1000,Number(x?.awardP)||0)),awardXP:Math.max(0,Math.min(500,Number(x?.awardXP)||0))}));
   if(!items.some(x=>x.title))continue;
-  out[k]={items,confirmedAt:at(raw.confirmedAt),setupClaimed:raw.setupClaimed===true,setupPay:Math.max(0,Math.min(1000,Number(raw.setupPay)||0)),allClaimed:raw.allClaimed===true,allPay:Math.max(0,Math.min(2000,Number(raw.allPay)||0)),allXP:Math.max(0,Math.min(1000,Number(raw.allXP)||0)),updatedAt:at(raw.updatedAt)};
+  out[k]={items,confirmedAt:at(raw.confirmedAt),setupClaimed:raw.setupClaimed===true,setupPay:Math.max(0,Math.min(1000,Number(raw.setupPay)||0)),allClaimed:raw.allClaimed===true,allPay:Math.max(0,Math.min(2000,Number(raw.allPay)||0)),allXP:Math.max(0,Math.min(1000,Number(raw.allXP)||0)),settledAt:at(raw.settledAt),rewardSnapshot:raw.rewardSnapshot?cleanTop3Reward(raw.rewardSnapshot):null,updatedAt:at(raw.updatedAt)};
  }
  return out;
 }
@@ -16976,7 +16976,7 @@ function top3Card(){
  const entry=top3Day(day()),items=entry?.confirmedAt?(entry.items||[]):[],done=items.filter(x=>x.doneAt).length;
  return `<section class="top3-card top3-compact" id="top3Today" aria-label="오늘의 목표">
  <div class="top3-titlebar"><h2>🎯 오늘의 목표 <span class="top3-compact-count">${done}/${items.length}</span></h2><button type="button" class="top3-config-trigger" aria-label="오늘의 목표 추가 및 수정" onclick="top3OpenEditor()">＋ <span>설정</span></button></div>
- ${items.length?`<div class="top3-goals">${items.map((x,i)=>`<button type="button" class="top3-goal ${x.doneAt?'is-done':''}" aria-label="${esc(x.title)} ${x.doneAt?'달성 취소':'달성 체크'}" onclick="top3Toggle(${i})"><span class="top3-mark" aria-hidden="true">${x.doneAt?'✓':'○'}</span><span class="top3-goal-name">${esc(x.title)}</span></button>`).join('')}</div>`:'<button class="top3-start" type="button" onclick="top3OpenEditor()">오늘 가장 중요한 목표를 설정해 보세요 <span>＋</span></button>'}
+ ${items.length?`<div class="top3-goals">${items.map((x,i)=>`<div class="top3-goal ${x.doneAt?'is-done':''}"><span class="top3-mark" aria-hidden="true">${x.doneAt?'✓':'○'}</span><span class="top3-goal-name" title="${esc(x.title)}">${esc(x.title)}${x.detail?'<small class="top3-detail-indicator">✎ 상세 기록</small>':''}</span><button type="button" class="top3-goal-complete-btn" onclick="top3OpenCompletion(${i})" aria-label="${esc(x.title)} ${x.doneAt?'완료 기록 수정':'완료하기'}">${x.doneAt?'상세·수정':'완료'}</button></div>`).join('')}</div>`:'<button class="top3-start" type="button" onclick="top3OpenEditor()">오늘 가장 중요한 목표를 설정해 보세요 <span>＋</span></button>'}
  </section>`;
 }
 function top3YesterdayUnfinished(){
@@ -17044,33 +17044,48 @@ function top3Save(event){
   const original=Number(row.dataset.original),previous=original>=0?oldItems[original]:null;
   if(previous&&used.has(original))throw new Error('Duplicate TOP3 source goal');
   if(previous)used.add(original);
-  return {id:i+1,title:previous?.doneAt?previous.title:titles[i],doneAt:previous?.doneAt||'',claimed:previous?.claimed===true,awardP:previous?.awardP||0,awardXP:previous?.awardXP||0};
+  return {id:i+1,title:(previous?.doneAt||previous?.claimed)?previous.title:titles[i],doneAt:previous?.doneAt||'',detail:previous?.detail||'',claimed:previous?.claimed===true,awardP:previous?.awardP||0,awardXP:previous?.awardXP||0};
  });
  if(old?.confirmedAt&&oldItems.some((x,i)=>(x.doneAt||x.claimed)&&!used.has(i)))return appAlert('이미 보상을 받은 목표는 삭제할 수 없습니다.');
  const now=new Date().toISOString(),first=!old?.confirmedAt,r=top3Rules();
  data.top3Days=data.top3Days||{};
- data.top3Days[key]={items,confirmedAt:old?.confirmedAt||now,setupClaimed:old?.setupClaimed===true||first,setupPay:old?.setupPay||(first?r.setupP:0),allClaimed:old?.allClaimed===true,allPay:old?.allPay||0,allXP:old?.allXP||0,updatedAt:now};
+ data.top3Days[key]={items,confirmedAt:old?.confirmedAt||now,setupClaimed:old?.setupClaimed===true||first,setupPay:old?.setupPay||(first?r.setupP:0),allClaimed:old?.allClaimed===true,allPay:old?.allPay||0,allXP:old?.allXP||0,settledAt:old?.settledAt||'',rewardSnapshot:old?.rewardSnapshot||r,updatedAt:now};
  if(first){data.points+=r.setupP;data.allEarned+=r.setupP;}
  top3CloseEditor();save();render();
  appAlert(first?`목표 ${items.length}개 확정! +${r.setupP}P`:`목표 ${items.length}개 수정 완료 (추가 설정 보상 없음)`);
 }
-function top3Toggle(index){
+function top3Toggle(index){top3OpenCompletion(index)}
+function top3OpenCompletion(index){
  if(!currentUserId||!startUnlocked)return;
  const entry=top3Day(day()),item=entry?.items?.[index];
  if(!entry?.confirmedAt||!item)return;
- const r=top3Rules();
- if(item.doneAt){item.doneAt='';entry.updatedAt=new Date().toISOString();save();render();appAlert('달성 체크를 취소했습니다. 이미 받은 보상은 다시 지급되지 않습니다.');return;}
- item.doneAt=new Date().toISOString();let p=0,xp=0;
- if(!item.claimed){item.claimed=true;item.awardP=r.eachP;item.awardXP=r.eachXP;p+=r.eachP;xp+=r.eachXP;}
- if(entry.items.length>=1&&entry.items.every(x=>x.doneAt)&&!entry.allClaimed){entry.allClaimed=true;entry.allPay=r.allP;entry.allXP=r.allXP;p+=r.allP;xp+=r.allXP;}
- entry.updatedAt=new Date().toISOString();
- data.points+=p;data.allEarned+=p;if(xp)awardQuestXp(xp);
- save();render();appAlert((entry.allClaimed?'🏆 오늘 설정한 목표 모두 달성! ':'🎯 목표 달성! ')+(p||xp?`+${p}P / +${xp}XP`:'이미 보상을 받은 목표입니다.'));
+ document.getElementById('top3CompletionBackdrop')?.remove();
+ const overlay=document.createElement('div');overlay.id='top3CompletionBackdrop';overlay.className='top3-modal-backdrop';
+ overlay.innerHTML=`<div class="top3-modal top3-completion-modal" role="dialog" aria-modal="true" aria-label="목표 달성 기록">
+ <div class="top3-modal-header"><div><strong>${item.doneAt?'✅ 완료 기록':'🎯 목표 달성'} </strong><p>${esc(item.title)}</p></div><button type="button" class="top3-modal-x" onclick="top3CloseCompletion()" aria-label="닫기">×</button></div>
+ <label class="top3-detail-label" for="top3CompletionDetail">완료 상세 내용 · 선택 입력</label><textarea id="top3CompletionDetail" maxlength="2000" rows="5" placeholder="오늘 무엇을 했는지, 결과와 생각을 남겨보세요.">${esc(item.detail||'')}</textarea>
+ <p class="top3-modal-tip">${item.doneAt?'완료 취소나 기록 수정이 가능합니다.':'완료 후에도 상세 내용을 수정하거나 완료를 취소할 수 있습니다.'} 달성 보상은 다음 날 하단 보상 받기에서 수령합니다.</p>
+ <div class="top3-completion-actions"><button type="button" class="top3-modal-cancel" onclick="top3CloseCompletion()">닫기</button>
+ ${item.doneAt?'<button type="button" class="top3-completion-undo" onclick="top3SaveCompletion('+index+',&quot;undo&quot;)">완료 취소</button><button type="button" class="top3-modal-save" onclick="top3SaveCompletion('+index+',&quot;edit&quot;)">내용 수정</button>':'<button type="button" class="top3-modal-save" onclick="top3SaveCompletion('+index+',&quot;complete&quot;)">완료 확정</button>'}</div></div>`;
+ overlay.addEventListener('click',e=>{if(e.target===overlay)top3CloseCompletion()});
+ document.body.appendChild(overlay);
 }
+function top3CloseCompletion(){document.getElementById('top3CompletionBackdrop')?.remove()}
+function top3SaveCompletion(index,action){
+ if(!currentUserId||!startUnlocked)return;
+ const entry=top3Day(day()),item=entry?.items?.[index];if(!entry||!item)return;
+ item.detail=String(document.getElementById('top3CompletionDetail')?.value||'').slice(0,2000);
+ if(action==='complete'&&!item.doneAt)item.doneAt=new Date().toISOString();
+ if(action==='undo')item.doneAt='';
+ entry.updatedAt=new Date().toISOString();
+ top3CloseCompletion();save();render();
+ appAlert(action==='complete'?'목표 달성 기록 완료! 보상은 내일부터 수령할 수 있습니다.':action==='undo'?'완료를 취소했습니다. 상세 내용은 유지됩니다.':'상세 내용을 수정했습니다.');
+}
+
 function top3DaySummary(k){
  const e=top3Day(k),r=top3Rules();if(!e?.confirmedAt)return '<section class="top3-day-panel" id="top3CalendarSection"><header>🎯 오늘의 목표 <small>미설정</small></header><p>이 날짜에 확정한 목표가 없습니다.</p></section>';
  const items=e.items||[],done=items.filter(x=>x.doneAt).length;
- return `<section class="top3-day-panel" id="top3CalendarSection"><header>🎯 오늘의 목표 <small>${done}/${items.length} 달성</small></header>${items.map(x=>`<p class="${x.doneAt?'done':''}">${x.doneAt?'✅':'◯'} ${esc(x.title)} ${x.doneAt?'· '+top3Time(x.doneAt):''}</p>`).join('')}<p>확정 ${top3Time(e.confirmedAt)} · 지급 기록 ${top3Awards(e,r)}P</p></section>`;
+ return `<section class="top3-day-panel" id="top3CalendarSection"><header>🎯 오늘의 목표 <small>${done}/${items.length} 달성</small></header>${items.map(x=>`<p class="${x.doneAt?'done':''}">${x.doneAt?'✅':'◯'} ${esc(x.title)} ${x.doneAt?'· '+top3Time(x.doneAt):''}${x.detail?'<small class="top3-calendar-detail">📝 '+esc(x.detail)+'</small>':''}</p>`).join('')}<p>확정 ${top3Time(e.confirmedAt)} · 지급 기록 ${top3Awards(e,r)}P</p></section>`;
 }
 function top3CalendarDots(k){
  const e=top3Day(k);if(!e?.confirmedAt)return '';
@@ -17099,9 +17114,55 @@ function top3SaveRewards(event){
  data.rules=registry.rules;
  bumpRulesVersion();saveRegistry();render();appAlert('TOP 3 보상 설정을 저장했습니다. 기존 지급 이력은 변경되지 않습니다.');
 }
+// One-tap, next-day settlement. Historical already-paid goals remain claimed.
+function top3UnclaimedDays(){
+ const today=day(),rules=top3Rules(),pending=[];
+ for(const [key,e] of Object.entries(data.top3Days||{})){
+  if(key>=today||!e?.confirmedAt||!Array.isArray(e.items)||!e.items.length||e.settledAt)continue;
+  const r=e.rewardSnapshot||rules;
+  const count=e.items.filter(x=>x.doneAt).length;
+  const eligible=e.items.some(x=>x.doneAt&&!x.claimed)||
+    (count===e.items.length&&!e.allClaimed);
+  if(!eligible)continue;
+  const p=e.items.reduce((v,x)=>v+(x.doneAt&&!x.claimed?r.eachP:0),0)+
+    (count===e.items.length&&!e.allClaimed?r.allP:0);
+  const xp=e.items.reduce((v,x)=>v+(x.doneAt&&!x.claimed?r.eachXP:0),0)+
+    (count===e.items.length&&!e.allClaimed?r.allXP:0);
+  pending.push({key,e,done:count,total:e.items.length,points:p,xp});
+ }
+ return pending.sort((a,b)=>a.key.localeCompare(b.key));
+}
+function top3ClaimCard(){
+ const pending=top3UnclaimedDays();
+ if(!pending.length)return '';
+ const p=pending.reduce((v,x)=>v+x.points,0),xp=pending.reduce((v,x)=>v+x.xp,0);
+ return `<div class="top3-claim-card" id="top3RewardClaim"><div><strong>🎯 TOP 3 목표 보상</strong><small>${pending.length}일 미수령 · ${pending.map(x=>x.key.slice(5)+' '+x.done+'/'+x.total).join(' · ')}</small><b>+${format(p)}P · +${format(xp)}XP</b></div><button type="button" onclick="top3ClaimRewards()">🎁 보상 받기</button></div>`;
+}
+function top3ClaimRewards(){
+ if(!currentUserId||!startUnlocked)return;
+ const list=top3UnclaimedDays();if(!list.length)return appAlert('받을 목표 보상이 없습니다.');
+ const now=new Date().toISOString();let earnedP=0,earnedXP=0;
+ for(const {e} of list){
+  const r=e.rewardSnapshot||top3Rules();
+  for(const item of e.items){
+   if(!item.doneAt||item.claimed)continue;
+   item.claimed=true;item.awardP=r.eachP;item.awardXP=r.eachXP;
+   earnedP+=r.eachP;earnedXP+=r.eachXP;
+  }
+  if(e.items.every(x=>x.doneAt)&&!e.allClaimed){
+   e.allClaimed=true;e.allPay=r.allP;e.allXP=r.allXP;
+   earnedP+=r.allP;earnedXP+=r.allXP;
+  }
+  e.settledAt=now;e.updatedAt=now;
+ }
+ data.points+=earnedP;data.allEarned+=earnedP;
+ if(earnedXP)awardQuestXp(earnedXP);
+ save();render();appAlert(`🎁 TOP 3 보상 수령 완료! +${earnedP}P / +${earnedXP}XP`);
+}
+
 // Integrate into original view builders while retaining app navigation/layout.
 const __top3Home=renderHome;
-renderHome=function(){const raw=__top3Home();return raw.replace('<div class="home-quest-list-label">',top3Card()+'<div class="home-quest-list-label">');};
+renderHome=function(){const raw=__top3Home();return raw.replace('<div class="home-quest-list-label">',top3Card()+'<div class="home-quest-list-label">').replace('<p class="reward-explain">첫 시작 선물',top3ClaimCard()+'<p class="reward-explain">첫 시작 선물');};
 const __top3DayDetails=renderDayDetails;
 renderDayDetails=function(k){const raw=__top3DayDetails(k);return top3DaySummary(k)+raw;};
 const __top3Calendar=renderCalendar;
@@ -17176,5 +17237,20 @@ html[data-theme="light"] .top3-compact-count{background:#dcebf5;color:#42627c}ht
 .top3-modal-tip{font-size:11px;color:#a6bdd0;line-height:1.5;margin:13px 0}.top3-modal-footer{display:flex;gap:8px}.top3-modal-footer button{flex:1;min-height:44px;font:850 13px system-ui,sans-serif;border-radius:11px}.top3-modal-cancel{border:1px solid #6c879e;background:#25415c;color:#eff6ff}.top3-modal-save{border:1px solid #5ccdb1;background:#2caa8b;color:#fff}
 html[data-theme="light"] .top3-modal{background:#fff;color:#1e425b;border-color:#b9cfdf}html[data-theme="light"] .top3-modal-header p,html[data-theme="light"] .top3-modal-tip{color:#59748a}html[data-theme="light"] .top3-modal-row input{background:#f7fbff;color:#204764;border-color:#bfd0e0}html[data-theme="light"] .top3-modal-count{color:#22876a}html[data-theme="light"] .top3-modal-number{color:#52758c}html[data-theme="light"] .top3-modal-tools button,html[data-theme="light"] .top3-modal-x,html[data-theme="light"] .top3-modal-cancel{background:#eff5fa;color:#305470;border-color:#b5cbdc}
 @media(max-width:375px){.top3-card.top3-compact{padding:8px 10px}.top3-compact .top3-goal-name{font-size:11px}.top3-modal{padding:14px}}
+</style>
+
+<style id="top3-completion-v165">
+.top3-compact .top3-goal{cursor:default}.top3-compact .top3-goal .top3-goal-name{flex:1;min-width:0}
+.top3-goal-complete-btn{flex:none;min-height:30px;padding:5px 11px;border:1px solid #6b91ad;border-radius:9px;background:#294c6c;color:#eff9ff;font:800 11px system-ui;cursor:pointer}
+.top3-compact .top3-goal.is-done .top3-goal-complete-btn{border-color:#64af94;background:#1d5748;color:#ebfff6}
+.top3-detail-indicator{display:block;margin-top:3px;font-size:10px;color:#98c9cf}
+.top3-completion-modal .top3-detail-label{display:block;margin:10px 0 8px;font-size:12px;font-weight:800}
+.top3-completion-modal textarea{display:block;box-sizing:border-box;width:100%;min-height:140px;resize:vertical;border:1px solid #708fa9;border-radius:11px;background:#102943;color:#eff7ff;padding:13px;font:13px/1.6 system-ui}
+.top3-completion-actions{display:flex;flex-wrap:wrap;gap:8px}.top3-completion-actions button{flex:1;min-width:86px;min-height:43px;border-radius:10px;border:1px solid #7092aa;background:#284862;color:#f4faff;font:800 12px system-ui}.top3-completion-actions .top3-modal-save{background:#269b7c;border-color:#4cbea4}.top3-completion-actions .top3-completion-undo{background:#634157;border-color:#9c6b82}
+.top3-claim-card{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;margin:10px 0;border-radius:12px;background:#26465e;border:1px solid #7395b0}.top3-claim-card>div{display:grid;gap:5px;min-width:0}.top3-claim-card strong{font-size:13px}.top3-claim-card small{font-size:10px;color:#c3d5e4}.top3-claim-card b{font-size:15px;color:#ffd68b}.top3-claim-card button{min-width:106px;min-height:44px;border:1px solid #e5bb69;border-radius:10px;background:#f2bc57;color:#28364c;font:900 12px system-ui;cursor:pointer}
+.top3-calendar-detail{display:block;margin:3px 0 7px 21px;white-space:pre-wrap;overflow-wrap:anywhere;opacity:.84}
+html[data-theme="light"] .top3-completion-modal textarea{background:#f7fbff;color:#244861;border-color:#adc7da}
+html[data-theme="light"] .top3-claim-card{background:#eef7fd;border-color:#accbde;color:#264861}html[data-theme="light"] .top3-claim-card small{color:#55758c}html[data-theme="light"] .top3-claim-card b{color:#956116}
+@media(max-width:370px){.top3-claim-card{flex-direction:column;align-items:stretch}.top3-claim-card button{width:100%}.top3-goal-complete-btn{padding:5px 7px}}
 </style>
 </body></html>
