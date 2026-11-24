@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.161 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.162 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -16648,10 +16648,13 @@ html[data-theme="light"] .time-log-section .time-log-zoom-panel.tl156-panel .tim
   z-index:0;pointer-events:none;
  }
  /* Existing quest, moment, life, and reference captions remain above sleep shading. */
- .time-log-section .time-log-lane .time-log-markers,
- .time-log-section .time-log-lane .time-log-walk-ranges,
- .time-log-section .time-log-lane .reference-lane-bars,
- .time-log-section .time-log-lane .reference-alarm-marks{position:relative;z-index:3}
+ /* Keep absolute, full-row event containers intact: relative positioning erased their plot height. */
+ .time-log-section #dailyTimeLogChart .time-log-markers,
+ .time-log-section #dailyTimeLogChart .time-log-walk-ranges,
+ .time-log-section #dailyTimeLogChart .reference-lane-bars,
+ .time-log-section #dailyTimeLogChart .reference-alarm-marks{
+   position:absolute!important;inset:0!important;
+ }
  .time-log-section .time-log-zoom-point,
  .time-log-section .time-log-zoom-walk-session,
  .time-log-section .time-log-zoom-reference-bar{z-index:6}
@@ -16813,5 +16816,114 @@ html[data-theme="light"] .time-log-section .time-log-zoom-panel.tl156-panel .tim
  console.info('PokeHabit 1.7.161 confirmed sleep background overlay enabled');
 })();
 
+</script>
+
+<script>
+/* v1.7.162: real current-time guide for selected day, read-only / no extra label rows. */
+(function(){
+ 'use strict';
+ if(window.__tl162NowGuide)return;
+ window.__tl162NowGuide=true;
+ const css=document.createElement('style');
+ css.id='tl162-now-guide-style';
+ css.textContent=String.raw`
+ .time-log-section #dailyTimeLogChart .tl162-now,
+ .time-log-section #timeLogZoomContent .tl162-now{
+  display:block!important;position:absolute!important;top:0!important;bottom:0!important;
+  width:0!important;height:100%!important;border-left:2px solid #ed685f!important;
+  box-shadow:1px 0 0 #fff9,0 0 4px #ed685f66;
+  pointer-events:none!important;user-select:none!important;z-index:5!important;
+ }
+ .time-log-section #dailyTimeLogChart .time-log-lane > .tl162-now{z-index:3!important}
+ .time-log-section #timeLogZoomContent .time-log-zoom-track > .tl162-now{z-index:2!important}
+ .time-log-section #timeLogZoomNavigator .tl162-nav-now{
+  position:absolute!important;top:0!important;bottom:0!important;width:0!important;
+  border-left:2px solid #ed685f!important;z-index:5!important;
+  pointer-events:none!important;box-shadow:0 0 3px #ed685f90;
+ }
+ .time-log-section #dailyTimeLogChart .tl162-now-label{
+  position:absolute;top:-11px;left:3px;display:block;
+  font:800 9px/1.2 system-ui,sans-serif;white-space:nowrap;padding:1px 4px;
+  border-radius:4px;background:#b44141;color:white;
+  pointer-events:none;
+ }
+ .time-log-section #timeLogZoomContent .tl162-now-label{
+  position:absolute;top:1px;left:3px;display:block;
+  font:800 9px/1.2 system-ui,sans-serif;white-space:nowrap;padding:2px 4px;
+  border-radius:4px;background:#b44141;color:white;pointer-events:none;
+ }
+ html[data-theme="light"] .time-log-section .tl162-now-label{background:#bf4a48}
+ `;
+ document.head.appendChild(css);
+ function todayKey(){
+  // Use same local date function as the app, falling back to device-local time.
+  if(typeof day==='function')return day();
+  const n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');
+ }
+ function nowMinute(){const n=new Date();return n.getHours()*60+n.getMinutes()+n.getSeconds()/60}
+ function makeLine(host,type,left,showLabel){
+  let marker=host.querySelector(':scope > .tl162-now'+(type==='nav'?'.tl162-nav-now':''));
+  if(!marker){marker=document.createElement('span');marker.className='tl162-now'+(type==='nav'?' tl162-nav-now':'');marker.setAttribute('aria-hidden','true');host.appendChild(marker)}
+  marker.style.left=left+'px';
+  if(showLabel){
+   let text=marker.querySelector('.tl162-now-label');
+   if(!text){text=document.createElement('span');text.className='tl162-now-label';marker.appendChild(text)}
+   const t=new Date();text.textContent='현재 '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+  }
+ }
+ function clearIfWrong(root){root?.querySelectorAll('.tl162-now').forEach(el=>el.remove())}
+ function drawCompact(){
+  const chart=document.getElementById('dailyTimeLogChart');
+  const section=document.getElementById('dailyTimeLog');
+  if(!chart||!section)return;
+  if(section.dataset.day!==todayKey()){clearIfWrong(chart);section.querySelector('.tl162-now-key')?.remove();return}
+  const m=nowMinute();
+  const legend=section.querySelector('.time-log-legend');
+  if(legend){
+   let badge=legend.querySelector('.tl162-now-key');
+   if(!badge){badge=document.createElement('span');badge.className='tl162-now-key';legend.appendChild(badge)}
+   const t=new Date();badge.textContent='🔴 현재 '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+  }
+  for(const lane of chart.querySelectorAll('.time-log-lane[data-kind]')){
+   const width=lane.clientWidth;
+   if(width<=0)continue;
+   const x=14+(m/1440)*Math.max(1,width-28);
+   makeLine(lane,'compact',x,false);
+  }
+ }
+ function drawZoom(){
+  const root=document.getElementById('timeLogZoomContent');
+  const view=document.getElementById('timeLogZoomScroll');
+  const nav=document.getElementById('timeLogZoomNavigator');
+  const state=(typeof timeLogZoomState==='undefined'?null:timeLogZoomState);
+  if(!root||!view||!state||state.key!==todayKey()){
+   clearIfWrong(root);clearIfWrong(nav);return
+  }
+  const minute=nowMinute(),ppm=Number(view.dataset.pixelsPerMinute)||1;
+  const x=55+minute*ppm;
+  for(const track of root.querySelectorAll('.time-log-zoom-track[data-kind]'))makeLine(track,'zoom',x,false);
+  if(nav){
+   // Navigator has four rows; a single line spans all without masking activity colors.
+   const localX=nav.clientWidth*minute/1440;
+   makeLine(nav,'nav',localX,false);
+  }
+ }
+ function repaint(){try{drawCompact();drawZoom()}catch(e){console.warn('current-time guide',e)}}
+ function wrap(name,draw){
+  const former=window[name];if(typeof former!=='function')return;
+  window[name]=function(){const result=former.apply(this,arguments);try{draw()}catch(e){console.warn('current-time guide '+name,e)}return result};
+ }
+ wrap('layoutTimeLogMarkers',drawCompact);
+ wrap('layoutReferenceActivityCompact',drawCompact);
+ wrap('layoutTimeLogZoom',drawZoom);
+ wrap('timeLogZoomRenderNavigator',drawZoom);
+ // Existing pinch zoom updates pixel/minute continuously without replacing touch elements.
+ wrap('timeLogZoomUpdatePosition',drawZoom);
+ // Avoid altering user data; refresh only visual coordinates on the minute tick.
+ setInterval(repaint,30000);
+ window.addEventListener('focus',repaint,{passive:true});
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)repaint()});
+ requestAnimationFrame(repaint);
+})();
 </script>
 </body></html>
