@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.166 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.167 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -14029,7 +14029,7 @@ async function gptExportShare(){
 
 function renderStats(){
  return `${pageHeader('성장 <em>기록</em>','달성 추세와 개선점을 분석해요 · 날짜별 활동은 달력에서')}${sharedProgressSummary('stats')}
- <nav class="record-analysis-nav${lifeCfg().walkStatsVisible?' has-walking':''}" aria-label="기록 분석 바로가기"><span class="record-jump-heading">분석 바로가기 <span class="record-jump-tools"><button type="button" onclick="recordSetAll(true)">모두 펼치기</button><button type="button" onclick="recordSetAll(false)">모두 접기</button></span></span><div><button type="button" onclick="recordJump('top3')">🎯 목표 분석</button><button type="button" onclick="recordJump('weekly')">주간 요약</button><button type="button" onclick="recordJump('export');gptExportOpen()">AI 내보내기</button><button type="button" onclick="recordJump('life')">생활 리듬</button>${lifeCfg().walkStatsVisible?`<button type="button" onclick="recordJump('walk')">🚶 걷기 통계</button>`:''}<button type="button" onclick="recordJump('sleep')">수면</button><button type="button" onclick="recordJump('quest')">퀘스트 분석</button><button type="button" onclick="recordJump('notes')">노트</button></div></nav>
+ <nav class="record-analysis-nav${lifeCfg().walkStatsVisible?' has-walking':''}" aria-label="기록 분석 바로가기"><span class="record-jump-heading">분석 바로가기 <span class="record-jump-tools"><button type="button" onclick="recordSetAll(true)">모두 펼치기</button><button type="button" onclick="recordSetAll(false)">모두 접기</button></span></span><div><button type="button" onclick="recordJump('top3')">🎯 목표 분석</button><button type="button" onclick="recordJump('top3');requestAnimationFrame(()=>document.getElementById('top3RecordHistory')?.scrollIntoView({behavior:'smooth',block:'start'}))">📋 목표 기록</button><button type="button" onclick="recordJump('weekly')">주간 요약</button><button type="button" onclick="recordJump('export');gptExportOpen()">AI 내보내기</button><button type="button" onclick="recordJump('life')">생활 리듬</button>${lifeCfg().walkStatsVisible?`<button type="button" onclick="recordJump('walk')">🚶 걷기 통계</button>`:''}<button type="button" onclick="recordJump('sleep')">수면</button><button type="button" onclick="recordJump('quest')">퀘스트 분석</button><button type="button" onclick="recordJump('notes')">노트</button></div></nav>
  <div class="growth-record-container">
  ${recordAccordion('weekly','📊 주간 성장 브리핑',growthWeeklyBrief())}${recordAccordion('export','🤖 AI 분석 내보내기',gptExportHTML())}${recordAccordion('life','💓 생활 리듬 분석',renderLifeRhythmSummary())}${recordAccordion('walk','🚶 걷기 통계',renderWalkStats())}${recordAccordion('sleep','🌙 수면 분석',renderSleepWeekChecker(day()))}${recordAccordion('quest','📈 퀘스트 분석',renderQuestGrowthReport())}
  ${recordAccordion('notes','📝 노트·순간 기록',`<section class="growth-archive-shortcut"><div><strong>📝 노트·순간 기록 모아보기</strong><small>날짜별 회고 · 메모 통합 검색</small></div><button type="button" class="tinybtn" onclick="openDailyNotes()">모아보기 ›</button></section>`)}
@@ -17105,7 +17105,7 @@ function top3StatsHTML(){
  <div class="top3-chart-head"><strong>최근 7일</strong><small>설정된 목표 중 완료 비율</small></div>
  <div class="top3-bars-v166" role="img" aria-label="최근 7일 설정한 목표의 달성 비율. 설정하지 않은 날짜는 회색 빈 표시입니다.">
  ${recent.map(x=>{const e=x.record,n=e?.confirmedAt?e.items.filter(g=>g.doneAt).length:0,len=e?.confirmedAt?e.items.length:0;const pct=len?Math.round(100*n/len):0;return `<div class="top3-day-v166" title="${x.key} · ${len?n+'/'+len+'개 달성':'목표 미설정'}"><div class="top3-bar-track-v166">${len?`<div class="top3-bar-fill-v166${n===0?' none-done':''}" style="height:${pct}%"></div>`:'<span class="top3-bar-unset-v166">—</span>'}</div><span class="top3-day-label-v166">${x.weekday}</span><span class="top3-bar-count-v166">${len?n+'/'+len:'—'}</span></div>`;}).join('')}
- </div><p class="top3-stat-note">미설정 날짜는 계산에서 제외합니다. 회색 막대는 목표 미설정이 아니라 설정 후 미달성인 경우에만 사용합니다.</p></section>`;
+ </div><p class="top3-stat-note">미설정 날짜는 계산에서 제외합니다. 회색 막대는 목표 미설정이 아니라 설정 후 미달성인 경우에만 사용합니다.</p>${top3HistoryHTML()}</section>`;
 }
 function top3RewardAdmin(){
  const r=top3Rules();return `<section class="top3-admin"><h3>🎯 TOP 3 보상 설정 (관리자)</h3><p>모든 트레이너에 공통 적용 · 기존 지급 내역은 재정산하지 않음</p><form onsubmit="top3SaveRewards(event)"><div class="top3-admin-grid">${[['setupP','목표 확정 P'],['eachP','목표별 P'],['eachXP','목표별 XP'],['allP','전체 달성 P'],['allXP','전체 달성 XP']].map(([key,label])=>`<label>${label}<input name="${key}" type="number" min="0" max="${key==='allP'?2000:key==='eachXP'?500:1000}" value="${r[key]}"></label>`).join('')}</div><button type="submit">TOP 3 보상 설정 저장</button></form></section>`;
@@ -17186,7 +17186,7 @@ renderBuddyBriefing=function(){
 // Timeline: tiny unobtrusive markers in the LIFE lane; source time never changes.
 function top3EventsForDay(k){
  const e=top3Day(k);if(!e?.confirmedAt)return [];
- return [{at:e.confirmedAt,title:'TOP 3 목표 확정',type:'setup'},...e.items.filter(x=>x.doneAt).map(x=>({at:x.doneAt,title:'TOP 3 · '+x.title,type:'done'}))].filter(x=>new Date(x.at).toString()!=='Invalid Date');
+ return [{at:e.confirmedAt,title:'오늘의 목표 수립',type:'setup'},...e.items.filter(x=>x.doneAt).map(x=>({at:x.doneAt,title:'목표 달성 · '+x.title,type:'done'}))].filter(x=>new Date(x.at).toString()!=='Invalid Date');
 }
 function top3Minutes(at){const d=new Date(at);return d.getHours()*60+d.getMinutes()+d.getSeconds()/60;}
 function top3MainMarks(){
@@ -17195,7 +17195,7 @@ function top3MainMarks(){
  lane.querySelectorAll('.tl-top3-marker').forEach(x=>x.remove());
  const width=lane.clientWidth||320,span=Math.max(1,width-28);
  top3EventsForDay(k).forEach((x,i)=>{
-  const el=document.createElement('button');el.type='button';el.className='tl-top3-marker';el.textContent=x.type==='setup'?'🎯':'✓';el.title=(top3Time(x.at)+' '+x.title);el.setAttribute('aria-label',el.title);
+  const el=document.createElement('button');el.type='button';el.className='tl-top3-marker '+(x.type==='setup'?'tl-top3-setup':'tl-top3-done');el.textContent=x.type==='setup'?'＋':'✓';el.title=(top3Time(x.at)+' '+x.title);el.setAttribute('aria-label',el.title);
   el.style.left=Math.min(width-15,Math.max(15,14+top3Minutes(x.at)/1440*span))+'px';el.style.top=(i%2===0?7:34)+'px';
   el.onclick=()=>{document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'});};lane.appendChild(el);
  });
@@ -17205,17 +17205,70 @@ if(typeof __top3LayoutMarkers==='function')window.layoutTimeLogMarkers=function(
 function top3ZoomMarks(){
  const section=document.getElementById('dailyTimeLog'),c=document.getElementById('timeLogZoomContent'),view=document.getElementById('timeLogZoomScroll');
  if(!section||!c||!view)return;
- const lane=c.querySelector('.time-log-zoom-track[data-kind="life"]');if(!lane)return;
- lane.querySelectorAll('.tl-top3-zoom-mark').forEach(x=>x.remove());
+ const lane=c.querySelector('.time-log-zoom-track[data-kind="life"]');
+ const labels=document.getElementById('timeLogZoomLabels');
+ if(!lane||!labels)return;
+ lane.querySelectorAll('.tl-top3-zoom-mark,.tl-top3-zoom-pin,.tl-top3-mini-track').forEach(el=>el.remove());
+ const events=top3EventsForDay(section.dataset.day);
+ if(!events.length)return;
  const ppm=Number(view.dataset.pixelsPerMinute)||1;
- top3EventsForDay(section.dataset.day).forEach((x,i)=>{const el=document.createElement('button');el.type='button';el.className='tl-top3-zoom-mark';el.textContent='🎯 '+x.title;el.title=top3Time(x.at)+' · '+x.title;el.style.left=(55+top3Minutes(x.at)*ppm)+'px';el.style.top=(i%2===0?0:27)+'px';el.onclick=()=>{closeTimeLogZoom();document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'})};lane.appendChild(el);});
+ // Dedicated little strip within the life lane: cannot overlap walking and life-event labels.
+ const occupied=[],placed=events.map(item=>{
+  const x=55+top3Minutes(item.at)*ppm;
+  let row=0;
+  while(occupied[row]!=null&&x-occupied[row]<82)row++;
+  occupied[row]=x;
+  return {item,x,row};
+ });
+ const baseHeight=lane.clientHeight||parseFloat(lane.style.height)||90;
+ const added=12+occupied.length*32;
+ lane.style.height=(baseHeight+added)+'px';
+ const lifeLabel=labels.querySelectorAll('.time-log-zoom-lane-label')[2];
+ if(lifeLabel)lifeLabel.style.height=(baseHeight+added)+'px';
+ const divider=document.createElement('div');divider.className='tl-top3-mini-track';divider.style.top=(baseHeight+2)+'px';lane.appendChild(divider);
+ placed.forEach(({item,x,row})=>{
+  const pin=document.createElement('span');pin.className='tl-top3-zoom-pin '+(item.type==='setup'?'is-setup':'is-done');
+  pin.style.left=x+'px';pin.style.top=(baseHeight+13+row*32)+'px';lane.appendChild(pin);
+  const el=document.createElement('button');el.type='button';
+  el.className='tl-top3-zoom-mark '+(item.type==='setup'?'is-setup':'is-done');
+  el.dataset.eventMinute=String(top3Minutes(item.at));
+  el.textContent=item.type==='setup'?'🎯 수립':'✓ 달성';
+  el.title=top3Time(item.at)+' · '+item.title;
+  el.setAttribute('aria-label',el.title);
+  el.style.left=x+'px';el.style.top=(baseHeight+17+row*32)+'px';
+  el.onclick=()=>{
+   const key=section.dataset.day;
+   closeTimeLogZoom();
+   if(typeof setScreen==='function')setScreen('record');
+   requestAnimationFrame(()=>{recordJump('top3');if(typeof top3HistorySelect==='function')top3HistorySelect(key,false)})
+  };
+  lane.appendChild(el);
+ });
+ top3ZoomFit();
+}
+function top3ZoomFit(){
+ const view=document.getElementById('timeLogZoomScroll'),c=document.getElementById('timeLogZoomContent');
+ if(!view||!c||!view.clientWidth)return;
+ const ppm=Number(view.dataset.pixelsPerMinute)||1;
+ const lo=view.scrollLeft,hi=lo+view.clientWidth;
+ c.querySelectorAll('.tl-top3-zoom-mark').forEach(el=>{
+  const minute=Number(el.dataset.eventMinute),x=55+minute*ppm;
+  const inRange=x>=lo&&x<=hi;
+  el.style.visibility=inRange?'visible':'hidden';el.tabIndex=inRange?0:-1;
+  const w=el.offsetWidth||64;
+  const shift=Math.min(hi-8-w/2,Math.max(lo+8+w/2,x))-x;
+  el.style.transform='translateX(calc(-50% + '+shift+'px))';
+ });
+ c.querySelectorAll('.tl-top3-zoom-pin').forEach(el=>{
+  const x=parseFloat(el.style.left)||0;el.style.visibility=x>=lo&&x<=hi?'visible':'hidden';
+ });
 }
 const __top3ZoomLayout=window.layoutTimeLogZoom;
 if(typeof __top3ZoomLayout==='function')window.layoutTimeLogZoom=function(){const v=__top3ZoomLayout.apply(this,arguments);try{top3ZoomMarks()}catch(e){console.warn('TOP3 zoom',e)}return v;};
 const __top3Context=window.renderTimeLogZoomContext;
 if(typeof __top3Context==='function')window.renderTimeLogZoomContext=function(range){const ret=__top3Context.apply(this,arguments),k=document.getElementById('dailyTimeLog')?.dataset.day,box=document.getElementById('timeLogZoomContextList');if(!box||!range||!k)return ret;
  const extras=top3EventsForDay(k).filter(x=>{const m=top3Minutes(x.at);return m>=range.start&&m<=range.end;});
- extras.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='time-log-context-entry';b.dataset.kind='top3';b.textContent='🎯 '+top3Time(x.at)+' · '+x.title;b.onclick=()=>{closeTimeLogZoom();document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'})};box.appendChild(b)});
+ extras.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='time-log-context-entry';b.dataset.kind=x.type==='setup'?'top3-setup':'top3-done';b.textContent=(x.type==='setup'?'🎯 수립 · ':'✓ 달성 · ')+top3Time(x.at)+' · '+x.title;b.onclick=()=>{closeTimeLogZoom();document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'})};box.appendChild(b)});
  const count=document.getElementById('timeLogZoomContextCount');if(count&&extras.length)count.textContent=(Number.parseInt(count.textContent)||0)+extras.length+'건';return ret;};
 try{if(typeof startUnlocked!=='undefined'&&startUnlocked&&currentUserId)requestAnimationFrame(()=>render());}catch(e){console.warn('TOP3 initial refresh',e)}
 </script>
@@ -17333,5 +17386,79 @@ function recordJump(id){
  if(!section.open){section.open=true;if(!data.recordSectionOpen||typeof data.recordSectionOpen!=='object')data.recordSectionOpen={};data.recordSectionOpen[id]=true;save();const hint=section.querySelector(':scope > summary .record-accordion-hint');if(hint)hint.textContent='접기';}
  requestAnimationFrame(()=>section.scrollIntoView({behavior:'smooth',block:'start'}));
 }
+</script>
+
+<style id="top3-record-history-v167">
+.top3-history-v167{margin-top:17px;padding:12px 0 2px;border-top:1px solid #7593a450;color:inherit}
+.top3-history-head-v167{display:flex;align-items:center;gap:9px;justify-content:space-between;flex-wrap:wrap;margin-bottom:11px}
+.top3-history-head-v167 strong{font-size:13px}
+.top3-history-head-v167 select{min-width:132px;max-width:100%;border:1px solid #7a9bb2;border-radius:9px;padding:7px 8px;background:#234661;color:#fff;font:700 12px system-ui}
+.top3-history-summary-v167{font-size:11px;color:#adcadc;margin-bottom:10px}
+.top3-history-list-v167{display:grid;gap:7px}
+.top3-history-goal-v167{display:grid;grid-template-columns:25px minmax(0,1fr) auto;gap:9px;align-items:center;padding:10px 9px;border-radius:10px;border:1px solid #6687a356;background:#29486270}
+.top3-history-goal-v167.is-done{border-color:#55ae8b80;background:#23544946}
+.top3-history-goal-v167 .top3-hstate-v167{font-size:19px;text-align:center;color:#afbbcc}
+.top3-history-goal-v167.is-done .top3-hstate-v167{color:#5ed09d}
+.top3-history-goal-v167 strong{display:block;font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+.top3-history-goal-v167 small{display:block;margin-top:4px;font-size:10px;opacity:.75}
+.top3-history-goal-v167 .top3-hdetail-v167{display:block;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:5px;font-size:11px;color:#a9cfdb}
+.top3-history-goal-v167 button{min-height:33px;padding:6px 10px;border-radius:9px;border:1px solid #75a6c3;background:#234d66;color:#effcff;font-weight:800;font-size:11px;cursor:pointer}
+.top3-history-legend-v167{font-size:10px;line-height:1.6;opacity:.8;margin:10px 0 2px}
+.time-log-section .tl-top3-marker.tl-top3-setup{border-color:#af91df!important;background:#e7dbff!important;color:#654199!important}
+.time-log-section .tl-top3-marker.tl-top3-done{border-color:#56b898!important;background:#d7f7e8!important;color:#16785a!important}
+.time-log-section .tl-top3-zoom-mark{width:auto!important;min-width:55px;max-width:72px;box-sizing:border-box;height:25px!important;display:flex;align-items:center;justify-content:center;white-space:nowrap;font-size:10px!important;padding:3px 6px!important;border-radius:11px;z-index:15!important}
+.time-log-section .tl-top3-zoom-mark.is-setup{background:#e6d9fc!important;border:1px solid #aa90d7!important;color:#644396!important}
+.time-log-section .tl-top3-zoom-mark.is-done{background:#d5f3e6!important;border:1px solid #62be98!important;color:#1b7858!important}
+.time-log-section .tl-top3-zoom-pin{position:absolute;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;z-index:14;pointer-events:none;border:1px solid #fff;box-shadow:0 0 0 1px #7092a6}
+.time-log-section .tl-top3-zoom-pin.is-setup{background:#a78bda}
+.time-log-section .tl-top3-zoom-pin.is-done{background:#50bc90}
+.time-log-section .tl-top3-mini-track{position:absolute;left:0;right:0;height:1px;border-top:1px dashed #9cacb880;pointer-events:none}
+.time-log-section .time-log-context-entry[data-kind="top3-setup"]{border-left:3px solid #9c7ccd}
+.time-log-section .time-log-context-entry[data-kind="top3-done"]{border-left:3px solid #50b991}
+html[data-theme="light"] .top3-history-head-v167 select{background:#f7fbff;color:#234a63}
+html[data-theme="light"] .top3-history-goal-v167{background:#f4f8fc;color:#244861}
+html[data-theme="light"] .top3-history-goal-v167.is-done{background:#edf9f3}
+html[data-theme="light"] .top3-history-goal-v167 button{background:#fff;color:#2b566d}
+html[data-theme="light"] .top3-history-summary-v167,html[data-theme="light"] .top3-hdetail-v167{color:#587991}
+</style>
+<script>
+/* v1.7.167: goal history in record tab, true-time compact TOP3 marks in expanded chart. */
+let top3HistorySelected167='';
+function top3HistoryDates(){
+ return Object.keys(data.top3Days||{}).filter(k=>/^\d{4}-\d{2}-\d{2}$/.test(k)&&top3Day(k)?.confirmedAt).sort().reverse();
+}
+function top3HistoryDate(){
+ const keys=top3HistoryDates();
+ if(top3HistorySelected167&&keys.includes(top3HistorySelected167))return top3HistorySelected167;
+ return keys.includes(day())?day():(keys[0]||'');
+}
+function top3HistoryBody167(key){
+ const e=top3Day(key);
+ if(!e?.confirmedAt)return '<p class="top3-history-summary-v167">선택한 날짜에 확정한 목표가 없습니다.</p>';
+ const goals=e.items||[],done=goals.filter(g=>g.doneAt).length;
+ const today=key===day();
+ const paid=!!e.settledAt||!!e.allClaimed||goals.some(g=>g.claimed);
+ return `<div class="top3-history-summary-v167">${key} · ${done}/${goals.length}개 달성 ${paid?'· 보상 수령 내역 있음':'· '+(today?'오늘 진행 중':'보상 미수령 또는 미대상')}</div>
+ <div class="top3-history-list-v167">${goals.map((g,i)=>`<div class="top3-history-goal-v167 ${g.doneAt?'is-done':''}"><span class="top3-hstate-v167" aria-label="${g.doneAt?'달성':'미달성'}">${g.doneAt?'✓':'○'}</span><div><strong>${esc(g.title)}</strong><small>${g.doneAt?'완료 '+top3Time(g.doneAt):'미완료'}</small>${g.detail?'<span class="top3-hdetail-v167">📝 '+esc(g.detail)+'</span>':''}</div>${today?`<button type="button" onclick="top3RecordEditToday(${i})">${g.doneAt?'수정':'완료'}</button>`:'<small>기록</small>'}</div>`).join('')}</div>
+ <p class="top3-history-legend-v167">${today?'오늘 목표는 완료·취소·상세 내용을 수정할 수 있습니다.':'지난 날짜는 확정된 달성 이력입니다. 보상 정합성을 위해 읽기 전용으로 표시합니다.'} 목표 수립과 달성은 타임로그에서도 색과 표시를 구분합니다.</p>`;
+}
+function top3HistoryHTML(){
+ const keys=top3HistoryDates(),key=top3HistoryDate();
+ return `<section class="top3-history-v167" id="top3RecordHistory"><div class="top3-history-head-v167"><strong>📋 목표 기록 · 달성 여부</strong><select aria-label="확정한 목표 날짜 선택" onchange="top3HistorySelect(this.value)">${keys.length?keys.map(k=>`<option value="${k}" ${key===k?'selected':''}>${k}${k===day()?' · 오늘':''}</option>`).join(''):'<option value="">목표 기록 없음</option>'}</select></div><div id="top3HistoryDetail">${key?top3HistoryBody167(key):'<p class="top3-history-summary-v167">아직 확정한 목표 기록이 없습니다.</p>'}</div></section>`;
+}
+function top3HistorySelect(k,saveSelection=true){
+ const keys=top3HistoryDates();
+ if(!keys.includes(k))return;
+ top3HistorySelected167=k;
+ const container=document.getElementById('top3HistoryDetail');
+ if(container)container.innerHTML=top3HistoryBody167(k);
+ const sel=document.querySelector('#top3RecordHistory select');if(sel)sel.value=k;
+}
+function top3RecordEditToday(i){
+ if(top3HistoryDate()!==day())return;
+ top3OpenCompletion(i);
+}
+const tl167Update=window.timeLogZoomUpdatePosition;
+if(typeof tl167Update==='function')window.timeLogZoomUpdatePosition=function(){const result=tl167Update.apply(this,arguments);try{top3ZoomFit()}catch(e){}return result};
 </script>
 </body></html>
