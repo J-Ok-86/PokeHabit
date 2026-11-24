@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.175 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.176 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -8364,7 +8364,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.175')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.176')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -12761,7 +12761,7 @@ function renderSettings(){
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.175')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.176')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -14421,7 +14421,7 @@ async function logoutUser(){if(!(await appConfirm('현재 계정에서 로그아
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.175')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.176')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -17282,7 +17282,7 @@ if(typeof __top3ZoomLayout==='function')window.layoutTimeLogZoom=function(){cons
 const __top3Context=window.renderTimeLogZoomContext;
 if(typeof __top3Context==='function')window.renderTimeLogZoomContext=function(range){const ret=__top3Context.apply(this,arguments),k=document.getElementById('dailyTimeLog')?.dataset.day,box=document.getElementById('timeLogZoomContextList');if(!box||!range||!k)return ret;
  const extras=top3EventsForDay(k).filter(x=>{const m=top3Minutes(x.at);return m>=range.start&&m<=range.end;});
- extras.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='time-log-context-entry';b.dataset.kind=x.type==='setup'?'top3-setup':'top3-done';b.textContent=(x.type==='setup'?'🎯 수립 · ':'✓ 달성 · ')+top3Time(x.at)+' · '+x.title;b.onclick=()=>{closeTimeLogZoom();document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'})};box.appendChild(b)});
+ extras.forEach(x=>{const b=document.createElement('button');b.type='button';b.className='time-log-context-entry';b.dataset.kind=x.type==='setup'?'top3-setup':'top3-done';b.textContent=(x.type==='setup'?'🎯 수립 · ':'✓ 달성 · ')+top3Time(x.at)+' · '+x.title;b.onclick=()=>prTop3ZoomToArchive174(k);box.appendChild(b)});
  const count=document.getElementById('timeLogZoomContextCount');if(count&&extras.length)count.textContent=(Number.parseInt(count.textContent)||0)+extras.length+'건';return ret;};
 try{if(typeof startUnlocked!=='undefined'&&startUnlocked&&currentUserId)requestAnimationFrame(()=>render());}catch(e){console.warn('TOP3 initial refresh',e)}
 </script>
@@ -17747,7 +17747,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  #recordWeeklyBrief .growth-weekly-cards .growth-stat strong{font-size:22px!important;letter-spacing:-.7px;}
 }
 </style><script>
-/* v1.7.175: ONE back controller for Android CloseWatcher, fallback history and Escape.
+/* v1.7.176: ONE back controller for Android CloseWatcher, fallback history and Escape.
  * Navigations are recorded once (at render), popup origin wins, Back never pushes.
  */
 (function(){
@@ -17759,7 +17759,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  const EXIT_DELAY=2000;
  let owner=typeof currentUserId!=='undefined'?currentUserId:null;
  let last=null,origin=null,oldModal=false,restoring=false,restoreToken=0;
- let exitAt=0,toast=null,queuedBack=0;
+ let exitAt=0,toast=null,restoreBackGuardUntil=0;
  const canNavigate=()=>!!(startUnlocked&&currentUserId);
  const getKey=()=>screen==='settings'?'settings/'+settingsPage:String(screen);
  const getY=()=>Math.max(0,window.scrollY||document.documentElement.scrollTop||0);
@@ -17790,6 +17790,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
    // Opening modal is not a page visit. Preserve the FROM location before any tab jump.
    if(!restoring&&canNavigate()&&modalNow&&!oldModal)storeFromPopup();
    if(!restoring&&canNavigate()&&incoming.key!==before.key){
+     restoreBackGuardUntil=0;
      // In-page timeline drilldowns become obsolete on unrelated navigation.
      if(window.__prZoomRoute175&&incoming.screen!==window.__prZoomRoute175.screen)window.__prZoomRoute175=null;
      // A new destination after leaving the TOP3 archive abandons its return trip.
@@ -17851,13 +17852,13 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
      oldModal=false;
      last={...snap(),scroll:desired};
      const finish=()=>{
-       if(token!==restoreToken||currentUserId!==account||getKey()!==to.key){restoring=false;queuedBack=0;return;}
+       if(token!==restoreToken||currentUserId!==account||getKey()!==to.key){restoring=false;return;}
        const limit=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
        window.scrollTo({top:Math.min(desired,limit),left:0,behavior:'instant'});
-       last={...snap(),scroll:getY()};restoring=false;if(queuedBack){queuedBack=0;requestAnimationFrame(back);}
+       last={...snap(),scroll:getY()};restoring=false;
      };
      requestAnimationFrame(()=>requestAnimationFrame(finish));
-   }catch(e){restoring=false;queuedBack=0;console.warn('PokeHabit history restore:',e);}
+   }catch(e){restoring=false;console.warn('PokeHabit history restore:',e);}
  }
  function reopenZoom175(trip){
    const section=document.getElementById('dailyTimeLog');
@@ -17917,11 +17918,12 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  function back(){
    if(typeof prExitApproved!=='undefined'&&prExitApproved)return;
    syncUser();
-   if(restoring){queuedBack=1;return;} // deliver one rapid follow-up Back after restoration
+   if(restoring||Date.now()<restoreBackGuardUntil)return; // duplicate native/JS Back must not dismiss the restored popup
    // TOP3 marker opens a record drill-down from the expanded timeline.
    // One Back returns to that exact expanded timeline, not home or a random tab.
    const trip=window.__prTop3ZoomReturn174;
    if(trip&&canNavigate()&&screen==='stats'&&trip.userId===currentUserId){
+     restoreBackGuardUntil=Date.now()+110;
      window.__prTop3ZoomReturn174=null;
      // Do not let an archive dialog consume the first Back without navigating.
      document.getElementById('tl168ArchiveOverlay')?.remove();
@@ -17950,12 +17952,13 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
    // One Back goes back to its expanded source (rather than closing just the detail).
    const zoomTrip=window.__prZoomRoute175;
    if(zoomTrip&&zoomTrip.userId===currentUserId&&screen===zoomTrip.screen){
+     restoreBackGuardUntil=Date.now()+110;
      window.__prZoomRoute175=null;
      if(restoreZoomTrip175(zoomTrip))return;
    }
    if(closePopup())return;
    if(!canNavigate())return;
-   if(restoring){queuedBack=1;return;}
+   if(restoring)return;
    while(stack.length){
      const item=stack.pop();
      if(!item||item.key===getKey()||(item.screen==='manual'&&!adminUnlocked))continue;
