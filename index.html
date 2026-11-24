@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.167 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.168 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -17190,58 +17190,74 @@ function top3EventsForDay(k){
 }
 function top3Minutes(at){const d=new Date(at);return d.getHours()*60+d.getMinutes()+d.getSeconds()/60;}
 function top3MainMarks(){
- const section=document.getElementById('dailyTimeLog'),k=section?.dataset.day,chart=document.getElementById('dailyTimeLogChart');if(!chart||!k)return;
- const lane=chart.querySelector('.time-log-lane[data-kind="life"]');if(!lane)return;
- lane.querySelectorAll('.tl-top3-marker').forEach(x=>x.remove());
- const width=lane.clientWidth||320,span=Math.max(1,width-28);
- top3EventsForDay(k).forEach((x,i)=>{
-  const el=document.createElement('button');el.type='button';el.className='tl-top3-marker '+(x.type==='setup'?'tl-top3-setup':'tl-top3-done');el.textContent=x.type==='setup'?'＋':'✓';el.title=(top3Time(x.at)+' '+x.title);el.setAttribute('aria-label',el.title);
-  el.style.left=Math.min(width-15,Math.max(15,14+top3Minutes(x.at)/1440*span))+'px';el.style.top=(i%2===0?7:34)+'px';
-  el.onclick=()=>{document.getElementById('top3CalendarSection')?.scrollIntoView({behavior:'smooth',block:'start'});};lane.appendChild(el);
+ const section=document.getElementById('dailyTimeLog'),chart=document.getElementById('dailyTimeLogChart');
+ if(!section||!chart)return;
+ chart.querySelectorAll('.tl-top3-marker').forEach(el=>el.remove());
+ section.querySelectorAll('.tl168-main-rail').forEach(el=>el.remove());
+ const events=top3EventsForDay(section.dataset.day);
+ if(!events.length)return;
+ const scroll=chart.closest('.time-log-chart-scroll');
+ if(!scroll)return;
+ const rail=document.createElement('div');rail.className='tl168-main-rail';rail.setAttribute('aria-label','오늘의 목표 수립·달성 시각');
+ const tag=document.createElement('span');tag.className='tl168-rail-name';tag.textContent='🎯';tag.title='목표 수립·달성';rail.appendChild(tag);
+ const plot=chart.querySelector('.time-log-lane[data-kind="life"]');
+ const chartRect=chart.getBoundingClientRect(),plotRect=plot?.getBoundingClientRect();
+ const plotLeft=plotRect?plotRect.left-chartRect.left:34;
+ const plotWidth=plotRect?.width||Math.max(120,chart.clientWidth-40);
+ const groups=[];
+ events.sort((x,y)=>top3Minutes(x.at)-top3Minutes(y.at)).forEach(item=>{
+   const minute=top3Minutes(item.at),x=plotLeft+14+(minute/1440)*Math.max(1,plotWidth-28);
+   const near=groups.find(g=>Math.abs(g.x-x)<12);
+   if(near){near.events.push(item)}else groups.push({x,events:[item]});
  });
+ groups.forEach(group=>{
+  const button=document.createElement('button');button.type='button';button.className='tl168-rail-marker '+(group.events.some(e=>e.type==='done')?'is-done':'is-setup');
+  button.style.left=group.x+'px';button.textContent=group.events.length>1?String(group.events.length):(group.events[0].type==='setup'?'＋':'✓');
+  button.title=group.events.map(e=>top3Time(e.at)+' · '+e.title).join(' / ');button.setAttribute('aria-label',button.title);
+  button.onclick=()=>{if(typeof setScreen==='function')setScreen('record');requestAnimationFrame(()=>{recordJump('top3');top3OpenArchive168(section.dataset.day)})};
+  rail.appendChild(button);
+ });
+ scroll.insertAdjacentElement('afterend',rail);
 }
 const __top3LayoutMarkers=window.layoutTimeLogMarkers;
 if(typeof __top3LayoutMarkers==='function')window.layoutTimeLogMarkers=function(){const v=__top3LayoutMarkers.apply(this,arguments);try{top3MainMarks()}catch(e){console.warn('TOP3 markers',e)}return v;};
 function top3ZoomMarks(){
  const section=document.getElementById('dailyTimeLog'),c=document.getElementById('timeLogZoomContent'),view=document.getElementById('timeLogZoomScroll');
  if(!section||!c||!view)return;
- const lane=c.querySelector('.time-log-zoom-track[data-kind="life"]');
- const labels=document.getElementById('timeLogZoomLabels');
+ const lane=c.querySelector('.time-log-zoom-track[data-kind="life"]'),labels=document.getElementById('timeLogZoomLabels');
  if(!lane||!labels)return;
  lane.querySelectorAll('.tl-top3-zoom-mark,.tl-top3-zoom-pin,.tl-top3-mini-track').forEach(el=>el.remove());
- const events=top3EventsForDay(section.dataset.day);
+ const events=top3EventsForDay(section.dataset.day).sort((a,b)=>top3Minutes(a.at)-top3Minutes(b.at));
  if(!events.length)return;
  const ppm=Number(view.dataset.pixelsPerMinute)||1;
- // Dedicated little strip within the life lane: cannot overlap walking and life-event labels.
- const occupied=[],placed=events.map(item=>{
+ const entry=top3Day(section.dataset.day);
+ const baseHeight=parseFloat(lane.style.height)||lane.clientHeight||100;
+ const rows=[];
+ const widths=[];
+ const placed=events.map(item=>{
   const x=55+top3Minutes(item.at)*ppm;
+  const label=item.type==='setup'?`🎯 수립 · ${entry?.items?.length||0}개 목표`:('✓ 달성 · '+item.title.replace(/^목표 달성 · /,''));
+  const text=top3Time(item.at)+'  '+label;
+  const width=Math.min(236,Math.max(158,Math.round(Array.from(text).length*7+22)));
   let row=0;
-  while(occupied[row]!=null&&x-occupied[row]<82)row++;
-  occupied[row]=x;
-  return {item,x,row};
+  while(rows[row]!=null&&x<rows[row]+width/2+12)row++;
+  rows[row]=x+width/2;
+  widths.push(width);
+  return {item,x,row,text,width};
  });
- const baseHeight=lane.clientHeight||parseFloat(lane.style.height)||90;
- const added=12+occupied.length*32;
+ const rowHeight=39,added=12+rows.length*rowHeight+12;
  lane.style.height=(baseHeight+added)+'px';
- const lifeLabel=labels.querySelectorAll('.time-log-zoom-lane-label')[2];
- if(lifeLabel)lifeLabel.style.height=(baseHeight+added)+'px';
- const divider=document.createElement('div');divider.className='tl-top3-mini-track';divider.style.top=(baseHeight+2)+'px';lane.appendChild(divider);
- placed.forEach(({item,x,row})=>{
+ const lifeLabel=labels.querySelectorAll('.time-log-zoom-lane-label')[2];if(lifeLabel)lifeLabel.style.height=(baseHeight+added)+'px';
+ const divider=document.createElement('div');divider.className='tl-top3-mini-track';divider.style.top=(baseHeight+3)+'px';lane.appendChild(divider);
+ placed.forEach(({item,x,row,text,width})=>{
+  const y=baseHeight+12+row*rowHeight;
   const pin=document.createElement('span');pin.className='tl-top3-zoom-pin '+(item.type==='setup'?'is-setup':'is-done');
-  pin.style.left=x+'px';pin.style.top=(baseHeight+13+row*32)+'px';lane.appendChild(pin);
-  const el=document.createElement('button');el.type='button';
-  el.className='tl-top3-zoom-mark '+(item.type==='setup'?'is-setup':'is-done');
-  el.dataset.eventMinute=String(top3Minutes(item.at));
-  el.textContent=item.type==='setup'?'🎯 수립':'✓ 달성';
-  el.title=top3Time(item.at)+' · '+item.title;
-  el.setAttribute('aria-label',el.title);
-  el.style.left=x+'px';el.style.top=(baseHeight+17+row*32)+'px';
-  el.onclick=()=>{
-   const key=section.dataset.day;
-   closeTimeLogZoom();
-   if(typeof setScreen==='function')setScreen('record');
-   requestAnimationFrame(()=>{recordJump('top3');if(typeof top3HistorySelect==='function')top3HistorySelect(key,false)})
-  };
+  pin.style.left=x+'px';pin.style.top=(y+33)+'px';lane.appendChild(pin);
+  const el=document.createElement('button');el.type='button';el.className='tl-top3-zoom-mark '+(item.type==='setup'?'is-setup':'is-done');
+  el.dataset.eventMinute=String(top3Minutes(item.at));el.textContent=text;
+  el.title=top3Time(item.at)+' · '+item.title;el.setAttribute('aria-label',el.title);
+  el.style.width=width+'px';el.style.maxWidth=width+'px';el.style.left=x+'px';el.style.top=y+'px';
+  el.onclick=()=>{const key=section.dataset.day;closeTimeLogZoom();if(typeof setScreen==='function')setScreen('record');requestAnimationFrame(()=>{recordJump('top3');top3OpenArchive168(key)})};
   lane.appendChild(el);
  });
  top3ZoomFit();
@@ -17249,19 +17265,15 @@ function top3ZoomMarks(){
 function top3ZoomFit(){
  const view=document.getElementById('timeLogZoomScroll'),c=document.getElementById('timeLogZoomContent');
  if(!view||!c||!view.clientWidth)return;
- const ppm=Number(view.dataset.pixelsPerMinute)||1;
- const lo=view.scrollLeft,hi=lo+view.clientWidth;
+ const ppm=Number(view.dataset.pixelsPerMinute)||1,lo=view.scrollLeft,hi=lo+view.clientWidth;
  c.querySelectorAll('.tl-top3-zoom-mark').forEach(el=>{
-  const minute=Number(el.dataset.eventMinute),x=55+minute*ppm;
-  const inRange=x>=lo&&x<=hi;
-  el.style.visibility=inRange?'visible':'hidden';el.tabIndex=inRange?0:-1;
-  const w=el.offsetWidth||64;
-  const shift=Math.min(hi-8-w/2,Math.max(lo+8+w/2,x))-x;
-  el.style.transform='translateX(calc(-50% + '+shift+'px))';
+  const minute=Number(el.dataset.eventMinute),x=55+minute*ppm,visible=x>=lo&&x<=hi;
+  el.style.visibility=visible?'visible':'hidden';el.tabIndex=visible?0:-1;
+  const w=el.offsetWidth||180;
+  const center=Math.min(hi-5-w/2,Math.max(lo+5+w/2,x));
+  el.style.transform='translateX(calc(-50% + '+(center-x)+'px))';
  });
- c.querySelectorAll('.tl-top3-zoom-pin').forEach(el=>{
-  const x=parseFloat(el.style.left)||0;el.style.visibility=x>=lo&&x<=hi?'visible':'hidden';
- });
+ c.querySelectorAll('.tl-top3-zoom-pin').forEach(el=>{const x=parseFloat(el.style.left)||0;el.style.visibility=x>=lo&&x<=hi?'visible':'hidden'});
 }
 const __top3ZoomLayout=window.layoutTimeLogZoom;
 if(typeof __top3ZoomLayout==='function')window.layoutTimeLogZoom=function(){const v=__top3ZoomLayout.apply(this,arguments);try{top3ZoomMarks()}catch(e){console.warn('TOP3 zoom',e)}return v;};
@@ -17443,8 +17455,12 @@ function top3HistoryBody167(key){
  <p class="top3-history-legend-v167">${today?'오늘 목표는 완료·취소·상세 내용을 수정할 수 있습니다.':'지난 날짜는 확정된 달성 이력입니다. 보상 정합성을 위해 읽기 전용으로 표시합니다.'} 목표 수립과 달성은 타임로그에서도 색과 표시를 구분합니다.</p>`;
 }
 function top3HistoryHTML(){
- const keys=top3HistoryDates(),key=top3HistoryDate();
- return `<section class="top3-history-v167" id="top3RecordHistory"><div class="top3-history-head-v167"><strong>📋 목표 기록 · 달성 여부</strong><select aria-label="확정한 목표 날짜 선택" onchange="top3HistorySelect(this.value)">${keys.length?keys.map(k=>`<option value="${k}" ${key===k?'selected':''}>${k}${k===day()?' · 오늘':''}</option>`).join(''):'<option value="">목표 기록 없음</option>'}</select></div><div id="top3HistoryDetail">${key?top3HistoryBody167(key):'<p class="top3-history-summary-v167">아직 확정한 목표 기록이 없습니다.</p>'}</div></section>`;
+ const keys=top3HistoryDates(),key=top3HistoryDate(),e=key?top3Day(key):null;
+ const done=e?.items?.filter(g=>g.doneAt).length||0,count=e?.items?.length||0;
+ return `<section class="top3-history-v167 tl168-history-entry" id="top3RecordHistory">
+ <div><strong>📋 목표 기록 모아보기</strong><small>${keys.length}일의 목표 기록 · 최근 ${key||'없음'} ${count?`(${done}/${count} 달성)`:''}</small></div>
+ <button type="button" class="tl168-archive-open" onclick="top3OpenArchive168()">검색 · 정렬 · 전체 보기 ↗</button>
+ </section>`;
 }
 function top3HistorySelect(k,saveSelection=true){
  const keys=top3HistoryDates();
@@ -17460,5 +17476,105 @@ function top3RecordEditToday(i){
 }
 const tl167Update=window.timeLogZoomUpdatePosition;
 if(typeof tl167Update==='function')window.timeLogZoomUpdatePosition=function(){const result=tl167Update.apply(this,arguments);try{top3ZoomFit()}catch(e){}return result};
+</script>
+
+<style id="top3-v168-style">
+.tl168-main-rail{position:relative;height:27px;display:block;box-sizing:border-box;margin:3px 0 4px;border:1px solid #a5bacb66;border-radius:7px;background:linear-gradient(90deg,#b69bde15,#5ac49a15);overflow:hidden}
+.tl168-rail-name{position:absolute;left:7px;top:5px;font-size:12px}
+.tl168-rail-marker{position:absolute;top:4px;transform:translateX(-50%);width:19px;height:19px;border-radius:10px;padding:0;border:1px solid;z-index:2;font:900 11px/16px system-ui;cursor:pointer;box-shadow:0 0 0 2px #ecf3fc}
+.tl168-rail-marker.is-setup{background:#dfd0fc;border-color:#ab85d7;color:#5c328f}
+.tl168-rail-marker.is-done{background:#d0f3e4;border-color:#5aba95;color:#167450}
+html:not([data-theme="light"]) .tl168-rail-marker{box-shadow:0 0 0 2px #193550}
+.time-log-section .tl-top3-zoom-mark{display:block!important;min-width:0!important;max-width:236px!important;height:32px!important;line-height:23px!important;overflow:hidden!important;text-overflow:ellipsis!important;text-align:left!important;padding:4px 9px!important;white-space:nowrap!important;font-size:11px!important;font-weight:800!important}
+.time-log-section .tl-top3-zoom-pin{width:8px;height:8px;box-shadow:0 0 0 1px #91a2b5}
+.time-log-section .tl-top3-mini-track{border-top:1px dashed #9aaec6aa}
+.tl168-history-entry{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 0!important}
+.tl168-history-entry>div{display:grid;gap:5px;min-width:0;flex:1}.tl168-history-entry strong{font-size:12px}.tl168-history-entry small{font-size:10px;color:var(--sub,#a5bfd1)}
+.tl168-archive-open{border:1px solid #83aac0;border-radius:10px;background:#2a5169;color:#e8faff;min-height:37px;padding:8px 11px;font:800 11px system-ui;cursor:pointer}
+.tl168-overlay{position:fixed;inset:0;z-index:2147483200;padding:12px;box-sizing:border-box;display:grid;place-items:center;background:#07182bc9;backdrop-filter:blur(3px)}
+.tl168-dialog{width:min(620px,100%);max-height:93dvh;background:#19344f;border:1px solid #7194ad;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;color:#f2f9ff;box-shadow:0 18px 60px #081a2e66}
+.tl168-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px;border-bottom:1px solid #6787a555}.tl168-dialog-head strong{font-size:16px}.tl168-dialog-head small{display:block;color:#acc7d9;margin-top:4px;font-size:11px}
+.tl168-dialog-head button{min-width:37px;height:37px;border-radius:9px;border:1px solid #6388a3;background:#284a66;color:inherit;font-size:22px}
+.tl168-controls{padding:10px 13px;display:grid;grid-template-columns:1fr 1fr;gap:8px;border-bottom:1px solid #6787a555}
+.tl168-controls input,.tl168-controls select{width:100%;box-sizing:border-box;min-width:0;height:36px;padding:6px 8px;border-radius:9px;border:1px solid #688aa4;background:#264864;color:#f3fbff;font:650 12px system-ui}
+.tl168-controls input[type="search"]{grid-column:1/-1}
+.tl168-results{overflow-y:auto;padding:10px 13px 15px;display:grid;gap:9px;min-height:0;overscroll-behavior:contain}
+.tl168-day-group{border:1px solid #65859d77;background:#23425a;border-radius:12px;padding:10px}
+.tl168-day-head{display:flex;justify-content:space-between;gap:6px;align-items:center;font-weight:850;font-size:12px;padding-bottom:8px;border-bottom:1px solid #6889a144}
+.tl168-day-head span{font-size:11px;color:#b4d0df;font-weight:600}
+.tl168-item{display:flex;gap:9px;padding:9px 2px;border-top:1px solid #6889a122;align-items:flex-start}
+.tl168-item:first-of-type{border-top:0}.tl168-status{font-size:17px;flex:none;width:21px;text-align:center}
+.tl168-item>div{flex:1;min-width:0}.tl168-item strong{font-size:12px;font-weight:750;overflow-wrap:anywhere}.tl168-item p{font-size:11px;white-space:pre-wrap;overflow-wrap:anywhere;color:#bcd3e1;margin:5px 0 0}.tl168-item small{display:block;color:#a3c1d3;font-size:10px;margin-top:3px}
+.tl168-item button{border:1px solid #648faa;background:#315a72;color:#fff;border-radius:8px;min-height:32px;padding:5px 8px;font-size:10px;font-weight:800}
+.tl168-empty{text-align:center;padding:25px;color:#aec7d6;font-size:12px}
+html[data-theme="light"] .tl168-history-entry small{color:#5b778d}
+html[data-theme="light"] .tl168-archive-open{background:#e8f4fd;color:#305875}
+html[data-theme="light"] .tl168-dialog{background:#f8fbff;color:#23435d;border-color:#c2d5e4}
+html[data-theme="light"] .tl168-dialog-head small,html[data-theme="light"] .tl168-day-head span,html[data-theme="light"] .tl168-item small,html[data-theme="light"] .tl168-item p{color:#607e92}
+html[data-theme="light"] .tl168-controls input,html[data-theme="light"] .tl168-controls select{background:#fff;color:#23435d;border-color:#b3cddd}
+html[data-theme="light"] .tl168-day-group{background:#eef5fb;border-color:#c6d8e6}
+html[data-theme="light"] .tl168-dialog-head button,html[data-theme="light"] .tl168-item button{background:#f5fbff;color:#295571}
+@media(max-width:370px){.tl168-overlay{padding:6px}.tl168-controls{gap:5px;padding:8px}.tl168-controls input,.tl168-controls select{font-size:11px}}
+</style>
+<script>
+/* v1.7.168: TOP3 archive popup with status, sorting and text search. */
+let tl168ArchiveState={date:'',status:'all',sort:'newest',query:''};
+function top3OpenArchive168(date=''){
+ const old=document.getElementById('tl168ArchiveOverlay');if(old)old.remove();
+ tl168ArchiveState={date:date||'',status:'all',sort:'newest',query:''};
+ const overlay=document.createElement('div');overlay.id='tl168ArchiveOverlay';overlay.className='tl168-overlay';
+ overlay.innerHTML=`<div class="tl168-dialog" role="dialog" aria-modal="true" aria-label="목표 모아보기">
+ <div class="tl168-dialog-head"><div><strong>🎯 목표 모아보기</strong><small>날짜별 수립 목표 · 달성 여부 · 상세 기록</small></div><button type="button" aria-label="닫기" onclick="top3CloseArchive168()">×</button></div>
+ <div class="tl168-controls"><input type="search" id="tl168Search" placeholder="목표명·상세 내용 검색" aria-label="목표 검색" oninput="tl168ArchiveState.query=this.value;top3RenderArchive168()">
+ <select aria-label="날짜 선택" id="tl168Date" onchange="tl168ArchiveState.date=this.value;top3RenderArchive168()"><option value="">모든 날짜</option>${top3HistoryDates().map(k=>`<option value="${k}" ${k===date?'selected':''}>${k}</option>`).join('')}</select>
+ <select aria-label="달성 상태" onchange="tl168ArchiveState.status=this.value;top3RenderArchive168()"><option value="all">전체 상태</option><option value="done">달성만</option><option value="pending">미달성만</option></select>
+ <select aria-label="정렬" onchange="tl168ArchiveState.sort=this.value;top3RenderArchive168()"><option value="newest">최근 날짜순</option><option value="oldest">오래된 날짜순</option><option value="done">달성 우선</option><option value="pending">미달성 우선</option></select>
+ <small style="align-self:center;color:#b6ccde;font-size:10px" id="tl168Total">검색 중</small></div>
+ <div id="tl168Results" class="tl168-results"></div></div>`;
+ overlay.addEventListener('click',e=>{if(e.target===overlay)top3CloseArchive168()});
+ document.body.appendChild(overlay);top3RenderArchive168();overlay.querySelector('.tl168-dialog-head button')?.focus({preventScroll:true});
+}
+function top3CloseArchive168(){document.getElementById('tl168ArchiveOverlay')?.remove()}
+function top3RenderArchive168(){
+ const box=document.getElementById('tl168Results');if(!box)return;
+ const state=tl168ArchiveState,q=state.query.toLocaleLowerCase().trim();
+ let entries=top3HistoryDates().flatMap(key=>{
+  if(state.date&&state.date!==key)return [];
+  const e=top3Day(key);return (e?.items||[]).map((g,index)=>({key,g,index}));
+ }).filter(x=>{
+  if(state.status==='done'&&!x.g.doneAt)return false;
+  if(state.status==='pending'&&x.g.doneAt)return false;
+  return !q||(String(x.g.title||'')+' '+String(x.g.detail||'')).toLocaleLowerCase().includes(q);
+ });
+ entries.sort((a,b)=>{
+  if(state.sort==='done'||state.sort==='pending'){
+   const ad=!!a.g.doneAt,bd=!!b.g.doneAt;
+   if(ad!==bd)return state.sort==='done'?(bd-ad):(ad-bd);
+  }
+  const v=state.sort==='oldest'?a.key.localeCompare(b.key):b.key.localeCompare(a.key);
+  return v||a.index-b.index;
+ });
+ const stat=document.getElementById('tl168Total');if(stat)stat.textContent=`${entries.length}개 목표 · ${entries.filter(x=>x.g.doneAt).length}개 달성`;
+ box.replaceChildren();
+ if(!entries.length){const p=document.createElement('p');p.className='tl168-empty';p.textContent='조건에 맞는 목표 기록이 없습니다.';box.appendChild(p);return}
+ let currentGroup=null,lastKey=null;
+ entries.forEach(({key,g,index})=>{
+  // Status sort may mix dates. Keep heading whenever group changes.
+  if(lastKey!==key){currentGroup=document.createElement('div');currentGroup.className='tl168-day-group';
+   const head=document.createElement('div');head.className='tl168-day-head';const strong=document.createElement('strong');strong.textContent=key+(key===day()?' · 오늘':'');
+   const meta=document.createElement('span');const entry=top3Day(key);meta.textContent=(entry?.items||[]).filter(x=>x.doneAt).length+'/'+(entry?.items?.length||0)+' 달성';head.append(strong,meta);currentGroup.appendChild(head);box.appendChild(currentGroup);lastKey=key;
+  }
+  const row=document.createElement('div');row.className='tl168-item';
+  const icon=document.createElement('span');icon.className='tl168-status';icon.textContent=g.doneAt?'✅':'○';
+  const details=document.createElement('div');const title=document.createElement('strong');title.textContent=g.title||'목표';details.appendChild(title);
+  const time=document.createElement('small');time.textContent=g.doneAt?'달성 '+top3Time(g.doneAt):'미달성';details.appendChild(time);
+  if(g.detail){const note=document.createElement('p');note.textContent=g.detail;details.appendChild(note)}
+  row.append(icon,details);
+  if(key===day()){
+   const btn=document.createElement('button');btn.type='button';btn.textContent=g.doneAt?'수정':'완료';btn.onclick=()=>{top3CloseArchive168();top3OpenCompletion(index)};row.appendChild(btn);
+  }
+  currentGroup.appendChild(row);
+ });
+}
 </script>
 </body></html>
