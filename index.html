@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.170 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.172 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@500;600;700;800;900&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -17745,115 +17745,166 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  #recordWeeklyBrief .growth-weekly-cards .growth-stat strong{font-size:22px!important;letter-spacing:-.7px;}
 }
 </style><script>
-/* v1.7.170: in-app back stack. Only navigational screen changes are tracked,
- * not re-renders, modal changes, rewards, or scroll updates. No fake browser
- * history entries, no data schema changes, and existing exit handling remains. */
+/* v1.7.172 — deterministic screen history + popup-origin Back + double-back exit.
+ * Scoped to current trainer. Never creates history entries when restoring.
+ */
 (function(){
  'use strict';
- if(window.__prBack170)return;
- window.__prBack170=true;
- const states=[];
- const LIMIT=20;
- let rememberedUser=(typeof currentUserId!=='undefined'?currentUserId:null);
- let lastKey='';
- let lastSnapshot=null;
- let reverting=false;
- let restoringScroll=false;
- const $view=document.getElementById('view');
- const xScroll=()=>Math.max(0,window.scrollY||document.documentElement.scrollTop||0);
- function stateKey(){
-   const s=typeof screen==='string'?screen:'home';
-   const settings=(s==='settings'&&typeof settingsPage==='string')?settingsPage:'menu';
-   return s==='settings'?s+':'+settings:s;
+ if(window.__prBack172)return;
+ window.__prBack172=true;
+ const trail=[];
+ const LIMIT=24;
+ const EXIT_WINDOW_MS=2000;
+ let account=typeof currentUserId!=='undefined'?currentUserId:null;
+ let active=null;
+ let overlayOrigin=null;
+ let lastModal=false;
+ let restoring=false;
+ let exitArmedAt=0;
+ let exitToast=null;
+ const logged=()=>!!(startUnlocked&&currentUserId);
+ const pageKey=()=>screen==='settings'?'settings:'+(typeof settingsPage==='string'?settingsPage:'menu'):String(screen);
+ const pageScroll=()=>Math.max(0,window.scrollY||document.documentElement.scrollTop||0);
+ function snapshot(){return {screen,key:pageKey(),settings:typeof settingsPage==='string'?settingsPage:'menu',date:typeof selectedDate==='string'?selectedDate:null,month:typeof calendarMonth==='string'?calendarMonth:null,mode:typeof calendarMode==='string'?calendarMode:null,scroll:pageScroll()};}
+ function syncAccount(){const id=typeof currentUserId!=='undefined'?currentUserId:null;if(id!==account){account=id;trail.length=0;active=snapshot();overlayOrigin=null;lastModal=false;exitArmedAt=0;clearExitToast();}}
+ function push(state){if(!state||!state.screen)return;const prev=trail[trail.length-1];if(prev?.key===state.key){trail[trail.length-1]={...state};return;}trail.push({...state});if(trail.length>LIMIT)trail.shift();}
+ function clearExitToast(){if(exitToast){exitToast.remove();exitToast=null;}}
+ function resetExit(){exitArmedAt=0;clearExitToast();}
+ function markExitToast(){
+   clearExitToast();
+   const t=document.createElement('div');t.id='prBackExit172';t.setAttribute('role','status');
+   t.style.cssText='position:fixed;bottom:max(90px,calc(env(safe-area-inset-bottom) + 80px));left:50%;transform:translateX(-50%);z-index:2147483644;background:#1b354d;color:#f4fbff;border:1px solid #7696ad;padding:13px 19px;border-radius:14px;box-shadow:0 8px 26px #06162699;font-size:13px;font-weight:800;white-space:nowrap;max-width:calc(100vw - 28px);pointer-events:none;text-align:center';
+   t.textContent='뒤로가기를 한 번 더 누르면 종료됩니다';document.body.appendChild(t);exitToast=t;
  }
- function snapshot(){
-   return {key:stateKey(),screen,settings:typeof settingsPage!=='undefined'?settingsPage:'menu',
-     calendarDate:typeof selectedDate!=='undefined'?selectedDate:null,
-     calendarMonth:typeof calendarMonth!=='undefined'?calendarMonth:null,
-     calendarMode:typeof calendarMode!=='undefined'?calendarMode:null,
-     scroll:xScroll()};
- }
- lastKey=stateKey();
- lastSnapshot=snapshot();
- function resetForAccount(){
-   const user=(typeof currentUserId!=='undefined'?currentUserId:null);
-   if(user!==rememberedUser){rememberedUser=user;states.length=0;lastKey='';lastSnapshot=null;}
- }
- function updatePrevPosition(){
-   if(lastSnapshot&&!restoringScroll&&lastKey===stateKey())lastSnapshot.scroll=xScroll();
- }
- window.addEventListener('scroll',()=>{if(!restoringScroll)updatePrevPosition()},{passive:true});
+ function overlayOpen(){return !!(
+    (typeof timeLogZoomState!=='undefined'&&timeLogZoomState)||
+    (typeof referenceOverlayMode!=='undefined'&&referenceOverlayMode)||
+    document.getElementById('top3EditorBackdrop')||
+    document.getElementById('top3CompletionBackdrop')||
+    document.getElementById('tl168ArchiveOverlay')||
+    document.getElementById('prBackExit172')&&false
+ );}
+ function modalOpen(){return !!(typeof modal!=='undefined'&&modal&&modal.type!=='exitConfirm');}
+ function rememberPopupOrigin(){syncAccount();if(!overlayOrigin)overlayOrigin={...(active&&active.key===pageKey()?active:snapshot()),scroll:pageScroll()};resetExit();}
+ active=snapshot();lastModal=modalOpen();
+ // Capture origin on modal openings and on navigation. render() is called
+ // after screen changes, while the old document's scroll is still available.
  const originalRender=window.render;
- if(typeof originalRender==='function'){
-  window.render=function(){
-   resetForAccount();
-   const now=stateKey();
-   if(lastKey&&now!==lastKey&&!reverting&&startUnlocked&&currentUserId){
-     // Save the DOM's last visible position, even for navigation that directly assigns screen.
-     const prev={...(lastSnapshot||snapshot()),key:lastKey,scroll:xScroll()};
-     if(states.length===0||states[states.length-1].key!==prev.key)states.push(prev);
-     if(states.length>LIMIT)states.shift();
-   }
-   const result=originalRender.apply(this,arguments);
-   lastKey=now;
-   lastSnapshot=snapshot();
-   return result;
-  };
- }
- async function returnToPrevious(){
-   resetForAccount();
-   if(!startUnlocked||!currentUserId)return false;
-   let previous;
-   while(states.length){
-     const item=states.pop();
-     if(item.key!==stateKey()&&!(item.screen==='manual'&&!adminUnlocked)){
-       previous=item;break;
-     }
-   }
-   if(!previous)return false;
-   reverting=true;
+ if(typeof originalRender==='function')window.render=function(){
+    syncAccount();
+    const incoming=snapshot();
+    const previous=active||incoming;
+    if(!restoring&&logged()&&incoming.key!==previous.key){
+       const from=overlayOrigin||previous;
+       if(from.key!==incoming.key)push(from);
+       overlayOrigin=null;
+       resetExit();
+    }
+    const nowModal=modalOpen();
+    if(!restoring&&nowModal&&!lastModal&&incoming.key===previous.key)rememberPopupOrigin();
+    // Modal is closed; do not keep a stale popup origin through future navigation.
+    if(!nowModal&&lastModal&&incoming.key===previous.key&&!overlayOpen())overlayOrigin=null;
+    const result=originalRender.apply(this,arguments);
+    active={...incoming,scroll:incoming.key===previous.key?previous.scroll:0};
+    lastModal=modalOpen();
+    return result;
+ };
+ // Standalone DOM popups do not always call render().
+ ['openTimeLogZoom','openReferenceExpand','openReferenceEditor',
+  'top3OpenArchive168','top3OpenCompletion','top3OpenEditor'].forEach(name=>{
+    const fn=window[name];if(typeof fn!=='function')return;
+    window[name]=function(){rememberPopupOrigin();return fn.apply(this,arguments);};
+ });
+ // Snapshot the scroll of the currently rendered screen without entering history.
+ window.addEventListener('scroll',()=>{
+   if(!restoring&&active?.key===pageKey())active.scroll=pageScroll();
+ },{passive:true});
+ function restorePage(target){
+   restoring=true;resetExit();overlayOrigin=null;
+   const desiredY=Math.max(0,Number(target.scroll)||0);
    try{
-     if(previous.screen==='settings'&&typeof settingsPage!=='undefined')settingsPage=previous.settings;
-     if(previous.screen==='calendar'){
-       if(previous.calendarDate&&typeof selectedDate!=='undefined')selectedDate=previous.calendarDate;
-       if(previous.calendarMonth&&typeof calendarMonth!=='undefined')calendarMonth=previous.calendarMonth;
-       if(previous.calendarMode&&typeof calendarMode!=='undefined')calendarMode=previous.calendarMode;
-     }
      if(typeof trainingScrollRequest!=='undefined')++trainingScrollRequest;
-     screen=previous.screen;
+     if(target.screen==='settings'&&typeof settingsPage!=='undefined')settingsPage=target.settings||'menu';
+     if(target.screen==='calendar'){
+       if(target.date&&typeof selectedDate!=='undefined')selectedDate=target.date;
+       if(target.month&&typeof calendarMonth!=='undefined')calendarMonth=target.month;
+       if(target.mode&&typeof calendarMode!=='undefined')calendarMode=target.mode;
+     }
+     if(typeof closeTimeLogZoom==='function'&&typeof timeLogZoomState!=='undefined'&&timeLogZoomState)closeTimeLogZoom();
+     if(typeof closeReferenceOverlay==='function'&&typeof referenceOverlayMode!=='undefined'&&referenceOverlayMode)closeReferenceOverlay();
+     ['top3EditorBackdrop','top3CompletionBackdrop','tl168ArchiveOverlay'].forEach(id=>document.getElementById(id)?.remove());
      modal=null;
+     screen=target.screen;
      window.render();
-     // Render can reflow for fonts, images, and dynamic analysis cards.
-     // Restore once immediately and once after layout settles.
-     const y=Math.max(0,previous.scroll||0);
-     restoringScroll=true;
-     window.scrollTo({top:y,left:0,behavior:'instant'});
+     const id=currentUserId,expected=pageKey();
+     window.scrollTo({top:desiredY,left:0,behavior:'instant'});
      requestAnimationFrame(()=>requestAnimationFrame(()=>{
-       if(currentUserId===rememberedUser&&stateKey()===previous.key){
-         window.scrollTo({top:Math.min(y,Math.max(0,document.documentElement.scrollHeight-innerHeight)),left:0,behavior:'instant'});
+       if(currentUserId===id&&pageKey()===expected){
+         const maximum=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);
+         window.scrollTo({top:Math.min(desiredY,maximum),left:0,behavior:'instant'});
        }
-       restoringScroll=false;
-       if(lastSnapshot)lastSnapshot.scroll=xScroll();
+       active={...snapshot(),scroll:pageScroll()};
+       restoring=false;
      }));
-     return true;
-   }finally{reverting=false;}
+     active={...target,scroll:desiredY};
+   }catch(error){restoring=false;console.warn('PokeHabit back restore failed',error);}
  }
- const priorBack=window.prBackAction;
- if(typeof priorBack==='function'){
-   window.prBackAction=function(){
-     if(typeof prExitApproved!=='undefined'&&prExitApproved)return;
-     // Preserve specialized overlay and modal behavior exactly as before.
-     if(typeof referenceOverlayMode!=='undefined'&&referenceOverlayMode ||
-       typeof timeLogZoomState!=='undefined'&&timeLogZoomState ||
-       typeof modal!=='undefined'&&modal){return priorBack.apply(this,arguments);}
-     if(states.length){returnToPrevious().then(found=>{if(!found)priorBack();}).catch(()=>priorBack());return;}
-     return priorBack.apply(this,arguments);
-   };
+ function closeTransient(){
+   if(typeof referenceOverlayMode!=='undefined'&&referenceOverlayMode){closeReferenceOverlay();overlayOrigin=null;resetExit();return true;}
+   if(typeof timeLogZoomState!=='undefined'&&timeLogZoomState){closeTimeLogZoom();overlayOrigin=null;resetExit();return true;}
+   for(const [id,fn] of [['top3EditorBackdrop','top3CloseEditor'],['top3CompletionBackdrop','top3CloseCompletion'],['tl168ArchiveOverlay','top3CloseArchive168']]){
+     if(document.getElementById(id)){
+       if(typeof window[fn]==='function')window[fn]();else document.getElementById(id).remove();
+       overlayOrigin=null;resetExit();return true;
+     }
+   }
+   if(typeof modal!=='undefined'&&modal){
+     if(modal.type==='exitConfirm'){prExitConfirmCancel();resetExit();return true;}
+     if(typeof prBackConsumeModal==='function')prBackConsumeModal();
+     overlayOrigin=null;resetExit();return true;
+   }
+   return false;
  }
- // A small explicit back control is optional; hardware/system Back works via
- // existing CloseWatcher and popstate handlers, which already call prBackAction().
- window.prBackToPrevious170=()=>{
-   if(typeof prBackAction==='function')prBackAction();
+ function executeExit(){
+   resetExit();
+   // Reuse the same approved exit sequence as the existing app (native bridge,
+   // Capacitor, browser navigation), without a second confirmation modal.
+   if(typeof prExitConfirmAccept==='function'){
+     modal={type:'exitConfirm'};
+     prExitConfirmAccept();
+   }
+ }
+ function back(){
+   if(typeof prExitApproved!=='undefined'&&prExitApproved)return;
+   if(closeTransient())return;
+   syncAccount();
+   while(trail.length){
+     const prior=trail.pop();
+     if(prior.key===pageKey()||(prior.screen==='manual'&&!adminUnlocked))continue;
+     restorePage(prior);return;
+   }
+   if(!logged())return;
+   const now=Date.now();
+   if(exitArmedAt&&now-exitArmedAt<=EXIT_WINDOW_MS){executeExit();return;}
+   exitArmedAt=now;markExitToast();
+ }
+ window.prBackAction=back;
+ window.prBackToPrevious172=back;
+ // Preserve an explicit, unambiguous exit from settings even with history.
+ window.prExitFromMenu172=function(){resetExit();if(typeof prShowExitConfirm==='function')prShowExitConfirm()};
+ const previousRender=window.render;
+ if(typeof previousRender==='function')window.render=function(){
+    const result=previousRender.apply(this,arguments);
+    if(screen==='settings'&&settingsPage==='menu'&&logged()){
+      const menu=document.querySelector('#view .settings-menu');
+      if(menu&&!document.getElementById('prExitMenu172')){
+        const b=document.createElement('button');b.id='prExitMenu172';b.type='button';b.className='settings-menu-item';
+        b.style.cssText='display:flex;width:100%;justify-content:space-between;align-items:center;text-align:left;margin-top:12px;padding:14px;border:1px solid #9eafc2;border-radius:12px;background:transparent;color:inherit;font:inherit;cursor:pointer';
+        b.innerHTML='<span>🚪 앱 종료</span><small>종료 확인 후 앱 닫기</small>';
+        b.onclick=window.prExitFromMenu172;menu.appendChild(b);
+      }
+    }
+    return result;
  };
 })();
 </script></body></html>
