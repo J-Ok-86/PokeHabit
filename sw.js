@@ -1,5 +1,5 @@
 /* PokéRoutine personal, offline app shell. External Pokémon artwork may need internet. */
-const CACHE = 'pokeroutine-shell-v17188-calendar-goal-bottom-blocks';
+const CACHE = 'pokeroutine-shell-v17189-calendar-goal-bottom-blocks';
 const APP_SHELL = ['./', './index.html', './moves.html'];
 const OPTIONAL_SHELL = ['./manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {

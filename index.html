@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.188 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f1f7ff"><title>PokéRoutine v1.7.189 | 포켓몬 트레이닝 RPG</title><meta name="description" content="매일의 퀘스트로 포인트를 모아 포켓몬을 포획하고 도감을 채우는 비공식 개인용 웹앱"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" href="./icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 :root{color-scheme:dark;--bg:#061126;--card:#102344;--card2:#182e53;--line:#314465;--cream:#f4f6fb;--sub:#a5b8d5;--gold:#ffc955;--blue:#65b5ff;--green:#5ee5b4;--rose:#ff86ba}
@@ -5854,7 +5854,7 @@ html:not([data-theme="light"]) .time-log-section #dailyTimeLogChart .tl154-label
 
 </style>
 
-<!-- v1.7.188 Global typography: one face, two meaningful weights, no component exemptions. -->
+<!-- v1.7.189 Global typography: one face, two meaningful weights, no component exemptions. -->
 <style id="global-typography-v180">
 :root{--poke-typeface:'Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;--poke-regular:400;--poke-emphasis:700}
 html,body,body *,body *::before,body *::after,button,input,textarea,select,option,svg text{
@@ -5931,7 +5931,7 @@ html:not([data-theme="light"]) .time-log-section #timeLogZoomLabels .tl184-top3-
 </style>
 <style id="pr-safety-v185">.pr-safety-list{display:grid;gap:8px;margin-top:12px;max-height:320px;overflow:auto}.pr-safety-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border:1px solid var(--line,#ccd5df);border-radius:10px}.pr-safety-item>div{min-width:0}.pr-safety-item small{display:block;opacity:.85;margin-top:3px;overflow-wrap:anywhere}.pr-safety-item button{flex-shrink:0}</style>
 <style id="calendar-balanced-186">
-/* v1.7.188 · balanced calendar: fixed date/score/status slots; view-only, no persistence changes */
+/* v1.7.189 · balanced calendar: fixed date/score/status slots; view-only, no persistence changes */
 .calendar-grid .cal-day.cal-day-balanced{box-sizing:border-box;position:relative;display:grid;grid-template-rows:23px 22px 23px;align-content:center;justify-items:center;row-gap:1px;min-height:83px;max-height:none;padding:6px 1px 5px;border-radius:12px;transform:none;overflow:hidden}
 .calendar-grid .cal-day.cal-day-balanced .cal-number{display:flex;align-items:center;justify-content:center;width:100%;font-size:clamp(12px,3.2vw,16px);font-weight:400;line-height:1.1}
 .calendar-grid .cal-day.cal-day-balanced .cal-quests{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;font-size:clamp(10px,2.8vw,14px);font-weight:700;line-height:1.1;white-space:nowrap}
@@ -5957,7 +5957,7 @@ html[data-theme="dark"] .calendar-grid .cal-day.cal-day-balanced.heat-0 .cal-sta
 @media(min-width:700px){.calendar-grid .cal-day.cal-day-balanced{grid-template-rows:29px 27px 27px;min-height:103px;row-gap:3px}.calendar-grid .cal-day.cal-day-balanced .cal-status-rail{width:78px;height:27px}.calendar-grid .cal-day.cal-day-balanced .cal-status-icon{width:24px;height:24px;font-size:17px}}
 </style>
 <style id="calendar-goal-blocks-188">
-/* v1.7.188: balanced calendar keeps fixed badge slots; first slot becomes a vertical 3-block goal meter filled from bottom. */
+/* v1.7.189: balanced calendar keeps fixed badge slots; first slot becomes a vertical 3-block goal meter filled from bottom. */
 .calendar-grid .cal-day.cal-day-balanced .cal-goal-stack{display:inline-flex;flex-direction:column-reverse;justify-content:flex-start;align-items:center;gap:2px;width:12px;height:17px;flex:none;overflow:visible}
 .calendar-grid .cal-day.cal-day-balanced .cal-status-goal{overflow:visible}
 .calendar-grid .cal-day.cal-day-balanced .cal-goal-block{display:block;width:10px;height:4px;box-sizing:border-box;border-radius:2px;border:1.3px solid #6c4ba0;background:#fffafc;box-shadow:0 0 0 1px #ffffff60}
@@ -5967,7 +5967,54 @@ html[data-theme="dark"] .calendar-grid .cal-day.cal-day-balanced.heat-0 .cal-sta
 .calendar-grid .cal-day.cal-day-balanced .cal-status-note,.calendar-grid .cal-day.cal-day-balanced .cal-status-thought{font-family:'Noto Color Emoji','Segoe UI Emoji',sans-serif;font-size:13px;font-weight:400}
 @media(max-width:365px){.calendar-grid .cal-day.cal-day-balanced .cal-goal-stack{transform:scale(.86);transform-origin:center center}.calendar-grid .cal-day.cal-day-balanced .cal-status-note,.calendar-grid .cal-day.cal-day-balanced .cal-status-thought{font-size:12px}}
 </style>
-</head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
+<style id="quest-progress-v189">
+/* v1.7.189 · quest states: same leading completion box + existing left stripe, no extra blocks */
+.home-quest-section .quest-list .quest{position:relative}
+.home-quest-section .quest-list .quest.quest-state-progress{border-left:4px solid #e8a144!important}
+.home-quest-section .quest-list .quest.quest-state-challenge,
+.home-quest-section .quest-list .quest.quest-state-paused{border-left:4px solid #548de6!important}
+.home-quest-section .quest-list .quest.quest-state-done{border-left:4px solid #35b679!important}
+.home-quest-section .quest-list .quest.quest-state-progress:not(.quest-recommended){background:#493a30!important}
+.home-quest-section .quest-list .quest.quest-state-challenge:not(.quest-recommended),
+.home-quest-section .quest-list .quest.quest-state-paused:not(.quest-recommended){background:#243d58!important}
+html[data-theme="light"] .home-quest-section .quest-list .quest.quest-state-progress:not(.quest-recommended){background:#fff5e7!important;border-color:#d7ad74!important;border-left-color:#d88f30!important}
+html[data-theme="light"] .home-quest-section .quest-list .quest.quest-state-challenge:not(.quest-recommended),
+html[data-theme="light"] .home-quest-section .quest-list .quest.quest-state-paused:not(.quest-recommended){background:#eaf3ff!important;border-color:#9fc4ec!important;border-left-color:#4984db!important}
+.quest-state-pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid currentColor;border-radius:999px;padding:3px 7px;font-size:11px;line-height:1.25;font-weight:700;white-space:nowrap;flex-shrink:0;max-width:100%}
+.quest-state-pill.is-progress{color:#ffca78;background:rgba(174,103,18,.12)}
+.quest-state-pill.is-challenge,.quest-state-pill.is-paused{color:#a1caff;background:rgba(56,116,198,.14)}
+.quest-state-pill.is-done{color:#83eac0;background:rgba(37,151,100,.12)}
+html[data-theme="light"] .quest-state-pill.is-progress{color:#93530c;background:#fff0d8}
+html[data-theme="light"] .quest-state-pill.is-challenge,html[data-theme="light"] .quest-state-pill.is-paused{color:#245eab;background:#dcecff}
+html[data-theme="light"] .quest-state-pill.is-done{color:#14784e;background:#dbf5e7}
+.quest-progress-detail{display:block;min-width:0;font-size:11px;line-height:1.4;color:#f3c997;white-space:normal;overflow-wrap:anywhere}
+html[data-theme="light"] .quest-progress-detail{color:#855a26}
+.quest-leading-mark{display:inline-block;box-sizing:border-box;position:relative;width:19px;height:19px;min-width:19px;border:2px solid #aeb7c4;border-radius:4px;background:#fff;align-self:start;margin-top:7px;z-index:1}
+.quest-leading-mark.is-progress{border-color:#d99a40;background:linear-gradient(to top,#d99a40 50%,#fff 50%)}
+.quest-leading-mark.is-challenge,.quest-leading-mark.is-paused{border-color:#4c88d6;background:linear-gradient(to right,#4c88d6 50%,#fff 50%)}
+.quest-leading-mark.is-done{border-color:#278d5d;background:#278d5d}
+.quest-leading-mark.is-done::after{content:"";position:absolute;top:3px;left:3px;width:9px;height:5px;border-left:2px solid white;border-bottom:2px solid white;transform:rotate(-45deg)}
+.home-quest-section .quest-list.mode-mini .quest-mini-summary>.quest-mini-status.is-progress{background:linear-gradient(to top,#d99a40 50%,#fff 50%)!important;border-color:#d99a40!important}
+.home-quest-section .quest-list.mode-mini .quest-mini-summary>.quest-mini-status.is-challenge,
+.home-quest-section .quest-list.mode-mini .quest-mini-summary>.quest-mini-status.is-paused{background:linear-gradient(to right,#4c88d6 50%,#fff 50%)!important;border-color:#4c88d6!important}
+.home-quest-section .quest-list.mode-mini .quest.quest-state-progress:not(.quest-recommended){border-left-color:#d99a40!important}
+.home-quest-section .quest-list.mode-mini .quest.quest-state-challenge:not(.quest-recommended),
+.home-quest-section .quest-list.mode-mini .quest.quest-state-paused:not(.quest-recommended){border-left-color:#4c88d6!important}
+.home-quest-section .quest-list.mode-mini .quest-state-pill{padding:2px 4px;font-size:10px}
+.home-quest-section .quest-list.mode-mini .quest-mini-title{min-width:0!important}
+.home-quest-section .quest-list.mode-compact .quest-compact-summary{grid-template-columns:19px 40px minmax(0,1fr) auto!important;gap:7px}
+.home-quest-section .quest-list.mode-compact .quest-compact-summary>.quest-ico{grid-column:2!important}
+.home-quest-section .quest-list.mode-compact .quest-compact-summary>.quest-compact-main{grid-column:3!important}
+.home-quest-section .quest-list.mode-compact .quest-compact-summary>.quest-compact-actions{grid-column:4!important}
+.home-quest-section .quest-list.mode-compact .quest-compact-status .quest-state-pill{padding:2px 5px}
+.home-quest-section .quest-list.mode-cards .quest,.home-quest-section .quest-list.mode-list .quest,.home-quest-section .quest-list.mode-large .quest{grid-template-columns:19px 40px minmax(0,1fr)!important}
+.home-quest-section .quest-list.mode-cards .quest>.quest-leading-mark,.home-quest-section .quest-list.mode-list .quest>.quest-leading-mark,.home-quest-section .quest-list.mode-large .quest>.quest-leading-mark{grid-column:1;grid-row:1}
+.home-quest-section .quest-list.mode-cards .quest>.quest-ico,.home-quest-section .quest-list.mode-list .quest>.quest-ico,.home-quest-section .quest-list.mode-large .quest>.quest-ico{grid-column:2!important;grid-row:1}
+.home-quest-section .quest-list.mode-cards .quest>.quest-details,.home-quest-section .quest-list.mode-list .quest>.quest-details,.home-quest-section .quest-list.mode-large .quest>.quest-details{grid-column:3!important;grid-row:1}
+.home-quest-section .quest-list.mode-cards .quest>.quest-controls,.home-quest-section .quest-list.mode-list .quest>.quest-controls,.home-quest-section .quest-list.mode-large .quest>.quest-controls{grid-column:1/-1!important;grid-row:2}
+.home-quest-section .quest-name-with-rate{flex-wrap:wrap!important;gap:5px!important}
+@media(max-width:380px){.home-quest-section .quest-list.mode-compact .quest-compact-summary{grid-template-columns:18px 32px minmax(0,1fr) auto!important;gap:4px!important}.home-quest-section .quest-list.mode-compact .quest-compact-status .quest-state-pill{font-size:9px!important}.home-quest-section .quest-list.mode-mini .quest-state-pill{font-size:9px;padding:2px 3px}}
+</style></head><body><div id="app"><div class="orb a"></div><div class="orb b"></div><div class="fever-global-banner" id="feverStatus" hidden></div><div class="pr-persistent-clock" id="prPersistentClock" role="group" aria-label="현재 날짜와 시간 및 날씨" hidden><span class="pr-clock-date" id="prClockDate"></span><time class="pr-clock-time" id="prClockTime" aria-live="off"></time><button type="button" class="pr-weather-chip" id="prWeatherChip" onclick="openWeatherPopup()" aria-label="날씨 상세 보기" title="날씨 상세 보기" hidden>🌤️ --°</button></div><main class="main" id="view"></main><nav class="tabnav" id="nav" aria-label="앱 하단 메뉴"></nav><button id="navToggle" class="nav-toggle" type="button" onclick="toggleNav()" aria-controls="nav" aria-expanded="true" aria-label="하단 메뉴 접기">⌄ 메뉴 접기</button></div><div id="popup"></div><input class="backup-file" type="file" id="backupInput" accept=".json,application/json" multiple onchange="importDataFile(event)" aria-label="포켓몬 루틴 백업 파일 불러오기"><script>
 'use strict';
 // v1.7.147: Styled, queued in-app dialogs. Keep DOM outside #app so render() never destroys a pending answer.
 const appDialogQueue=[];let appDialogBusy=false;
@@ -6457,7 +6504,7 @@ async function deleteDailyNote(key){
  if(!settings.autoSave||!stored)appAlert('노트 삭제 내용을 유지하려면 JSON Save로 백업하세요.');
 }
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-// v1.7.188: verified writes, durable snapshots, and cross-window protection.
+// v1.7.189: verified writes, durable snapshots, and cross-window protection.
 const PR_SAFE_DB='pokeroutine_safety_v1', PR_SAFE_STORE='snapshots', PR_SAFE_DAY_PREFIX='daily:',PR_SAFE_RECENT_PREFIX='recent:';
 let prSafetyQuarantine=false,prSafetyExpectedRaw=null,prSafetyDbPromise=null,prSafetyQueue=Promise.resolve();
 let prSafetyLastRecent=0,prSafetyLastDay='',prSafetyFailureShown=false,prSafetyAlertAt=0;
@@ -8372,7 +8419,7 @@ function cleanBackup(v){
  safe.regionOpenCelebrated=v.regionOpenCelebrated===true;
  safe.dexColumnsPhone=Number.isInteger(Number(v.dexColumnsPhone))?Math.min(8,Math.max(2,Number(v.dexColumnsPhone))):3;
  safe.dexColumnsTablet=Number.isInteger(Number(v.dexColumnsTablet))?Math.min(12,Math.max(3,Number(v.dexColumnsTablet))):6;
- safe.questSort=['incomplete','complete','category','created','rateAsc','rateDesc'].includes(v.questSort)?v.questSort:'incomplete';
+ safe.questSort=['incomplete','complete','category','created','rateAsc','rateDesc','progress'].includes(v.questSort)?v.questSort:'incomplete';
  safe.questView=v.questView==='large'?'list':(['cards','list','compact','mini'].includes(v.questView)?v.questView:'cards');
  safe.rewardClaims=Array.isArray(v.rewardClaims)?v.rewardClaims.filter(c=>c&&Number.isInteger(Number(c.level))&&Number(c.level)>=2&&Number(c.level)<=100000&&Number(c.points)===Number(c.level)*50).slice(0,100000).map(c=>({level:Number(c.level),points:Number(c.points),at:String(c.at||'').slice(0,45),claimId:String(c.claimId||('level_'+c.level)).slice(0,100)})).filter((c,i,all)=>all.findIndex(other=>other.level===c.level)===i):[];
  safe.points=boundedNumber(v.points);safe.allEarned=boundedNumber(v.allEarned);safe.totalXp=boundedNumber(v.totalXp);
@@ -8484,7 +8531,7 @@ function ensureExtensions(){data.achievementDrafts=cleanAchievementDrafts(data.a
  if(!['cards','large','list'].includes(data.dexView))data.dexView='cards';
  data.dexColumnsPhone=Number.isInteger(Number(data.dexColumnsPhone))?Math.min(8,Math.max(2,Number(data.dexColumnsPhone))):3;
  data.dexColumnsTablet=Number.isInteger(Number(data.dexColumnsTablet))?Math.min(12,Math.max(3,Number(data.dexColumnsTablet))):6;
- if(!['incomplete','complete','category','created','rateAsc','rateDesc'].includes(data.questSort))data.questSort='incomplete';
+ if(!['incomplete','complete','category','created','rateAsc','rateDesc','progress'].includes(data.questSort))data.questSort='incomplete';
  if(data.questView==='large')data.questView='list';
  if(!['cards','list','compact','mini'].includes(data.questView))data.questView='cards';
  if(!Array.isArray(data.rewardClaims))data.rewardClaims=[];
@@ -8583,7 +8630,7 @@ function beginGame(e){
  }
  startUnlocked=true;render();
 }
-function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.188')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
+function renderOldStartScreen(){return `<section class="start-screen" aria-label="게임 시작 잠금"><div class="start-art">⚡🎮</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.189')}</div><h1>모험 시작하기</h1><p>게임을 시작하려면 관리자 비밀번호를 입력하세요.<br>기억된 로그인이 없다면 시작할 때 관리자 비밀번호를 입력합니다.</p><form class="qform" onsubmit="beginGame(event)"><label for="startAdminCode">관리자 비밀번호</label><input id="startAdminCode" class="qentry" type="password" inputmode="numeric" autocomplete="off" maxlength="12" required placeholder="관리자 비밀번호"><button class="modal-btn" type="submit">🔓 게임 시작</button></form><button type="button" class="modal-btn secondary" onclick="openMasterRecovery()">🔑 관리자 비밀번호를 잊으셨나요?</button><p class="pin-help">관리자 비밀번호를 잊었다면 복구 메뉴에서 마스터 비밀번호로 재설정할 수 있습니다. 관리자 메뉴와 상세 매뉴얼은 게임 시작 후 별도 관리자 로그인 시 열립니다. 포인트·도감·퀘스트 기록은 이 잠금 때문에 삭제되지 않습니다.</p></section>`}
 // Daily rollover only resets today's completion presentation and abandons a stale, unfinished timer.
 // Registered quests, completion history, points, XP and Pokédex are never cleared here.
 function closePreviousDayTimer(){
@@ -12980,7 +13027,7 @@ function renderSettings(){
 
 function oldRender(){if(!startUnlocked){document.getElementById('app').classList.add('locked');document.getElementById('nav').innerHTML='';document.getElementById('popup').innerHTML=modal?.type==='masterRecovery'?renderModal():'';document.getElementById('view').innerHTML=renderStartScreen();positionPersistentClock();updateNavigationVisibility();updateFeverVisual();cancelRewardAnimation();return}document.getElementById('app').classList.remove('locked');document.getElementById('nav').innerHTML=[['home','오늘'],['draw','뽑기'],['dex','도감'],['training','훈련'],['calendar','달력'],['stats','기록']].map(([id,txt])=>`<button type="button" class="tab ${screen===id?'active':''}" onclick="setScreen('${id}')" ${screen===id?'aria-current="page"':''}><span class="symbol" aria-hidden="true">${navIcon(id)}</span><span class="tab-label">${txt}</span></button>`).join('');document.getElementById('view').innerHTML=screen==='trainers'?renderTrainers():screen==='home'?renderHome():screen==='draw'?renderDraw():screen==='dex'?renderDex():screen==='training'?renderTraining():screen==='calendar'?renderCalendar():screen==='settings'?renderSettings():screen==='manual'?renderManual():renderStats();
  updateAppHeaderClock();document.getElementById('popup').innerHTML=renderModal()}
-function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.188')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
+function pageHeader(title,sub,extraClass=''){return `<header class="app-page-header ${extraClass}"><div class="page-header-copy"><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.189')}</div><div class="brand">${title}</div></div><div class="header-actions"><button class="top-home" onclick="setScreen('trainers')" title="사용자 성장" aria-label="트레이너 비교">👥</button><button type="button" class="top-home account-switch" onclick="logoutUser()" title="계정 전환·로그아웃" aria-label="계정 전환·로그아웃">🔄</button><button type="button" class="top-home header-home-icon" onclick="setScreen('home')" title="오늘 탭으로" aria-label="홈으로">${navIcon('home')}</button><button class="top-home header-bell" type="button" onclick="openPersonalReminders()" title="개인 알림" aria-label="개인 알림 관리">🔔</button><button class="settings-link" onclick="setScreen('settings')" title="설정" aria-label="설정">⚙️</button><button class="admin-link" aria-pressed="${adminUnlocked}" onclick="openAdmin()" title="관리자 전용 매뉴얼" aria-label="관리자">🔒</button></div></header><section class="fever-fold" id="feverFold" aria-label="피버타임 보너스" hidden><button class="fever-fold-toggle" id="feverFoldToggle" type="button" onclick="toggleFeverFold()" aria-expanded="false" aria-controls="feverFoldDetails"><span class="fever-fold-label" id="feverFoldLabel">✨ FEVER TIME 진행 중!</span><span class="fever-fold-brief" id="feverFoldBrief"></span><span class="fever-fold-arrow" aria-hidden="true">⌄</span></button><div class="fever-fold-details" id="feverFoldDetails" hidden><div><strong id="feverFoldPointBonus">🪙 포인트 +10%</strong><strong id="feverFoldXpBonus">🌟 경험치 +10%</strong></div><p id="feverFoldSchedule"></p><p id="feverFoldRemaining"></p></div></section>`}
 function jumpToQuestSection(){
  if(screen!=='home')return;
  const section=document.getElementById('homeQuestSection');
@@ -12992,7 +13039,7 @@ function jumpToQuestSection(){
  section.classList.add('quest-jump-highlight');
 }
 function setQuestSort(mode){
- if(!['incomplete','complete','category','created','rateAsc','rateDesc'].includes(mode))return;
+ if(!['incomplete','complete','category','created','rateAsc','rateDesc','progress'].includes(mode))return;
  if(data.questSort===mode)return;
  data.questSort=mode;save();render();
 }
@@ -13086,8 +13133,27 @@ function questRecommendationBadges(q,done=false,mini=false){
  if(f.evening)out.push(`<span class="quest-evening-pill${mini?' quest-reco-mini':''}" title="마무리 추천 · 포인트/경험치 ×1.20">${mini?'마무리':'🌙 마무리 +20%'}</span>`);
  return out.join('');
 }
+// v1.7.189 — Derived quest status: no new persisted fields, no rewards affected.
+function questListVisualState(q,done=completedToday(q.id)){
+ if(done)return {kind:'done',label:'완료',detail:''};
+ const active=data.activeQuest;
+ if(active?.id===q.id&&active.startedDay===day())return {kind:active.pausedAt?'paused':'challenge',label:active.pausedAt?'일시정지':'챌린지 중',detail:''};
+ const draft=achievementDraftToday(q.id);
+ if(draft&&achievementHasContent(draft.achievement)){
+  const date=new Date(draft.updatedAt||'');
+  const time=Number.isFinite(date.getTime())?date.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',hour12:false}):'';
+  const note=String(draft.achievement?.note||'').trim().replace(/\s+/g,' ');
+  const summary=achievementSummary({achievement:draft.achievement});
+  return {kind:'progress',label:'진행 중',detail:(time?'최근 기록 '+time:'중간 기록 있음')+(summary?' · '+summary:note?' · '+note.slice(0,32):'')};
+ }
+ return {kind:'pending',label:'미시작',detail:''};
+}
+function questListVisualBadge(state){return `<span class="quest-state-pill is-${state.kind}" aria-label="퀘스트 상태 ${state.label}">${state.label}</span>`;}
+function questListLeadingMark(state){return `<span class="quest-leading-mark is-${state.kind}" aria-hidden="true"></span>`;}
 function renderHomeQuest(q,runs,perf){
  const done=completedToday(q.id),goal=esc(q.goal||((q.mins||10)+'분'));
+ const visual=questListVisualState(q,done),visualClass=' quest-state-'+visual.kind;
+ const visualDetail=visual.detail?`<span class="quest-progress-detail">${esc(visual.detail)}</span>`:'';
  const rateChip=questRateMarkup(q,perf);
  const reward=questReward(q),type=questType(q),ev=type==='event'?liveEvent():null;
  const flags=questRecommendationFlags(q,done),extraClass=(flags.today||flags.evening)&&!done?' quest-recommended':'';
@@ -13110,14 +13176,14 @@ function renderHomeQuest(q,runs,perf){
  if(data.questView==='mini'){
   const miniPills=questRecommendationBadges(q,done,true);
   const miniSchedule=type==='reserved'?`<span class="quest-mini-schedule" title="${esc(questTypeLabel(q))}">📅</span>`:'';
-  return `<details data-quest-card="${esc(q.id)}" class="quest quest-mini ${done?'completed':''}${extraClass}${eventClass}"><summary class="quest-mini-summary" aria-label="${esc(q.title)} · ${done?'오늘 완료':'오늘 미완료'} · 상세 퀘스트 열기"><span class="quest-mini-status ${done?'is-done':'is-pending'}" aria-hidden="true" title="${done?'오늘 완료':'오늘 미완료'}"></span><span class="quest-mini-icon" aria-hidden="true">${questIcon}</span><span class="quest-mini-title" title="${esc(q.title)}">${esc(q.title)}</span><span class="quest-mini-meta">${miniPills}${miniSchedule}${miniHistory}</span>${rateChip}</summary><div class="quest-mini-expanded"><div class="quest-mini-primary">🎯 ${goal} · ⏱ ${q.limitMinutes||10}분${done?'':` · ${rewardText}`}</div>${meta}${questActionButtons(q)}${questDraftUI(q,done)}</div></details>`;
+  return `<details data-quest-card="${esc(q.id)}" class="quest quest-mini ${done?'completed':''}${visualClass}${extraClass}${eventClass}"><summary class="quest-mini-summary" aria-label="${esc(q.title)} · ${visual.label} · 상세 퀘스트 열기"><span class="quest-mini-status ${done?'is-done':visual.kind==='progress'?'is-progress':visual.kind==='challenge'?'is-challenge':visual.kind==='paused'?'is-paused':'is-pending'}" aria-hidden="true" title="${visual.label}"></span><span class="quest-mini-icon" aria-hidden="true">${questIcon}</span><span class="quest-mini-title" title="${esc(q.title)}">${esc(q.title)}</span>${visual.kind!=='pending'?questListVisualBadge(visual):''}<span class="quest-mini-meta">${miniPills}${miniSchedule}${miniHistory}</span>${rateChip}</summary><div class="quest-mini-expanded"><div class="quest-mini-primary">${visualDetail}🎯 ${goal} · ⏱ ${q.limitMinutes||10}분${done?'':` · ${rewardText}`}</div>${meta}${questActionButtons(q)}${questDraftUI(q,done)}</div></details>`;
  }
  if(data.questView==='compact'){
-  return `<details data-quest-card="${esc(q.id)}" class="quest quest-compact ${done?'completed':''}${extraClass}${eventClass}">${eventBackdrop}<summary class="quest-compact-summary" aria-label="${esc(q.title)} 퀘스트 상세 펼치기"><span class="quest-ico${questIconClass}" aria-hidden="true">${questIcon}</span><span class="quest-compact-main"><span class="quest-title">${esc(q.title)}</span><span class="quest-compact-primary">🎯 ${goal}${done?'':` · ${rewardText}`}</span>${meta}</span><span class="quest-compact-actions">${rateChip}<span class="quest-compact-status">${done?'✓ 완료':'<span class="quest-collapse-label">자세히</span><span class="quest-expanded-label">접기</span>'}<span class="quest-toggle-chevron" aria-hidden="true">⌄</span></span></span></summary><div class="quest-compact-body"><div class="quest-challenge-info">⏱ 챌린지 ${q.limitMinutes||10}분</div>${questActionButtons(q)}${questDraftUI(q,done)}</div></details>`;
+  return `<details data-quest-card="${esc(q.id)}" class="quest quest-compact ${done?'completed':''}${visualClass}${extraClass}${eventClass}">${eventBackdrop}<summary class="quest-compact-summary" aria-label="${esc(q.title)} ${visual.label} · 퀘스트 상세 펼치기">${questListLeadingMark(visual)}<span class="quest-ico${questIconClass}" aria-hidden="true">${questIcon}</span><span class="quest-compact-main"><span class="quest-title">${esc(q.title)}</span>${visualDetail}<span class="quest-compact-primary">🎯 ${goal}${done?'':` · ${rewardText}`}</span>${meta}</span><span class="quest-compact-actions">${rateChip}<span class="quest-compact-status">${visual.kind==='pending'?'<span class="quest-collapse-label">자세히</span><span class="quest-expanded-label">접기</span>':questListVisualBadge(visual)}<span class="quest-toggle-chevron" aria-hidden="true">⌄</span></span></span></summary><div class="quest-compact-body"><div class="quest-challenge-info">⏱ 챌린지 ${q.limitMinutes||10}분</div>${questActionButtons(q)}${questDraftUI(q,done)}</div></details>`;
  }
  // Grid and full list use the same semantic order but have a different density.
  const primary=data.questView==='cards'?`<div class="quest-caption-brief" title="목표: ${goal}">🎯 ${goal}</div>${done?'':gridReward}`:`<div class="quest-caption">🎯 ${goal} · ⏱ 챌린지 ${q.limitMinutes||10}분</div>${done?'':questRewardBadges(q)}`;
- return `<div data-quest-card="${esc(q.id)}" class="quest ${done?'completed':''}${extraClass}${eventClass}">${eventBackdrop}<div class="quest-ico${questIconClass}" aria-hidden="true">${questIcon}</div><div class="quest-details"><div class="quest-name-line"><div class="quest-name-with-rate"><span class="quest-title">${esc(q.title)}</span>${rateChip}</div></div>${primary}${meta}</div>${questActionButtons(q)}${questDraftUI(q,done)}</div>`;
+ return `<div data-quest-card="${esc(q.id)}" class="quest ${done?'completed':''}${visualClass}${extraClass}${eventClass}">${eventBackdrop}${questListLeadingMark(visual)}<div class="quest-ico${questIconClass}" aria-hidden="true">${questIcon}</div><div class="quest-details"><div class="quest-name-line"><div class="quest-name-with-rate"><span class="quest-title">${esc(q.title)}</span>${visual.kind!=='pending'?questListVisualBadge(visual):''}${rateChip}</div></div>${primary}${visualDetail}${meta}</div>${questActionButtons(q)}${questDraftUI(q,done)}</div>`;
 }
 // v1.7.66 · Historical quest completion rate, from known registration date through today.
 // Old imported data with no registration timestamp starts at the first verified completion;
@@ -13163,6 +13229,11 @@ function orderedHomeQuests(performanceMap=null){
  const mode=data.questSort||'incomplete';
  const ordered=todaysVisibleQuests().map((q,index)=>({q,index,done:completedToday(q.id)}));
  ordered.sort((a,b)=>{
+  if(mode==='progress'){
+   const priority={progress:0,challenge:0,paused:0,pending:1,done:2};
+   const av=priority[questListVisualState(a.q,a.done).kind]??1,bv=priority[questListVisualState(b.q,b.done).kind]??1;
+   return av-bv||a.index-b.index;
+  }
   if(mode==='rateAsc'||mode==='rateDesc'){
    const ar=performanceMap?.get(a.q.id)?.rate??null,br=performanceMap?.get(b.q.id)?.rate??null;
    if(ar===null||br===null)return ar===br?a.index-b.index:(ar===null?1:-1);
@@ -13679,7 +13750,7 @@ ${dailyGiftAtTop?renderDailyVisitHub():''}
  ${!n?'<button class="btn-add" onclick="addTask()">＋ 첫 퀘스트 등록하기</button>':''}
  ${data.dailyBonuses.some(b=>b.day===day())?`<div class="complete-bonus">🏆 오늘 전체 달성 보너스 +${format(data.dailyBonuses.find(b=>b.day===day()).points)}P 지급 완료!</div>`:''}
  <details class="home-quest-tools" ${homeQuestToolsOpen?'open':''}><summary onclick="toggleHomeQuestTools(this)"><span>⚙️ 퀘스트 보기 · 정렬 · 관리</span><span class="home-quest-tools-hint">설정 <span aria-hidden="true">⌄</span></span></summary>
- <div class="home-quest-tools-body"><div class="quest-sort-panel"><label for="questSortSelect">↕ 퀘스트 정렬</label><select id="questSortSelect" aria-label="퀘스트 정렬 선택" onchange="setQuestSort(this.value)">${[['incomplete','⏳ 미완료 먼저'],['complete','✅ 완료 먼저'],['category','🎨 카테고리 순'],['created','📋 등록 순서'],['rateAsc','📉 수행률 낮은 순'],['rateDesc','📈 수행률 높은 순']].map(([value,label])=>`<option value="${value}" ${data.questSort===value?'selected':''}>${label}</option>`).join('')}</select></div>
+ <div class="home-quest-tools-body"><div class="quest-sort-panel"><label for="questSortSelect">↕ 퀘스트 정렬</label><select id="questSortSelect" aria-label="퀘스트 정렬 선택" onchange="setQuestSort(this.value)">${[['incomplete','⏳ 미완료 먼저'],['progress','◐ 진행 중 먼저'],['complete','✅ 완료 먼저'],['category','🎨 카테고리 순'],['created','📋 등록 순서'],['rateAsc','📉 수행률 낮은 순'],['rateDesc','📈 수행률 높은 순']].map(([value,label])=>`<option value="${value}" ${data.questSort===value?'selected':''}>${label}</option>`).join('')}</select></div>
  ${questViewToolbar()}
  <div class="home-manage-buttons"><button class="btn-add" onclick="addTask()">＋ 퀘스트 등록</button><button class="btn-outline" onclick="openQuestManager()">🛠️ 전체 퀘스트 관리 · 숨김 이벤트 포함</button><button class="btn-outline" onclick="openQuestImport()">📥 다른 계정 퀘스트 가져오기</button><button class="btn-outline" onclick="openCategories()">🎨 카테고리 관리</button></div>
  <p class="home-manage-note">퀘스트 수정은 위 각 카드의 '수정' 버튼을 이용하세요. 등록·수정·삭제에는 관리자 인증이 필요합니다.</p></div></details>
@@ -14641,7 +14712,7 @@ async function logoutUser(){if(!(await appConfirm('현재 계정에서 로그아
 function renderStartScreen(){
  if(!startUnlocked)return renderOldStartScreen();
  const choices=Object.values(registry.users).filter(u=>u.enabled).sort((a,b)=>a.id.localeCompare(b.id));
- return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.188')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
+ return `<section class="start-screen" aria-label="계정 로그인"><div class="start-art">🎒⚡</div><div class="eyebrow">POKÉROUTINE · ${((document.title.match(/v\d+\.\d+\.\d+/)||[])[0]||'v1.7.189')}</div><h1>트레이너 로그인</h1><p>관리자 시작 확인 완료 · 사용자 ID별로 독립 기록을 불러옵니다.</p><form class="qform trainer-login" onsubmit="loginUser(event)"><label for="trainerId">사용자 ID</label><select id="trainerId" name="trainerId" class="qentry" required>${choices.map(u=>`<option value="${esc(u.id)}">${esc(u.name)} (@${esc(u.id)})</option>`).join('')}</select><label for="loginPin">로그인 비밀번호</label><input class="qentry" name="loginPin" id="loginPin" type="password" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="4~8자리" required><label class="remember-control"><input type="checkbox" name="rememberDevice" checked><span>이 기기에서 30일 동안 로그인 유지<small>선택하지 않아도 현재 탭의 새로고침은 유지됩니다. 가족 공용 기기라면 해제하세요.</small></span></label><button type="submit" class="modal-btn">게임 시작</button></form><p class="pin-help">계정 전환/로그아웃 시 로그인 상태가 삭제됩니다. 관리자 메뉴는 항상 별도 인증이 필요합니다.</p></section>`;
 }
 // Compact offline SVG icons: easy to tell the five destinations apart, even for young children.
 // Same icons on phone and tablet. Calendar numeral follows the local day on re-render.
@@ -17417,7 +17488,7 @@ renderHome=function(){const raw=__top3Home();return raw.replace('<div class="hom
 const __top3DayDetails=renderDayDetails;
 renderDayDetails=function(k){const raw=__top3DayDetails(k);return top3DaySummary(k)+raw;};
 const __top3Calendar=renderCalendar;
-renderCalendar=function(){return __top3Calendar();}; // v1.7.188: TOP 3 uses fixed calendar badge; no second dot row
+renderCalendar=function(){return __top3Calendar();}; // v1.7.189: TOP 3 uses fixed calendar badge; no second dot row
 const __top3Stats=renderStats;
 renderStats=function(){const raw=__top3Stats();return raw.replace('<div class="growth-record-container">','<div class="growth-record-container">'+recordAccordion('top3','🎯 오늘의 목표 분석',top3StatsHTML()));};
 const __top3Manual=renderManual;
@@ -17995,7 +18066,7 @@ html[data-theme="light"] .time-log-zoom-overlay .time-log-context-entry[data-kin
  #recordWeeklyBrief .growth-weekly-cards .growth-stat strong{font-size:22px!important;letter-spacing:-.7px;}
 }
 </style><script>
-/* v1.7.188: ONE back controller for Android CloseWatcher, fallback history and Escape.
+/* v1.7.189: ONE back controller for Android CloseWatcher, fallback history and Escape.
  * Navigations are recorded once (at render), popup origin wins, Back never pushes.
  */
 (function(){
@@ -18267,7 +18338,7 @@ window.prTop3ZoomToArchive174=function(key){
  }
 };
 </script>
-<style id="daily-recap-177-style">/* v1.7.188: complete daily review, accessible single scrolling dialog */
+<style id="daily-recap-177-style">/* v1.7.189: complete daily review, accessible single scrolling dialog */
 .daily-recap-modal{overscroll-behavior:contain;max-height:min(94dvh,94vh)!important;overflow-y:auto!important;overflow-x:hidden!important;scrollbar-gutter:stable}
 .daily177-controls{padding:0 16px 12px;display:grid;gap:9px}.daily177-actionbar{display:flex;gap:7px;flex-wrap:wrap}.daily177-actionbar button,.daily177-filter button,.daily177-play-controls button,.daily177-gap button,.daily177-replay button,.daily177-summary button{border:1px solid #5f8096;border-radius:9px;background:#27485f;color:#ecf8ff;padding:8px 10px;font:inherit;font-size:12px;font-weight:750;cursor:pointer;min-height:34px}
 .daily177-actionbar button.on,.daily177-filter button.on{background:#216959;border-color:#57c2a2;color:#fff}.daily177-filter{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:2px 0}.daily177-filter button{white-space:nowrap;flex:none}.daily177-stat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:0 16px 12px}.daily177-stat>div{border:1px solid #40627c;border-radius:10px;background:#1a3b53;padding:9px 5px;min-width:0;text-align:center}.daily177-stat strong{display:block;font-size:19px;line-height:1.4;color:#e5faf4;font-variant-numeric:tabular-nums}.daily177-stat small{display:block;font-size:10px;color:#b5d2e3;line-height:1.35;overflow-wrap:anywhere}
@@ -18278,7 +18349,7 @@ html[data-theme="light"] .daily177-section,html[data-theme="light"] .daily177-re
 .daily177-finale{margin:4px 0 8px;text-align:center;padding:19px 13px;border:1px solid #6d7b9b;border-radius:15px;background:linear-gradient(155deg,#1c385a,#224b52 55%,#27385f);color:#f2f5ff}.daily177-stars{font-size:23px;letter-spacing:10px;color:#f8d89f}.daily177-end-label{display:block;font-size:10px;letter-spacing:2px;color:#b6cce7;margin-top:8px}.daily177-finale h3{font-size:18px;line-height:1.5;margin:10px 0 15px}.daily177-keywords{display:grid;gap:9px}.daily177-keyword{background:#203b56;border:1px solid #668294;border-radius:12px;padding:11px 10px;text-align:left;min-width:0}.daily177-keyword span,.daily177-keyword small{display:block;color:#b8ceda;font-size:10px;overflow-wrap:anywhere}.daily177-keyword strong{display:block;font-size:19px;color:#ffe6a9;overflow-wrap:anywhere;margin:5px 0}.daily177-finale-close{font-size:11px;color:#d9e3ed;line-height:1.65;margin:16px 2px 8px}.daily177-finale>button{padding:9px;border-radius:9px;background:#395c73;color:white;border:1px solid #729ab0}.daily177-replay-screen .daily177-finale{margin:0}html[data-theme="light"] .daily177-stat strong{color:#23485f}html[data-theme="light"] .daily177-stat small{color:#557486}html[data-theme="light"] .daily177-finale{background:linear-gradient(145deg,#e7edf8,#dbf1eb);color:#234058}html[data-theme="light"] .daily177-keyword{background:#f9fcff}html[data-theme="light"] .daily177-keyword strong{color:#725225}html[data-theme="light"] .daily177-finale-close{color:#36576a}
 @media (prefers-reduced-motion:no-preference){.daily177-finale{animation:daily177Reveal .45s ease-out both}@keyframes daily177Reveal{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}}
 
-/* v1.7.188 - accessible, stable-height replay stage and synced analog clock */
+/* v1.7.189 - accessible, stable-height replay stage and synced analog clock */
 .daily178-replay{background:#163e54!important;color:#f5fbff!important;border-color:#4a8296!important}
 .daily178-replay-stage{height:278px;min-height:278px;max-height:278px;box-sizing:border-box;padding:12px!important;overflow:hidden!important;background:#102f45!important;color:#eef9ff!important}
 .daily178-stage-layout{display:grid;grid-template-columns:112px minmax(0,1fr);height:100%;gap:12px;align-items:stretch}
@@ -18315,7 +18386,7 @@ html[data-theme="light"] .daily177-line button{color:#234f66!important;border-co
 @media(max-width:370px){.daily178-stage-layout{grid-template-columns:88px minmax(0,1fr);gap:8px}.daily178-analog{width:74px;height:74px}.daily178-hand.hour{height:18px}.daily178-hand.minute{height:27px}.daily178-replay-stage{padding:9px!important}.daily178-digital{font-size:18px!important}.daily178-scene h3{font-size:14px!important}.daily178-navigation button{font-size:12px!important}}
 @media(prefers-reduced-motion:reduce){.daily178-hand{transition:none!important}}
 
-/* v1.7.188: a legible finale in BOTH themes, avoiding pale-on-pale inherited styles */
+/* v1.7.189: a legible finale in BOTH themes, avoiding pale-on-pale inherited styles */
 .daily-recap-modal .daily177-section .daily177-finale,
 .daily-recap-modal .daily177-finale{background:linear-gradient(150deg,#18324d 0%,#234953 65%,#23344c 100%)!important;color:#f8fbff!important;border:1px solid #709aac!important;box-shadow:0 7px 22px rgba(9,29,47,.16)}
 .daily-recap-modal .daily177-finale h3{color:#fff!important;text-shadow:none!important}
@@ -18353,7 +18424,7 @@ html[data-theme="light"] .daily177-line button{color:#234f66!important;border-co
 @media(prefers-reduced-motion:reduce){.daily179-sky{transition:none!important}.daily179-ambient-flash,.daily179-pulse,.daily179-scene-enter{animation:none!important}.daily178-hand{transition:none!important}}
 
 
-/* v1.7.188: compact sortable TOP 3 editor; protect draft values */
+/* v1.7.189: compact sortable TOP 3 editor; protect draft values */
 .top3-modal-row{gap:6px}
 .top3-modal-row .top3-order-buttons{display:flex;flex-direction:column;gap:3px;flex:none}
 .top3-modal-row .top3-order-buttons button{width:32px;height:27px;min-height:27px;border:1px solid #66839c;border-radius:7px;background:#284660;color:#f5fbff;font:700 16px/1 'Noto Sans KR',sans-serif;cursor:pointer;padding:0}
@@ -18361,7 +18432,7 @@ html[data-theme="light"] .daily177-line button{color:#234f66!important;border-co
 .top3-modal-row .top3-row-delete{flex:none;width:30px;min-width:30px}
 @media(max-width:360px){.top3-modal-row{gap:4px}.top3-modal-row input{padding:7px;font-size:12px}.top3-modal-number{width:13px}}
 </style>
-<script id="daily-recap-177">/* v1.7.188: integrated daily review. Canonical records are read-only, reflection is optional. */
+<script id="daily-recap-177">/* v1.7.189: integrated daily review. Canonical records are read-only, reflection is optional. */
 (function(){
  const clockValid=s=>/^([01]\d|2[0-3]):[0-5]\d$/.test(String(s||''));
  const clockAt=s=>{const d=new Date(s||'');return Number.isFinite(d.getTime())?String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'):''};
